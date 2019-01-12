@@ -3,7 +3,7 @@ A Slay The Spire mod, which adds relics inspired by fighters from Super Street F
 
 # Content
 
-So far, nothing.
+So far, nothing. Plans are for 16+ relics, one for each fighter in SSF2: The New Challengers.
 
 # Gameplay
 
