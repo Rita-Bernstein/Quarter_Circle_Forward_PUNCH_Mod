@@ -17,7 +17,7 @@ Nothing, just an almost empty repository in Github.
 
 | Name  | Rarity | Effect | Inspiration |
 | :---:   | :---: | :---: | :---: |
-| Red Headband | ???  | Each turn, discard the first Status or Curse card drawn, then draw another random card from the draw pile.  | Ryu's red headband and how it became his, in the Alpha series. |
+| Red Headband | ???  | Each turn, discard the first Status or Curse card drawn, then draw another random card from the draw pile.  | Ryu's red headband and how it became his in the Alpha series. |
 
 # Relics Implemented
 
