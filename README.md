@@ -13,6 +13,17 @@ Nada. Zilch.
 
 Nothing, just an almost empty repository in Github.
 
+# Planned Relics
+
+| Name  | Rarity | Effect | Inspiration |
+| ------------- | ------------- | ------------- | ------------- |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+
+# Relics
+
+
+
 # Roadmap
 
 1. Create a relic based in Ryu, for basic testing and getting the hang of modding relics for Slay The Spire. Focus in mechanics and avoiding bugs, not graphics.
