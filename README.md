@@ -23,6 +23,8 @@ Nothing, just an almost empty repository in Github.
 6. Relics inspired by Cammy, Fei Long and Deejay.
 7. ?????????????????????
 8. Finding/doing art assets and adding them to the mod.
+9. Translating to PT-BR.
+10. Final polishing and balancing.
 
 # Requirements
 
