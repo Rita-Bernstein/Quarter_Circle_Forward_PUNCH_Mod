@@ -1,6 +1,7 @@
 package ww_relics.relics.ryu;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -32,7 +33,7 @@ public class RedHeadband extends CustomRelic {
 			(drawnCard.type == AbstractCard.CardType.STATUS)) 
 		{
 			if (drawn_status_and_curses_in_the_turn  < NUMBER_OF_DRAWS) {
-				drawnCard.moveToDiscardPile(); //this does what it says?
+		        AbstractDungeon.player.hand.moveToDiscardPile(drawnCard);
 				AbstractPlayer p = AbstractDungeon.player;
 				AbstractDungeon.actionManager.
 					addToBottom(new DrawCardAction(p, DRAW_PER_STATUS_OR_CURSE));
