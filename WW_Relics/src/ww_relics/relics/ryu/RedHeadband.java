@@ -4,8 +4,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
@@ -17,14 +19,16 @@ public class RedHeadband extends CustomRelic {
 	
 	private static int drawn_status_and_curses_in_the_turn = 0;
 	
+	private Random random = new Random();
+	
 	public RedHeadband() {
-		super(ID, new Texture(), //add method for textures here.
+		super(ID, "abacus.png", //add method for textures here.
 				RelicTier.UNCOMMON, LandingSound.FLAT);
 	}
 	
 	@Override
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + HP_PER_CARD + DESCRIPTIONS[1]; // DESCRIPTIONS pulls from your localization file
+		return DESCRIPTIONS[0]; // DESCRIPTIONS pulls from your localization file
 	}
 	
 	@Override
@@ -34,9 +38,16 @@ public class RedHeadband extends CustomRelic {
 		{
 			if (drawn_status_and_curses_in_the_turn  < NUMBER_OF_DRAWS) {
 		        AbstractDungeon.player.hand.moveToDiscardPile(drawnCard);
-				AbstractPlayer p = AbstractDungeon.player;
-				AbstractDungeon.actionManager.
-					addToBottom(new DrawCardAction(p, DRAW_PER_STATUS_OR_CURSE));
+				
+		        AbstractPlayer p = AbstractDungeon.player;
+		        
+		        if (!p.drawPile.group.isEmpty()) {
+		        	int draw_pile_size = p.drawPile.group.size();
+		        	int which_card = random.random(0, draw_pile_size-1);
+		        	AbstractCard the_card = p.drawPile.getNCardFromTop(which_card);
+		        	p.drawPile.moveToHand(the_card, p.drawPile);
+		        }
+		        
 				drawn_status_and_curses_in_the_turn++;
 			}
 		}
