@@ -1,10 +1,6 @@
 package ww_relics.relics.ryu;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.actions.GameActionManager;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.random.Random;
@@ -41,14 +37,17 @@ public class RedHeadband extends CustomRelic {
 				
 		        AbstractPlayer p = AbstractDungeon.player;
 		        
-		        if (!p.drawPile.group.isEmpty()) {
-		        	int draw_pile_size = p.drawPile.group.size();
-		        	int which_card = random.random(0, draw_pile_size-1);
-		        	AbstractCard the_card = p.drawPile.getNCardFromTop(which_card);
-		        	p.drawPile.moveToHand(the_card, p.drawPile);
+		        for (int i = 0; i < DRAW_PER_STATUS_OR_CURSE; i++) {
+			        if (!p.drawPile.group.isEmpty()) {
+			        	int draw_pile_size = p.drawPile.group.size();
+			        	int which_card = random.random(0, draw_pile_size-1);
+			        	AbstractCard the_card = p.drawPile.getNCardFromTop(which_card);
+			        	p.drawPile.moveToHand(the_card, p.drawPile);
+			        } else { break; }
+			        
+					drawn_status_and_curses_in_the_turn++;
 		        }
-		        
-				drawn_status_and_curses_in_the_turn++;
+
 			}
 		}
 		
