@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 
 import basemod.BaseMod;
+import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
@@ -17,7 +18,8 @@ import basemod.interfaces.PostInitializeSubscriber;
 import ww_relics.relics.ryu.RedHeadband;
 
 @SpireInitializer
-public class WW_Relics_Mod implements EditRelicsSubscriber{
+public class WW_Relics_Mod implements PostInitializeSubscriber,
+		EditRelicsSubscriber{
 
 	//What exactly this does?
 	public static final Logger logger = LogManager.getLogger(WW_Relics_Mod.class.getName()); // lets us log output
@@ -33,6 +35,16 @@ public class WW_Relics_Mod implements EditRelicsSubscriber{
 		
 	}
 
+	@Override
+	public void receivePostInitialize() {
+
+		//Mod badge
+		//Texture badgeTexture = new Texture();
+        ModPanel settingsPanel = new ModPanel();
+        BaseMod.registerModBadge(null, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
+		
+	}
+	
 	@Override
 	public void receiveEditRelics() {
 
