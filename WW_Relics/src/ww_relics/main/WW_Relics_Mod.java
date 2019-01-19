@@ -1,0 +1,42 @@
+package ww_relics.main;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
+import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.localization.RelicStrings;
+
+import basemod.BaseMod;
+import basemod.helpers.RelicType;
+import basemod.interfaces.EditRelicsSubscriber;
+import basemod.interfaces.EditStringsSubscriber;
+import basemod.interfaces.ISubscriber;
+import basemod.interfaces.PostInitializeSubscriber;
+import ww_relics.relics.ryu.RedHeadband;
+
+@SpireInitializer
+public class WW_Relics_Mod implements EditRelicsSubscriber{
+
+	//What exactly this does?
+	public static final Logger logger = LogManager.getLogger(WW_Relics_Mod.class.getName()); // lets us log output
+
+	public static final String MODNAME = "World Warriors' Relics"; // mod name
+	public static final String AUTHOR = "Clauvin aka Dungeon Explorer Lan"; // your name
+	public static final String DESCRIPTION = "v0.0.1" +
+			"\r\n Adds a relic based in SF's Ryu to the game.";
+	
+	public WW_Relics_Mod() {
+		BaseMod.subscribe(this);
+		
+		
+	}
+
+	@Override
+	public void receiveEditRelics() {
+
+		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
+		
+	}
+}
