@@ -5,11 +5,12 @@
 
     <!-- Change These to match your mod -->
     <groupId>WW_Relics</groupId>
-    <artifactId>ExampleMod</artifactId>
-    <version>0.0.1</version>
+    <artifactId>World Warriors' Relics</artifactId>
+    <version>0.0.5</version>
     <packaging>jar</packaging>
-    <name>ExampleMod</name>
-    <description>Slay the Spire mod</description>
+    <name>World Warriors' Relics</name>
+    <description>A Slay The Spire mod, which adds relics based
+     in fighters from Super Street Fighter 2: The New Challengers.</description>
 
     <!-- These are the dependencies that were placed in the libs folder.
          Try to keep the version numbers the same as from their GitHub.  -->
@@ -17,21 +18,21 @@
         <dependency>
             <groupId>com.megacrit.cardcrawl</groupId>
             <artifactId>slaythespire</artifactId>
-            <version>017</version>
+            <version>055</version>
             <scope>system</scope>
             <systemPath>${basedir}/../lib/desktop-1.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
             <artifactId>ModTheSpire</artifactId>
-            <version>2.7.0</version>
+            <version>3.8.0</version>
             <scope>system</scope>
             <systemPath>${basedir}/../lib/ModTheSpire.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
             <artifactId>BaseMod</artifactId>
-            <version>2.14.0</version>
+            <version>5.8.0</version>
             <scope>system</scope>
             <systemPath>${basedir}/../lib/BaseMod.jar</systemPath>
         </dependency>
@@ -39,8 +40,8 @@
     </dependencies>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>3.6</maven.compiler.source>
+        <maven.compiler.target>3.6</maven.compiler.target>
     </properties>
 
     <!-- This is how your code is packaged into the jar file-->
