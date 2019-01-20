@@ -5,10 +5,10 @@
 
     <!-- Change These to match your mod -->
     <groupId>WW_Relics</groupId>
-    <artifactId>World Warriors' Relics</artifactId>
+    <artifactId>WorldWarriorsRelics</artifactId>
     <version>0.0.5</version>
     <packaging>jar</packaging>
-    <name>World Warriors' Relics</name>
+    <name>WorldWarriorsRelics</name>
     <description>A Slay The Spire mod, which adds relics based
      in fighters from Super Street Fighter 2: The New Challengers.</description>
 
@@ -47,7 +47,7 @@
     <!-- This is how your code is packaged into the jar file-->
     <build>
         <!-- Change this to match your mods name -->
-        <finalName>World Warriors' Relics</finalName>
+        <finalName>WorldWarriorsRelics</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -65,7 +65,7 @@
                             <filters>
                                 <filter>
                                     <!-- Change this to match your mods groupId:artifactId -->
-                                    <artifact>WW_Relics:World Warriors' Relics</artifact>
+                                    <artifact>WW_Relics:WorldWarriorsRelics</artifact>
                                 </filter>
                             </filters>
                         </configuration>
