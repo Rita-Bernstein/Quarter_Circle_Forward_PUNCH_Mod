@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import basemod.abstracts.CustomRelic;
 
 public class RedHeadband extends CustomRelic {
-	public static final String ID = "WW_Relics Red Headband";
+	public static final String ID = "WW_Relics_Red_Headband";
 	private static final int DRAW_PER_STATUS_OR_CURSE = 1;
 	private static final int NUMBER_OF_DRAWS = 1;
 	
