@@ -22,12 +22,10 @@ public class RedHeadband extends CustomRelic {
 				RelicTier.UNCOMMON, LandingSound.FLAT);
 	}
 	
-	@Override
 	public String getUpdatedDescription() {
 		return DESCRIPTIONS[0]; // DESCRIPTIONS pulls from your localization file
 	}
 	
-	@Override
 	public void onCardDraw(AbstractCard drawnCard) {
 		if ((drawnCard.type == AbstractCard.CardType.CURSE) ||
 			(drawnCard.type == AbstractCard.CardType.STATUS)) 
@@ -53,12 +51,10 @@ public class RedHeadband extends CustomRelic {
 		
 	}
 	
-	@Override
 	public void atTurnStart() {
 		drawn_status_and_curses_in_the_turn = 0;
 	}
-	
-	@Override
+
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
 		return new RedHeadband();
 	}
