@@ -1,9 +1,13 @@
 
 
+import java.nio.charset.StandardCharsets;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.megacrit.cardcrawl.localization.RelicStrings;
 
 import basemod.BaseMod;
 import basemod.ModPanel;
@@ -40,6 +44,18 @@ public class WW_Relics_Mod implements PostInitializeSubscriber,
         BaseMod.registerModBadge(null, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 		
 	}
+	
+	public void receiveEditStrings()
+	{
+	    logger.info("begin editing strings");
+	    BaseMod.loadCustomStrings(RelicStrings.class, loadJson("ww_relics/localization/eng/WW_Relics.json"));
+	    logger.info("done editing strings");
+	}
+	
+	 private static String loadJson(String jsonPath)
+	 {
+	    return Gdx.files.internal(jsonPath).readString(String.valueOf(StandardCharsets.UTF_8));
+	 }
 	
 	public void receiveEditRelics() {
 		logger.info("Begin adding relics");
