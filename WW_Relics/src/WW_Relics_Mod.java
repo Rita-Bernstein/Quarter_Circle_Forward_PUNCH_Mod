@@ -28,6 +28,10 @@ public class WW_Relics_Mod implements PostInitializeSubscriber,
 		BaseMod.subscribe(this);
 	}
 
+	public static void initialize()	{
+	    new WW_Relics_Mod();
+	}
+	
 	public void receivePostInitialize() {
 
 		//Mod badge
