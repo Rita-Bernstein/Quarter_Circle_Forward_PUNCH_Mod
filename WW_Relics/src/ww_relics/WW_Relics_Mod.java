@@ -26,8 +26,6 @@ public class WW_Relics_Mod implements PostInitializeSubscriber,
 	
 	public WW_Relics_Mod() {
 		BaseMod.subscribe(this);
-		
-		
 	}
 
 	@Override
@@ -40,10 +38,9 @@ public class WW_Relics_Mod implements PostInitializeSubscriber,
 		
 	}
 	
-	@Override
 	public void receiveEditRelics() {
-
+		logger.info("Begin adding relics");
 		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
-		
+		logger.info("Done adding relics");
 	}
 }
