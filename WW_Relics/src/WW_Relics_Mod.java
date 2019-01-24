@@ -42,14 +42,14 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	{
 	    logger.info("begin editing strings");
 	    
-	    String relicStrings = loadJson("ww_relics/localization/eng/WW_Relics.json");
+	    String relicStrings = "ww_relics/localization/eng/WW_Relics.json";
 	    
 	    System.out.println("Aqui estão as relicStrings: " + relicStrings);
 	    logger.info("Aqui estão as relicStrings: " + relicStrings);
 	    
 	    if (relicStrings == "") {
 	    	
-	    	relicStrings = loadJson("src/ww_relics/localization/eng/WW_Relics.json");
+	    	relicStrings = "src/ww_relics/localization/eng/WW_Relics.json";
 	    	
 		    System.out.println("Agora aqui estão as relicStrings: " + relicStrings);
 	    	logger.info("Agora aqui estão as relicStrings: " + relicStrings);		
@@ -58,7 +58,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	    
 	    if (relicStrings == "") {
 	    	
-	    	relicStrings = loadJson("localization/eng/WW_Relics.json");
+	    	relicStrings = "localization/eng/WW_Relics.json";
 	    	
 		    System.out.println("AGORA aqui estão as relicStrings: " + relicStrings);	    	
 	    	logger.info("AGORA aqui estão as relicStrings: " + relicStrings);	
@@ -67,11 +67,6 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	    BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
 	    logger.info("done editing strings");
 	}
-	
-	 private static String loadJson(String jsonPath)
-	 {
-	    return Gdx.files.internal(jsonPath).readString(String.valueOf(StandardCharsets.UTF_8));
-	 }
 	
 	public void receiveEditRelics() {
 		logger.info("Begin adding relics");
