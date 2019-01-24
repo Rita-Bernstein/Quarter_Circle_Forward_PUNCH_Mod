@@ -38,15 +38,6 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	    new WW_Relics_Mod();
 	}
 	
-	public void receivePostInitialize() {
-
-		//Mod badge
-		//Texture badgeTexture = new Texture();
-        ModPanel settingsPanel = new ModPanel();
-        BaseMod.registerModBadge(null, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
-		
-	}
-	
 	public void receiveEditStrings()
 	{
 	    logger.info("begin editing strings");
@@ -86,5 +77,12 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 		logger.info("Begin adding relics");
 		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
 		logger.info("Done adding relics");
+	}
+	
+	public void receivePostInitialize() {
+		//Mod badge
+		//Texture badgeTexture = new Texture();
+        ModPanel settingsPanel = new ModPanel();
+        BaseMod.registerModBadge(null, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 	}
 }
