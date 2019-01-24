@@ -48,7 +48,12 @@ public class WW_Relics_Mod implements PostInitializeSubscriber,
 	public void receiveEditStrings()
 	{
 	    logger.info("begin editing strings");
-	    BaseMod.loadCustomStrings(RelicStrings.class, loadJson("ww_relics/localization/eng/WW_Relics.json"));
+	    
+	    String relicStrings = Gdx.files.
+	    		internal("ww_relics/localization/eng/WW_Relics.json").readString(
+	    	      String.valueOf(StandardCharsets.UTF_8));
+	    
+	    BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
 	    logger.info("done editing strings");
 	}
 	
