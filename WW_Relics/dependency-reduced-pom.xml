@@ -4,7 +4,7 @@
   <groupId>WW_Relics</groupId>
   <artifactId>WorldWarriorsRelics</artifactId>
   <name>WorldWarriorsRelics</name>
-  <version>0.0.5</version>
+  <version>0.0.6</version>
   <description>A Slay The Spire mod, which adds relics based
      in fighters from Super Street Fighter 2: The New Challengers.</description>
   <build>
