@@ -5,5 +5,12 @@
     "DESCRIPTIONS": [
       "Each turn, the first Status or Curse card drawn is discarded, then draw a random card from the draw pile, if there is any card there."
     ]
+  },
+  "WWWWWWWWWWWW": {
+    "NAME": "WWWWWWWWWWWWW",
+    "FLAVOR": "WWWWWWWWWWWWWWW",
+    "DESCRIPTIONS": [
+      "WWWWWWWWWWWWWWWWWWW"
+    ]
   }
 }
