@@ -13,12 +13,14 @@ import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.EditRelicsSubscriber;
+import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import ww_relics.relics.ryu.RedHeadband;
 
 @SpireInitializer
-public class WW_Relics_Mod implements PostInitializeSubscriber,
-		EditRelicsSubscriber{
+public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscriber,
+		PostInitializeSubscriber
+		{
 
 	//What exactly this does?
 	public static final Logger logger = LogManager.getLogger(WW_Relics_Mod.class.getName()); // lets us log output
@@ -49,9 +51,27 @@ public class WW_Relics_Mod implements PostInitializeSubscriber,
 	{
 	    logger.info("begin editing strings");
 	    
-	    String relicStrings = Gdx.files.
-	    		internal("ww_relics/localization/eng/WW_Relics.json").readString(
-	    	      String.valueOf(StandardCharsets.UTF_8));
+	    String relicStrings = loadJson("ww_relics/localization/eng/WW_Relics.json");
+	    
+	    System.out.println("Aqui estão as relicStrings: " + relicStrings);
+	    logger.info("Aqui estão as relicStrings: " + relicStrings);
+	    
+	    if (relicStrings == "") {
+	    	
+	    	relicStrings = loadJson("src/ww_relics/localization/eng/WW_Relics.json");
+	    	
+		    System.out.println("Agora aqui estão as relicStrings: " + relicStrings);
+	    	logger.info("Agora aqui estão as relicStrings: " + relicStrings);		
+	    			
+	    }
+	    
+	    if (relicStrings == "") {
+	    	
+	    	relicStrings = loadJson("localization/eng/WW_Relics.json");
+	    	
+		    System.out.println("AGORA aqui estão as relicStrings: " + relicStrings);	    	
+	    	logger.info("AGORA aqui estão as relicStrings: " + relicStrings);	
+	    }
 	    
 	    BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
 	    logger.info("done editing strings");
