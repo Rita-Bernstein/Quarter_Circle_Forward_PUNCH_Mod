@@ -1,11 +1,6 @@
-
-
-import java.nio.charset.StandardCharsets;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 
@@ -38,6 +33,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	    new WW_Relics_Mod();
 	}
 	
+	@Override
 	public void receiveEditStrings()
 	{
 	    logger.info("begin editing strings");
@@ -68,6 +64,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	    logger.info("done editing strings");
 	}
 	
+	@Override
 	public void receiveEditRelics() {
 		logger.info("Begin adding relics");
 		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
