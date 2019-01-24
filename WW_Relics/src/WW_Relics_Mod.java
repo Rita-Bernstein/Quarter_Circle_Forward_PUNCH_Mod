@@ -27,7 +27,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 
 	public static final String MODNAME = "World Warriors' Relics"; // mod name
 	public static final String AUTHOR = "Clauvin aka Dungeon Explorer Lan"; // your name
-	public static final String DESCRIPTION = "v0.0.1" +
+	public static final String DESCRIPTION = "v0.0.6" +
 			"\r\n Adds a relic based in SF's Ryu to the game.";
 	
 	public WW_Relics_Mod() {

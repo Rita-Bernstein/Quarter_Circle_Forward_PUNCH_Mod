@@ -6,7 +6,7 @@
     <!-- Change These to match your mod -->
     <groupId>WW_Relics</groupId>
     <artifactId>WorldWarriorsRelics</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
     <packaging>jar</packaging>
     <name>WorldWarriorsRelics</name>
     <description>A Slay The Spire mod, which adds relics based
