@@ -6,7 +6,7 @@
     <!-- Change These to match your mod -->
     <groupId>WW_Relics</groupId>
     <artifactId>WorldWarriorsRelics</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
     <packaging>jar</packaging>
     <name>WorldWarriorsRelics</name>
     <description>A Slay The Spire mod, which adds relics based
@@ -30,7 +30,7 @@
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
             <artifactId>ModTheSpire</artifactId>
-            <version>3.8.0</version>
+            <version>3.6.3</version>
             <scope>system</scope>
             <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/ModTheSpire.jar</systemPath>
         </dependency>
