@@ -79,6 +79,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 		logger.info("Done adding relics");
 	}
 	
+	@Override
 	public void receivePostInitialize() {
 
 		Texture badgeTexture = new Texture("assets/img/modbadge/ModBadgePlaceholder.png");
