@@ -40,14 +40,12 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	    
 	    String relicStrings = "ww_relics/localization/eng/WW_Relics.json";
 	    
-	    System.out.println("Aqui estão as relicStrings: " + relicStrings);
 	    logger.info("Aqui estão as relicStrings: " + relicStrings);
 	    
 	    if (relicStrings == "") {
 	    	
 	    	relicStrings = "src/ww_relics/localization/eng/WW_Relics.json";
 	    	
-		    System.out.println("Agora aqui estão as relicStrings: " + relicStrings);
 	    	logger.info("Agora aqui estão as relicStrings: " + relicStrings);		
 	    			
 	    }
@@ -56,7 +54,6 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	    	
 	    	relicStrings = "localization/eng/WW_Relics.json";
 	    	
-		    System.out.println("AGORA aqui estão as relicStrings: " + relicStrings);	    	
 	    	logger.info("AGORA aqui estão as relicStrings: " + relicStrings);	
 	    }
 	    
