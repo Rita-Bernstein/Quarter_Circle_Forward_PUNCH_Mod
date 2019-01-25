@@ -81,7 +81,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	
 	public void receivePostInitialize() {
 
-		Texture badgeTexture = new Texture(Gdx.files.internal("assets/img/modbadge/ModBadgePlaceholder.png"));
+		Texture badgeTexture = new Texture("assets/img/modbadge/ModBadgePlaceholder.png");
         ModPanel settingsPanel = new ModPanel();
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 	}
