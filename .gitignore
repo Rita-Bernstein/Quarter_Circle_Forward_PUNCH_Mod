@@ -30,3 +30,11 @@ hs_err_pid*
 *.prx
 *.tii
 *.tis
+*.fdt
+*.fdx
+*.fnm
+*.frq
+*.nrm
+*.prx
+*.tii
+*.tis
