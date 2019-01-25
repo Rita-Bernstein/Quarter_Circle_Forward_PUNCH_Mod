@@ -1,6 +1,9 @@
+import java.nio.charset.StandardCharsets;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 
@@ -33,18 +36,24 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	    new WW_Relics_Mod();
 	}
 	
+	public String getJsonText(String filepath) {
+		return Gdx.files.internal(filepath).readString(String.valueOf(StandardCharsets.UTF_8));
+	}
+	
 	@Override
 	public void receiveEditStrings()
 	{
 	    logger.info("begin editing strings");
 	    
-	    String relicStrings = "ww_relics/localization/eng/WW_Relics.json";
+	    String relicStringsAddress = "ww_relics/localization/eng/WW_Relics.json";
+	    String relicStrings = getJsonText(relicStringsAddress);
 	    
 	    logger.info("Aqui estão as relicStrings: " + relicStrings);
 	    
 	    if (relicStrings == "") {
 	    	
-	    	relicStrings = "src/ww_relics/localization/eng/WW_Relics.json";
+	    	relicStringsAddress = "src/ww_relics/localization/eng/WW_Relics.json";
+	    	relicStrings = getJsonText(relicStringsAddress);
 	    	
 	    	logger.info("Agora aqui estão as relicStrings: " + relicStrings);		
 	    			
@@ -52,7 +61,8 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	    
 	    if (relicStrings == "") {
 	    	
-	    	relicStrings = "localization/eng/WW_Relics.json";
+	    	relicStringsAddress = "localization/eng/WW_Relics.json";
+	    	relicStrings = getJsonText(relicStringsAddress);
 	    	
 	    	logger.info("AGORA aqui estão as relicStrings: " + relicStrings);	
 	    }
