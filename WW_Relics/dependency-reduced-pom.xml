@@ -4,7 +4,7 @@
   <groupId>WW_Relics</groupId>
   <artifactId>WorldWarriorsRelics</artifactId>
   <name>WorldWarriorsRelics</name>
-  <version>0.0.6</version>
+  <version>0.0.7</version>
   <description>A Slay The Spire mod, which adds relics based
      in fighters from Super Street Fighter 2: The New Challengers.</description>
   <build>
@@ -69,7 +69,7 @@
     <dependency>
       <groupId>com.evacipated.cardcrawl</groupId>
       <artifactId>ModTheSpire</artifactId>
-      <version>3.8.0</version>
+      <version>3.6.3</version>
       <scope>system</scope>
       <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/ModTheSpire.jar</systemPath>
     </dependency>
