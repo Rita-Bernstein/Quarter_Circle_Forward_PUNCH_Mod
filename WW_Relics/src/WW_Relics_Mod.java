@@ -48,14 +48,14 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	    String relicStringsAddress = "ww_relics/localization/eng/WW_Relics.json";
 	    String relicStrings = getJsonText(relicStringsAddress);
 	    
-	    logger.info("Aqui estão as relicStrings: " + relicStrings);
+	    logger.info("Here are the relicStrings: " + relicStrings);
 	    
 	    if (relicStrings == "") {
 	    	
 	    	relicStringsAddress = "src/ww_relics/localization/eng/WW_Relics.json";
 	    	relicStrings = getJsonText(relicStringsAddress);
 	    	
-	    	logger.info("Agora aqui estão as relicStrings: " + relicStrings);		
+	    	logger.info("Now here are the relicStrings: " + relicStrings);		
 	    			
 	    }
 	    
@@ -64,7 +64,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	    	relicStringsAddress = "localization/eng/WW_Relics.json";
 	    	relicStrings = getJsonText(relicStringsAddress);
 	    	
-	    	logger.info("AGORA aqui estão as relicStrings: " + relicStrings);	
+	    	logger.info("NOW here are the relicStrings: " + relicStrings);	
 	    }
 	    
 	    BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
