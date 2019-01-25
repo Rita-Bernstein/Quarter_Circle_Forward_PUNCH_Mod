@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 
@@ -79,9 +80,9 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	}
 	
 	public void receivePostInitialize() {
-		//Mod badge
-		//Texture badgeTexture = new Texture();
+
+		Texture badgeTexture = new Texture(Gdx.files.internal("assets/img/modbadge/ModBadgePlaceholder.png"));
         ModPanel settingsPanel = new ModPanel();
-        BaseMod.registerModBadge(null, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
+        BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 	}
 }
