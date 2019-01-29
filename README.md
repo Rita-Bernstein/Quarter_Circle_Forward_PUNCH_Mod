@@ -49,6 +49,7 @@ Just imagine it :D
 # Credits/Acknowledgments
 
 Fruitstrike (https://github.com/gskleres), because all the topic titles from the first version of this README were copied from his FruityMod-StS repository xD
+STREET FIGHTER is a registered trademark of CAPCOM U.S.A., INC.
 
 # Special Thanks
 
