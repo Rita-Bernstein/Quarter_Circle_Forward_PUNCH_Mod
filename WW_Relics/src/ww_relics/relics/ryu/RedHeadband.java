@@ -19,7 +19,7 @@ public class RedHeadband extends CustomRelic {
 	
 	public RedHeadband() {
 		super(ID, "abacus.png", //add method for textures here.
-				RelicTier.UNCOMMON, LandingSound.FLAT);
+				RelicTier.COMMON, LandingSound.FLAT);
 	}
 	
 	public String getUpdatedDescription() {
