@@ -53,7 +53,7 @@ STREET FIGHTER is a registered trademark of CAPCOM U.S.A., INC.
 
 # Special Thanks
 
-1. Thanks for MegaCrit, the makes from SlayTheSpire, because the game is awesome :D
+1. Thanks for MegaCrit, the makes from SlayTheSpire, because the game is awesome and they are cool with mods of their game :D
 
 # Art Assets
 
