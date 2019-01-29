@@ -17,7 +17,7 @@ Nothing, just an almost empty repository in Github.
 
 | Name  | Rarity | Effect | Inspiration |
 | :---:   | :---: | :---: | :---: |
-| Red Headband | ???  | Each turn, discard the first Status or Curse card drawn, then draw another random card from the draw pile if there's any card there.  | Ryu's red headband and how it became his in the Alpha series. |
+| Red Headband | Common  | Each turn, discard the first Status or Curse card drawn, then draw another random card from the draw pile if there's any card there.  | Ryu's red headband and how it became his in the Alpha series. |
 
 # Relics Implemented
 
@@ -49,10 +49,12 @@ Just imagine it :D
 # Credits/Acknowledgments
 
 Fruitstrike (https://github.com/gskleres), because all the topic titles from the first version of this README were copied from his FruityMod-StS repository xD
+daviscook477 (https://github.com/daviscook477) for his guide (https://github.com/daviscook477/BaseMod/wiki/Starting-Your-Mod)
+STREET FIGHTER is a registered trademark of CAPCOM U.S.A., INC.
 
 # Special Thanks
 
-1. Thanks for MegaCrit, the makes from SlayTheSpire, because the game is awesome :D
+1. Thanks for MegaCrit, the makes from SlayTheSpire, because the game is awesome and they are cool with mods of their game :D
 
 # Art Assets
 
