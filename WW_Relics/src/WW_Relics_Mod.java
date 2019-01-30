@@ -14,6 +14,8 @@ import basemod.helpers.RelicType;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
+import ww_relics.relics.chun_li.BlueBoots;
+import ww_relics.relics.ryu.FightingGloves;
 import ww_relics.relics.ryu.RedHeadband;
 
 @SpireInitializer
@@ -76,6 +78,8 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	@Override
 	public void receiveEditRelics() {
 		logger.info("Begin adding relics");
+		BaseMod.addRelic(new BlueBoots(), RelicType.SHARED);
+		BaseMod.addRelic(new FightingGloves(), RelicType.SHARED);
 		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
 		logger.info("Done adding relics");
 	}
