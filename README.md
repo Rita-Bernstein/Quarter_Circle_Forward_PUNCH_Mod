@@ -5,10 +5,6 @@ A Slay The Spire mod, which adds relics inspired by fighters from Super Street F
 
 One relic of 16+ planned, with placeholder image and sound.
 
-# Gameplay
-
-Nada. Zilch.
-
 # Current State
 
 Currently in the version 0.1.
