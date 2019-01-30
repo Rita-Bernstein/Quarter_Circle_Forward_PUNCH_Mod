@@ -7,7 +7,7 @@ One relic of 16+ planned, with placeholder image and sound.
 
 # Current State
 
-Currently in the version 0.1.
+Currently version 0.1.
 
 # Relics To Implement
 
@@ -43,7 +43,7 @@ Mod The Spire 3.8.3+ and BaseMod 5.8.0+.
 
 # Installation
 
-Download the .jar in the latest release, then add it to the mods folder in the Slay The Spire folder (if you already installed Mod The Spire, if not, do that first).
+Download the .jar in the latest release, then add it to SlayTheSpire/mods folder (if you already installed Mod The Spire and BaseMod, if not, do both things first).
 
 # Credits/Acknowledgments
 
