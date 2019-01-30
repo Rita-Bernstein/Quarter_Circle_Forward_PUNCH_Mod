@@ -1,4 +1,22 @@
 {
+  "WW_Relics_Blue_Boots": {
+    "NAME": "Blue Boots",
+    "FLAVOR": "Very, very worn shoes... as much from hitting as from walking.",
+    "DESCRIPTIONS": [
+      "Choose ", " Attack in your hand. Create ",
+      "copies of it, place them randomly in your draw pile, then exhaust the chosen card. The copies have ",
+      "-cost the first time are used."
+    ]
+  },
+  "WW_Relics_Fighting_Gloves": {
+    "NAME": "Fighting Gloves",
+    "FLAVOR": "\"Inspiring! It gives you this feeling of wanting to improve yourself.\" - Ranwid.",
+    "DESCRIPTIONS": [
+      "Upgrades outside of fights allow to upgrade ",
+      " extra card.",
+      " extra cards."
+    ]
+  },
   "WW_Relics_Red_Headband": {
     "NAME": "Red Headband",
     "FLAVOR": "Placing it in your head gives some focus against distractions.",
