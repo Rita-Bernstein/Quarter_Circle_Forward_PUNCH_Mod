@@ -4,9 +4,10 @@
   <groupId>WW_Relics</groupId>
   <artifactId>WorldWarriorsRelics</artifactId>
   <name>WorldWarriorsRelics</name>
-  <version>0.0.7</version>
-  <description>A Slay The Spire mod, which adds relics based
-     in fighters from Super Street Fighter 2: The New Challengers.</description>
+  <version>0.1.0</version>
+  <description>Adds a relic based in SF's Ryu to the game.
+		  		 \r\n v1.0 will have 16+ relics, inspired in
+		  		 \r\n fighters from Super Street Fighter 2: The New Challengers.</description>
   <build>
     <finalName>WorldWarriorsRelics</finalName>
     <plugins>
@@ -62,14 +63,14 @@
     <dependency>
       <groupId>com.megacrit.cardcrawl</groupId>
       <artifactId>slaythespire</artifactId>
-      <version>055</version>
+      <version>1.0</version>
       <scope>system</scope>
       <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/desktop-1.0.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>com.evacipated.cardcrawl</groupId>
       <artifactId>ModTheSpire</artifactId>
-      <version>3.6.3</version>
+      <version>3.8.3</version>
       <scope>system</scope>
       <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/ModTheSpire.jar</systemPath>
     </dependency>
