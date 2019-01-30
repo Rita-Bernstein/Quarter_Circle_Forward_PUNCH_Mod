@@ -3,7 +3,7 @@ A Slay The Spire mod, which adds relics inspired by fighters from Super Street F
 
 # Content
 
-So far, nothing. Plans are for 16+ relics, at least one for each fighter in SSF2: The New Challengers.
+One relic of 16+ planned, with placeholder image and sound.
 
 # Gameplay
 
@@ -11,21 +11,22 @@ Nada. Zilch.
 
 # Current State
 
-Nothing, just an almost empty repository in Github.
+Currently in the version 0.1.
 
 # Relics To Implement
 
 | Name  | Rarity | Effect | Inspiration |
 | :---:   | :---: | :---: | :---: |
-| Red Headband | Common  | Each turn, discard the first Status or Curse card drawn, then draw another random card from the draw pile if there's any card there.  | Ryu's red headband and how it became his in the Alpha series. |
 
 # Relics Implemented
 
-
+| Name  | Rarity | Effect | Inspiration |
+| :---:   | :---: | :---: | :---: |
+| Red Headband | Common | Each turn, discard the first Status or Curse card drawn, then draw another random card from the draw pile if there's any card there. | Ryu's red headband and how it became his in the Alpha series. |
 
 # Roadmap
 
-1. Create a relic based in Ryu, for basic testing and getting the hang of modding relics for Slay The Spire. Focus in mechanics and avoiding bugs, not graphics.
+1. Create a relic based in Ryu, for basic testing and getting the hang of modding relics for Slay The Spire. Focus in mechanics and avoiding bugs, not graphics. - Done in v0.1.
 2. Relics inspired by Ryu, Ken, Chun Li and Guile.
 3. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
 4. The same, by Boxer, Claw and Sagat.(about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
@@ -40,27 +41,33 @@ Nothing, just an almost empty repository in Github.
 
 # Requirements
 
-Looking to a particular portion of the universe where there's only the void.
+Mod The Spire 3.8.3+ and BaseMod 5.8.0+.
 
 # Installation
 
-Just imagine it :D
+Download the .jar in the latest release, then add it to the mods folder in the Slay The Spire folder (if you already installed Mod The Spire, if not, do that first).
 
 # Credits/Acknowledgments
 
 Fruitstrike (https://github.com/gskleres), because all the topic titles from the first version of this README were copied from his FruityMod-StS repository xD
+
 daviscook477 (https://github.com/daviscook477) for his guide (https://github.com/daviscook477/BaseMod/wiki/Starting-Your-Mod)
 STREET FIGHTER is a registered trademark of CAPCOM U.S.A., INC.
 
 # Special Thanks
 
-1. Thanks for MegaCrit, the makes from SlayTheSpire, because the game is awesome and they are cool with mods of their game :D
+To MegaCrit, the makes from SlayTheSpire, because the game is awesome and they are cool with mods of their game :D
 
 # Art Assets
 
 None so far.
 
 # Notes For Contributors
+
+(...ok, I really have to add something here later.)
+
+# See Also
+
 
 (...ok, I really have to add something here later.)
 
