@@ -42,6 +42,13 @@
             <scope>system</scope>
             <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/BaseMod.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>com.evacipated.cardcrawl</groupId>
+            <artifactId>StSLib</artifactId>
+            <version>1.13.2</version>
+            <scope>system</scope>
+            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/StSLib.jar</systemPath>
+        </dependency>
 
     </dependencies>
 
