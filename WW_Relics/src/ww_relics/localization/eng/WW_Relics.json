@@ -3,7 +3,7 @@
     "NAME": "Blue Boots",
     "FLAVOR": "Very, very worn shoes... as much from hitting as from walking.",
     "DESCRIPTIONS": [
-      "Choose ", " Attack in your hand. Create ",
+      "Choose ", " Attack in your hand.", " Create ",
       "copies of it, place them randomly in your draw pile, then exhaust the chosen card. The copies cost ",
       "-less the first time are used."
     ]
