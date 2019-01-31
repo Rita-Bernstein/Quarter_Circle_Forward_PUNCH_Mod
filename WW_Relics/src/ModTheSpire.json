@@ -7,7 +7,7 @@
 	"mts_version": "3.8.3",
 	"author_list": ["Clauvin"],
 	"credits": "",
-	"dependencies": ["basemod"],
+	"dependencies": ["basemod", "stslib"],
 	"optional_dependencies": [""],
 	"update_json": ""
 }
