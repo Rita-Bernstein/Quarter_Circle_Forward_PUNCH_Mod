@@ -1,5 +1,6 @@
 package ww_relics.relics.chun_li;
 
+import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -10,7 +11,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import basemod.abstracts.CustomRelic;
 
-public class BlueBoots extends CustomRelic {
+public class BlueBoots extends CustomRelic implements ClickableRelic {
 	public static final String ID = "WW_Relics_Blue_Boots";
 	private static final int NUMBER_OF_USES_PER_FIGHT = 1;
 	private static final int NUMBER_OF_CHOSEN_ATTACKS = 1;
@@ -34,13 +35,13 @@ public class BlueBoots extends CustomRelic {
 				DISCOUNT_ON_COST_OF_THE_GENERATED_CARDS + DESCRIPTIONS[4];
 	}
 	
-	public void OnBattleStart() {
+	public void onBattleStart() {
 		number_of_uses_left_in_this_fight = NUMBER_OF_USES_PER_FIGHT;
 		card_is_selected = false;
 		card_copied = null;
 	}
 	
-	public void OnRightClick() {
+	public void onRightClick() {
 		boolean is_on_combat = AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
 		boolean is_alive = !AbstractDungeon.player.isDead;
 		boolean turn_wont_end_soon = !AbstractDungeon.player.endTurnQueued;
@@ -92,7 +93,7 @@ public class BlueBoots extends CustomRelic {
 		}
 	}
 	
-	public void OnPlayCard(AbstractCard c, AbstractMonster m)  {
+	public void onPlayCard(AbstractCard c, AbstractMonster m)  {
 		
 		if ((card_is_selected) && (c.compareTo(card_copied) == 0)){
 			
