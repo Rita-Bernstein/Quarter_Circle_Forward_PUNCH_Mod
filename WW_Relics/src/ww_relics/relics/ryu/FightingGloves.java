@@ -1,9 +1,5 @@
 package ww_relics.relics.ryu;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
@@ -17,13 +13,14 @@ public class FightingGloves extends CustomRelic {
 				RelicTier.RARE, LandingSound.SOLID);
 	}
 	
+	@SuppressWarnings("unused")
 	public String getUpdatedDescription() {
 		String description = "Something wrong happened, please warn the programmer!";
 		
-		if (EXTRA_UPGRADES_PER_UPGRADE == 1) {
+		if (EXTRA_UPGRADES_PER_UPGRADE < 2) {
 			description = DESCRIPTIONS[0] + EXTRA_UPGRADES_PER_UPGRADE +
 					DESCRIPTIONS[1];
-		} else if (EXTRA_UPGRADES_PER_UPGRADE > 1){
+		} else {
 			description = DESCRIPTIONS[0] + EXTRA_UPGRADES_PER_UPGRADE +
 					DESCRIPTIONS[2];
 		} 

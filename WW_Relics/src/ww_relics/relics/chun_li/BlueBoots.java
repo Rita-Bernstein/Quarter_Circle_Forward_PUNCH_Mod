@@ -1,15 +1,10 @@
 package ww_relics.relics.chun_li;
 
-import com.brashmonkey.spriter.Player;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
@@ -27,8 +22,6 @@ public class BlueBoots extends CustomRelic {
 	public boolean card_is_selected;
 	public AbstractCard card_selected;
 	public AbstractCard card_copied;
-	
-	private Random random = new Random();
 	
 	public BlueBoots() {
 		super(ID, "abacus.png", //add method for textures here.
