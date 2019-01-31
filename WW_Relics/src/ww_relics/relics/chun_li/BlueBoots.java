@@ -41,6 +41,7 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 		card_copied = null;
 	}
 	
+	@Override
 	public void onRightClick() {
 		boolean is_on_combat = AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
 		boolean is_alive = !AbstractDungeon.player.isDead;
