@@ -1,9 +1,14 @@
 package ww_relics.relics.chun_li;
 
+import com.brashmonkey.spriter.Player;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
@@ -17,6 +22,12 @@ public class BlueBoots extends CustomRelic {
 	private static final int NUMBER_OF_COPIES = 4;
 	private static final int DISCOUNT_ON_COST_OF_THE_GENERATED_CARDS = 0;
 	
+	public int number_of_uses_left_in_this_fight;
+	public int number_of_copies_left_to_use;
+	public boolean card_is_selected;
+	public AbstractCard card_selected;
+	public AbstractCard card_copied;
+	
 	private Random random = new Random();
 	
 	public BlueBoots() {
@@ -26,11 +37,17 @@ public class BlueBoots extends CustomRelic {
 	
 	public String getUpdatedDescription() {
 		return DESCRIPTIONS[0] + NUMBER_OF_CHOSEN_ATTACKS +
-				DESCRIPTIONS[1] + NUMBER_OF_COPIES + DESCRIPTIONS[2] +
-				DISCOUNT_ON_COST_OF_THE_GENERATED_CARDS;
+				DESCRIPTIONS[1] + DESCRIPTIONS[2] + NUMBER_OF_COPIES + DESCRIPTIONS[3] +
+				DISCOUNT_ON_COST_OF_THE_GENERATED_CARDS + DESCRIPTIONS[4];
 	}
 	
-	/*public void OnRightClick() {
+	public void OnBattleStart() {
+		number_of_uses_left_in_this_fight = NUMBER_OF_USES_PER_FIGHT;
+		card_is_selected = false;
+		card_copied = null;
+	}
+	
+	public void OnRightClick() {
 		boolean is_on_combat = AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
 		boolean is_alive = !AbstractDungeon.player.isDead;
 		boolean turn_wont_end_soon = !AbstractDungeon.player.endTurnQueued;
@@ -38,20 +55,67 @@ public class BlueBoots extends CustomRelic {
 		boolean turn_havent_ended = !AbstractDungeon.actionManager.turnHasEnded;
 		boolean has_an_attack_in_hand = AbstractDungeon.player.hand.getAttacks().
 				size() > 0;
+		boolean have_uses_left = number_of_uses_left_in_this_fight > 0;
 		
 		if (is_on_combat && is_alive && turn_wont_end_soon &&
 			player_isnt_ending_turn && turn_havent_ended &&
-			has_an_attack_in_hand) {
+			has_an_attack_in_hand && have_uses_left) {
 			
-			//
+			number_of_uses_left_in_this_fight--;
+			number_of_copies_left_to_use = NUMBER_OF_COPIES;
 			
-		      AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck
-		    	        .getPurgeableCards().getAttacks(), 1, this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, false, false, false, false);
-		    	    }
+			CardGroup list_of_attacks = AbstractDungeon.player.masterDeck.getPurgeableCards().getAttacks();
+			if (list_of_attacks.size() == 1) {
+				card_copied = list_of_attacks.getTopCard();
+			} else {
+				AbstractDungeon.gridSelectScreen.open(
+					list_of_attacks, 1,
+					this.DESCRIPTIONS[0] + NUMBER_OF_CHOSEN_ATTACKS + this.DESCRIPTIONS[1],
+					false, false, false, false);
+		    }
+		}
+	}
+	
+	public void update()
+	{
+		super.update();
+		if ((!this.card_is_selected) && 
+			(!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()))
+		{
+			this.card_is_selected = true;
+			this.card_selected = ((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(0));
+			
+			card_copied = card_selected.makeCopy();
+			if (card_copied.cost > 0) card_copied.cost -= 1; 
+			card_copied.isCostModified = true;
+			
+			for (int i = 0; i < NUMBER_OF_COPIES; i++) {
+				AbstractCard new_card = card_copied.makeCopy();
+				
+				AbstractDungeon.player.drawPile.addToRandomSpot(new_card);
+			}
+			
+			AbstractDungeon.player.hand.moveToExhaustPile(card_selected);
+		}
+	}
+	
+	public void OnPlayCard(AbstractCard c, AbstractMonster m)  {
+		
+		if ((card_is_selected) && (c.compareTo(card_copied) == 0)){
+			
+			c.cost += 1;
+			c.isCostModified = false;
+			number_of_copies_left_to_use--;
+			
+			if (number_of_copies_left_to_use == 0) {
+				card_copied = null;
+				card_selected = null;
+				card_is_selected = false;
+			}
 			
 		}
-			
-	}*/
+		
+	}
 	
 	public boolean canSpawn()
 	{
