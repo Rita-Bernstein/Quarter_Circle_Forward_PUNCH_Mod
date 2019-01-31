@@ -1,10 +1,12 @@
 package ww_relics.relics.chun_li;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
@@ -24,6 +26,8 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 	public AbstractCard card_selected;
 	public AbstractCard card_copied;
 	
+	public static final Logger logger = LogManager.getLogger(BlueBoots.class.getName());
+	
 	public BlueBoots() {
 		super(ID, "abacus.png", //add method for textures here.
 				RelicTier.RARE, LandingSound.SOLID);
@@ -35,13 +39,16 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 				DISCOUNT_ON_COST_OF_THE_GENERATED_CARDS + DESCRIPTIONS[4];
 	}
 	
-	public void onBattleStart() {
+	public void atPreBattle() {
 		number_of_uses_left_in_this_fight = NUMBER_OF_USES_PER_FIGHT;
 		card_is_selected = false;
 		card_copied = null;
+		
+		logger.info(NUMBER_OF_USES_PER_FIGHT);
+		logger.info(number_of_uses_left_in_this_fight);
 	}
 	
-	@override
+	@Override
 	public void onRightClick() {
 		boolean is_on_combat = AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
 		boolean is_alive = !AbstractDungeon.player.isDead;
@@ -51,6 +58,14 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 		boolean has_an_attack_in_hand = AbstractDungeon.player.hand.getAttacks().
 				size() > 0;
 		boolean have_uses_left = number_of_uses_left_in_this_fight > 0;
+		
+		logger.info(is_on_combat);
+		logger.info(is_alive);
+		logger.info(turn_wont_end_soon);
+		logger.info(player_isnt_ending_turn);
+		logger.info(turn_havent_ended);
+		logger.info(has_an_attack_in_hand);
+		logger.info(have_uses_left);
 		
 		if (is_on_combat && is_alive && turn_wont_end_soon &&
 			player_isnt_ending_turn && turn_havent_ended &&
