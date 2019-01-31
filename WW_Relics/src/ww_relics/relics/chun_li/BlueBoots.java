@@ -41,7 +41,7 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 		card_copied = null;
 	}
 	
-	@Override
+	@override
 	public void onRightClick() {
 		boolean is_on_combat = AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
 		boolean is_alive = !AbstractDungeon.player.isDead;
@@ -114,7 +114,7 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 	
 	public boolean canSpawn()
 	{
-		return CardHelper.hasCardType(AbstractCard.CardType.ATTACK);
+		return AbstractDungeon.player.masterDeck.getAttacks().size() > 0;
 	}
 
 	//how it works:
