@@ -7,7 +7,7 @@ Two relics of 16+ planned, with placeholder image and sound.
 
 # Current State
 
-Version 0.1.
+Version 0.1.1.
 
 # Relics To Implement
 
