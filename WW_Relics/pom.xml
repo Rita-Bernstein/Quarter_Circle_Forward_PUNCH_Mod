@@ -6,10 +6,10 @@
     <!-- Change These to match your mod -->
     <groupId>WW_Relics</groupId>
     <artifactId>WorldWarriorsRelics</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <packaging>jar</packaging>
     <name>WorldWarriorsRelics</name>
-    <description>Adds a relic based in SF's Ryu to the game.
+    <description>Adds two relics based in Street Fighter to the game.
 		  		 \r\n v1.0 will have 16+ relics, inspired in
 		  		 \r\n fighters from Super Street Fighter 2: The New Challengers.</description>
 

@@ -15,7 +15,6 @@ import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import ww_relics.relics.chun_li.WhiteBoots;
-import ww_relics.relics.ryu.FightingGloves;
 import ww_relics.relics.ryu.RedHeadband;
 
 @SpireInitializer
@@ -28,7 +27,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 
 	public static final String MODNAME = "World Warriors' Relics"; // mod name
 	public static final String AUTHOR = "Clauvin aka Dungeon Explorer Lan"; // your name
-	public static final String DESCRIPTION = "v0.1" +
+	public static final String DESCRIPTION = "v0.1.1" +
 			"\r\n Adds a relic based in SF's Ryu to the game."
 		  + "\r\n v1.0 will have 16+ relics.";
 	
@@ -79,7 +78,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	public void receiveEditRelics() {
 		logger.info("Begin adding relics");
 		BaseMod.addRelic(new WhiteBoots(), RelicType.SHARED);
-		BaseMod.addRelic(new FightingGloves(), RelicType.SHARED);
+		//BaseMod.addRelic(new FightingGloves(), RelicType.SHARED);
 		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
 		logger.info("Done adding relics");
 	}
