@@ -3,6 +3,8 @@
     "NAME": "White Boots",
     "FLAVOR": "Very, very worn shoes... as much from hitting as from walking.",
     "DESCRIPTIONS": [
+      "[#ee0000]Click [#ee0000]with [#ee0000]the [#ee0000]right [#ee0000]button [#ee0000]to [#ee0000]activate.",
+      "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]combat.",
       "Choose ", " Attack in your hand.", " Create ",
       " copies of it, place them randomly in your draw pile, then exhaust the chosen card. The copies cost ",
       "-less the first time are used."

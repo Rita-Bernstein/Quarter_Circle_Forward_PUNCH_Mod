@@ -30,6 +30,9 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	
 	public int original_cost;
 	
+	public int[] copied_cards_x_position = {100, 120, 120, 100};
+	public int[] copied_cards_y_position = {100, 80, -80, -100};
+	
 	public boolean effect_happened = false;
 	
 	public static final Logger logger = LogManager.getLogger(WhiteBoots.class.getName());
@@ -40,9 +43,9 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + NUMBER_OF_CHOSEN_ATTACKS +
-				DESCRIPTIONS[1] + DESCRIPTIONS[2] + NUMBER_OF_COPIES + DESCRIPTIONS[3] +
-				DISCOUNT_ON_COST_OF_THE_GENERATED_CARDS + DESCRIPTIONS[4];
+		return DESCRIPTIONS[0] + DESCRIPTIONS[1] + DESCRIPTIONS[2] + NUMBER_OF_CHOSEN_ATTACKS +
+				DESCRIPTIONS[3] + DESCRIPTIONS[4] + NUMBER_OF_COPIES + DESCRIPTIONS[5] +
+				DISCOUNT_ON_COST_OF_THE_GENERATED_CARDS + DESCRIPTIONS[6];
 	}
 	
 	public void atPreBattle() {
@@ -114,9 +117,14 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 			if (card_copied.cost > 0) card_copied.cost -= 1; 
 			card_copied.isCostModified = true;
 			
+			
+			
 			for (int i = 0; i < NUMBER_OF_COPIES; i++) {
 				AbstractDungeon.actionManager.addToBottom(
-						new MakeTempCardInDrawPileAction(card_copied, 1, true, false));
+						new MakeTempCardInDrawPileAction(
+								card_copied, 1, true, true, false,
+								copied_cards_x_position[i],
+								copied_cards_y_position[i]));
 			}
 			
 			AbstractDungeon.player.hand.moveToExhaustPile(card_selected);
