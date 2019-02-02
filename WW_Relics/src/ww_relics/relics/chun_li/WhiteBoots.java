@@ -14,8 +14,8 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import basemod.abstracts.CustomRelic;
 
-public class BlueBoots extends CustomRelic implements ClickableRelic {
-	public static final String ID = "WW_Relics_Blue_Boots";
+public class WhiteBoots extends CustomRelic implements ClickableRelic {
+	public static final String ID = "WW_Relics_White_Boots";
 	private static final int NUMBER_OF_USES_PER_FIGHT = 1;
 	private static final int NUMBER_OF_CHOSEN_ATTACKS = 1;
 	private static final int NUMBER_OF_COPIES = 4;
@@ -32,9 +32,9 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 	
 	public boolean effect_happened = false;
 	
-	public static final Logger logger = LogManager.getLogger(BlueBoots.class.getName());
+	public static final Logger logger = LogManager.getLogger(WhiteBoots.class.getName());
 	
-	public BlueBoots() {
+	public WhiteBoots() {
 		super(ID, "abacus.png", //add method for textures here.
 				RelicTier.RARE, LandingSound.SOLID);
 	}
@@ -154,6 +154,6 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 	//The copies cost 1-less the first time they are used.
 	
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
-		return new BlueBoots();
+		return new WhiteBoots();
 	}
 }
