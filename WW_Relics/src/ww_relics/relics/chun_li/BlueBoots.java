@@ -28,6 +28,8 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 	public AbstractCard card_selected;
 	public AbstractCard card_copied;
 	
+	public int original_cost;
+	
 	public boolean effect_happened = false;
 	
 	public static final Logger logger = LogManager.getLogger(BlueBoots.class.getName());
@@ -108,6 +110,7 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 			this.card_selected = ((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(0));
 			
 			card_copied = card_selected.makeCopy();
+			original_cost = card_copied.cost;
 			if (card_copied.cost > 0) card_copied.cost -= 1; 
 			card_copied.isCostModified = true;
 			
@@ -125,7 +128,7 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 		if ((card_is_selected) && (c.compareTo(card_copied) == 0)
 				&& (c.isCostModified)){
 			
-			c.cost += 1;
+			if (original_cost > c.cost) c.cost += 1;
 			c.isCostModified = false;
 			number_of_copies_left_to_use--;
 			
