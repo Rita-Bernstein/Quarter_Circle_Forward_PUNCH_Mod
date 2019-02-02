@@ -23,6 +23,7 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 	
 	public int number_of_uses_left_in_this_fight;
 	public int number_of_copies_left_to_use;
+	public boolean player_activated;
 	public boolean card_is_selected;
 	public AbstractCard card_selected;
 	public AbstractCard card_copied;
@@ -43,7 +44,11 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 	public void atPreBattle() {
 		number_of_uses_left_in_this_fight = NUMBER_OF_USES_PER_FIGHT;
 		card_is_selected = false;
+		card_selected = null;
 		card_copied = null;
+		player_activated = false;
+		
+		AbstractDungeon.gridSelectScreen.selectedCards.clear();
 		
 		logger.info(NUMBER_OF_USES_PER_FIGHT);
 		logger.info(number_of_uses_left_in_this_fight);
@@ -72,6 +77,8 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 			player_isnt_ending_turn && turn_havent_ended &&
 			has_an_attack_in_hand && have_uses_left) {
 			
+			player_activated = true;
+			
 			number_of_uses_left_in_this_fight--;
 			number_of_copies_left_to_use = NUMBER_OF_COPIES;
 			
@@ -90,7 +97,7 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 	public void update()
 	{
 		super.update();
-		if ((!this.card_is_selected) && 
+		if ((player_activated) && (!this.card_is_selected) && 
 			(!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()))
 		{
 			this.card_is_selected = true;
