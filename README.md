@@ -3,7 +3,7 @@ A Slay The Spire mod, which adds relics inspired by fighters from Super Street F
 
 # Content
 
-One relic of 16+ planned, with placeholder image and sound.
+Two relics of 16+ planned, with placeholder image and sound.
 
 # Current State
 
@@ -21,7 +21,7 @@ Version 0.1.
 | Name  | Rarity | Effect | Inspiration |
 | :---:   | :---: | :---: | :---: |
 | Red Headband | Common | Each turn, discard the first Status or Curse card drawn, then draw another random card from the draw pile if there's any card there. | Ryu's red headband and how it became his in the Alpha series. |
-| Blue Boots | Rare | Can be used 1x per fight. Choose an attack in your hand. Create four copies of it, place them randomly in your draw pile, then exhaust the chosen card. The copies cost 1-less the first time they are used. | Chun-Li's boots from SF2.
+| White Boots | Rare | Can be used 1x per fight. Choose an attack in your hand. Create four copies of it, place them randomly in your draw pile, then exhaust the chosen card. The copies cost 1-less the first time they are used. | Chun-Li's boots from SF2.
 
 # Roadmap
 
