@@ -28,6 +28,8 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 	public AbstractCard card_selected;
 	public AbstractCard card_copied;
 	
+	public boolean effect_happened = false;
+	
 	public static final Logger logger = LogManager.getLogger(BlueBoots.class.getName());
 	
 	public BlueBoots() {
@@ -79,7 +81,6 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 			
 			player_activated = true;
 			
-			number_of_uses_left_in_this_fight--;
 			number_of_copies_left_to_use = NUMBER_OF_COPIES;
 			
 			CardGroup list_of_attacks = AbstractDungeon.player.hand.getPurgeableCards().getAttacks();
@@ -97,9 +98,12 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 	public void update()
 	{
 		super.update();
-		if ((player_activated) && (!this.card_is_selected) && 
+		if ( (number_of_uses_left_in_this_fight > 0) &&
+			(player_activated) && (!this.card_is_selected) && 
 			(!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()))
 		{
+			number_of_uses_left_in_this_fight--;
+			
 			this.card_is_selected = true;
 			this.card_selected = ((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(0));
 			
@@ -118,7 +122,8 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 	
 	public void onPlayCard(AbstractCard c, AbstractMonster m)  {
 		
-		if ((card_is_selected) && (c.compareTo(card_copied) == 0)){
+		if ((card_is_selected) && (c.compareTo(card_copied) == 0)
+				&& (c.isCostModified)){
 			
 			c.cost += 1;
 			c.isCostModified = false;
