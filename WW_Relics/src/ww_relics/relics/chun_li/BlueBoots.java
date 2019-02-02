@@ -74,7 +74,7 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 			number_of_uses_left_in_this_fight--;
 			number_of_copies_left_to_use = NUMBER_OF_COPIES;
 			
-			CardGroup list_of_attacks = AbstractDungeon.player.masterDeck.getPurgeableCards().getAttacks();
+			CardGroup list_of_attacks = AbstractDungeon.player.hand.getPurgeableCards().getAttacks();
 			if (list_of_attacks.size() == 1) {
 				card_copied = list_of_attacks.getTopCard();
 			} else {
