@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -100,9 +101,8 @@ public class BlueBoots extends CustomRelic implements ClickableRelic {
 			card_copied.isCostModified = true;
 			
 			for (int i = 0; i < NUMBER_OF_COPIES; i++) {
-				AbstractCard new_card = card_copied.makeCopy();
-				
-				AbstractDungeon.player.drawPile.addToRandomSpot(new_card);
+				AbstractDungeon.actionManager.addToBottom(
+						new MakeTempCardInDrawPileAction(card_copied, 1, true, false));
 			}
 			
 			AbstractDungeon.player.hand.moveToExhaustPile(card_selected);
