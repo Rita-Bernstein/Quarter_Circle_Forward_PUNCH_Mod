@@ -18,8 +18,9 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	public static final String ID = "WW_Relics_White_Boots";
 	private static final int NUMBER_OF_USES_PER_FIGHT = 1;
 	private static final int NUMBER_OF_CHOSEN_ATTACKS = 1;
-	private static final int NUMBER_OF_COPIES = 4;
-	private static final int DISCOUNT_ON_COST_OF_THE_GENERATED_CARDS = 0;
+	private static final int NUMBER_OF_MAXIMUM_COST = 1;
+	private static final int NUMBER_OF_COPIES = 3;
+	private static final int EFFECT_ON_COST_OF_THE_GENERATED_CARDS = -1;
 	
 	public int number_of_uses_left_in_this_fight;
 	public int number_of_copies_left_to_use;
@@ -45,7 +46,7 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	public String getUpdatedDescription() {
 		return DESCRIPTIONS[0] + DESCRIPTIONS[1] + DESCRIPTIONS[2] + NUMBER_OF_CHOSEN_ATTACKS +
 				DESCRIPTIONS[3] + DESCRIPTIONS[4] + NUMBER_OF_COPIES + DESCRIPTIONS[5] +
-				DISCOUNT_ON_COST_OF_THE_GENERATED_CARDS + DESCRIPTIONS[6];
+				EFFECT_ON_COST_OF_THE_GENERATED_CARDS + DESCRIPTIONS[6];
 	}
 	
 	public void atPreBattle() {
@@ -63,6 +64,7 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	
 	@Override
 	public void onRightClick() {
+		boolean have_uses_left = number_of_uses_left_in_this_fight > 0;
 		boolean is_on_combat = AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
 		boolean is_alive = !AbstractDungeon.player.isDead;
 		boolean turn_wont_end_soon = !AbstractDungeon.player.endTurnQueued;
@@ -70,33 +72,40 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		boolean turn_havent_ended = !AbstractDungeon.actionManager.turnHasEnded;
 		boolean has_an_attack_in_hand = AbstractDungeon.player.hand.getAttacks().
 				size() > 0;
-		boolean have_uses_left = number_of_uses_left_in_this_fight > 0;
+		boolean attacks_are_0_or_1_cost = false; 
 		
+		logger.info(have_uses_left);
 		logger.info(is_on_combat);
 		logger.info(is_alive);
 		logger.info(turn_wont_end_soon);
 		logger.info(player_isnt_ending_turn);
 		logger.info(turn_havent_ended);
 		logger.info(has_an_attack_in_hand);
-		logger.info(have_uses_left);
 		
-		if (is_on_combat && is_alive && turn_wont_end_soon &&
+		
+		if (have_uses_left && is_on_combat && is_alive && turn_wont_end_soon &&
 			player_isnt_ending_turn && turn_havent_ended &&
-			has_an_attack_in_hand && have_uses_left) {
+			has_an_attack_in_hand) {
 			
-			player_activated = true;
+			CardGroup attacks = AbstractDungeon.player.hand.getAttacks();
+			attacks.sortByCost(true);
+			if (attacks.getNCardFromTop(0).cost <= NUMBER_OF_MAXIMUM_COST) attacks_are_0_or_1_cost = true;
 			
-			number_of_copies_left_to_use = NUMBER_OF_COPIES;
-			
-			CardGroup list_of_attacks = AbstractDungeon.player.hand.getPurgeableCards().getAttacks();
-			if (list_of_attacks.size() == 1) {
-				card_copied = list_of_attacks.getTopCard();
-			} else {
-				AbstractDungeon.gridSelectScreen.open(
-					list_of_attacks, 1,
-					this.DESCRIPTIONS[0] + NUMBER_OF_CHOSEN_ATTACKS + this.DESCRIPTIONS[1],
-					false, false, false, false);
-		    }
+			if (attacks_are_0_or_1_cost) {
+				player_activated = true;
+				
+				number_of_copies_left_to_use = NUMBER_OF_COPIES;
+				
+				CardGroup list_of_attacks = AbstractDungeon.player.hand.getPurgeableCards().getAttacks();
+				if (list_of_attacks.size() == 1) {
+					card_copied = list_of_attacks.getTopCard();
+				} else {
+					AbstractDungeon.gridSelectScreen.open(
+						list_of_attacks, 1,
+						this.DESCRIPTIONS[0] + NUMBER_OF_CHOSEN_ATTACKS + this.DESCRIPTIONS[1],
+						false, false, false, false);
+			    }
+			}
 		}
 	}
 	
@@ -156,12 +165,6 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		return AbstractDungeon.player.masterDeck.getAttacks().size() > 0;
 	}
 
-	//how it works:
-	//when used, once per combat,
-	//Choose an attack in your hand.
-	//Create four copies of it, place them in your draw pile, then exhaust the card.
-	//The copies cost 1-less the first time they are used.
-	
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
 		return new WhiteBoots();
 	}
