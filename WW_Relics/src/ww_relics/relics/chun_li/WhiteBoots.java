@@ -128,6 +128,8 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 			}
 			
 			AbstractDungeon.player.hand.moveToExhaustPile(card_selected);
+			
+			AbstractDungeon.gridSelectScreen.selectedCards.clear();
 		}
 	}
 	
