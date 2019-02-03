@@ -5,9 +5,10 @@
     "DESCRIPTIONS": [
       "[#ee0000]Click [#ee0000]with [#ee0000]the [#ee0000]right [#ee0000]button [#ee0000]to [#ee0000]use. ",
       "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]combat. ",
-      "Choose [#2aecd7]", "0-cost or 1-cost Attack in hand.", " Randomly add [#2aecd7]",
+      "Choose [#2aecd7]", " 0-cost or 1-cost Attack in hand.", " Randomly add [#2aecd7]",
       " copies of it in the draw pile, then exhaust the Attack. Each copy cost ",
-      "-less the first time used."
+      "-less the first time used.",
+      "Choose "
     ]
   },
   "WW_Relics_Fighting_Gloves": {

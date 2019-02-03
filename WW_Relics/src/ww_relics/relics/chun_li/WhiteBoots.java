@@ -102,7 +102,8 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 				} else {
 					AbstractDungeon.gridSelectScreen.open(
 						list_of_attacks, 1,
-						this.DESCRIPTIONS[0] + NUMBER_OF_CHOSEN_ATTACKS + this.DESCRIPTIONS[1],
+						this.DESCRIPTIONS[7] +
+							NUMBER_OF_CHOSEN_ATTACKS + this.DESCRIPTIONS[3],
 						false, false, false, false);
 			    }
 			}
