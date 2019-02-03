@@ -113,11 +113,11 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 			this.card_selected = ((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(0));
 			
 			card_copied = card_selected.makeCopy();
+			if (card_selected.upgraded == true) card_copied.upgrade();
+			
 			original_cost = card_copied.cost;
 			if (card_copied.cost > 0) card_copied.cost -= 1; 
 			card_copied.isCostModified = true;
-			
-			
 			
 			for (int i = 0; i < NUMBER_OF_COPIES; i++) {
 				AbstractDungeon.actionManager.addToBottom(
