@@ -38,6 +38,15 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	
 	public static final Logger logger = LogManager.getLogger(WhiteBoots.class.getName());
 	
+	private boolean have_uses_left = false;
+	private boolean is_on_combat = false;
+	private boolean is_alive = false;
+	private boolean turn_wont_end_soon = false;
+	private boolean player_isnt_ending_turn = false;
+	private boolean turn_havent_ended = false;
+	private boolean has_an_attack_in_hand = false;
+	private boolean attacks_are_0_or_1_cost = false;
+	
 	public WhiteBoots() {
 		super(ID, "abacus.png", //add method for textures here.
 				RelicTier.RARE, LandingSound.SOLID);
@@ -58,29 +67,38 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		
 		AbstractDungeon.gridSelectScreen.selectedCards.clear();
 		
+		have_uses_left = false;
+		is_on_combat = false;
+		is_alive = false;
+		turn_wont_end_soon = false;
+		player_isnt_ending_turn = false;
+		turn_havent_ended = false;
+		has_an_attack_in_hand = false;
+		attacks_are_0_or_1_cost = false;
+		
 		logger.info(NUMBER_OF_USES_PER_FIGHT);
 		logger.info(number_of_uses_left_in_this_fight);
 	}
 	
 	@Override
 	public void onRightClick() {
-		boolean have_uses_left = number_of_uses_left_in_this_fight > 0;
-		boolean is_on_combat = AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
-		boolean is_alive = !AbstractDungeon.player.isDead;
-		boolean turn_wont_end_soon = !AbstractDungeon.player.endTurnQueued;
-		boolean player_isnt_ending_turn = !AbstractDungeon.player.isEndingTurn;
-		boolean turn_havent_ended = !AbstractDungeon.actionManager.turnHasEnded;
-		boolean has_an_attack_in_hand = AbstractDungeon.player.hand.getAttacks().
-				size() > 0;
-		boolean attacks_are_0_or_1_cost = false; 
+		have_uses_left = number_of_uses_left_in_this_fight > 0;
+		is_on_combat = AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
+		is_alive = !AbstractDungeon.player.isDead;
+		turn_wont_end_soon = !AbstractDungeon.player.endTurnQueued;
+		player_isnt_ending_turn = !AbstractDungeon.player.isEndingTurn;
+		turn_havent_ended = !AbstractDungeon.actionManager.turnHasEnded;
+		has_an_attack_in_hand = AbstractDungeon.player.hand.getAttacks().
+			size() > 0;
+		attacks_are_0_or_1_cost = false; 
 		
-		logger.info(have_uses_left);
-		logger.info(is_on_combat);
-		logger.info(is_alive);
-		logger.info(turn_wont_end_soon);
-		logger.info(player_isnt_ending_turn);
-		logger.info(turn_havent_ended);
-		logger.info(has_an_attack_in_hand);
+		logger.info("have_uses_left " + have_uses_left);
+		logger.info("is_on_combat " + is_on_combat);
+		logger.info("is_alive " + is_alive);
+		logger.info("turn_wont_end_soon " + turn_wont_end_soon);
+		logger.info("player_isnt_ending_turn " + player_isnt_ending_turn);
+		logger.info("turn_havent_ended " + turn_havent_ended);
+		logger.info("has_an_attack_in_hand " + has_an_attack_in_hand);
 		
 		
 		if (have_uses_left && is_on_combat && is_alive && turn_wont_end_soon &&
@@ -88,8 +106,10 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 			has_an_attack_in_hand) {
 			
 			CardGroup attacks = AbstractDungeon.player.hand.getAttacks();
-			attacks.sortByCost(true);
+			attacks.sortByCost(false);
 			if (attacks.getNCardFromTop(0).cost <= NUMBER_OF_MAXIMUM_COST) attacks_are_0_or_1_cost = true;
+			
+			logger.info("attacks_are_0_or_1_cost " + attacks_are_0_or_1_cost);
 			
 			if (attacks_are_0_or_1_cost) {
 				player_activated = true;
@@ -108,12 +128,18 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 			    }
 			}
 		}
+		
+		logger.info("player_activated " + player_activated);
+		logger.info("!this.card_is_selected " + !this.card_is_selected);
+		logger.info("!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty() " + 
+				!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty());
 	}
 	
 	public void update()
 	{
 		super.update();
-		if ( (number_of_uses_left_in_this_fight > 0) &&
+		
+		if ( (have_uses_left) &&
 			(player_activated) && (!this.card_is_selected) && 
 			(!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()))
 		{
