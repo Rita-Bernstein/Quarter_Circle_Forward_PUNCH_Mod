@@ -106,8 +106,14 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 			has_an_attack_in_hand) {
 			
 			CardGroup attacks = AbstractDungeon.player.hand.getAttacks();
-			attacks.sortByCost(false);
-			if (attacks.getNCardFromTop(0).cost <= NUMBER_OF_MAXIMUM_COST) attacks_are_0_or_1_cost = true;
+
+			for (int i = 0; i < attacks.size(); i++) {
+				int cost = attacks.getNCardFromTop(i).cost;
+				if (cost <= NUMBER_OF_MAXIMUM_COST) {
+					attacks_are_0_or_1_cost = true;
+					break;
+				}
+			}
 			
 			logger.info("attacks_are_0_or_1_cost " + attacks_are_0_or_1_cost);
 			
