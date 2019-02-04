@@ -123,6 +123,14 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 				number_of_copies_left_to_use = NUMBER_OF_COPIES;
 				
 				CardGroup list_of_attacks = AbstractDungeon.player.hand.getPurgeableCards().getAttacks();
+				
+				for (int i = list_of_attacks.size() - 1; i >= 0; i--) {
+					
+					AbstractCard card = list_of_attacks.getNCardFromTop(i);
+					if (card.cost > NUMBER_OF_MAXIMUM_COST) list_of_attacks.removeCard(card);
+					
+				}
+				
 				if (list_of_attacks.size() == 1) {
 					card_copied = list_of_attacks.getTopCard();
 				} else {
