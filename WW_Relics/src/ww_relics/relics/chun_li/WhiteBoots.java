@@ -7,6 +7,7 @@ import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -122,12 +123,17 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 				
 				number_of_copies_left_to_use = NUMBER_OF_COPIES;
 				
-				CardGroup list_of_attacks = AbstractDungeon.player.hand.getPurgeableCards().getAttacks();
+				CardGroup list_of_all_hand_attacks = AbstractDungeon.player.hand.getPurgeableCards().
+						getAttacks();
+				CardGroup list_of_attacks = new CardGroup(CardGroupType.UNSPECIFIED);
 				
-				for (int i = list_of_attacks.size() - 1; i >= 0; i--) {
+				
+				for (int i = 0; i < list_of_all_hand_attacks.size(); i++) {
 					
-					AbstractCard card = list_of_attacks.getNCardFromTop(i);
-					if (card.cost > NUMBER_OF_MAXIMUM_COST) list_of_attacks.removeCard(card);
+					AbstractCard card = list_of_all_hand_attacks.getNCardFromTop(i);
+					if (card.cost <= NUMBER_OF_MAXIMUM_COST) {
+						list_of_attacks.addToTop(card);
+					}
 					
 				}
 				
