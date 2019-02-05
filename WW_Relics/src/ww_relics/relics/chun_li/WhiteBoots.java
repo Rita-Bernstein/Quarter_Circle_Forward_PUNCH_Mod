@@ -76,9 +76,6 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		turn_havent_ended = false;
 		has_an_attack_in_hand = false;
 		attacks_are_0_or_1_cost = false;
-		
-		logger.info(NUMBER_OF_USES_PER_FIGHT);
-		logger.info(number_of_uses_left_in_this_fight);
 	}
 	
 	@Override
@@ -130,7 +127,6 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 				for (int i = 0; i < list_of_all_hand_attacks.size(); i++) {
 					
 					AbstractCard card = list_of_all_hand_attacks.getNCardFromTop(i);
-					logger.info(card.name + " " + card.cost);
 					if (card.cost <= NUMBER_OF_MAXIMUM_COST) {
 						list_of_attacks.addToTop(card);
 						logger.info(list_of_attacks.size());
@@ -143,7 +139,8 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 				}
 				
 				if (list_of_attacks.size() == 1) {
-					card_copied = list_of_attacks.getTopCard();
+					this.card_is_selected = true;
+					this.card_selected = list_of_attacks.getTopCard(); 
 				} else if (list_of_attacks.size() > 1){
 					AbstractDungeon.gridSelectScreen.open(
 						list_of_attacks, 1,
@@ -163,33 +160,38 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	public void update()
 	{
 		super.update();
-		
-		if ( (have_uses_left) &&
-			(player_activated) && (!this.card_is_selected) && 
-			(!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()))
-		{
-			number_of_uses_left_in_this_fight--;
+
+		if ((have_uses_left) && (player_activated)){
 			
-			this.card_is_selected = true;
-			this.card_selected = ((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(0));
-			
-			card_copied = card_selected.makeCopy();
-			if (card_selected.upgraded == true) card_copied.upgrade();
-			
-			original_cost = card_copied.cost;
-			if (card_copied.cost > 0) card_copied.updateCost(- 1); 
-			
-			for (int i = 0; i < NUMBER_OF_COPIES; i++) {
-				AbstractDungeon.actionManager.addToBottom(
-						new MakeTempCardInDrawPileAction(
-								card_copied, 1, true, true, false,
-								copied_cards_x_position[i],
-								copied_cards_y_position[i]));
+			if ((!card_is_selected) && (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty())) {
+				number_of_uses_left_in_this_fight--;
+				
+				card_is_selected = true;
+				card_selected = ((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(0));	
 			}
 			
-			AbstractDungeon.player.hand.moveToExhaustPile(card_selected);
+			if (card_is_selected) {
+				
+				number_of_uses_left_in_this_fight--;
 			
-			AbstractDungeon.gridSelectScreen.selectedCards.clear();
+				card_copied = card_selected.makeCopy();
+				if (card_selected.upgraded == true) card_copied.upgrade();
+				
+				original_cost = card_copied.cost;
+				if (card_copied.cost > 0) card_copied.updateCost(- 1); 
+				
+				for (int i = 0; i < NUMBER_OF_COPIES; i++) {
+					AbstractDungeon.actionManager.addToBottom(
+							new MakeTempCardInDrawPileAction(
+									card_copied, 1, true, true, false,
+									copied_cards_x_position[i],
+									copied_cards_y_position[i]));
+				}
+				
+				AbstractDungeon.player.hand.moveToExhaustPile(card_selected);
+				
+				AbstractDungeon.gridSelectScreen.selectedCards.clear();
+			}
 		}
 	}
 	
