@@ -119,7 +119,6 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 			logger.info("attacks_are_0_or_1_cost " + attacks_are_0_or_1_cost);
 			
 			if (attacks_are_0_or_1_cost) {
-				player_activated = true;
 				
 				number_of_copies_left_to_use = NUMBER_OF_COPIES;
 				
@@ -131,15 +130,21 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 				for (int i = 0; i < list_of_all_hand_attacks.size(); i++) {
 					
 					AbstractCard card = list_of_all_hand_attacks.getNCardFromTop(i);
+					logger.info(card.name + " " + card.cost);
 					if (card.cost <= NUMBER_OF_MAXIMUM_COST) {
 						list_of_attacks.addToTop(card);
+						logger.info(list_of_attacks.size());
 					}
 					
 				}
 				
+				if (list_of_attacks.size() >= 1) {
+					player_activated = true;
+				}
+				
 				if (list_of_attacks.size() == 1) {
 					card_copied = list_of_attacks.getTopCard();
-				} else {
+				} else if (list_of_attacks.size() > 1){
 					AbstractDungeon.gridSelectScreen.open(
 						list_of_attacks, 1,
 						this.DESCRIPTIONS[7] +
