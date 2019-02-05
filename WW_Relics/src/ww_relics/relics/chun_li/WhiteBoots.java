@@ -191,6 +191,8 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 				AbstractDungeon.player.hand.moveToExhaustPile(card_selected);
 				
 				AbstractDungeon.gridSelectScreen.selectedCards.clear();
+				
+				have_uses_left = number_of_uses_left_in_this_fight > 0;
 			}
 		}
 	}
