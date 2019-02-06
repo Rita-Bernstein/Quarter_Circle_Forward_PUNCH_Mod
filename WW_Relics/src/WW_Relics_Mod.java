@@ -15,6 +15,7 @@ import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import ww_relics.relics.chun_li.WhiteBoots;
+import ww_relics.relics.ryu.DuffelBag;
 import ww_relics.relics.ryu.RedHeadband;
 
 @SpireInitializer
@@ -51,15 +52,11 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	    String relicStringsAddress = "ww_relics/localization/eng/WW_Relics.json";
 	    String relicStrings = getJsonText(relicStringsAddress);
 	    
-	    logger.info("Here are the relicStrings: " + relicStrings);
-	    
 	    if (relicStrings == "") {
 	    	
 	    	relicStringsAddress = "src/ww_relics/localization/eng/WW_Relics.json";
 	    	relicStrings = getJsonText(relicStringsAddress);
 	    	
-	    	logger.info("Now here are the relicStrings: " + relicStrings);		
-	    			
 	    }
 	    
 	    if (relicStrings == "") {
@@ -67,7 +64,6 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	    	relicStringsAddress = "localization/eng/WW_Relics.json";
 	    	relicStrings = getJsonText(relicStringsAddress);
 	    	
-	    	logger.info("NOW here are the relicStrings: " + relicStrings);	
 	    }
 	    
 	    BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
@@ -77,10 +73,19 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	@Override
 	public void receiveEditRelics() {
 		logger.info("Begin adding relics");
+		addChunLiRelics();
+		addRyuRelics();
+		logger.info("Done adding relics");
+	}
+	
+	private void addChunLiRelics() {
 		BaseMod.addRelic(new WhiteBoots(), RelicType.SHARED);
+	}
+	
+	private void addRyuRelics() {
+		BaseMod.addRelic(new DuffelBag(), RelicType.SHARED);
 		//BaseMod.addRelic(new FightingGloves(), RelicType.SHARED);
 		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
-		logger.info("Done adding relics");
 	}
 	
 	@Override
