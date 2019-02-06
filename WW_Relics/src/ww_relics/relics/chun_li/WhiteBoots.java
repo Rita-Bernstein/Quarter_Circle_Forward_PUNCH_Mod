@@ -51,7 +51,7 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	
 	public WhiteBoots() {
 		super(ID, "abacus.png", //add method for textures here.
-				RelicTier.RARE, LandingSound.SOLID);
+				RelicTier.UNCOMMON, LandingSound.SOLID);
 	}
 	
 	public String getUpdatedDescription() {
