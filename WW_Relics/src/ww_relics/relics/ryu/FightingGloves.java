@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import basemod.abstracts.CustomRelic;
 
 public class FightingGloves extends CustomRelic {
-	public static final String ID = "WW_Relics_Fighting_Gloves";
+	public static final String ID = "WW_Relics:Fighting_Gloves";
 	private static final int EXTRA_UPGRADES_PER_UPGRADE = 1;
 	
 	public FightingGloves() {

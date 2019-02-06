@@ -1,5 +1,5 @@
 {
-  "WW_Relics_White_Boots": {
+  "WW_Relics:White_Boots": {
     "NAME": "White Boots",
     "FLAVOR": "Very, very worn shoes... as much from hitting as from walking.",
     "DESCRIPTIONS": [
@@ -11,7 +11,7 @@
       "Choose "
     ]
   },
-  "WW_Relics_Fighting_Gloves": {
+  "WW_Relics:Fighting_Gloves": {
     "NAME": "Fighting Gloves",
     "FLAVOR": "\"Inspiring! It gives you this feeling of wanting to improve yourself.\" - Ranwid.",
     "DESCRIPTIONS": [
@@ -20,7 +20,7 @@
       " extra cards."
     ]
   },
-  "WW_Relics_Red_Headband": {
+  "WW_Relics:Red_Headband": {
     "NAME": "Red Headband",
     "FLAVOR": "Placing it in your head gives some focus against distractions.",
     "DESCRIPTIONS": [

@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import basemod.abstracts.CustomRelic;
 
 public class WhiteBoots extends CustomRelic implements ClickableRelic {
-	public static final String ID = "WW_Relics_White_Boots";
+	public static final String ID = "WW_Relics:White_Boots";
 	private static final int NUMBER_OF_USES_PER_FIGHT = 1;
 	private static final int NUMBER_OF_CHOSEN_ATTACKS = 1;
 	private static final int NUMBER_OF_MAXIMUM_COST = 1;
