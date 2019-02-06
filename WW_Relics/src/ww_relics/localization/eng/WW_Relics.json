@@ -11,6 +11,14 @@
       "Choose "
     ]
   },
+  "WW_Relics:Duffel_Bag": {
+    "NAME": "Duffel Bag",
+    "FLAVOR": "Very practical when travelling. Someone left stuff inside...",
+    "DESCRIPTIONS": [
+      "When you get it, receive [#2aecd7]1 Bandage Up, [#2aecd7]1 Panacea and [#ffff00]",
+      " random common relics."
+    ]
+  },
   "WW_Relics:Fighting_Gloves": {
     "NAME": "Fighting Gloves",
     "FLAVOR": "\"Inspiring! It gives you this feeling of wanting to improve yourself.\" - Ranwid.",
