@@ -47,7 +47,7 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	private boolean player_isnt_ending_turn = false;
 	private boolean turn_havent_ended = false;
 	private boolean has_an_attack_in_hand = false;
-	private boolean attacks_are_0_or_1_cost = false;
+	private boolean have_attacks_that_are_0_or_1_cost = false;
 	
 	public WhiteBoots() {
 		super(ID, "abacus.png", //add method for textures here.
@@ -69,6 +69,10 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		
 		AbstractDungeon.gridSelectScreen.selectedCards.clear();
 		
+		setBooleansOfValidUseToFalse();
+	}
+	
+	private void setBooleansOfValidUseToFalse() {
 		have_uses_left = false;
 		is_on_combat = false;
 		is_alive = false;
@@ -76,47 +80,21 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		player_isnt_ending_turn = false;
 		turn_havent_ended = false;
 		has_an_attack_in_hand = false;
-		attacks_are_0_or_1_cost = false;
+		have_attacks_that_are_0_or_1_cost = false;
 	}
 	
 	@Override
 	public void onRightClick() {
-		have_uses_left = number_of_uses_left_in_this_fight > 0;
-		is_on_combat = AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
-		is_alive = !AbstractDungeon.player.isDead;
-		turn_wont_end_soon = !AbstractDungeon.player.endTurnQueued;
-		player_isnt_ending_turn = !AbstractDungeon.player.isEndingTurn;
-		turn_havent_ended = !AbstractDungeon.actionManager.turnHasEnded;
-		has_an_attack_in_hand = AbstractDungeon.player.hand.getAttacks().
-			size() > 0;
-		attacks_are_0_or_1_cost = false; 
 		
-		logger.info("have_uses_left " + have_uses_left);
-		logger.info("is_on_combat " + is_on_combat);
-		logger.info("is_alive " + is_alive);
-		logger.info("turn_wont_end_soon " + turn_wont_end_soon);
-		logger.info("player_isnt_ending_turn " + player_isnt_ending_turn);
-		logger.info("turn_havent_ended " + turn_havent_ended);
-		logger.info("has_an_attack_in_hand " + has_an_attack_in_hand);
+		updateBooleansOfValidUse();
 		
-		
-		if (have_uses_left && is_on_combat && is_alive && turn_wont_end_soon &&
-			player_isnt_ending_turn && turn_havent_ended &&
-			has_an_attack_in_hand) {
+		if (validUse()) {
 			
-			CardGroup attacks = AbstractDungeon.player.hand.getAttacks();
+			CardGroup attacks_in_hand = AbstractDungeon.player.hand.getAttacks();
 
-			for (int i = 0; i < attacks.size(); i++) {
-				int cost = attacks.getNCardFromTop(i).cost;
-				if (cost <= NUMBER_OF_MAXIMUM_COST) {
-					attacks_are_0_or_1_cost = true;
-					break;
-				}
-			}
+			have_attacks_that_are_0_or_1_cost = AValidAttackIsInHand(attacks_in_hand);
 			
-			logger.info("attacks_are_0_or_1_cost " + attacks_are_0_or_1_cost);
-			
-			if (attacks_are_0_or_1_cost) {
+			if (have_attacks_that_are_0_or_1_cost) {
 				
 				number_of_copies_left_to_use = NUMBER_OF_COPIES;
 				
@@ -124,24 +102,14 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 						getAttacks();
 				CardGroup list_of_attacks = new CardGroup(CardGroupType.UNSPECIFIED);
 				
-				
-				for (int i = 0; i < list_of_all_hand_attacks.size(); i++) {
-					
-					AbstractCard card = list_of_all_hand_attacks.getNCardFromTop(i);
-					if (card.cost <= NUMBER_OF_MAXIMUM_COST) {
-						list_of_attacks.addToTop(card);
-						logger.info(list_of_attacks.size());
-					}
-					
-				}
-				
+				addValidAttacksToList(list_of_all_hand_attacks, list_of_attacks);
+
 				if (list_of_attacks.size() >= 1) {
 					player_activated = true;
 				}
 				
 				if (list_of_attacks.size() == 1) {
-					this.card_is_selected = true;
-					this.card_selected = list_of_attacks.getTopCard(); 
+					setSelectedCard(list_of_attacks.getTopCard());
 				} else if (list_of_attacks.size() > 1){
 					AbstractDungeon.gridSelectScreen.open(
 						list_of_attacks, 1,
@@ -151,11 +119,53 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 			    }
 			}
 		}
+	}
+	
+	private void updateBooleansOfValidUse() {
 		
-		logger.info("player_activated " + player_activated);
-		logger.info("!this.card_is_selected " + !this.card_is_selected);
-		logger.info("!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty() " + 
-				!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty());
+		have_uses_left = number_of_uses_left_in_this_fight > 0;
+		is_on_combat = AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
+		is_alive = !AbstractDungeon.player.isDead;
+		turn_wont_end_soon = !AbstractDungeon.player.endTurnQueued;
+		player_isnt_ending_turn = !AbstractDungeon.player.isEndingTurn;
+		turn_havent_ended = !AbstractDungeon.actionManager.turnHasEnded;
+		has_an_attack_in_hand = AbstractDungeon.player.hand.getAttacks().
+			size() > 0;
+		have_attacks_that_are_0_or_1_cost = false; 	
+		
+	}
+	
+	private boolean AValidAttackIsInHand(CardGroup attacks) {
+		
+		for (int i = 0; i < attacks.size(); i++) {
+			int cost = attacks.getNCardFromTop(i).cost;
+			if (cost <= NUMBER_OF_MAXIMUM_COST) {
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	
+	private boolean validUse() {
+		return have_uses_left && is_on_combat && is_alive && turn_wont_end_soon &&
+				player_isnt_ending_turn && turn_havent_ended && has_an_attack_in_hand;
+	}
+	
+	private void addValidAttacksToList(CardGroup list_of_all_hand_attacks, CardGroup list_of_attacks) {
+		for (int i = 0; i < list_of_all_hand_attacks.size(); i++) {
+			
+			AbstractCard card = list_of_all_hand_attacks.getNCardFromTop(i);
+			if (card.cost <= NUMBER_OF_MAXIMUM_COST) {
+				list_of_attacks.addToTop(card);
+			}
+			
+		}
+	}
+	
+	private void setSelectedCard(AbstractCard selected) {
+		card_is_selected = true;
+		card_selected = selected;
 	}
 	
 	public void update()
@@ -167,27 +177,16 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 			if ((!card_is_selected) && (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty())) {
 				number_of_uses_left_in_this_fight--;
 				
-				card_is_selected = true;
-				card_selected = ((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(0));	
+				setSelectedCard((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(0));
 			}
 			
 			if (card_is_selected) {
 				
 				number_of_uses_left_in_this_fight--;
-			
-				card_copied = card_selected.makeCopy();
-				if (card_selected.upgraded == true) card_copied.upgrade();
 				
-				original_cost = card_copied.cost;
-				if (card_copied.cost > 0) card_copied.updateCost(- 1); 
+				createBaseCopyOfSelectedCard();
 				
-				for (int i = 0; i < NUMBER_OF_COPIES; i++) {
-					AbstractDungeon.actionManager.addToBottom(
-							new MakeTempCardInDrawPileAction(
-									card_copied, 1, true, true, false,
-									copied_cards_x_position[i],
-									copied_cards_y_position[i]));
-				}
+				createCopiesAndAddThemToDrawPile();
 				
 				AbstractDungeon.player.hand.moveToExhaustPile(card_selected);
 				
@@ -195,6 +194,24 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 				
 				have_uses_left = number_of_uses_left_in_this_fight > 0;
 			}
+		}
+	}
+	
+	private void createBaseCopyOfSelectedCard() {
+		card_copied = card_selected.makeCopy();
+		if (card_selected.upgraded == true) card_copied.upgrade();
+		
+		original_cost = card_copied.cost;
+		if (card_copied.cost > 0) card_copied.updateCost(- 1); 
+	}
+	
+	private void createCopiesAndAddThemToDrawPile() {
+		for (int i = 0; i < NUMBER_OF_COPIES; i++) {
+			AbstractDungeon.actionManager.addToBottom(
+					new MakeTempCardInDrawPileAction(
+							card_copied, 1, true, true, false,
+							copied_cards_x_position[i],
+							copied_cards_y_position[i]));
 		}
 	}
 	
