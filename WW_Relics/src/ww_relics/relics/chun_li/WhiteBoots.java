@@ -22,6 +22,7 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	private static final int NUMBER_OF_MAXIMUM_COST = 1;
 	private static final int NUMBER_OF_COPIES = 3;
 	private static final int EFFECT_ON_COST_OF_THE_GENERATED_CARDS = -1;
+	private static final int EFFECT_ON_COST_READABLE = EFFECT_ON_COST_OF_THE_GENERATED_CARDS * -1;
 	
 	public int number_of_uses_left_in_this_fight;
 	public int number_of_copies_left_to_use;
@@ -56,7 +57,7 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	public String getUpdatedDescription() {
 		return DESCRIPTIONS[0] + DESCRIPTIONS[1] + DESCRIPTIONS[2] + NUMBER_OF_CHOSEN_ATTACKS +
 				DESCRIPTIONS[3] + DESCRIPTIONS[4] + NUMBER_OF_COPIES + DESCRIPTIONS[5] +
-				EFFECT_ON_COST_OF_THE_GENERATED_CARDS + DESCRIPTIONS[6];
+				EFFECT_ON_COST_READABLE + DESCRIPTIONS[6];
 	}
 	
 	public void atPreBattle() {
