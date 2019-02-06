@@ -13,7 +13,8 @@ Version 0.1.1.
 
 | Name  | Rarity | Effect | Inspiration |
 | :---:   | :---: | :---: | :---: |
-| Fighting Gloves | Rare | Upgrades outside of fights allow to upgrade one extra card. | Ryu's usual gloves.|
+| Fighting Gloves | Rare | Upgrades outside of fights allow to upgrade one extra card. | Ryu's usual gloves. |
+| Duffel Bag | Uncommon | When you get it, receive 1 Bandage Up, 1 Panacea and 2 random common relics. | Ryu's duffel bag. |
 
 
 # Relics Implemented
