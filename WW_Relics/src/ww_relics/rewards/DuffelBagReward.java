@@ -17,6 +17,7 @@ public class DuffelBagReward extends CustomReward{
 	
 	public DuffelBagReward(Texture icon, String text, RewardType type) {
 		super(icon, text, type);
+		rewards = new ArrayList<RewardItem>();
 		// TODO Auto-generated constructor stub
 	}
 	

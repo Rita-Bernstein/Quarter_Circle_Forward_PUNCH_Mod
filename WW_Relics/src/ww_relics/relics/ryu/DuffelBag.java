@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.BandageUp;
 import com.megacrit.cardcrawl.cards.colorless.Panacea;
@@ -20,6 +22,7 @@ public class DuffelBag extends CustomRelic {
 	
 	public static final String ID = "WW_Relics:Duffel_Bag";
 	private static final int NUMBER_OF_RANDOM_COMMON_RELICS = 2;
+	private static DuffelBagReward duffel_bag_reward;
 	
 	public DuffelBag() {
 		super(ID, "abacus.png", //add method for textures here.
@@ -36,7 +39,10 @@ public class DuffelBag extends CustomRelic {
 		
 		logger.info("ATÉ AQUI CHEGAMOS.");
 		
-		DuffelBagReward duffel_bag_reward = new DuffelBagReward(null, DESCRIPTIONS[2], RewardType.CARD);
+		String tempTextureAddress = "ww_relics/assets/img/modbadge/ModBadgePlaceholder.png";
+		Texture tempTexture = new Texture(Gdx.files.internal(tempTextureAddress));
+		
+		duffel_bag_reward = new DuffelBagReward(tempTexture, DESCRIPTIONS[2], RewardType.CARD);
 		duffel_bag_reward.number_of_relics = NUMBER_OF_RANDOM_COMMON_RELICS;
 		
 		ArrayList<AbstractCard> list_of_cards = new ArrayList<AbstractCard>();
