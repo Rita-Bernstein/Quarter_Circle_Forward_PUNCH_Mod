@@ -45,12 +45,6 @@ public class DuffelBag extends CustomRelic {
 		duffel_bag_reward = new DuffelBagReward(tempTexture, DESCRIPTIONS[2], RewardType.CARD);
 		duffel_bag_reward.number_of_relics = NUMBER_OF_RANDOM_COMMON_RELICS;
 		
-		ArrayList<AbstractCard> list_of_cards = new ArrayList<AbstractCard>();
-		list_of_cards.add(new BandageUp());
-		list_of_cards.add(new Panacea());
-		
-		duffel_bag_reward.cards = list_of_cards;
-		
 		duffel_bag_reward.claimReward();
 	}
 	
