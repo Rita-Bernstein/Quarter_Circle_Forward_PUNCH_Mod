@@ -2,17 +2,22 @@ package ww_relics.relics.ryu;
 
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.BandageUp;
 import com.megacrit.cardcrawl.cards.colorless.Panacea;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem.RewardType;
 
 import basemod.abstracts.CustomRelic;
-import basemod.abstracts.CustomReward;
+import ww_relics.rewards.DuffelBagReward;
 
 public class DuffelBag extends CustomRelic {
+	
+	public static final Logger logger = LogManager.getLogger(DuffelBag.class.getName());
+	
 	public static final String ID = "WW_Relics:Duffel_Bag";
 	private static final int NUMBER_OF_RANDOM_COMMON_RELICS = 2;
 	
@@ -26,25 +31,20 @@ public class DuffelBag extends CustomRelic {
 				DESCRIPTIONS[1];
 	}
 	
-	public void OnEquip() {
-		CustomReward duffel_bag_reward = new CustomReward(null, DESCRIPTIONS[2], RewardType.CARD) {
-			
-			@Override
-			public boolean claimReward() {
-				if(AbstractDungeon.screen == AbstractDungeon.CurrentScreen.COMBAT_REWARD) {
-					AbstractDungeon.cardRewardScreen.open(this.cards, this, "It works.");
-					AbstractDungeon.previousScreen = AbstractDungeon.CurrentScreen.COMBAT_REWARD;
-				}
-				return false;
-			}
-		};
+	@Override
+	public void onEquip() {
+		
+		logger.info("ATÉ AQUI CHEGAMOS.");
+		
+		DuffelBagReward duffel_bag_reward = new DuffelBagReward(null, DESCRIPTIONS[2], RewardType.CARD);
 		
 		ArrayList<AbstractCard> list_of_cards = new ArrayList<AbstractCard>();
 		list_of_cards.add(new BandageUp());
 		list_of_cards.add(new Panacea());
 		
 		duffel_bag_reward.cards = list_of_cards;
-
+		
+		duffel_bag_reward.claimReward();
 	}
 	
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
