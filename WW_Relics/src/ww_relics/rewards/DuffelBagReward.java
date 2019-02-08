@@ -2,6 +2,9 @@ package ww_relics.rewards;
 
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -15,12 +18,12 @@ import basemod.abstracts.CustomReward;
 
 public class DuffelBagReward extends CustomReward{
 
-	private ArrayList<RewardItem> rewards;
+	public static final Logger logger = LogManager.getLogger(DuffelBagReward.class.getName());
+	
 	public int number_of_relics;
 	
 	public DuffelBagReward(Texture icon, String text, RewardType type) {
 		super(icon, text, type);
-		rewards = new ArrayList<RewardItem>();
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -29,7 +32,7 @@ public class DuffelBagReward extends CustomReward{
 		
 		for (int i = 0; i < number_of_relics; i++) {
 			AbstractRelic relic = AbstractDungeon.returnRandomRelic(RelicTier.COMMON);
-			rewards.add(new RewardItem(relic));
+			AbstractDungeon.getCurrRoom().addRelicToRewards(relic);
 		}
 		
 		RewardItem panacea = new RewardItem();
@@ -40,13 +43,9 @@ public class DuffelBagReward extends CustomReward{
 		bandage_up.cards = new ArrayList<AbstractCard>();
 		bandage_up.cards.add(new BandageUp());
 		
-		rewards.add(panacea);
-		rewards.add(bandage_up);
+		AbstractDungeon.getCurrRoom().addCardReward(panacea);
+		AbstractDungeon.getCurrRoom().addCardReward(bandage_up);
 		
-		AbstractDungeon.previousScreen = AbstractDungeon.screen;
-		AbstractDungeon.combatRewardScreen.clear();
-		AbstractDungeon.combatRewardScreen.rewards = rewards;
-		AbstractDungeon.combatRewardScreen.open("Inside the bag...");
 		return true;
 	}
 
