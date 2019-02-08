@@ -4,7 +4,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/Jogos/Steam/SteamApps/common/SlayTheSpire/desktop-1.0.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/Jogos/Steam/SteamApps/common/SlayTheSpire/mods/FriendlyMinions.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Jogos/Steam/SteamApps/common/SlayTheSpire/ModTheSpire.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Jogos/Steam/SteamApps/common/SlayTheSpire/mods/ModTheSpire.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/Jogos/Steam/SteamApps/common/SlayTheSpire/mods/BaseMod.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/Jogos/Steam/SteamApps/common/SlayTheSpire/mods/StSLib.jar"/>
 	<classpathentry kind="output" path="bin"/>
