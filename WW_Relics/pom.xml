@@ -33,7 +33,7 @@
             <artifactId>ModTheSpire</artifactId>
             <version>3.8.3</version>
             <scope>system</scope>
-            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/ModTheSpire.jar</systemPath>
+            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/ModTheSpire.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
