@@ -46,7 +46,7 @@ public class DuffelBagReward extends CustomReward{
 		AbstractDungeon.previousScreen = AbstractDungeon.screen;
 		AbstractDungeon.combatRewardScreen.clear();
 		AbstractDungeon.combatRewardScreen.rewards = rewards;
-		AbstractDungeon.combatRewardScreen.open("It works.");
+		AbstractDungeon.combatRewardScreen.open("Inside the bag...");
 		return true;
 	}
 
