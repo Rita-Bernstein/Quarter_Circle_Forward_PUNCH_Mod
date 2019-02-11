@@ -55,7 +55,8 @@ public class DuffelBag extends CustomRelic {
 		
 		if (((AbstractDungeon.getCurrRoom() instanceof MonsterRoom) || 
 				(AbstractDungeon.getCurrRoom() instanceof MonsterRoomElite)) &&
-				number_of_rewards_left > 0){
+				number_of_rewards_left > 0 && 
+				AbstractDungeon.getCurrRoom().rewardAllowed){
 			
 			AddReward();
 			number_of_rewards_left--;
