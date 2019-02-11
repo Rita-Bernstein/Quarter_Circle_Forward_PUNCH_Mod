@@ -49,6 +49,7 @@ public class DuffelBag extends CustomRelic {
 	
 	@Override
 	public void atPreBattle() {
+		
 		if (has_relic_been_used_this_battle) {
 			has_relic_been_used_this_battle = false;
 		}
