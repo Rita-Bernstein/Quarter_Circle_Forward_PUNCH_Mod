@@ -30,6 +30,8 @@ public class DuffelBag extends CustomRelic {
 	
 	private int number_of_rewards_left = PRETENDED_NUMBER_OF_EXTRA_REWARS;
 	
+	private boolean has_relic_been_used_this_battle = false;
+	
 	public DuffelBag() {
 		super(ID, "abacus.png", //add method for textures here.
 				RelicTier.UNCOMMON, LandingSound.FLAT);
@@ -46,19 +48,27 @@ public class DuffelBag extends CustomRelic {
 	}
 	
 	@Override
-	public void onEquip() {
-
-	}
-	
 	public void atPreBattle() {
+		if (has_relic_been_used_this_battle) {
+			has_relic_been_used_this_battle = false;
+		}
+		
 		if (((AbstractDungeon.getCurrRoom() instanceof MonsterRoom) || 
 				(AbstractDungeon.getCurrRoom() instanceof MonsterRoomElite)) &&
 				number_of_rewards_left > 0){
 			
 			AddReward();
 			number_of_rewards_left--;
-			
+			has_relic_been_used_this_battle = true;
 		}
+	}
+	
+	public void onUsePotion() {
+		
+		if ((AbstractDungeon.player.isEscaping) && (has_relic_been_used_this_battle)) {
+			number_of_rewards_left++;
+		}
+		
 	}
 	
 	private void AddReward() {
