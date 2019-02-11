@@ -68,7 +68,7 @@ public class DuffelBag extends CustomRelic {
 			int card_position = number_of_rewards_left - reward_cards.size();
 			
 			RewardItem card_reward = new RewardItem();
-			card_reward.cards.add(reward_cards.get(card_position));
+			card_reward.cards.add(reward_cards.get(card_position - 1));
 			AbstractDungeon.getCurrRoom().addCardReward(card_reward);
 			
 		} else if (number_of_rewards_left > 0) {
