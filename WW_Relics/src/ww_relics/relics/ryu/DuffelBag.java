@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.BandageUp;
 import com.megacrit.cardcrawl.cards.colorless.Panacea;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
@@ -54,9 +55,7 @@ public class DuffelBag extends CustomRelic {
 	}
     
 	public String getUpdatedDescription() {
-		if (this.counter <= 0) {
-			return DESCRIPTIONS[2];
-		} else return DESCRIPTIONS[0] + NUMBER_OF_RANDOM_COMMON_RELICS +
+		return DESCRIPTIONS[0] + NUMBER_OF_RANDOM_COMMON_RELICS +
 				DESCRIPTIONS[1];
 	}
 	
@@ -78,6 +77,18 @@ public class DuffelBag extends CustomRelic {
 		}
 	}
 	
+	@Override
+	public void atBattleStart() {
+		if (this.counter == -2)
+		{
+			this.counter = -3;
+			this.description = this.DESCRIPTIONS[2];
+			this.tips.clear();
+			this.tips.add(new PowerTip(this.name, this.description));
+			initializeTips();
+		}
+	}
+	
 	private void AddNumberOfRewards(int added) {
 		number_of_rewards_left += added;
 		SetCounter(number_of_rewards_left);
@@ -87,6 +98,15 @@ public class DuffelBag extends CustomRelic {
 		
 		if ((AbstractDungeon.player.isEscaping) && (has_relic_been_used_this_battle)) {
 			AddNumberOfRewards(1);
+		}
+		
+		if (this.counter > 0)
+		{
+			this.description = DESCRIPTIONS[0] + NUMBER_OF_RANDOM_COMMON_RELICS +
+					DESCRIPTIONS[1];
+			this.tips.clear();
+			this.tips.add(new PowerTip(this.name, this.description));
+			initializeTips();
 		}
 		
 	}

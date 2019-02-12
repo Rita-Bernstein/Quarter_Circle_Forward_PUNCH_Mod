@@ -13,10 +13,10 @@
   },
   "WW_Relics:Duffel_Bag": {
     "NAME": "Duffel Bag",
-    "FLAVOR": "Very practical when travelling.",
+    "FLAVOR": "Very practical when wandering.",
     "DESCRIPTIONS": [
-      "For the next [#2aecd7]4 non-event, non-boss fights you win, gain in the first [#2aecd7]1 Bandage Up, the second [#2aecd7]1 Panacea and in each one of the [#00ff00]2 fights [#ffff00]",
-      " random common relic.",
+      "For the next [#2aecd7]4 non-event, non-boss fights you win, gain in the first [#2aecd7]1 Bandage Up, the second [#2aecd7]1 Panacea and in each one of the last [#00ff00]",
+      " fights [#ffff00]1 random common relic.",
       "Empty. Nothing else in the bag."
     ]
   },
