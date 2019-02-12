@@ -13,11 +13,11 @@
   },
   "WW_Relics:Duffel_Bag": {
     "NAME": "Duffel Bag",
-    "FLAVOR": "Very practical when travelling. Someone left stuff inside...",
+    "FLAVOR": "Very practical when travelling.",
     "DESCRIPTIONS": [
-      "When you get it, receive [#2aecd7]1 Bandage Up, [#2aecd7]1 Panacea and [#ffff00]",
-      " random common relics.",
-      "You shouldn't be reading this, tell the World Warriors relic developer about it!"
+      "For the next [#2aecd7]4 non-event, non-boss fights you win, gain in the first [#2aecd7]1 Bandage Up, the second [#2aecd7]1 Panacea and in each one of the [#00ff00]2 fights [#ffff00]",
+      " random common relic.",
+      "Empty. Nothing else in the bag."
     ]
   },
   "WW_Relics:Fighting_Gloves": {

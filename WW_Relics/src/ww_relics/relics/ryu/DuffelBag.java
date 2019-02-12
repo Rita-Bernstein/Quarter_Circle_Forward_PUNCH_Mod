@@ -45,13 +45,18 @@ public class DuffelBag extends CustomRelic {
 
 	private void SetNumberofRewards(int new_value) {
 		number_of_rewards_left = new_value;
-		if (number_of_rewards_left > 0) this.counter = new_value;
-		else this.counter = -2;
-
+		SetCounter(number_of_rewards_left);
 	}
 	
+	private void SetCounter(int number_of_rewards_left) {
+		if (number_of_rewards_left > 0) this.counter = number_of_rewards_left;
+		else this.counter = -2;
+	}
+    
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + NUMBER_OF_RANDOM_COMMON_RELICS +
+		if (this.counter <= 0) {
+			return DESCRIPTIONS[2];
+		} else return DESCRIPTIONS[0] + NUMBER_OF_RANDOM_COMMON_RELICS +
 				DESCRIPTIONS[1];
 	}
 	
@@ -73,11 +78,9 @@ public class DuffelBag extends CustomRelic {
 		}
 	}
 	
-	
 	private void AddNumberOfRewards(int added) {
 		number_of_rewards_left += added;
-		if (number_of_rewards_left > 0) this.counter = number_of_rewards_left;
-		else this.counter = -2;
+		SetCounter(number_of_rewards_left);
 	}
 	
 	public void onUsePotion() {
