@@ -81,12 +81,16 @@ public class DuffelBag extends CustomRelic {
 	public void atBattleStart() {
 		if (this.counter == -2)
 		{
-			this.counter = -3;
-			this.description = this.DESCRIPTIONS[2];
-			this.tips.clear();
-			this.tips.add(new PowerTip(this.name, this.description));
-			initializeTips();
+			ChangeToSecondDescription();
 		}
+	}
+	
+	private void ChangeToSecondDescription(){
+		this.counter = -3;
+		this.description = this.DESCRIPTIONS[2];
+		this.tips.clear();
+		this.tips.add(new PowerTip(this.name, this.description));
+		initializeTips();
 	}
 	
 	private void AddNumberOfRewards(int added) {
@@ -102,13 +106,17 @@ public class DuffelBag extends CustomRelic {
 		
 		if (this.counter > 0)
 		{
-			this.description = DESCRIPTIONS[0] + NUMBER_OF_RANDOM_COMMON_RELICS +
-					DESCRIPTIONS[1];
-			this.tips.clear();
-			this.tips.add(new PowerTip(this.name, this.description));
-			initializeTips();
+			ChangeToFirstDescription();
 		}
 		
+	}
+	
+	private void ChangeToFirstDescription() {
+		this.description = DESCRIPTIONS[0] + NUMBER_OF_RANDOM_COMMON_RELICS +
+				DESCRIPTIONS[1];
+		this.tips.clear();
+		this.tips.add(new PowerTip(this.name, this.description));
+		initializeTips();
 	}
 	
 	private void AddReward() {
