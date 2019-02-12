@@ -25,10 +25,10 @@ public class DuffelBag extends CustomRelic {
 	private ArrayList<AbstractCard> reward_cards;
 	private static final int NUMBER_OF_RANDOM_COMMON_RELICS = 2;
 
-	private static final int PRETENDED_NUMBER_OF_EXTRA_REWARS = NUMBER_OF_STATIC_CARDS +
+	private static final int PRETENDED_NUMBER_OF_EXTRA_REWARDS = NUMBER_OF_STATIC_CARDS +
 			NUMBER_OF_RANDOM_COMMON_RELICS;
 	
-	private int number_of_rewards_left = PRETENDED_NUMBER_OF_EXTRA_REWARS;
+	private int number_of_rewards_left;
 	
 	private boolean has_relic_been_used_this_battle = false;
 	
@@ -39,6 +39,14 @@ public class DuffelBag extends CustomRelic {
 		
 		reward_cards.add(new Panacea());
 		reward_cards.add(new BandageUp());
+		
+		SetNumberofRewards(PRETENDED_NUMBER_OF_EXTRA_REWARDS);
+	}
+
+	private void SetNumberofRewards(int new_value) {
+		number_of_rewards_left = new_value;
+		if (number_of_rewards_left > 0) this.counter = new_value;
+		else this.counter = -2;
 
 	}
 	
@@ -60,15 +68,22 @@ public class DuffelBag extends CustomRelic {
 				AbstractDungeon.getCurrRoom().rewardAllowed){
 			
 			AddReward();
-			number_of_rewards_left--;
+			AddNumberOfRewards(-1);
 			has_relic_been_used_this_battle = true;
 		}
+	}
+	
+	
+	private void AddNumberOfRewards(int added) {
+		number_of_rewards_left += added;
+		if (number_of_rewards_left > 0) this.counter = number_of_rewards_left;
+		else this.counter = -2;
 	}
 	
 	public void onUsePotion() {
 		
 		if ((AbstractDungeon.player.isEscaping) && (has_relic_been_used_this_battle)) {
-			number_of_rewards_left++;
+			AddNumberOfRewards(1);
 		}
 		
 	}
@@ -95,7 +110,5 @@ public class DuffelBag extends CustomRelic {
 	
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
 		return new DuffelBag();
-	}
-	
-	
+	}	
 }
