@@ -6,12 +6,12 @@
     <!-- Change These to match your mod -->
     <groupId>WW_Relics</groupId>
     <artifactId>WorldWarriorsRelics</artifactId>
-    <version>0.1.1</version>
+    <version>0.3</version>
     <packaging>jar</packaging>
     <name>WorldWarriorsRelics</name>
-    <description>Adds two relics based in Street Fighter to the game.
-		  		 \r\n v1.0 will have 16+ relics, inspired in
-		  		 \r\n fighters from Super Street Fighter 2: The New Challengers.</description>
+    <description>Adds three relics, inspired in the fighters from
+    			 \r\n Super Street Fighter 2: The New Challengers.
+		  		 \r\n v1.0 will have 16+ relics.</description>
 
     <properties>
         <maven.compiler.source>3.6</maven.compiler.source>
