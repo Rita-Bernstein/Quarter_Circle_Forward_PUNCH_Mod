@@ -14,6 +14,7 @@ import basemod.helpers.RelicType;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
+import ww_relics.relics.chun_li.Handcuffs;
 import ww_relics.relics.chun_li.WhiteBoots;
 import ww_relics.relics.ryu.DuffelBag;
 import ww_relics.relics.ryu.RedHeadband;
@@ -80,6 +81,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	
 	private void addChunLiRelics() {
 		BaseMod.addRelic(new WhiteBoots(), RelicType.SHARED);
+		BaseMod.addRelic(new Handcuffs(), RelicType.SHARED);
 	}
 	
 	private void addRyuRelics() {
