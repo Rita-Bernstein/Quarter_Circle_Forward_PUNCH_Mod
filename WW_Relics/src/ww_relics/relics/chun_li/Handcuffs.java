@@ -3,11 +3,13 @@ package ww_relics.relics.chun_li;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -65,6 +67,9 @@ public class Handcuffs extends CustomRelic {
 					 new ApplyPowerAction(target,
 							 AbstractDungeon.player,
 							 new DexterityPower(target, -1 * NUMBER_OF_DEX_DOWN_DEBUFFS)));
+			 
+			 AbstractDungeon.actionManager.addToTop(
+					 new StunMonsterAction((AbstractMonster)target, AbstractDungeon.player));
 			
 			 number_of_uses_left_in_this_fight--;
 		}
