@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.powers.UnsteadyPower;
 
 public class Handcuffs extends CustomRelic {
 	public static final String ID = "WW_Relics:Handcuffs";
@@ -68,7 +69,7 @@ public class Handcuffs extends CustomRelic {
 			 AbstractDungeon.actionManager.addToTop(
 					 new ApplyPowerAction(target,
 							 AbstractDungeon.player,
-							 new DexterityPower(target, -1 * NUMBER_OF_DEX_DOWN_DEBUFFS)));
+							 new UnsteadyPower(target, NUMBER_OF_DEX_DOWN_DEBUFFS)));
 			 
 			 AbstractDungeon.actionManager.addToTop(
 					 new StunMonsterAction((AbstractMonster)target, AbstractDungeon.player));
