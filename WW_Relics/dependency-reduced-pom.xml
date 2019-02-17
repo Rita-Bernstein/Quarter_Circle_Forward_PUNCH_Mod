@@ -4,10 +4,10 @@
   <groupId>WW_Relics</groupId>
   <artifactId>WorldWarriorsRelics</artifactId>
   <name>WorldWarriorsRelics</name>
-  <version>0.1.1</version>
-  <description>Adds two relics based in Street Fighter to the game.
-		  		 \r\n v1.0 will have 16+ relics, inspired in
-		  		 \r\n fighters from Super Street Fighter 2: The New Challengers.</description>
+  <version>0.3</version>
+  <description>Adds three relics, inspired in the fighters from
+    			 \r\n Super Street Fighter 2: The New Challengers.
+		  		 \r\n v1.0 will have 16+ relics.</description>
   <build>
     <finalName>WorldWarriorsRelics</finalName>
     <plugins>
