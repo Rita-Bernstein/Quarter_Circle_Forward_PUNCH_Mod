@@ -47,14 +47,14 @@ public class Handcuffs extends CustomRelic {
 	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
 		
 		boolean owner_not_null = info.owner != null;
-		boolean hp_loss = info.type == DamageType.HP_LOSS;
+		boolean normal_damage_type = info.type == DamageType.NORMAL;
 		boolean can_be_used_in_this_fight = number_of_uses_left_in_this_fight > 0;
 		
 		logger.info(owner_not_null);
-		logger.info(hp_loss);
+		logger.info(normal_damage_type);
 		logger.info(can_be_used_in_this_fight);
 		
-		if ((owner_not_null) && (hp_loss) && (can_be_used_in_this_fight)) {
+		if ((owner_not_null) && (normal_damage_type) && (can_be_used_in_this_fight)) {
 			
 			 AbstractDungeon.actionManager.addToTop(
 					 new ApplyPowerAction(target,
