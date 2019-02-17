@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 
 import basemod.BaseMod;
@@ -50,25 +51,52 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	{
 	    logger.info("begin editing strings");
 	    
-	    String relicStringsAddress = "ww_relics/localization/eng/WW_Relics.json";
+	    LoadRelicsJSON();
+	    LoadPowersJSON();
+	    
+	    logger.info("done editing strings");
+	}
+	
+	private void LoadRelicsJSON() {
+		String relicStringsAddress = "ww_relics/localization/eng/WW_Relics_Relics.json";
 	    String relicStrings = getJsonText(relicStringsAddress);
 	    
 	    if (relicStrings == "") {
 	    	
-	    	relicStringsAddress = "src/ww_relics/localization/eng/WW_Relics.json";
+	    	relicStringsAddress = "src/ww_relics/localization/eng/WW_Relics_Relics.json";
 	    	relicStrings = getJsonText(relicStringsAddress);
 	    	
 	    }
 	    
 	    if (relicStrings == "") {
 	    	
-	    	relicStringsAddress = "localization/eng/WW_Relics.json";
+	    	relicStringsAddress = "localization/eng/WW_Relics_Relics.json";
 	    	relicStrings = getJsonText(relicStringsAddress);
 	    	
 	    }
 	    
 	    BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
-	    logger.info("done editing strings");
+	}
+	
+	private void LoadPowersJSON() {
+		String powerStringsAddress = "ww_relics/localization/eng/WW_Relics_Relics.json";
+	    String powerStrings = getJsonText(powerStringsAddress);
+	    
+	    if (powerStrings == "") {
+	    	
+	    	powerStringsAddress = "src/ww_relics/localization/eng/WW_Relics_Powers.json";
+	    	powerStrings = getJsonText(powerStringsAddress);
+	    	
+	    }
+	    
+	    if (powerStrings == "") {
+	    	
+	    	powerStringsAddress = "localization/eng/WW_Relics_Powers.json";
+	    	powerStrings = getJsonText(powerStringsAddress);
+	    	
+	    }
+	    
+	    BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
 	}
 	
 	@Override
