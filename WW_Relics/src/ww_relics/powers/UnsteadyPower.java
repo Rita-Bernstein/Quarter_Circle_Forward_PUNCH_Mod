@@ -44,41 +44,29 @@ public class UnsteadyPower extends AbstractPower {
 		
 		logger.info("4");
 		
-		unsteady_block_reducer = new DamageInfo(owner, amount);
-		unsteady_block_reducer.base = amount;
+		unsteady_block_reducer = new DamageInfo(owner, amount, DamageType.NORMAL);
 		unsteady_block_reducer.name = "Unsteady";
-		unsteady_block_reducer.output = amount;
-		unsteady_block_reducer.type = DamageType.NORMAL;
 	}
 	
-	  public void updateDescription()
-	  {
-	    this.description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
-	  }
+	public void updateDescription()
+	{
+		this.description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+	}
 	
-	  @Override
-	  public void atEndOfTurn(boolean isPlayer) {
+	@Override
+	public void atEndOfTurn(boolean isPlayer) {
 		  
-		  float blockAmount = owner.currentBlock;
+		float blockAmount = owner.currentBlock;
 		  
-		  if (blockAmount < amount) {
-			  logger.info("AQUI 2");
-			  unsteady_block_reducer.base = (int)blockAmount;
-			  unsteady_block_reducer.output = (int)blockAmount;
+		if (blockAmount < amount) {
+			logger.info("AQUI 2");
+			unsteady_block_reducer.base = (int)blockAmount;
+			unsteady_block_reducer.output = (int)blockAmount;
+		}
+		
+		logger.info("AQUI 3");
 			  
-			  AbstractDungeon.actionManager.addToBottom(new DamageAction(owner, unsteady_block_reducer));
-		  }
-		  else {
-			  logger.info("AQUI 3");
-			  unsteady_block_reducer.base = (int)amount;
-			  unsteady_block_reducer.output = (int)amount;
-			  
-			  AbstractDungeon.actionManager.addToBottom(new DamageAction(owner, unsteady_block_reducer));
-		  }
-		  
-		  
-		  
-	  }
-	  
+		AbstractDungeon.actionManager.addToBottom(new DamageAction(owner, unsteady_block_reducer));
+	}
 	  
 }
