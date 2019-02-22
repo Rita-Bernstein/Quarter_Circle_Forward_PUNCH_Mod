@@ -59,8 +59,10 @@ public class UnsteadyPower extends AbstractPower {
 	  @Override
 	  public void onGainedBlock(float blockAmount) {
 		  
+		  logger.info("AQUI " + blockAmount);
+		  
 		  if (blockAmount < amount) {
-			  
+			  logger.info("AQUI 2");
 			  unsteady_block_reducer.base = (int)blockAmount;
 			  unsteady_block_reducer.output = (int)blockAmount;
 			  
@@ -68,7 +70,7 @@ public class UnsteadyPower extends AbstractPower {
 			  
 		  }
 		  else {
-			  
+			  logger.info("AQUI 3");
 			  unsteady_block_reducer.base = (int)amount;
 			  unsteady_block_reducer.output = (int)amount;
 			  
