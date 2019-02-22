@@ -44,8 +44,10 @@ public class UnsteadyAction extends AbstractGameAction {
 			
 			logger.info(damage_to_apply.base + " " + damage_to_apply.output);
 			
-			AbstractDungeon.actionManager.addToBottom(new DamageAction(affected, damage_to_apply));
-			
+			if (blockAmount > 0) {
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(affected, damage_to_apply));
+			}
+
 			this.isDone = true;
 		}
 
