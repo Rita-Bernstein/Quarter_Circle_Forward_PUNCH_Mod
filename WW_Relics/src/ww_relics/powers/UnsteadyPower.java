@@ -16,7 +16,7 @@ public class UnsteadyPower extends AbstractPower {
 
 	public static final String POWER_ID = "WW_Relics:Power_Unsteady";
 	private static final PowerStrings powerStrings = 
-			CardCrawlGame.languagePack.getPowerStrings("WW_Relics:Power_Unsteady");
+			CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	
@@ -28,32 +28,27 @@ public class UnsteadyPower extends AbstractPower {
 	{
 		logger.info("1");
 		
-		unsteady_block_reducer = new DamageInfo(owner, amount);
-		
-		logger.info("2");
-		
-		unsteady_block_reducer.base = amount;
-		unsteady_block_reducer.name = "Unsteady";
-		unsteady_block_reducer.output = amount;
-		unsteady_block_reducer.type = DamageType.NORMAL;
-		
-		logger.info("3");
-		
 		this.name = NAME;
-		this.ID = "WW_Relics:Power_Unsteady";
+		this.ID = POWER_ID;
 		this.owner = owner;
 		this.amount = amount;
 		this.type = AbstractPower.PowerType.DEBUFF;
 		
-		logger.info("4");
+		logger.info("2");
 		
 		updateDescription();
 		
-		logger.info("5");
+		logger.info("3");
 		
 		loadRegion("frail");
 		
-		logger.info("6");
+		logger.info("4");
+		
+		unsteady_block_reducer = new DamageInfo(owner, amount);
+		unsteady_block_reducer.base = amount;
+		unsteady_block_reducer.name = "Unsteady";
+		unsteady_block_reducer.output = amount;
+		unsteady_block_reducer.type = DamageType.NORMAL;
 	}
 	
 	  public void updateDescription()
