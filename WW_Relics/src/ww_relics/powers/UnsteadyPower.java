@@ -57,27 +57,28 @@ public class UnsteadyPower extends AbstractPower {
 	  }
 	
 	  @Override
-	  public void onGainedBlock(float blockAmount) {
+	  public void atEndOfTurn(boolean isPlayer) {
 		  
-		  logger.info("AQUI " + blockAmount);
+		  float blockAmount = owner.currentBlock;
 		  
 		  if (blockAmount < amount) {
 			  logger.info("AQUI 2");
 			  unsteady_block_reducer.base = (int)blockAmount;
 			  unsteady_block_reducer.output = (int)blockAmount;
 			  
-			  AbstractDungeon.actionManager.addToTop(new DamageAction(owner, unsteady_block_reducer));
-			  
+			  AbstractDungeon.actionManager.addToBottom(new DamageAction(owner, unsteady_block_reducer));
 		  }
 		  else {
 			  logger.info("AQUI 3");
 			  unsteady_block_reducer.base = (int)amount;
 			  unsteady_block_reducer.output = (int)amount;
 			  
-			  AbstractDungeon.actionManager.addToTop(new DamageAction(owner, unsteady_block_reducer));
-			  
+			  AbstractDungeon.actionManager.addToBottom(new DamageAction(owner, unsteady_block_reducer));
 		  }
 		  
+		  
+		  
 	  }
+	  
 	  
 }
