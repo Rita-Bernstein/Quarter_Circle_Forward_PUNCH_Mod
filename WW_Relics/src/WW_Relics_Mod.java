@@ -79,7 +79,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	}
 	
 	private void LoadPowersJSON() {
-		String powerStringsAddress = "ww_relics/localization/eng/WW_Relics_Relics.json";
+		String powerStringsAddress = "ww_relics/localization/eng/WW_Relics_Powers.json";
 	    String powerStrings = getJsonText(powerStringsAddress);
 	    
 	    if (powerStrings == "") {
