@@ -3,7 +3,6 @@ package ww_relics.powers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -11,6 +10,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+
+import ww_relics.actions.UnsteadyAction;
 
 public class UnsteadyPower extends AbstractPower {
 
@@ -55,18 +56,11 @@ public class UnsteadyPower extends AbstractPower {
 	
 	@Override
 	public void atEndOfTurn(boolean isPlayer) {
-		  
-		float blockAmount = owner.currentBlock;
-		  
-		if (blockAmount < amount) {
-			logger.info("AQUI 2");
-			unsteady_block_reducer.base = (int)blockAmount;
-			unsteady_block_reducer.output = (int)blockAmount;
-		}
 		
-		logger.info("AQUI 3");
-			  
-		AbstractDungeon.actionManager.addToBottom(new DamageAction(owner, unsteady_block_reducer));
+		if (!isPlayer) {
+			AbstractDungeon.actionManager.addToBottom(new UnsteadyAction(owner, unsteady_block_reducer));
+		}
+
 	}
 	  
 }
