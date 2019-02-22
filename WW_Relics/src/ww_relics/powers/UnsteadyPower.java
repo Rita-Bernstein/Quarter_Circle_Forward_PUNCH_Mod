@@ -21,6 +21,7 @@ public class UnsteadyPower extends AbstractPower {
 	
 	public UnsteadyPower(AbstractCreature owner, int amount)
 	{
+		
 		unsteady_block_reducer = new DamageInfo(owner, amount);
 		unsteady_block_reducer.base = amount;
 		unsteady_block_reducer.name = "Unsteady";
@@ -31,10 +32,9 @@ public class UnsteadyPower extends AbstractPower {
 		this.ID = "WW_Relics:Power_Unsteady";
 		this.owner = owner;
 		this.amount = amount;
-		updateDescription();
-		loadRegion("WW_Relics:Power_Unsteady");
-		
 		this.type = AbstractPower.PowerType.DEBUFF;
+		updateDescription();
+		loadRegion("frail");
 	}
 	
 	  public void updateDescription()
