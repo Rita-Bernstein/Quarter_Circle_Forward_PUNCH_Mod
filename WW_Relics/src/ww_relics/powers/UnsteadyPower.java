@@ -12,8 +12,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import ww_relics.relics.chun_li.Handcuffs;
-
 public class UnsteadyPower extends AbstractPower {
 
 	public static final String POWER_ID = "WW_Relics:Power_Unsteady";
