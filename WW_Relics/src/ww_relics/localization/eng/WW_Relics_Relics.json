@@ -14,7 +14,7 @@
   
   "WW_Relics:Handcuffs": {
     "NAME": "Handcuffs",
-    "FLAVOR": "Bringing back a law tool to the Spire.",
+    "FLAVOR": "An old tool used for those who once fought for law and order.",
     "DESCRIPTIONS": [
       "Your first attack in each combat that deals [#ff0000]unblocked [#ff0000]damage also gives to the hit enemy less[#2aecd7]",
       " Str, less [#2aecd7]",
