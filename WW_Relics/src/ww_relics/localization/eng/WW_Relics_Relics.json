@@ -16,7 +16,7 @@
     "NAME": "Handcuffs",
     "FLAVOR": "Bringing back a law tool to the Spire.",
     "DESCRIPTIONS": [
-      "Your first attack in the combat that deals [#ff0000]unblocked [#ff0000]damage also gives to the enemy hit [#2aecd7]",
+      "Your first attack in each combat that deals [#ff0000]unblocked [#ff0000]damage also gives to the hit enemy less[#2aecd7]",
       " Str, less [#2aecd7]",
       " Block each turn and stuns for [#2aecd7]",
       " turn." 
