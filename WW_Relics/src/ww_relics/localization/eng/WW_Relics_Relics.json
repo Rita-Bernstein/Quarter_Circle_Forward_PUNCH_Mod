@@ -17,9 +17,9 @@
     "FLAVOR": "Bringing back a law tool to the Spire.",
     "DESCRIPTIONS": [
       "Your first attack in the combat that deals [#ff0000]unblocked [#ff0000]damage also gives to the enemy hit [#2aecd7]",
-      " Str, [#2aecd7]",
-      " Dex and stuns for [#2aecd7]",
-      " turn. Can be lost if the effect is applied and the player or the monster affected runs before the end of combat." 
+      " Str, less [#2aecd7]",
+      " Block each turn and stuns for [#2aecd7]",
+      " turn." 
     ]
   },
   
