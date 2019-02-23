@@ -77,6 +77,11 @@ public class Handcuffs extends CustomRelic {
 		}
 		
 	}
+	
+	public boolean canSpawn()
+	{
+		return AbstractDungeon.player.masterDeck.getAttacks().size() > 0;
+	}
 
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
 		return new Handcuffs();
