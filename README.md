@@ -3,7 +3,7 @@ A Slay The Spire mod, which adds relics inspired by fighters from Super Street F
 
 # Content
 
-Two relics done of 16+ planned, with placeholder image and sound.
+Three relics done of 16+ planned, with placeholder image and sound.
 
 # Current State
 
@@ -14,7 +14,7 @@ Version 0.2.
 | Name  | Rarity | Effect | Inspiration |
 | :---:   | :---: | :---: | :---: |
 | Fighting Gloves | Rare | Upgrades outside of fights allow to upgrade one extra card. | Ryu's usual gloves. |
-| Handcuffs | ??? | Your first attack that deals more than 12 unblocked damage in a single hit also stuns the enemy and give 2 Frail and 2 Weak. | Chun-Li as a policewoman. |
+| Handcuffs | ??? | - Each combat, the first enemy that receives unblocked attack damage gains 2 Unsteady, loses 2 Strength and is Stunned for 1 turn. | Chun-Li as a policewoman. |
 
 
 # Relics Implemented
