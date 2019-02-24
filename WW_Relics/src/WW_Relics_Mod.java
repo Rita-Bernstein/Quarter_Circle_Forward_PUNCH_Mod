@@ -12,9 +12,11 @@ import com.megacrit.cardcrawl.localization.RelicStrings;
 import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
+import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
+
 import ww_relics.relics.chun_li.Handcuffs;
 import ww_relics.relics.chun_li.WhiteBoots;
 import ww_relics.relics.ryu.DuffelBag;
@@ -22,8 +24,8 @@ import ww_relics.relics.ryu.RedHeadband;
 
 @SpireInitializer
 public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscriber,
-		PostInitializeSubscriber
-		{
+			EditKeywordsSubscriber, PostInitializeSubscriber
+	{
 
 	//What exactly this does?
 	public static final Logger logger = LogManager.getLogger(WW_Relics_Mod.class.getName()); // lets us log output
@@ -44,6 +46,11 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	
 	public String getJsonText(String filepath) {
 		return Gdx.files.internal(filepath).readString(String.valueOf(StandardCharsets.UTF_8));
+	}
+	
+	@Override
+	public void receiveEditKeywords() {
+		BaseMod.addKeyword(new String[] {"unsteady"}, "Block is reduced each turn.");
 	}
 	
 	@Override
