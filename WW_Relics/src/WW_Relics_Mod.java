@@ -51,6 +51,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	@Override
 	public void receiveEditKeywords() {
 		BaseMod.addKeyword(new String[] {"unsteady"}, "Block is reduced each turn.");
+		BaseMod.addKeyword(new String[] {"stunned"}, "Does nothing for at least one turn.");
 	}
 	
 	@Override
