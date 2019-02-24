@@ -9,21 +9,9 @@ Four relics done of 16+ planned, with placeholder image and sound.
 
 Version 2 of the roadmap.
 
-# Relics To Implement
+# Relics
 
-| Name  | Rarity | Effect | Inspiration |
-| :---:   | :---: | :---: | :---: |
-| Fighting Gloves | Rare | Upgrades outside of fights allow to upgrade one extra card. | Ryu's usual gloves. |
-| Handcuffs | ??? | - Each combat, the first enemy that receives unblocked attack damage gains 2 Unsteady, loses 2 Strength and is Stunned for 1 turn. | Chun-Li as a policewoman. |
-
-
-# Relics Implemented
-
-| Name  | Rarity | Effect | Inspiration |
-| :---:   | :---: | :---: | :---: |
-| Duffel Bag | Uncommon | For the next 4 non-event, non-boss fights you win, gain in the first 1 Bandage Up, the second 1 Panacea and in each one of the last 2 fights 1 random common relic. | Ryu's duffel bag. |
-| Red Headband | Common | Each turn, discard the first Status or Curse card drawn, then draw another random card from the draw pile if there's any card there. | Ryu's red headband and how it became his in the Alpha series. |
-| White Boots | Uncommon | Can be used 1x per fight. Choose an attack in your hand. Create three copies of it, place them randomly in your draw pile, then exhaust the chosen card. The copies cost 1-less the first time they are used. | Chun-Li's boots from SF2.
+Link in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/Mod-Relics).
 
 # Roadmap
 
