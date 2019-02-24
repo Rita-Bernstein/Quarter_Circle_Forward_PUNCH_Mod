@@ -1,4 +1,25 @@
 {
+  "WW_Relics:Handcuffs": {
+    "NAME": "Handcuffs",
+    "FLAVOR": "An old tool used for those who once fought for law and order.",
+    "DESCRIPTIONS": [
+      "Each combat, the first enemy that receives [#ff0000]unblocked [#ff0000]damage gains [#2aecd7]",
+      " Unsteady, loses [#2aecd7]",
+      " Strength and is Stunned for [#2aecd7]",
+      " turn."
+    ]
+  },
+  
+   "WW_Relics:Spiky_Bracers": {
+    "NAME": "Spiky Bracers",
+    "FLAVOR": "Heavy, not much intimidating in the Spire... but gives you some good insight about balancing your body weight with them.",
+    "DESCRIPTIONS": [
+      "When you get this relic, choose [#2aecd7]",
+      "2-or-more-cost Skill and/or Powers in your deck. They cost [#008000]",
+      "-less now."
+    ]
+  },
+
   "WW_Relics:White_Boots": {
     "NAME": "White Boots",
     "FLAVOR": "Very, very worn shoes... as much from hitting as from walking.",
@@ -9,17 +30,6 @@
       " copies of it in the draw pile, then exhaust the Attack. Each copy cost ",
       "-less the first time used.",
       "Choose "
-    ]
-  },
-  
-  "WW_Relics:Handcuffs": {
-    "NAME": "Handcuffs",
-    "FLAVOR": "An old tool used for those who once fought for law and order.",
-    "DESCRIPTIONS": [
-      "Each combat, the first enemy that receives [#ff0000]unblocked [#ff0000]damage gains [#2aecd7]",
-      " Unsteady, loses [#2aecd7]",
-      " Strength and is Stunned for [#2aecd7]",
-      " turn."
     ]
   },
   
