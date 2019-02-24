@@ -27,7 +27,8 @@ Link in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/
 10. Finding/doing art assets and adding them to the mod.
 11. Translating to PT-BR.
 12. Polishing and balancing.
-13. Synergy and adaptation with other mods.
+13. Challenges for Custom Games where you start with a specific Street Fighter's relics.
+14. Synergy and adaptation with other mods.
 
 # Requirements
 
