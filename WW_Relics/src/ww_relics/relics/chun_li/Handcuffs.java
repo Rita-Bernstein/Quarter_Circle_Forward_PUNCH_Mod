@@ -21,13 +21,11 @@ public class Handcuffs extends CustomRelic {
 	
 	private static final int NUMBER_OF_USES_PER_FIGHT = 1;
 	private static final int NUMBER_OF_STR_DOWN_DEBUFFS = 2;
-	private static final int NUMBER_OF_DEX_DOWN_DEBUFFS = 2;
+	private static final int NUMBER_OF_UNSTEADY_DEBUFFS = 2;
 	private static final int NUMBER_OF_STUN_DEBUFFS = 1;
 	
 	public int number_of_uses_left_in_this_fight;
 	public boolean handcuff_is_lost = false;
-
-	public static final Logger logger = LogManager.getLogger(Handcuffs.class.getName());
 	
 	public Handcuffs() {
 		super(ID, "abacus.png", //add method for textures here.
@@ -35,7 +33,7 @@ public class Handcuffs extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + NUMBER_OF_DEX_DOWN_DEBUFFS +
+		return DESCRIPTIONS[0] + NUMBER_OF_UNSTEADY_DEBUFFS +
 				DESCRIPTIONS[1] + NUMBER_OF_STR_DOWN_DEBUFFS +
 				DESCRIPTIONS[2] + NUMBER_OF_STUN_DEBUFFS +
 				DESCRIPTIONS[3];
@@ -48,17 +46,7 @@ public class Handcuffs extends CustomRelic {
 	@Override
 	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
 		
-		boolean owner_not_null = info.owner != null;
-		boolean normal_damage_type = info.type == DamageType.NORMAL;
-		boolean suffered_damage = damageAmount > 0;
-		boolean can_be_used_in_this_fight = number_of_uses_left_in_this_fight > 0;
-		
-		logger.info(owner_not_null);
-		logger.info(normal_damage_type);
-		logger.info(can_be_used_in_this_fight);
-		
-		if ((owner_not_null) && (normal_damage_type) &&
-				(suffered_damage) && (can_be_used_in_this_fight)) {
+		if (canBeUsed(info, damageAmount)) {
 			
 			 AbstractDungeon.actionManager.addToTop(
 					 new ApplyPowerAction(target,
@@ -68,7 +56,7 @@ public class Handcuffs extends CustomRelic {
 			 AbstractDungeon.actionManager.addToTop(
 					 new ApplyPowerAction(target,
 							 AbstractDungeon.player,
-							 new UnsteadyPower(target, NUMBER_OF_DEX_DOWN_DEBUFFS)));
+							 new UnsteadyPower(target, NUMBER_OF_UNSTEADY_DEBUFFS)));
 			 
 			 AbstractDungeon.actionManager.addToTop(
 					 new StunMonsterAction((AbstractMonster)target, AbstractDungeon.player));
@@ -76,6 +64,19 @@ public class Handcuffs extends CustomRelic {
 			 number_of_uses_left_in_this_fight--;
 		}
 		
+	}
+	
+	public boolean canBeUsed(DamageInfo info, int damageAmount) {
+		
+		boolean owner_not_null = info.owner != null;
+		boolean normal_damage_type = info.type == DamageType.NORMAL;
+		boolean suffered_damage = damageAmount > 0;
+		boolean can_be_used_in_this_fight = number_of_uses_left_in_this_fight > 0;
+		
+		return ((owner_not_null) &&
+				(normal_damage_type) &&
+				(suffered_damage) &&
+				(can_be_used_in_this_fight));
 	}
 	
 	public boolean canSpawn()

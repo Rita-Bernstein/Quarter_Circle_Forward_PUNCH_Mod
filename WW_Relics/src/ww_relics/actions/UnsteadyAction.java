@@ -14,8 +14,6 @@ public class UnsteadyAction extends AbstractGameAction {
 	public static AbstractCreature affected;
 	public static DamageInfo damage_to_apply;
 	
-	public static final Logger logger = LogManager.getLogger(UnsteadyAction.class.getName());
-	
 	public UnsteadyAction(AbstractCreature target, DamageInfo info) {
 
 		affected = target;
@@ -32,18 +30,13 @@ public class UnsteadyAction extends AbstractGameAction {
 		if (!this.isDone) {
 			
 			float blockAmount = target.currentBlock;
-			logger.info("block amount " + blockAmount);
-			logger.info("amount " + amount);
 			  
 			if (blockAmount < amount) {
 		
-				logger.info("AQUI 2");
 				damage_to_apply.base = (int)blockAmount;
 				damage_to_apply.output = (int)blockAmount;
 			}
-			
-			logger.info(damage_to_apply.base + " " + damage_to_apply.output);
-			
+
 			if (blockAmount > 0) {
 				AbstractDungeon.actionManager.addToBottom(new DamageAction(affected, damage_to_apply));
 			}

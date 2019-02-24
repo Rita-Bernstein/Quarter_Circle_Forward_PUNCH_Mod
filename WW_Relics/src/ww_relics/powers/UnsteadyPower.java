@@ -27,24 +27,16 @@ public class UnsteadyPower extends AbstractPower {
 	
 	public UnsteadyPower(AbstractCreature owner, int amount)
 	{
-		logger.info("1");
-		
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
 		this.amount = amount;
 		this.type = AbstractPower.PowerType.DEBUFF;
 		
-		logger.info("2");
-		
 		updateDescription();
 		
-		logger.info("3");
-		
 		loadRegion("frail");
-		
-		logger.info("4");
-		
+
 		unsteady_block_reducer = new DamageInfo(owner, amount, DamageType.NORMAL);
 		unsteady_block_reducer.name = "Unsteady";
 	}
