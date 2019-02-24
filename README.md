@@ -3,27 +3,15 @@ A Slay The Spire mod, which adds relics inspired by fighters from Super Street F
 
 # Content
 
-Three relics done of 16+ planned, with placeholder image and sound.
+Four relics done of 16+ planned, with placeholder image and sound.
 
 # Current State
 
-Version 0.2.
+Version 2 of the roadmap.
 
-# Relics To Implement
+# Relics
 
-| Name  | Rarity | Effect | Inspiration |
-| :---:   | :---: | :---: | :---: |
-| Fighting Gloves | Rare | Upgrades outside of fights allow to upgrade one extra card. | Ryu's usual gloves. |
-| Handcuffs | ??? | - Each combat, the first enemy that receives unblocked attack damage gains 2 Unsteady, loses 2 Strength and is Stunned for 1 turn. | Chun-Li as a policewoman. |
-
-
-# Relics Implemented
-
-| Name  | Rarity | Effect | Inspiration |
-| :---:   | :---: | :---: | :---: |
-| Duffel Bag | Uncommon | For the next 4 non-event, non-boss fights you win, gain in the first 1 Bandage Up, the second 1 Panacea and in each one of the last 2 fights 1 random common relic. | Ryu's duffel bag. |
-| Red Headband | Common | Each turn, discard the first Status or Curse card drawn, then draw another random card from the draw pile if there's any card there. | Ryu's red headband and how it became his in the Alpha series. |
-| White Boots | Uncommon | Can be used 1x per fight. Choose an attack in your hand. Create three copies of it, place them randomly in your draw pile, then exhaust the chosen card. The copies cost 1-less the first time they are used. | Chun-Li's boots from SF2.
+Link in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/Mod-Relics).
 
 # Roadmap
 
@@ -43,22 +31,27 @@ Version 0.2.
 
 # Requirements
 
-Mod The Spire 3.8.3+ and BaseMod 5.8.0+.
+Mod The Spire 3.8.3+, BaseMod 5.8.0+ and StSLib 1.1.4.
 
 # Installation
 
-Download the .jar in the latest release, then add it to SlayTheSpire/mods folder (if you already installed Mod The Spire and BaseMod, if not, do both things first).
+Download the .jar in the latest release, then add it to SlayTheSpire/mods folder (if you already installed the requirements. If not, do both things first).
 
 # Credits/Acknowledgments
 
 Fruitstrike (https://github.com/gskleres), because all the topic titles from the first version of this README were copied from his FruityMod-StS repository xD
 
-daviscook477 (https://github.com/daviscook477) for his guide (https://github.com/daviscook477/BaseMod/wiki/Starting-Your-Mod)
+daviscook477 (https://github.com/daviscook477) for his guide (https://github.com/daviscook477/BaseMod/wiki/Starting-Your-Mod).
+
+Nafen, from the modding chanel, for helping with the description of the Handcuffs' effect.
+
 STREET FIGHTER is a registered trademark of CAPCOM U.S.A., INC.
 
 # Special Thanks
 
 To MegaCrit, the makes from SlayTheSpire, because the game is awesome and they are cool with mods of their game :D
+
+The modding channel from the Discord's Slay The Spire server and all people who goes there to support and banter about modding the game. You rock, fellows.
 
 # Art Assets
 
