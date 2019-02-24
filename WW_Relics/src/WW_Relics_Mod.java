@@ -18,6 +18,7 @@ import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 
 import ww_relics.relics.chun_li.Handcuffs;
+import ww_relics.relics.chun_li.SpikyBracers;
 import ww_relics.relics.chun_li.WhiteBoots;
 import ww_relics.relics.ryu.DuffelBag;
 import ww_relics.relics.ryu.RedHeadband;
@@ -32,8 +33,8 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 
 	public static final String MODNAME = "World Warriors' Relics"; // mod name
 	public static final String AUTHOR = "Clauvin aka Dungeon Explorer Lan"; // your name
-	public static final String DESCRIPTION = "v0.3.0" +
-			"\r\n Adds three relics basd in SF2's main characters."
+	public static final String DESCRIPTION = "v0.4.0" +
+			"\r\n Adds four relics basd in SF2's main characters."
 		  + "\r\n v1.0 will have 16+ relics.";
 	
 	public WW_Relics_Mod() {
@@ -116,8 +117,9 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	}
 	
 	private void addChunLiRelics() {
-		BaseMod.addRelic(new WhiteBoots(), RelicType.SHARED);
 		BaseMod.addRelic(new Handcuffs(), RelicType.SHARED);
+		//BaseMod.addRelic(new SpikyBracers(), RelicType.SHARED);
+		BaseMod.addRelic(new WhiteBoots(), RelicType.SHARED);
 	}
 	
 	private void addRyuRelics() {
