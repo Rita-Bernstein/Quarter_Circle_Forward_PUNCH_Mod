@@ -16,10 +16,10 @@
     "NAME": "Handcuffs",
     "FLAVOR": "An old tool used for those who once fought for law and order.",
     "DESCRIPTIONS": [
-      "Your first attack in each combat that deals [#ff0000]unblocked [#ff0000]damage also gives to the first enemy hit [#2aecd7]-[#2aecd7]",
-      " Block each turn, [#2aecd7]-[#2aecd7]",
-      " Str, and stuns for [#2aecd7]",
-      " turn." 
+      "Each combat, the first enemy that receives [#ff0000]unblocked [#ff0000]damage gains [#2aecd7]",
+      " Unsteady, loses [#2aecd7]",
+      " Strength and is Stunned for [#2aecd7]",
+      " turn."
     ]
   },
   

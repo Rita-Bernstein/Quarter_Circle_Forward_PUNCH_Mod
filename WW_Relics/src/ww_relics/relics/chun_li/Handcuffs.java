@@ -35,8 +35,8 @@ public class Handcuffs extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + NUMBER_OF_STR_DOWN_DEBUFFS +
-				DESCRIPTIONS[1] + NUMBER_OF_DEX_DOWN_DEBUFFS +
+		return DESCRIPTIONS[0] + NUMBER_OF_DEX_DOWN_DEBUFFS +
+				DESCRIPTIONS[1] + NUMBER_OF_STR_DOWN_DEBUFFS +
 				DESCRIPTIONS[2] + NUMBER_OF_STUN_DEBUFFS +
 				DESCRIPTIONS[3];
 	}
