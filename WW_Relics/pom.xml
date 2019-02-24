@@ -6,7 +6,7 @@
     <!-- Change These to match your mod -->
     <groupId>WW_Relics</groupId>
     <artifactId>WorldWarriorsRelics</artifactId>
-    <version>0.3</version>
+    <version>0.4</version>
     <packaging>jar</packaging>
     <name>WorldWarriorsRelics</name>
     <description>Adds three relics, inspired in the fighters from
