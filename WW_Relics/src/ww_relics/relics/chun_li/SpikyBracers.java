@@ -37,7 +37,7 @@ public class SpikyBracers extends CustomRelic {
 	
 	public void onEquip() {
 		
-		if (AbstractDungeon.player.masterDeck.getPurgeableCards().getAttacks().size() > 0)
+		if (getValidCardGroup().getPurgeableCards().size() >= 2)
 		{
 			if (AbstractDungeon.isScreenUp)
 			{
