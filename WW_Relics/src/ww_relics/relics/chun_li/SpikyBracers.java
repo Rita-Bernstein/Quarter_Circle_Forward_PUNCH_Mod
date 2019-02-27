@@ -36,6 +36,12 @@ public class SpikyBracers extends CustomRelic {
 				DESCRIPTIONS[2];
 	}
 	
+	public String getUncoloredDescription() {
+		return DESCRIPTIONS[6] + NUMBER_OF_CARDS_TO_APPLY_EFFECT+
+				DESCRIPTIONS[7] + UPDATE_COST_TEXT +
+				DESCRIPTIONS[8];
+	}
+	
 	public void onEquip() {
 		
 		if (getValidCardGroup().getPurgeableCards().size() >= 2)
@@ -49,7 +55,7 @@ public class SpikyBracers extends CustomRelic {
 			
 			AbstractDungeon.getCurrRoom().phase = RoomPhase.INCOMPLETE;
 			
-			AbstractDungeon.gridSelectScreen.open(getValidCardGroup(), 2, getUpdatedDescription(), false, false, false, false);
+			AbstractDungeon.gridSelectScreen.open(getValidCardGroup(), 2, getUncoloredDescription(), false, false, false, false);
 		}
 	}
 		
@@ -94,11 +100,11 @@ public class SpikyBracers extends CustomRelic {
 	      
 	      AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
 	      AbstractDungeon.gridSelectScreen.selectedCards.clear();
-	      String text_for_tip = this.description;
+	      String text_for_tip = getUpdatedDescription();
 	      text_for_tip += DESCRIPTIONS[3];
 	      text_for_tip += FontHelper.colorString(cards_chosen[0].name, "y");
 	      text_for_tip += DESCRIPTIONS[4];
-	      text_for_tip += FontHelper.colorString(cards_chosen[0].name, "y");
+	      text_for_tip += FontHelper.colorString(cards_chosen[1].name, "y");
 	      text_for_tip += DESCRIPTIONS[5];
 	      this.tips.clear();
 	      this.tips.add(new PowerTip(this.name, text_for_tip));
