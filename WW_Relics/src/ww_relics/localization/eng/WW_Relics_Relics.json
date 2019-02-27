@@ -16,7 +16,10 @@
     "DESCRIPTIONS": [
       "When you get this relic, choose [#2aecd7]",
       "2-or-more-cost Skill and/or Powers in your deck. They cost [#008000]",
-      "-less now."
+      "-less now.",
+      " Cards chosen are: ",
+      " and ",
+      "."
     ]
   },
 
