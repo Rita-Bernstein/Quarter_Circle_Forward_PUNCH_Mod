@@ -31,9 +31,22 @@ public class SpikyBracers extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + NUMBER_OF_CARDS_TO_APPLY_EFFECT+
+		String base_description = DESCRIPTIONS[0] + NUMBER_OF_CARDS_TO_APPLY_EFFECT+
 				DESCRIPTIONS[1] + UPDATE_COST_TEXT +
 				DESCRIPTIONS[2];
+		if (!cards_are_selected) {
+			return base_description;
+		}
+
+		else {
+			base_description += DESCRIPTIONS[3];
+			base_description += FontHelper.colorString(cards_chosen[0].name, "y");
+			base_description += DESCRIPTIONS[4];
+			base_description += FontHelper.colorString(cards_chosen[1].name, "y");
+			base_description += DESCRIPTIONS[5];
+			
+			return base_description;
+		}
 	}
 	
 	public String getUncoloredDescription() {
@@ -67,53 +80,48 @@ public class SpikyBracers extends CustomRelic {
 		CardGroup skills = AbstractDungeon.player.masterDeck.getSkills();
 		
 		for (int i = 0; i < powers.size(); i++) {
-			
 			if (powers.getNCardFromTop(i).cost >= 2) {
 				valid_card_group.addToTop(powers.getNCardFromTop(i));
 			}
-			
 		}
 		
 		for (int i = 0; i < skills.size(); i++) {
-			
 			if (skills.getNCardFromTop(i).cost >= 2) {
 				valid_card_group.addToTop(skills.getNCardFromTop(i));
 			}
-			
 		}
 		
 		return valid_card_group;
 
 	}
 	
-	  public void update()
-	  {
-	    super.update();
+	public void update()
+	{
+		super.update();
 	    if ((!cards_are_selected) && 
 	      (AbstractDungeon.gridSelectScreen.selectedCards.size() == 2))
 	    {
-	      this.cards_are_selected = true;
-	      for (int i = 0; i < NUMBER_OF_CARDS_TO_APPLY_EFFECT; i++) {
-		      cards_chosen[i] = ((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(i));
-		      cards_chosen[i].updateCost(UPDATE_COST_BY);
-	      }
+	    	this.cards_are_selected = true;
+	    	for (int i = 0; i < NUMBER_OF_CARDS_TO_APPLY_EFFECT; i++) {
+	    		cards_chosen[i] = ((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(i));
+	    		cards_chosen[i].updateCost(UPDATE_COST_BY);
+	    	}
 	      
-	      AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
-	      AbstractDungeon.gridSelectScreen.selectedCards.clear();
-	      String text_for_tip = getUpdatedDescription();
-	      text_for_tip += DESCRIPTIONS[3];
-	      text_for_tip += FontHelper.colorString(cards_chosen[0].name, "y");
-	      text_for_tip += DESCRIPTIONS[4];
-	      text_for_tip += FontHelper.colorString(cards_chosen[1].name, "y");
-	      text_for_tip += DESCRIPTIONS[5];
-	      this.tips.clear();
-	      this.tips.add(new PowerTip(this.name, text_for_tip));
-	      initializeTips();
+			AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
+			AbstractDungeon.gridSelectScreen.selectedCards.clear();
+			String text_for_tip = getUpdatedDescription();
+			text_for_tip += DESCRIPTIONS[3];
+			text_for_tip += FontHelper.colorString(cards_chosen[0].name, "y");
+			text_for_tip += DESCRIPTIONS[4];
+			text_for_tip += FontHelper.colorString(cards_chosen[1].name, "y");
+			text_for_tip += DESCRIPTIONS[5];
+			this.tips.clear();
+			this.tips.add(new PowerTip(this.name, text_for_tip));
+			initializeTips();
 	    }
-	  }
+	}
 	
 	public void onUnequip() {
-		
 		if (cards_are_selected) {
 			for (int i = 0; i < NUMBER_OF_CARDS_TO_APPLY_EFFECT; i++) {
 			    
@@ -122,13 +130,11 @@ public class SpikyBracers extends CustomRelic {
 				if (cardInDeck != null) {
 					AbstractCard card = cards_chosen[i];
 					card.updateCost(-UPDATE_COST_BY);
-				}
-				
+				}		
 			}
 			cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
-			 cards_are_selected = false;
+			cards_are_selected = false;
 		}
-		
 	}
 	
 	public boolean canSpawn()
