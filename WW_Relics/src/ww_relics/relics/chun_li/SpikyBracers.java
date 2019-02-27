@@ -4,7 +4,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 
 import basemod.abstracts.CustomRelic;
@@ -13,23 +16,22 @@ public class SpikyBracers extends CustomRelic {
 	
 	public static final String ID = "WW_Relics:Spiky_Bracers";
 	
-	private static final int REDUCE_COST_BY = 1;
+	private static final int UPDATE_COST_BY = -1;
 	private static final int NUMBER_OF_CARDS_TO_APPLY_EFFECT = 2;
 	
 	private static AbstractCard[] cards_chosen;
-	
-	private static boolean effect_applied = false;
+	private boolean cards_are_selected = false;
 	
 	public SpikyBracers() {
 		super(ID, "abacus.png", //add method for textures here.
 				RelicTier.UNCOMMON, LandingSound.HEAVY);
 		
-		cards_chosen = new AbstractCard[2];
+		cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
 	}
 	
 	public String getUpdatedDescription() {
 		return DESCRIPTIONS[0] + NUMBER_OF_CARDS_TO_APPLY_EFFECT+
-				DESCRIPTIONS[1] + REDUCE_COST_BY +
+				DESCRIPTIONS[1] + UPDATE_COST_BY +
 				DESCRIPTIONS[2];
 	}
 	
@@ -74,40 +76,59 @@ public class SpikyBracers extends CustomRelic {
 		}
 		
 		return valid_card_group;
-		
-		
+
 	}
+	
+	  public void update()
+	  {
+	    super.update();
+	    if ((!cards_are_selected) && 
+	      (!(AbstractDungeon.gridSelectScreen.selectedCards.size() == 2)))
+	    {
+	      this.cards_are_selected = true;
+	      for (int i = 0; i < NUMBER_OF_CARDS_TO_APPLY_EFFECT; i++) {
+		      cards_chosen[i] = ((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(i));
+		      cards_chosen[i].updateCost(UPDATE_COST_BY);
+	      }
+	      
+	      AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
+	      AbstractDungeon.gridSelectScreen.selectedCards.clear();
+	      this.description += DESCRIPTIONS[3];
+	      this.description += FontHelper.colorString(cards_chosen[0].name, "y");
+	      this.description += DESCRIPTIONS[4];
+	      this.description += FontHelper.colorString(cards_chosen[0].name, "y");
+	      this.description += DESCRIPTIONS[5];
+	      this.tips.clear();
+	      this.tips.add(new PowerTip(this.name, this.description));
+	      initializeTips();
+	    }
+	  }
 	
 	public void onUnequip() {
 		
+		if (cards_are_selected) {
+			for (int i = 0; i < NUMBER_OF_CARDS_TO_APPLY_EFFECT; i++) {
+			    
+				AbstractCard cardInDeck = AbstractDungeon.player.masterDeck.
+			    		getSpecificCard(cards_chosen[i]);
+				if (cardInDeck != null) {
+					AbstractCard card = cards_chosen[i];
+					card.updateCost(-UPDATE_COST_BY);
+				}
+				
+			}
+			cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
+			 cards_are_selected = false;
+		}
+		
 	}
-	
-	/*public void update()
-	{
-		super.update();
-		if ((!this.cardSelected) && 
-		  (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()))
-		{
-			this.cardSelected = true;
-			this.card = ((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(0));
-			this.card.inBottleFlame = true;
-			AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
-			AbstractDungeon.gridSelectScreen.selectedCards.clear();
-			this.description = (this.DESCRIPTIONS[2] + FontHelper.colorString(this.card.name, "y") + this.DESCRIPTIONS[3]);
-			this.tips.clear();
-			this.tips.add(new PowerTip(this.name, this.description));
-			initializeTips();
-	    }
-	}*/
 	
 	public boolean canSpawn()
 	{
 		CardGroup powers;
-		CardGroup powers_costing_2_or_more;
 		int number_of_powers_costing_2_or_more = 0;
 
 		CardGroup skills;
-		CardGroup skills_costing_2_or_more;
 		int number_of_skills_costing_2_or_more = 0;
 		
 		powers = AbstractDungeon.player.masterDeck.getPowers();

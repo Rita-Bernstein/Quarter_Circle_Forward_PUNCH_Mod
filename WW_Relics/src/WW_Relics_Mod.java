@@ -118,7 +118,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	
 	private void addChunLiRelics() {
 		BaseMod.addRelic(new Handcuffs(), RelicType.SHARED);
-		//BaseMod.addRelic(new SpikyBracers(), RelicType.SHARED);
+		BaseMod.addRelic(new SpikyBracers(), RelicType.SHARED);
 		BaseMod.addRelic(new WhiteBoots(), RelicType.SHARED);
 	}
 	
