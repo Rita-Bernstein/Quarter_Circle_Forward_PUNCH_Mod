@@ -25,7 +25,7 @@ public class SpikyBracers extends CustomRelic {
 	
 	public SpikyBracers() {
 		super(ID, "abacus.png", //add method for textures here.
-				RelicTier.UNCOMMON, LandingSound.HEAVY);
+				RelicTier.COMMON, LandingSound.HEAVY);
 	}
 	
 	public String getUpdatedDescription() {
