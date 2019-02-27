@@ -101,7 +101,7 @@ public class SpikyBracers extends CustomRelic {
 	      text_for_tip += FontHelper.colorString(cards_chosen[0].name, "y");
 	      text_for_tip += DESCRIPTIONS[5];
 	      this.tips.clear();
-	      this.tips.add(new PowerTip(this.name, this.description));
+	      this.tips.add(new PowerTip(this.name, text_for_tip));
 	      initializeTips();
 	    }
 	  }
