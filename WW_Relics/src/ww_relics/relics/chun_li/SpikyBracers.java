@@ -83,7 +83,7 @@ public class SpikyBracers extends CustomRelic {
 	  {
 	    super.update();
 	    if ((!cards_are_selected) && 
-	      (!(AbstractDungeon.gridSelectScreen.selectedCards.size() == 2)))
+	      (AbstractDungeon.gridSelectScreen.selectedCards.size() == 2))
 	    {
 	      this.cards_are_selected = true;
 	      for (int i = 0; i < NUMBER_OF_CARDS_TO_APPLY_EFFECT; i++) {
