@@ -11,7 +11,7 @@ Version 2 of the roadmap.
 
 # Relics
 
-Link in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/Mod-Relics).
+Link in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/Relics).
 
 # Roadmap
 
