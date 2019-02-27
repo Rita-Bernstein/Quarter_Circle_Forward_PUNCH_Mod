@@ -1,5 +1,8 @@
 package ww_relics.relics.chun_li;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
@@ -20,12 +23,18 @@ public class SpikyBracers extends CustomRelic {
 	private static final int UPDATE_COST_TEXT = -UPDATE_COST_BY;
 	private static final int NUMBER_OF_CARDS_TO_APPLY_EFFECT = 2;
 	
-	private static AbstractCard[] cards_chosen;
-	private boolean cards_are_selected = false;
+	//Doing this fix the "not-saving" problem?
+	public AbstractCard[] cards_chosen;
+	public boolean cards_are_selected = false;
+	
+	Logger logger = LogManager.getLogger(SpikyBracers.class.getName());
 	
 	public SpikyBracers() {
 		super(ID, "abacus.png", //add method for textures here.
 				RelicTier.COMMON, LandingSound.HEAVY);
+		
+		logger.info("Cards are selected = " + cards_are_selected);
+		logger.info("Cards chosen = " + cards_chosen == null);
 	}
 	
 	public String getUpdatedDescription() {
