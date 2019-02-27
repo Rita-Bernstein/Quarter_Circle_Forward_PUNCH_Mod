@@ -44,7 +44,7 @@ Fruitstrike (https://github.com/gskleres), because all the topic titles from the
 
 daviscook477 (https://github.com/daviscook477) for his guide (https://github.com/daviscook477/BaseMod/wiki/Starting-Your-Mod).
 
-Nafen, from the modding chanel, for helping with the description of the Handcuffs' effect.
+Nafen, from the modding channel, for helping with the description of the Handcuffs' effect.
 
 STREET FIGHTER is a registered trademark of CAPCOM U.S.A., INC.
 
