@@ -26,8 +26,6 @@ public class SpikyBracers extends CustomRelic {
 	public SpikyBracers() {
 		super(ID, "abacus.png", //add method for textures here.
 				RelicTier.UNCOMMON, LandingSound.HEAVY);
-		
-		cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
 	}
 	
 	public String getUpdatedDescription() {
@@ -68,6 +66,7 @@ public class SpikyBracers extends CustomRelic {
 			
 			AbstractDungeon.getCurrRoom().phase = RoomPhase.INCOMPLETE;
 			
+			cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
 			AbstractDungeon.gridSelectScreen.open(getValidCardGroup(), 2, getUncoloredDescription(), false, false, false, false);
 		}
 	}
