@@ -17,6 +17,7 @@ public class SpikyBracers extends CustomRelic {
 	public static final String ID = "WW_Relics:Spiky_Bracers";
 	
 	private static final int UPDATE_COST_BY = -1;
+	private static final int UPDATE_COST_TEXT = -UPDATE_COST_BY;
 	private static final int NUMBER_OF_CARDS_TO_APPLY_EFFECT = 2;
 	
 	private static AbstractCard[] cards_chosen;
@@ -31,7 +32,7 @@ public class SpikyBracers extends CustomRelic {
 	
 	public String getUpdatedDescription() {
 		return DESCRIPTIONS[0] + NUMBER_OF_CARDS_TO_APPLY_EFFECT+
-				DESCRIPTIONS[1] + UPDATE_COST_BY +
+				DESCRIPTIONS[1] + UPDATE_COST_TEXT +
 				DESCRIPTIONS[2];
 	}
 	
@@ -93,11 +94,12 @@ public class SpikyBracers extends CustomRelic {
 	      
 	      AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
 	      AbstractDungeon.gridSelectScreen.selectedCards.clear();
-	      this.description += DESCRIPTIONS[3];
-	      this.description += FontHelper.colorString(cards_chosen[0].name, "y");
-	      this.description += DESCRIPTIONS[4];
-	      this.description += FontHelper.colorString(cards_chosen[0].name, "y");
-	      this.description += DESCRIPTIONS[5];
+	      String text_for_tip = this.description;
+	      text_for_tip += DESCRIPTIONS[3];
+	      text_for_tip += FontHelper.colorString(cards_chosen[0].name, "y");
+	      text_for_tip += DESCRIPTIONS[4];
+	      text_for_tip += FontHelper.colorString(cards_chosen[0].name, "y");
+	      text_for_tip += DESCRIPTIONS[5];
 	      this.tips.clear();
 	      this.tips.add(new PowerTip(this.name, this.description));
 	      initializeTips();
