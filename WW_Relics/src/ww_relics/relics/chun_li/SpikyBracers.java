@@ -1,5 +1,7 @@
 package ww_relics.relics.chun_li;
 
+import java.io.IOException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -176,31 +178,38 @@ public class SpikyBracers extends CustomRelic {
             
         	final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
             
-        	logger.info(AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[0]));
-        	logger.info(AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[1]));
-            
-            config.setInt("ww_relics:spiky_bracers_1",
+        	if (relic.cards_chosen != null) {
+            	logger.info(AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[0]));
+            	logger.info(AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[1]));
+        	}
+        	
+            config.setInt("spiky_bracers_1",
             		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[0]));
-            config.setInt("ww_relics:spiky_bracers_2",
+            config.setInt("spiky_bracers_2",
             		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[1]));
+            try {
+				config.save();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
         }
         else {
-            config.remove("ww_relics:spiky_bracers_1");
-            config.remove("ww_relics:spiky_bracers_2");
+            config.remove("spiky_bracers_1");
+            config.remove("spiky_bracers_2");
         }
     }
 	
 	public static void load(final SpireConfig config) {
 		
 		logger.info("Tried to load here.");
-		logger.info("config.has(\"ww_relics:spiky_bracers_1\") " + config.has("ww_relics:spiky_bracers_1"));
+		logger.info("config.has(\"spiky_bracers_1\") " + config.has("spiky_bracers_1"));
 		logger.info("Has SpikyBracers " + AbstractDungeon.player.hasRelic(ID));
 		
-		if (AbstractDungeon.player.hasRelic(ID) && config.has("ww_relics:spiky_bracers_1")) {
+		if (AbstractDungeon.player.hasRelic(ID) && config.has("spiky_bracers_1")) {
 			logger.info("Tried to load here 2.");
             final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
-            final int cardIndex_1 = config.getInt("ww_relics:spiky_bracers_1");
-            final int cardIndex_2 = config.getInt("ww_relics:spiky_bracers_2");
+            final int cardIndex_1 = config.getInt("spiky_bracers_1");
+            final int cardIndex_2 = config.getInt("spiky_bracers_2");
             
             logger.info(cardIndex_1 + " " + cardIndex_2);
             
@@ -217,6 +226,13 @@ public class SpikyBracers extends CustomRelic {
             	logger.info("Tried to load here 4.");
             	loadSpikyCard(relic, cardIndex_2, 1);
             }
+            
+            try {
+				config.load();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
     }
 	
