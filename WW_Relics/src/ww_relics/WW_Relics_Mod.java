@@ -1,3 +1,5 @@
+package ww_relics;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
@@ -18,7 +20,7 @@ import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
-
+import basemod.interfaces.StartGameSubscriber;
 import ww_relics.relics.chun_li.Handcuffs;
 import ww_relics.relics.chun_li.SpikyBracers;
 import ww_relics.relics.chun_li.WhiteBoots;
