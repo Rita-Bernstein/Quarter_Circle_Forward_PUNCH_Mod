@@ -173,7 +173,12 @@ public class SpikyBracers extends CustomRelic {
 		logger.info("Started here.");
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
         	logger.info("Came here.");
-            final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
+            
+        	final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
+            
+        	logger.info(AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[0]));
+        	logger.info(AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[1]));
+            
             config.setInt("ww_relics:spiky_bracers_1",
             		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[0]));
             config.setInt("ww_relics:spiky_bracers_2",
@@ -186,12 +191,18 @@ public class SpikyBracers extends CustomRelic {
     }
 	
 	public static void load(final SpireConfig config) {
+		
 		logger.info("Tried to load here.");
+		logger.info("config.has(\"ww_relics:spiky_bracers_1\") " + config.has("ww_relics:spiky_bracers_1"));
+		logger.info("Has SpikyBracers " + AbstractDungeon.player.hasRelic(ID));
+		
 		if (AbstractDungeon.player.hasRelic(ID) && config.has("ww_relics:spiky_bracers_1")) {
 			logger.info("Tried to load here 2.");
             final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
             final int cardIndex_1 = config.getInt("ww_relics:spiky_bracers_1");
             final int cardIndex_2 = config.getInt("ww_relics:spiky_bracers_2");
+            
+            logger.info(cardIndex_1 + " " + cardIndex_2);
             
         	relic.cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
             
@@ -213,6 +224,7 @@ public class SpikyBracers extends CustomRelic {
 		logger.info("Did it " + position);
     	relic.cards_chosen[position] = AbstractDungeon.player.masterDeck.group.get(index);
         if (relic.cards_chosen[position]!= null) {
+        	logger.info("And reduced cost.");
         	relic.cards_chosen[position].updateCost(UPDATE_COST_BY);
         }
 	}
