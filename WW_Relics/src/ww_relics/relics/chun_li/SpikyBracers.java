@@ -28,7 +28,7 @@ public class SpikyBracers extends CustomRelic {
 	public AbstractCard[] cards_chosen;
 	public boolean cards_are_selected = false;
 	
-	Logger logger = LogManager.getLogger(SpikyBracers.class.getName());
+	static Logger logger = LogManager.getLogger(SpikyBracers.class.getName());
 	
 	public SpikyBracers() {
 		super(ID, "abacus.png", //add method for textures here.
@@ -170,7 +170,9 @@ public class SpikyBracers extends CustomRelic {
 	}
 	
 	public static void save(final SpireConfig config) {
+		logger.info("Started here.");
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
+        	logger.info("Came here.");
             final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
             config.setInt("ww_relics:spiky_bracers_1",
             		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[0]));
@@ -184,7 +186,9 @@ public class SpikyBracers extends CustomRelic {
     }
 	
 	public static void load(final SpireConfig config) {
+		logger.info("Tried to load here.");
 		if (AbstractDungeon.player.hasRelic(ID) && config.has("ww_relics:spiky_bracers_1")) {
+			logger.info("Tried to load here 2.");
             final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
             final int cardIndex_1 = config.getInt("ww_relics:spiky_bracers_1");
             final int cardIndex_2 = config.getInt("ww_relics:spiky_bracers_2");
@@ -193,21 +197,28 @@ public class SpikyBracers extends CustomRelic {
             
             if (cardIndex_1 >= 0 &&
             		cardIndex_1 < AbstractDungeon.player.masterDeck.group.size()) {
+            	logger.info("Tried to load here 3.");
             	loadSpikyCard(relic, cardIndex_1, 0);
             }
             
             if (cardIndex_2 >= 0 &&
             		cardIndex_2 < AbstractDungeon.player.masterDeck.group.size()) {
+            	logger.info("Tried to load here 4.");
             	loadSpikyCard(relic, cardIndex_2, 1);
             }
         }
     }
 	
 	public static void loadSpikyCard(SpikyBracers relic, int index, int position) {
+		logger.info("Did it " + position);
     	relic.cards_chosen[position] = AbstractDungeon.player.masterDeck.group.get(index);
         if (relic.cards_chosen[position]!= null) {
         	relic.cards_chosen[position].updateCost(UPDATE_COST_BY);
         }
+	}
+	
+	public static void clear() {
+		
 	}
 	
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic

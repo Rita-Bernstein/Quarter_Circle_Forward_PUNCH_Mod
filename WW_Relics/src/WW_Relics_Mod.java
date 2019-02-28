@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.logging.log4j.LogManager;
@@ -5,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
@@ -25,7 +27,7 @@ import ww_relics.relics.ryu.RedHeadband;
 
 @SpireInitializer
 public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscriber,
-			EditKeywordsSubscriber, PostInitializeSubscriber
+			EditKeywordsSubscriber, PostInitializeSubscriber, StartGameSubscriber
 	{
 
 	//What exactly this does?
@@ -128,6 +130,45 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
 	}
 	
+	public static void loadRunData() {
+        logger.info("Loading Save Data");
+        try {
+            final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
+            SpikyBracers.load(config);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+	
+    public static void saveRunData() {
+        logger.info("Loading Save Data");
+        try {
+        	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
+            SpikyBracers.save(config);
+        }
+        catch (IOException e) {
+        	e.printStackTrace();
+        }
+    }
+    
+    public static void clearRunData() {
+    	logger.info("Clearing Saved Data");
+        try {
+        	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
+        	config.clear();
+        	config.save();
+            SpikyBracers.clear();
+        }
+        catch (IOException e) {
+        	e.printStackTrace();
+        }
+    }
+    
+    public void receiveStartGame() {
+    	loadRunData();
+    }
+
 	@Override
 	public void receivePostInitialize() {
 
