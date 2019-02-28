@@ -3,6 +3,7 @@ package ww_relics.relics.chun_li;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
@@ -76,7 +77,8 @@ public class SpikyBracers extends CustomRelic {
 			AbstractDungeon.getCurrRoom().phase = RoomPhase.INCOMPLETE;
 			
 			cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
-			AbstractDungeon.gridSelectScreen.open(getValidCardGroup(), 2, getUncoloredDescription(), false, false, false, false);
+			AbstractDungeon.gridSelectScreen.open(getValidCardGroup(), 2,
+					getUncoloredDescription(), false, false, false, false);
 		}
 	}
 		
@@ -165,6 +167,47 @@ public class SpikyBracers extends CustomRelic {
 		
 		return (number_of_powers_costing_2_or_more + number_of_skills_costing_2_or_more)
 					>= NUMBER_OF_CARDS_TO_APPLY_EFFECT; 
+	}
+	
+	public static void save(final SpireConfig config) {
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
+            final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
+            config.setInt("ww_relics:spiky_bracers_1",
+            		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[0]));
+            config.setInt("ww_relics:spiky_bracers_2",
+            		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[1]));
+        }
+        else {
+            config.remove("ww_relics:spiky_bracers_1");
+            config.remove("ww_relics:spiky_bracers_2");
+        }
+    }
+	
+	public static void load(final SpireConfig config) {
+		if (AbstractDungeon.player.hasRelic(ID) && config.has("ww_relics:spiky_bracers_1")) {
+            final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
+            final int cardIndex_1 = config.getInt("ww_relics:spiky_bracers_1");
+            final int cardIndex_2 = config.getInt("ww_relics:spiky_bracers_2");
+            
+        	relic.cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
+            
+            if (cardIndex_1 >= 0 &&
+            		cardIndex_1 < AbstractDungeon.player.masterDeck.group.size()) {
+            	loadSpikyCard(relic, cardIndex_1, 0);
+            }
+            
+            if (cardIndex_2 >= 0 &&
+            		cardIndex_2 < AbstractDungeon.player.masterDeck.group.size()) {
+            	loadSpikyCard(relic, cardIndex_2, 1);
+            }
+        }
+    }
+	
+	public static void loadSpikyCard(SpikyBracers relic, int index, int position) {
+    	relic.cards_chosen[position] = AbstractDungeon.player.masterDeck.group.get(index);
+        if (relic.cards_chosen[position]!= null) {
+        	relic.cards_chosen[position].updateCost(UPDATE_COST_BY);
+        }
 	}
 	
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
