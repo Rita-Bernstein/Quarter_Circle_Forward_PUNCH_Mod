@@ -118,11 +118,6 @@ public class SpikyBracers extends CustomRelic {
 			AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
 			AbstractDungeon.gridSelectScreen.selectedCards.clear();
 			String text_for_tip = getUpdatedDescription();
-			text_for_tip += DESCRIPTIONS[3];
-			text_for_tip += FontHelper.colorString(cards_chosen[0].name, "y");
-			text_for_tip += DESCRIPTIONS[4];
-			text_for_tip += FontHelper.colorString(cards_chosen[1].name, "y");
-			text_for_tip += DESCRIPTIONS[5];
 			this.tips.clear();
 			this.tips.add(new PowerTip(this.name, text_for_tip));
 			initializeTips();
@@ -130,6 +125,7 @@ public class SpikyBracers extends CustomRelic {
 	}
 	
 	public void onUnequip() {
+		logger.info("This happened.");
 		if (cards_are_selected) {
 			for (int i = 0; i < NUMBER_OF_CARDS_TO_APPLY_EFFECT; i++) {
 			    
