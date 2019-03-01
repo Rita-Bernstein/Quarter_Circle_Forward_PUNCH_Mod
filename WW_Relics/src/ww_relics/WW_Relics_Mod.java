@@ -159,8 +159,9 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
         try {
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
         	config.clear();
+            SpikyBracers.clear(config);
         	config.save();
-            SpikyBracers.clear();
+
         }
         catch (IOException e) {
         	e.printStackTrace();

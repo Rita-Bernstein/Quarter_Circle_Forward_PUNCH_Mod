@@ -9,12 +9,14 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 
 import basemod.abstracts.CustomRelic;
 
@@ -51,13 +53,17 @@ public class SpikyBracers extends CustomRelic {
 		}
 
 		else {
-			base_description += DESCRIPTIONS[3];
-			base_description += FontHelper.colorString(cards_chosen[0].name, "y");
-			base_description += DESCRIPTIONS[4];
-			base_description += FontHelper.colorString(cards_chosen[1].name, "y");
-			base_description += DESCRIPTIONS[5];
-			
-			return base_description;
+			if (cards_chosen != null) {
+				base_description += DESCRIPTIONS[3];
+				base_description += FontHelper.colorString(cards_chosen[0].name, "y");
+				base_description += DESCRIPTIONS[4];
+				base_description += FontHelper.colorString(cards_chosen[1].name, "y");
+				base_description += DESCRIPTIONS[5];
+				
+				return base_description;
+			} else {
+				return base_description;
+			}
 		}
 	}
 	
@@ -131,6 +137,17 @@ public class SpikyBracers extends CustomRelic {
 	    	
 			AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
 			AbstractDungeon.gridSelectScreen.selectedCards.clear();
+			
+			float x = Settings.WIDTH/4;
+            float y = Settings.HEIGHT/2;
+			
+            AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(
+    				cards_chosen[0], x, y));
+            
+            x *= 3;
+            
+            AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(
+    				cards_chosen[1], x, y));
 	    }
 	    
 	    if (cards_are_selected && !power_tip_updated) {
@@ -199,6 +216,7 @@ public class SpikyBracers extends CustomRelic {
             		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[0]));
             config.setInt("spiky_bracers_2",
             		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[1]));
+            config.setBool("spiky_cards_are_selected", cards_are_selected);
             try {
 				config.save();
 			} catch (IOException e) {
@@ -208,18 +226,18 @@ public class SpikyBracers extends CustomRelic {
         else {
             config.remove("spiky_bracers_1");
             config.remove("spiky_bracers_2");
+            config.remove("spiky_cards_are_selected");
         }
     }
 	
 	public static void load(final SpireConfig config) {
 		
-		boolean set_cards_are_selected_true = false;
-		
 		logger.info("Tried to load here.");
 		logger.info("config.has(\"spiky_bracers_1\") " + config.has("spiky_bracers_1"));
 		logger.info("Has SpikyBracers " + AbstractDungeon.player.hasRelic(ID));
 		
-		if (AbstractDungeon.player.hasRelic(ID) && config.has("spiky_bracers_1")) {
+		if (AbstractDungeon.player.hasRelic(ID) && config.has("spiky_bracers_1") &&
+				config.getBool("spiky_cards_are_selected")) {
 			logger.info("Tried to load here 2.");
             final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
             final int cardIndex_1 = config.getInt("spiky_bracers_1");
@@ -233,19 +251,15 @@ public class SpikyBracers extends CustomRelic {
             		cardIndex_1 < AbstractDungeon.player.masterDeck.group.size()) {
             	logger.info("Tried to load here 3.");
             	loadSpikyCard(relic, cardIndex_1, 0);
-            	set_cards_are_selected_true = true;
             }
             
             if (cardIndex_2 >= 0 &&
             		cardIndex_2 < AbstractDungeon.player.masterDeck.group.size()) {
             	logger.info("Tried to load here 4.");
             	loadSpikyCard(relic, cardIndex_2, 1);
-            	set_cards_are_selected_true = true;
             }
             
-            if (set_cards_are_selected_true) {
-            	cards_are_selected = true;
-            }         
+            cards_are_selected = true;      
             
             try {
 				config.load();
@@ -253,11 +267,12 @@ public class SpikyBracers extends CustomRelic {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
-            
-            
-            
         }
+		
+		else
+		{
+			cards_are_selected = false;
+		}
     }
 	
 	public static void loadSpikyCard(SpikyBracers relic, int index, int position) {
@@ -269,8 +284,10 @@ public class SpikyBracers extends CustomRelic {
         }
 	}
 	
-	public static void clear() {
-		
+	public static void clear(final SpireConfig config) {
+        config.remove("spiky_bracers_1");
+        config.remove("spiky_bracers_2");
+        config.remove("spiky_cards_are_selected");
 	}
 	
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
