@@ -28,7 +28,8 @@ public class SpikyBracers extends CustomRelic {
 	
 	//Doing this fix the "not-saving" problem?
 	public AbstractCard[] cards_chosen;
-	public boolean cards_are_selected = false;
+	public static boolean cards_are_selected = false;
+	public boolean power_tip_updated = false;
 	
 	static Logger logger = LogManager.getLogger(SpikyBracers.class.getName());
 	
@@ -44,6 +45,7 @@ public class SpikyBracers extends CustomRelic {
 		String base_description = DESCRIPTIONS[0] + NUMBER_OF_CARDS_TO_APPLY_EFFECT+
 				DESCRIPTIONS[1] + UPDATE_COST_TEXT +
 				DESCRIPTIONS[2];
+		logger.info("cards selected " + cards_are_selected);
 		if (!cards_are_selected) {
 			return base_description;
 		}
@@ -83,6 +85,13 @@ public class SpikyBracers extends CustomRelic {
 					getUncoloredDescription(), false, false, false, false);
 		}
 	}
+	
+	public void updateTipPostCardsChosen() {
+		String text_for_tip = getUpdatedDescription();
+		this.tips.clear();
+		this.tips.add(new PowerTip(this.name, text_for_tip));
+		initializeTips();
+	}
 		
 	public CardGroup getValidCardGroup() {
 		
@@ -107,6 +116,7 @@ public class SpikyBracers extends CustomRelic {
 
 	}
 	
+	@SuppressWarnings("static-access")
 	public void update()
 	{
 		super.update();
@@ -118,14 +128,15 @@ public class SpikyBracers extends CustomRelic {
 	    		cards_chosen[i] = ((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(i));
 	    		cards_chosen[i].updateCost(UPDATE_COST_BY);
 	    	}
-	      
+	    	
 			AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
 			AbstractDungeon.gridSelectScreen.selectedCards.clear();
-			String text_for_tip = getUpdatedDescription();
-			this.tips.clear();
-			this.tips.add(new PowerTip(this.name, text_for_tip));
-			initializeTips();
 	    }
+	    
+	    if (cards_are_selected && !power_tip_updated) {
+			updateTipPostCardsChosen();
+			power_tip_updated = true;
+		}
 	}
 	
 	public void onUnequip() {
@@ -142,6 +153,7 @@ public class SpikyBracers extends CustomRelic {
 			}
 			cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
 			cards_are_selected = false;
+			power_tip_updated = false;
 		}
 	}
 	
@@ -201,6 +213,8 @@ public class SpikyBracers extends CustomRelic {
 	
 	public static void load(final SpireConfig config) {
 		
+		boolean set_cards_are_selected_true = false;
+		
 		logger.info("Tried to load here.");
 		logger.info("config.has(\"spiky_bracers_1\") " + config.has("spiky_bracers_1"));
 		logger.info("Has SpikyBracers " + AbstractDungeon.player.hasRelic(ID));
@@ -219,13 +233,19 @@ public class SpikyBracers extends CustomRelic {
             		cardIndex_1 < AbstractDungeon.player.masterDeck.group.size()) {
             	logger.info("Tried to load here 3.");
             	loadSpikyCard(relic, cardIndex_1, 0);
+            	set_cards_are_selected_true = true;
             }
             
             if (cardIndex_2 >= 0 &&
             		cardIndex_2 < AbstractDungeon.player.masterDeck.group.size()) {
             	logger.info("Tried to load here 4.");
             	loadSpikyCard(relic, cardIndex_2, 1);
+            	set_cards_are_selected_true = true;
             }
+            
+            if (set_cards_are_selected_true) {
+            	cards_are_selected = true;
+            }         
             
             try {
 				config.load();
@@ -233,6 +253,10 @@ public class SpikyBracers extends CustomRelic {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+
+            
+            
+            
         }
     }
 	
