@@ -32,13 +32,12 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 			EditKeywordsSubscriber, PostInitializeSubscriber, StartGameSubscriber
 	{
 
-	//What exactly this does?
 	public static final Logger logger = LogManager.getLogger(WW_Relics_Mod.class.getName()); // lets us log output
 
 	public static final String MODNAME = "World Warriors' Relics"; // mod name
 	public static final String AUTHOR = "Clauvin aka Dungeon Explorer Lan"; // your name
-	public static final String DESCRIPTION = "v0.4.0" +
-			"\r\n Adds four relics basd in SF2's main characters."
+	public static final String DESCRIPTION = "v0.5.0" +
+			"\r\n Adds five relics basd in SF2's main characters."
 		  + "\r\n v1.0 will have 16+ relics.";
 	
 	public WW_Relics_Mod() {
@@ -55,8 +54,14 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	
 	@Override
 	public void receiveEditKeywords() {
+		
+		logger.info("begin editing keywords");
+		
 		BaseMod.addKeyword(new String[] {"unsteady"}, "Block is reduced each turn.");
 		BaseMod.addKeyword(new String[] {"stunned"}, "Affected does nothing.");
+		
+		logger.info("done editing keywords");
+		
 	}
 	
 	@Override
@@ -137,10 +142,12 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
         try {
             final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             SpikyBracers.load(config);
+            WhiteBoots.load(config);
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+        logger.info("Done Loading Save Data");
 	}
 	
     public static void saveRunData() {
@@ -148,10 +155,12 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
         try {
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             SpikyBracers.save(config);
+            WhiteBoots.save(config);
         }
         catch (IOException e) {
         	e.printStackTrace();
         }
+        logger.info("Done Saving Data");
     }
     
     public static void clearRunData() {
@@ -160,12 +169,14 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
         	config.clear();
             SpikyBracers.clear(config);
+            WhiteBoots.clear(config);
         	config.save();
 
         }
         catch (IOException e) {
         	e.printStackTrace();
         }
+        logger.info("Done Clearing Saved Data");
     }
     
     public void receiveStartGame() {
