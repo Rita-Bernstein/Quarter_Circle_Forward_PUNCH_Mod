@@ -34,6 +34,16 @@ Link in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/
 
 Mod The Spire 3.8.3+, BaseMod 5.8.0+ and StSLib 1.1.4.
 
+# Compatibility
+
+This mod adds some code to the Upgrades of all base Powers and Skills that has 2-cost or more, that when upgraded reduce their own costs by one, to make them work as they look like in game with the Spiky Bracers relic.
+
+This means that mods which alter such cards MAY be incompatible and result in unpredicted behavior. If/when such mods are detected, they will be listed below. Such problem may be fixed in the future, but no promises are made.
+
+## List of Incompatible Mods:
+
+
+
 # Installation
 
 Download the .jar in the latest release, then add it to SlayTheSpire/mods folder (if you already installed the requirements. If not, do both things first).
