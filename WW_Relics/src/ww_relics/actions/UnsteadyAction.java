@@ -27,12 +27,8 @@ public class UnsteadyAction extends AbstractGameAction {
 		if (!this.isDone) {
 			
 			float blockAmount = target.currentBlock;
-			  
-			if (blockAmount < amount) {
-		
-				damage_to_apply.base = (int)blockAmount;
-				damage_to_apply.output = (int)blockAmount;
-			}
+			
+			AdjustToBlockSmallerThanDamage(blockAmount);
 
 			if (blockAmount > 0) {
 				AbstractDungeon.actionManager.addToBottom(new DamageAction(affected, damage_to_apply));
@@ -41,6 +37,14 @@ public class UnsteadyAction extends AbstractGameAction {
 			this.isDone = true;
 		}
 
+	}
+	
+	public void AdjustToBlockSmallerThanDamage(float blockAmount) {
+		if (blockAmount < amount) {
+			
+			damage_to_apply.base = (int)blockAmount;
+			damage_to_apply.output = (int)blockAmount;
+		}
 	}
 
 }
