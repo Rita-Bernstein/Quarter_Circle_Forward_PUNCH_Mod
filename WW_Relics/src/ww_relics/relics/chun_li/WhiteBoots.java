@@ -1,14 +1,18 @@
 package ww_relics.relics.chun_li;
 
+import java.io.IOException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
@@ -19,10 +23,10 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	public static final String ID = "WW_Relics:White_Boots";
 	private static final int NUMBER_OF_USES_PER_FIGHT = 1;
 	private static final int NUMBER_OF_CHOSEN_ATTACKS = 1;
-	private static final int NUMBER_OF_MAXIMUM_COST = 1;
+	private static final int MAXIMUM_COST = 1;
 	private static final int NUMBER_OF_COPIES = 3;
-	private static final int EFFECT_ON_COST_OF_THE_GENERATED_CARDS = -1;
-	private static final int EFFECT_ON_COST_READABLE = EFFECT_ON_COST_OF_THE_GENERATED_CARDS * -1;
+	private static final int EFFECT_ON_COST_OF_GENERATED_CARDS = -1;
+	private static final int EFFECT_ON_COST_READABLE = EFFECT_ON_COST_OF_GENERATED_CARDS * -1;
 	
 	public int number_of_uses_left_in_this_fight;
 	public int number_of_copies_left_to_use;
@@ -50,7 +54,7 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	private boolean have_attacks_that_are_0_or_1_cost = false;
 	
 	public WhiteBoots() {
-		super(ID, "abacus.png", //add method for textures here.
+		super(ID, "omamori.png", //add method for textures here.
 				RelicTier.UNCOMMON, LandingSound.SOLID);
 	}
 	
@@ -60,8 +64,11 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 				EFFECT_ON_COST_READABLE + DESCRIPTIONS[6];
 	}
 	
-	public void atPreBattle() {
+	public void atBattleStartPreDraw() {
+
 		number_of_uses_left_in_this_fight = NUMBER_OF_USES_PER_FIGHT;
+
+		logger.info("... " + AbstractDungeon.getCurrRoom().phase);
 		card_is_selected = false;
 		card_selected = null;
 		card_copied = null;
@@ -70,6 +77,10 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		AbstractDungeon.gridSelectScreen.selectedCards.clear();
 		
 		setBooleansOfValidUseToFalse();
+		
+		checkAndSetNotUsedRelic();
+		checkAndSetUsedRelic();
+
 	}
 	
 	private void setBooleansOfValidUseToFalse() {
@@ -81,6 +92,15 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		turn_havent_ended = false;
 		has_an_attack_in_hand = false;
 		have_attacks_that_are_0_or_1_cost = false;
+	}
+	
+	private void checkAndSetNotUsedRelic() {
+		
+		if (number_of_uses_left_in_this_fight > 0) {
+			this.usedUp = false;
+			this.img = ImageMaster.loadImage("images/relics/omamori.png");
+		}
+
 	}
 	
 	@Override
@@ -139,7 +159,7 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		
 		for (int i = 0; i < attacks.size(); i++) {
 			int cost = attacks.getNCardFromTop(i).cost;
-			if (cost <= NUMBER_OF_MAXIMUM_COST) {
+			if (cost <= MAXIMUM_COST) {
 				return true;
 			}
 		}
@@ -156,7 +176,7 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		for (int i = 0; i < list_of_all_hand_attacks.size(); i++) {
 			
 			AbstractCard card = list_of_all_hand_attacks.getNCardFromTop(i);
-			if (card.cost <= NUMBER_OF_MAXIMUM_COST) {
+			if (card.cost <= MAXIMUM_COST) {
 				list_of_attacks.addToTop(card);
 			}
 			
@@ -193,6 +213,8 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 				AbstractDungeon.gridSelectScreen.selectedCards.clear();
 				
 				have_uses_left = number_of_uses_left_in_this_fight > 0;
+				
+				checkAndSetUsedRelic(); 
 			}
 		}
 	}
@@ -213,6 +235,15 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 							copied_cards_x_position[i],
 							copied_cards_y_position[i]));
 		}
+	}
+
+	private void checkAndSetUsedRelic() {
+		
+		if (number_of_uses_left_in_this_fight <= 0) {
+			this.usedUp = true;
+			this.img = ImageMaster.loadImage("images/relics/usedOmamori.png");
+		}
+
 	}
 	
 	public void onPlayCard(AbstractCard c, AbstractMonster m)  {
@@ -237,6 +268,64 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	public boolean canSpawn()
 	{
 		return AbstractDungeon.player.masterDeck.getAttacks().size() > 0;
+	}
+	
+	public static void save(final SpireConfig config) {
+
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
+    		logger.info("Started saving White Boots information");
+        	final WhiteBoots relic = (WhiteBoots)AbstractDungeon.player.getRelic(ID);
+
+            config.setInt("White_Boots_number_of_uses",
+            		relic.number_of_uses_left_in_this_fight);
+            
+            try {
+				config.save();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+            logger.info("Finished saving White Boots info.");
+        }
+        else {
+        	clear(config);
+        }
+
+    }
+	
+	public static void load(final SpireConfig config) {
+		
+		logger.info("Loading White Boots info.");
+		if (AbstractDungeon.player.hasRelic(ID) && config.has("White_Boots_number_of_uses")){
+
+            final WhiteBoots relic = (WhiteBoots)AbstractDungeon.player.getRelic(ID);
+            final int number_of_uses = config.getInt("White_Boots_number_of_uses");
+                     
+        	relic.number_of_uses_left_in_this_fight = number_of_uses;
+            
+        	relic.checkAndSetNotUsedRelic();
+        	relic.checkAndSetUsedRelic();   
+            
+            try {
+				config.load();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            logger.info("Finished loading White Boots info.");
+        }
+		
+		else
+		{
+			logger.info("There's no info, setting variables accordingly.");
+
+			logger.info("Finished setting White Boots variables.");
+		}
+		
+		
+    }
+		
+	public static void clear(final SpireConfig config) {
+        config.remove("White_Boots_number_of_uses");
 	}
 
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
