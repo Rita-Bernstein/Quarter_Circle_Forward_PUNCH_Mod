@@ -3,7 +3,7 @@ A Slay The Spire mod, which adds relics inspired by fighters from Super Street F
 
 # Content
 
-Four relics done of 16+ planned, with placeholder image and sound.
+Five relics done of 16+ planned, with placeholder image and sound.
 
 # Current State
 
