@@ -28,8 +28,8 @@ public class SpikyBracers extends CustomRelic {
 	private static final int UPDATE_COST_TEXT = -UPDATE_COST_BY;
 	private static final int NUMBER_OF_CARDS_TO_APPLY_EFFECT = 2;
 	
-	//Doing this fix the "not-saving" problem?
 	public AbstractCard[] cards_chosen;
+	
 	public static boolean cards_are_selected = false;
 	public boolean power_tip_updated = false;
 	
@@ -38,33 +38,25 @@ public class SpikyBracers extends CustomRelic {
 	public SpikyBracers() {
 		super(ID, "abacus.png", //add method for textures here.
 				RelicTier.COMMON, LandingSound.HEAVY);
-		
-		logger.info("Cards are selected = " + cards_are_selected);
-		logger.info("Cards chosen = " + cards_chosen == null);
 	}
 	
 	public String getUpdatedDescription() {
+		
 		String base_description = DESCRIPTIONS[0] + NUMBER_OF_CARDS_TO_APPLY_EFFECT+
 				DESCRIPTIONS[1] + UPDATE_COST_TEXT +
 				DESCRIPTIONS[2];
-		logger.info("cards selected " + cards_are_selected);
-		if (!cards_are_selected) {
-			return base_description;
-		}
 
-		else {
-			if (cards_chosen != null) {
-				base_description += DESCRIPTIONS[3];
-				base_description += FontHelper.colorString(cards_chosen[0].name, "y");
-				base_description += DESCRIPTIONS[4];
-				base_description += FontHelper.colorString(cards_chosen[1].name, "y");
-				base_description += DESCRIPTIONS[5];
-				
-				return base_description;
-			} else {
-				return base_description;
-			}
+		if (!cards_are_selected) return base_description;
+		else if (cards_chosen != null)
+		{
+			base_description += DESCRIPTIONS[3];
+			base_description += FontHelper.colorString(cards_chosen[0].name, "y");
+			base_description += DESCRIPTIONS[4];
+			base_description += FontHelper.colorString(cards_chosen[1].name, "y");
+			base_description += DESCRIPTIONS[5];
 		}
+		
+		return base_description;
 	}
 	
 	public String getUncoloredDescription() {
@@ -126,13 +118,15 @@ public class SpikyBracers extends CustomRelic {
 	public void update()
 	{
 		super.update();
-	    if ((!cards_are_selected) && 
-	      (AbstractDungeon.gridSelectScreen.selectedCards.size() == 2))
+	    if (areTwoCardsSelectedAndThatsNotNoticedYet())
 	    {
 	    	this.cards_are_selected = true;
+	    	
 	    	for (int i = 0; i < NUMBER_OF_CARDS_TO_APPLY_EFFECT; i++) {
+	    		
 	    		cards_chosen[i] = ((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(i));
 	    		cards_chosen[i].updateCost(UPDATE_COST_BY);
+	    		
 	    	}
 	    	
 			AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
@@ -143,11 +137,8 @@ public class SpikyBracers extends CustomRelic {
 			
             AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(
     				cards_chosen[0], x, y));
-            
-            x *= 3;
-            
             AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(
-    				cards_chosen[1], x, y));
+    				cards_chosen[1], 3*x, y));
 	    }
 	    
 	    if (cards_are_selected && !power_tip_updated) {
@@ -156,18 +147,23 @@ public class SpikyBracers extends CustomRelic {
 		}
 	}
 	
+	private boolean areTwoCardsSelectedAndThatsNotNoticedYet() {
+		return (!cards_are_selected) && (AbstractDungeon.gridSelectScreen.selectedCards.size() == 2);
+	}
+	
 	public void onUnequip() {
-		logger.info("This happened.");
 		if (cards_are_selected) {
+			
 			for (int i = 0; i < NUMBER_OF_CARDS_TO_APPLY_EFFECT; i++) {
 			    
-				AbstractCard cardInDeck = AbstractDungeon.player.masterDeck.
-			    		getSpecificCard(cards_chosen[i]);
+				AbstractCard cardInDeck = AbstractDungeon.player.masterDeck.getSpecificCard(cards_chosen[i]);
+	
 				if (cardInDeck != null) {
-					AbstractCard card = cards_chosen[i];
-					card.updateCost(-UPDATE_COST_BY);
-				}		
+					cards_chosen[i].updateCost(-UPDATE_COST_BY);
+				}	
+				
 			}
+			
 			cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
 			cards_are_selected = false;
 			power_tip_updated = false;
@@ -183,62 +179,59 @@ public class SpikyBracers extends CustomRelic {
 		int number_of_skills_costing_2_or_more = 0;
 		
 		powers = AbstractDungeon.player.masterDeck.getPowers();
-		powers.sortByCost(false);
-		
-		for (int i = 0; i < powers.size(); i++) {
-			if (powers.getNCardFromTop(i).cost >= 2) number_of_powers_costing_2_or_more += 1;
-		}
+		number_of_powers_costing_2_or_more = countNumberOfValidCards(powers);
 		
 		skills = AbstractDungeon.player.masterDeck.getSkills();
-		skills.sortByCost(false);
-		
-		for (int i = 0; i < skills.size(); i++) {
-			if (skills.getNCardFromTop(i).cost >= 2) number_of_skills_costing_2_or_more += 1;
-		}
+		number_of_skills_costing_2_or_more = countNumberOfValidCards(skills);
 		
 		return (number_of_powers_costing_2_or_more + number_of_skills_costing_2_or_more)
 					>= NUMBER_OF_CARDS_TO_APPLY_EFFECT; 
 	}
 	
+	public int countNumberOfValidCards(CardGroup card_group) {
+		int number_of_cards_costing_2_or_more = 0;
+		
+		card_group.sortByCost(false);
+		
+		for (int i = 0; i < card_group.size(); i++) {
+			if (card_group.getNCardFromTop(i).cost >= 2) number_of_cards_costing_2_or_more += 1;
+		}
+		
+		return number_of_cards_costing_2_or_more;
+	}
+	
 	public static void save(final SpireConfig config) {
-		logger.info("Started here.");
+
+
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
-        	logger.info("Came here.");
-            
+    		logger.info("Started saving SpikyBracers information");
         	final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
-            
-        	if (relic.cards_chosen != null) {
-            	logger.info(AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[0]));
-            	logger.info(AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[1]));
-        	}
-        	
+
             config.setInt("spiky_bracers_1",
             		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[0]));
             config.setInt("spiky_bracers_2",
             		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[1]));
             config.setBool("spiky_cards_are_selected", cards_are_selected);
+            
             try {
 				config.save();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+            logger.info("Finished saving Spike Bracers info.");
         }
         else {
-            config.remove("spiky_bracers_1");
-            config.remove("spiky_bracers_2");
-            config.remove("spiky_cards_are_selected");
+        	clear(config);
         }
+
     }
 	
 	public static void load(final SpireConfig config) {
 		
-		logger.info("Tried to load here.");
-		logger.info("config.has(\"spiky_bracers_1\") " + config.has("spiky_bracers_1"));
-		logger.info("Has SpikyBracers " + AbstractDungeon.player.hasRelic(ID));
-		
+		logger.info("Loading Spiky Bracers info.");
 		if (AbstractDungeon.player.hasRelic(ID) && config.has("spiky_bracers_1") &&
 				config.getBool("spiky_cards_are_selected")) {
-			logger.info("Tried to load here 2.");
+
             final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
             final int cardIndex_1 = config.getInt("spiky_bracers_1");
             final int cardIndex_2 = config.getInt("spiky_bracers_2");
@@ -267,19 +260,24 @@ public class SpikyBracers extends CustomRelic {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+            logger.info("Finished loading Spiky Bracers info.");
         }
 		
 		else
 		{
+			logger.info("There's no info, setting variables accordingly.");
 			cards_are_selected = false;
+			logger.info("Finished setting Spiky Bracers variables.");
 		}
+		
+		
     }
 	
 	public static void loadSpikyCard(SpikyBracers relic, int index, int position) {
-		logger.info("Did it " + position);
+		
     	relic.cards_chosen[position] = AbstractDungeon.player.masterDeck.group.get(index);
+    	
         if (relic.cards_chosen[position]!= null) {
-        	logger.info("And reduced cost.");
         	relic.cards_chosen[position].updateCost(UPDATE_COST_BY);
         }
 	}
