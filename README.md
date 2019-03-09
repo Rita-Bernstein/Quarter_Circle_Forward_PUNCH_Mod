@@ -7,7 +7,7 @@ Five relics done of 16+ planned, with placeholder image and sound.
 
 # Current State
 
-Version 2 of the roadmap.
+Walking towards roadmap's milestone 2.
 
 # Relics
 
