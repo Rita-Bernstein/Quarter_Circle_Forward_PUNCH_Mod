@@ -12,13 +12,14 @@ import ww_relics.relics.ryu.FightingGloves;
 @RunWith(JUnitPlatform.class)
 public class FightingGlovesTest {
 
-    @Test
+    @SuppressWarnings("static-access")
+	@Test
     @DisplayName("Values added to the charge variable are really added - #113")
-    void myFirstTest(TestInfo testInfo) {
+    void addChargesAdds1(TestInfo testInfo) {
     	FightingGloves fighting_gloves = new FightingGloves();
-        Assertions.assertEquals(2, 1+0, "1 + 1 = 2");
-        Assertions.assertEquals("My First Test", testInfo.getDisplayName(),
-                                    () -> "TestInfo is injected correctly");
+    	int initial_value = fighting_gloves.getCharges();
+    	fighting_gloves.addCharges(1);
+        Assertions.assertEquals(initial_value+1, fighting_gloves.getCharges(), "1 plus confirmed");
     }
 	
 }
