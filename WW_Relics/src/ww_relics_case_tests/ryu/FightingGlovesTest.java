@@ -20,8 +20,9 @@ public class FightingGlovesTest {
     void addChargesAdds1(TestInfo testInfo) {
     		
     	CardCrawlGame card_crawl_game = new CardCrawlGame("C:/CrawlTest");
+    	card_crawl_game.create();
     	
-    	FightingGloves fighting_gloves = null;
+    	FightingGloves fighting_gloves = new FightingGloves();
     	
     	int initial_value = fighting_gloves.getCharges();
     	fighting_gloves.addCharges(1);
