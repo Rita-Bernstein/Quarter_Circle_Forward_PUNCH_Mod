@@ -21,7 +21,7 @@ public class FightingGlovesTest {
     		
     	CardCrawlGame card_crawl_game = new CardCrawlGame("C:/CrawlTest");
     	
-    	FightingGloves fighting_gloves = new FightingGloves();
+    	FightingGloves fighting_gloves = null;
     	
     	int initial_value = fighting_gloves.getCharges();
     	fighting_gloves.addCharges(1);
