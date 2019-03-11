@@ -8,7 +8,9 @@ import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
@@ -18,6 +20,7 @@ import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.helpers.ShaderHelper;
 import com.megacrit.cardcrawl.helpers.TipTracker;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
@@ -30,9 +33,15 @@ public class FightingGlovesTest {
 	@Test
     @DisplayName("Values added to the charge variable are really added - #113")
     void addChargesAdds1(TestInfo testInfo) {
-    		  	
-        AbstractCard.initialize();
+    	
+    	CardCrawlGame card_crawl_game = new CardCrawlGame("C:/CardCrawlTest");
+    	Settings settings = new Settings();
+    	card_crawl_game.languagePack = new LocalizedStrings();
+    	
+    	
         GameDictionary.initialize();
+        AbstractCreature.initialize();
+        AbstractCard.initialize();
         ImageMaster.initialize();
         AbstractPower.initialize();
         FontHelper.initialize();
