@@ -13,6 +13,7 @@ public class FightingGloves extends CustomRelic {
 	public FightingGloves() {
 		super(ID, "abacus.png", //add method for textures here.
 				RelicTier.RARE, LandingSound.SOLID);
+		belowZeroCheck();
 	}
 	
 	public static int getCharges() {
