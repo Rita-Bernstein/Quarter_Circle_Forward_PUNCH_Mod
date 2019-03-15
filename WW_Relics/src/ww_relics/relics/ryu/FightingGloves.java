@@ -1,11 +1,16 @@
 package ww_relics.relics.ryu;
 
+import java.io.IOException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.relics.chun_li.SpikyBracers;
 
 public class FightingGloves extends CustomRelic {
 	
@@ -64,6 +69,32 @@ public class FightingGloves extends CustomRelic {
 		} 
 		return description;
 		
+	}
+	
+	public static void save(final SpireConfig config) {
+
+
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
+    		logger.info("Started saving Fighting Gloves information");
+        	final FightingGloves relic = (FightingGloves)AbstractDungeon.player.getRelic(ID);
+
+            config.setInt("fighting_gloves_1", positive_charges);
+            
+            try {
+				config.save();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+            logger.info("Finished saving Fighting Gloves info.");
+        }
+        else {
+        	clear(config);
+        }
+
+    }
+	
+	public static void clear(final SpireConfig config) {
+        config.remove("fighting_gloves_1");
 	}
 
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
