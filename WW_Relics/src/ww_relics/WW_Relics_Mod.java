@@ -25,6 +25,7 @@ import ww_relics.relics.chun_li.Handcuffs;
 import ww_relics.relics.chun_li.SpikyBracers;
 import ww_relics.relics.chun_li.WhiteBoots;
 import ww_relics.relics.ryu.DuffelBag;
+import ww_relics.relics.ryu.FightingGloves;
 import ww_relics.relics.ryu.RedHeadband;
 
 @SpireInitializer
@@ -133,7 +134,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 	
 	private void addRyuRelics() {
 		BaseMod.addRelic(new DuffelBag(), RelicType.SHARED);
-		//BaseMod.addRelic(new FightingGloves(), RelicType.SHARED);
+		BaseMod.addRelic(new FightingGloves(), RelicType.SHARED);
 		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
 	}
 	
