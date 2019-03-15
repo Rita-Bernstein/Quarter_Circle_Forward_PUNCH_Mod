@@ -283,9 +283,11 @@ public class SpikyBracers extends CustomRelic {
 	}
 	
 	public static void clear(final SpireConfig config) {
+		logger.info("Clearing Spiky Bracers variables.");      
         config.remove("spiky_bracers_1");
         config.remove("spiky_bracers_2");
         config.remove("spiky_cards_are_selected");
+        logger.info("Finished clearing Spiky Bracers variables.");
 	}
 	
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
