@@ -76,7 +76,6 @@ public class FightingGloves extends CustomRelic {
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
     		logger.info("Started saving Fighting Gloves information");
-        	final FightingGloves relic = (FightingGloves)AbstractDungeon.player.getRelic(ID);
 
             config.setInt("fighting_gloves_1", positive_charges);
             
