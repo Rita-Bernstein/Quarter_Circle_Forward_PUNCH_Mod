@@ -1,14 +1,22 @@
 package ww_relics.relics.ryu;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
 
 public class FightingGloves extends CustomRelic {
+	
+	public static final Logger logger = LogManager.getLogger(FightingGloves.class.getName());
+	
 	public static final String ID = "WW_Relics:Fighting_Gloves";
 	private static final int EXTRA_UPGRADES_PER_UPGRADE = 1;
-	private static final int INITIAL_CHARGES = 0;
+	private static final int INITIAL_CHARGES = 1;
 	private static int positive_charges = INITIAL_CHARGES;
+	
+	
 	
 	public FightingGloves() {
 		super(ID, "abacus.png", //add method for textures here.
@@ -27,6 +35,7 @@ public class FightingGloves extends CustomRelic {
 	
 	public static void belowZeroCheck() {
 		if (positive_charges < 0) positive_charges = 0;
+		logger.info(positive_charges);
 	}
 	
 	public static void addCharges(int value_to_add) {
