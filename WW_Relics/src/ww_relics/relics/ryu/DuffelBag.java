@@ -2,9 +2,6 @@ package ww_relics.relics.ryu;
 
 import java.util.ArrayList;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.BandageUp;
 import com.megacrit.cardcrawl.cards.colorless.Panacea;
@@ -18,8 +15,6 @@ import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 import basemod.abstracts.CustomRelic;
 
 public class DuffelBag extends CustomRelic {
-	
-	public static final Logger logger = LogManager.getLogger(DuffelBag.class.getName());
 	
 	public static final String ID = "WW_Relics:Duffel_Bag";
 	private static final int NUMBER_OF_STATIC_CARDS = 2;
