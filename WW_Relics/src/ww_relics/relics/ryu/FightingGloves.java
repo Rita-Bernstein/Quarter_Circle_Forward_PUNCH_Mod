@@ -33,7 +33,6 @@ public class FightingGloves extends CustomRelic {
 	public static void setCharges(int value) {
 		positive_charges = value;
 		belowZeroCheck();
-		logger.info("New value to positive_charges is " + positive_charges);
 	}
 	
 	public static void belowZeroCheck() {
@@ -49,13 +48,11 @@ public class FightingGloves extends CustomRelic {
 	public static void addCharges(int value_to_add) {
 		positive_charges += value_to_add;
 		belowZeroCheck();
-		logger.info("New value to positive_charges is " + positive_charges);
 	}
 	
 	public static void removeCharges(int value_to_subtract) {
 		positive_charges -= value_to_subtract;
 		belowZeroCheck();
-		logger.info("New value to positive_charges is " + positive_charges);
 	}
 	
 	@SuppressWarnings("unused")
@@ -73,9 +70,8 @@ public class FightingGloves extends CustomRelic {
 		
 	}
 	
-	
-	
 	public static void save(final SpireConfig config) {
+
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
     		logger.info("Started saving Fighting Gloves information");
