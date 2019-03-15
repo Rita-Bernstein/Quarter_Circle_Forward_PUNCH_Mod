@@ -13,10 +13,8 @@ public class FightingGloves extends CustomRelic {
 	
 	public static final String ID = "WW_Relics:Fighting_Gloves";
 	private static final int EXTRA_UPGRADES_PER_UPGRADE = 1;
-	private static final int INITIAL_CHARGES = 1;
+	private static final int INITIAL_CHARGES = -1;
 	private static int positive_charges = INITIAL_CHARGES;
-	
-	
 	
 	public FightingGloves() {
 		super(ID, "abacus.png", //add method for textures here.
@@ -34,8 +32,13 @@ public class FightingGloves extends CustomRelic {
 	}
 	
 	public static void belowZeroCheck() {
-		if (positive_charges < 0) positive_charges = 0;
-		logger.info(positive_charges);
+		if (positive_charges < 0) {
+			logger.info("WARNING - For some reason, FightingGloves.positive_charges was with " +
+					positive_charges + " value.");
+			positive_charges = 0;
+			logger.info("And it's now 0. Tell the developer about it? Thanks!");
+		}
+		
 	}
 	
 	public static void addCharges(int value_to_add) {
