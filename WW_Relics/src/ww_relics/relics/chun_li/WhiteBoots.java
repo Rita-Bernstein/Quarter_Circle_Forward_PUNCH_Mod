@@ -325,7 +325,9 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
     }
 		
 	public static void clear(final SpireConfig config) {
+		logger.info("Clearing White Boots variables.");      
         config.remove("White_Boots_number_of_uses");
+        logger.info("Finished clearing White Boots variables.");
 	}
 
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
