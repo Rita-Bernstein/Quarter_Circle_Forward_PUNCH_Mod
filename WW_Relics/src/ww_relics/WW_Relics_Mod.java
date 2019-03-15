@@ -144,7 +144,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
             final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             SpikyBracers.load(config);
             WhiteBoots.load(config);
-            //FightingGloves.load(config);
+            FightingGloves.load(config);
         }
         catch (IOException e) {
             e.printStackTrace();
