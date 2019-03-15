@@ -13,7 +13,7 @@ public class FightingGloves extends CustomRelic {
 	
 	public static final String ID = "WW_Relics:Fighting_Gloves";
 	private static final int EXTRA_UPGRADES_PER_UPGRADE = 1;
-	private static final int INITIAL_CHARGES = -1;
+	private static final int INITIAL_CHARGES = 1;
 	private static int positive_charges = INITIAL_CHARGES;
 	
 	public FightingGloves() {
