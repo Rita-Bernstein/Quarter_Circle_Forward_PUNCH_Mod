@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
-import ww_relics.relics.chun_li.SpikyBracers;
 
 public class FightingGloves extends CustomRelic {
 	
