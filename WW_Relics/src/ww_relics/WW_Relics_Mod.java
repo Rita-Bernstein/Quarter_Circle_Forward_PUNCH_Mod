@@ -144,6 +144,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
             final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             SpikyBracers.load(config);
             WhiteBoots.load(config);
+            //FightingGloves.load(config);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -157,6 +158,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             SpikyBracers.save(config);
             WhiteBoots.save(config);
+            FightingGloves.save(config);
         }
         catch (IOException e) {
         	e.printStackTrace();
@@ -171,6 +173,7 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
         	config.clear();
             SpikyBracers.clear(config);
             WhiteBoots.clear(config);
+            FightingGloves.clear(config);
         	config.save();
 
         }
