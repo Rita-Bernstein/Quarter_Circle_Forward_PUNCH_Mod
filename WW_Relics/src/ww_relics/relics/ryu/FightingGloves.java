@@ -6,10 +6,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.relics.chun_li.SpikyBracers;
 
 public class FightingGloves extends CustomRelic {
 	
@@ -89,6 +91,32 @@ public class FightingGloves extends CustomRelic {
         	clear(config);
         }
 
+    }
+	
+	public static void load(final SpireConfig config) {
+		
+		logger.info("Loading Fighting Gloves info.");
+		if (AbstractDungeon.player.hasRelic(ID) && config.has("fighting_gloves_1")) {
+
+			positive_charges = config.getInt("fighting_gloves_1");
+
+            try {
+				config.load();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            logger.info("Finished loading Fighting Gloves info.");
+        }
+		
+		else
+		{
+			logger.info("There's no info, setting variables accordingly.");
+
+			logger.info("Finished setting Fighting Gloves variables.");
+		}
+		
+		
     }
 	
 	public static void clear(final SpireConfig config) {
