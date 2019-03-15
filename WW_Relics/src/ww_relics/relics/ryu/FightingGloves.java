@@ -118,7 +118,9 @@ public class FightingGloves extends CustomRelic {
     }
 	
 	public static void clear(final SpireConfig config) {
+		logger.info("Clearing Fighting Gloves variables.");
         config.remove("fighting_gloves_1");
+        logger.info("Finished clearing Fighting Gloves variables.");
 	}
 
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
