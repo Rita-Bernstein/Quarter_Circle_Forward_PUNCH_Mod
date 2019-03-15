@@ -96,7 +96,7 @@ public class FightingGloves extends CustomRelic {
 		logger.info("Loading Fighting Gloves info.");
 		if (AbstractDungeon.player.hasRelic(ID) && config.has("fighting_gloves_1")) {
 
-			positive_charges = config.getInt("fighting_gloves_1");
+			setCharges(config.getInt("fighting_gloves_1"));
 
             try {
 				config.load();
