@@ -33,6 +33,8 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	private static final int MULTIPLE_THAT_INCREASES_CHARGES = 4;
 	private static int rooms_visited = 0;
 	
+	private static boolean cards_upgraded_in_this_room = false;
+	
 	public FightingGloves() {
 		super(ID, "abacus.png", //add method for textures here.
 				RelicTier.RARE, LandingSound.SOLID);
@@ -88,6 +90,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	}
 	
 	public void onEnterRoom(AbstractRoom room) {
+		cards_upgraded_in_this_room = false;
 		rooms_visited++;
 		logger.info("rooms_visited " + rooms_visited);
 		if (rooms_visited % MULTIPLE_THAT_INCREASES_CHARGES == 0) {
@@ -151,7 +154,8 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		logger.info("AbstractDungeon.gridSelectScreen.selectedCards.size()" + 
 						AbstractDungeon.gridSelectScreen.selectedCards.size());
 		
-		if (AbstractDungeon.gridSelectScreen.selectedCards.size() == positive_charges)
+		if ((!cards_upgraded_in_this_room) && 
+				(AbstractDungeon.gridSelectScreen.selectedCards.size() == positive_charges))
 	    {
 			float x = Settings.WIDTH;
             float y = Settings.HEIGHT;
@@ -170,10 +174,15 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	    	}
 	    	
 			AbstractDungeon.gridSelectScreen.selectedCards.clear();
-			AbstractDungeon.screen = AbstractDungeon.previousScreen;
+			AbstractDungeon.gridSelectScreen.cancelUpgrade();
+			
+			/*RestRoom r = (RestRoom)AbstractDungeon.getCurrRoom();
+              r.campfireUI.reopen();*/
 			
 			setCharges(0);
 			counter = positive_charges;
+			
+			cards_upgraded_in_this_room = true;
 	    }
 	    
 
