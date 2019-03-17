@@ -173,16 +173,17 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	    				c, random_x * x, random_y * y));
 	    	}
 	    	
-			AbstractDungeon.gridSelectScreen.selectedCards.clear();
-			AbstractDungeon.gridSelectScreen.cancelUpgrade();
-			
-			/*RestRoom r = (RestRoom)AbstractDungeon.getCurrRoom();
-              r.campfireUI.reopen();*/
+
 			
 			setCharges(0);
 			counter = positive_charges;
 			
 			cards_upgraded_in_this_room = true;
+			
+			AbstractDungeon.gridSelectScreen.selectedCards.clear();
+			AbstractDungeon.closeCurrentScreen();
+			
+			AbstractDungeon.dynamicBanner.appear();
 	    }
 	    
 
