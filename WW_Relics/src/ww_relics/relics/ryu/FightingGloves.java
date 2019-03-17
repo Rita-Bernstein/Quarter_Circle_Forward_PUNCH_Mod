@@ -179,7 +179,11 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 			cards_upgraded_in_this_room = true;
 			
 			AbstractDungeon.gridSelectScreen.selectedCards.clear();
+			
 			AbstractDungeon.overlayMenu.hideBlackScreen();
+			AbstractDungeon.dynamicBanner.appear();
+			AbstractDungeon.isScreenUp = false;
+			
 		    
 
 			
