@@ -169,8 +169,8 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	    				c, random_x * x, random_y * y));
 	    	}
 	    	
-			AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
 			AbstractDungeon.gridSelectScreen.selectedCards.clear();
+			AbstractDungeon.screen = AbstractDungeon.previousScreen;
 			
 			setCharges(0);
 			counter = positive_charges;
