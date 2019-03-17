@@ -28,6 +28,7 @@ public class FightingGloves extends CustomRelic {
 		super(ID, "abacus.png", //add method for textures here.
 				RelicTier.RARE, LandingSound.SOLID);
 		belowZeroCheck();
+		counter = INITIAL_CHARGES;
 	}
 	
 	public static int getCharges() {
@@ -79,9 +80,12 @@ public class FightingGloves extends CustomRelic {
 	
 	public void onEnterRoom(AbstractRoom room) {
 		rooms_visited++;
+		logger.info("rooms_visited " + rooms_visited);
 		if (rooms_visited % MULTIPLE_THAT_INCREASES_CHARGES == 0) {
 			addCharges(1);
+			counter = positive_charges;
 		}
+		
 	}
 	
 	public static void save(final SpireConfig config) {
