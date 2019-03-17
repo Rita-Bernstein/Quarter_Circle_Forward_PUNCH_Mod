@@ -28,10 +28,12 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	public static final String ID = "WW_Relics:Fighting_Gloves";
 	private static final int EXTRA_UPGRADES_PER_UPGRADE = 1;
-	private static final int INITIAL_CHARGES = 1;
+	private static final int INITIAL_CHARGES = 2;
 	private static int positive_charges = INITIAL_CHARGES;
 	private static final int MULTIPLE_THAT_INCREASES_CHARGES = 4;
 	private static int rooms_visited = 0;
+	
+	private static int number_of_cards_that_can_be_upgraded;
 	
 	private static boolean cards_upgraded_in_this_room = false;
 	
@@ -113,20 +115,25 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	public void upgradingCards() {
 
-		if (getValidCardGroup().size() > positive_charges) {
-			
-			AbstractDungeon.dynamicBanner.hide();
-			AbstractDungeon.overlayMenu.cancelButton.hide();
-			AbstractDungeon.previousScreen = AbstractDungeon.screen;
-			
-			AbstractDungeon.getCurrRoom().phase = RoomPhase.INCOMPLETE;
-			
-			AbstractDungeon.gridSelectScreen.open(getValidCardGroup(), positive_charges,
-					getUpdatedDescription(), false, false, false, false);
+		AbstractDungeon.dynamicBanner.hide();
+		AbstractDungeon.overlayMenu.cancelButton.hide();
+		AbstractDungeon.previousScreen = AbstractDungeon.screen;
+		
+		AbstractDungeon.getCurrRoom().phase = RoomPhase.INCOMPLETE;
+		
+		if (getValidCardGroup().size() >= positive_charges) {
+
+			number_of_cards_that_can_be_upgraded = positive_charges;
 			
 		} else {
 			
+			number_of_cards_that_can_be_upgraded = getValidCardGroup().size();
+			
 		}
+		
+		AbstractDungeon.gridSelectScreen.open(getValidCardGroup(),
+				number_of_cards_that_can_be_upgraded,
+				getUpdatedDescription(), false, false, false, false);
 		
 	}
 	
@@ -154,8 +161,9 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		logger.info("AbstractDungeon.gridSelectScreen.selectedCards.size()" + 
 						AbstractDungeon.gridSelectScreen.selectedCards.size());
 		
-		if ((!cards_upgraded_in_this_room) && 
-				(AbstractDungeon.gridSelectScreen.selectedCards.size() == positive_charges))
+		if ((!cards_upgraded_in_this_room) && (AbstractDungeon.getCurrRoom() instanceof RestRoom) &&
+				(AbstractDungeon.gridSelectScreen.selectedCards.size() ==
+					number_of_cards_that_can_be_upgraded))
 	    {
 			float x = Settings.WIDTH;
             float y = Settings.HEIGHT;
@@ -173,7 +181,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	    				c.makeStatEquivalentCopy(), random_x * x, random_y * y));
 	    	}
 	    	
-			setCharges(0);
+			addCharges(-number_of_cards_that_can_be_upgraded);
 			counter = positive_charges;
 			
 			cards_upgraded_in_this_room = true;
