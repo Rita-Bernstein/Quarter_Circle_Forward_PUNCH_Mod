@@ -5,14 +5,16 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.rooms.RestRoom;
 
 import basemod.abstracts.CustomRelic;
 
-public class FightingGloves extends CustomRelic {
+public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	public static final Logger logger = LogManager.getLogger(FightingGloves.class.getName());
 	
@@ -87,6 +89,17 @@ public class FightingGloves extends CustomRelic {
 		counter = positive_charges;
 	}
 	
+	@Override
+	public void onRightClick() {
+		if (positive_charges > 0) {
+			if (AbstractDungeon.getCurrRoom() instanceof RestRoom) {
+				logger.info("Here the relic should work!");
+				setCharges(0);
+				counter = positive_charges;
+			}
+		}
+	}
+	
 	public static void save(final SpireConfig config) {
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
@@ -145,4 +158,5 @@ public class FightingGloves extends CustomRelic {
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
 		return new FightingGloves();
 	}
+
 }
