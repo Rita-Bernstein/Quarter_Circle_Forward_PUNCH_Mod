@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import basemod.abstracts.CustomRelic;
 
@@ -19,6 +20,9 @@ public class FightingGloves extends CustomRelic {
 	private static final int EXTRA_UPGRADES_PER_UPGRADE = 1;
 	private static final int INITIAL_CHARGES = 1;
 	private static int positive_charges = INITIAL_CHARGES;
+	private static final int MULTIPLE_THAT_INCREASES_CHARGES = 4;
+	private static int rooms_visited = 0;
+	
 	
 	public FightingGloves() {
 		super(ID, "abacus.png", //add method for textures here.
@@ -73,8 +77,14 @@ public class FightingGloves extends CustomRelic {
 		
 	}
 	
+	public void onEnterRoom(AbstractRoom room) {
+		rooms_visited++;
+		if (rooms_visited % MULTIPLE_THAT_INCREASES_CHARGES == 0) {
+			addCharges(1);
+		}
+	}
+	
 	public static void save(final SpireConfig config) {
-
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
     		logger.info("Started saving Fighting Gloves information");
