@@ -83,9 +83,8 @@ public class FightingGloves extends CustomRelic {
 		logger.info("rooms_visited " + rooms_visited);
 		if (rooms_visited % MULTIPLE_THAT_INCREASES_CHARGES == 0) {
 			addCharges(1);
-			counter = positive_charges;
 		}
-		
+		counter = positive_charges;
 	}
 	
 	public static void save(final SpireConfig config) {
@@ -93,7 +92,8 @@ public class FightingGloves extends CustomRelic {
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
     		logger.info("Started saving Fighting Gloves information");
 
-            config.setInt("fighting_gloves_1", positive_charges);
+            config.setInt("fighting_gloves_1", rooms_visited);
+            config.setInt("fighting_gloves_2", positive_charges);
             
             try {
 				config.save();
@@ -113,8 +113,9 @@ public class FightingGloves extends CustomRelic {
 		logger.info("Loading Fighting Gloves info.");
 		if (AbstractDungeon.player.hasRelic(ID) && config.has("fighting_gloves_1")) {
 
-			setCharges(config.getInt("fighting_gloves_1"));
-
+			rooms_visited = config.getInt("fighting_gloves_1");
+			setCharges(config.getInt("fighting_gloves_2"));
+			
             try {
 				config.load();
 			} catch (IOException e) {
@@ -137,6 +138,7 @@ public class FightingGloves extends CustomRelic {
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing Fighting Gloves variables.");
         config.remove("fighting_gloves_1");
+        config.remove("fighting_gloves_2");
         logger.info("Finished clearing Fighting Gloves variables.");
 	}
 
