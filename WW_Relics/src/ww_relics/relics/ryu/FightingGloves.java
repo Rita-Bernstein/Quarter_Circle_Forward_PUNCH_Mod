@@ -7,12 +7,20 @@ import org.apache.logging.log4j.Logger;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.RestRoom;
+import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 
 import basemod.abstracts.CustomRelic;
+
+import java.util.Random;
 
 public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
@@ -24,7 +32,6 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	private static int positive_charges = INITIAL_CHARGES;
 	private static final int MULTIPLE_THAT_INCREASES_CHARGES = 4;
 	private static int rooms_visited = 0;
-	
 	
 	public FightingGloves() {
 		super(ID, "abacus.png", //add method for textures here.
@@ -91,13 +98,86 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	@Override
 	public void onRightClick() {
+		
 		if (positive_charges > 0) {
 			if (AbstractDungeon.getCurrRoom() instanceof RestRoom) {
 				logger.info("Here the relic should work!");
-				setCharges(0);
-				counter = positive_charges;
+				upgradingCards();
 			}
 		}
+		
+	}
+	
+	public void upgradingCards() {
+
+		if (getValidCardGroup().size() > positive_charges) {
+			
+			AbstractDungeon.dynamicBanner.hide();
+			AbstractDungeon.overlayMenu.cancelButton.hide();
+			AbstractDungeon.previousScreen = AbstractDungeon.screen;
+			
+			AbstractDungeon.getCurrRoom().phase = RoomPhase.INCOMPLETE;
+			
+			AbstractDungeon.gridSelectScreen.open(getValidCardGroup(), positive_charges,
+					getUpdatedDescription(), false, false, false, false);
+			
+		} else {
+			
+		}
+		
+	}
+	
+	private CardGroup getValidCardGroup() {
+		
+		CardGroup valid_card_group = new CardGroup(CardGroupType.UNSPECIFIED);
+		CardGroup master_deck = AbstractDungeon.player.masterDeck;
+		
+		
+		for (AbstractCard c : master_deck.group){
+			if (c.canUpgrade()) {
+				valid_card_group.addToTop(c);
+			}
+		}
+		
+		return valid_card_group;
+		
+	}
+	
+	public void update()
+	{
+		
+		super.update();
+		
+		logger.info("AbstractDungeon.gridSelectScreen.selectedCards.size()" + 
+						AbstractDungeon.gridSelectScreen.selectedCards.size());
+		
+		if (AbstractDungeon.gridSelectScreen.selectedCards.size() == positive_charges)
+	    {
+			float x = Settings.WIDTH;
+            float y = Settings.HEIGHT;
+            Random random = new Random();
+            float random_x;
+            float random_y;
+			
+	    	for (AbstractCard c: AbstractDungeon.gridSelectScreen.selectedCards) {
+	    		c.upgrade();
+	    		
+	    		random_x = random.nextFloat() / 2 + 0.25f;
+	    		random_y = random.nextFloat() / 4 + 0.25f;
+	    		
+	            AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(
+	    				c, random_x * x, random_y * y));
+	    	}
+	    	
+			AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
+			AbstractDungeon.gridSelectScreen.selectedCards.clear();
+			
+			setCharges(0);
+			counter = positive_charges;
+	    }
+	    
+
+		
 	}
 	
 	public static void save(final SpireConfig config) {
