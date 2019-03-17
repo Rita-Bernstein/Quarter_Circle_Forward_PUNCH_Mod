@@ -170,7 +170,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	    		random_y = random.nextFloat() / 4 + 0.25f;
 	    		
 	            AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(
-	    				c.makeCopy(), random_x * x, random_y * y));
+	    				c.makeStatEquivalentCopy(), random_x * x, random_y * y));
 	    	}
 	    	
 			setCharges(0);
