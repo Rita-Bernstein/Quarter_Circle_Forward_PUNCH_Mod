@@ -104,7 +104,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	@Override
 	public void onRightClick() {
 		
-		if (positive_charges > 0) {
+		if ((positive_charges > 0) && (getValidCardGroup().size() > 0)) {
 			if (AbstractDungeon.getCurrRoom() instanceof RestRoom) {
 				logger.info("Here the relic should work!");
 				upgradingCards();
