@@ -97,6 +97,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		logger.info("rooms_visited " + rooms_visited);
 		if (rooms_visited % MULTIPLE_THAT_INCREASES_CHARGES == 0) {
 			addCharges(1);
+			flash();
 		}
 		counter = positive_charges;
 	}
