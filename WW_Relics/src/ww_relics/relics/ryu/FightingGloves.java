@@ -171,6 +171,8 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
             Random random = new Random();
             float random_x;
             float random_y;
+            
+            flash();
 			
 	    	for (AbstractCard c: AbstractDungeon.gridSelectScreen.selectedCards) {
 	    		c.upgrade();
@@ -192,9 +194,6 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 			AbstractDungeon.overlayMenu.hideBlackScreen();
 			AbstractDungeon.dynamicBanner.appear();
 			AbstractDungeon.isScreenUp = false;
-			
-		    
-
 			
 	    }
 	    
