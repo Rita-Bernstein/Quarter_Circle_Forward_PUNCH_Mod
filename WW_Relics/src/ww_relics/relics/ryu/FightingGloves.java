@@ -86,6 +86,25 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		
 	}
 	
+	public String getCardGridDescription() {
+		String description = "Something wrong happened, please warn the programmer!";
+		
+		if (positive_charges > 1) {
+			
+			description = DESCRIPTIONS[7] + positive_charges +
+					DESCRIPTIONS[9] + DESCRIPTIONS[10];
+			
+		} else {
+			
+			description = DESCRIPTIONS[7] + positive_charges +
+					DESCRIPTIONS[8] + DESCRIPTIONS[10];
+			
+		}
+		
+		return description;
+
+	}
+	
 	public void onEnterRoom(AbstractRoom room) {
 		cards_upgraded_in_this_room = false;
 		rooms_visited++;
