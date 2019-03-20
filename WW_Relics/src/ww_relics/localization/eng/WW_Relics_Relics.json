@@ -30,7 +30,7 @@
     "NAME": "White Boots",
     "FLAVOR": "Very, very worn shoes... as much from hitting as from walking.",
     "DESCRIPTIONS": [
-      "[#ee0000]Click [#ee0000]with [#ee0000]the [#ee0000]right [#ee0000]button [#ee0000]to [#ee0000]use. ",
+      "[#ee0000]Right [#ee0000]click [#ee0000]on [#ee0000]it [#ee0000]to [#ee0000]use. ",
       "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]combat. ",
       "Choose [#ffff00]", " 0-cost or 1-cost Attack in hand.", " Randomly add [#ffff00]",
       " copies of it in the draw pile, then exhaust the Attack. Each copy cost ",
@@ -53,7 +53,7 @@
     "NAME": "Fighting Gloves",
     "FLAVOR": "\"Inspiring! It motivates to train and improve.\" - Ranwid.",
     "DESCRIPTIONS": [
-    "[#ee0000]Click [#ee0000]with [#ee0000]the [#ee0000]right [#ee0000]button [#ee0000]to [#ee0000]use. ",
+    "[#ee0000]Right [#ee0000]click [#ee0000]on [#ee0000]it [#ee0000]to [#ee0000]use. ",
     "Each [#ffff00]",
     " rooms, gain one charge.",
     " At Rest Rooms, you can right click on this relic to spend all the charges and upgrade [#ffff00]1 chosen card for each charge spent.",
