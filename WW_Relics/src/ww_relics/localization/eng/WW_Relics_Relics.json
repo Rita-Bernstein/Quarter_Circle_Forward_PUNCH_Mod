@@ -59,7 +59,11 @@
     " At Rest Rooms, you can right click on this relic to spend all the charges and upgrade [#ffff00]1 chosen card for each charge spent.",
     " [#2aecd7]Starts [#2aecd7]with [#2aecd7]",
     " [#2aecd7]charge",
-    "."
+    ".",
+    "Choose", 
+    " card",
+    " cards",
+    " to upgrade."
     ]
   },
   
