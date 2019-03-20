@@ -148,7 +148,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		
 		AbstractDungeon.gridSelectScreen.open(getValidCardGroup(),
 				number_of_cards_that_can_be_upgraded,
-				getUpdatedDescription(), false, false, false, false);
+				getCardGridDescription(), false, false, false, false);
 		
 	}
 	
