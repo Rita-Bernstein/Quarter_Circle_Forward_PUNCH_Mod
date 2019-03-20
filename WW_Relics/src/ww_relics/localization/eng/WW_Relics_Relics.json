@@ -51,11 +51,15 @@
   
   "WW_Relics:Fighting_Gloves": {
     "NAME": "Fighting Gloves",
-    "FLAVOR": "\"Inspiring! It gives you this feeling of wanting to improve yourself.\" - Ranwid.",
+    "FLAVOR": "\"Inspiring! It motivates to train and improve.\" - Ranwid.",
     "DESCRIPTIONS": [
-      "Upgrades outside of fights allow to upgrade ",
-      " extra card.",
-      " extra cards."
+    "[#ee0000]Click [#ee0000]with [#ee0000]the [#ee0000]right [#ee0000]button [#ee0000]to [#ee0000]use. ",
+    "Each [#ffff00]",
+    " rooms, gain one charge.",
+    " At Rest Rooms, you can right click on this relic to spend all the charges and upgrade [#ffff00]1 chosen card for each charge spent.",
+    " [#2aecd7]Starts [#2aecd7]with [#2aecd7]",
+    " [#2aecd7]charge",
+    "."
     ]
   },
   

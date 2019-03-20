@@ -78,9 +78,9 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	public String getUpdatedDescription() {
 		String description = "Something wrong happened, please warn the programmer!";
 	
-		description = DESCRIPTIONS[0] + MULTIPLE_THAT_INCREASES_CHARGES +
-					DESCRIPTIONS[1] + DESCRIPTIONS[2] + DESCRIPTIONS[3] +
-					INITIAL_CHARGES + DESCRIPTIONS[4];
+		description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + MULTIPLE_THAT_INCREASES_CHARGES +
+					DESCRIPTIONS[2] + DESCRIPTIONS[3] + DESCRIPTIONS[4] +
+					INITIAL_CHARGES + DESCRIPTIONS[5] + DESCRIPTIONS[6];
 
 		return description;
 		
