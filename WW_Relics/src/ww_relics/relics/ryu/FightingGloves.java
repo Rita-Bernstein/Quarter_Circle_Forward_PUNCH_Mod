@@ -27,8 +27,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	public static final Logger logger = LogManager.getLogger(FightingGloves.class.getName());
 	
 	public static final String ID = "WW_Relics:Fighting_Gloves";
-	private static final int EXTRA_UPGRADES_PER_UPGRADE = 1;
-	private static final int INITIAL_CHARGES = 2;
+	private static final int INITIAL_CHARGES = 1;
 	private static int positive_charges = INITIAL_CHARGES;
 	private static final int MULTIPLE_THAT_INCREASES_CHARGES = 4;
 	private static int rooms_visited = 0;
@@ -76,17 +75,13 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		logger.info("New value for positive_charges is " + positive_charges);
 	}
 	
-	@SuppressWarnings("unused")
 	public String getUpdatedDescription() {
 		String description = "Something wrong happened, please warn the programmer!";
-		
-		if (EXTRA_UPGRADES_PER_UPGRADE < 2) {
-			description = DESCRIPTIONS[0] + EXTRA_UPGRADES_PER_UPGRADE +
-					DESCRIPTIONS[1];
-		} else {
-			description = DESCRIPTIONS[0] + EXTRA_UPGRADES_PER_UPGRADE +
-					DESCRIPTIONS[2];
-		} 
+	
+		description = DESCRIPTIONS[0] + MULTIPLE_THAT_INCREASES_CHARGES +
+					DESCRIPTIONS[1] + DESCRIPTIONS[2] + DESCRIPTIONS[3] +
+					INITIAL_CHARGES + DESCRIPTIONS[4];
+
 		return description;
 		
 	}
