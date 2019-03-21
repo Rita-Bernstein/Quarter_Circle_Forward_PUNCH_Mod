@@ -38,6 +38,8 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	private static boolean cards_upgraded_in_this_room = false;
 	private static int number_of_cards_upgraded_in_this_room = 0;
 	
+	private static boolean player_right_clicked_in_relic_in_this_room = false;
+	
 	public FightingGloves() {
 		super(ID, "abacus.png", //add method for textures here.
 				RelicTier.RARE, LandingSound.SOLID);
@@ -109,6 +111,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	public void onEnterRoom(AbstractRoom room) {
 		cards_upgraded_in_this_room = false;
+		player_right_clicked_in_relic_in_this_room = false;
 		number_of_cards_upgraded_in_this_room = 0;
 		rooms_visited++;
 		logger.info("rooms_visited " + rooms_visited);
@@ -124,7 +127,6 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		
 		if ((positive_charges > 0) && (getValidCardGroup().size() > 0)) {
 			if (AbstractDungeon.getCurrRoom() instanceof RestRoom) {
-				logger.info("Here the relic should work!");
 				upgradingCards();
 			}
 		}
@@ -151,7 +153,9 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		
 		AbstractDungeon.gridSelectScreen.open(getValidCardGroup(),
 				number_of_cards_that_can_be_upgraded,
-				getCardGridDescription(), false, false, false, false);
+				getCardGridDescription(), false, false, true, false);
+		
+		player_right_clicked_in_relic_in_this_room = true;
 		
 	}
 	
@@ -174,38 +178,37 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	public void update()
 	{
 		super.update();
+
+		if (player_right_clicked_in_relic_in_this_room) {
+			if (isTimeToUpgradeTheChosenCards())
+		    {
+				logger.info("Step 1");
+				
+	            flash();
+				
+				ArrayList<AbstractCard> cards_chosen = getCardsToUpgrade();
+				
+				upgradeChosenCards(cards_chosen);
+				
+				addCharges(-number_of_cards_that_can_be_upgraded);
+				
+				counter = positive_charges;
+				
+				logger.info("It now has " + positive_charges + " charges.");
+				
+				if (number_of_cards_upgraded_in_this_room == number_of_cards_that_can_be_upgraded)
+					cards_upgraded_in_this_room = true;
+				
+				AbstractDungeon.gridSelectScreen.selectedCards.clear();
+				
+				AbstractDungeon.overlayMenu.hideBlackScreen();
+				AbstractDungeon.dynamicBanner.appear();
+				AbstractDungeon.isScreenUp = false;
+				
+		    }
+		}
 		
-		/*logger.info("cards " + !cards_upgraded_in_this_room);
-		logger.info("rest " + (AbstractDungeon.getCurrRoom() instanceof RestRoom));
-		logger.info("grid + " + (AbstractDungeon.gridSelectScreen.selectedCards.size() ==
-					number_of_cards_that_can_be_upgraded));*/
 		
-		if (isTimeToUpgradeTheChosenCards())
-	    {
-			logger.info("Step 1");
-			
-            flash();
-			
-			ArrayList<AbstractCard> cards_chosen = getCardsToUpgrade();
-			
-			upgradeChosenCards(cards_chosen);
-			
-			addCharges(-number_of_cards_that_can_be_upgraded);
-			
-			counter = positive_charges;
-			
-			logger.info("It now has " + positive_charges + " charges.");
-			
-			if (number_of_cards_upgraded_in_this_room == number_of_cards_that_can_be_upgraded)
-				cards_upgraded_in_this_room = true;
-			
-			AbstractDungeon.gridSelectScreen.selectedCards.clear();
-			
-			AbstractDungeon.overlayMenu.hideBlackScreen();
-			AbstractDungeon.dynamicBanner.appear();
-			AbstractDungeon.isScreenUp = false;
-			
-	    }
 	}
 	
 	private static boolean isTimeToUpgradeTheChosenCards() {
@@ -215,6 +218,11 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		boolean all_cards_to_upgrade_have_been_chosen = 
 				AbstractDungeon.gridSelectScreen.selectedCards.size() ==
 					number_of_cards_that_can_be_upgraded;
+		
+		if (relic_did_not_upgrade_cards_here && i_am_in_a_rest_room && 
+				all_cards_to_upgrade_have_been_chosen) {
+			logger.info("UMA VEZ FOI");
+		}
 		
 		return relic_did_not_upgrade_cards_here && i_am_in_a_rest_room && 
 				all_cards_to_upgrade_have_been_chosen;
@@ -232,6 +240,8 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
         float random_x;
         float random_y;
 		
+        logger.info("c " + chosen_cards.size());
+        
 		for (AbstractCard c: chosen_cards) {
     		c.upgrade();
 			logger.info("Upgraded " + c.name);
