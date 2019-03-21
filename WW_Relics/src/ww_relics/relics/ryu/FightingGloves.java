@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 
 import basemod.abstracts.CustomRelic;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class FightingGloves extends CustomRelic implements ClickableRelic {
@@ -35,6 +36,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	private static int number_of_cards_that_can_be_upgraded;
 	
 	private static boolean cards_upgraded_in_this_room = false;
+	private static int number_of_cards_upgraded_in_this_room = 0;
 	
 	public FightingGloves() {
 		super(ID, "abacus.png", //add method for textures here.
@@ -107,6 +109,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	public void onEnterRoom(AbstractRoom room) {
 		cards_upgraded_in_this_room = false;
+		number_of_cards_upgraded_in_this_room = 0;
 		rooms_visited++;
 		logger.info("rooms_visited " + rooms_visited);
 		if (rooms_visited % MULTIPLE_THAT_INCREASES_CHARGES == 0) {
@@ -170,38 +173,31 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	public void update()
 	{
-		
 		super.update();
 		
-		logger.info("AbstractDungeon.gridSelectScreen.selectedCards.size()" + 
-						AbstractDungeon.gridSelectScreen.selectedCards.size());
+		/*logger.info("cards " + !cards_upgraded_in_this_room);
+		logger.info("rest " + (AbstractDungeon.getCurrRoom() instanceof RestRoom));
+		logger.info("grid + " + (AbstractDungeon.gridSelectScreen.selectedCards.size() ==
+					number_of_cards_that_can_be_upgraded));*/
 		
-		if ((!cards_upgraded_in_this_room) && (AbstractDungeon.getCurrRoom() instanceof RestRoom) &&
-				(AbstractDungeon.gridSelectScreen.selectedCards.size() ==
-					number_of_cards_that_can_be_upgraded))
+		if (isTimeToUpgradeTheChosenCards())
 	    {
-			float x = Settings.WIDTH;
-            float y = Settings.HEIGHT;
-            Random random = new Random();
-            float random_x;
-            float random_y;
-            
+			logger.info("Step 1");
+			
             flash();
 			
-	    	for (AbstractCard c: AbstractDungeon.gridSelectScreen.selectedCards) {
-	    		c.upgrade();
-	    		
-	    		random_x = random.nextFloat() / 2 + 0.25f;
-	    		random_y = random.nextFloat() / 4 + 0.25f;
-	    		
-	            AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(
-	    				c.makeStatEquivalentCopy(), random_x * x, random_y * y));
-	    	}
-	    	
+			ArrayList<AbstractCard> cards_chosen = getCardsToUpgrade();
+			
+			upgradeChosenCards(cards_chosen);
+			
 			addCharges(-number_of_cards_that_can_be_upgraded);
+			
 			counter = positive_charges;
 			
-			cards_upgraded_in_this_room = true;
+			logger.info("It now has " + positive_charges + " charges.");
+			
+			if (number_of_cards_upgraded_in_this_room == number_of_cards_that_can_be_upgraded)
+				cards_upgraded_in_this_room = true;
 			
 			AbstractDungeon.gridSelectScreen.selectedCards.clear();
 			
@@ -210,9 +206,44 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 			AbstractDungeon.isScreenUp = false;
 			
 	    }
-	    
-
+	}
+	
+	private static boolean isTimeToUpgradeTheChosenCards() {
 		
+		boolean relic_did_not_upgrade_cards_here = !cards_upgraded_in_this_room;
+		boolean i_am_in_a_rest_room = AbstractDungeon.getCurrRoom() instanceof RestRoom;
+		boolean all_cards_to_upgrade_have_been_chosen = 
+				AbstractDungeon.gridSelectScreen.selectedCards.size() ==
+					number_of_cards_that_can_be_upgraded;
+		
+		return relic_did_not_upgrade_cards_here && i_am_in_a_rest_room && 
+				all_cards_to_upgrade_have_been_chosen;
+	}
+	
+	private static ArrayList<AbstractCard> getCardsToUpgrade() {
+		return AbstractDungeon.gridSelectScreen.selectedCards;
+	}
+	
+	private static void upgradeChosenCards(ArrayList<AbstractCard> chosen_cards) {
+		
+		float x = Settings.WIDTH;
+        float y = Settings.HEIGHT;
+        Random random = new Random();
+        float random_x;
+        float random_y;
+		
+		for (AbstractCard c: chosen_cards) {
+    		c.upgrade();
+			logger.info("Upgraded " + c.name);
+    		
+    		random_x = random.nextFloat() / 2 + 0.25f;
+    		random_y = random.nextFloat() / 4 + 0.25f;
+    		
+            AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(
+    				c.makeStatEquivalentCopy(), random_x * x, random_y * y));
+            
+            number_of_cards_upgraded_in_this_room++;
+    	}
 	}
 	
 	public static void save(final SpireConfig config) {
