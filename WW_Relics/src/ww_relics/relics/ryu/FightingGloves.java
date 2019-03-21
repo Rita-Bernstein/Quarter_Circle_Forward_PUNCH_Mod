@@ -94,14 +94,14 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	public String getCardGridDescription() {
 		String description = "Something wrong happened, please warn the programmer!";
 		
-		if (positive_charges > 1) {
+		if (number_of_cards_that_can_be_upgraded > 1) {
 			
-			description = DESCRIPTIONS[7] + positive_charges +
+			description = DESCRIPTIONS[7] + number_of_cards_that_can_be_upgraded +
 					DESCRIPTIONS[9] + DESCRIPTIONS[10];
 			
 		} else {
 			
-			description = DESCRIPTIONS[7] + positive_charges +
+			description = DESCRIPTIONS[7] + number_of_cards_that_can_be_upgraded +
 					DESCRIPTIONS[8] + DESCRIPTIONS[10];
 			
 		}
