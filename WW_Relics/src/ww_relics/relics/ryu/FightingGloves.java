@@ -39,6 +39,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	private static int number_of_cards_upgraded_in_this_room = 0;
 	
 	private static boolean player_right_clicked_in_relic_in_this_room = false;
+	private static boolean player_havent_right_clicked_in_relic_here_before = true;
 	
 	public FightingGloves() {
 		super(ID, "abacus.png", //add method for textures here.
@@ -112,6 +113,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	public void onEnterRoom(AbstractRoom room) {
 		cards_upgraded_in_this_room = false;
 		player_right_clicked_in_relic_in_this_room = false;
+		player_havent_right_clicked_in_relic_here_before = true;
 		number_of_cards_upgraded_in_this_room = 0;
 		rooms_visited++;
 		logger.info("rooms_visited " + rooms_visited);
@@ -125,9 +127,12 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	@Override
 	public void onRightClick() {
 		
-		if ((positive_charges > 0) && (getValidCardGroup().size() > 0)) {
-			if (AbstractDungeon.getCurrRoom() instanceof RestRoom) {
-				upgradingCards();
+		if (player_havent_right_clicked_in_relic_here_before) {
+			if ((positive_charges > 0) && (getValidCardGroup().size() > 0)) {
+				if (AbstractDungeon.getCurrRoom() instanceof RestRoom) {
+					player_havent_right_clicked_in_relic_here_before = false;
+					upgradingCards();
+				}
 			}
 		}
 		
