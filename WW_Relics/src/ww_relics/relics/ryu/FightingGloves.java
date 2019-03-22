@@ -182,11 +182,9 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 				
 				ArrayList<AbstractCard> cards_chosen = getCardsToUpgrade();
 				
-				upgradeChosenCards(cards_chosen);
+				upgradeAndShowChosenCards(cards_chosen);
 				
-				addCharges(-number_of_cards_that_can_be_upgraded);
-				
-				counter = positive_charges;
+				spendChargesForUpgradedCards();
 				
 				if (number_of_cards_upgraded_in_this_room == number_of_cards_that_can_be_upgraded)
 					cards_have_been_upgraded_in_this_room = true;
@@ -219,7 +217,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		return AbstractDungeon.gridSelectScreen.selectedCards;
 	}
 	
-	private static void upgradeChosenCards(ArrayList<AbstractCard> chosen_cards) {
+	private static void upgradeAndShowChosenCards(ArrayList<AbstractCard> chosen_cards) {
 		
 		float x = Settings.WIDTH;
         float y = Settings.HEIGHT;
@@ -241,6 +239,12 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
             
             number_of_cards_upgraded_in_this_room++;
     	}
+	}
+	
+	private void spendChargesForUpgradedCards() {
+		addCharges(-number_of_cards_that_can_be_upgraded);
+		
+		counter = positive_charges;
 	}
 	
 	public static void save(final SpireConfig config) {
