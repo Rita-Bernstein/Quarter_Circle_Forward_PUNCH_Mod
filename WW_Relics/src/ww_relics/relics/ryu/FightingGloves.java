@@ -26,9 +26,9 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	public static final String ID = "WW_Relics:Fighting_Gloves";
 	private static final int INITIAL_CHARGES = 1;
-	private static int positive_charges = INITIAL_CHARGES;
+	private static int positive_charges;
 	private static final int EVERY_X_ROOMS_VISITED_ADDS_A_CHARGE = 4;
-	private static int rooms_visited = 0;
+	private static int rooms_visited;
 	
 	private static int number_of_cards_that_can_be_upgraded;
 	
@@ -42,6 +42,8 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		super(ID, "abacus.png", RelicTier.RARE, LandingSound.SOLID);
 		belowZeroCheck();
 		counter = INITIAL_CHARGES;
+		positive_charges = INITIAL_CHARGES;
+		rooms_visited = 0;
 	}
 	
 	public static int getCharges() {
