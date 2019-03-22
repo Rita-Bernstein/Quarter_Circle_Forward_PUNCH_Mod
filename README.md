@@ -31,7 +31,7 @@ Link in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/
 
 # Requirements
 
-Mod The Spire 3.8.3+, BaseMod 5.8.0+ and StSLib 1.1.4.
+Mod The Spire 3.8.3+, BaseMod 5.8.0+ and StSLib 1.1.4+.
 
 # Compatibility
 
