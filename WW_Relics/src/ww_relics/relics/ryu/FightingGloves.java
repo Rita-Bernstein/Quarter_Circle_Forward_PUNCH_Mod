@@ -27,12 +27,12 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	public static final String ID = "WW_Relics:Fighting_Gloves";
 	private static final int INITIAL_CHARGES = 1;
 	private static int positive_charges = INITIAL_CHARGES;
-	private static final int MULTIPLE_THAT_INCREASES_CHARGES = 4;
+	private static final int EVERY_X_ROOMS_VISITED_ADDS_A_CHARGE = 4;
 	private static int rooms_visited = 0;
 	
 	private static int number_of_cards_that_can_be_upgraded;
 	
-	private static boolean cards_upgraded_in_this_room = false;
+	private static boolean cards_have_been_upgraded_in_this_room = false;
 	private static int number_of_cards_upgraded_in_this_room = 0;
 	
 	private static boolean player_right_clicked_in_relic_in_this_room = false;
@@ -80,7 +80,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	public String getUpdatedDescription() {
 		String description = "Something wrong happened, please warn the programmer!";
 	
-		description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + MULTIPLE_THAT_INCREASES_CHARGES +
+		description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + EVERY_X_ROOMS_VISITED_ADDS_A_CHARGE +
 					DESCRIPTIONS[2] + DESCRIPTIONS[3] + DESCRIPTIONS[4] +
 					INITIAL_CHARGES + DESCRIPTIONS[5] + DESCRIPTIONS[6];
 
@@ -108,13 +108,13 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	}
 	
 	public void onEnterRoom(AbstractRoom room) {
-		cards_upgraded_in_this_room = false;
+		cards_have_been_upgraded_in_this_room = false;
 		player_right_clicked_in_relic_in_this_room = false;
 		player_havent_right_clicked_in_relic_here_before = true;
 		number_of_cards_upgraded_in_this_room = 0;
 		rooms_visited++;
 		logger.info("rooms_visited " + rooms_visited);
-		if (rooms_visited % MULTIPLE_THAT_INCREASES_CHARGES == 0) {
+		if (rooms_visited % EVERY_X_ROOMS_VISITED_ADDS_A_CHARGE == 0) {
 			addCharges(1);
 			flash();
 		}
@@ -199,7 +199,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 				logger.info("It now has " + positive_charges + " charges.");
 				
 				if (number_of_cards_upgraded_in_this_room == number_of_cards_that_can_be_upgraded)
-					cards_upgraded_in_this_room = true;
+					cards_have_been_upgraded_in_this_room = true;
 				
 				AbstractDungeon.gridSelectScreen.selectedCards.clear();
 				
@@ -215,7 +215,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	private static boolean isTimeToUpgradeTheChosenCards() {
 		
-		boolean relic_did_not_upgrade_cards_here = !cards_upgraded_in_this_room;
+		boolean relic_did_not_upgrade_cards_here = !cards_have_been_upgraded_in_this_room;
 		boolean i_am_in_a_rest_room = AbstractDungeon.getCurrRoom() instanceof RestRoom;
 		boolean all_cards_to_upgrade_have_been_chosen = 
 				AbstractDungeon.gridSelectScreen.selectedCards.size() ==
