@@ -103,7 +103,6 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		player_havent_right_clicked_in_relic_here_before = true;
 		number_of_cards_upgraded_in_this_room = 0;
 		rooms_visited++;
-		logger.info("rooms_visited " + rooms_visited);
 		if (rooms_visited % EVERY_X_ROOMS_VISITED_ADDS_A_CHARGE == 0) {
 			addCharges(1);
 			flash();
@@ -115,7 +114,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	public void onRightClick() {
 		
 		if (player_havent_right_clicked_in_relic_here_before) {
-			if ((positive_charges > 0) && (getValidCardGroup().size() > 0)) {
+			if (haveCharges() && (haveCardsToUpgrade())) {
 				if (AbstractDungeon.getCurrRoom() instanceof RestRoom) {
 					player_havent_right_clicked_in_relic_here_before = false;
 					upgradingCards();
@@ -124,6 +123,10 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		}
 		
 	}
+	
+	private boolean haveCharges() {	return positive_charges > 0; }
+	
+	private boolean haveCardsToUpgrade() { return getValidCardGroup().size() > 0; }
 	
 	public void upgradingCards() {
 
