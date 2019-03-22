@@ -128,6 +128,22 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	private boolean haveCardsToUpgrade() { return getValidCardGroup().size() > 0; }
 	
+	private CardGroup getValidCardGroup() {
+		
+		CardGroup valid_card_group = new CardGroup(CardGroupType.UNSPECIFIED);
+		CardGroup master_deck = AbstractDungeon.player.masterDeck;
+		
+		
+		for (AbstractCard c : master_deck.group){
+			if (c.canUpgrade()) {
+				valid_card_group.addToTop(c);
+			}
+		}
+		
+		return valid_card_group;
+		
+	}
+	
 	public void upgradingCards() {
 
 		AbstractDungeon.dynamicBanner.hide();
@@ -151,22 +167,6 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 				getCardGridDescription(), false, false, true, false);
 		
 		player_right_clicked_in_relic_in_this_room = true;
-		
-	}
-	
-	private CardGroup getValidCardGroup() {
-		
-		CardGroup valid_card_group = new CardGroup(CardGroupType.UNSPECIFIED);
-		CardGroup master_deck = AbstractDungeon.player.masterDeck;
-		
-		
-		for (AbstractCard c : master_deck.group){
-			if (c.canUpgrade()) {
-				valid_card_group.addToTop(c);
-			}
-		}
-		
-		return valid_card_group;
 		
 	}
 	
