@@ -39,8 +39,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	private static boolean player_havent_right_clicked_in_relic_here_before = true;
 	
 	public FightingGloves() {
-		super(ID, "abacus.png", //add method for textures here.
-				RelicTier.RARE, LandingSound.SOLID);
+		super(ID, "abacus.png", RelicTier.RARE, LandingSound.SOLID);
 		belowZeroCheck();
 		counter = INITIAL_CHARGES;
 	}
@@ -52,7 +51,6 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	public static void setCharges(int value) {
 		positive_charges = value;
 		belowZeroCheck();
-		logger.info("New value for positive_charges is " + positive_charges);
 	}
 	
 	public static void belowZeroCheck() {
@@ -68,40 +66,32 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	public static void addCharges(int value_to_add) {
 		positive_charges += value_to_add;
 		belowZeroCheck();
-		logger.info("New value for positive_charges is " + positive_charges);
 	}
 	
 	public static void removeCharges(int value_to_subtract) {
 		positive_charges -= value_to_subtract;
 		belowZeroCheck();
-		logger.info("New value for positive_charges is " + positive_charges);
 	}
 	
 	public String getUpdatedDescription() {
-		String description = "Something wrong happened, please warn the programmer!";
+		String description = "";
 	
 		description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + EVERY_X_ROOMS_VISITED_ADDS_A_CHARGE +
 					DESCRIPTIONS[2] + DESCRIPTIONS[3] + DESCRIPTIONS[4] +
 					INITIAL_CHARGES + DESCRIPTIONS[5] + DESCRIPTIONS[6];
 
 		return description;
-		
 	}
 	
 	public String getCardGridDescription() {
-		String description = "Something wrong happened, please warn the programmer!";
+		String description = "";
 		
-		if (number_of_cards_that_can_be_upgraded > 1) {
+		description = DESCRIPTIONS[7] + number_of_cards_that_can_be_upgraded;
+		
+		if (number_of_cards_that_can_be_upgraded > 1) description += DESCRIPTIONS[9];
+		else description += DESCRIPTIONS[8];
 			
-			description = DESCRIPTIONS[7] + number_of_cards_that_can_be_upgraded +
-					DESCRIPTIONS[9] + DESCRIPTIONS[10];
-			
-		} else {
-			
-			description = DESCRIPTIONS[7] + number_of_cards_that_can_be_upgraded +
-					DESCRIPTIONS[8] + DESCRIPTIONS[10];
-			
-		}
+		description += DESCRIPTIONS[10];
 		
 		return description;
 
