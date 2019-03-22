@@ -7,21 +7,18 @@ import org.apache.logging.log4j.Logger;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
+import com.megacrit.cardcrawl.cards.*;
+import com.megacrit.cardcrawl.cards.CardGroup.*;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.rooms.RestRoom;
-import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
+import com.megacrit.cardcrawl.rooms.*;
+import com.megacrit.cardcrawl.rooms.AbstractRoom.*;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 
 import basemod.abstracts.CustomRelic;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
