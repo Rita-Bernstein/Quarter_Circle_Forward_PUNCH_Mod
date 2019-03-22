@@ -133,7 +133,6 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		CardGroup valid_card_group = new CardGroup(CardGroupType.UNSPECIFIED);
 		CardGroup master_deck = AbstractDungeon.player.masterDeck;
 		
-		
 		for (AbstractCard c : master_deck.group){
 			if (c.canUpgrade()) {
 				valid_card_group.addToTop(c);
@@ -189,8 +188,6 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 				
 				counter = positive_charges;
 				
-				logger.info("It now has " + positive_charges + " charges.");
-				
 				if (number_of_cards_upgraded_in_this_room == number_of_cards_that_can_be_upgraded)
 					cards_have_been_upgraded_in_this_room = true;
 				
@@ -213,11 +210,6 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		boolean all_cards_to_upgrade_have_been_chosen = 
 				AbstractDungeon.gridSelectScreen.selectedCards.size() ==
 					number_of_cards_that_can_be_upgraded;
-		
-		if (relic_did_not_upgrade_cards_here && i_am_in_a_rest_room && 
-				all_cards_to_upgrade_have_been_chosen) {
-			logger.info("UMA VEZ FOI");
-		}
 		
 		return relic_did_not_upgrade_cards_here && i_am_in_a_rest_room && 
 				all_cards_to_upgrade_have_been_chosen;
