@@ -119,7 +119,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 			if (haveCharges() && (haveCardsToUpgrade())) {
 				if (AbstractDungeon.getCurrRoom() instanceof RestRoom && 
 						AbstractDungeon.getCurrRoom().phase ==
-						AbstractRoom.RoomPhase.INCOMPLETE) {
+						AbstractRoom.RoomPhase.INCOMPLETE && CampfireUI.hidden == false) {
 					player_havent_right_clicked_in_relic_here_before = false;
 					upgradingCards();
 				}
