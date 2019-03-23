@@ -1,5 +1,5 @@
 # World Warrior's Relics
-A Slay The Spire mod, which adds relics inspired by fighters from Super Street Fighter 2: The New Challengers.
+A Slay The Spire mod, which adds primarily relics inspired by fighters from Super Street Fighter 2: The New Challengers.
 
 # Content
 
@@ -17,17 +17,18 @@ Link in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/
 
 1. Create a relic based in Ryu, for basic testing and getting the hang of modding relics for Slay The Spire. Focus in mechanics and avoiding bugs, not graphics. - Done in v0.1.
 2. Relics inspired by Ryu, Ken, Chun Li and Guile.
-3. Translation of the mod's created text so far to PT-BR. (all future milestones will launch with EN and PT-BR localization)
-4. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
-5. The same, by Boxer, Claw and Sagat. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
-6. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
-7. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
-8. Relics inspired by Cammy, Fei Long and Deejay.
-9. ?????????????????????
-10. Update of art and sound assets.
-11. Polishing, refactoring and balancing.
-12. Challenges for Custom Games where you start with a specific Street Fighter's relics (and problems included).
-13. Synergy and adaptation with other mods.
+3. Add Custom Modifiers (and other small stuff) related with last milestone's relics and the major theme.
+4. Translation of the mod's created text so far to PT-BR. (all future milestones will launch with EN and PT-BR localization)
+5. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
+6. The same, by Boxer, Claw and Sagat. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
+7. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
+8. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
+9. Relics inspired by Cammy, Fei Long and Deejay.
+10. ?????????????????????
+11. Update of art and sound assets.
+12. Polishing, refactoring and balancing.
+13. Challenges for Custom Games where you start with a specific Street Fighter's relics (and problems included).
+14. Synergy and adaptation with other mods.
 
 # Requirements
 
