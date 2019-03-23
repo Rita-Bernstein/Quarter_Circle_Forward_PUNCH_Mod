@@ -117,7 +117,9 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		
 		if (player_havent_right_clicked_in_relic_here_before) {
 			if (haveCharges() && (haveCardsToUpgrade())) {
-				if (AbstractDungeon.getCurrRoom() instanceof RestRoom) {
+				if (AbstractDungeon.getCurrRoom() instanceof RestRoom && 
+						AbstractDungeon.getCurrRoom().phase ==
+						AbstractRoom.RoomPhase.INCOMPLETE) {
 					player_havent_right_clicked_in_relic_here_before = false;
 					upgradingCards();
 				}
