@@ -299,6 +299,12 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		
     }
 	
+	public boolean canSpawn() {
+		
+		return (AbstractDungeon.floorNum < 35);
+		
+	}
+	
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing Fighting Gloves variables.");
         config.remove("fighting_gloves_1");
