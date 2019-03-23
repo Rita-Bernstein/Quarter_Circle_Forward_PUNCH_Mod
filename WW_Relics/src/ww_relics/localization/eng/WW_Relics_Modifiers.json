@@ -1,0 +1,11 @@
+{
+	"ww_relics:WanderingWarrior": {
+		"NAME": "Wandering Warrior",
+		"DESCRIPTION": "Gains at start Duffel Bag, Fighting Gloves, Red Headband and loses 35% Max HP."
+	},
+	
+	"ww_relics:BlueJade": {
+		"NAME": "Blue Jade",
+		"DESCRIPTION": "Gains at start Spiky Bracers, White Boots, Handcuffs and loses 35% Max HP."
+	}
+}
