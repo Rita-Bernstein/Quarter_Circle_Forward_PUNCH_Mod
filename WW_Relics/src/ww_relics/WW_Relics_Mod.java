@@ -2,6 +2,7 @@ package ww_relics;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,10 +13,12 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.screens.custom.CustomMod;
 
 import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
+import basemod.interfaces.AddCustomModeModsSubscriber;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
@@ -29,7 +32,7 @@ import ww_relics.relics.ryu.FightingGloves;
 import ww_relics.relics.ryu.RedHeadband;
 
 @SpireInitializer
-public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscriber,
+public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
 			EditKeywordsSubscriber, PostInitializeSubscriber, StartGameSubscriber
 	{
 
@@ -137,6 +140,13 @@ public class WW_Relics_Mod implements EditStringsSubscriber, EditRelicsSubscribe
 		BaseMod.addRelic(new FightingGloves(), RelicType.SHARED);
 		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
 	}
+	
+	 @Override
+	 public void receiveCustomModeMods(List<CustomMod> list) {
+		 CustomMod wandering_warrior = new CustomMod("ww_relics:WanderingWarrior", "p", true);
+		 list.add(wandering_warrior);
+		 
+	 }
 	
 	public static void loadRunData() {
         logger.info("Loading Save Data");
