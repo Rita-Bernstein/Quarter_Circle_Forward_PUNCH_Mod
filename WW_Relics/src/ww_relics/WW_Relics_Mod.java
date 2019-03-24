@@ -56,6 +56,9 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	public static final String WANDERING_WARRIOR_ID = "ww_relics:WanderingWarrior";
 	public static final int WANDERING_WARRIOR_STARTING_MAX_HP_PERCENTAGE = 65;
 	
+	public static final String BLUE_JADE_ID = "ww_relics:WanderingWarrior";
+	public static final int BLUE_JADE_STARTING_MAX_HP_PERCENTAGE = 65;
+	
 	public WW_Relics_Mod() {
 		BaseMod.subscribe(this);
 	}
@@ -178,6 +181,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	@Override
 	public void receiveCustomModeMods(List<CustomMod> list) {
 		CustomMod wandering_warrior = new CustomMod("ww_relics:WanderingWarrior", "y", true);
+		CustomMod blue_jade = new CustomMod("ww_relics:BlueJade", "y", true);
 		list.add(wandering_warrior);
 	 }
 	 
@@ -188,6 +192,11 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             relics.add(FightingGloves.ID);
             relics.add(RedHeadband.ID);
         }	
+		if (isCustomModActive(BLUE_JADE_ID)) {
+            relics.add(SpikyBracers.ID);
+            relics.add(WhiteBoots.ID);
+            relics.add(Handcuffs.ID);
+        }
 	}
 	
     @Override
@@ -200,7 +209,13 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
         }
 
-
+        if (isCustomModActive(BLUE_JADE_ID)) {
+        	float new_startingMaxHP = 
+        			AbstractDungeon.player.startingMaxHP * BLUE_JADE_STARTING_MAX_HP_PERCENTAGE / 100;
+            AbstractDungeon.player.startingMaxHP *= (int)new_startingMaxHP;
+            AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
+            AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
+        }
     }
 	
 	public static void loadRunData() {
