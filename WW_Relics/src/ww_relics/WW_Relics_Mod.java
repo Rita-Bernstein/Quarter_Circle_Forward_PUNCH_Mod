@@ -175,11 +175,10 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
 	}
 	
-	 @Override
-	 public void receiveCustomModeMods(List<CustomMod> list) {
-		 CustomMod wandering_warrior = new CustomMod("ww_relics:WanderingWarrior", "ry", true);
-		 list.add(wandering_warrior);
-		 
+	@Override
+	public void receiveCustomModeMods(List<CustomMod> list) {
+		CustomMod wandering_warrior = new CustomMod("ww_relics:WanderingWarrior", "y", true);
+		list.add(wandering_warrior);
 	 }
 	 
 	@Override
