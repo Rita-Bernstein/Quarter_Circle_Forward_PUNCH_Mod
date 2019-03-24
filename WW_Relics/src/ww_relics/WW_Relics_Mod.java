@@ -14,6 +14,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.RunModStrings;
@@ -27,6 +28,7 @@ import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostCreateStartingRelicsSubscriber;
+import basemod.interfaces.PostDungeonInitializeSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import basemod.interfaces.StartGameSubscriber;
 import ww_relics.relics.chun_li.Handcuffs;
@@ -38,8 +40,8 @@ import ww_relics.relics.ryu.RedHeadband;
 
 @SpireInitializer
 public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
-			EditKeywordsSubscriber, PostInitializeSubscriber, PostCreateStartingRelicsSubscriber,
-			StartGameSubscriber
+			EditKeywordsSubscriber, PostInitializeSubscriber, PostDungeonInitializeSubscriber, 
+			PostCreateStartingRelicsSubscriber, StartGameSubscriber
 	{
 
 	public static final Logger logger = LogManager.getLogger(WW_Relics_Mod.class.getName()); // lets us log output
@@ -188,6 +190,19 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             relics.add(RedHeadband.ID);
         }	
 	}
+	
+    @Override
+    public void receivePostDungeonInitialize() {
+        if (isCustomModActive(WANDERING_WARRIOR_ID)) {
+        	float new_startingMaxHP = 
+        			AbstractDungeon.player.startingMaxHP * WANDERING_WARRIOR_STARTING_MAX_HP_PERCENTAGE / 100;
+            AbstractDungeon.player.startingMaxHP *= (int)new_startingMaxHP;
+            AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
+            AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
+        }
+
+
+    }
 	
 	public static void loadRunData() {
         logger.info("Loading Save Data");
