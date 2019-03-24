@@ -13,6 +13,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.localization.RunModStrings;
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
 
 import basemod.BaseMod;
@@ -75,6 +76,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	    
 	    LoadRelicsJSON();
 	    LoadPowersJSON();
+	    LoadModifiersJSON();
 	    
 	    logger.info("done editing strings");
 	}
@@ -119,6 +121,27 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	    }
 	    
 	    BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
+	}
+	
+	private void LoadModifiersJSON() {
+		String modifiersStringsAddress = "ww_relics/localization/eng/WW_Relics_Modifiers.json";
+	    String modifiersStrings = getJsonText(modifiersStringsAddress);
+	    
+	    if (modifiersStrings == "") {
+	    	
+	    	modifiersStringsAddress = "src/ww_relics/localization/eng/WW_Relics_Modifiers.json";
+	    	modifiersStrings = getJsonText(modifiersStringsAddress);
+	    	
+	    }
+	    
+	    if (modifiersStrings == "") {
+	    	
+	    	modifiersStringsAddress = "localization/eng/WW_Relics_Modifiers.json";
+	    	modifiersStrings = getJsonText(modifiersStringsAddress);
+	    	
+	    }
+	    
+	    BaseMod.loadCustomStrings(RunModStrings.class, modifiersStrings);
 	}
 	
 	@Override
