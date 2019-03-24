@@ -177,7 +177,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	 @Override
 	 public void receiveCustomModeMods(List<CustomMod> list) {
-		 CustomMod wandering_warrior = new CustomMod("ww_relics:WanderingWarrior", "[#FFA500]", true);
+		 CustomMod wandering_warrior = new CustomMod("ww_relics:WanderingWarrior", "[FFA500]", true);
 		 list.add(wandering_warrior);
 		 
 	 }
