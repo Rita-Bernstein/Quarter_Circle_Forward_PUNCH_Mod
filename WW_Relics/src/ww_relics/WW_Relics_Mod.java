@@ -2,6 +2,7 @@ package ww_relics;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -11,6 +12,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.RunModStrings;
@@ -23,6 +26,7 @@ import basemod.interfaces.AddCustomModeModsSubscriber;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
+import basemod.interfaces.PostCreateStartingRelicsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import basemod.interfaces.StartGameSubscriber;
 import ww_relics.relics.chun_li.Handcuffs;
@@ -34,7 +38,8 @@ import ww_relics.relics.ryu.RedHeadband;
 
 @SpireInitializer
 public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
-			EditKeywordsSubscriber, PostInitializeSubscriber, StartGameSubscriber
+			EditKeywordsSubscriber, PostInitializeSubscriber, PostCreateStartingRelicsSubscriber,
+			StartGameSubscriber
 	{
 
 	public static final Logger logger = LogManager.getLogger(WW_Relics_Mod.class.getName()); // lets us log output
@@ -44,6 +49,10 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	public static final String DESCRIPTION = "v0.5.0" +
 			"\r\n Adds five relics basd in SF2's main characters."
 		  + "\r\n v1.0 will have 16+ relics.";
+	
+	//Custom game modifiers
+	public static final String WANDERING_WARRIOR_ID = "ww_relics:WanderingWarrior";
+	public static final int WANDERING_WARRIOR_STARTING_MAX_HP_PERCENTAGE = 66;
 	
 	public WW_Relics_Mod() {
 		BaseMod.subscribe(this);
@@ -170,6 +179,15 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		 list.add(wandering_warrior);
 		 
 	 }
+	 
+	@Override
+	public void receivePostCreateStartingRelics(AbstractPlayer.PlayerClass playerClass, ArrayList<String> relics) {
+		if (isCustomModActive(WANDERING_WARRIOR_ID)) {
+            relics.add(DuffelBag.ID);
+            relics.add(FightingGloves.ID);
+            relics.add(RedHeadband.ID);
+        }	
+	}
 	
 	public static void loadRunData() {
         logger.info("Loading Save Data");
@@ -220,6 +238,10 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
     	loadRunData();
     }
 
+    public static boolean isCustomModActive(String ID) {
+        return CardCrawlGame.trial != null && CardCrawlGame.trial.dailyModIDs().contains(ID);
+    }
+    
 	@Override
 	public void receivePostInitialize() {
 
