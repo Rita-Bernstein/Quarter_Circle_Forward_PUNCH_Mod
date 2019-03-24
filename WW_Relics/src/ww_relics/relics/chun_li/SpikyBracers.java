@@ -207,10 +207,13 @@ public class SpikyBracers extends CustomRelic {
     		logger.info("Started saving SpikyBracers information");
         	final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
 
-            config.setInt("spiky_bracers_1",
-            		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[0]));
-            config.setInt("spiky_bracers_2",
-            		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[1]));
+        	if (relic.cards_chosen != null) {
+                config.setInt("spiky_bracers_1",
+                		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[0]));
+                config.setInt("spiky_bracers_2",
+                		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[1]));
+        	}
+
             config.setBool("spiky_cards_are_selected", cards_are_selected);
             
             try {
