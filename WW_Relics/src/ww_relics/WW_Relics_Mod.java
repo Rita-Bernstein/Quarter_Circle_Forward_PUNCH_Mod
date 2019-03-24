@@ -206,7 +206,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
         if (isCustomModActive(WANDERING_WARRIOR_ID)) {
         	new_startingMaxHP = 
         			AbstractDungeon.player.startingMaxHP * WANDERING_WARRIOR_STARTING_MAX_HP_PERCENTAGE / 100;
-            AbstractDungeon.player.startingMaxHP *= (int)new_startingMaxHP;
+            AbstractDungeon.player.startingMaxHP = (int)new_startingMaxHP;
             AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
             AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
         }
@@ -214,7 +214,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
         if (isCustomModActive(BLUE_JADE_ID)) {
         	new_startingMaxHP = 
         			AbstractDungeon.player.startingMaxHP * BLUE_JADE_STARTING_MAX_HP_PERCENTAGE / 100;
-            AbstractDungeon.player.startingMaxHP *= (int)new_startingMaxHP;
+            AbstractDungeon.player.startingMaxHP = (int)new_startingMaxHP;
             AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
             AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
         }
