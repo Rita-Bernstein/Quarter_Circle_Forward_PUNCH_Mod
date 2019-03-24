@@ -54,7 +54,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	//Custom game modifiers
 	public static final String WANDERING_WARRIOR_ID = "ww_relics:WanderingWarrior";
-	public static final int WANDERING_WARRIOR_STARTING_MAX_HP_PERCENTAGE = 66;
+	public static final int WANDERING_WARRIOR_STARTING_MAX_HP_PERCENTAGE = 65;
 	
 	public WW_Relics_Mod() {
 		BaseMod.subscribe(this);
