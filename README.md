@@ -56,6 +56,8 @@ daviscook477 (https://github.com/daviscook477) for his guide (https://github.com
 
 Nafen, from the modding channel, for helping with the description of the Handcuffs' effect.
 
+Thiago, for helping with finding some bugs in the v0.6.* versions.
+
 STREET FIGHTER is a registered trademark of CAPCOM U.S.A., INC.
 
 # Special Thanks
