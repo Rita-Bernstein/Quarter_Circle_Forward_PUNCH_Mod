@@ -1,12 +1,17 @@
 {
 	"ww_relics:WanderingWarrior": {
 		"NAME": "Wandering Warrior",
-		"DESCRIPTION": "Gain at start Duffel Bag, Fighting Gloves, Red Headband and lose 35% Max HP."
+		"DESCRIPTION": "Gain at start Duffel Bag, Fighting Gloves and Red Headband."
 	},
 	
 	"ww_relics:BlueJade": {
 		"NAME": "Blue Jade",
-		"DESCRIPTION": "Gain at start Spiky Bracers, White Boots, Handcuffs and lose 35% Max HP."
+		"DESCRIPTION": "Gain at start Spiky Bracers(not yet, needs fixing), White Boots and Handcuffs."
+	},
+	
+	"ww_relics:WaitNoRestBetweenRounds": {
+		"NAME": "Wait, No Rest Between Rounds?",
+		"DESCRIPTION": "Start with 65% Max HP."
 	},
 	
 	"WWWWWWWWWWWWWWWWW": {
