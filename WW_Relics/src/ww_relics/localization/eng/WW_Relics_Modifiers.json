@@ -19,6 +19,11 @@
 		"DESCRIPTION": "Starts without any starter relics."
 	},
 	
+	"ww_relics:HalfHealthBar": {
+		"NAME": "Half Health Bar",
+		"DESCRIPTION": "Start with 50% Max HP."
+	},
+	
 	"WWWWWWWWWWWWWWWWW": {
 		"NAME": "WWWWWWWWWWWWWWW",
 		"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
