@@ -194,7 +194,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             relics.add(RedHeadband.ID);
         }	
 		if (isCustomModActive(BLUE_JADE_ID)) {
-            relics.add(SpikyBracers.ID);
+            //relics.add(SpikyBracers.ID);
             relics.add(WhiteBoots.ID);
             relics.add(Handcuffs.ID);
         }
