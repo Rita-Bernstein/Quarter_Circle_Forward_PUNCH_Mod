@@ -28,8 +28,7 @@ Link in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/
 10. ?????????????????????
 11. Update of art and sound assets.
 12. Polishing, refactoring and balancing.
-13. Challenges for Custom Games where you start with a specific Street Fighter's relics (and problems included).
-14. Synergy and adaptation with other mods.
+13. Synergy and adaptation with other mods.
 
 # Requirements
 
