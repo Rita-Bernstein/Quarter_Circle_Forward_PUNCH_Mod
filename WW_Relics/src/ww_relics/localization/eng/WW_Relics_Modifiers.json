@@ -24,6 +24,11 @@
 		"DESCRIPTION": "Start with 50% Max HP."
 	},
 	
+	"ww_relics:QuarterHealthBar": {
+		"NAME": "Quarter Health Bar",
+		"DESCRIPTION": "Start with 25% Max HP."
+	},
+	
 	"WWWWWWWWWWWWWWWWW": {
 		"NAME": "WWWWWWWWWWWWWWW",
 		"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
