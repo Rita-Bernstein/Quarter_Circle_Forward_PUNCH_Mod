@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.RunModStrings;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
 
 import basemod.BaseMod;
@@ -53,12 +54,17 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		  + "\r\n v1.0 will have 16+ relics.";
 	
 	//Custom game modifiers
+	//...that add specific Street Fighter character's relics. 
 	public static final String WANDERING_WARRIOR_ID = "ww_relics:WanderingWarrior";
 	
 	public static final String BLUE_JADE_ID = "ww_relics:BlueJade";
 	
+	
+	//...that make the run more challenging.
 	public static final String WAIT_NO_REST_BETWEEN_ROUNDS_ID = "ww_relics:WaitNoRestBetweenRounds";
 	public static final int WAIT_NO_REST_BETWEEN_ROUNDS_STARTING_MAX_HP_PERCENTAGE = 65;
+	
+	public static final String FRESH_START_ID = "ww_relics:FreshStart";
 	
 	public WW_Relics_Mod() {
 		BaseMod.subscribe(this);
@@ -183,10 +189,15 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	public void receiveCustomModeMods(List<CustomMod> list) {
 		CustomMod wandering_warrior = new CustomMod(WANDERING_WARRIOR_ID, "y", true);
 		CustomMod blue_jade = new CustomMod(BLUE_JADE_ID, "y", true);
+		
 		CustomMod no_rest_between_rounds = new CustomMod(WAIT_NO_REST_BETWEEN_ROUNDS_ID, "y", true);
+		CustomMod fresh_start = new CustomMod(FRESH_START_ID, "y", true);
+		
 		list.add(wandering_warrior);
 		list.add(blue_jade);
 		list.add(no_rest_between_rounds);
+		list.add(fresh_start);
+		
 	 }
 	 
 	@Override
@@ -214,6 +225,20 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
             AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
         }
+        
+		if (isCustomModActive(FRESH_START_ID)) {
+			ArrayList<com.megacrit.cardcrawl.relics.AbstractRelic> player_relics;
+			
+			player_relics = AbstractDungeon.player.relics;
+			
+			for (int i = player_relics.size() - 1; i >= 0; i--) {
+				if (player_relics.get(i).tier == AbstractRelic.RelicTier.STARTER) {
+					player_relics.remove(i);
+				}
+			}
+			
+			
+		}
     }
 	
 	public static void loadRunData() {
