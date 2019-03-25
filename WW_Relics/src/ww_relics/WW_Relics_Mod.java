@@ -69,6 +69,9 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	public static final String HALF_HEALTH_BAR_ID = "ww_relics:HalfHealthBar";
 	public static final int HALF_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE = 50;
 	
+	public static final String QUARTER_HEALTH_BAR_ID = "ww_relics:QuarterHealthBar";
+	public static final int QUARTER_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE = 25;
+	
 	public WW_Relics_Mod() {
 		BaseMod.subscribe(this);
 	}
@@ -196,13 +199,14 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		CustomMod no_rest_between_rounds = new CustomMod(WAIT_NO_REST_BETWEEN_ROUNDS_ID, "y", true);
 		CustomMod fresh_start = new CustomMod(FRESH_START_ID, "y", true);
 		CustomMod half_health_bar = new CustomMod(HALF_HEALTH_BAR_ID, "y", true);
+		CustomMod quarter_health_bar = new CustomMod(QUARTER_HEALTH_BAR_ID, "y", true);
 		
 		list.add(wandering_warrior);
 		list.add(blue_jade);
 		list.add(no_rest_between_rounds);
 		list.add(fresh_start);
 		list.add(half_health_bar);
-		
+		list.add(quarter_health_bar);
 	 }
 	 
 	@Override
@@ -247,6 +251,15 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 			new_startingMaxHP = 
         			AbstractDungeon.player.startingMaxHP *
         				HALF_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE / 100;
+            AbstractDungeon.player.startingMaxHP = (int)new_startingMaxHP;
+            AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
+            AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
+		}
+		
+		if (isCustomModActive(QUARTER_HEALTH_BAR_ID)) {
+			new_startingMaxHP = 
+        			AbstractDungeon.player.startingMaxHP *
+        				QUARTER_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE / 100;
             AbstractDungeon.player.startingMaxHP = (int)new_startingMaxHP;
             AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
             AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
