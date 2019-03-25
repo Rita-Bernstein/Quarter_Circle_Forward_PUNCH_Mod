@@ -54,10 +54,11 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	//Custom game modifiers
 	public static final String WANDERING_WARRIOR_ID = "ww_relics:WanderingWarrior";
-	public static final int WANDERING_WARRIOR_STARTING_MAX_HP_PERCENTAGE = 65;
 	
 	public static final String BLUE_JADE_ID = "ww_relics:BlueJade";
-	public static final int BLUE_JADE_STARTING_MAX_HP_PERCENTAGE = 65;
+	
+	public static final String WAIT_NO_REST_BETWEEN_ROUNDS_ID = "ww_relics:WaitNoRestBetweenRounds";
+	public static final int WAIT_NO_REST_BETWEEN_ROUNDS_STARTING_MAX_HP_PERCENTAGE = 65;
 	
 	public WW_Relics_Mod() {
 		BaseMod.subscribe(this);
@@ -180,10 +181,12 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	@Override
 	public void receiveCustomModeMods(List<CustomMod> list) {
-		CustomMod wandering_warrior = new CustomMod("ww_relics:WanderingWarrior", "y", true);
-		CustomMod blue_jade = new CustomMod("ww_relics:BlueJade", "y", true);
+		CustomMod wandering_warrior = new CustomMod(WANDERING_WARRIOR_ID, "y", true);
+		CustomMod blue_jade = new CustomMod(BLUE_JADE_ID, "y", true);
+		CustomMod no_rest_between_rounds = new CustomMod(WAIT_NO_REST_BETWEEN_ROUNDS_ID, "y", true);
 		list.add(wandering_warrior);
 		list.add(blue_jade);
+		list.add(no_rest_between_rounds);
 	 }
 	 
 	@Override
@@ -203,17 +206,10 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
     @Override
     public void receivePostDungeonInitialize() {
     	float new_startingMaxHP;
-        if (isCustomModActive(WANDERING_WARRIOR_ID)) {
+        if (isCustomModActive(WAIT_NO_REST_BETWEEN_ROUNDS_ID)) {
         	new_startingMaxHP = 
-        			AbstractDungeon.player.startingMaxHP * WANDERING_WARRIOR_STARTING_MAX_HP_PERCENTAGE / 100;
-            AbstractDungeon.player.startingMaxHP = (int)new_startingMaxHP;
-            AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
-            AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
-        }
-
-        if (isCustomModActive(BLUE_JADE_ID)) {
-        	new_startingMaxHP = 
-        			AbstractDungeon.player.startingMaxHP * BLUE_JADE_STARTING_MAX_HP_PERCENTAGE / 100;
+        			AbstractDungeon.player.startingMaxHP *
+        				WAIT_NO_REST_BETWEEN_ROUNDS_STARTING_MAX_HP_PERCENTAGE / 100;
             AbstractDungeon.player.startingMaxHP = (int)new_startingMaxHP;
             AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
             AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
