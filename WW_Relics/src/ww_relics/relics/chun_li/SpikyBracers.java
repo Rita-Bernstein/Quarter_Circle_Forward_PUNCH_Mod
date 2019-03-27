@@ -6,17 +6,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 
 import basemod.abstracts.CustomRelic;
 
@@ -29,6 +27,7 @@ public class SpikyBracers extends CustomRelic {
 	private static final int NUMBER_OF_CARDS_TO_APPLY_EFFECT = 2;
 	
 	public AbstractCard[] cards_chosen;
+	public static int NUMBER_OF_CARDS_CHOSEN = 0;
 	
 	public static boolean cards_are_selected = false;
 	public boolean power_tip_updated = false;
@@ -38,6 +37,8 @@ public class SpikyBracers extends CustomRelic {
 	public SpikyBracers() {
 		super(ID, "abacus.png", //add method for textures here.
 				RelicTier.COMMON, LandingSound.HEAVY);
+		NUMBER_OF_CARDS_CHOSEN = 0;
+		cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
 	}
 	
 	public String getUpdatedDescription() {
@@ -46,15 +47,19 @@ public class SpikyBracers extends CustomRelic {
 				DESCRIPTIONS[1] + UPDATE_COST_TEXT +
 				DESCRIPTIONS[2];
 
-		if (!cards_are_selected) return base_description;
-		else if (cards_chosen != null)
-		{
-			base_description += DESCRIPTIONS[3];
-			base_description += FontHelper.colorString(cards_chosen[0].name, "y");
-			base_description += DESCRIPTIONS[4];
-			base_description += FontHelper.colorString(cards_chosen[1].name, "y");
-			base_description += DESCRIPTIONS[5];
+		/*base_description += DESCRIPTIONS[3];
+		for (int i = 0; i < cards_chosen.length; i++) {
+			if (cards_chosen[i] == null) {
+				base_description += DESCRIPTIONS[5];
+			} else {
+				base_description += FontHelper.colorString(cards_chosen[i].name, "y");
+				base_description += DESCRIPTIONS[4];
+			}
+
 		}
+
+		base_description += FontHelper.colorString(cards_chosen[1].name, "y");
+		base_description += DESCRIPTIONS[5];*/
 		
 		return base_description;
 	}
@@ -63,25 +68,6 @@ public class SpikyBracers extends CustomRelic {
 		return DESCRIPTIONS[6] + NUMBER_OF_CARDS_TO_APPLY_EFFECT+
 				DESCRIPTIONS[7] + UPDATE_COST_TEXT +
 				DESCRIPTIONS[8];
-	}
-	
-	public void onEquip() {
-		
-		if (getValidCardGroup().getPurgeableCards().size() >= 2)
-		{
-			if (AbstractDungeon.isScreenUp)
-			{
-				AbstractDungeon.dynamicBanner.hide();
-				AbstractDungeon.overlayMenu.cancelButton.hide();
-				AbstractDungeon.previousScreen = AbstractDungeon.screen;
-			}
-			
-			AbstractDungeon.getCurrRoom().phase = RoomPhase.INCOMPLETE;
-			
-			cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
-			AbstractDungeon.gridSelectScreen.open(getValidCardGroup(), 2,
-					getUncoloredDescription(), false, false, false, false);
-		}
 	}
 	
 	public void updateTipPostCardsChosen() {
@@ -118,56 +104,67 @@ public class SpikyBracers extends CustomRelic {
 	public void update()
 	{
 		super.update();
-	    if (areTwoCardsSelectedAndThatsNotNoticedYet())
-	    {
-	    	this.cards_are_selected = true;
-	    	
-	    	for (int i = 0; i < NUMBER_OF_CARDS_TO_APPLY_EFFECT; i++) {
-	    		
-	    		cards_chosen[i] = ((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(i));
-	    		cards_chosen[i].updateCost(UPDATE_COST_BY);
-	    		
-	    	}
-	    	
-			AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
-			AbstractDungeon.gridSelectScreen.selectedCards.clear();
-			
-			float x = Settings.WIDTH/4;
-            float y = Settings.HEIGHT/2;
-			
-            AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(
-    				cards_chosen[0], x, y));
-            AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(
-    				cards_chosen[1], 3*x, y));
-	    }
-	    
+
 	    if (cards_are_selected && !power_tip_updated) {
 			updateTipPostCardsChosen();
 			power_tip_updated = true;
 		}
 	}
 	
-	private boolean areTwoCardsSelectedAndThatsNotNoticedYet() {
-		return (!cards_are_selected) && (AbstractDungeon.gridSelectScreen.selectedCards.size() == 2);
+	public void onUnequip() {
+		resetRelic();
 	}
 	
-	public void onUnequip() {
-		if (cards_are_selected) {
-			
-			for (int i = 0; i < NUMBER_OF_CARDS_TO_APPLY_EFFECT; i++) {
-			    
-				AbstractCard cardInDeck = AbstractDungeon.player.masterDeck.getSpecificCard(cards_chosen[i]);
+	public void onEnterRoom(AbstractRoom room) {
+		resetRelic();
+	}
 	
-				if (cardInDeck != null) {
-					cards_chosen[i].updateCost(-UPDATE_COST_BY);
-				}	
-				
-			}
-			
+	public void resetRelic() {
+		if (cards_are_selected) {		
 			cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
 			cards_are_selected = false;
 			power_tip_updated = false;
+			NUMBER_OF_CARDS_CHOSEN = 0;
 		}
+	}
+	
+	public void onUseCard(AbstractCard card, UseCardAction action) {
+		/*logger.info("NUMBER_OF_CARDS_CHOSEN " + NUMBER_OF_CARDS_CHOSEN);
+		logger.info("cards_chosen.length " + cards_chosen.length);
+		logger.info("NUMBER_OF_CARDS_TO_APPLY_EFFECT " + NUMBER_OF_CARDS_TO_APPLY_EFFECT);*/
+		
+		if ((NUMBER_OF_CARDS_CHOSEN < cards_chosen.length) && (NUMBER_OF_CARDS_CHOSEN < NUMBER_OF_CARDS_TO_APPLY_EFFECT)) {
+			if (cardCanReceiveEffect(card)){
+				cards_chosen[NUMBER_OF_CARDS_CHOSEN] = card.makeCopy();
+				card.modifyCostForCombat(UPDATE_COST_BY);
+				NUMBER_OF_CARDS_CHOSEN++;
+				cards_are_selected = true;
+			}
+		}
+	}
+	
+	public boolean cardCanReceiveEffect(AbstractCard card) {
+		boolean power_or_skill = (card.type == CardType.POWER) || (card.type == CardType.SKILL);
+		boolean cost_equal_or_higher_than_2 = card.cost >= 2;
+		
+		boolean has_been_chosen_already = cardHasBeenChosenAlready(card);
+		
+		return power_or_skill && cost_equal_or_higher_than_2 && !has_been_chosen_already;
+	}
+	
+	public boolean cardHasBeenChosenAlready(AbstractCard card) {
+		boolean has_been_chosen_already = false;
+		
+		for (AbstractCard card_chosen: cards_chosen) {
+			if (card_chosen != null) {
+				if (card_chosen.uuid == card.uuid) {
+					has_been_chosen_already = true;
+					break;
+				}
+			}
+		}
+		
+		return has_been_chosen_already;
 	}
 	
 	public boolean canSpawn()
