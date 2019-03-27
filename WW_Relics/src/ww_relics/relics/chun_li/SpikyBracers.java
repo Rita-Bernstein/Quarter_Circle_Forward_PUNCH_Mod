@@ -129,10 +129,6 @@ public class SpikyBracers extends CustomRelic {
 	}
 	
 	public void onUseCard(AbstractCard card, UseCardAction action) {
-		/*logger.info("NUMBER_OF_CARDS_CHOSEN " + NUMBER_OF_CARDS_CHOSEN);
-		logger.info("cards_chosen.length " + cards_chosen.length);
-		logger.info("NUMBER_OF_CARDS_TO_APPLY_EFFECT " + NUMBER_OF_CARDS_TO_APPLY_EFFECT);*/
-		
 		if ((NUMBER_OF_CARDS_CHOSEN < cards_chosen.length) && (NUMBER_OF_CARDS_CHOSEN < NUMBER_OF_CARDS_TO_APPLY_EFFECT)) {
 			if (cardCanReceiveEffect(card)){
 				cards_chosen[NUMBER_OF_CARDS_CHOSEN] = card.makeCopy();
