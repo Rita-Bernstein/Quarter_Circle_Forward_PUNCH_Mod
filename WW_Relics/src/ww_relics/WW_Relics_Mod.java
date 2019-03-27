@@ -239,10 +239,11 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 			ArrayList<com.megacrit.cardcrawl.relics.AbstractRelic> player_relics;
 			
 			player_relics = AbstractDungeon.player.relics;
+
 			
 			for (int i = player_relics.size() - 1; i >= 0; i--) {
 				if (player_relics.get(i).tier == AbstractRelic.RelicTier.STARTER) {
-					player_relics.remove(i);
+					AbstractDungeon.player.loseRelic(player_relics.get(i).relicId);
 				}
 			}
 		}
