@@ -234,16 +234,10 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
     @Override
     public void receivePostDungeonInitialize() {
-    	float new_startingMaxHP;
         if (isCustomModActive(WAIT_NO_REST_BETWEEN_ROUNDS_ID)) {
-        	new_startingMaxHP = 
-        			AbstractDungeon.player.startingMaxHP *
-        				WAIT_NO_REST_BETWEEN_ROUNDS_STARTING_MAX_HP_PERCENTAGE / 100;
-            AbstractDungeon.player.startingMaxHP = (int)new_startingMaxHP;
-            AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
-            AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
+        	multiplyMaxHPByNewPercentage(WAIT_NO_REST_BETWEEN_ROUNDS_STARTING_MAX_HP_PERCENTAGE);
         }
-        
+
 		if (isCustomModActive(FRESH_START_ID)) {
 			ArrayList<com.megacrit.cardcrawl.relics.AbstractRelic> player_relics;
 			
@@ -258,22 +252,21 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		}
 		
 		if (isCustomModActive(HALF_HEALTH_BAR_ID)) {
-			new_startingMaxHP = 
-        			AbstractDungeon.player.startingMaxHP *
-        				HALF_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE / 100;
-            AbstractDungeon.player.startingMaxHP = (int)new_startingMaxHP;
-            AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
-            AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
+			multiplyMaxHPByNewPercentage(HALF_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE);
 		}
 		
 		if (isCustomModActive(QUARTER_HEALTH_BAR_ID)) {
-			new_startingMaxHP = 
-        			AbstractDungeon.player.startingMaxHP *
-        				QUARTER_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE / 100;
-            AbstractDungeon.player.startingMaxHP = (int)new_startingMaxHP;
-            AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
-            AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
+			multiplyMaxHPByNewPercentage(QUARTER_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE);
 		}
+    }
+    
+    public void multiplyMaxHPByNewPercentage(float new_percentage) {
+    	float new_startingMaxHP = 
+    			AbstractDungeon.player.startingMaxHP *
+    			new_percentage / 100;
+        AbstractDungeon.player.startingMaxHP = (int)new_startingMaxHP;
+        AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
+        AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
     }
 	
 	public static void loadRunData() {
