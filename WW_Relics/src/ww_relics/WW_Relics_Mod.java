@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.RunModStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import basemod.BaseMod;
 import basemod.ModPanel;
@@ -213,13 +214,21 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	public void receivePostCreateStartingRelics(AbstractPlayer.PlayerClass playerClass, ArrayList<String> relics) {
 		if (isCustomModActive(WANDERING_WARRIOR_ID)) {
             relics.add(DuffelBag.ID);
+            UnlockTracker.markRelicAsSeen(DuffelBag.ID);
             relics.add(FightingGloves.ID);
+            UnlockTracker.markRelicAsSeen(FightingGloves.ID);
             relics.add(RedHeadband.ID);
+            UnlockTracker.markRelicAsSeen(RedHeadband.ID);
+            
+            
         }	
 		if (isCustomModActive(BLUE_JADE_ID)) {
             //relics.add(SpikyBracers.ID);
+            //UnlockTracker.markRelicAsSeen(SpikyBracers.ID);
             relics.add(WhiteBoots.ID);
+            UnlockTracker.markRelicAsSeen(WhiteBoots.ID);
             relics.add(Handcuffs.ID);
+            UnlockTracker.markRelicAsSeen(Handcuffs.ID);
         }
 	}
 	
