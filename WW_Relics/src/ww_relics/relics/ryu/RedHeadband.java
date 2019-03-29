@@ -18,7 +18,7 @@ public class RedHeadband extends CustomRelic {
 	private Random random = new Random();
 	
 	public RedHeadband() {
-		super(ID, "abacus.png", //add method for textures here.
+		super(ID, "Red_Headband - headband-knot - Delapouite - CC BY 3.0.png", //add method for textures here.
 				RelicTier.COMMON, LandingSound.FLAT);
 	}
 	
