@@ -114,7 +114,7 @@ public class SpikyBracers extends CustomRelic {
 	}
 	
 	public void onUseCard(AbstractCard card, UseCardAction action) {
-		if ((NUMBER_OF_CARDS_CHOSEN < cards_chosen.length) && (NUMBER_OF_CARDS_CHOSEN < NUMBER_OF_CARDS_TO_APPLY_EFFECT)) {
+		if (weStillNeedToMakeCardsCheaper()) {
 			if (cardCanReceiveEffect(card)){
 				cards_chosen[NUMBER_OF_CARDS_CHOSEN] = card.makeCopy();
 				card.modifyCostForCombat(UPDATE_COST_BY);
@@ -123,6 +123,11 @@ public class SpikyBracers extends CustomRelic {
 				updateTipPostCardsChosen();
 			}
 		}
+	}
+	
+	public boolean weStillNeedToMakeCardsCheaper() {
+		return NUMBER_OF_CARDS_CHOSEN < cards_chosen.length &&
+				NUMBER_OF_CARDS_CHOSEN < NUMBER_OF_CARDS_TO_APPLY_EFFECT;
 	}
 	
 	public boolean cardCanReceiveEffect(AbstractCard card) {
