@@ -33,6 +33,8 @@ import basemod.interfaces.PostCreateStartingRelicsSubscriber;
 import basemod.interfaces.PostDungeonInitializeSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import basemod.interfaces.StartGameSubscriber;
+import ww_relics.modifiers.RelicSetModifiers;
+import ww_relics.modifiers.HarderRunModifiers;
 import ww_relics.relics.chun_li.Handcuffs;
 import ww_relics.relics.chun_li.SpikyBracers;
 import ww_relics.relics.chun_li.WhiteBoots;
@@ -53,25 +55,6 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	public static final String DESCRIPTION = "v0.5.0" +
 			"\r\n Adds five relics basd in SF2's main characters."
 		  + "\r\n v1.0 will have 16+ relics.";
-	
-	//Custom game modifiers
-	//...that add specific Street Fighter character's relics. 
-	public static final String WANDERING_WARRIOR_ID = "ww_relics:WanderingWarrior";
-	
-	public static final String BLUE_JADE_ID = "ww_relics:BlueJade";
-	
-	
-	//...that make the run more challenging.
-	public static final String WAIT_NO_REST_BETWEEN_ROUNDS_ID = "ww_relics:WaitNoRestBetweenRounds";
-	public static final int WAIT_NO_REST_BETWEEN_ROUNDS_STARTING_MAX_HP_PERCENTAGE = 65;
-	
-	public static final String FRESH_START_ID = "ww_relics:FreshStart";
-	
-	public static final String HALF_HEALTH_BAR_ID = "ww_relics:HalfHealthBar";
-	public static final int HALF_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE = 50;
-	
-	public static final String QUARTER_HEALTH_BAR_ID = "ww_relics:QuarterHealthBar";
-	public static final int QUARTER_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE = 25;
 	
 	public WW_Relics_Mod() {
 		BaseMod.subscribe(this);
@@ -194,13 +177,17 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	@Override
 	public void receiveCustomModeMods(List<CustomMod> list) {
-		CustomMod wandering_warrior = new CustomMod(WANDERING_WARRIOR_ID, "y", true);
-		CustomMod blue_jade = new CustomMod(BLUE_JADE_ID, "y", true);
+		CustomMod wandering_warrior = new CustomMod(RelicSetModifiers.WANDERING_WARRIOR_ID, "y", true);
+		CustomMod blue_jade = new CustomMod(RelicSetModifiers.BLUE_JADE_ID, "y", true);
 		
-		CustomMod no_rest_between_rounds = new CustomMod(WAIT_NO_REST_BETWEEN_ROUNDS_ID, "y", true);
-		CustomMod fresh_start = new CustomMod(FRESH_START_ID, "y", true);
-		CustomMod half_health_bar = new CustomMod(HALF_HEALTH_BAR_ID, "y", true);
-		CustomMod quarter_health_bar = new CustomMod(QUARTER_HEALTH_BAR_ID, "y", true);
+		CustomMod no_rest_between_rounds = 
+				new CustomMod(HarderRunModifiers.WAIT_NO_REST_BETWEEN_ROUNDS_ID, "y", true);
+		CustomMod fresh_start = 
+				new CustomMod(HarderRunModifiers.FRESH_START_ID, "y", true);
+		CustomMod half_health_bar = 
+				new CustomMod(HarderRunModifiers.HALF_HEALTH_BAR_ID, "y", true);
+		CustomMod quarter_health_bar = 
+				new CustomMod(HarderRunModifiers.QUARTER_HEALTH_BAR_ID, "y", true);
 		
 		list.add(wandering_warrior);
 		list.add(blue_jade);
@@ -212,33 +199,22 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	 
 	@Override
 	public void receivePostCreateStartingRelics(AbstractPlayer.PlayerClass playerClass, ArrayList<String> relics) {
-		if (isCustomModActive(WANDERING_WARRIOR_ID)) {
-            relics.add(DuffelBag.ID);
-            UnlockTracker.markRelicAsSeen(DuffelBag.ID);
-            relics.add(FightingGloves.ID);
-            UnlockTracker.markRelicAsSeen(FightingGloves.ID);
-            relics.add(RedHeadband.ID);
-            UnlockTracker.markRelicAsSeen(RedHeadband.ID);
-            
-            
+		if (isCustomModActive(RelicSetModifiers.WANDERING_WARRIOR_ID)) {
+			RelicSetModifiers.AddWanderingWarriorRelicsToCustomRun(relics);
         }	
-		if (isCustomModActive(BLUE_JADE_ID)) {
-            relics.add(SpikyBracers.ID);
-            UnlockTracker.markRelicAsSeen(SpikyBracers.ID);
-            relics.add(WhiteBoots.ID);
-            UnlockTracker.markRelicAsSeen(WhiteBoots.ID);
-            relics.add(Handcuffs.ID);
-            UnlockTracker.markRelicAsSeen(Handcuffs.ID);
+		
+		if (isCustomModActive(RelicSetModifiers.BLUE_JADE_ID)) {
+			RelicSetModifiers.AddBlueJadeRelicsToCustomRun(relics);
         }
 	}
 	
     @Override
     public void receivePostDungeonInitialize() {
-        if (isCustomModActive(WAIT_NO_REST_BETWEEN_ROUNDS_ID)) {
-        	multiplyMaxHPByNewPercentage(WAIT_NO_REST_BETWEEN_ROUNDS_STARTING_MAX_HP_PERCENTAGE);
+        if (isCustomModActive(HarderRunModifiers.WAIT_NO_REST_BETWEEN_ROUNDS_ID)) {
+        	multiplyMaxHPByNewPercentage(HarderRunModifiers.WAIT_NO_REST_BETWEEN_ROUNDS_STARTING_MAX_HP_PERCENTAGE);
         }
 
-		if (isCustomModActive(FRESH_START_ID)) {
+		if (isCustomModActive(HarderRunModifiers.FRESH_START_ID)) {
 			ArrayList<com.megacrit.cardcrawl.relics.AbstractRelic> player_relics;
 			
 			player_relics = AbstractDungeon.player.relics;
@@ -251,12 +227,12 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 			}
 		}
 		
-		if (isCustomModActive(HALF_HEALTH_BAR_ID)) {
-			multiplyMaxHPByNewPercentage(HALF_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE);
+		if (isCustomModActive(HarderRunModifiers.HALF_HEALTH_BAR_ID)) {
+			multiplyMaxHPByNewPercentage(HarderRunModifiers.HALF_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE);
 		}
 		
-		if (isCustomModActive(QUARTER_HEALTH_BAR_ID)) {
-			multiplyMaxHPByNewPercentage(QUARTER_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE);
+		if (isCustomModActive(HarderRunModifiers.QUARTER_HEALTH_BAR_ID)) {
+			multiplyMaxHPByNewPercentage(HarderRunModifiers.QUARTER_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE);
 		}
     }
     
