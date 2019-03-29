@@ -211,39 +211,23 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
     @Override
     public void receivePostDungeonInitialize() {
         if (isCustomModActive(HarderRunModifiers.WAIT_NO_REST_BETWEEN_ROUNDS_ID)) {
-        	multiplyMaxHPByNewPercentage(HarderRunModifiers.WAIT_NO_REST_BETWEEN_ROUNDS_STARTING_MAX_HP_PERCENTAGE);
+        	HarderRunModifiers.AddNoRestBetweenRoundsEffectsToRun();
         }
 
 		if (isCustomModActive(HarderRunModifiers.FRESH_START_ID)) {
-			ArrayList<com.megacrit.cardcrawl.relics.AbstractRelic> player_relics;
-			
-			player_relics = AbstractDungeon.player.relics;
-
-			
-			for (int i = player_relics.size() - 1; i >= 0; i--) {
-				if (player_relics.get(i).tier == AbstractRelic.RelicTier.STARTER) {
-					AbstractDungeon.player.loseRelic(player_relics.get(i).relicId);
-				}
-			}
+			HarderRunModifiers.AddFreshStartEffectsToRun();
 		}
 		
 		if (isCustomModActive(HarderRunModifiers.HALF_HEALTH_BAR_ID)) {
-			multiplyMaxHPByNewPercentage(HarderRunModifiers.HALF_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE);
+			HarderRunModifiers.AddHaltHealthBarEffectsToRun();
 		}
 		
 		if (isCustomModActive(HarderRunModifiers.QUARTER_HEALTH_BAR_ID)) {
-			multiplyMaxHPByNewPercentage(HarderRunModifiers.QUARTER_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE);
+			HarderRunModifiers.AddQuarterHealthBarEffectsToRun();
 		}
     }
     
-    public void multiplyMaxHPByNewPercentage(float new_percentage) {
-    	float new_startingMaxHP = 
-    			AbstractDungeon.player.startingMaxHP *
-    			new_percentage / 100;
-        AbstractDungeon.player.startingMaxHP = (int)new_startingMaxHP;
-        AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
-        AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
-    }
+    
 	
 	public static void loadRunData() {
         logger.info("Loading Save Data");

@@ -1,5 +1,10 @@
 package ww_relics.modifiers;
 
+import java.util.ArrayList;
+
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+
 public class HarderRunModifiers {
 
 	//...that make the run more challenging.
@@ -14,6 +19,38 @@ public class HarderRunModifiers {
 	public static final String QUARTER_HEALTH_BAR_ID = "ww_relics:QuarterHealthBar";
 	public static final int QUARTER_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE = 25;
 	
+	public static final void AddNoRestBetweenRoundsEffectsToRun() {
+		multiplyMaxHPByNewPercentage(HarderRunModifiers.WAIT_NO_REST_BETWEEN_ROUNDS_STARTING_MAX_HP_PERCENTAGE);
+	}
 	
+	public static void multiplyMaxHPByNewPercentage(float new_percentage) {
+    	float new_startingMaxHP = 
+    			AbstractDungeon.player.startingMaxHP *
+    			new_percentage / 100;
+        AbstractDungeon.player.startingMaxHP = (int)new_startingMaxHP;
+        AbstractDungeon.player.maxHealth = (int)new_startingMaxHP;
+        AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
+    }
+	
+	public static final void AddFreshStartEffectsToRun() {
+		ArrayList<com.megacrit.cardcrawl.relics.AbstractRelic> player_relics;
+		
+		player_relics = AbstractDungeon.player.relics;
+
+		
+		for (int i = player_relics.size() - 1; i >= 0; i--) {
+			if (player_relics.get(i).tier == AbstractRelic.RelicTier.STARTER) {
+				AbstractDungeon.player.loseRelic(player_relics.get(i).relicId);
+			}
+		}
+	}
+	
+	public static final void AddHaltHealthBarEffectsToRun() {
+		multiplyMaxHPByNewPercentage(HarderRunModifiers.HALF_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE);
+	}
+	
+	public static final void AddQuarterHealthBarEffectsToRun() {
+		multiplyMaxHPByNewPercentage(HarderRunModifiers.QUARTER_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE);
+	}
 	
 }
