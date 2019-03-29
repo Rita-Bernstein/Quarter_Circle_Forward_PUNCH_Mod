@@ -49,8 +49,8 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 
 	public static final String MODNAME = "World Warriors' Relics"; // mod name
 	public static final String AUTHOR = "Clauvin aka Dungeon Explorer Lan"; // your name
-	public static final String DESCRIPTION = "v0.5.0" +
-			"\r\n Adds five relics basd in SF2's main characters."
+	public static final String DESCRIPTION = "v0.7.0" +
+			"\r\n Adds six relics basd in SF2's main characters, + 6 game modifiers."
 		  + "\r\n v1.0 will have 16+ relics.";
 	
 	public WW_Relics_Mod() {
