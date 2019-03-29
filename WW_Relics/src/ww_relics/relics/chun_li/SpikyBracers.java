@@ -45,7 +45,7 @@ public class SpikyBracers extends CustomRelic {
 				DESCRIPTIONS[1] + UPDATE_COST_TEXT +
 				DESCRIPTIONS[2];
 
-		if (NUMBER_OF_CARDS_CHOSEN > 0) {
+		if (NUMBER_OF_CARDS_CHOSEN > 0 && cards_chosen != null) {
 			base_description += DESCRIPTIONS[3];
 			
 			for (int i = 0; i < cards_chosen.length; i++) {
