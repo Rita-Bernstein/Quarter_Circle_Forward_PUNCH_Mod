@@ -177,24 +177,8 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	@Override
 	public void receiveCustomModeMods(List<CustomMod> list) {
-		CustomMod wandering_warrior = new CustomMod(RelicSetModifiers.WANDERING_WARRIOR_ID, "y", true);
-		CustomMod blue_jade = new CustomMod(RelicSetModifiers.BLUE_JADE_ID, "y", true);
-		
-		CustomMod no_rest_between_rounds = 
-				new CustomMod(HarderRunModifiers.WAIT_NO_REST_BETWEEN_ROUNDS_ID, "y", true);
-		CustomMod fresh_start = 
-				new CustomMod(HarderRunModifiers.FRESH_START_ID, "y", true);
-		CustomMod half_health_bar = 
-				new CustomMod(HarderRunModifiers.HALF_HEALTH_BAR_ID, "y", true);
-		CustomMod quarter_health_bar = 
-				new CustomMod(HarderRunModifiers.QUARTER_HEALTH_BAR_ID, "y", true);
-		
-		list.add(wandering_warrior);
-		list.add(blue_jade);
-		list.add(no_rest_between_rounds);
-		list.add(fresh_start);
-		list.add(half_health_bar);
-		list.add(quarter_health_bar);
+		RelicSetModifiers.AddRelicSetModifiers(list);
+		HarderRunModifiers.AddHarderSetModifiers(list);
 	 }
 	 
 	@Override
