@@ -1,11 +1,8 @@
 package ww_relics.relics.chun_li;
 
-import java.io.IOException;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
@@ -191,99 +188,6 @@ public class SpikyBracers extends CustomRelic {
 		}
 		
 		return number_of_cards_costing_2_or_more;
-	}
-	
-	public static void save(final SpireConfig config) {
-
-
-        if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
-    		logger.info("Started saving SpikyBracers information");
-        	final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
-
-        	if (relic.cards_chosen != null) {
-                config.setInt("spiky_bracers_1",
-                		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[0]));
-                config.setInt("spiky_bracers_2",
-                		AbstractDungeon.player.masterDeck.group.indexOf(relic.cards_chosen[1]));
-        	}
-
-            config.setBool("spiky_cards_are_selected", cards_are_selected);
-            
-            try {
-				config.save();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-            logger.info("Finished saving Spike Bracers info.");
-        }
-        else {
-        	clear(config);
-        }
-
-    }
-	
-	public static void load(final SpireConfig config) {
-		
-		logger.info("Loading Spiky Bracers info.");
-		if (AbstractDungeon.player.hasRelic(ID) && config.has("spiky_bracers_1") &&
-				config.getBool("spiky_cards_are_selected")) {
-
-            final SpikyBracers relic = (SpikyBracers)AbstractDungeon.player.getRelic(ID);
-            final int cardIndex_1 = config.getInt("spiky_bracers_1");
-            final int cardIndex_2 = config.getInt("spiky_bracers_2");
-            
-            logger.info(cardIndex_1 + " " + cardIndex_2);
-            
-        	relic.cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
-            
-            if (cardIndex_1 >= 0 &&
-            		cardIndex_1 < AbstractDungeon.player.masterDeck.group.size()) {
-            	logger.info("Tried to load here 3.");
-            	loadSpikyCard(relic, cardIndex_1, 0);
-            }
-            
-            if (cardIndex_2 >= 0 &&
-            		cardIndex_2 < AbstractDungeon.player.masterDeck.group.size()) {
-            	logger.info("Tried to load here 4.");
-            	loadSpikyCard(relic, cardIndex_2, 1);
-            }
-            
-            cards_are_selected = true;      
-            
-            try {
-				config.load();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            logger.info("Finished loading Spiky Bracers info.");
-        }
-		
-		else
-		{
-			logger.info("There's no info, setting variables accordingly.");
-			cards_are_selected = false;
-			logger.info("Finished setting Spiky Bracers variables.");
-		}
-		
-		
-    }
-	
-	public static void loadSpikyCard(SpikyBracers relic, int index, int position) {
-		
-    	relic.cards_chosen[position] = AbstractDungeon.player.masterDeck.group.get(index);
-    	
-        if (relic.cards_chosen[position]!= null) {
-        	relic.cards_chosen[position].updateCost(UPDATE_COST_BY);
-        }
-	}
-	
-	public static void clear(final SpireConfig config) {
-		logger.info("Clearing Spiky Bracers variables.");      
-        config.remove("spiky_bracers_1");
-        config.remove("spiky_bracers_2");
-        config.remove("spiky_cards_are_selected");
-        logger.info("Finished clearing Spiky Bracers variables.");
 	}
 	
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
