@@ -66,12 +66,6 @@ public class SpikyBracers extends CustomRelic {
 		return base_description;
 	}
 	
-	public String getUncoloredDescription() {
-		return DESCRIPTIONS[6] + NUMBER_OF_CARDS_TO_APPLY_EFFECT+
-				DESCRIPTIONS[7] + UPDATE_COST_TEXT +
-				DESCRIPTIONS[8];
-	}
-	
 	public void updateTipPostCardsChosen() {
 		String text_for_tip = getUpdatedDescription();
 		this.tips.clear();
