@@ -106,7 +106,7 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		
 		updateBooleansOfValidUse();
 		
-		if (validUse()) {
+		if (isValidToUse()) {
 			
 			CardGroup attacks_in_hand = AbstractDungeon.player.hand.getAttacks();
 			
@@ -153,15 +153,13 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		
 		for (int i = 0; i < attacks.size(); i++) {
 			int cost = attacks.getNCardFromTop(i).cost;
-			if (cost <= MAXIMUM_COST) {
-				return true;
-			}
+			if (cost <= MAXIMUM_COST) return true;
 		}
 		return false;
 		
 	}
 	
-	private boolean validUse() {
+	private boolean isValidToUse() {
 		return have_uses_left && is_on_combat && is_alive && turn_wont_end_soon &&
 				player_isnt_ending_turn && turn_havent_ended && has_an_attack_in_hand;
 	}
