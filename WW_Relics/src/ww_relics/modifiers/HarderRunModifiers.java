@@ -1,14 +1,7 @@
 package ww_relics.modifiers;
 
-public class RunModifiers {
+public class HarderRunModifiers {
 
-	//Custom game modifiers
-	//...that add specific Street Fighter character's relics. 
-	public static final String WANDERING_WARRIOR_ID = "ww_relics:WanderingWarrior";
-	
-	public static final String BLUE_JADE_ID = "ww_relics:BlueJade";
-	
-	
 	//...that make the run more challenging.
 	public static final String WAIT_NO_REST_BETWEEN_ROUNDS_ID = "ww_relics:WaitNoRestBetweenRounds";
 	public static final int WAIT_NO_REST_BETWEEN_ROUNDS_STARTING_MAX_HP_PERCENTAGE = 65;
