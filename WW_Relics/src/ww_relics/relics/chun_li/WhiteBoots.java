@@ -51,7 +51,6 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	private boolean player_isnt_ending_turn = false;
 	private boolean turn_havent_ended = false;
 	private boolean has_an_attack_in_hand = false;
-	private boolean have_attacks_that_are_0_or_1_cost = false;
 	
 	public WhiteBoots() {
 		super(ID, "omamori.png", //add method for textures here.
@@ -91,7 +90,6 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		player_isnt_ending_turn = false;
 		turn_havent_ended = false;
 		has_an_attack_in_hand = false;
-		have_attacks_that_are_0_or_1_cost = false;
 	}
 	
 	private void checkAndSetNotUsedRelic() {
@@ -111,10 +109,8 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		if (validUse()) {
 			
 			CardGroup attacks_in_hand = AbstractDungeon.player.hand.getAttacks();
-
-			have_attacks_that_are_0_or_1_cost = AValidAttackIsInHand(attacks_in_hand);
 			
-			if (have_attacks_that_are_0_or_1_cost) {
+			if (AValidAttackIsInHand(attacks_in_hand)) {
 				
 				number_of_copies_left_to_use = NUMBER_OF_COPIES;
 				
@@ -151,8 +147,6 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		turn_havent_ended = !AbstractDungeon.actionManager.turnHasEnded;
 		has_an_attack_in_hand = AbstractDungeon.player.hand.getAttacks().
 			size() > 0;
-		have_attacks_that_are_0_or_1_cost = false; 	
-		
 	}
 	
 	private boolean AValidAttackIsInHand(CardGroup attacks) {
