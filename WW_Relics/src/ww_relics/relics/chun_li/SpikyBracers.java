@@ -107,10 +107,6 @@ public class SpikyBracers extends CustomRelic {
 	{
 		super.update();
 
-	    if (cards_are_selected && !power_tip_updated) {
-			updateTipPostCardsChosen();
-			power_tip_updated = true;
-		}
 	}
 	
 	public void onUnequip() {
@@ -137,6 +133,7 @@ public class SpikyBracers extends CustomRelic {
 				card.modifyCostForCombat(UPDATE_COST_BY);
 				NUMBER_OF_CARDS_CHOSEN++;
 				cards_are_selected = true;
+				updateTipPostCardsChosen();
 			}
 		}
 	}
