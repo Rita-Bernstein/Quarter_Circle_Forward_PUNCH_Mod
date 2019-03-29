@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
@@ -44,19 +45,23 @@ public class SpikyBracers extends CustomRelic {
 				DESCRIPTIONS[1] + UPDATE_COST_TEXT +
 				DESCRIPTIONS[2];
 
-		/*base_description += DESCRIPTIONS[3];
-		for (int i = 0; i < cards_chosen.length; i++) {
-			if (cards_chosen[i] == null) {
-				base_description += DESCRIPTIONS[5];
-			} else {
-				base_description += FontHelper.colorString(cards_chosen[i].name, "y");
-				base_description += DESCRIPTIONS[4];
+		if (NUMBER_OF_CARDS_CHOSEN > 0) {
+			base_description += DESCRIPTIONS[3];
+			
+			for (int i = 0; i < cards_chosen.length; i++) {
+				if (cards_chosen[i] == null) {
+					base_description += DESCRIPTIONS[4];
+				} else {
+					base_description += FontHelper.colorString(cards_chosen[i].name, "y");
+				}
+				if (i == 0) {
+					base_description += DESCRIPTIONS[5];
+				} else if (i == 1){
+					base_description += DESCRIPTIONS[6];
+				}
+
 			}
-
 		}
-
-		base_description += FontHelper.colorString(cards_chosen[1].name, "y");
-		base_description += DESCRIPTIONS[5];*/
 		
 		return base_description;
 	}
