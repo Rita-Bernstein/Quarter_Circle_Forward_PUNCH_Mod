@@ -96,13 +96,6 @@ public class SpikyBracers extends CustomRelic {
 
 	}
 	
-	@SuppressWarnings("static-access")
-	public void update()
-	{
-		super.update();
-
-	}
-	
 	public void onUnequip() {
 		resetRelic();
 	}
