@@ -273,7 +273,6 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
         logger.info("Loading Save Data");
         try {
             final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
-            SpikyBracers.load(config);
             WhiteBoots.load(config);
             FightingGloves.load(config);
         }
@@ -287,7 +286,6 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
         logger.info("Saving Data");
         try {
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
-            SpikyBracers.save(config);
             WhiteBoots.save(config);
             FightingGloves.save(config);
         }
@@ -302,7 +300,6 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
         try {
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
         	config.clear();
-            SpikyBracers.clear(config);
             WhiteBoots.clear(config);
             FightingGloves.clear(config);
         	config.save();
