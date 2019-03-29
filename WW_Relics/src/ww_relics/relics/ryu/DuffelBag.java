@@ -3,14 +3,12 @@ package ww_relics.relics.ryu;
 import java.util.ArrayList;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.colorless.BandageUp;
-import com.megacrit.cardcrawl.cards.colorless.Panacea;
+import com.megacrit.cardcrawl.cards.colorless.*;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
-import com.megacrit.cardcrawl.rooms.MonsterRoom;
-import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
+import com.megacrit.cardcrawl.rooms.*;
 
 import basemod.abstracts.CustomRelic;
 
@@ -18,11 +16,13 @@ public class DuffelBag extends CustomRelic {
 	
 	public static final String ID = "WW_Relics:Duffel_Bag";
 	private static final int NUMBER_OF_STATIC_CARDS = 2;
-	private ArrayList<AbstractCard> reward_cards;
+
 	private static final int NUMBER_OF_RANDOM_COMMON_RELICS = 2;
 
 	private static final int PRETENDED_NUMBER_OF_EXTRA_REWARDS = NUMBER_OF_STATIC_CARDS +
 			NUMBER_OF_RANDOM_COMMON_RELICS;
+	
+	private ArrayList<AbstractCard> reward_cards;
 	
 	private int number_of_rewards_left;
 	
@@ -61,8 +61,7 @@ public class DuffelBag extends CustomRelic {
 			has_relic_been_used_this_battle = false;
 		}
 		
-		if (((AbstractDungeon.getCurrRoom() instanceof MonsterRoom) || 
-				(AbstractDungeon.getCurrRoom() instanceof MonsterRoomElite)) &&
+		if ((currentRoomIsAMonsterOrMonsterEliteRoom()) &&
 				number_of_rewards_left > 0 && 
 				AbstractDungeon.getCurrRoom().rewardAllowed){
 			
@@ -70,6 +69,16 @@ public class DuffelBag extends CustomRelic {
 			AddNumberOfRewards(-1);
 			has_relic_been_used_this_battle = true;
 		}
+	}
+	
+	public boolean currentRoomIsAMonsterOrMonsterEliteRoom() {
+		return AbstractDungeon.getCurrRoom() instanceof MonsterRoom ||
+				AbstractDungeon.getCurrRoom() instanceof MonsterRoomElite;
+	}
+	
+	private void AddNumberOfRewards(int added) {
+		number_of_rewards_left += added;
+		SetCounter(number_of_rewards_left);
 	}
 	
 	@Override
@@ -86,11 +95,6 @@ public class DuffelBag extends CustomRelic {
 		this.tips.clear();
 		this.tips.add(new PowerTip(this.name, this.description));
 		initializeTips();
-	}
-	
-	private void AddNumberOfRewards(int added) {
-		number_of_rewards_left += added;
-		SetCounter(number_of_rewards_left);
 	}
 	
 	public void onUsePotion() {
