@@ -1,7 +1,9 @@
 package ww_relics.modifiers;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import com.megacrit.cardcrawl.screens.custom.CustomMod;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import ww_relics.relics.chun_li.Handcuffs;
@@ -18,6 +20,14 @@ public class RelicSetModifiers {
 	public static final String WANDERING_WARRIOR_ID = "ww_relics:WanderingWarrior";
 	
 	public static final String BLUE_JADE_ID = "ww_relics:BlueJade";
+	
+	public static void AddRelicSetModifiers(List<CustomMod> list) {
+		CustomMod wandering_warrior = new CustomMod(RelicSetModifiers.WANDERING_WARRIOR_ID, "y", true);
+		CustomMod blue_jade = new CustomMod(RelicSetModifiers.BLUE_JADE_ID, "y", true);
+		
+		list.add(wandering_warrior);
+		list.add(blue_jade);
+	}
 	
 	public static void AddWanderingWarriorRelicsToCustomRun(ArrayList<String> relics) {
         relics.add(DuffelBag.ID);
