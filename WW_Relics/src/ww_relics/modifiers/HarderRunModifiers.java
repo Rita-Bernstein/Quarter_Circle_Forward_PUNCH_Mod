@@ -1,9 +1,11 @@
 package ww_relics.modifiers;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.screens.custom.CustomMod;
 
 public class HarderRunModifiers {
 
@@ -18,6 +20,22 @@ public class HarderRunModifiers {
 	
 	public static final String QUARTER_HEALTH_BAR_ID = "ww_relics:QuarterHealthBar";
 	public static final int QUARTER_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE = 25;
+	
+	public static final void AddHarderSetModifiers(List<CustomMod> list) {
+		CustomMod no_rest_between_rounds = 
+				new CustomMod(HarderRunModifiers.WAIT_NO_REST_BETWEEN_ROUNDS_ID, "y", true);
+		CustomMod fresh_start = 
+				new CustomMod(HarderRunModifiers.FRESH_START_ID, "y", true);
+		CustomMod half_health_bar = 
+				new CustomMod(HarderRunModifiers.HALF_HEALTH_BAR_ID, "y", true);
+		CustomMod quarter_health_bar = 
+				new CustomMod(HarderRunModifiers.QUARTER_HEALTH_BAR_ID, "y", true);
+		
+		list.add(no_rest_between_rounds);
+		list.add(fresh_start);
+		list.add(half_health_bar);
+		list.add(quarter_health_bar);
+	}
 	
 	public static final void AddNoRestBetweenRoundsEffectsToRun() {
 		multiplyMaxHPByNewPercentage(HarderRunModifiers.WAIT_NO_REST_BETWEEN_ROUNDS_STARTING_MAX_HP_PERCENTAGE);
