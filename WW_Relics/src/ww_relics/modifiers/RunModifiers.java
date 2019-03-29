@@ -21,4 +21,6 @@ public class RunModifiers {
 	public static final String QUARTER_HEALTH_BAR_ID = "ww_relics:QuarterHealthBar";
 	public static final int QUARTER_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE = 25;
 	
+	
+	
 }
