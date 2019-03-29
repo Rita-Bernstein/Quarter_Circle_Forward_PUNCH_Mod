@@ -1,12 +1,12 @@
 {
 	"ww_relics:WanderingWarrior": {
 		"NAME": "Wandering Warrior",
-		"DESCRIPTION": "Gain at start Duffel Bag, Fighting Gloves and Red Headband."
+		"DESCRIPTION": "Start with Duffel Bag, Fighting Gloves and Red Headband."
 	},
 	
 	"ww_relics:BlueJade": {
 		"NAME": "Blue Jade",
-		"DESCRIPTION": "Gain at start Spiky Bracers(not yet, needs fixing), White Boots and Handcuffs."
+		"DESCRIPTION": "Start with Spiky Bracers, White Boots and Handcuffs."
 	},
 	
 	"ww_relics:WaitNoRestBetweenRounds": {
@@ -16,7 +16,7 @@
 	
 	"ww_relics:FreshStart": {
 		"NAME": "Fresh Start",
-		"DESCRIPTION": "Starts without any starter relics."
+		"DESCRIPTION": "Start without any Starter relics."
 	},
 	
 	"ww_relics:HalfHealthBar": {
