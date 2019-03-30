@@ -44,7 +44,7 @@ None that I know so far.
 
 # Installation
 
-Download the .jar in the latest release, then add it to SlayTheSpire/mods folder (if you already installed the requirements. If not, do both things first).
+Download the .jar in the latest release, then add it to SlayTheSpire/mods folder (if you already installed the requirements. If not, do it first).
 
 # Credits/Acknowledgments
 
