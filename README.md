@@ -14,6 +14,10 @@ Walking towards roadmap's milestone 2 (and simultaneously doing stuff from miles
 
 Link in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/Relics).
 
+# Game Modifiers
+
+Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/Game-Modifiers).
+
 # Roadmap
 
 1. Create a relic based in Ryu, for basic testing and getting the hang of modding relics for Slay The Spire. Focus in mechanics and avoiding bugs, not graphics. - Done in v0.1.
