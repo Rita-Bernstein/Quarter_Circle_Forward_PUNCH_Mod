@@ -49,20 +49,27 @@ public class RedHeadband extends CustomRelic {
 		        
 		        p.addPower(new NoDrawPower(p));
 		        
-		        for (int i = 0; i < DRAW_PER_STATUS_OR_CURSE; i++) {
-			        if (!p.drawPile.group.isEmpty()) {
-			        	int draw_pile_size = p.drawPile.group.size();
-			        	int which_card = random.random(0, draw_pile_size-1);
-			        	AbstractCard the_card = p.drawPile.getNCardFromTop(which_card);
-			        	p.drawPile.moveToHand(the_card, p.drawPile);
-			        } else { break; }
-			        
-					drawn_status_and_curses_in_the_turn++;
+		        if (abscenceOfNoDraw()) {
+			        for (int i = 0; i < DRAW_PER_STATUS_OR_CURSE; i++) {
+				        if (!p.drawPile.group.isEmpty()) {
+				        	int draw_pile_size = p.drawPile.group.size();
+				        	int which_card = random.random(0, draw_pile_size-1);
+				        	AbstractCard the_card = p.drawPile.getNCardFromTop(which_card);
+				        	p.drawPile.moveToHand(the_card, p.drawPile);
+				        } else { break; }
+				        
+						drawn_status_and_curses_in_the_turn++;
+			        }
+		        } else {
+		        	AbstractDungeon.player.getPower("No Draw").flash();
 		        }
-
 			}
 		}
 		
+	}
+	
+	public Boolean abscenceOfNoDraw() {
+		return !AbstractDungeon.player.hasPower("No Draw");
 	}
 	
 	public void atTurnStart() {
