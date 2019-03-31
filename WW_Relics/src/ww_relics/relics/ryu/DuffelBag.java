@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.*;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class DuffelBag extends CustomRelic {
 	
@@ -29,7 +30,7 @@ public class DuffelBag extends CustomRelic {
 	private boolean has_relic_been_used_this_battle = false;
 	
 	public DuffelBag() {
-		super(ID, "abacus.png", //add method for textures here.
+		super(ID, GraphicResources.LoadRelicImage("Duffel_Bag - swap-bag - Lorc - CC BY 3.0.png"),
 				RelicTier.UNCOMMON, LandingSound.FLAT);
 		reward_cards = new ArrayList<AbstractCard>();
 		
