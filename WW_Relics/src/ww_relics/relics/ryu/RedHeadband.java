@@ -1,5 +1,8 @@
 package ww_relics.relics.ryu;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -18,10 +21,15 @@ public class RedHeadband extends CustomRelic {
 	
 	private Random random = new Random();
 	
+	private Logger logger = LogManager.getLogger(RedHeadband.class.getName());
+	
 	public RedHeadband() {
 		super(ID, GraphicResources.RELIC_TEXTURE_ADDRESS +
 				"Red_Headband - headband-knot - Delapouite - CC BY 3.0.png", //add method for textures here.
 				RelicTier.COMMON, LandingSound.FLAT);
+		if (img != null) logger.info("Worked.");
+		else logger.info("Didn't work.");
+		
 	}
 	
 	public String getUpdatedDescription() {
