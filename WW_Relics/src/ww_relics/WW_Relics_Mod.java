@@ -93,20 +93,6 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		String relicStringsAddress = "ww_relics/localization/eng/WW_Relics_Relics.json";
 	    String relicStrings = getJsonText(relicStringsAddress);
 	    
-	    if (relicStrings == "") {
-	    	
-	    	relicStringsAddress = "src/ww_relics/localization/eng/WW_Relics_Relics.json";
-	    	relicStrings = getJsonText(relicStringsAddress);
-	    	
-	    }
-	    
-	    if (relicStrings == "") {
-	    	
-	    	relicStringsAddress = "localization/eng/WW_Relics_Relics.json";
-	    	relicStrings = getJsonText(relicStringsAddress);
-	    	
-	    }
-	    
 	    BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
 	}
 	
