@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.NoDrawPower;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
@@ -45,6 +46,8 @@ public class RedHeadband extends CustomRelic {
 		        AbstractDungeon.player.hand.moveToDiscardPile(drawnCard);
 				
 		        AbstractPlayer p = AbstractDungeon.player;
+		        
+		        p.addPower(new NoDrawPower(p));
 		        
 		        for (int i = 0; i < DRAW_PER_STATUS_OR_CURSE; i++) {
 			        if (!p.drawPile.group.isEmpty()) {
