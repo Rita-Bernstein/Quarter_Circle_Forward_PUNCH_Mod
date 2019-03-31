@@ -14,6 +14,10 @@ Walking towards roadmap's milestone 2 (and simultaneously doing stuff from miles
 
 Link in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/Relics).
 
+# Game Modifiers
+
+Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/Game-Modifiers).
+
 # Roadmap
 
 1. Create a relic based in Ryu, for basic testing and getting the hang of modding relics for Slay The Spire. Focus in mechanics and avoiding bugs, not graphics. - Done in v0.1.
@@ -36,17 +40,15 @@ Mod The Spire 3.9.2+, BaseMod 5.12.1+ and StSLib 1.15.0+.
 
 # Compatibility
 
-This mod adds some code to the Upgrades of all base Powers and Skills that has 2-cost or more, that when upgraded reduce their own costs by one, to make them work as they look like in game with the Spiky Bracers relic.
-
-This means that mods which alter such cards MAY be incompatible and result in unpredicted behavior. If/when such mods are detected, they will be listed below. Such problem may be fixed in the future, but no promises are made.
+So far, it shouldn't cause problems to other mods. That said, there are 135 mods at Steam Workshop and who knows how many more outside of it, so I can't say that it won't crash your game in any possible mod combination. In case of it happening, open one issue, I will check it out.
 
 ## List of Incompatible Mods:
 
-
+None that I know so far.
 
 # Installation
 
-Download the .jar in the latest release, then add it to SlayTheSpire/mods folder (if you already installed the requirements. If not, do both things first).
+Download the .jar in the latest release, then add it to SlayTheSpire/mods folder (if you already installed the requirements. If not, do it first).
 
 # Credits/Acknowledgments
 
