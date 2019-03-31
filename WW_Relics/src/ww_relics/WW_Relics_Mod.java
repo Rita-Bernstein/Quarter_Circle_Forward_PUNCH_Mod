@@ -100,40 +100,12 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		String powerStringsAddress = "ww_relics/localization/eng/WW_Relics_Powers.json";
 	    String powerStrings = getJsonText(powerStringsAddress);
 	    
-	    if (powerStrings == "") {
-	    	
-	    	powerStringsAddress = "src/ww_relics/localization/eng/WW_Relics_Powers.json";
-	    	powerStrings = getJsonText(powerStringsAddress);
-	    	
-	    }
-	    
-	    if (powerStrings == "") {
-	    	
-	    	powerStringsAddress = "localization/eng/WW_Relics_Powers.json";
-	    	powerStrings = getJsonText(powerStringsAddress);
-	    	
-	    }
-	    
 	    BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
 	}
 	
 	private void LoadModifiersJSON() {
 		String modifiersStringsAddress = "ww_relics/localization/eng/WW_Relics_Modifiers.json";
 	    String modifiersStrings = getJsonText(modifiersStringsAddress);
-	    
-	    if (modifiersStrings == "") {
-	    	
-	    	modifiersStringsAddress = "src/ww_relics/localization/eng/WW_Relics_Modifiers.json";
-	    	modifiersStrings = getJsonText(modifiersStringsAddress);
-	    	
-	    }
-	    
-	    if (modifiersStrings == "") {
-	    	
-	    	modifiersStringsAddress = "localization/eng/WW_Relics_Modifiers.json";
-	    	modifiersStrings = getJsonText(modifiersStringsAddress);
-	    	
-	    }
 	    
 	    BaseMod.loadCustomStrings(RunModStrings.class, modifiersStrings);
 	}
