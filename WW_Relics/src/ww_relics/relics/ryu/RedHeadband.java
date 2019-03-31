@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class RedHeadband extends CustomRelic {
 	public static final String ID = "WW_Relics:Red_Headband";
@@ -18,7 +19,8 @@ public class RedHeadband extends CustomRelic {
 	private Random random = new Random();
 	
 	public RedHeadband() {
-		super(ID, "Red_Headband - headband-knot - Delapouite - CC BY 3.0.png", //add method for textures here.
+		super(ID, GraphicResources.RELIC_TEXTURE_ADDRESS +
+				"Red_Headband - headband-knot - Delapouite - CC BY 3.0.png", //add method for textures here.
 				RelicTier.COMMON, LandingSound.FLAT);
 	}
 	
