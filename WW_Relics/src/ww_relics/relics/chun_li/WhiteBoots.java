@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.logging.log4j.*;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
@@ -51,9 +52,16 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	private boolean turn_havent_ended = false;
 	private boolean has_an_attack_in_hand = false;
 	
+	private Texture white_boots_texture;
+	private Texture spent_white_boots_texture;
+	
 	public WhiteBoots() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
-				RelicTier.UNCOMMON, LandingSound.SOLID);
+			RelicTier.UNCOMMON, LandingSound.SOLID);
+		
+		white_boots_texture = GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png");
+		spent_white_boots_texture = GraphicResources.LoadRelicImage("White_Boots spent - steeltoe-boots - Lorc - CC BY 3.0.png");
+
 	}
 	
 	public String getUpdatedDescription() {
@@ -95,7 +103,7 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		
 		if (number_of_uses_left_in_this_fight > 0) {
 			this.usedUp = false;
-			this.img = ImageMaster.loadImage("images/relics/omamori.png");
+			this.img = white_boots_texture;
 		}
 
 	}
@@ -232,7 +240,7 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 		
 		if (number_of_uses_left_in_this_fight <= 0) {
 			this.usedUp = true;
-			this.img = ImageMaster.loadImage("images/relics/usedOmamori.png");
+			this.img = spent_white_boots_texture;
 		}
 
 	}
