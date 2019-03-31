@@ -7,6 +7,7 @@ public class GraphicResources {
 
 	public static final String GRAPHIC_RESOURCES_ADDRESS = "ww_relics/resources/";
 	public static final String RELIC_GRAPHICS_SUBADDRESS = "relic_graphics/";
+	public static final String RELIC_TEXTURE_ADDRESS = GRAPHIC_RESOURCES_ADDRESS + RELIC_GRAPHICS_SUBADDRESS;
 	
 	public static Texture img_red_headband;
 	public static Texture bg_img_red_headband;
