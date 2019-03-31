@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	public static final String ID = "WW_Relics:White_Boots";
@@ -51,7 +52,7 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 	private boolean has_an_attack_in_hand = false;
 	
 	public WhiteBoots() {
-		super(ID, "omamori.png", //add method for textures here.
+		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.UNCOMMON, LandingSound.SOLID);
 	}
 	
