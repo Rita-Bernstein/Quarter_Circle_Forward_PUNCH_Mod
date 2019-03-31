@@ -41,6 +41,7 @@ public class RedHeadband extends CustomRelic {
 			(drawnCard.type == AbstractCard.CardType.STATUS)) 
 		{
 			if (drawn_status_and_curses_in_the_turn  < NUMBER_OF_DRAWS) {
+				flash();
 		        AbstractDungeon.player.hand.moveToDiscardPile(drawnCard);
 				
 		        AbstractPlayer p = AbstractDungeon.player;
