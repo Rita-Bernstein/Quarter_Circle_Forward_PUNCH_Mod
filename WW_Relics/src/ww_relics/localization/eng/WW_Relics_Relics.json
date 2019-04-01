@@ -4,8 +4,8 @@
     "FLAVOR": "An old tool used for those who once fought for law and order.",
     "DESCRIPTIONS": [
       "Each combat, the first enemy that receives [#ff0000]unblocked [#ff0000]damage gains [#2aecd7]",
-      " Unsteady, loses [#2aecd7]",
-      " Strength and is Stunned for [#2aecd7]",
+      " Unsteady, loses #b",
+      " Strength and is Stunned for #b",
       " turn."
     ]
   },
@@ -14,8 +14,8 @@
     "NAME": "Spiky Bracers",
     "FLAVOR": "Good for balancing your body weight, but the pointy spikes make you decide to use them sparingly.",
     "DESCRIPTIONS": [
-      "Each combat, the first [#2aecd7]",
-      " [#ffff00]2-or-more-cost Skill and/or Powers used cost [#008000]",
+      "Each combat, the first #b",
+      " [#ffff00]2-or-more-cost Skill and/or Powers used cost #b",
       "-less through it.",
       " Cards chosen in this battle are: ",
       "no card yet",
@@ -30,7 +30,7 @@
     "DESCRIPTIONS": [
       "[#ee0000]Right [#ee0000]click [#ee0000]on [#ee0000]it [#ee0000]to [#ee0000]use. ",
       "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]combat. ",
-      "Choose [#ffff00]", " 0-cost or 1-cost Attack in hand.", " Randomly add [#ffff00]",
+      "Choose #b", " 0-cost or 1-cost Attack in hand.", " Randomly add #b",
       " copies of it in the draw pile, then exhaust the Attack. Each copy cost ",
       "-less the first time used.",
       "Choose "
@@ -41,7 +41,7 @@
     "NAME": "Duffel Bag",
     "FLAVOR": "Very practical when wandering.",
     "DESCRIPTIONS": [
-      "For the next [#2aecd7]4 non-event, non-boss fights you win, gain in the first [#2aecd7]1 Bandage Up, the second [#2aecd7]1 Panacea and in each one of the last [#00ff00]",
+	  "For the next [#2aecd7]4 non-event, non-boss fights you win, gain in the first [#2aecd7]1 Bandage Up, the second [#2aecd7]1 Panacea and in each one of the last [#00ff00]",
       " fights [#ffff00]1 random common relic.",
       "Empty. Nothing else in the bag."
     ]
@@ -52,9 +52,9 @@
     "FLAVOR": "\"Inspiring! Who wants to train with me?\" - Ranwid.",
     "DESCRIPTIONS": [
     "[#ee0000]Right [#ee0000]click [#ee0000]on [#ee0000]it [#ee0000]to [#ee0000]use. ",
-    "Each [#ffff00]",
+    "Each #b",
     " rooms, gain one charge.",
-    " At Rest Rooms, right click on this relic before picking an option to spend all the charges and upgrade [#ffff00]1 chosen card for each charge spent.",
+    " At Rest Rooms, right click on this relic before picking an option to spend all the charges and upgrade #b1 chosen card for each charge spent.",
     " [#2aecd7]Starts [#2aecd7]with [#2aecd7]",
     " [#2aecd7]charge",
     ".",

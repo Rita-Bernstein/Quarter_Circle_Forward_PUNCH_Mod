@@ -2,7 +2,7 @@
   "WW_Relics:Power_Unsteady": {
     "NAME": "Unsteady",
     "DESCRIPTIONS": [
-      "Block is reduced by #r",
+      "Block is reduced by #b",
       " each turn."
     ]
   },
