@@ -2,42 +2,25 @@ package ww_relics;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.*;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
-import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.localization.RelicStrings;
-import com.megacrit.cardcrawl.localization.RunModStrings;
+import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
 
 import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
-import basemod.interfaces.AddCustomModeModsSubscriber;
-import basemod.interfaces.EditKeywordsSubscriber;
-import basemod.interfaces.EditRelicsSubscriber;
-import basemod.interfaces.EditStringsSubscriber;
-import basemod.interfaces.PostCreateStartingRelicsSubscriber;
-import basemod.interfaces.PostDungeonInitializeSubscriber;
-import basemod.interfaces.PostInitializeSubscriber;
-import basemod.interfaces.StartGameSubscriber;
-import ww_relics.modifiers.RelicSetModifiers;
-import ww_relics.modifiers.HarderRunModifiers;
-import ww_relics.relics.chun_li.Handcuffs;
-import ww_relics.relics.chun_li.SpikyBracers;
-import ww_relics.relics.chun_li.WhiteBoots;
-import ww_relics.relics.ryu.DuffelBag;
-import ww_relics.relics.ryu.FightingGloves;
-import ww_relics.relics.ryu.RedHeadband;
+import basemod.interfaces.*;
+import ww_relics.modifiers.*;
+import ww_relics.relics.chun_li.*;
+import ww_relics.relics.ryu.*;
 
 @SpireInitializer
 public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
