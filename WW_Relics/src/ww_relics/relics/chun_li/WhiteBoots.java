@@ -11,11 +11,9 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
-import basemod.interfaces.PostDrawSubscriber;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class WhiteBoots extends CustomRelic {
@@ -78,6 +76,7 @@ public class WhiteBoots extends CustomRelic {
 		
 		if (enemyAttackedCounts(info)) {
 			last_single_enemy_attacked = target;
+			logger.info(last_single_enemy_attacked.name);
 		}
 		
 	}
