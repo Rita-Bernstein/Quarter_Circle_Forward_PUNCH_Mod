@@ -4,33 +4,21 @@ import java.io.IOException;
 
 import org.apache.logging.log4j.*;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
-import com.megacrit.cardcrawl.cards.*;
-import com.megacrit.cardcrawl.cards.CardGroup.*;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import basemod.abstracts.CustomRelic;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class WhiteBoots extends CustomRelic {
 	public static final String ID = "WW_Relics:White_Boots";
-	private static final int NUMBER_OF_CHOSEN_ATTACKS = 1;
-	private static final int NUMBER_OF_COPIES = 3;
-	private static final int EFFECT_ON_COST_OF_GENERATED_CARDS = -1;
-	private static final int EFFECT_ON_COST_READABLE = EFFECT_ON_COST_OF_GENERATED_CARDS * -1;
+	/*private static final int CONSTANT_DAMAGE = 1;
+	private static final int DAMAGE_FOR_EACH_UPGRADE = 1;
+	private static final int CARDS_DREW_FOR_MULTIPLIER = 3;
+	private static final int SIZE_OF_MULTIPLIER = 2;*/
 	
-	public int number_of_uses_left_in_this_fight;
-	public int number_of_copies_left_to_use;
-	public boolean player_activated;
-	public boolean card_is_selected;
-	public AbstractCard card_selected;
-	public AbstractCard card_copied;
+	private static int number_of_cards_drew;
 	
 	public int original_cost;
 	
@@ -45,15 +33,15 @@ public class WhiteBoots extends CustomRelic {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 			RelicTier.UNCOMMON, LandingSound.SOLID);
 		
-		white_boots_texture = GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png");
-		spent_white_boots_texture = GraphicResources.LoadRelicImage("White_Boots spent - steeltoe-boots - Lorc - CC BY 3.0.png");
+		/*white_boots_texture = GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png");
+		spent_white_boots_texture = GraphicResources.LoadRelicImage("White_Boots spent - steeltoe-boots - Lorc - CC BY 3.0.png");*/
 
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + DESCRIPTIONS[1] + DESCRIPTIONS[2] + NUMBER_OF_CHOSEN_ATTACKS +
+		return DESCRIPTIONS[0] + DESCRIPTIONS[1] + DESCRIPTIONS[2]; /*+ NUMBER_OF_CHOSEN_ATTACKS +
 				DESCRIPTIONS[3] + DESCRIPTIONS[4] + NUMBER_OF_COPIES + DESCRIPTIONS[5] +
-				EFFECT_ON_COST_READABLE + DESCRIPTIONS[6];
+				EFFECT_ON_COST_READABLE + DESCRIPTIONS[6];*/
 	}
 
 	public boolean canSpawn()
@@ -67,8 +55,8 @@ public class WhiteBoots extends CustomRelic {
     		logger.info("Started saving White Boots information");
         	final WhiteBoots relic = (WhiteBoots)AbstractDungeon.player.getRelic(ID);
 
-            config.setInt("White_Boots_number_of_uses",
-            		relic.number_of_uses_left_in_this_fight);
+            /*config.setInt("White_Boots_number_of_uses",
+            		relic.number_of_uses_left_in_this_fight);*/
             
             try {
 				config.save();
@@ -91,10 +79,10 @@ public class WhiteBoots extends CustomRelic {
             final WhiteBoots relic = (WhiteBoots)AbstractDungeon.player.getRelic(ID);
             final int number_of_uses = config.getInt("White_Boots_number_of_uses");
                      
-        	relic.number_of_uses_left_in_this_fight = number_of_uses;
+        	/*relic.number_of_uses_left_in_this_fight = number_of_uses;
             
         	relic.checkAndSetNotUsedRelic();
-        	relic.checkAndSetUsedRelic();   
+        	relic.checkAndSetUsedRelic();   */
             
             try {
 				config.load();
