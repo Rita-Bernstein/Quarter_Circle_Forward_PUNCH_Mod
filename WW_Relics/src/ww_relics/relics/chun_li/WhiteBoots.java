@@ -204,6 +204,8 @@ public class WhiteBoots extends CustomRelic implements ClickableRelic {
 				
 				createBaseCopyOfSelectedCard();
 				
+				flash();
+				
 				createCopiesAndAddThemToDrawPile();
 				
 				AbstractDungeon.player.hand.moveToExhaustPile(card_selected);
