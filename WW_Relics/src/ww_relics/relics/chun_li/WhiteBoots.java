@@ -13,10 +13,10 @@ import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class WhiteBoots extends CustomRelic {
 	public static final String ID = "WW_Relics:White_Boots";
-	/*private static final int CONSTANT_DAMAGE = 1;
+	private static final int CONSTANT_DAMAGE = 1;
 	private static final int DAMAGE_FOR_EACH_UPGRADE = 1;
 	private static final int CARDS_DREW_FOR_MULTIPLIER = 3;
-	private static final int SIZE_OF_MULTIPLIER = 2;*/
+	private static final int SIZE_OF_MULTIPLIER = 2;
 	
 	private static int number_of_cards_drew;
 	
