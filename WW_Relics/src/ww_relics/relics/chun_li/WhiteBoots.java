@@ -63,6 +63,12 @@ public class WhiteBoots extends CustomRelic {
 		return c.type == CardType.ATTACK;
 	}
 	
+	@Override
+	public void atBattleStartPreDraw() {
+		
+		last_single_enemy_attacked = null;
+		
+	}
 
 	public boolean canSpawn()
 	{
