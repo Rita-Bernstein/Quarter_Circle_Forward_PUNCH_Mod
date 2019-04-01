@@ -1,7 +1,6 @@
 package ww_relics.modifiers;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
