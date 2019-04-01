@@ -5,13 +5,16 @@ import java.io.IOException;
 import org.apache.logging.log4j.*;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import basemod.interfaces.PostDrawSubscriber;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
-public class WhiteBoots extends CustomRelic {
+public class WhiteBoots extends CustomRelic implements PostDrawSubscriber {
 	public static final String ID = "WW_Relics:White_Boots";
 	private static final int CONSTANT_DAMAGE = 1;
 	private static final int DAMAGE_FOR_EACH_UPGRADE = 1;
@@ -43,6 +46,20 @@ public class WhiteBoots extends CustomRelic {
 				DESCRIPTIONS[3] + DESCRIPTIONS[4] + NUMBER_OF_COPIES + DESCRIPTIONS[5] +
 				EFFECT_ON_COST_READABLE + DESCRIPTIONS[6];*/
 	}
+	
+	@Override
+	public void receivePostDraw(AbstractCard c) {
+		
+		if (isAnAttackCard(c)) {
+			logger.info("Draw 1");
+		}
+		
+	}
+	
+	public boolean isAnAttackCard(AbstractCard c) {
+		return c.type == CardType.ATTACK;
+	}
+	
 
 	public boolean canSpawn()
 	{
@@ -77,7 +94,6 @@ public class WhiteBoots extends CustomRelic {
 		if (AbstractDungeon.player.hasRelic(ID) && config.has("White_Boots_number_of_uses")){
 
             final WhiteBoots relic = (WhiteBoots)AbstractDungeon.player.getRelic(ID);
-            final int number_of_uses = config.getInt("White_Boots_number_of_uses");
                      
         	/*relic.number_of_uses_left_in_this_fight = number_of_uses;
             
@@ -105,7 +121,7 @@ public class WhiteBoots extends CustomRelic {
 		
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing White Boots variables.");      
-        config.remove("White_Boots_number_of_uses");
+
         logger.info("Finished clearing White Boots variables.");
 	}
 
