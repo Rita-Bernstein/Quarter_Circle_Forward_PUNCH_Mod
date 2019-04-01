@@ -8,6 +8,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
@@ -22,6 +23,8 @@ public class WhiteBoots extends CustomRelic {
 	private static final int SIZE_OF_MULTIPLIER = 2;
 	
 	private static int number_of_cards_drew;
+	
+	private static AbstractMonster last_single_enemy_attacked;
 	
 	public int original_cost;
 	
@@ -57,7 +60,6 @@ public class WhiteBoots extends CustomRelic {
 	}
 	
 	public boolean isAnAttackCard(AbstractCard c) {
-		logger.info("Test 1");
 		return c.type == CardType.ATTACK;
 	}
 	
