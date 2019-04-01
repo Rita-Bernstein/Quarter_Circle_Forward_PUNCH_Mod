@@ -7,7 +7,8 @@
   <version>0.6</version>
   <description>Adds six relics, inspired in the fighters from
     			 \r\n Super Street Fighter 2: The New Challengers.
-		  		 \r\n v1.0 will have 16+ relics.</description>
+		  		 \r\n v1.0 will have 16+ relics.
+		  		 \r\nThe images in this mod are temporary and will be substituted/improved on the version 1.0.</description>
   <build>
     <finalName>WorldWarriorsRelics</finalName>
     <plugins>
