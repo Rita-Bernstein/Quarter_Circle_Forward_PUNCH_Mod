@@ -26,10 +26,7 @@ public class RedHeadband extends CustomRelic {
 	//Solution: load Texture instead of String
 	public RedHeadband() {
 		super(ID, GraphicResources.LoadRelicImage("Red_Headband - headband-knot - Delapouite - CC BY 3.0.png"), 
-				RelicTier.COMMON, LandingSound.FLAT);
-		if (img != null) logger.info("Worked.");
-		else logger.info("Didn't work.");
-		
+				RelicTier.COMMON, LandingSound.FLAT);	
 	}
 	
 	public String getUpdatedDescription() {
