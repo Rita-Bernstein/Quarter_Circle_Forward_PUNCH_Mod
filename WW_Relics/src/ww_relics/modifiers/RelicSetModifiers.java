@@ -1,17 +1,12 @@
 package ww_relics.modifiers;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
-import ww_relics.relics.chun_li.Handcuffs;
-import ww_relics.relics.chun_li.SpikyBracers;
-import ww_relics.relics.chun_li.WhiteBoots;
-import ww_relics.relics.ryu.DuffelBag;
-import ww_relics.relics.ryu.FightingGloves;
-import ww_relics.relics.ryu.RedHeadband;
+import ww_relics.relics.chun_li.*;
+import ww_relics.relics.ryu.*;
 
 public class RelicSetModifiers {
 
