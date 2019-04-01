@@ -14,7 +14,7 @@ import basemod.abstracts.CustomRelic;
 import basemod.interfaces.PostDrawSubscriber;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
-public class WhiteBoots extends CustomRelic implements PostDrawSubscriber {
+public class WhiteBoots extends CustomRelic {
 	public static final String ID = "WW_Relics:White_Boots";
 	private static final int CONSTANT_DAMAGE = 1;
 	private static final int DAMAGE_FOR_EACH_UPGRADE = 1;
@@ -48,7 +48,7 @@ public class WhiteBoots extends CustomRelic implements PostDrawSubscriber {
 	}
 	
 	@Override
-	public void receivePostDraw(AbstractCard c) {
+	public void onCardDraw(AbstractCard c) {
 		
 		if (isAnAttackCard(c)) {
 			logger.info("Draw 1");
@@ -57,6 +57,7 @@ public class WhiteBoots extends CustomRelic implements PostDrawSubscriber {
 	}
 	
 	public boolean isAnAttackCard(AbstractCard c) {
+		logger.info("Test 1");
 		return c.type == CardType.ATTACK;
 	}
 	
