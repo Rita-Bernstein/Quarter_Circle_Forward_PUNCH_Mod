@@ -31,7 +31,7 @@ public class DuffelBag extends CustomRelic {
 	
 	public DuffelBag() {
 		super(ID, GraphicResources.LoadRelicImage("Duffel_Bag - swap-bag - Lorc - CC BY 3.0.png"),
-				RelicTier.UNCOMMON, LandingSound.FLAT);
+				RelicTier.RARE, LandingSound.FLAT);
 		reward_cards = new ArrayList<AbstractCard>();
 		
 		reward_cards.add(new Panacea());
