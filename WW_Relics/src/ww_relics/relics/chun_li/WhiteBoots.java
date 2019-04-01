@@ -7,6 +7,9 @@ import org.apache.logging.log4j.*;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -24,7 +27,7 @@ public class WhiteBoots extends CustomRelic {
 	
 	private static int number_of_cards_drew;
 	
-	private static AbstractMonster last_single_enemy_attacked;
+	private static AbstractCreature last_single_enemy_attacked;
 	
 	public int original_cost;
 	
@@ -68,6 +71,19 @@ public class WhiteBoots extends CustomRelic {
 		
 		last_single_enemy_attacked = null;
 		
+	}
+	
+	@Override
+	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+		
+		if (enemyAttackedCounts(info)) {
+			last_single_enemy_attacked = target;
+		}
+		
+	}
+	
+	public boolean enemyAttackedCounts(DamageInfo info) {
+		return info.type == DamageType.NORMAL;
 	}
 
 	public boolean canSpawn()
