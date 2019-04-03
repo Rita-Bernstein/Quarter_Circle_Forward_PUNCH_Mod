@@ -22,7 +22,7 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 
 1. Create a relic based in Ryu, for basic testing and getting the hang of modding relics for Slay The Spire. Focus in mechanics and avoiding bugs, not graphics. - Done in v0.1.
 2. Relics inspired by Ryu, Ken, Chun Li and Guile.
-3. Add Custom Modifiers (and other small stuff) related with last milestone's relics and the major theme.
+3. Add Custom Modifiers (and other small stuff) related with last milestone's relics and the major theme. (future relic milestones will add Custom Modifiers too)
 4. Translation of the mod's created text so far to PT-BR. (all future milestones will launch with EN and PT-BR localization)
 5. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
 6. The same, by Boxer, Claw and Sagat. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
@@ -30,9 +30,10 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 8. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
 9. Relics inspired by Cammy, Fei Long and Deejay.
 10. ?????????????????????
-11. Update of art and sound assets.
-12. Polishing, refactoring and balancing.
-13. Synergy and adaptation with other mods.
+11. New balanced Custom Modifiers revolving around fighter's set relics.
+12. Update of art and sound assets.
+13. Polishing, refactoring and balancing.
+14. Synergy and adaptation with other mods.
 
 # Requirements
 
