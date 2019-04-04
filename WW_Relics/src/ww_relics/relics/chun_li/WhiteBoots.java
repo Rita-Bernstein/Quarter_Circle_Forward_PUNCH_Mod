@@ -28,12 +28,8 @@ public class WhiteBoots extends CustomRelic {
 	
 	private static AbstractCreature single_enemy_attacked;
 	
-	public int original_cost;
-	
 	public int[] copied_cards_x_position = {100, 120, 120, 100};
 	public int[] copied_cards_y_position = {100, 80, -80, -100};
-	
-	public boolean effect_happened = false;
 	
 	public static final Logger logger = LogManager.getLogger(WhiteBoots.class.getName());
 	
@@ -124,10 +120,9 @@ public class WhiteBoots extends CustomRelic {
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
     		logger.info("Started saving White Boots information");
-        	final WhiteBoots relic = (WhiteBoots)AbstractDungeon.player.getRelic(ID);
 
-            /*config.setInt("White_Boots_number_of_uses",
-            		relic.number_of_uses_left_in_this_fight);*/
+            config.setInt("White_Boots_number_of_draws",
+            		WhiteBoots.number_of_attacks_drew);
             
             try {
 				config.save();
@@ -145,14 +140,9 @@ public class WhiteBoots extends CustomRelic {
 	public static void load(final SpireConfig config) {
 		
 		logger.info("Loading White Boots info.");
-		if (AbstractDungeon.player.hasRelic(ID) && config.has("White_Boots_number_of_uses")){
-
-            final WhiteBoots relic = (WhiteBoots)AbstractDungeon.player.getRelic(ID);
+		if (AbstractDungeon.player.hasRelic(ID) && config.has("White_Boots_number_of_draws")){
                      
-        	/*relic.number_of_uses_left_in_this_fight = number_of_uses;
-            
-        	relic.checkAndSetNotUsedRelic();
-        	relic.checkAndSetUsedRelic();   */
+            WhiteBoots.number_of_attacks_drew = config.getInt("White_Boots_number_of_draws");
             
             try {
 				config.load();
@@ -176,7 +166,7 @@ public class WhiteBoots extends CustomRelic {
 		
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing White Boots variables.");      
-
+		config.remove("White_Boots_number_of_draws");
         logger.info("Finished clearing White Boots variables.");
 	}
 
