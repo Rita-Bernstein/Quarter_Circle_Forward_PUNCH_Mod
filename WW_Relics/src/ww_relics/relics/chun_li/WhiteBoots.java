@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.logging.log4j.*;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
+import com.megacrit.cardcrawl.actions.common.PummelDamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -23,9 +24,9 @@ public class WhiteBoots extends CustomRelic {
 	private static final int CARDS_DREW_FOR_MULTIPLIER = 3;
 	private static final int SIZE_OF_MULTIPLIER = 2;
 	
-	private static int number_of_cards_drew;
+	private static int number_of_attacks_drew;
 	
-	private static AbstractCreature last_single_enemy_attacked;
+	private static AbstractCreature single_enemy_attacked;
 	
 	public int original_cost;
 	
@@ -40,9 +41,7 @@ public class WhiteBoots extends CustomRelic {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 			RelicTier.UNCOMMON, LandingSound.SOLID);
 		
-		/*white_boots_texture = GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png");
-		spent_white_boots_texture = GraphicResources.LoadRelicImage("White_Boots spent - steeltoe-boots - Lorc - CC BY 3.0.png");*/
-
+		
 	}
 	
 	public String getUpdatedDescription() {
@@ -55,7 +54,10 @@ public class WhiteBoots extends CustomRelic {
 	public void onCardDraw(AbstractCard c) {
 		
 		if (isAnAttackCard(c)) {
-			logger.info("Draw 1");
+			number_of_attacks_drew++;
+			if (single_enemy_attacked != null) {
+				doDamageToTarget(c, single_enemy_attacked);
+			}
 		}
 		
 	}
@@ -64,10 +66,31 @@ public class WhiteBoots extends CustomRelic {
 		return c.type == CardType.ATTACK;
 	}
 	
+	public boolean isTimeToDoDamage() {
+		return single_enemy_attacked != null;
+	}
+	
+	public void doDamageToTarget(AbstractCard card, AbstractCreature creature) {
+		int total_damage = 0;
+		int number_of_upgrades = card.timesUpgraded;
+		boolean is_third_card = isThirdCard();
+		
+		total_damage += CONSTANT_DAMAGE;
+		total_damage += DAMAGE_FOR_EACH_UPGRADE * number_of_upgrades;
+		if (is_third_card) total_damage *= SIZE_OF_MULTIPLIER;
+		
+		DamageInfo damage_info = new DamageInfo(AbstractDungeon.player, total_damage, DamageInfo.DamageType.HP_LOSS);
+		AbstractDungeon.actionManager.addToBottom(new PummelDamageAction(creature, damage_info));
+	}
+	
+	public boolean isThirdCard() {
+		return number_of_attacks_drew % CARDS_DREW_FOR_MULTIPLIER == 0;
+	}
+	
 	@Override
 	public void atBattleStartPreDraw() {
 		
-		last_single_enemy_attacked = null;
+		single_enemy_attacked = null;
 		
 	}
 	
@@ -75,8 +98,7 @@ public class WhiteBoots extends CustomRelic {
 	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
 		
 		if (enemyAttackedCounts(info)) {
-			last_single_enemy_attacked = target;
-			logger.info(last_single_enemy_attacked.name);
+			single_enemy_attacked = target;
 		}
 		
 	}
