@@ -21,8 +21,6 @@ public class RedHeadband extends CustomRelic {
 	
 	private Random random = new Random();
 	
-	private Logger logger = LogManager.getLogger(RedHeadband.class.getName());
-	
 	//Solution: load Texture instead of String
 	public RedHeadband() {
 		super(ID, GraphicResources.LoadRelicImage("Red_Headband - headband-knot - Delapouite - CC BY 3.0.png"), 
