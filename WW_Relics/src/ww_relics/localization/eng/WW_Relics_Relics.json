@@ -28,9 +28,9 @@
     "NAME": "White Boots",
     "FLAVOR": "Very, very worn shoes... as much from hitting as from walking.",
     "DESCRIPTIONS": [
-	  "When you draw an [#ee0000]attack, do #yX+#y",
+	  "When you draw an [#ee0000]attack, do #yX+",
 	  " damage to the last enemy attacked, where X is how many upgrades the attack has.",
-	  "Every #bthird attack draw does the double of damage mentioned above."
+	  " Every #bthird attack draw does the double of damage mentioned above."
     ]
   },
   
