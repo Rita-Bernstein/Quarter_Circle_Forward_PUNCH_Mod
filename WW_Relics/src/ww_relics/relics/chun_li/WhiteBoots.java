@@ -41,7 +41,6 @@ public class WhiteBoots extends CustomRelic {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 			RelicTier.UNCOMMON, LandingSound.SOLID);
 		
-		
 	}
 	
 	public String getUpdatedDescription() {
@@ -51,10 +50,15 @@ public class WhiteBoots extends CustomRelic {
 	}
 	
 	@Override
+	public void onEquip() {
+		counter = number_of_attacks_drew;
+	}
+	
+	@Override
 	public void onCardDraw(AbstractCard c) {
 		
 		if (isAnAttackCard(c)) {
-			number_of_attacks_drew++;
+			addOneToNumberOfAttacksDrew();
 			if (isTimeToDoDamage()) {
 				doDamageToTarget(c, single_enemy_attacked);
 			}
@@ -64,6 +68,11 @@ public class WhiteBoots extends CustomRelic {
 	
 	public boolean isAnAttackCard(AbstractCard c) {
 		return c.type == CardType.ATTACK;
+	}
+	
+	public void addOneToNumberOfAttacksDrew() {
+		number_of_attacks_drew++;
+		counter = number_of_attacks_drew % CARDS_DREW_FOR_MULTIPLIER;
 	}
 	
 	public boolean isTimeToDoDamage() {
@@ -148,6 +157,7 @@ public class WhiteBoots extends CustomRelic {
             
             try {
 				config.load();
+				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
