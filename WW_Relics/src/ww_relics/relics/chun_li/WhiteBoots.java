@@ -55,7 +55,7 @@ public class WhiteBoots extends CustomRelic {
 		
 		if (isAnAttackCard(c)) {
 			number_of_attacks_drew++;
-			if (single_enemy_attacked != null) {
+			if (isTimeToDoDamage()) {
 				doDamageToTarget(c, single_enemy_attacked);
 			}
 		}
