@@ -44,7 +44,8 @@ public class WhiteBoots extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + CONSTANT_DAMAGE + DESCRIPTIONS[1] + DESCRIPTIONS[2];
+		return DESCRIPTIONS[0] + CONSTANT_DAMAGE + DESCRIPTIONS[1] + DESCRIPTIONS[2] +
+				CONSTANT_DAMAGE * 2 + DESCRIPTIONS[3];
 	}
 	
 	@Override
