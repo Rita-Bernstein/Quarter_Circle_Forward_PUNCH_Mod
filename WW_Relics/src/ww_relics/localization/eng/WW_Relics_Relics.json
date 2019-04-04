@@ -3,7 +3,7 @@
     "NAME": "Handcuffs",
     "FLAVOR": "An old tool used for those who once fought for law and order.",
     "DESCRIPTIONS": [
-      "Each combat, the first enemy that receives [#ff0000]unblocked [#ff0000]damage gains [#2aecd7]",
+      "Each combat, the first enemy that receives #runblocked #rdamage gains [#2aecd7]",
       " Unsteady, loses #b",
       " Strength and is Stunned for #b",
       " turn."
@@ -28,9 +28,9 @@
     "NAME": "White Boots",
     "FLAVOR": "Very, very worn shoes... as much from hitting as from walking.",
     "DESCRIPTIONS": [
-	  "When you draw an [#ee0000]attack, do #yX+",
+	  "When you draw an #rattack, do #yX+",
 	  " damage to the last enemy attacked, where X is how many upgrades the attack has.",
-	  " Every #bthird [#ee0000]attack draw does #y2X+",
+	  " Every #bthird #rattack draw does #y2X+",
 	  " damage instead."
     ]
   },
@@ -49,7 +49,7 @@
     "NAME": "Fighting Gloves",
     "FLAVOR": "\"Inspiring! Who wants to train with me?\" - Ranwid.",
     "DESCRIPTIONS": [
-    "[#ee0000]Right [#ee0000]click [#ee0000]on [#ee0000]it [#ee0000]to [#ee0000]use. ",
+    "#rRight #rclick #ron #rit #rto #ruse. ",
     "Each #b",
     " rooms, gain one charge.",
     " At Rest Rooms, right click on this relic before picking an option to spend all the charges and upgrade #b1 chosen card for each charge spent.",
