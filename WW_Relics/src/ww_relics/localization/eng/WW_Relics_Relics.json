@@ -30,7 +30,8 @@
     "DESCRIPTIONS": [
 	  "When you draw an [#ee0000]attack, do #yX+",
 	  " damage to the last enemy attacked, where X is how many upgrades the attack has.",
-	  " Every #bthird attack draw does the double of damage mentioned above."
+	  " Every #bthird [#ee0000]attack draw does #y2X+ ",
+	  " damage instead."
     ]
   },
   
