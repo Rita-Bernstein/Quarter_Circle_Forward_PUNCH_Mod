@@ -17,7 +17,7 @@ public class Handcuffs extends CustomRelic {
 	public static final String ID = "WW_Relics:Handcuffs";
 	
 	private static final int NUMBER_OF_USES_PER_FIGHT = 1;
-	private static final int NUMBER_OF_STR_DOWN_DEBUFFS = 2;
+	private static final int NUMBER_OF_STR_DOWN_DEBUFFS = 0;
 	private static final int NUMBER_OF_UNSTEADY_DEBUFFS = 2;
 	private static final int NUMBER_OF_STUN_DEBUFFS = 1;
 	
