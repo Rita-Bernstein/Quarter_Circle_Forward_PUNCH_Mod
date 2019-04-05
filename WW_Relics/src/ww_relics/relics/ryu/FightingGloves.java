@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom.*;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.resources.relic_graphics.GraphicResources;
 
 import java.util.*;
 
@@ -39,7 +40,8 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	private static boolean player_havent_right_clicked_in_relic_here_before = true;
 	
 	public FightingGloves() {
-		super(ID, "abacus.png", RelicTier.RARE, LandingSound.SOLID);
+		super(ID, GraphicResources.LoadRelicImage("Fighting Gloves - mailed-gloves - Lorc - CC BY 3.0.png"),
+				RelicTier.RARE, LandingSound.SOLID);
 		belowZeroCheck();
 		counter = INITIAL_CHARGES;
 		positive_charges = INITIAL_CHARGES;
