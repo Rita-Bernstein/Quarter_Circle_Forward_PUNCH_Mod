@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
 import ww_relics.powers.UnsteadyPower;
+import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class Handcuffs extends CustomRelic {
 	public static final String ID = "WW_Relics:Handcuffs";
@@ -25,7 +26,7 @@ public class Handcuffs extends CustomRelic {
 	public boolean handcuff_is_lost = false;
 	
 	public Handcuffs() {
-		super(ID, "abacus.png", //add method for textures here.
+		super(ID, GraphicResources.LoadRelicImage("Handcuffs - handcuffs - Lorc - CC BY 3.0.png"),
 				RelicTier.UNCOMMON, LandingSound.CLINK);
 	}
 	
