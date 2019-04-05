@@ -43,25 +43,30 @@ public class Handcuffs extends CustomRelic {
 		number_of_uses_left_in_this_fight = NUMBER_OF_USES_PER_FIGHT;
 	}
 	
+	@SuppressWarnings("unused")
 	@Override
 	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
 		
 		if (canBeUsed(info, damageAmount)) {
 			
-			 AbstractDungeon.actionManager.addToTop(
-					 new ApplyPowerAction(target,
-							 AbstractDungeon.player,
-							 new StrengthPower(target, -1 * NUMBER_OF_STR_DOWN_DEBUFFS)));
-			 
-			 AbstractDungeon.actionManager.addToTop(
-					 new ApplyPowerAction(target,
-							 AbstractDungeon.player,
-							 new UnsteadyPower(target, NUMBER_OF_UNSTEADY_DEBUFFS)));
-			 
-			 AbstractDungeon.actionManager.addToTop(
+			if (NUMBER_OF_STR_DOWN_DEBUFFS > 0) {
+				AbstractDungeon.actionManager.addToTop(
+						 new ApplyPowerAction(target,
+								 AbstractDungeon.player,
+								 new StrengthPower(target, -1 * NUMBER_OF_STR_DOWN_DEBUFFS)));
+			}
+
+			if (NUMBER_OF_UNSTEADY_DEBUFFS > 0) {
+				AbstractDungeon.actionManager.addToTop(
+						 new ApplyPowerAction(target,
+								 AbstractDungeon.player,
+								 new UnsteadyPower(target, NUMBER_OF_UNSTEADY_DEBUFFS)));
+			}
+
+			AbstractDungeon.actionManager.addToTop(
 					 new StunMonsterAction((AbstractMonster)target, AbstractDungeon.player));
 			
-			 number_of_uses_left_in_this_fight--;
+			number_of_uses_left_in_this_fight--;
 		}
 		
 	}
