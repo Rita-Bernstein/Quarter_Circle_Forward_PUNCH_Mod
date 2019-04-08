@@ -17,9 +17,12 @@
     "FLAVOR": "Good for balancing your body weight, but the pointy spikes make you use them sparingly.",
     "DESCRIPTIONS": [
 	  "Each combat, the first #b",
-      " [#ffff00]Skill [#ffff00]or [#ffff00]Power [#ffff00]cards that cost #b",
-      " or more cost #b",
-      " less when played and for the rest of the combat."
+      " [#ffff00]Skill [#ffff00]or [#ffff00]Power [#ffff00]cards that cost #b2 or more cost #b",
+      " less when played and for the rest of the combat.",
+      " Cards chosen in this battle are: ",
+      "no card yet",	
+      " and ",	
+      "."
     ]
   },
 
