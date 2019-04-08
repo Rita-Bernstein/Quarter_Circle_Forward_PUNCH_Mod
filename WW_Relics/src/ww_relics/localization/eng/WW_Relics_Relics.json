@@ -16,13 +16,10 @@
     "NAME": "Spiky Bracers",
     "FLAVOR": "Good for balancing your body weight, but the pointy spikes make you use them sparingly.",
     "DESCRIPTIONS": [
-      "Each combat, the first #b",
-      " [#ffff00]2-or-more-cost Skill and/or Powers used cost #b",
-      "-less through it.",
-      " Cards chosen in this battle are: ",
-      "no card yet",
-      " and ",
-      "."
+	  "Each combat, the first #b",
+      " [#ffff00]Skill [#ffff00]or [#ffff00]Power [#ffff00]cards that cost #b",
+      " or more cost #b",
+      " less when played and for the rest of the combat."
     ]
   },
 
