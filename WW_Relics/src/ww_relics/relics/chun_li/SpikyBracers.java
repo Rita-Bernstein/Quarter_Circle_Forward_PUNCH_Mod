@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class SpikyBracers extends CustomRelic {
 	
@@ -33,7 +34,7 @@ public class SpikyBracers extends CustomRelic {
 	static Logger logger = LogManager.getLogger(SpikyBracers.class.getName());
 	
 	public SpikyBracers() {
-		super(ID, "abacus.png", //add method for textures here.
+		super(ID, GraphicResources.LoadRelicImage("spiky-bracers - CC BY 3.0.png"),
 				RelicTier.COMMON, LandingSound.HEAVY);
 		NUMBER_OF_CARDS_CHOSEN = 0;
 		cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
