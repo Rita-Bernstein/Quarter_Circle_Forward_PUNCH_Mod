@@ -3,7 +3,7 @@ A Slay The Spire mod, which adds primarily relics inspired by fighters from Supe
 
 # Content
 
-* Six relics done of 16+ planned, with placeholder image and sound.
+* Six relics done of 16+ planned, with temporary images and placeholder sounds.
 * Six game modifiers, ranging from adding more relics at start to making the game harder.
 
 # Current State
