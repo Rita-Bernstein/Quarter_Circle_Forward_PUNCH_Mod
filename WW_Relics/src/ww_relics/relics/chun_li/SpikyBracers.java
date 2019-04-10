@@ -118,13 +118,19 @@ public class SpikyBracers extends CustomRelic {
 	
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (weStillNeedToMakeCardsCheaper()) {
+			
 			if (cardCanReceiveEffect(card)){
-				cards_chosen[NUMBER_OF_CARDS_CHOSEN] = card.makeCopy();
-				card.modifyCostForCombat(UPDATE_COST_BY);
-				NUMBER_OF_CARDS_CHOSEN++;
-				cards_are_selected = true;
-				updateTipPostCardsChosen();
+				
+				if (card.cost >= MINIMUM_WORKING_COST) {
+					cards_chosen[NUMBER_OF_CARDS_CHOSEN] = card.makeCopy();
+					card.modifyCostForCombat(UPDATE_COST_BY);
+					NUMBER_OF_CARDS_CHOSEN++;
+					cards_are_selected = true;
+					updateTipPostCardsChosen();					
+				}
+				
 			}
+			
 		}
 	}
 	
