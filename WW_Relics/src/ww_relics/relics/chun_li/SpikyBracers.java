@@ -165,6 +165,7 @@ public class SpikyBracers extends CustomRelic {
 			}
 		}
 		
+		logger.info("card has been chosen = " + has_been_chosen_already);
 		return has_been_chosen_already;
 	}
 	
