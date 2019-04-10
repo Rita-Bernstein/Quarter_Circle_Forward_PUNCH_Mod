@@ -75,29 +75,6 @@ public class SpikyBracers extends CustomRelic {
 		this.tips.add(new PowerTip(this.name, text_for_tip));
 		initializeTips();
 	}
-		
-	public CardGroup getValidCardGroup() {
-		
-		CardGroup valid_card_group = new CardGroup(CardGroupType.UNSPECIFIED);
-		
-		CardGroup powers = AbstractDungeon.player.masterDeck.getPowers();
-		CardGroup skills = AbstractDungeon.player.masterDeck.getSkills();
-		
-		for (int i = 0; i < powers.size(); i++) {
-			if (powers.getNCardFromTop(i).cost >= MINIMUM_WORKING_COST) {
-				valid_card_group.addToTop(powers.getNCardFromTop(i));
-			}
-		}
-		
-		for (int i = 0; i < skills.size(); i++) {
-			if (skills.getNCardFromTop(i).cost >= MINIMUM_WORKING_COST) {
-				valid_card_group.addToTop(skills.getNCardFromTop(i));
-			}
-		}
-		
-		return valid_card_group;
-
-	}
 	
 	public boolean cardHasValidCostForRelic(AbstractCard card) {
 		
