@@ -94,6 +94,11 @@ public class SpikyBracers extends CustomRelic {
 		}
 	}
 	
+	public void atBattleStart() {
+		AbstractDungeon.player.addPower(new XBalanceCheckPower(
+				AbstractDungeon.player));
+	}
+	
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (weStillNeedToMakeCardsCheaper()) {
 			
@@ -117,8 +122,6 @@ public class SpikyBracers extends CustomRelic {
 								MINIMUM_WORKING_COST,
 								AbstractDungeon.player.energy.energy,
 								UPDATE_COST_BY * -1));*/
-				AbstractDungeon.player.addPower(new XBalanceCheckPower(
-						AbstractDungeon.player, 1, card));
 			}
 		}
 	}

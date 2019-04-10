@@ -3,6 +3,7 @@ package ww_relics.powers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.RefundAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -25,14 +26,12 @@ public class XBalanceCheckPower extends AbstractPower {
 	
 	public AbstractCard x_card;
 	
-	public XBalanceCheckPower(AbstractCreature owner, int amount, AbstractCard card)
+	public XBalanceCheckPower(AbstractCreature owner)
 	{
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
-		this.amount = amount;
-		this.type = AbstractPower.PowerType.DEBUFF;
-		this.x_card = card;
+		this.type = AbstractPower.PowerType.BUFF;
 		
 		updateDescription();
 		
@@ -47,17 +46,13 @@ public class XBalanceCheckPower extends AbstractPower {
 	@Override
 	public void onAfterUseCard(AbstractCard card, UseCardAction action) {
 		if (AbstractDungeon.player.hasRelic("Spiky Bracers")){
-			logger.info("A should should appear.");
 			boolean test = SpikyBracers.cardHasBeenChosenAlready(card);
+			boolean test_2 = card.cost == -1;
 			logger.info(test + " worked");
-			if (test) {
+			if ((test) && (test_2)) {
+				AbstractDungeon.actionManager.addToBottom(
+						new RefundAction(card, 1));
 				logger.info("worked");
-				amount -= 1;
-				if (amount <= 0) {
-					AbstractPower p = this;
-					this.owner.powers.remove(p);
-					
-				}
 			}
 		}
 	}
