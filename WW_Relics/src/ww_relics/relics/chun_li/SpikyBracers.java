@@ -99,11 +99,14 @@ public class SpikyBracers extends CustomRelic {
 			if (cardCanReceiveEffect(card)){
 				
 				if (card.cost >= MINIMUM_WORKING_COST) {
-					cards_chosen[NUMBER_OF_CARDS_CHOSEN] = card.makeCopy();
+					AddCardToEffectedList(card);	
+					
 					card.modifyCostForCombat(UPDATE_COST_BY);
-					NUMBER_OF_CARDS_CHOSEN++;
-					cards_are_selected = true;
-					updateTipPostCardsChosen();					
+				}
+				else if (card.cost == X_COST_CARD) {
+					AddCardToEffectedList(card);	
+					
+					AbstractDungeon.player.gainEnergy(1);
 				}
 				
 			}
@@ -123,6 +126,13 @@ public class SpikyBracers extends CustomRelic {
 		boolean has_been_chosen_already = cardHasBeenChosenAlready(card);
 		
 		return power_or_skill && cost_X_or_equal_or_higher_than_2 && !has_been_chosen_already;
+	}
+	
+	public void AddCardToEffectedList(AbstractCard card) {
+		cards_chosen[NUMBER_OF_CARDS_CHOSEN] = card.makeCopy();
+		NUMBER_OF_CARDS_CHOSEN++;
+		cards_are_selected = true;
+		updateTipPostCardsChosen();		
 	}
 	
 	public boolean cardHasValidCostForRelic(AbstractCard card) {
