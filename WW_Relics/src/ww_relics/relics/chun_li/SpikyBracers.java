@@ -115,7 +115,7 @@ public class SpikyBracers extends CustomRelic {
 						new Refund1IfXCardSpentYOrMoreEnergyAction(card,
 								MINIMUM_WORKING_COST,
 								AbstractDungeon.player.energy.energy,
-								UPDATE_COST_BY));
+								UPDATE_COST_BY * -1));
 			}
 		}
 	}
