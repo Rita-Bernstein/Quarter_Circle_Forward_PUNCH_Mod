@@ -21,7 +21,7 @@ public class XBalanceCheckPower extends AbstractPower {
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-	public static final Logger logger = LogManager.getLogger(XBalanceCheckPower.class.getName());
+	static final Logger logger = LogManager.getLogger(XBalanceCheckPower.class.getName());
 	
 	public AbstractCard x_card;
 	
@@ -47,8 +47,11 @@ public class XBalanceCheckPower extends AbstractPower {
 	@Override
 	public void onAfterUseCard(AbstractCard card, UseCardAction action) {
 		if (AbstractDungeon.player.hasRelic("Spiky Bracers")){
-			if (SpikyBracers.cardHasBeenChosenAlready(card)) {
-				logger.info("Foi");
+			logger.info("A should should appear.");
+			boolean test = SpikyBracers.cardHasBeenChosenAlready(card);
+			logger.info(test + " worked");
+			if (test) {
+				logger.info("worked");
 				amount -= 1;
 				if (amount <= 0) {
 					AbstractPower p = this;
