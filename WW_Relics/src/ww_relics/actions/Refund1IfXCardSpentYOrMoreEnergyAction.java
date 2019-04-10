@@ -36,6 +36,13 @@ public class Refund1IfXCardSpentYOrMoreEnergyAction extends AbstractGameAction {
 			
 			int energy_now = AbstractDungeon.player.energy.energy;
 			
+			logger.info("---------------");
+			logger.info("card " + card);
+			logger.info("energy_spent_limit " + energy_spent_limit);
+			logger.info("energy_before " + energy_before);
+			logger.info("energy_to_refund " + energy_to_refund);
+			logger.info("energy_now " + energy_now);
+			
 			if (energy_before - energy_now >= energy_spent_limit) {
 				 AbstractDungeon.actionManager.addToTop(new RefundAction(card, energy_to_refund));
 			}
