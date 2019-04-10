@@ -141,7 +141,7 @@ public class SpikyBracers extends CustomRelic {
 	
 	public boolean cardCanReceiveEffect(AbstractCard card) {
 		boolean power_or_skill = (card.type == CardType.POWER) || (card.type == CardType.SKILL);
-		boolean cost_equal_or_higher_than_2 = card.cost >= 2;
+		boolean cost_equal_or_higher_than_2 = card.cost >= MINIMUM_WORKING_COST;
 		
 		boolean has_been_chosen_already = cardHasBeenChosenAlready(card);
 		
