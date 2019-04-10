@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.actions.Refund1IfXCardSpentYOrMoreEnergyAction;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class SpikyBracers extends CustomRelic {
@@ -96,24 +97,26 @@ public class SpikyBracers extends CustomRelic {
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (weStillNeedToMakeCardsCheaper()) {
 			
-			logger.info("1");
 			if (cardCanReceiveEffect(card)){
-				logger.info("2");
 				if (card.cost >= MINIMUM_WORKING_COST) {
 					AddCardToEffectedList(card);	
 					
 					card.modifyCostForCombat(UPDATE_COST_BY);
-					logger.info("3");
 				}
 				else if (card.cost == X_COST_CARD) {
 					AddCardToEffectedList(card);	
-					
-					AbstractDungeon.actionManager.addToBottom(new RefundAction(card, 1));
-					logger.info("4");
 				}
-				
 			}
-			
+		}
+		
+		if (card.cost == X_COST_CARD) {
+			if (cardHasBeenChosenAlready(card)) {
+				AbstractDungeon.actionManager.addToBottom(
+						new Refund1IfXCardSpentYOrMoreEnergyAction(card,
+								MINIMUM_WORKING_COST,
+								AbstractDungeon.player.energy.energy,
+								UPDATE_COST_BY));
+			}
 		}
 	}
 	
