@@ -27,7 +27,7 @@ public class SpikyBracers extends CustomRelic {
 	private static final int UPDATE_COST_TEXT = -UPDATE_COST_BY;
 	private static final int NUMBER_OF_CARDS_TO_APPLY_EFFECT = 2;
 	
-	public AbstractCard[] cards_chosen;
+	public static AbstractCard[] cards_chosen;
 	public static int NUMBER_OF_CARDS_CHOSEN = 0;
 	
 	public static boolean cards_are_selected = false;
@@ -148,7 +148,7 @@ public class SpikyBracers extends CustomRelic {
 		
 	}
 	
-	public boolean cardHasBeenChosenAlready(AbstractCard card) {
+	public static boolean cardHasBeenChosenAlready(AbstractCard card) {
 		boolean has_been_chosen_already = false;
 		
 		for (AbstractCard card_chosen: cards_chosen) {
