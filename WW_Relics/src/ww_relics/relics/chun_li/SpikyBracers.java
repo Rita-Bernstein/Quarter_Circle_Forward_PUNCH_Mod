@@ -76,13 +76,6 @@ public class SpikyBracers extends CustomRelic {
 		initializeTips();
 	}
 	
-	public boolean cardHasValidCostForRelic(AbstractCard card) {
-		
-		if ((card.cost >= MINIMUM_WORKING_COST) || (card.cost == X_COST_CARD)) return true;
-		else return false;
-		
-	}
-	
 	public void onUnequip() {
 		resetRelic();
 	}
@@ -125,11 +118,18 @@ public class SpikyBracers extends CustomRelic {
 	
 	public boolean cardCanReceiveEffect(AbstractCard card) {
 		boolean power_or_skill = (card.type == CardType.POWER) || (card.type == CardType.SKILL);
-		boolean cost_equal_or_higher_than_2 = card.cost >= MINIMUM_WORKING_COST;
+		boolean cost_X_or_equal_or_higher_than_2 = cardHasValidCostForRelic(card);
 		
 		boolean has_been_chosen_already = cardHasBeenChosenAlready(card);
 		
-		return power_or_skill && cost_equal_or_higher_than_2 && !has_been_chosen_already;
+		return power_or_skill && cost_X_or_equal_or_higher_than_2 && !has_been_chosen_already;
+	}
+	
+	public boolean cardHasValidCostForRelic(AbstractCard card) {
+		
+		if ((card.cost >= MINIMUM_WORKING_COST) || (card.cost == X_COST_CARD)) return true;
+		else return false;
+		
 	}
 	
 	public boolean cardHasBeenChosenAlready(AbstractCard card) {
