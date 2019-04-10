@@ -99,6 +99,13 @@ public class SpikyBracers extends CustomRelic {
 
 	}
 	
+	public boolean cardHasValidCostForRelic(AbstractCard card) {
+		
+		if ((card.cost >= MINIMUM_WORKING_COST) || (card.cost == X_COST_CARD)) return true;
+		else return false;
+		
+	}
+	
 	public void onUnequip() {
 		resetRelic();
 	}
