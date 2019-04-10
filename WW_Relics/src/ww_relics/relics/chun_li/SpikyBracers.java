@@ -25,6 +25,9 @@ public class SpikyBracers extends CustomRelic {
 	private static final int UPDATE_COST_TEXT = -UPDATE_COST_BY;
 	private static final int NUMBER_OF_CARDS_TO_APPLY_EFFECT = 2;
 	
+	private static final int MINIMUM_COST_TO_APPLY = 2;
+	private static final int X_COST_CARD = -1;
+	
 	public AbstractCard[] cards_chosen;
 	public static int NUMBER_OF_CARDS_CHOSEN = 0;
 	
@@ -180,6 +183,7 @@ public class SpikyBracers extends CustomRelic {
 		
 		for (int i = 0; i < card_group.size(); i++) {
 			if (card_group.getNCardFromTop(i).cost >= 2) number_of_cards_costing_2_or_more += 1;
+			else if (card_group.getNCardFromTop(i).cost == -1) number_of_cards_costing_2_or_more += 1;
 		}
 		
 		return number_of_cards_costing_2_or_more;
