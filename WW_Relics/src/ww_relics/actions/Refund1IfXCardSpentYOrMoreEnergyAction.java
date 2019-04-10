@@ -8,8 +8,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-import ww_relics.relics.chun_li.SpikyBracers;
-
 public class Refund1IfXCardSpentYOrMoreEnergyAction extends AbstractGameAction {
 
 	public AbstractCard card;
