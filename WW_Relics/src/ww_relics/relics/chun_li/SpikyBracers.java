@@ -84,13 +84,13 @@ public class SpikyBracers extends CustomRelic {
 		CardGroup skills = AbstractDungeon.player.masterDeck.getSkills();
 		
 		for (int i = 0; i < powers.size(); i++) {
-			if (powers.getNCardFromTop(i).cost >= 2) {
+			if (powers.getNCardFromTop(i).cost >= MINIMUM_WORKING_COST) {
 				valid_card_group.addToTop(powers.getNCardFromTop(i));
 			}
 		}
 		
 		for (int i = 0; i < skills.size(); i++) {
-			if (skills.getNCardFromTop(i).cost >= 2) {
+			if (skills.getNCardFromTop(i).cost >= MINIMUM_WORKING_COST) {
 				valid_card_group.addToTop(skills.getNCardFromTop(i));
 			}
 		}
