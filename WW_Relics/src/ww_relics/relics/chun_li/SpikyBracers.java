@@ -14,7 +14,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import basemod.abstracts.CustomRelic;
-import ww_relics.actions.Refund1IfXCardSpentYOrMoreEnergyAction;
+//import ww_relics.actions.Refund1IfXCardSpentYOrMoreEnergyAction;
+import ww_relics.powers.XBalanceCheckPower;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class SpikyBracers extends CustomRelic {
@@ -111,11 +112,13 @@ public class SpikyBracers extends CustomRelic {
 		if (card.cost == X_COST_CARD) {
 			logger.info("1");
 			if (cardHasBeenChosenAlready(card)) {
-				AbstractDungeon.actionManager.addToBottom(
+				/*AbstractDungeon.actionManager.addToBottom(
 						new Refund1IfXCardSpentYOrMoreEnergyAction(card,
 								MINIMUM_WORKING_COST,
 								AbstractDungeon.player.energy.energy,
-								UPDATE_COST_BY * -1));
+								UPDATE_COST_BY * -1));*/
+				AbstractDungeon.player.addPower(new XBalanceCheckPower(
+						AbstractDungeon.player, 1, card));
 			}
 		}
 	}
