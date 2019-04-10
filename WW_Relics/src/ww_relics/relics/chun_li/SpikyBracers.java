@@ -160,18 +160,18 @@ public class SpikyBracers extends CustomRelic {
 	public boolean canSpawn()
 	{
 		CardGroup powers;
-		int number_of_powers_costing_2_or_more = 0;
+		int number_of_powers_costing_2_or_more_or_X = 0;
 
 		CardGroup skills;
-		int number_of_skills_costing_2_or_more = 0;
+		int number_of_skills_costing_2_or_more_or_X = 0;
 		
 		powers = AbstractDungeon.player.masterDeck.getPowers();
-		number_of_powers_costing_2_or_more = countNumberOfValidCards(powers);
+		number_of_powers_costing_2_or_more_or_X = countNumberOfValidCards(powers);
 		
 		skills = AbstractDungeon.player.masterDeck.getSkills();
-		number_of_skills_costing_2_or_more = countNumberOfValidCards(skills);
+		number_of_skills_costing_2_or_more_or_X = countNumberOfValidCards(skills);
 		
-		return (number_of_powers_costing_2_or_more + number_of_skills_costing_2_or_more)
+		return (number_of_powers_costing_2_or_more_or_X + number_of_skills_costing_2_or_more_or_X)
 					>= NUMBER_OF_CARDS_TO_APPLY_EFFECT; 
 	}
 	
