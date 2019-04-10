@@ -135,7 +135,7 @@ public class SpikyBracers extends CustomRelic {
 	}
 	
 	public void AddCardToEffectedList(AbstractCard card) {
-		cards_chosen[NUMBER_OF_CARDS_CHOSEN] = card.makeCopy();
+		cards_chosen[NUMBER_OF_CARDS_CHOSEN] = card.makeSameInstanceOf();
 		NUMBER_OF_CARDS_CHOSEN++;
 		cards_are_selected = true;
 		updateTipPostCardsChosen();		
