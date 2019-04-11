@@ -38,7 +38,7 @@ public class SpikyBracers extends CustomRelic {
 	
 	public SpikyBracers() {
 		super(ID, GraphicResources.LoadRelicImage("spiky-bracers - CC BY 3.0.png"),
-				RelicTier.COMMON, LandingSound.HEAVY);
+				RelicTier.UNCOMMON, LandingSound.HEAVY);
 		NUMBER_OF_CARDS_CHOSEN = 0;
 		cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
 	}
