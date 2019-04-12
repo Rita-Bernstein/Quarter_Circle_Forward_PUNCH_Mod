@@ -95,11 +95,6 @@ public class SpikyBracers extends CustomRelic {
 		}
 	}
 	
-	public void atBattleStart() {
-		AbstractDungeon.player.addPower(new XBalanceCheckPower(
-				AbstractDungeon.player));
-	}
-	
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (weStillNeedToMakeCardsCheaper()) {
 			
