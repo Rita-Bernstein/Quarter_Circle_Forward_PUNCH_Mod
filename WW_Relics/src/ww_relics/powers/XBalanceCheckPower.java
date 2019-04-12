@@ -45,10 +45,10 @@ public class XBalanceCheckPower extends AbstractPower {
 	
 	@Override
 	public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-		if (AbstractDungeon.player.hasRelic("Spiky Bracers")){
+		logger.info("AAAAAAAAAAAAAAA");
+		if (AbstractDungeon.player.hasRelic("WW_Relics:Spiky_Bracers")){
 			boolean test = SpikyBracers.cardHasBeenChosenAlready(card);
 			boolean test_2 = card.cost == -1;
-			logger.info(test + " worked");
 			if ((test) && (test_2)) {
 				AbstractDungeon.actionManager.addToBottom(
 						new RefundAction(card, 1));
