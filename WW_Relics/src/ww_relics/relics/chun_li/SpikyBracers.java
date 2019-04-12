@@ -113,17 +113,6 @@ public class SpikyBracers extends CustomRelic {
 				}
 			}
 		}
-		
-		if (card.cost == X_COST_CARD) {
-			logger.info("1");
-			if (cardHasBeenChosenAlready(card)) {
-				/*AbstractDungeon.actionManager.addToBottom(
-						new Refund1IfXCardSpentYOrMoreEnergyAction(card,
-								MINIMUM_WORKING_COST,
-								AbstractDungeon.player.energy.energy,
-								UPDATE_COST_BY * -1));*/
-			}
-		}
 	}
 	
 	public boolean weStillNeedToMakeCardsCheaper() {
