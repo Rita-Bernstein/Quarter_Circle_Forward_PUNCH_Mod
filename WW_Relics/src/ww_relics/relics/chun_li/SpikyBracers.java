@@ -3,6 +3,7 @@ package ww_relics.relics.chun_li;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.RefundAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
@@ -108,9 +109,15 @@ public class SpikyBracers extends CustomRelic {
 					
 					card.modifyCostForCombat(UPDATE_COST_BY);
 				}
-				else if (card.cost == X_COST_CARD) {
-					AddCardToEffectedList(card);	
+				else if ((card.cost == X_COST_CARD) && (card.energyOnUse >= MINIMUM_WORKING_COST)) {
+					AddCardToEffectedList(card);
 				}
+			}
+		}
+		
+		if (cardHasBeenChosenAlready(card) && card.cost == X_COST_CARD) {
+			if (card.energyOnUse >= MINIMUM_WORKING_COST) {
+				AbstractDungeon.actionManager.addToBottom(new RefundAction(card, 1));
 			}
 		}
 	}
