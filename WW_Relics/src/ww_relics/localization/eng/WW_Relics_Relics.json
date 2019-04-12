@@ -18,7 +18,7 @@
     "DESCRIPTIONS": [
 	  "Each combat, the first #b",
       " [#ffff00]Skill [#ffff00]or [#ffff00]Power [#ffff00]cards that cost #b2 or more cost #b",
-      " less when played and through the rest of the combat.",
+      " less when played and through the rest of the combat. Cost #bX cards' effects aren't reduced by the reduced cost, when applicable.",
       " Cards chosen in this battle are: ",
       "no card yet",	
       " and ",	
