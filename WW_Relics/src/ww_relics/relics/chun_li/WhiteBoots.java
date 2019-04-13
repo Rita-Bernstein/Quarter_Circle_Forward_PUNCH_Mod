@@ -35,7 +35,7 @@ public class WhiteBoots extends CustomRelic {
 	
 	public WhiteBoots() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
-			RelicTier.UNCOMMON, LandingSound.SOLID);
+			RelicTier.COMMON, LandingSound.SOLID);
 		
 	}
 	
