@@ -73,12 +73,17 @@ To game-icons.net, because without it the mod probably would not have proper tem
 
 # Art Assets
 
-Duffel Bag - Found original at https://game-icons.net/1x1/lorc/swap-bag.html - Made by Lorc, and shared through CC BY 3.0 - Version in game is modified.
-Red Headband - Found original at https://game-icons.net/1x1/delapouite/headband-knot.html - Made by Delapouite, and shared through CC BY 3.0 - Version in game is modified.
-Fighting Gloves - Found original at https://game-icons.net/1x1/lorc/mailed-fist.html - Made by Lorc, and shared through CC BY 3.0 - Version in game is modified.
-Spiky Bracers - Made by hand.
-White Boots - Found original at https://game-icons.net/1x1/lorc/steeltoe-boots.html - Made by Lorc, and shared through CC BY 3.0 - Version in game is modified.
-Handcuffs - Found original at https://game-icons.net/1x1/lorc/handcuffs.html - Made by Lorc, and shared through CC BY 3.0 - Version in game is modified.
+Duffel Bag - Found original at https://game-icons.net/1x1/lorc/swap-bag.html - Made by Lorc, and shared through CC BY 3.0 - Version in game is modified by mod creator.
+
+Red Headband - Found original at https://game-icons.net/1x1/delapouite/headband-knot.html - Made by Delapouite, and shared through CC BY 3.0 - Version in game is modified by mod creator.
+
+Fighting Gloves - Found original at https://game-icons.net/1x1/lorc/mailed-fist.html - Made by Lorc, and shared through CC BY 3.0 - Version in game is modified by mod creator.
+
+Spiky Bracers - Made by hand by mod creator.
+
+White Boots - Found original at https://game-icons.net/1x1/lorc/steeltoe-boots.html - Made by Lorc, and shared through CC BY 3.0 - Version in game is modified by mod creator.
+
+Handcuffs - Found original at https://game-icons.net/1x1/lorc/handcuffs.html - Made by Lorc, and shared through CC BY 3.0 - Version in game is modified by mod creator.
 
 # Notes For Contributors
 
