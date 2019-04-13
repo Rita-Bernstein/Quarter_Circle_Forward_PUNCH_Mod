@@ -90,6 +90,7 @@ public class SpikyBracers extends CustomRelic {
 			cards_are_selected = false;
 			power_tip_updated = false;
 			NUMBER_OF_CARDS_CHOSEN = 0;
+			updateTipPostCardsChosen();
 		}
 	}
 	
