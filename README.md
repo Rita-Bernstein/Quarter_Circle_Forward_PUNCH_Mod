@@ -69,6 +69,8 @@ To MegaCrit, the makes from SlayTheSpire, because the game is awesome and they a
 
 The modding channel from the Discord's Slay The Spire server and all people who goes there to support and banter about modding the game. You rock, fellows.
 
+To game-icons.net, because without it the mod probably would not have proper temporary icons for its relics.
+
 # Art Assets
 
 Working on it!
