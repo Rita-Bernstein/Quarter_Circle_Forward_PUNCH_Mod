@@ -82,6 +82,11 @@ public class SpikyBracers extends CustomRelic {
 	
 	public void onEnterRoom(AbstractRoom room) {
 		resetRelic();
+
+	}
+	
+	public void onVictory() {
+		resetRelic();
 	}
 	
 	public void resetRelic() {
