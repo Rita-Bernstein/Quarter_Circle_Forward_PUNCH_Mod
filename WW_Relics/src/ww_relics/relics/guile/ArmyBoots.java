@@ -36,6 +36,7 @@ public class ArmyBoots extends CustomRelic  {
 	@Override
 	public void onBlockBroken(AbstractCreature m) {
 		
+		flash();
 		logger.info("1");
 		if (m == AbstractDungeon.player) {
 			logger.info("2");
