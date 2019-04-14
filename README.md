@@ -57,7 +57,9 @@ Fruitstrike (https://github.com/gskleres), because all the topic titles from the
 
 daviscook477 (https://github.com/daviscook477) for his guide (https://github.com/daviscook477/BaseMod/wiki/Starting-Your-Mod).
 
-Nafen, from the modding channel, for helping with the description of the Handcuffs' effect.
+Nafen, from the Slay The Spire Discord's modding channel, for helping with the description of the Handcuffs' effect.
+
+Lots of people from the Slay The Spire Discord's modding channel for pointing stuff from this mod to improve/polish/buff/nerf, check the "suggestion from discord" tag in the Issues to see specifics.
 
 Thiago, for helping with finding some bugs in the v0.6.* versions.
 
