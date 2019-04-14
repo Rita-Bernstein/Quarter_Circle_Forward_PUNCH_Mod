@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -33,12 +34,29 @@ public class ArmyBoots extends CustomRelic  {
 		return "test";
 	}
 	
-	@Override
 	public void onBlockBroken(AbstractCreature m) {
 		
 		flash();
 		logger.info("1");
 		if (m == AbstractDungeon.player) {
+			logger.info("2");
+			AbstractPlayer player = AbstractDungeon.player;
+			
+			for (String power: powers_affected_by_relic){
+				if (player.hasPower(power)) {
+					logger.info(power);
+				}
+			}
+		}
+
+	}
+	
+	@Override
+	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+		
+		flash();
+		logger.info("1");
+		if (true) {
 			logger.info("2");
 			AbstractPlayer player = AbstractDungeon.player;
 			
