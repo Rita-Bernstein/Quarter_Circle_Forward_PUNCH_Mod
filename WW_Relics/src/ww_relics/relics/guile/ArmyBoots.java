@@ -1,11 +1,8 @@
 package ww_relics.relics.guile;
 
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.relics.AbstractRelic.LandingSound;
-import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
 
 import basemod.abstracts.CustomRelic;
-import ww_relics.relics.ryu.DuffelBag;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class ArmyBoots extends CustomRelic  {
