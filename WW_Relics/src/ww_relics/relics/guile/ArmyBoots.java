@@ -1,6 +1,10 @@
 package ww_relics.relics.guile;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,7 +20,7 @@ import ww_relics.resources.relic_graphics.GraphicResources;
 public class ArmyBoots extends CustomRelic  {
 	public static final String ID = "WW_Relics:Army_Boots";
 	
-	private static List<String> powers_affected_by_relic;
+	private static ArrayList<String> powers_affected_by_relic;
 	
 	static Logger logger = LogManager.getLogger(ArmyBoots.class.getName());
 
@@ -24,6 +28,7 @@ public class ArmyBoots extends CustomRelic  {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.COMMON, LandingSound.SOLID);
 		
+		powers_affected_by_relic = new ArrayList<String>();
 		powers_affected_by_relic.add("Frail");
 		powers_affected_by_relic.add("Vulnerable");
 	}
