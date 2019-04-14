@@ -5,7 +5,7 @@
 	"version": "0.7",
 	"sts_version": "2019-01-23",
 	"mts_version": "3.9.2",
-	"author_list": ["Clauvin"],
+	"author_list": ["Levender"],
 	"credits": "Original creators of original CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/) images that were then modified by myself for the mod: \r\nLorc (http://lorcblog.blogspot.com/) - Basis of Duffel Bag, Fighting Gloves, White Boots and Handcuffs. \r\nDelapouite (http://delapouite.com/) - Basis of Red Headband.\r\n\r\nAll images above came from http://game-icons.net.",
 	"dependencies": ["basemod", "stslib"],
 	"optional_dependencies": [""],
