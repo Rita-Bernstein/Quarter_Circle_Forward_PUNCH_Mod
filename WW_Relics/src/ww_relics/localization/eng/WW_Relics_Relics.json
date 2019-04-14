@@ -73,6 +73,14 @@
     ]
   },
   
+  "WW_Relics:Army_Boots": {
+    "NAME": "Army Boots",
+    "FLAVOR": "Excellent grip. Sadly, not your size.",
+    "DESCRIPTIONS": [
+      "WWWWWWWWWWWWWWWWWWW"
+    ]
+  },
+  
   "WWWWWWWWWWWW": {
     "NAME": "WWWWWWWWWWWWW",
     "FLAVOR": "WWWWWWWWWWWWWWW",
