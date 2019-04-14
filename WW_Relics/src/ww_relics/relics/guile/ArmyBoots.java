@@ -16,9 +16,9 @@ import ww_relics.resources.relic_graphics.GraphicResources;
 public class ArmyBoots extends CustomRelic  {
 	public static final String ID = "WW_Relics:Army_Boots";
 	
-	private static ArrayList<String> powers_affected_by_relic;
+	public static final Logger logger = LogManager.getLogger(ArmyBoots.class.getName());
 	
-	static Logger logger = LogManager.getLogger(ArmyBoots.class.getName());
+	private static ArrayList<String> powers_affected_by_relic;
 
 	public ArmyBoots() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
