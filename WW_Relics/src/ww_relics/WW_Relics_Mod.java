@@ -20,6 +20,7 @@ import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import ww_relics.modifiers.*;
 import ww_relics.relics.chun_li.*;
+import ww_relics.relics.guile.ArmyBoots;
 import ww_relics.relics.ryu.*;
 
 @SpireInitializer
@@ -99,6 +100,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		logger.info("Begin adding relics");
 		addChunLiRelics();
 		addRyuRelics();
+		addGuileRelics();
 		logger.info("Done adding relics");
 	}
 	
@@ -112,6 +114,10 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		BaseMod.addRelic(new DuffelBag(), RelicType.SHARED);
 		BaseMod.addRelic(new FightingGloves(), RelicType.SHARED);
 		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
+	}
+	
+	private void addGuileRelics() {
+		BaseMod.addRelic(new ArmyBoots(), RelicType.SHARED);
 	}
 	
 	@Override
