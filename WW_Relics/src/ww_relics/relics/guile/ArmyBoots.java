@@ -47,7 +47,7 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 			for (String power: powers_affected_by_relic){
 				if (player.hasPower(power)) {
 					AbstractDungeon.actionManager.addToTop(
-							new RemoveSpecificPowerAction(player, player, power));
+							new RemoveSpecificPowerAction(player, player, player.getPower(power)));
 				}
 			}
 		}
