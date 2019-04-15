@@ -39,6 +39,11 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	}
 	
 	@Override
+	public void atPreBattle() {
+		relic_effect_activated = false;
+	}
+	
+	@Override
 	public int onLoseBlock(DamageInfo info, int damage_amount) {
 		
 		boolean found_power = false;
