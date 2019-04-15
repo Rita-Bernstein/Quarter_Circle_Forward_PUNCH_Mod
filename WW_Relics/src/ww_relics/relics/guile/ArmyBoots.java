@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.OnLoseBlockRelic;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -38,16 +39,15 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	@Override
 	public int onLoseBlock(DamageInfo info, int damage_amount) {
 		
-		logger.info("1");
 		if ((info.type == DamageType.NORMAL)) {
 			flash();
-			logger.info(info.name);
 			
 			AbstractPlayer player = AbstractDungeon.player;
 			
 			for (String power: powers_affected_by_relic){
 				if (player.hasPower(power)) {
-					logger.info(power);
+					AbstractDungeon.actionManager.addToTop(
+							new RemoveSpecificPowerAction(player, player, power));
 				}
 			}
 		}
