@@ -82,6 +82,8 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 		AbstractDungeon.actionManager.addToTop(new DamageAction(
 				 AbstractDungeon.player, info));
 		
+		logger.info(info.base);
+		
 		return 0;
 	}	
 	
