@@ -5,16 +5,17 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.evacipated.cardcrawl.mod.stslib.relics.OnLoseBlockRelic;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
-public class ArmyBoots extends CustomRelic  {
+public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	public static final String ID = "WW_Relics:Army_Boots";
 	
 	public static final Logger logger = LogManager.getLogger(ArmyBoots.class.getName());
@@ -34,30 +35,14 @@ public class ArmyBoots extends CustomRelic  {
 		return "test";
 	}
 	
-	public void onBlockBroken(AbstractCreature m) {
-		
-		flash();
-		logger.info("1");
-		if (m == AbstractDungeon.player) {
-			logger.info("2");
-			AbstractPlayer player = AbstractDungeon.player;
-			
-			for (String power: powers_affected_by_relic){
-				if (player.hasPower(power)) {
-					logger.info(power);
-				}
-			}
-		}
-
-	}
-	
 	@Override
-	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+	public int onLoseBlock(DamageInfo info, int damage_amount) {
 		
-		flash();
 		logger.info("1");
-		if (true) {
-			logger.info("2");
+		if ((info.type == DamageType.NORMAL)) {
+			flash();
+			logger.info(info.name);
+			
 			AbstractPlayer player = AbstractDungeon.player;
 			
 			for (String power: powers_affected_by_relic){
@@ -66,10 +51,11 @@ public class ArmyBoots extends CustomRelic  {
 				}
 			}
 		}
-		
-	}
+		return 0;
+	}	
 	
 	public AbstractRelic makeCopy() {
 		return new ArmyBoots();
-	}	
+	}
+
 }
