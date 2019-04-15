@@ -54,6 +54,9 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 			
 			AbstractPlayer player = AbstractDungeon.player;
 			
+			AbstractDungeon.actionManager.addToTop(new DamageAction(
+					 AbstractDungeon.player, info));
+			
 			for (String power: powers_affected_by_relic){
 				if (player.hasPower(power)) {
 					if (!relic_effect_activated) {
@@ -74,13 +77,13 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 					AbstractDungeon.actionManager.addToTop(remove_power_action);
 				}
 			}
-			
-			 
-
+		}
+		else {
+			AbstractDungeon.actionManager.addToBottom(new DamageAction(
+					 AbstractDungeon.player, info));
 		}
 		
-		AbstractDungeon.actionManager.addToTop(new DamageAction(
-				 AbstractDungeon.player, info));
+
 		
 		logger.info(info.base);
 		
