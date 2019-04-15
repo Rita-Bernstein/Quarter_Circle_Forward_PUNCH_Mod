@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.OnLoseBlockRelic;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -73,8 +74,13 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 					AbstractDungeon.actionManager.addToTop(remove_power_action);
 				}
 			}
+			
+			 
 
 		}
+		
+		AbstractDungeon.actionManager.addToTop(new DamageAction(
+				 AbstractDungeon.player, info));
 		
 		return 0;
 	}	
