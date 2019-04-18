@@ -1,4 +1,4 @@
-# World Warrior's Relics
+# World Warriors' Relics
 A Slay The Spire mod, which adds primarily relics directly inspired by fighters from Super Street Fighter 2: The New Challengers and gets some inspiration from the rest of the Street Fighter franchise.
 
 # Content
