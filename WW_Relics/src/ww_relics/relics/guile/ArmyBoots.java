@@ -38,7 +38,7 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	}
 	
 	public String getUpdatedDescription() {
-		return "test";
+		return DESCRIPTIONS[0] + AMOUNT_OF_HP_HEALED + DESCRIPTIONS[1];
 	}
 	
 	@Override
@@ -69,7 +69,6 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 						AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
 						showed_relic_image = true;
 					}
-					
 					
 					RemoveSpecificPowerAction remove_power_action =
 							new RemoveSpecificPowerAction(player, player, player.getPower(power));
