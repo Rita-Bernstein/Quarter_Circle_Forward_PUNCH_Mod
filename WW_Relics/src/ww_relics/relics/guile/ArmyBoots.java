@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.OnLoseBlockRelic;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -25,6 +26,8 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	
 	private static ArrayList<String> powers_affected_by_relic;
 	private static boolean relic_effect_activated = false;
+	
+	private static final int AMOUNT_OF_HP_HEALED = 1;
 
 	public ArmyBoots() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
@@ -74,14 +77,13 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 					AbstractDungeon.actionManager.addToTop(remove_power_action);
 				}
 			}
+			
+			if (found_power == false) {
+				AbstractDungeon.actionManager.addToBottom(
+						new HealAction(player, player, AMOUNT_OF_HP_HEALED));
+			}
 		}
-		else {
-			AbstractDungeon.actionManager.addToBottom(new DamageAction(
-					 AbstractDungeon.player, info));
-		}
-		
 
-		
 		logger.info(damage_amount);
 		logger.info(AbstractDungeon.player.currentBlock);
 		
