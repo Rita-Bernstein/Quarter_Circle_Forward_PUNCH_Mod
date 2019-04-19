@@ -77,7 +77,8 @@
     "NAME": "Army Boots",
     "FLAVOR": "Excellent grip. Sadly, not your size.",
     "DESCRIPTIONS": [
-      "WWWWWWWWWWWWWWWWWWW"
+      "Once each battle, if your Block is broken by an attack, lose any Frail and Vulnerable you may have. If you don't have any, gain #b",
+      " HP."
     ]
   },
   
