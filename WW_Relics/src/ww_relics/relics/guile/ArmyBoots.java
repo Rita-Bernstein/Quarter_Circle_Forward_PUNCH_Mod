@@ -66,7 +66,7 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 					}
 					
 					if ((found_power) && (!showed_relic_image)) {
-						AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+						AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
 						showed_relic_image = true;
 					}
 					
@@ -74,7 +74,7 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 					RemoveSpecificPowerAction remove_power_action =
 							new RemoveSpecificPowerAction(player, player, player.getPower(power));
 
-					AbstractDungeon.actionManager.addToTop(remove_power_action);
+					AbstractDungeon.actionManager.addToBottom(remove_power_action);
 				}
 			}
 			logger.info(player.currentBlock);
