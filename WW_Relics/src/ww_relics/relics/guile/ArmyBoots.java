@@ -51,7 +51,8 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 		
 		boolean found_power = false;
 		boolean showed_relic_image = false;
-		if ((!relic_effect_activated) && (info.type == DamageType.NORMAL)) {
+		if ((!relic_effect_activated) && (info.type == DamageType.NORMAL) &&
+				(damage_amount > AbstractDungeon.player.currentBlock)) {
 			flash();
 			
 			AbstractPlayer player = AbstractDungeon.player;
@@ -76,8 +77,9 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 					AbstractDungeon.actionManager.addToTop(remove_power_action);
 				}
 			}
+			logger.info(player.currentBlock);
 			
-			if ((found_power == false) && (damage_amount > player.currentBlock)) {
+			if (found_power == false) {
 				AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
 				AbstractDungeon.actionManager.addToBottom(
 						new HealAction(player, player, AMOUNT_OF_HP_HEALED));
