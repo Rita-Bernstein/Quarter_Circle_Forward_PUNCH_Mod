@@ -7,6 +7,16 @@
     ]
   },
   
+  "WW_Relics:Reactive_Grip": {
+    "NAME": "Reactive Grip",
+    "DESCRIPTIONS": [
+      "Lose all your Vulnerable and Frail debuffs with the next #b",
+      " attack",
+      " attacks",
+      " that break your block."
+    ]
+  },
+  
   "WWWWWWWWWWWW": {
     "NAME": "WWWWWWWWWWWWW",
     "DESCRIPTIONS": [
