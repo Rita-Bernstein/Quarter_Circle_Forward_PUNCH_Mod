@@ -3,14 +3,16 @@ package ww_relics.powers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.evacipated.cardcrawl.mod.stslib.relics.OnLoseBlockRelic;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class ReactiveGripPower extends AbstractPower {
+public class ReactiveGripPower extends AbstractPower implements OnLoseBlockRelic {
 	
 	public static final String POWER_ID = "WW_Relics:Reactive_Grip";
 	private static final PowerStrings powerStrings = 
@@ -36,6 +38,12 @@ public class ReactiveGripPower extends AbstractPower {
 	public void updateDescription()
 	{
 		this.description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+	}
+
+	@Override
+	public int onLoseBlock(DamageInfo arg0, int arg1) {
+		logger.info("I Hope this works.");
+		return 0;
 	}
 
 }
