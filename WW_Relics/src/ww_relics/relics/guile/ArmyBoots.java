@@ -77,7 +77,7 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 				}
 			}
 			
-			if (found_power == false) {
+			if ((found_power == false) && (damage_amount > player.currentBlock)) {
 				AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
 				AbstractDungeon.actionManager.addToBottom(
 						new HealAction(player, player, AMOUNT_OF_HP_HEALED));
