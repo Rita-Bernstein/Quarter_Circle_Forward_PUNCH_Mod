@@ -72,9 +72,6 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 							new RemoveSpecificPowerAction(player, player, player.getPower(power));
 					
 					AbstractDungeon.actionManager.addToTop(remove_power_action);
-					
-					AbstractDungeon.actionManager.addToTop(new DamageAction(
-							 AbstractDungeon.player, info));
 				}
 			}
 		}
@@ -85,9 +82,10 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 		
 
 		
-		logger.info(info.base);
+		logger.info(damage_amount);
+		logger.info(AbstractDungeon.player.currentBlock);
 		
-		return 0;
+		return damage_amount;
 	}	
 	
 	public AbstractRelic makeCopy() {
