@@ -85,9 +85,6 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 			}
 		}
 		
-		logger.info(damage_amount);
-		logger.info(AbstractDungeon.player.currentBlock);
-		
 		return damage_amount;
 	}	
 	
