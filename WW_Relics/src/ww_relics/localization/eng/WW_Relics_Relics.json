@@ -85,7 +85,8 @@
     "NAME": "Chain With Nametags",
     "FLAVOR": "A surprisingly resilient chain with two faded nametags.",
     "DESCRIPTIONS": [
-      "Once each battle, if your Block is broken by an attack, lose any #yFrail and #yVulnerable you may have."
+      "When you gain #yBlock, gain #b",
+      " Temporary HP."
     ]
   },
   
