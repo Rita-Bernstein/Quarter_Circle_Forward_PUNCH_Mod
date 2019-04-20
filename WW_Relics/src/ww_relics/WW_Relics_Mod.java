@@ -21,6 +21,7 @@ import basemod.interfaces.*;
 import ww_relics.modifiers.*;
 import ww_relics.relics.chun_li.*;
 import ww_relics.relics.guile.ArmyBoots;
+import ww_relics.relics.guile.ChainWithNametags;
 import ww_relics.relics.ryu.*;
 
 @SpireInitializer
@@ -118,6 +119,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	private void addGuileRelics() {
 		BaseMod.addRelic(new ArmyBoots(), RelicType.SHARED);
+		BaseMod.addRelic(new ChainWithNametags(), RelicType.SHARED);
 	}
 	
 	@Override
