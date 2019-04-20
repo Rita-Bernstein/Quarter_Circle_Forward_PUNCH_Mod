@@ -19,7 +19,7 @@ public class ChainWithNametags extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return "test";
+		return DESCRIPTIONS[0] + AMOUNT_OF_TEMP_HP_GAINED + DESCRIPTIONS[1];
 	}
 	
 	public int onPlayerGainedBlock(float blockAmount) {
