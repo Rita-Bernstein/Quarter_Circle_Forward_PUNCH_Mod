@@ -50,28 +50,27 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	@Override
 	public int onLoseBlock(DamageInfo info, int damage_amount) {
 		
-		boolean found_power;
 		boolean showed_relic_image = false;
 		if (RelicShouldWorkNow(info, damage_amount)) {
 			
 			AbstractPlayer player = AbstractDungeon.player;
 			
 			for (String power: powers_affected_by_relic){
-				found_power = false;
+				
 				if (player.hasPower(power)) {
-					relic_effect_activated = true;
-					found_power = true;
 					
-					if (IsTimeToCallRelicVisualEffects(found_power, showed_relic_image)) {
+					relic_effect_activated = true;
+					
+					if (IsTimeToCallRelicVisualEffects(showed_relic_image)) {
 						RelicVisualEffects();
 						showed_relic_image = true;
 					}
-					
-					RemoveSpecificPowerAction remove_power_action =
-							new RemoveSpecificPowerAction(player, player, player.getPower(power));
 
-					AbstractDungeon.actionManager.addToBottom(remove_power_action);
+					AbstractDungeon.actionManager.addToBottom(
+							new RemoveSpecificPowerAction(player, player, player.getPower(power)));
+					
 				}
+				
 			}
 		}
 		
@@ -89,10 +88,10 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	}
 	
 	
-	private boolean IsTimeToCallRelicVisualEffects(boolean found_power, boolean showed_relic_image) {
+	private boolean IsTimeToCallRelicVisualEffects(boolean showed_relic_image) {
 		boolean relic_image_havent_show_up_yet = !showed_relic_image;
 		
-		return found_power && relic_image_havent_show_up_yet;
+		return relic_image_havent_show_up_yet;
 	}
 	
 	private void RelicVisualEffects() {
