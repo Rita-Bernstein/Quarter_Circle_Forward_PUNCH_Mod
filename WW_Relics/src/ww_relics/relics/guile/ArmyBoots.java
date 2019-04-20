@@ -84,7 +84,7 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	private boolean RelicShouldWorkNow(DamageInfo info, int damage_amount) {
 		boolean relic_havent_been_activated_in_this_combat = !relic_effect_activated;
 		boolean damage_received_is_normal = info.type == DamageType.NORMAL;
-		boolean block_is_broken = damage_amount > AbstractDungeon.player.currentBlock;
+		boolean block_is_broken = damage_amount >= AbstractDungeon.player.currentBlock;
 		
 		return relic_havent_been_activated_in_this_combat &&
 				damage_received_is_normal &&
