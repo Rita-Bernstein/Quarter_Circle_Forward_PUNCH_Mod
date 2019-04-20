@@ -62,9 +62,8 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 					relic_effect_activated = true;
 					found_power = true;
 					
-					if ((found_power) && (!showed_relic_image)) {
-						flash();
-						AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+					if (IsTimeToCallRelicVisualEffects(found_power, showed_relic_image)) {
+						RelicVisualEffects();
 						showed_relic_image = true;
 					}
 					
@@ -87,6 +86,18 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 		return relic_havent_been_activated_in_this_combat &&
 				damage_received_is_normal &&
 				block_is_broken;
+	}
+	
+	
+	private boolean IsTimeToCallRelicVisualEffects(boolean found_power, boolean showed_relic_image) {
+		boolean relic_image_havent_show_up_yet = !showed_relic_image;
+		
+		return found_power && relic_image_havent_show_up_yet;
+	}
+	
+	private void RelicVisualEffects() {
+		flash();
+		AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
 	}
 	
 	public AbstractRelic makeCopy() {
