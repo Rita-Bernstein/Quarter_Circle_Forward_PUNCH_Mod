@@ -50,18 +50,17 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	@Override
 	public int onLoseBlock(DamageInfo info, int damage_amount) {
 		
-		boolean found_power = false;
+		boolean found_power;
 		boolean showed_relic_image = false;
 		if (RelicShouldWorkNow(info, damage_amount)) {
 			
 			AbstractPlayer player = AbstractDungeon.player;
 			
 			for (String power: powers_affected_by_relic){
+				found_power = false;
 				if (player.hasPower(power)) {
-					if (!relic_effect_activated) {
-						found_power = true;
-						
-					}
+					relic_effect_activated = true;
+					found_power = true;
 					
 					if ((found_power) && (!showed_relic_image)) {
 						flash();
