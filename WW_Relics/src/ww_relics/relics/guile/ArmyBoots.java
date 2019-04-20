@@ -29,6 +29,10 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.COMMON, LandingSound.SOLID);
 		
+		InitializeListOfRemovableDebuffs();
+	}
+	
+	private void InitializeListOfRemovableDebuffs() {
 		powers_affected_by_relic = new ArrayList<String>();
 		powers_affected_by_relic.add("Frail");
 		powers_affected_by_relic.add("Vulnerable");
@@ -48,8 +52,7 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 		
 		boolean found_power = false;
 		boolean showed_relic_image = false;
-		if ((!relic_effect_activated) && (info.type == DamageType.NORMAL) &&
-				(damage_amount > AbstractDungeon.player.currentBlock)) {
+		if (RelicShouldWorkNow(info, damage_amount)) {
 			
 			AbstractPlayer player = AbstractDungeon.player;
 			
@@ -76,7 +79,17 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 		}
 		
 		return damage_amount;
-	}	
+	}
+	
+	private boolean RelicShouldWorkNow(DamageInfo info, int damage_amount) {
+		boolean relic_havent_been_activated_in_this_combat = !relic_effect_activated;
+		boolean damage_received_is_normal = info.type == DamageType.NORMAL;
+		boolean block_is_broken = damage_amount > AbstractDungeon.player.currentBlock;
+		
+		return relic_havent_been_activated_in_this_combat &&
+				damage_received_is_normal &&
+				block_is_broken;
+	}
 	
 	public AbstractRelic makeCopy() {
 		return new ArmyBoots();
