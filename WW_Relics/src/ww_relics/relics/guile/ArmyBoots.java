@@ -60,7 +60,6 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 				if (player.hasPower(power)) {
 					if (!relic_effect_activated) {
 						found_power = true;
-						relic_effect_activated = true;
 						
 					}
 					
