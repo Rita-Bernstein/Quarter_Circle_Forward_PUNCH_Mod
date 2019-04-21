@@ -92,7 +92,7 @@
   
   "WW_Relics:Combat_Fatigues": {
     "NAME": "Combat Fatigues",
-    "FLAVOR": "\"This clothes remind the wearer that there's a time to attack and a time to defend, but it's up to the wearer to remind itself of the time to take them off.\" - Ranwid.",
+    "FLAVOR": "\"It reminds that there's a time to attack and other to defend, but it's the wearer who needs to remember to take them off.\" - Ranwid.",
     "DESCRIPTIONS": [
       "If you both #rgained ",
       "Block and #rhaven't #rused Attack cards the last turn, gain #b",
