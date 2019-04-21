@@ -139,6 +139,10 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		if (isCustomModActive(RelicSetModifiers.BLUE_JADE_ID)) {
 			RelicSetModifiers.AddBlueJadeRelicsToCustomRun(relics);
         }
+		
+		if (isCustomModActive(RelicSetModifiers.INDESTRUCTIBLE_FORTRESS_ID)) {
+			RelicSetModifiers.AddIndestructibleFortressToCustomRun(relics);
+		}
 	}
 	
     @Override
