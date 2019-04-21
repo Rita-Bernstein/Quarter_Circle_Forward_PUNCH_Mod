@@ -2,9 +2,6 @@ package ww_relics.relics.guile;
 
 import java.util.ArrayList;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.evacipated.cardcrawl.mod.stslib.relics.OnLoseBlockRelic;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -19,8 +16,6 @@ import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	public static final String ID = "WW_Relics:Army_Boots";
-	
-	public static final Logger logger = LogManager.getLogger(ArmyBoots.class.getName());
 	
 	private static ArrayList<String> powers_affected_by_relic;
 	private static boolean relic_effect_activated_this_combat = false;
