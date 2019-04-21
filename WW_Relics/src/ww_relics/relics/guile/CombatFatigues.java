@@ -29,6 +29,7 @@ public class CombatFatigues extends CustomRelic {
 	public static boolean is_first_turn = true;
 	
 	public static final int EXTRA_STRENGTH = 2;
+	public static final int CAN_SPAWN_AFTER_FLOOR = 7;
 	
 	public static final Logger logger = LogManager.getLogger(CombatFatigues.class.getName()); 
 	
@@ -103,7 +104,10 @@ public class CombatFatigues extends CustomRelic {
 		havent_attacked_last_turn = true;
 	}
 	
-	
+	@Override
+	public boolean canSpawn() {
+		return AbstractDungeon.floorNum > CAN_SPAWN_AFTER_FLOOR;
+	}
 	
 	@Override
 	public AbstractRelic makeCopy() {
