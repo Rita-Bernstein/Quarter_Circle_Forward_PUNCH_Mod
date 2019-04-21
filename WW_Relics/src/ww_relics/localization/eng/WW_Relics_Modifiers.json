@@ -9,6 +9,11 @@
 		"DESCRIPTION": "Start with Spiky Bracers, White Boots and Handcuffs."
 	},
 	
+	"ww_relics:IndestructibleFortress": {
+		"NAME": "Indestructible Fortress",
+		"DESCRIPTION": "Start with Army Boots, Chain With Nametags and Combat Fatigues."
+	},
+	
 	"ww_relics:WaitNoRestBetweenRounds": {
 		"NAME": "Wait, No Rest Between Rounds?",
 		"DESCRIPTION": "Start with 65% Max HP."
