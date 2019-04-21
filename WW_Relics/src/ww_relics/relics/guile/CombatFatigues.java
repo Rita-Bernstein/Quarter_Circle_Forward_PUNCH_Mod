@@ -4,8 +4,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.PenNibPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
@@ -51,7 +55,7 @@ public class CombatFatigues extends CustomRelic {
 			logger.info("havent_attacked_last_turn " + havent_attacked_last_turn);
 			
 			if (relicCanDoItsEffect()) {
-				logger.info("effect would happen here");
+				giveDoubleDamage();
 			}
 			
 		} else is_first_turn = false;
@@ -65,6 +69,11 @@ public class CombatFatigues extends CustomRelic {
 	
 	private boolean relicCanDoItsEffect() {
 		return gained_block_last_turn && havent_attacked_last_turn;
+	}
+	
+	private void giveDoubleDamage() {
+		 AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+	     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new PenNibPower(AbstractDungeon.player, 1), 1, true));
 	}
 	
 	private void resetConditionChecks() {
