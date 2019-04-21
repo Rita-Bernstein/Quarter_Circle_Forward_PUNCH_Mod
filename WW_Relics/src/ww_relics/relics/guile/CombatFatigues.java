@@ -6,6 +6,8 @@ import org.apache.logging.log4j.Logger;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -40,11 +42,12 @@ public class CombatFatigues extends CustomRelic {
 		
 		return MathUtils.floor(blockAmount);
 	}
-	
-	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+	@Override
+	public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
 		
-		havent_attacked_last_turn = false;
-		
+		if (targetCard.type == targetCard.type.ATTACK) {
+			havent_attacked_last_turn = false;
+		}
 	}
 	
 	@Override	
