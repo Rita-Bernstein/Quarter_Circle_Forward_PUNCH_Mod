@@ -38,7 +38,7 @@ public class CombatFatigues extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return "test";
+		return DESCRIPTIONS[0] + EXTRA_STRENGTH + DESCRIPTIONS[1];
 	}
 	
 	public int onPlayerGainedBlock(float blockAmount) {
