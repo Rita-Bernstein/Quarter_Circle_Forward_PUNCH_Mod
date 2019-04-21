@@ -8,9 +8,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.PenNibPower;
@@ -51,7 +49,7 @@ public class CombatFatigues extends CustomRelic {
 	@Override
 	public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
 		
-		if (targetCard.type == targetCard.type.ATTACK) {
+		if (targetCard.type == AbstractCard.CardType.ATTACK) {
 			logger.info(targetCard.name);
 			havent_attacked_last_turn = false;
 		}
