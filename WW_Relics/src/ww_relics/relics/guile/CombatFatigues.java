@@ -9,9 +9,12 @@ import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.PenNibPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
@@ -24,6 +27,8 @@ public class CombatFatigues extends CustomRelic {
 	public static boolean gained_block_last_turn = false;
 	public static boolean havent_attacked_last_turn = true; 
 	public static boolean is_first_turn = true;
+	
+	public static final int EXTRA_STRENGTH = 2;
 	
 	public static final Logger logger = LogManager.getLogger(CombatFatigues.class.getName()); 
 	
@@ -46,6 +51,7 @@ public class CombatFatigues extends CustomRelic {
 	public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
 		
 		if (targetCard.type == targetCard.type.ATTACK) {
+			logger.info(targetCard.name);
 			havent_attacked_last_turn = false;
 		}
 	}
@@ -58,7 +64,9 @@ public class CombatFatigues extends CustomRelic {
 			logger.info("havent_attacked_last_turn " + havent_attacked_last_turn);
 			
 			if (relicCanDoItsEffect()) {
+				showRelicVisualEffect();
 				giveDoubleDamage();
+				giveExtraDamage();
 			}
 			
 		} else is_first_turn = false;
@@ -74,9 +82,20 @@ public class CombatFatigues extends CustomRelic {
 		return gained_block_last_turn && havent_attacked_last_turn;
 	}
 	
-	private void giveDoubleDamage() {
+	private void showRelicVisualEffect() {
 		 AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+	}
+	
+	private void giveDoubleDamage() {
 	     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new PenNibPower(AbstractDungeon.player, 1), 1, true));
+	}
+	
+	private void giveExtraDamage() {
+		AbstractPlayer player = AbstractDungeon.player;
+		AbstractDungeon.actionManager.addToBottom(
+				new ApplyPowerAction(player, player, new StrengthPower(player, EXTRA_STRENGTH), EXTRA_STRENGTH));
+		AbstractDungeon.actionManager.addToBottom(
+				new ApplyPowerAction(player, player, new LoseStrengthPower(player, EXTRA_STRENGTH), EXTRA_STRENGTH));
 	}
 	
 	private void resetConditionChecks() {
