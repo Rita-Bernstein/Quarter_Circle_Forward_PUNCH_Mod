@@ -94,7 +94,8 @@
     "NAME": "Combat Fatigues",
     "FLAVOR": "\"This clothes remind the wearer that there's a time to attack and a time to defend, but it's up to the wearer to remind itself of the time to take them off.\" - Ranwid.",
     "DESCRIPTIONS": [
-      ""
+      "If you both gained Block and haven't used Attack cards the last turn, gain #b",
+      " #yTemporary #yStrength and your next attack this turn does #ydouble #ydamage."
     ]
   },
   
