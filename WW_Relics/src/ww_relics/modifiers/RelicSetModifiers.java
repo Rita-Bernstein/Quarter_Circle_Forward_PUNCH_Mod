@@ -42,12 +42,9 @@ public class RelicSetModifiers {
 	}
 	
 	public static void addIndestructibleFortressToCustomRun(ArrayList<String> relics) {
-		relics.add(ArmyBoots.ID);
-		UnlockTracker.markRelicAsSeen(ArmyBoots.ID);
-		relics.add(ChainWithNametags.ID);
-		UnlockTracker.markRelicAsSeen(ChainWithNametags.ID);
-		relics.add(CombatFatigues.ID);
-		UnlockTracker.markRelicAsSeen(CombatFatigues.ID);
+		addRelicToCustomRunRelicList(ArmyBoots.ID, relics);
+		addRelicToCustomRunRelicList(ChainWithNametags.ID, relics);
+		addRelicToCustomRunRelicList(CombatFatigues.ID, relics);
 	}
 	
 	public static void addRelicToCustomRunRelicList(String ID, ArrayList<String> relics) {
