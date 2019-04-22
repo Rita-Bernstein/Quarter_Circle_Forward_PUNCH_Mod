@@ -1,8 +1,12 @@
 package ww_relics.relics.dan;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.powers.WeakestFightingStylePower;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class NotStrongestFightingStyleGuidebook extends CustomRelic {
@@ -16,6 +20,15 @@ public class NotStrongestFightingStyleGuidebook extends CustomRelic {
 	
 	public String getUpdatedDescription() {
 		return "test";
+	}
+	
+	public void atBattleStart() {
+		
+		AbstractPlayer player = AbstractDungeon.player;
+		
+		AbstractDungeon.actionManager.addToBottom(
+				new ApplyPowerAction(player, player, new WeakestFightingStylePower(player, 0)));
+		
 	}
 	
 	public AbstractRelic makeCopy() { 
