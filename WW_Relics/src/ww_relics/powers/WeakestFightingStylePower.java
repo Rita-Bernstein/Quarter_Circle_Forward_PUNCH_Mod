@@ -49,7 +49,8 @@ public class WeakestFightingStylePower extends AbstractPower {
 		this.description = "test";
 	}
 	
-	public void atStartOfTurnPostDraw() {
+	@Override
+	public void onInitialApplication() {
 		
 		int random = AbstractDungeon.aiRng.random(cards_to_spawn.size());
 		if (random >= cards_to_spawn.size()) {
