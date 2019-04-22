@@ -52,21 +52,32 @@ public class WeakestFightingStylePower extends AbstractPower {
 	@Override
 	public void onInitialApplication() {
 		
+		AbstractCard card_to_spawn = chooseRandomlyWhichCardFromTheArrayListToSpawn();
+		
+		createCard(card_to_spawn);
+		
+	}
+	
+	@Override
+	public void atStartOfTurnPostDraw() {
+		
+		AbstractCard card_to_spawn = chooseRandomlyWhichCardFromTheArrayListToSpawn();
+		
+		createCard(card_to_spawn);
+		
+	}
+	
+	public AbstractCard chooseRandomlyWhichCardFromTheArrayListToSpawn() {
 		int random = AbstractDungeon.aiRng.random(cards_to_spawn.size());
 		if (random >= cards_to_spawn.size()) {
 			random = cards_to_spawn.size() - 1;
 			logger.info("Yes, you have to change it to cards_to_spawn.size() - 1");
 		}
-		
-		AbstractCard card_to_spawn = cards_to_spawn.get(random);
-		
-		AbstractDungeon.actionManager.addToBottom(
-				new MakeTempCardInHandAction(card_to_spawn));
-		
+		return cards_to_spawn.get(random);
 	}
 	
-	public void CreateCard(String id) {
-		
+	public void createCard(AbstractCard card) {
+		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card));
 	}
 	
 	
