@@ -22,7 +22,7 @@ public class NotStrongestFightingStyleGuidebook extends CustomRelic {
 		return "test";
 	}
 	
-	public void atBattleStart() {
+	public void atBattleStartPreDraw() {
 		
 		AbstractPlayer player = AbstractDungeon.player;
 		
