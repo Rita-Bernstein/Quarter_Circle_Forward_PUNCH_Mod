@@ -30,13 +30,9 @@ public class RelicSetModifiers {
 	}
 	
 	public static void AddWanderingWarriorRelicsToCustomRun(ArrayList<String> relics) {
-		//AddRelicToCustomRun(relics, DuffelBag.ID);
-        relics.add(DuffelBag.ID);
-        UnlockTracker.markRelicAsSeen(DuffelBag.ID);
-        relics.add(FightingGloves.ID);
-        UnlockTracker.markRelicAsSeen(FightingGloves.ID);
-        relics.add(RedHeadband.ID);
-        UnlockTracker.markRelicAsSeen(RedHeadband.ID);
+		AddRelicToCustomRun(relics, DuffelBag.ID);
+		AddRelicToCustomRun(relics, FightingGloves.ID);
+		AddRelicToCustomRun(relics, RedHeadband.ID);
 	}
 	
 	public static void AddBlueJadeRelicsToCustomRun(ArrayList<String> relics) {
