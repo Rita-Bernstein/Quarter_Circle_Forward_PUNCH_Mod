@@ -9,6 +9,7 @@ import org.apache.logging.log4j.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.*;
@@ -141,7 +142,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	}
 	
 	private void addDanCards() {
-		BaseMod.addCard(new Strike_Dan_Weakest());
+		BaseMod.addCard((AbstractCard)new Strike_Dan_Weakest());
 	}
 	
 	@Override
