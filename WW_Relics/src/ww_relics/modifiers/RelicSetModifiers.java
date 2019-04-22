@@ -36,12 +36,9 @@ public class RelicSetModifiers {
 	}
 	
 	public static void addBlueJadeRelicsToCustomRun(ArrayList<String> relics) {
-        relics.add(SpikyBracers.ID);
-        UnlockTracker.markRelicAsSeen(SpikyBracers.ID);
-        relics.add(WhiteBoots.ID);
-        UnlockTracker.markRelicAsSeen(WhiteBoots.ID);
-        relics.add(Handcuffs.ID);
-        UnlockTracker.markRelicAsSeen(Handcuffs.ID);
+		addRelicToCustomRunRelicList(SpikyBracers.ID, relics);
+		addRelicToCustomRunRelicList(WhiteBoots.ID, relics);
+		addRelicToCustomRunRelicList(Handcuffs.ID, relics);
 	}
 	
 	public static void addIndestructibleFortressToCustomRun(ArrayList<String> relics) {
