@@ -54,7 +54,7 @@ public class Strike_Dan_Weakest extends AbstractCard {
 	}
 	
 	static {
-        cardStrings = CardCrawlGame.languagePack.getCardStrings("Strike_R");
+        cardStrings = CardCrawlGame.languagePack.getCardStrings("WW_Relics:Strike_Dan_Weakest");
         NAME = Strike_Dan_Weakest.cardStrings.NAME;
         DESCRIPTION = Strike_Dan_Weakest.cardStrings.DESCRIPTION;
     }
