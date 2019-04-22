@@ -7,12 +7,13 @@ import org.apache.logging.log4j.Logger;
 
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.colorless.Shiv;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+
+import ww_relics.cards.dan.Strike_Dan_Weakest;
 
 public class WeakestFightingStylePower extends AbstractPower {
 
@@ -41,7 +42,7 @@ public class WeakestFightingStylePower extends AbstractPower {
 		cards_to_spawn = new ArrayList<AbstractCard>();
 		
 		//Temporary for testing
-		cards_to_spawn.add(new Shiv());
+		cards_to_spawn.add(new Strike_Dan_Weakest());
 	}
 	
 	public void updateDescription()
