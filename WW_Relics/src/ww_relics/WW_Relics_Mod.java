@@ -18,6 +18,7 @@ import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
+import ww_relics.cards.dan.Strike_Dan_Weakest;
 import ww_relics.modifiers.*;
 import ww_relics.relics.chun_li.*;
 import ww_relics.relics.dan.NotStrongestFightingStyleGuidebook;
@@ -28,6 +29,7 @@ import ww_relics.relics.ryu.*;
 
 @SpireInitializer
 public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
+			EditCardsSubscriber,
 			EditKeywordsSubscriber, PostInitializeSubscriber, PostDungeonInitializeSubscriber, 
 			PostCreateStartingRelicsSubscriber, StartGameSubscriber
 	{
@@ -129,6 +131,17 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	private void addDanRelics() {
 		BaseMod.addRelic(new NotStrongestFightingStyleGuidebook(), RelicType.SHARED);
 		
+	}
+	
+	@Override
+	public void receiveEditCards() {
+		logger.info("Begin adding cards");
+		addDanCards();
+		logger.info("Done adding cards");
+	}
+	
+	private void addDanCards() {
+		BaseMod.addCard(new Strike_Dan_Weakest());
 	}
 	
 	@Override
