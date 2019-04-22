@@ -22,8 +22,9 @@ public class Strike_Dan_Weakest extends AbstractCard {
 	
     public Strike_Dan_Weakest() {
         super("WW_Relics:Strike_Dan_Weakest", Strike_Dan_Weakest.NAME,
-        		"red/attack/strike", COST, Strike_Dan_Weakest.DESCRIPTION,
+        		"ww_relics/images/cards/dan_strike.png", COST, Strike_Dan_Weakest.DESCRIPTION,
         		CardType.ATTACK, CardColor.COLORLESS, CardRarity.BASIC, CardTarget.ENEMY);
+        
         this.baseDamage = ATTACK_DMG;
         this.tags.add(CardTags.STRIKE);
     }
