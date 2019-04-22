@@ -28,7 +28,7 @@ public class NotStrongestFightingStyleGuidebook extends CustomRelic {
 		
 		AbstractDungeon.actionManager.addToBottom(
 				new ApplyPowerAction(player, player, new WeakestFightingStylePower(player, 0)));
-		
+
 	}
 	
 	public AbstractRelic makeCopy() { 
