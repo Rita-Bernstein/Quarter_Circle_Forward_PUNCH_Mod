@@ -1,7 +1,7 @@
 package ww_relics.powers;
 
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
+import java.util.ArrayList;
+
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -15,6 +15,8 @@ public class WeakestFightingStylePower extends AbstractPower {
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	
+	public static ArrayList<String> cards_id_to_spawn;
+	
 	public WeakestFightingStylePower(AbstractCreature owner, int amount)
 	{
 		this.name = NAME;
@@ -26,11 +28,28 @@ public class WeakestFightingStylePower extends AbstractPower {
 		updateDescription();
 		
 		loadRegion("frail");
+		
+		cards_id_to_spawn = new ArrayList<String>();
+		
+		//Temporary for testing
+		cards_id_to_spawn.add("Shiv");
 	}
 	
 	public void updateDescription()
 	{
 		this.description = "test";
 	}
+	
+	public void atStartOfTurnPostDraw() {
+		
+		
+		
+	}
+	
+	public void CreateCard(String id) {
+		
+	}
+	
+	
 	
 }
