@@ -20,6 +20,7 @@ import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import ww_relics.modifiers.*;
 import ww_relics.relics.chun_li.*;
+import ww_relics.relics.dan.NotStrongestFightingStyleGuidebook;
 import ww_relics.relics.guile.ArmyBoots;
 import ww_relics.relics.guile.ChainWithNametags;
 import ww_relics.relics.guile.CombatFatigues;
@@ -103,6 +104,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		addChunLiRelics();
 		addRyuRelics();
 		addGuileRelics();
+		addDanRelics();
 		logger.info("Done adding relics");
 	}
 	
@@ -122,6 +124,11 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		BaseMod.addRelic(new ArmyBoots(), RelicType.SHARED);
 		BaseMod.addRelic(new ChainWithNametags(), RelicType.SHARED);
 		BaseMod.addRelic(new CombatFatigues(), RelicType.SHARED);
+	}
+	
+	private void addDanRelics() {
+		BaseMod.addRelic(new NotStrongestFightingStyleGuidebook(), RelicType.SHARED);
+		
 	}
 	
 	@Override
