@@ -19,7 +19,7 @@ public class RelicSetModifiers {
 	
 	public static final String INDESTRUCTIBLE_FORTRESS_ID = "ww_relics:IndestructibleFortress";
 	
-	public static void AddRelicSetModifiers(List<CustomMod> list) {
+	public static void addRelicSetModifiers(List<CustomMod> list) {
 		CustomMod wandering_warrior = new CustomMod(RelicSetModifiers.WANDERING_WARRIOR_ID, "y", true);
 		CustomMod blue_jade = new CustomMod(RelicSetModifiers.BLUE_JADE_ID, "y", true);
 		CustomMod indestructible_fortress = new CustomMod(RelicSetModifiers.INDESTRUCTIBLE_FORTRESS_ID, "y", true);
@@ -29,13 +29,13 @@ public class RelicSetModifiers {
 		list.add(indestructible_fortress);
 	}
 	
-	public static void AddWanderingWarriorRelicsToCustomRun(ArrayList<String> relics) {
+	public static void addWanderingWarriorRelicsToCustomRun(ArrayList<String> relics) {
 		addRelicToCustomRunRelicList(relics, DuffelBag.ID);
 		addRelicToCustomRunRelicList(relics, FightingGloves.ID);
 		addRelicToCustomRunRelicList(relics, RedHeadband.ID);
 	}
 	
-	public static void AddBlueJadeRelicsToCustomRun(ArrayList<String> relics) {
+	public static void addBlueJadeRelicsToCustomRun(ArrayList<String> relics) {
         relics.add(SpikyBracers.ID);
         UnlockTracker.markRelicAsSeen(SpikyBracers.ID);
         relics.add(WhiteBoots.ID);
@@ -44,7 +44,7 @@ public class RelicSetModifiers {
         UnlockTracker.markRelicAsSeen(Handcuffs.ID);
 	}
 	
-	public static void AddIndestructibleFortressToCustomRun(ArrayList<String> relics) {
+	public static void addIndestructibleFortressToCustomRun(ArrayList<String> relics) {
 		relics.add(ArmyBoots.ID);
 		UnlockTracker.markRelicAsSeen(ArmyBoots.ID);
 		relics.add(ChainWithNametags.ID);

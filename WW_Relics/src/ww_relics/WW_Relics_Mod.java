@@ -126,22 +126,22 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	@Override
 	public void receiveCustomModeMods(List<CustomMod> list) {
-		RelicSetModifiers.AddRelicSetModifiers(list);
+		RelicSetModifiers.addRelicSetModifiers(list);
 		HarderRunModifiers.AddHarderSetModifiers(list);
 	 }
 	 
 	@Override
 	public void receivePostCreateStartingRelics(AbstractPlayer.PlayerClass playerClass, ArrayList<String> relics) {
 		if (isCustomModActive(RelicSetModifiers.WANDERING_WARRIOR_ID)) {
-			RelicSetModifiers.AddWanderingWarriorRelicsToCustomRun(relics);
+			RelicSetModifiers.addWanderingWarriorRelicsToCustomRun(relics);
         }	
 		
 		if (isCustomModActive(RelicSetModifiers.BLUE_JADE_ID)) {
-			RelicSetModifiers.AddBlueJadeRelicsToCustomRun(relics);
+			RelicSetModifiers.addBlueJadeRelicsToCustomRun(relics);
         }
 		
 		if (isCustomModActive(RelicSetModifiers.INDESTRUCTIBLE_FORTRESS_ID)) {
-			RelicSetModifiers.AddIndestructibleFortressToCustomRun(relics);
+			RelicSetModifiers.addIndestructibleFortressToCustomRun(relics);
 		}
 	}
 	
