@@ -11,7 +11,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class Strike_Dan_Weakest extends AbstractCard {
+import basemod.abstracts.CustomCard;
+
+public class Strike_Dan_Weakest extends CustomCard {
 
 	public static final String ID = "WW_Relics:Strike_Dan_Weakest";
     private static final CardStrings cardStrings;
