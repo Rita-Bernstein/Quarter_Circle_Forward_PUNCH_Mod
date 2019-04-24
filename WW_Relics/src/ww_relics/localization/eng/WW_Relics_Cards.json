@@ -3,6 +3,11 @@
     	"NAME": "Weakest Strike",
     	"DESCRIPTION": "Deal !D! damage. NL Exhausts."
   	},
+  	
+  	"WW_Relics:Defend_Dan_Weakest": {
+    	"NAME": "Weakest Defend",
+    	"DESCRIPTION": "Gain !B! Block. NL Exhausts."
+  	},
 	
 	"WWWWWWWWWWWW": {
     	"NAME": "WWWWWWWWWWWWWW",
