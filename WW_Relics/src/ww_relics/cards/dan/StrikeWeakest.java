@@ -22,8 +22,8 @@ public class StrikeWeakest extends CustomCard {
     private static final int ATTACK_DMG = 1;
 	
     public StrikeWeakest() {
-        super(ID, StrikeWeakest.NAME,
-        		"ww_relics/images/cards/strike_weakest.png", COST, StrikeWeakest.DESCRIPTION,
+        super(ID, StrikeWeakest.NAME, "ww_relics/images/cards/strike_weakest.png",
+        		StrikeWeakest.COST, StrikeWeakest.DESCRIPTION,
         		CardType.ATTACK, CardColor.COLORLESS, CardRarity.BASIC, CardTarget.ENEMY);
         
         this.baseDamage = ATTACK_DMG;
