@@ -22,7 +22,7 @@ public class DefendWeakest extends CustomCard {
     public DefendWeakest() {
         super(ID, DefendWeakest.NAME,
         		"ww_relics/images/cards/temp_skill.png", COST, DefendWeakest.DESCRIPTION,
-        		CardType.SKILL, CardColor.COLORLESS, CardRarity.BASIC, CardTarget.ENEMY);
+        		CardType.SKILL, CardColor.COLORLESS, CardRarity.BASIC, CardTarget.SELF);
         
         this.baseBlock = BLOCK_INIT_GAINED;
         this.exhaust = true;
