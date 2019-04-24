@@ -21,8 +21,8 @@ public class DefendWeakest extends CustomCard {
 	
     public DefendWeakest() {
         super(ID, DefendWeakest.NAME,
-        		"ww_relics/images/cards/dan_defend.png", COST, DefendWeakest.DESCRIPTION,
-        		CardType.ATTACK, CardColor.COLORLESS, CardRarity.BASIC, CardTarget.ENEMY);
+        		"ww_relics/images/cards/temp_skill.png", COST, DefendWeakest.DESCRIPTION,
+        		CardType.SKILL, CardColor.COLORLESS, CardRarity.BASIC, CardTarget.ENEMY);
         
         this.baseBlock = BLOCK_INIT_GAINED;
         this.exhaust = true;
