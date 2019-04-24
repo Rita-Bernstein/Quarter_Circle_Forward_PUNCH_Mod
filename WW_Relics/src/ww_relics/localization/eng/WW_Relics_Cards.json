@@ -1,30 +1,30 @@
 {
-	"WW_Relics:Strike_Dan_Weakest": {
+	"WW_Relics:Strike_Weakest": {
     	"NAME": "Weakest Strike",
     	"DESCRIPTION": "Deal !D! damage. NL Exhausts."
   	},
   	
-  	"WW_Relics:Defend_Dan_Weakest": {
+  	"WW_Relics:Defend_Weakest": {
     	"NAME": "Weakest Block",
     	"DESCRIPTION": "Gain !B! Block. NL Exhausts."
   	},
 	
-	"WW_Relics:Energy_Strike_Dan_Weakest": {
+	"WW_Relics:Energy_Strike_Weakest": {
     	"NAME": "WWWWWWWWWWWWWW",
     	"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
 	},
 	
-	"WW_Relics:Flying_Kick_Dan_Weakest": {
+	"WW_Relics:Flying_Kick_Weakest": {
     	"NAME": "WWWWWWWWWWWWWW",
     	"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
 	},
 	
-	"WW_Relics:Taunt_Dan_Weakest": {
+	"WW_Relics:Taunt_Weakest": {
     	"NAME": "WWWWWWWWWWWWWW",
     	"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
 	},
 	
-	"WW_Relics:Provocation_Dan_Weakest": {
+	"WW_Relics:Provocation_Weakest": {
     	"NAME": "WWWWWWWWWWWWWW",
     	"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
 	},
