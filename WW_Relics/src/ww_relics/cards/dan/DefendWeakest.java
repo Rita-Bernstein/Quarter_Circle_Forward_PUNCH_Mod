@@ -10,18 +10,18 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.abstracts.CustomCard;
 
-public class Defend_Dan_Weakest extends CustomCard {
+public class DefendWeakest extends CustomCard {
 
-	public static final String ID = "WW_Relics:Strike_Dan_Defend";
+	public static final String ID = "WW_Relics:Defend_Weakest";
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
     private static final int COST = 0;
     private static final int BLOCK_INIT_GAINED = 1;
 	
-    public Defend_Dan_Weakest() {
-        super(ID, Defend_Dan_Weakest.NAME,
-        		"ww_relics/images/cards/dan_defend.png", COST, Defend_Dan_Weakest.DESCRIPTION,
+    public DefendWeakest() {
+        super(ID, DefendWeakest.NAME,
+        		"ww_relics/images/cards/dan_defend.png", COST, DefendWeakest.DESCRIPTION,
         		CardType.ATTACK, CardColor.COLORLESS, CardRarity.BASIC, CardTarget.ENEMY);
         
         this.baseBlock = BLOCK_INIT_GAINED;
@@ -31,7 +31,7 @@ public class Defend_Dan_Weakest extends CustomCard {
     
 	@Override
 	public AbstractCard makeCopy() {
-		return new Defend_Dan_Weakest();
+		return new DefendWeakest();
 	}
 
 	@Override
@@ -46,8 +46,8 @@ public class Defend_Dan_Weakest extends CustomCard {
 	
 	static {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("WW_Relics:Defend_Dan_Weakest");
-        NAME = Defend_Dan_Weakest.cardStrings.NAME;
-        DESCRIPTION = Defend_Dan_Weakest.cardStrings.DESCRIPTION;
+        NAME = DefendWeakest.cardStrings.NAME;
+        DESCRIPTION = DefendWeakest.cardStrings.DESCRIPTION;
     }
 
 }

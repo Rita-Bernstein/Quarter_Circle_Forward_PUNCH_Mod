@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.abstracts.CustomCard;
 
-public class Strike_Dan_Weakest extends CustomCard {
+public class StrikeWeakest extends CustomCard {
 
 	public static final String ID = "WW_Relics:Strike_Dan_Weakest";
     private static final CardStrings cardStrings;
@@ -21,9 +21,9 @@ public class Strike_Dan_Weakest extends CustomCard {
     private static final int COST = 0;
     private static final int ATTACK_DMG = 1;
 	
-    public Strike_Dan_Weakest() {
-        super(ID, Strike_Dan_Weakest.NAME,
-        		"ww_relics/images/cards/dan_strike.png", COST, Strike_Dan_Weakest.DESCRIPTION,
+    public StrikeWeakest() {
+        super(ID, StrikeWeakest.NAME,
+        		"ww_relics/images/cards/dan_strike.png", COST, StrikeWeakest.DESCRIPTION,
         		CardType.ATTACK, CardColor.COLORLESS, CardRarity.BASIC, CardTarget.ENEMY);
         
         this.baseDamage = ATTACK_DMG;
@@ -36,7 +36,7 @@ public class Strike_Dan_Weakest extends CustomCard {
     
 	@Override
 	public AbstractCard makeCopy() {
-		return new Strike_Dan_Weakest();
+		return new StrikeWeakest();
 	}
 
 	@Override
@@ -53,8 +53,8 @@ public class Strike_Dan_Weakest extends CustomCard {
 	
 	static {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("WW_Relics:Strike_Dan_Weakest");
-        NAME = Strike_Dan_Weakest.cardStrings.NAME;
-        DESCRIPTION = Strike_Dan_Weakest.cardStrings.DESCRIPTION;
+        NAME = StrikeWeakest.cardStrings.NAME;
+        DESCRIPTION = StrikeWeakest.cardStrings.DESCRIPTION;
     }
 
 }
