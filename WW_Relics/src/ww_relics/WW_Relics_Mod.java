@@ -19,6 +19,7 @@ import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
+import ww_relics.cards.dan.DefendWeakest;
 import ww_relics.cards.dan.StrikeWeakest;
 import ww_relics.modifiers.*;
 import ww_relics.relics.chun_li.*;
@@ -151,6 +152,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	private void addDanCards() {
 		BaseMod.addCard((AbstractCard)new StrikeWeakest());
+		BaseMod.addCard((AbstractCard)new DefendWeakest());
 	}
 	
 	@Override
