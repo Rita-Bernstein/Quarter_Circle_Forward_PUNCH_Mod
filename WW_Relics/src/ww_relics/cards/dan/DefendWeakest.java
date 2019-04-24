@@ -45,7 +45,7 @@ public class DefendWeakest extends CustomCard {
 	}
 	
 	static {
-        cardStrings = CardCrawlGame.languagePack.getCardStrings("WW_Relics:Defend_Dan_Weakest");
+        cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = DefendWeakest.cardStrings.NAME;
         DESCRIPTION = DefendWeakest.cardStrings.DESCRIPTION;
     }

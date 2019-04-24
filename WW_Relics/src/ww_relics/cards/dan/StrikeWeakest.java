@@ -14,7 +14,7 @@ import basemod.abstracts.CustomCard;
 
 public class StrikeWeakest extends CustomCard {
 
-	public static final String ID = "WW_Relics:Strike_Dan_Weakest";
+	public static final String ID = "WW_Relics:Strike_Weakest";
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
@@ -23,7 +23,7 @@ public class StrikeWeakest extends CustomCard {
 	
     public StrikeWeakest() {
         super(ID, StrikeWeakest.NAME,
-        		"ww_relics/images/cards/dan_strike.png", COST, StrikeWeakest.DESCRIPTION,
+        		"ww_relics/images/cards/strike_weakest.png", COST, StrikeWeakest.DESCRIPTION,
         		CardType.ATTACK, CardColor.COLORLESS, CardRarity.BASIC, CardTarget.ENEMY);
         
         this.baseDamage = ATTACK_DMG;
@@ -52,7 +52,7 @@ public class StrikeWeakest extends CustomCard {
 	}
 	
 	static {
-        cardStrings = CardCrawlGame.languagePack.getCardStrings("WW_Relics:Strike_Dan_Weakest");
+        cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = StrikeWeakest.cardStrings.NAME;
         DESCRIPTION = StrikeWeakest.cardStrings.DESCRIPTION;
     }
