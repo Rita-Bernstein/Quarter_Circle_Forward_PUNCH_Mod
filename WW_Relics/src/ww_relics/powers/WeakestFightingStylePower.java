@@ -72,7 +72,7 @@ public class WeakestFightingStylePower extends AbstractPower {
 	}
 	
 	public AbstractCard chooseRandomlyWhichCardFromTheArrayListToSpawn() {
-		int random = AbstractDungeon.aiRng.random(cards_to_spawn.size());
+		int random = AbstractDungeon.aiRng.random(cards_to_spawn.size()-1);
 		if (random >= cards_to_spawn.size()) {
 			random = cards_to_spawn.size() - 1;
 			logger.info("Yes, you have to change it to cards_to_spawn.size() - 1");
