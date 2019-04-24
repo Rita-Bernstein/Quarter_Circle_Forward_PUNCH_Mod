@@ -19,7 +19,7 @@ import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
-import ww_relics.cards.dan.Strike_Dan_Weakest;
+import ww_relics.cards.dan.StrikeWeakest;
 import ww_relics.modifiers.*;
 import ww_relics.relics.chun_li.*;
 import ww_relics.relics.dan.NotStrongestFightingStyleGuidebook;
@@ -150,7 +150,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	}
 	
 	private void addDanCards() {
-		BaseMod.addCard((AbstractCard)new Strike_Dan_Weakest());
+		BaseMod.addCard((AbstractCard)new StrikeWeakest());
 	}
 	
 	@Override

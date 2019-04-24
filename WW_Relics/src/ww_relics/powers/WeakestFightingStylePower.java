@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import ww_relics.cards.dan.Strike_Dan_Weakest;
+import ww_relics.cards.dan.StrikeWeakest;
 
 public class WeakestFightingStylePower extends AbstractPower {
 
@@ -42,7 +42,7 @@ public class WeakestFightingStylePower extends AbstractPower {
 		cards_to_spawn = new ArrayList<AbstractCard>();
 		
 		//Temporary for testing
-		cards_to_spawn.add(new Strike_Dan_Weakest());
+		cards_to_spawn.add(new StrikeWeakest());
 	}
 	
 	public void updateDescription()
