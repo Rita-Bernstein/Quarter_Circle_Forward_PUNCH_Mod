@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import ww_relics.cards.dan.DefendWeakest;
 import ww_relics.cards.dan.StrikeWeakest;
 
 public class WeakestFightingStylePower extends AbstractPower {
@@ -41,8 +42,8 @@ public class WeakestFightingStylePower extends AbstractPower {
 		
 		cards_to_spawn = new ArrayList<AbstractCard>();
 		
-		//Temporary for testing
 		cards_to_spawn.add(new StrikeWeakest());
+		cards_to_spawn.add(new DefendWeakest());
 	}
 	
 	public void updateDescription()
