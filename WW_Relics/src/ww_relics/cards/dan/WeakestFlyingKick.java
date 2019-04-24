@@ -21,7 +21,7 @@ public class WeakestFlyingKick extends CustomCard {
     private static final int ATTACK_DMG = 6;
     
 	public WeakestFlyingKick() {
-		super(ID, StrikeWeakest.NAME, "ww_relics/images/cards/temp_attack.png",
+		super(ID, WeakestFlyingKick.NAME, "ww_relics/images/cards/temp_attack.png",
 				WeakestFlyingKick.COST, WeakestFlyingKick.DESCRIPTION, CardType.ATTACK,
 				CardColor.COLORLESS, CardRarity.COMMON, CardTarget.ENEMY);
 
