@@ -9,10 +9,28 @@
     	"DESCRIPTION": "Gain !B! Block. NL Exhausts."
   	},
 	
+	"WW_Relics:Energy_Strike_Dan_Weakest": {
+    	"NAME": "WWWWWWWWWWWWWW",
+    	"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+	},
+	
+	"WW_Relics:Flying_Kick_Dan_Weakest": {
+    	"NAME": "WWWWWWWWWWWWWW",
+    	"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+	},
+	
+	"WW_Relics:Taunt_Dan_Weakest": {
+    	"NAME": "WWWWWWWWWWWWWW",
+    	"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+	},
+	
+	"WW_Relics:Provocation_Dan_Weakest": {
+    	"NAME": "WWWWWWWWWWWWWW",
+    	"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+	},
+	
 	"WWWWWWWWWWWW": {
     	"NAME": "WWWWWWWWWWWWWW",
     	"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
 	}
-
-
 }
