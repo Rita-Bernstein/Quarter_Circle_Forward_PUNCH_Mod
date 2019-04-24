@@ -2,7 +2,6 @@ package ww_relics.cards.dan;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -28,7 +27,9 @@ public class Strike_Dan_Weakest extends CustomCard {
         		CardType.ATTACK, CardColor.COLORLESS, CardRarity.BASIC, CardTarget.ENEMY);
         
         this.baseDamage = ATTACK_DMG;
+        this.exhaust = true;
         this.tags.add(CardTags.STRIKE);
+        
     }
     
     
@@ -48,12 +49,6 @@ public class Strike_Dan_Weakest extends CustomCard {
         AbstractDungeon.actionManager.addToBottom(
         		new DamageAction(monster, new DamageInfo(player, this.damage, this.damageTypeForTurn),
         				AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        
-        //Forgetful effect should enter here, for now, Exhaust.
-       AbstractDungeon.actionManager.addToBottom(
-    		   new ExhaustSpecificCardAction(this, AbstractDungeon.player.hand));
-        		
-
 	}
 	
 	static {
