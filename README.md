@@ -29,19 +29,20 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 2. Relics inspired by Ryu, Ken, Chun Li and Guile.
 3. Add Custom Modifiers (and other small stuff) related with last milestone's relics and the major theme. (future relic milestones will add Custom Modifiers too)
 4. Translation of the mod's created text so far to PT-BR. (all future milestones will launch with EN and PT-BR localization)
+5. Mod release! Release at Github, Steam and Nexus Mods. (all future milestones, when finished, shall have proper releases)
 
 - (thanks to rl issues, a pause will be made in this mod's development but 16 relics will be done already when finishing the fourth milestone)
 
-5. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
-6. The same, by Boxer, Claw and Sagat. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
-7. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
-8. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
-9. Relics inspired by Cammy, Fei Long and Deejay.
-10. ?????????????????????
-11. New balanced Custom Modifiers revolving around fighter's set relics.
-12. Update of art and sound assets.
-13. Polishing, refactoring and balancing.
-14. Synergy and adaptation with other mods.
+6. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
+7. The same, by Boxer, Claw and Sagat. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
+8. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
+9. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
+10. Relics inspired by Cammy, Fei Long and Deejay.
+11. ?????????????????????
+12. New balanced Custom Modifiers revolving around fighter's set relics.
+13. Update of art and sound assets.
+14. Polishing, refactoring and balancing.
+15. Synergy and adaptation with other mods.
 
 # Requirements
 
