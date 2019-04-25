@@ -11,6 +11,10 @@ A Slay The Spire mod, which adds primarily relics directly inspired by fighters 
 
 Walking towards roadmap's milestone 2 (and simultaneously doing stuff from milestone 3).
 
+# FAQ
+
+Link [here](https://github.com/Clauvin/World_Warriors_Mod/wiki/FAQ-(in-construction)).
+
 # Relics
 
 Link in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/Relics).
@@ -25,16 +29,20 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 2. Relics inspired by Ryu, Ken, Chun Li and Guile.
 3. Add Custom Modifiers (and other small stuff) related with last milestone's relics and the major theme. (future relic milestones will add Custom Modifiers too)
 4. Translation of the mod's created text so far to PT-BR. (all future milestones will launch with EN and PT-BR localization)
-5. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
-6. The same, by Boxer, Claw and Sagat. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
-7. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
-8. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
-9. Relics inspired by Cammy, Fei Long and Deejay.
-10. ?????????????????????
-11. New balanced Custom Modifiers revolving around fighter's set relics.
-12. Update of art and sound assets.
-13. Polishing, refactoring and balancing.
-14. Synergy and adaptation with other mods.
+5. Mod release! Release at Github, Steam and Nexus Mods. (all future milestones, when finished, shall have proper releases)
+
+- (thanks to rl issues, a pause will be made in this mod's development but 16 relics will be done already when finishing the fourth milestone)
+
+6. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
+7. The same, by Boxer, Claw and Sagat. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
+8. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
+9. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
+10. Relics inspired by Cammy, Fei Long and Deejay.
+11. ?????????????????????
+12. New balanced Custom Modifiers revolving around fighter's set relics.
+13. Update of art and sound assets.
+14. Polishing, refactoring and balancing.
+15. Synergy and adaptation with other mods.
 
 # Requirements
 
@@ -42,7 +50,7 @@ Mod The Spire 3.9.2+, BaseMod 5.12.1+ and StSLib 1.15.0+.
 
 # Compatibility
 
-So far, it shouldn't cause problems to other mods. That said, there are 135 mods at Steam Workshop and who knows how many more outside of it, so I can't say that it won't crash your game in any possible mod combination. In case of it happening, open one issue, I will check it out.
+So far, it shouldn't cause problems to other mods. That said, there are more than one hundred mods at Steam Workshop and who knows how many more outside of it, so I can't say that it won't crash your game in any possible mod combination. In case of it happening, open one issue, I will check it out.
 
 ## List of Incompatible Mods:
 
