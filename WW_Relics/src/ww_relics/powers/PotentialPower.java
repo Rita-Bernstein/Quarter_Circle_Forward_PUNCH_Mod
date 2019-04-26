@@ -31,4 +31,9 @@ public class PotentialPower extends TwoAmountPower {
 		loadRegion("energized_green");
 	}
 	
+	public void updateDescription()
+	{
+		this.description = amount + " " + amount2;
+	}
+	
 }
