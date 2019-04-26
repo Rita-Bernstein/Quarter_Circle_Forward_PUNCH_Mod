@@ -7,10 +7,13 @@
     ]
   },
   
-  "WWWWWWWWWWWW": {
-    "NAME": "WWWWWWWWWWWWW",
+  "WW_Relics:Power_Potential": {
+    "NAME": "Potential",
     "DESCRIPTIONS": [
-      "WWWWWWWWWWWWWWWWWWW"
+      "You have ",
+      "/",
+      " Potential. When it becomes full, gain ",
+      " Energy."
     ]
   },
   
