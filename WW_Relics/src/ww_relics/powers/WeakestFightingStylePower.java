@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import ww_relics.cards.dan.DefendWeakest;
 import ww_relics.cards.dan.StrikeWeakest;
+import ww_relics.cards.dan.WeakestEnergyBlast;
 import ww_relics.cards.dan.WeakestFlyingKick;
 
 public class WeakestFightingStylePower extends AbstractPower {
@@ -46,6 +47,7 @@ public class WeakestFightingStylePower extends AbstractPower {
 		cards_to_spawn.add(new StrikeWeakest());
 		cards_to_spawn.add(new DefendWeakest());
 		cards_to_spawn.add(new WeakestFlyingKick());
+		cards_to_spawn.add(new WeakestEnergyBlast());
 	}
 	
 	public void updateDescription()
