@@ -1,5 +1,8 @@
 package ww_relics.powers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -18,6 +21,8 @@ public class PotentialPower extends TwoAmountPower {
 	
 	public int numerator;
 	public int denominator;
+	
+	public static final Logger logger = LogManager.getLogger(PotentialPower.class.getName());
 	
 	public PotentialPower(AbstractCreature owner, int numerator, int denominator) {
 		
@@ -46,11 +51,27 @@ public class PotentialPower extends TwoAmountPower {
 				(this.owner == power.owner)) {
 			PotentialPower the_new_potential = (PotentialPower) power;
 			
+			this.denominator = amount;
+			this.numerator = amount2;
+			
+			logger.info("before: " + this.amount2 + "/" + this.amount);
+			logger.info("before numerator: " + this.numerator);
+			logger.info("before denominator: " + this.denominator);
+			
 			if (this.denominator == the_new_potential.denominator) {
 				this.numerator += the_new_potential.numerator;
 			} else {
 				//Add in the future code to sum fractions with different denominators
 			}
+			
+			logger.info("after numerator: " + this.numerator);
+			logger.info("after denominator: " + this.denominator);
+			
+			this.amount = denominator;
+			this.amount2 = numerator;
+			updateDescription();
+			
+			logger.info("after: " + this.amount2 + "/" + this.amount);
 			
 			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction
 					(this.owner, this.owner, the_new_potential));
