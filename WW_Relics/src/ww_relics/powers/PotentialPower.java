@@ -22,8 +22,8 @@ public class PotentialPower extends TwoAmountPower {
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
-		this.amount = numerator;
-		this.amount2 = denominator;
+		this.amount = denominator;
+		this.amount2 = numerator;
 		this.type = AbstractPower.PowerType.BUFF;
 		
 		updateDescription();
@@ -33,7 +33,7 @@ public class PotentialPower extends TwoAmountPower {
 	
 	public void updateDescription()
 	{
-		this.description = amount + " " + amount2;
+		this.description = numerator + "/" + denominator;
 	}
 	
 }
