@@ -9,9 +9,9 @@
     	"DESCRIPTION": "Gain !B! Block. NL Exhausts."
   	},
 	
-	"WW_Relics:Energy_Strike_Weakest": {
-    	"NAME": "WWWWWWWWWWWWWW",
-    	"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+	"WW_Relics:WeakestEnergyBlast": {
+    	"NAME": "Weakest Energy Blast",
+    	"DESCRIPTION": "Deal !D! damage. NL Gain 1/6 Potential. NL Exhausts."
 	},
 	
 	"WW_Relics:WeakestFlyingKick": {
