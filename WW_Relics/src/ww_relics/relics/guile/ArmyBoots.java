@@ -45,29 +45,10 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	@Override
 	public int onLoseBlock(DamageInfo info, int damage_amount) {
 		
-		boolean showed_relic_image = false;
-		
 		if (RelicShouldWorkNow(info, damage_amount)) {
 			
-			AbstractPlayer player = AbstractDungeon.player;
+			RemoveDebuffsAndCallVisualEffects();
 			
-			for (String power_to_remove: powers_affected_by_relic){
-				
-				if (player.hasPower(power_to_remove)) {
-					
-					relic_effect_activated_this_combat = true;
-					
-					if (IsTimeToCallRelicVisualEffects(showed_relic_image)) {
-						RelicVisualEffects();
-						showed_relic_image = true;
-					}
-
-					AbstractDungeon.actionManager.addToBottom(
-							new RemoveSpecificPowerAction(player, player, player.getPower(power_to_remove)));
-					
-				}
-				
-			}
 		}
 		
 		return damage_amount;
@@ -83,6 +64,29 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 				block_is_broken;
 	}
 	
+	private void RemoveDebuffsAndCallVisualEffects() {
+		
+		AbstractPlayer player = AbstractDungeon.player;
+		boolean showed_relic_image = false;
+		
+		for (String power_to_remove: powers_affected_by_relic){
+			
+			if (player.hasPower(power_to_remove)) {
+				
+				relic_effect_activated_this_combat = true;
+				
+				if (IsTimeToCallRelicVisualEffects(showed_relic_image)) {
+					RelicVisualEffects();
+					showed_relic_image = true;
+				}
+
+				AbstractDungeon.actionManager.addToBottom(
+						new RemoveSpecificPowerAction(player, player, player.getPower(power_to_remove)));
+				
+			}
+			
+		}
+	}
 	
 	private boolean IsTimeToCallRelicVisualEffects(boolean showed_relic_image) {
 		boolean relic_image_havent_show_up_yet = !showed_relic_image;
