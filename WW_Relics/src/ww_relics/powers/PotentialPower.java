@@ -36,7 +36,7 @@ public class PotentialPower extends TwoAmountPower {
 		
 		loadRegion("energized_green");
 	}
-	
+
 	public void setFraction(int numerator, int denominator) {
 		setNumerator(numerator);
 		setDenominator(denominator);
@@ -65,25 +65,19 @@ public class PotentialPower extends TwoAmountPower {
 		this.description = numerator + "/" + denominator;
 	}
 	
-	
 	@Override
 	public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
 
 		if ((power.ID == PotentialPower.POWER_ID) && (power.hashCode() != this.hashCode()) &&
 				(this.owner == power.owner)) {
+			
 			PotentialPower the_new_potential = (PotentialPower) power;
 
 			sumWithOtherPotential(the_new_potential);
 			
-			logger.info("after numerator: " + this.numerator);
-			logger.info("after denominator: " + this.denominator);
-			
-			//+1 to avoid number reducing by one, have to improve this
-			this.amount = denominator+1;
-			this.amount2 = numerator;
+			avoidingWeirdEntropy();
+
 			updateDescription();
-			
-			logger.info("after: " + this.amount2 + "/" + this.amount);
 			
 			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction
 					(this.owner, this.owner, the_new_potential));
@@ -97,6 +91,11 @@ public class PotentialPower extends TwoAmountPower {
 		} else {
 			logger.info("Sum between Potentials with different denominators is not implemented.");
 		}
+	}
+	
+	public void avoidingWeirdEntropy() {
+		//+1 to avoid number reducing by one, have to improve this
+		setDenominator(getDenominator()+1);
 	}
 	
 }
