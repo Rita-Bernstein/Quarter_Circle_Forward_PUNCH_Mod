@@ -40,6 +40,24 @@ public class PotentialPower extends TwoAmountPower {
 		loadRegion("energized_green");
 	}
 	
+	public void setNumerator(int value) {
+		this.numerator = value;
+		this.amount2 = value;
+	}
+	
+	public int getNumerator() {
+		return numerator;
+	}
+	
+	public void setDenominator(int value) {
+		this.denominator = value;
+		this.amount = value;
+	}
+	
+	public int getDenominator() {
+		return denominator;
+	}
+	
 	public void updateDescription()
 	{
 		this.description = numerator + "/" + denominator;
