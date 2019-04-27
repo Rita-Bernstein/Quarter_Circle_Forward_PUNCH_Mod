@@ -40,6 +40,11 @@ public class PotentialPower extends TwoAmountPower {
 		loadRegion("energized_green");
 	}
 	
+	public void setFraction(int numerator, int denominator) {
+		setNumerator(numerator);
+		setDenominator(denominator);
+	}
+
 	public void setNumerator(int value) {
 		this.numerator = value;
 		this.amount2 = value;
