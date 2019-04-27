@@ -68,8 +68,7 @@ public class PotentialPower extends TwoAmountPower {
 	@Override
 	public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
 
-		if ((power.ID == PotentialPower.POWER_ID) && (power.hashCode() != this.hashCode()) &&
-				(this.owner == power.owner)) {
+		if (canWeMergePowers(power)) {
 			
 			PotentialPower the_new_potential = (PotentialPower) power;
 
@@ -82,6 +81,15 @@ public class PotentialPower extends TwoAmountPower {
 			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction
 					(this.owner, this.owner, the_new_potential));
 		}
+	}
+	
+	public boolean canWeMergePowers(AbstractPower power) {
+		
+		boolean power_is_PotentialPower = power.ID == PotentialPower.POWER_ID;
+		boolean power_is_not_THIS_power = power.hashCode() != this.hashCode();
+		boolean both_powers_have_the_same_owner = this.owner == power.owner;
+		
+		return power_is_PotentialPower && power_is_not_THIS_power && both_powers_have_the_same_owner;
 	}
 	
 	public void sumWithOtherPotential(PotentialPower other) {
