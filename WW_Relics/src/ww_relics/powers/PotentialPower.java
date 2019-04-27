@@ -93,7 +93,7 @@ public class PotentialPower extends TwoAmountPower {
 	public void sumWithOtherPotential(PotentialPower other) {
 		
 		if (this.denominator == other.denominator) {
-			this.numerator += other.numerator;
+			setNumerator(this.numerator + other.numerator);
 		} else {
 			logger.info("Sum between Potentials with different denominators is not implemented.");
 		}
