@@ -72,11 +72,8 @@ public class PotentialPower extends TwoAmountPower {
 		if ((power.ID == PotentialPower.POWER_ID) && (power.hashCode() != this.hashCode()) &&
 				(this.owner == power.owner)) {
 			PotentialPower the_new_potential = (PotentialPower) power;
-			
-			this.denominator = amount;
-			this.numerator = amount2;
-			
-			
+
+			sumWithOtherPotential(the_new_potential);
 			
 			logger.info("after numerator: " + this.numerator);
 			logger.info("after denominator: " + this.denominator);
