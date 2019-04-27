@@ -29,10 +29,7 @@ public class PotentialPower extends TwoAmountPower {
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
-		this.denominator = denominator;
-		this.amount = denominator;
-		this.numerator = numerator;
-		this.amount2 = numerator;
+		setFraction(numerator, denominator);
 		this.type = AbstractPower.PowerType.BUFF;
 		
 		updateDescription();
@@ -79,18 +76,7 @@ public class PotentialPower extends TwoAmountPower {
 			this.denominator = amount;
 			this.numerator = amount2;
 			
-			logger.info("before: " + this.amount2 + "/" + this.amount);
-			logger.info("before numerator: " + this.numerator);
-			logger.info("before denominator: " + this.denominator);
 			
-			if (this.denominator == the_new_potential.denominator) {
-				this.numerator += the_new_potential.numerator;
-			} else {
-				logger.info(this.denominator + " AAAA");
-				logger.info(the_new_potential.denominator + " ARGH");
-				logger.info(the_new_potential.amount2 + " PHEW");
-				logger.info(the_new_potential.amount + " MAYBE");
-			}
 			
 			logger.info("after numerator: " + this.numerator);
 			logger.info("after denominator: " + this.denominator);
@@ -106,5 +92,14 @@ public class PotentialPower extends TwoAmountPower {
 					(this.owner, this.owner, the_new_potential));
 		}
 	}
+	
+	/*public void sumWithOtherPotential(PotentialPower other) {
+		
+		if (this.denominator == other.denominator) {
+			this.numerator += other.numerator;
+		} else {
+			logger.info("Sum between Potentials with different denominators is not implemented.");
+		}
+	}*/
 	
 }
