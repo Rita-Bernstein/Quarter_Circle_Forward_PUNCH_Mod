@@ -29,7 +29,9 @@ public class PotentialPower extends TwoAmountPower {
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
+		this.denominator = denominator;
 		this.amount = denominator;
+		this.numerator = numerator;
 		this.amount2 = numerator;
 		this.type = AbstractPower.PowerType.BUFF;
 		
@@ -61,13 +63,17 @@ public class PotentialPower extends TwoAmountPower {
 			if (this.denominator == the_new_potential.denominator) {
 				this.numerator += the_new_potential.numerator;
 			} else {
-				//Add in the future code to sum fractions with different denominators
+				logger.info(this.denominator + " AAAA");
+				logger.info(the_new_potential.denominator + " ARGH");
+				logger.info(the_new_potential.amount2 + " PHEW");
+				logger.info(the_new_potential.amount + " MAYBE");
 			}
 			
 			logger.info("after numerator: " + this.numerator);
 			logger.info("after denominator: " + this.denominator);
 			
-			this.amount = denominator;
+			//+1 to avoid number reducing by one, have to improve this
+			this.amount = denominator+1;
 			this.amount2 = numerator;
 			updateDescription();
 			
