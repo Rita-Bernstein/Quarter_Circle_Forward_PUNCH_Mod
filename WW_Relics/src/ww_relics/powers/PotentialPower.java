@@ -65,7 +65,8 @@ public class PotentialPower extends TwoAmountPower {
 	
 	public void updateDescription()
 	{
-		this.description = numerator + "/" + denominator;
+		this.description = DESCRIPTIONS[0] + this.numerator + DESCRIPTIONS[1] + this.denominator +
+				DESCRIPTIONS[2] + ENERGY_GIVEN_WHEN_FULL + DESCRIPTIONS[3];
 	}
 	
 	@Override
