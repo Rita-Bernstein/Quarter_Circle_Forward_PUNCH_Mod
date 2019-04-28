@@ -66,15 +66,20 @@ public class PotentialPower extends TwoAmountPower {
 	}
 	
 	@Override
+	public void stackPower(int stackAmount) {
+
+	}
+	
+	@Override
 	public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
 
 		if (canWeMergePowers(power)) {
-			
+				
 			PotentialPower the_new_potential = (PotentialPower) power;
 
 			sumWithOtherPotential(the_new_potential);
 			
-			avoidingWeirdEntropy();
+			//avoidingWeirdEntropy();
 
 			updateDescription();
 			
