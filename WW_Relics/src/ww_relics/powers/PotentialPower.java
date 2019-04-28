@@ -78,8 +78,6 @@ public class PotentialPower extends TwoAmountPower {
 			PotentialPower the_new_potential = (PotentialPower) power;
 
 			sumWithOtherPotential(the_new_potential);
-			
-			//avoidingWeirdEntropy();
 
 			updateDescription();
 			
@@ -104,11 +102,6 @@ public class PotentialPower extends TwoAmountPower {
 		} else {
 			logger.info("Sum between Potentials with different denominators is not implemented.");
 		}
-	}
-	
-	public void avoidingWeirdEntropy() {
-		//+1 to avoid number reducing by one, have to improve this
-		setDenominator(getDenominator()+1);
 	}
 	
 }
