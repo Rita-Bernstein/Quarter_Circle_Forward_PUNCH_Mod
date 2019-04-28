@@ -11,7 +11,7 @@
 	
 	"WW_Relics:WeakestEnergyBlast": {
     	"NAME": "Weakest Energy Blast",
-    	"DESCRIPTION": "Deal !D! damage. NL Gain 1/6 Potential. NL Exhausts."
+    	"DESCRIPTION": "Deal !D! damage. NL Gain 1/3 Potential. NL Exhausts."
 	},
 	
 	"WW_Relics:WeakestFlyingKick": {

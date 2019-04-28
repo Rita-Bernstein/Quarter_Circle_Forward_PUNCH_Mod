@@ -22,7 +22,7 @@ public class WeakestEnergyBlast extends CustomCard {
     private static final int COST = 0;
     private static final int ATTACK_DMG = 3;
     private static final int POTENTIAL_NUMERATOR = 1;
-    private static final int POTENTIAL_DENOMINATOR = 6;
+    private static final int POTENTIAL_DENOMINATOR = 3;
 	
 	public WeakestEnergyBlast() {
 		super(ID, WeakestEnergyBlast.NAME, "ww_relics/images/cards/temp_attack.png",
