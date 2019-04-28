@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -21,6 +22,8 @@ public class PotentialPower extends TwoAmountPower {
 	
 	public int numerator;
 	public int denominator;
+	
+	public static final int ENERGY_GIVEN_WHEN_FULL = 1;
 	
 	public static final Logger logger = LogManager.getLogger(PotentialPower.class.getName());
 	
@@ -84,6 +87,21 @@ public class PotentialPower extends TwoAmountPower {
 			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction
 					(this.owner, this.owner, the_new_potential));
 		}
+		
+		while (fractionEqualOrBiggerThanOne()){
+			AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(ENERGY_GIVEN_WHEN_FULL));
+			
+			setNumerator(getNumerator() - getDenominator()); 
+		}
+		
+		if (getNumerator() <= 0) {
+			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction
+					(this.owner, this.owner, this));
+		}
+	}
+	
+	public boolean fractionEqualOrBiggerThanOne() {
+		return getNumerator() >= getDenominator();
 	}
 	
 	public boolean canWeMergePowers(AbstractPower power) {
