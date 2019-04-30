@@ -89,16 +89,9 @@ public class PotentialPower extends TwoAmountPower {
 					(this.owner, this.owner, the_new_potential));
 		}
 		
-		while (fractionEqualOrBiggerThanOne()){
-			AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(ENERGY_GIVEN_WHEN_FULL));
-			
-			setNumerator(getNumerator() - getDenominator()); 
-		}
+		ifWholePartsExistThenTransformThemIntoEnergy();
 		
-		if (getNumerator() <= 0) {
-			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction
-					(this.owner, this.owner, this));
-		}
+		ifEmptyFractionThenRemoveThis();
 	}
 	
 	public boolean fractionEqualOrBiggerThanOne() {
@@ -120,6 +113,21 @@ public class PotentialPower extends TwoAmountPower {
 			setNumerator(this.numerator + other.numerator);
 		} else {
 			logger.info("Sum between Potentials with different denominators is not implemented.");
+		}
+	}
+	
+	public void ifWholePartsExistThenTransformThemIntoEnergy() {
+		while (fractionEqualOrBiggerThanOne()){
+			AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(ENERGY_GIVEN_WHEN_FULL));
+			
+			setNumerator(getNumerator() - getDenominator()); 
+		}
+	}
+	
+	public void ifEmptyFractionThenRemoveThis() {
+		if (getNumerator() <= 0) {
+			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction
+					(this.owner, this.owner, this));
 		}
 	}
 	
