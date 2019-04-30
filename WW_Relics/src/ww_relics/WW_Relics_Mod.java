@@ -67,6 +67,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		
 		BaseMod.addKeyword(new String[] {"unsteady"}, "Block is reduced each turn.");
 		BaseMod.addKeyword(new String[] {"stunned"}, "Affected does nothing.");
+		BaseMod.addKeyword(new String[] {"potential"}, "Whole parts give you the equivalent in Energy.");
 		
 		logger.info("done editing keywords");
 		
