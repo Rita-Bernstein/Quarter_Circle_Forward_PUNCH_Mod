@@ -1,32 +1,32 @@
 {
 	"WW_Relics:Strike_Weakest": {
     	"NAME": "Weakest Strike",
-    	"DESCRIPTION": "Deal !D! damage. NL Exhausts."
+    	"DESCRIPTION": "Deal !D! damage. NL Exhausts. NL Ethereal."
   	},
   	
   	"WW_Relics:Defend_Weakest": {
     	"NAME": "Weakest Block",
-    	"DESCRIPTION": "Gain !B! Block. NL Exhausts."
+    	"DESCRIPTION": "Gain !B! Block. NL Exhausts. NL Ethereal."
   	},
 	
 	"WW_Relics:WeakestEnergyBlast": {
     	"NAME": "Weakest Energy Blast",
-    	"DESCRIPTION": "Deal !D! damage. NL Gain 1/3 Potential. NL Exhausts."
+    	"DESCRIPTION": "Deal !D! damage. NL Gain 1/3 Potential. NL Exhausts. NL Ethereal."
 	},
 	
 	"WW_Relics:WeakestFlyingKick": {
     	"NAME": "Weakest Flying Kick",
-    	"DESCRIPTION": "Deal !D! damage. NL Exhausts."
+    	"DESCRIPTION": "Deal !D! damage. NL Exhausts. NL Ethereal."
 	},
 	
 	"WW_Relics:WeakestTaunt": {
     	"NAME": "Weakest Taunt",
-    	"DESCRIPTION": "Apply 1 Weak. NL Gain 1/3 Potential. NL Exhausts."
+    	"DESCRIPTION": "Apply 1 Weak. NL Gain 1/3 Potential. NL Exhausts. NL Ethereal."
 	},
 	
 	"WW_Relics:WeakestProvocation": {
     	"NAME": "Weakest Provocation",
-    	"DESCRIPTION": "Apply 1 Vulnerable. NL Gain 1/3 Potential. NL Exhausts."
+    	"DESCRIPTION": "Apply 1 Vulnerable. NL Gain 1/3 Potential. NL Exhausts. NL Ethereal."
 	},
 	
 	"WWWWWWWWWWWW": {
