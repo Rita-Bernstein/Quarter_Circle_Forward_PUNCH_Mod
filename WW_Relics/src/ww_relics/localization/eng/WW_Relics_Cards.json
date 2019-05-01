@@ -24,9 +24,9 @@
     	"DESCRIPTION": "Apply 1 Weak. NL Gain 1/3 Potential. NL Exhausts."
 	},
 	
-	"WW_Relics:Provocation_Weakest": {
-    	"NAME": "WWWWWWWWWWWWWW",
-    	"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+	"WW_Relics:WeakestProvocation": {
+    	"NAME": "Weakest Provocation",
+    	"DESCRIPTION": "Apply 1 Vulnerable. NL Gain 1/3 Potential. NL Exhausts."
 	},
 	
 	"WWWWWWWWWWWW": {
