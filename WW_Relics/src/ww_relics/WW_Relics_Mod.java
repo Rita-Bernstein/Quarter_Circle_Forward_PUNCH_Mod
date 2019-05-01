@@ -64,8 +64,8 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		BaseMod.addKeyword(new String[] {"stunned"}, "Affected does nothing.");
 		BaseMod.addKeyword(new String[] {"Potential", "potential"},
 				"Whole parts are spent to give the equivalent in Energy.");
-		BaseMod.addKeyword(new String[] {"Weakest"}, "Colorless " +
-				"cards that are weak, and have Exhaust and Ethereal.");
+		BaseMod.addKeyword(new String[] {"Weakest"},
+				"Colorless cards that are weak, and have Exhaust and Ethereal.");
 		
 		logger.info("done editing keywords");
 		
