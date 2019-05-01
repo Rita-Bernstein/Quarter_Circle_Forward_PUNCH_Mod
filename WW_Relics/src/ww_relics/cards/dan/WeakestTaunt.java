@@ -1,13 +1,6 @@
 package ww_relics.cards.dan;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.AbstractCard.CardColor;
-import com.megacrit.cardcrawl.cards.AbstractCard.CardRarity;
-import com.megacrit.cardcrawl.cards.AbstractCard.CardTarget;
-import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -46,7 +39,7 @@ public class WeakestTaunt extends CustomCard {
 	public void use(AbstractPlayer player, AbstractMonster monster) {
         AbstractDungeon.actionManager.addToBottom(
         		new ApplyPowerAction(monster, player,
-        				new WeakPower(monster, 1, false)));
+        				new WeakPower(monster, WEAK_AMOUNT, false)));
         
         AbstractDungeon.actionManager.addToBottom(
         		new ApplyPowerAction(player, player, 
