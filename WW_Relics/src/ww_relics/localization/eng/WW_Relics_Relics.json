@@ -100,19 +100,19 @@
     ]
   },
   
+  "WW_Relics:Not_Strongest_Fighting_Style_Guidebook": {
+    "NAME": "\"Strongest\" Fighting Style Guidebook",
+    "FLAVOR": "\"My god, I must unlearn what I've read. WHY ANYONE WOULD -\" - Almost anyone, really.",
+    "DESCRIPTIONS": [
+      "At the start of your turn, add a random Weakest card to your deck."
+    ]
+  },
+  
   "WWWWWWWWWWWW": {
     "NAME": "WWWWWWWWWWWWW",
     "FLAVOR": "WWWWWWWWWWWWWWW",
     "DESCRIPTIONS": [
       "WWWWWWWWWWWWWWWWWWW"
-    ]
-  },
-  
-  "WW_Relics:Not_Strongest_Fighting_Style_Guidebook": {
-    "NAME": "\"Strongest\" Fighting Style Guidebook",
-    "FLAVOR": "\"My god, I must unlearn what I've read. WHY ANYONE WOULD -\" - Almost anyone, really.",
-    "DESCRIPTIONS": [
-      "At the start of your turn, add a Weakest card to your deck."
     ]
   }
 }
