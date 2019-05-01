@@ -153,17 +153,8 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	@Override
 	public void receiveEditCards() {
 		logger.info("Begin adding cards");
-		addDanCards();
+		
 		logger.info("Done adding cards");
-	}
-	
-	private void addDanCards() {
-		BaseMod.addCard((AbstractCard)new StrikeWeakest());
-		BaseMod.addCard((AbstractCard)new DefendWeakest());
-		BaseMod.addCard((AbstractCard)new WeakestFlyingKick());
-		BaseMod.addCard((AbstractCard)new WeakestEnergyBlast());
-		BaseMod.addCard((AbstractCard)new WeakestTaunt());
-		BaseMod.addCard((AbstractCard)new WeakestProvocation());
 	}
 	
 	@Override
