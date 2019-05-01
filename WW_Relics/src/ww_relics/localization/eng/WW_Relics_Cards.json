@@ -19,9 +19,9 @@
     	"DESCRIPTION": "Deal !D! damage. NL Exhausts."
 	},
 	
-	"WW_Relics:Taunt_Weakest": {
-    	"NAME": "WWWWWWWWWWWWWW",
-    	"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+	"WW_Relics:WeakestTaunt": {
+    	"NAME": "Weakest Taunt",
+    	"DESCRIPTION": "Apply 1 Weak. NL Gain 1/3 Potential. NL Exhausts."
 	},
 	
 	"WW_Relics:Provocation_Weakest": {
