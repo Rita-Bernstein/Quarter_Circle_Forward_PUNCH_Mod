@@ -19,7 +19,7 @@ public class NotStrongestFightingStyleGuidebook extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return "test";
+		return DESCRIPTIONS[0];
 	}
 	
 	public void atBattleStartPreDraw() {
