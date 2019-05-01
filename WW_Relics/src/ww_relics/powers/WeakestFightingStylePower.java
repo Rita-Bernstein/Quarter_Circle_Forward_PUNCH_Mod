@@ -17,6 +17,8 @@ import ww_relics.cards.dan.DefendWeakest;
 import ww_relics.cards.dan.StrikeWeakest;
 import ww_relics.cards.dan.WeakestEnergyBlast;
 import ww_relics.cards.dan.WeakestFlyingKick;
+import ww_relics.cards.dan.WeakestProvocation;
+import ww_relics.cards.dan.WeakestTaunt;
 
 public class WeakestFightingStylePower extends AbstractPower {
 
@@ -48,6 +50,8 @@ public class WeakestFightingStylePower extends AbstractPower {
 		cards_to_spawn.add(new DefendWeakest());
 		cards_to_spawn.add(new WeakestFlyingKick());
 		cards_to_spawn.add(new WeakestEnergyBlast());
+		cards_to_spawn.add(new WeakestTaunt());
+		cards_to_spawn.add(new WeakestProvocation());
 	}
 	
 	public void updateDescription()
