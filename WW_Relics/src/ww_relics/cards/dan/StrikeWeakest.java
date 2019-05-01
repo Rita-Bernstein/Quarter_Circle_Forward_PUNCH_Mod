@@ -28,6 +28,8 @@ public class StrikeWeakest extends CustomCard {
         
         this.baseDamage = ATTACK_DMG;
         this.exhaust = true;
+        this.isEthereal = true;
+        
         this.tags.add(CardTags.STRIKE);
         
     }

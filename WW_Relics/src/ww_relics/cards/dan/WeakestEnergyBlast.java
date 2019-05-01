@@ -31,6 +31,7 @@ public class WeakestEnergyBlast extends CustomCard {
 
         this.baseDamage = ATTACK_DMG;
         this.exhaust = true;
+        this.isEthereal = true;
 	}
     
 	@Override

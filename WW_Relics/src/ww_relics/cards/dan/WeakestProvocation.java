@@ -28,6 +28,7 @@ public class WeakestProvocation extends CustomCard {
 				CardColor.COLORLESS, CardRarity.COMMON, CardTarget.ENEMY);
 
         this.exhaust = true;
+        this.isEthereal = true;
 	}
     
 	@Override

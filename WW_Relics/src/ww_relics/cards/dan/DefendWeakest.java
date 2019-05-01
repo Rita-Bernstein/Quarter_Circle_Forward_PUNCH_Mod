@@ -26,6 +26,7 @@ public class DefendWeakest extends CustomCard {
         
         this.baseBlock = BLOCK_INIT_GAINED;
         this.exhaust = true;
+        this.isEthereal = true;
         
     }
     
