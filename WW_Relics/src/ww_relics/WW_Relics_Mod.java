@@ -160,6 +160,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		BaseMod.addCard((AbstractCard)new DefendWeakest());
 		BaseMod.addCard((AbstractCard)new WeakestFlyingKick());
 		BaseMod.addCard((AbstractCard)new WeakestEnergyBlast());
+		BaseMod.addCard((AbstractCard)new WeakestTaunt());
 	}
 	
 	@Override
