@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
 import ww_relics.powers.WeakestFightingStylePower;
 import ww_relics.resources.relic_graphics.GraphicResources;
@@ -29,6 +30,16 @@ public class NotStrongestFightingStyleGuidebook extends CustomRelic {
 		AbstractDungeon.actionManager.addToBottom(
 				new ApplyPowerAction(player, player, new WeakestFightingStylePower(player, 0)));
 
+	}
+	
+	@Override
+	public void onEquip() {
+		BaseMod.MAX_HAND_SIZE++;
+	}
+	
+	@Override
+	public void onUnequip() {
+		BaseMod.MAX_HAND_SIZE--;
 	}
 	
 	public AbstractRelic makeCopy() { 
