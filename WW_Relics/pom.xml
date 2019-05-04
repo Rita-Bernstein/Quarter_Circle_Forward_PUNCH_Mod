@@ -6,11 +6,11 @@
     <!-- Change These to match your mod -->
     <groupId>WW_Relics</groupId>
     <artifactId>WorldWarriorsRelics</artifactId>
-    <version>0.8</version>
+    <version>0.9</version>
     <packaging>jar</packaging>
     <name>WorldWarriorsRelics</name>
-    <description>Adds six relics, inspired in the fighters from
-    			 \r\n Super Street Fighter 2: The New Challengers.
+    <description>Adds ten relics and seven game modifiers, inspired mainly by fighters from
+    			 \r\n Super Street Fighter 2: The New Challengers and also some extra inspiration of other fighting games.
 		  		 \r\n v1.0 will have 16+ relics.
 		  		 \r\nThe images in this mod are temporary and will be substituted/improved on the version 1.0.</description>
 
