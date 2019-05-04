@@ -3,9 +3,9 @@ A Slay The Spire mod, which adds primarily relics directly inspired by fighters 
 
 # Content
 
-* Nine relics done of 16+ planned, with temporary images and placeholder sounds.
+* Ten relics done of 16+ planned, with temporary images and placeholder sounds.
 * Seven game modifiers, ranging from adding more relics at start to making the game harder.
-* Zero cards done (but working on it) of 6 planned, accessible only through one relic.
+* Six cards, acessible through one specific relic.
 
 # Current State
 
