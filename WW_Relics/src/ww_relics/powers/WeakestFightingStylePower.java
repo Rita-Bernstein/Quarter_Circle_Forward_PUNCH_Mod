@@ -56,7 +56,7 @@ public class WeakestFightingStylePower extends AbstractPower {
 	
 	public void updateDescription()
 	{
-		this.description = "test";
+		this.description = DESCRIPTIONS[0];
 	}
 	
 	@Override
