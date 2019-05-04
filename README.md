@@ -42,7 +42,7 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 12. New balanced Custom Modifiers revolving around fighter's set relics.
 13. Update of art and sound assets.
 14. Polishing, refactoring and balancing.
-15. Synergy and adaptation with Infinite Spire.
+15. Synergy and adaptation with Infinite Spire. (Black cards? Black card. o9)
 16. Synergy and adaptation with other mods.
 
 # Requirements
