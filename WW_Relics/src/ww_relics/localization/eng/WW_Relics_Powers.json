@@ -19,7 +19,7 @@
   "WW_Relics:Power_Weakest_Fighting_Style": {
     "NAME": "Weakest Fighting Style",
     "DESCRIPTIONS": [
-      "Each turn, add to your hand a random card of the Weakest Fighting Style."
+      "Each turn, add to your hand a random card of the #yWeakest Fighting Style."
     ]
   }
 }
