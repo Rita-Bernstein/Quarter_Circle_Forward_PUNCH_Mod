@@ -61,11 +61,17 @@ None that I know so far.
 
 Download the .jar in the latest release, then add it to SlayTheSpire/mods folder (if you already installed the requirements. If not, do it first).
 
-# Credits/Acknowledgments
+# Credits/Acknowledgments/Thanks
 
 Fruitstrike (https://github.com/gskleres), because all the topic titles from the first version of this README were copied from his FruityMod-StS repository xD
 
 daviscook477 (https://github.com/daviscook477) for his guide (https://github.com/daviscook477/BaseMod/wiki/Starting-Your-Mod).
+
+FlipskiZ (https://github.com/FlipskiZ/) for BaseMod (https://github.com/FlipskiZ/BaseMod), because yeah, without it, no modding the Spire.
+
+Kiooeht (https://github.com/kiooeht) for ModTheSpire (https://github.com/kiooeht/ModTheSpire), because without it, playing with mods would be way harder.
+
+AGAIN Kiooeht for StSLib (https://github.com/kiooeht/StSLib), because it helps a lot for modding :)
 
 Nafen, from the Slay The Spire Discord's modding channel, for helping with the description of the Handcuffs' effect.
 
@@ -73,13 +79,15 @@ Lots of people from the Slay The Spire Discord's modding channel for pointing st
 
 Thiago, for helping with finding some bugs in the v0.6.* versions.
 
+
+
 STREET FIGHTER is a registered trademark of CAPCOM U.S.A., INC.
 
 # Special Thanks
 
 To MegaCrit, the makes from SlayTheSpire, because the game is awesome and they are cool with mods of their game :D
 
-The modding channel from the Discord's Slay The Spire server and all people who goes there to support and banter about modding the game. You rock, fellows.
+The whole modding channel from the Discord's Slay The Spire server and all people who goes there to support and banter and laughs about modding the game and other things. You rock, fellows.
 
 To game-icons.net, because without it the mod probably would not have proper temporary icons for its relics.
 
