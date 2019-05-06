@@ -20,7 +20,8 @@ public class RedGi extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0];
+		return DESCRIPTIONS[0] + EXTRA_STRENGTH + DESCRIPTIONS[1] +
+				EXTRA_STRENGTH + DESCRIPTIONS[2];
 	}
 	
 	@Override
