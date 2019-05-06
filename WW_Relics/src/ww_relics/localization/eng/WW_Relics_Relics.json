@@ -112,8 +112,8 @@
     "NAME": "Red Gi",
     "FLAVOR": "Made of good fabric that doesn't hinder movements and inspires an offensive.",
     "DESCRIPTIONS": [
-      "At combat start, gain ",
-      " Strength and ",
+      "At combat start, gain #b",
+      " Strength and #b",
       " Risky Offensive."
     ]
   },
