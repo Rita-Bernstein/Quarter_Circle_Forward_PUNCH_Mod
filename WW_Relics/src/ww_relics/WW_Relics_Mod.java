@@ -115,23 +115,24 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	@Override
 	public void receiveEditRelics() {
 		logger.info("Begin adding relics");
-		addChunLiRelics();
 		addRyuRelics();
+		//addKenRelics();
+		addChunLiRelics();
 		addGuileRelics();
 		addDanRelics();
 		logger.info("Done adding relics");
+	}
+
+	private void addRyuRelics() {
+		BaseMod.addRelic(new DuffelBag(), RelicType.SHARED);
+		BaseMod.addRelic(new FightingGloves(), RelicType.SHARED);
+		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
 	}
 	
 	private void addChunLiRelics() {
 		BaseMod.addRelic(new Handcuffs(), RelicType.SHARED);
 		BaseMod.addRelic(new SpikyBracers(), RelicType.SHARED);
 		BaseMod.addRelic(new WhiteBoots(), RelicType.SHARED);
-	}
-	
-	private void addRyuRelics() {
-		BaseMod.addRelic(new DuffelBag(), RelicType.SHARED);
-		BaseMod.addRelic(new FightingGloves(), RelicType.SHARED);
-		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
 	}
 	
 	private void addGuileRelics() {
