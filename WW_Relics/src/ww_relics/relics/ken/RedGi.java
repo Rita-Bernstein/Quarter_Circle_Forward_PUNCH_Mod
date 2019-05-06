@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 import basemod.abstracts.CustomRelic;
 import ww_relics.relics.guile.ArmyBoots;
