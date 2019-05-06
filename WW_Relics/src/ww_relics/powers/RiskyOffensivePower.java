@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 
 public class RiskyOffensivePower extends AbstractPower {
 
@@ -44,7 +44,7 @@ public class RiskyOffensivePower extends AbstractPower {
 			int less_strength = -amount;
 			
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner,
-					 new GainStrengthPower(owner, less_strength)));
+					 new StrengthPower(owner, less_strength)));
 			AbstractDungeon.actionManager.addToBottom(
 					new RemoveSpecificPowerAction(owner, owner, this));
 		}
