@@ -108,6 +108,16 @@
     ]
   },
   
+  "WW_Relics:Red_Gi": {
+    "NAME": "Red Gi",
+    "FLAVOR": "Made of good fabric that doesn't hinder movements and inspires an offensive.",
+    "DESCRIPTIONS": [
+      "At combat start, gain ",
+      " Strength and ",
+      " Risky Offensive."
+    ]
+  },
+  
   "WWWWWWWWWWWW": {
     "NAME": "WWWWWWWWWWWWW",
     "FLAVOR": "WWWWWWWWWWWWWWW",
