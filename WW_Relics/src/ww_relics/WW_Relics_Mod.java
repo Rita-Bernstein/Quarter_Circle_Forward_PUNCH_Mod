@@ -24,6 +24,7 @@ import ww_relics.relics.dan.NotStrongestFightingStyleGuidebook;
 import ww_relics.relics.guile.ArmyBoots;
 import ww_relics.relics.guile.ChainWithNametags;
 import ww_relics.relics.guile.CombatFatigues;
+import ww_relics.relics.ken.RedGi;
 import ww_relics.relics.ryu.*;
 
 @SpireInitializer
@@ -116,7 +117,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	public void receiveEditRelics() {
 		logger.info("Begin adding relics");
 		addRyuRelics();
-		//addKenRelics();
+		addKenRelics();
 		addChunLiRelics();
 		addGuileRelics();
 		addDanRelics();
@@ -127,6 +128,10 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		BaseMod.addRelic(new DuffelBag(), RelicType.SHARED);
 		BaseMod.addRelic(new FightingGloves(), RelicType.SHARED);
 		BaseMod.addRelic(new RedHeadband(), RelicType.SHARED);
+	}
+	
+	private void addKenRelics() {
+		BaseMod.addRelic(new RedGi(), RelicType.SHARED);
 	}
 	
 	private void addChunLiRelics() {
