@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
-import ww_relics.relics.guile.ArmyBoots;
+import ww_relics.powers.RiskyOffensivePower;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class RedGi extends CustomRelic {
@@ -29,11 +29,14 @@ public class RedGi extends CustomRelic {
 		AbstractDungeon.actionManager.addToBottom(
 				new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
 						new StrengthPower(AbstractDungeon.player, EXTRA_STRENGTH)));
+		AbstractDungeon.actionManager.addToBottom(
+				new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
+						new RiskyOffensivePower(AbstractDungeon.player, EXTRA_STRENGTH)));
 	}
 
 	
 	public AbstractRelic makeCopy() {
-		return new ArmyBoots();
+		return new RedGi();
 	}
 
 }
