@@ -1,9 +1,8 @@
 {
-  "WW_Relics:Power_Unsteady": {
-    "NAME": "Unsteady",
+  "WW_Relics:Power_Risky_Offensive": {
+    "NAME": "Risky Offensive",
     "DESCRIPTIONS": [
-      "Block is reduced by #b",
-      " each turn."
+      "WWWWWWWWWWWWWWWWWWWWWWWW"
     ]
   },
   
@@ -16,10 +15,19 @@
     ]
   },
   
+  "WW_Relics:Power_Unsteady": {
+    "NAME": "Unsteady",
+    "DESCRIPTIONS": [
+      "Block is reduced by #b",
+      " each turn."
+    ]
+  },
+  
   "WW_Relics:Power_Weakest_Fighting_Style": {
     "NAME": "Weakest Fighting Style",
     "DESCRIPTIONS": [
       "At the start of your turn, add a random #yWeakest card to your hand."
     ]
   }
+  
 }
