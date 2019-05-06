@@ -44,10 +44,13 @@ public class RiskyOffensivePower extends AbstractPower {
 	@Override
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (card.type == CardType.SKILL) {
-			int less_strength = -STRENGTH_TO_REMOVE;
+			int less_strength = STRENGTH_TO_REMOVE;
 			
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner,
-					 new StrengthPower(owner, less_strength)));
+			for (int i = 0; i < less_strength; i++) {
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner,
+						 new StrengthPower(owner, -1)));
+			}
+
 			AbstractDungeon.actionManager.addToBottom(
 					new RemoveSpecificPowerAction(owner, owner, this));
 		}
