@@ -113,8 +113,8 @@
     "FLAVOR": "Made of good fabric that doesn't hinder movements and inspires an offensive.",
     "DESCRIPTIONS": [
       "At combat start, gain #b",
-      " Strength and #b",
-      " Risky Offensive."
+      " Strength. Once per combat, when you use a Skill card lose #b",
+      " Strength."
     ]
   },
   
