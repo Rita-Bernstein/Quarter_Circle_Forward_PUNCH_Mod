@@ -35,7 +35,7 @@ public class RiskyOffensivePower extends AbstractPower {
 	
 	public void updateDescription()
 	{
-		this.description = "test";
+		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
 	}
 	
 	@Override
