@@ -20,12 +20,15 @@ public class RiskyOffensivePower extends AbstractPower {
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	
+	public static int STRENGTH_TO_REMOVE;
+	
 	public RiskyOffensivePower(AbstractCreature owner, int amount)
 	{
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
 		this.amount = amount;
+		this.STRENGTH_TO_REMOVE = amount;
 		this.type = AbstractPower.PowerType.DEBUFF;
 		
 		updateDescription();
@@ -41,7 +44,7 @@ public class RiskyOffensivePower extends AbstractPower {
 	@Override
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (card.type == CardType.SKILL) {
-			int less_strength = -amount;
+			int less_strength = -STRENGTH_TO_REMOVE;
 			
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner,
 					 new StrengthPower(owner, less_strength)));
