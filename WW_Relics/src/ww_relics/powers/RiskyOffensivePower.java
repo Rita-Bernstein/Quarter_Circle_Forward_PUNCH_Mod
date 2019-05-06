@@ -20,7 +20,7 @@ public class RiskyOffensivePower extends AbstractPower {
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	
-	public static int STRENGTH_TO_REMOVE;
+	public int STRENGTH_TO_REMOVE;
 	
 	public RiskyOffensivePower(AbstractCreature owner, int amount)
 	{
