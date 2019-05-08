@@ -110,11 +110,19 @@
   
   "WW_Relics:Black_Training_Shirt": {
     "NAME": "Black Training Shirt",
-    "FLAVOR": "Made of good fabric that doesn't hinder movements and inspires an offensive.",
+    "FLAVOR": "Training is important, even in the Spire.",
     "DESCRIPTIONS": [
       "At combat start, gain #b",
       " #yStrength. Once per combat, when you use a Skill card lose #b",
       " #yStrength."
+    ]
+  },
+  
+  "WW_Relics:Red_Gi": {
+    "NAME": "Red Gi",
+    "FLAVOR": "Made of good fabric that doesn't hinder movements and inspires to be offensive.",
+    "DESCRIPTIONS": [
+      "test"
     ]
   },
   
