@@ -108,8 +108,8 @@
     ]
   },
   
-  "WW_Relics:Red_Gi": {
-    "NAME": "Red Gi",
+  "WW_Relics:Black_Training_Shirt": {
+    "NAME": "Black Training Shirt",
     "FLAVOR": "Made of good fabric that doesn't hinder movements and inspires an offensive.",
     "DESCRIPTIONS": [
       "At combat start, gain #b",

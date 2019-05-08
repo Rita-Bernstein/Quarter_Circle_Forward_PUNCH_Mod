@@ -10,11 +10,11 @@ import basemod.abstracts.CustomRelic;
 import ww_relics.powers.RiskyOffensivePower;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
-public class RedGi extends CustomRelic {
-	public static final String ID = "WW_Relics:Red_Gi";
+public class BlackTrainingShirt extends CustomRelic {
+	public static final String ID = "WW_Relics:Black_Training_Shirt";
 	public static final int EXTRA_STRENGTH = 2;
 	
-	public RedGi() {
+	public BlackTrainingShirt() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.COMMON, LandingSound.FLAT);
 	}
@@ -37,7 +37,7 @@ public class RedGi extends CustomRelic {
 
 	
 	public AbstractRelic makeCopy() {
-		return new RedGi();
+		return new BlackTrainingShirt();
 	}
 
 }

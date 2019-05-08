@@ -24,7 +24,7 @@ import ww_relics.relics.dan.NotStrongestFightingStyleGuidebook;
 import ww_relics.relics.guile.ArmyBoots;
 import ww_relics.relics.guile.ChainWithNametags;
 import ww_relics.relics.guile.CombatFatigues;
-import ww_relics.relics.ken.RedGi;
+import ww_relics.relics.ken.BlackTrainingShirt;
 import ww_relics.relics.ryu.*;
 
 @SpireInitializer
@@ -131,7 +131,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	}
 	
 	private void addKenRelics() {
-		BaseMod.addRelic(new RedGi(), RelicType.SHARED);
+		BaseMod.addRelic(new BlackTrainingShirt(), RelicType.SHARED);
 	}
 	
 	private void addChunLiRelics() {
