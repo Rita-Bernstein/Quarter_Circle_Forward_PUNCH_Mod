@@ -1,5 +1,6 @@
 package ww_relics.relics.ken;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -62,6 +63,13 @@ public class RedGi extends CustomRelic {
 			draw_effect = false;
 			if (drawnCard.type == CardType.ATTACK)
 				drawnCard.modifyCostForTurn(INCREASE_ATTACK_COST_BY);
+			else if (drawnCard.type == CardType.SKILL) {
+				//if POWER_TO_APPLY makes this less readable, please tell me?
+				//thanks
+				AbstractDungeon.actionManager.addToBottom(
+						new ApplyPowerAction(AbstractDungeon.player,
+								AbstractDungeon.player, POWER_TO_APPLY));
+			}
 		}
 		
 	}
