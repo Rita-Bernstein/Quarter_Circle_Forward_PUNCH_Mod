@@ -13,7 +13,7 @@ import ww_relics.resources.relic_graphics.GraphicResources;
 public class RedGi extends CustomRelic {
 	
 	public static final String ID = "WW_Relics:Red_Gi";
-	public static final int REDUCE_ATTACK_COST_BY = 1;
+	public static final int INCREASE_ATTACK_COST_BY = -1;
 	
 	public static final AbstractPower POWER_TO_APPLY =
 			new VulnerablePower(AbstractDungeon.player, 1, false);
@@ -32,11 +32,16 @@ public class RedGi extends CustomRelic {
 	}
 	
 	@Override
+	public void onPlayerEndTurn() {
+		this.counter = 0;
+	}
+	
+	@Override
 	public void onPlayCard(AbstractCard card, AbstractMonster monster) {
 		if (card.type == CardType.ATTACK) {
 			this.counter++;
-			
 		}
+		else this.counter = 0;
 		
 		if (counter == 2) {
 			this.counter -= 2;
@@ -47,6 +52,7 @@ public class RedGi extends CustomRelic {
 	
 	public void DrawEffect() {
 		draw_effect = true;
+		flash();
 		AbstractDungeon.player.draw();
 	}
 	
@@ -54,7 +60,8 @@ public class RedGi extends CustomRelic {
 	public void onCardDraw(AbstractCard drawnCard) {
 		if (draw_effect) {
 			draw_effect = false;
-			AbstractDungeon.player.heal(1);
+			if (drawnCard.type == CardType.ATTACK)
+				drawnCard.modifyCostForTurn(INCREASE_ATTACK_COST_BY);
 		}
 		
 	}
