@@ -13,7 +13,7 @@ public class RedGi extends CustomRelic {
 	
 	public static final String ID = "WW_Relics:Red_Gi";
 	public static final int SEQUENTIAL_ATTACKS_TO_DO = 3;
-	public static final int CARDS_TO_DRAW = 2;
+	public static final int CARDS_TO_DRAW = 1;
 	public static final int INCREASE_ATTACK_COST_BY = -1;
 	public static int cards_affected = 0;
 
