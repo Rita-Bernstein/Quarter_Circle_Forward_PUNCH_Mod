@@ -14,10 +14,10 @@ import ww_relics.resources.relic_graphics.GraphicResources;
 public class RedGi extends CustomRelic {
 	
 	public static final String ID = "WW_Relics:Red_Gi";
-	public static final int INCREASE_ATTACK_COST_BY = -1;
 	
-	public static final AbstractPower POWER_TO_APPLY =
-			new VulnerablePower(AbstractDungeon.player, 1, false);
+	public static final int CARDS_TO_DRAW = 2;
+	public static final int INCREASE_ATTACK_COST_BY = -1;
+
 	
 	public static boolean draw_effect = false;
 	
@@ -47,7 +47,10 @@ public class RedGi extends CustomRelic {
 		if (counter == 2) {
 			this.counter -= 2;
 			if (counter < 0) counter = 0;
-			DrawEffect();
+			for (int i = 0; i < CARDS_TO_DRAW; i++) {
+				DrawEffect();
+			}
+			
 		}
 	}
 	
@@ -63,15 +66,7 @@ public class RedGi extends CustomRelic {
 			draw_effect = false;
 			if (drawnCard.type == CardType.ATTACK)
 				drawnCard.modifyCostForTurn(INCREASE_ATTACK_COST_BY);
-			else if (drawnCard.type == CardType.SKILL) {
-				//if POWER_TO_APPLY makes this less readable, please tell me?
-				//thanks
-				AbstractDungeon.actionManager.addToBottom(
-						new ApplyPowerAction(AbstractDungeon.player,
-								AbstractDungeon.player, POWER_TO_APPLY));
-			}
 		}
-		
 	}
 	
 	public AbstractRelic makeCopy() {
