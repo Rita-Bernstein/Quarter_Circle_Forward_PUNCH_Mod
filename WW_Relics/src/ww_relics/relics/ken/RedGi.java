@@ -14,7 +14,7 @@ import ww_relics.resources.relic_graphics.GraphicResources;
 public class RedGi extends CustomRelic {
 	
 	public static final String ID = "WW_Relics:Red_Gi";
-	
+	public static final int SEQUENTIAL_ATTACKS_TO_DO = 3;
 	public static final int CARDS_TO_DRAW = 2;
 	public static final int INCREASE_ATTACK_COST_BY = -1;
 
@@ -44,9 +44,9 @@ public class RedGi extends CustomRelic {
 		}
 		else this.counter = 0;
 		
-		if (counter == 2) {
-			this.counter -= 2;
-			if (counter < 0) counter = 0;
+		if (counter == SEQUENTIAL_ATTACKS_TO_DO) {
+			this.counter -= SEQUENTIAL_ATTACKS_TO_DO;
+			draw_effect = true;
 			for (int i = 0; i < CARDS_TO_DRAW; i++) {
 				DrawEffect();
 			}
@@ -55,7 +55,6 @@ public class RedGi extends CustomRelic {
 	}
 	
 	public void DrawEffect() {
-		draw_effect = true;
 		flash();
 		AbstractDungeon.player.draw();
 	}
