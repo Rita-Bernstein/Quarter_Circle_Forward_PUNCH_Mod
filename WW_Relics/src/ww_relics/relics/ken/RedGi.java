@@ -1,12 +1,9 @@
 package ww_relics.relics.ken;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import basemod.abstracts.CustomRelic;
 import ww_relics.resources.relic_graphics.GraphicResources;
@@ -33,7 +30,21 @@ public class RedGi extends CustomRelic {
 	}
 	
 	@Override
+	public void atBattleStart() {
+		ResetCounter();
+	}
+	
+	@Override
+	public void onVictory() {
+		ResetCounter();
+	}
+	
+	@Override
 	public void onPlayerEndTurn() {
+		ResetCounter();
+	}
+	
+	public void ResetCounter() {
 		this.counter = 0;
 	}
 	
@@ -42,7 +53,7 @@ public class RedGi extends CustomRelic {
 		if (card.type == CardType.ATTACK) {
 			this.counter++;
 		}
-		else this.counter = 0;
+		else ResetCounter();
 		
 		if (counter == SEQUENTIAL_ATTACKS_TO_DO) {
 			this.counter -= SEQUENTIAL_ATTACKS_TO_DO;
