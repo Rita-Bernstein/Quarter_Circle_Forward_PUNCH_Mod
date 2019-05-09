@@ -68,7 +68,7 @@ public class RedGi extends CustomRelic {
 	
 	public void DrawEffect() {
 		flash();
-		AbstractDungeon.actionManager.addToBottom(
+		AbstractDungeon.actionManager.addToTop(
 				new DrawCardAction(AbstractDungeon.player, 1));
 	}
 	
