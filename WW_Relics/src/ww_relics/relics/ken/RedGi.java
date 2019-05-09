@@ -62,7 +62,7 @@ public class RedGi extends CustomRelic {
 			for (int i = 0; i < CARDS_TO_DRAW; i++) {
 				DrawEffect();
 			}
-			
+			draw_effect = false;
 		}
 	}
 	
@@ -74,10 +74,9 @@ public class RedGi extends CustomRelic {
 	
 	@Override
 	public void onCardDraw(AbstractCard drawnCard) {
-		if (draw_effect) {
-			draw_effect = false;
-			if (drawnCard.type == CardType.ATTACK)
+		if ((draw_effect) && (drawnCard.type == CardType.ATTACK)) {
 				drawnCard.modifyCostForTurn(INCREASE_ATTACK_COST_BY);
+				draw_effect = false;
 		}
 	}
 	
