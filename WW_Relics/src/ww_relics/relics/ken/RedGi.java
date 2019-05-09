@@ -1,5 +1,6 @@
 package ww_relics.relics.ken;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -67,7 +68,8 @@ public class RedGi extends CustomRelic {
 	
 	public void DrawEffect() {
 		flash();
-		AbstractDungeon.player.draw();
+		AbstractDungeon.actionManager.addToBottom(
+				new DrawCardAction(AbstractDungeon.player, 1));
 	}
 	
 	@Override
