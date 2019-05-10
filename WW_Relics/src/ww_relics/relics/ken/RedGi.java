@@ -1,5 +1,7 @@
 package ww_relics.relics.ken;
 
+import java.io.SequenceInputStream;
+
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
@@ -28,7 +30,10 @@ public class RedGi extends CustomRelic {
 	}	
 	
 	public String getUpdatedDescription() {
-		return "test";
+		return DESCRIPTIONS[0] + SEQUENTIAL_ATTACKS_TO_DO +
+				DESCRIPTIONS[1] + CARDS_TO_DRAW +
+				DESCRIPTIONS[2] + INCREASE_ATTACK_COST_BY +
+				DESCRIPTIONS[3];
 	}
 	
 	@Override
