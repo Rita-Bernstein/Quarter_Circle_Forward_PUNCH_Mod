@@ -24,12 +24,17 @@ public class BlackTrainingShirt extends CustomRelic {
 				EXTRA_STRENGTH + DESCRIPTIONS[2];
 	}
 	
+	
+	
 	@Override
-	public void atBattleStartPreDraw() {
+	public void atBattleStart() {
 		AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+		
 		AbstractDungeon.actionManager.addToBottom(
 				new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
-						new StrengthPower(AbstractDungeon.player, EXTRA_STRENGTH)));
+						new StrengthPower(AbstractDungeon.player,
+								EXTRA_STRENGTH), EXTRA_STRENGTH));
+
 		AbstractDungeon.actionManager.addToBottom(
 				new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
 						new RiskyOffensivePower(AbstractDungeon.player, EXTRA_STRENGTH)));
