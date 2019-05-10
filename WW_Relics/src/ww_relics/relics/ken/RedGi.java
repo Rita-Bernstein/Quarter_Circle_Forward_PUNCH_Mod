@@ -65,12 +65,16 @@ public class RedGi extends CustomRelic {
 			
 			draw_effect = true;
 			
-			cards_to_be_affected = CARDS_TO_DRAW;
+			StartCountingOfCardsToBeAffected();
 			
 			for (int i = 0; i < CARDS_TO_DRAW; i++) {
 				DrawEffect();
 			}
 		}
+	}
+	
+	public void StartCountingOfCardsToBeAffected() {
+		cards_to_be_affected = CARDS_TO_DRAW;
 	}
 	
 	public void DrawEffect() {
@@ -87,7 +91,7 @@ public class RedGi extends CustomRelic {
 			
 		} else if (draw_effect) {
 			
-			UpdatingCardsToBeAffected();
+			OneLessCardToBeAffected();
 			
 		}
 	}
@@ -101,7 +105,7 @@ public class RedGi extends CustomRelic {
 		draw_effect = false;
 	}
 	
-	public void UpdatingCardsToBeAffected() {
+	public void OneLessCardToBeAffected() {
 		if (cards_to_be_affected > 0) cards_to_be_affected--;
 		if (cards_to_be_affected == 0) draw_effect = false;
 	}
