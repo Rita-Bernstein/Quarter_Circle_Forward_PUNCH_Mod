@@ -62,8 +62,11 @@ public class RedGi extends CustomRelic {
 		
 		if (counter == SEQUENTIAL_ATTACKS_TO_DO) {
 			this.counter -= SEQUENTIAL_ATTACKS_TO_DO;
+			
 			draw_effect = true;
+			
 			cards_affected = CARDS_TO_DRAW;
+			
 			for (int i = 0; i < CARDS_TO_DRAW; i++) {
 				DrawEffect();
 			}
