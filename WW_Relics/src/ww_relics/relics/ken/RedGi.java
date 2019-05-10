@@ -15,7 +15,7 @@ public class RedGi extends CustomRelic {
 	public static final int SEQUENTIAL_ATTACKS_TO_DO = 3;
 	public static final int CARDS_TO_DRAW = 1;
 	public static final int INCREASE_ATTACK_COST_BY = -1;
-	public static int cards_affected = 0;
+	public static int cards_to_be_affected = 0;
 
 	
 	public static boolean draw_effect = false;
@@ -65,7 +65,7 @@ public class RedGi extends CustomRelic {
 			
 			draw_effect = true;
 			
-			cards_affected = CARDS_TO_DRAW;
+			cards_to_be_affected = CARDS_TO_DRAW;
 			
 			for (int i = 0; i < CARDS_TO_DRAW; i++) {
 				DrawEffect();
@@ -102,8 +102,8 @@ public class RedGi extends CustomRelic {
 	}
 	
 	public void UpdatingCardsToBeAffected() {
-		if (cards_affected > 0) cards_affected--;
-		if (cards_affected == 0) draw_effect = false;
+		if (cards_to_be_affected > 0) cards_to_be_affected--;
+		if (cards_to_be_affected == 0) draw_effect = false;
 	}
 	
 	public AbstractRelic makeCopy() {
