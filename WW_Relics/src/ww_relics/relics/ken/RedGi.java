@@ -86,8 +86,9 @@ public class RedGi extends CustomRelic {
 			AttackCostLessThisTurn(drawnCard);
 			
 		} else if (draw_effect) {
-			if (cards_affected > 0) cards_affected--;
-			if (cards_affected == 0) draw_effect = false;
+			
+			UpdatingCardsToBeAffected();
+			
 		}
 	}
 	
@@ -100,7 +101,10 @@ public class RedGi extends CustomRelic {
 		draw_effect = false;
 	}
 	
-	//public void CountingCards
+	public void UpdatingCardsToBeAffected() {
+		if (cards_affected > 0) cards_affected--;
+		if (cards_affected == 0) draw_effect = false;
+	}
 	
 	public AbstractRelic makeCopy() {
 		return new RedGi();
