@@ -81,13 +81,17 @@ public class RedGi extends CustomRelic {
 	
 	@Override
 	public void onCardDraw(AbstractCard drawnCard) {
-		if ((draw_effect) && (drawnCard.type == CardType.ATTACK)) {
+		if (CardDrawnByRelicEffectIsAnAttack(drawnCard)) {
 				drawnCard.modifyCostForTurn(INCREASE_ATTACK_COST_BY);
 				draw_effect = false;
 		} else if (draw_effect) {
 			if (cards_affected > 0) cards_affected--;
 			if (cards_affected == 0) draw_effect = false;
 		}
+	}
+	
+	public boolean CardDrawnByRelicEffectIsAnAttack(AbstractCard drawnCard) {
+		return ((draw_effect) && (drawnCard.type == CardType.ATTACK));
 	}
 	
 	public AbstractRelic makeCopy() {
