@@ -122,7 +122,10 @@
     "NAME": "Red Gi",
     "FLAVOR": "Made of good fabric that doesn't hinder movements and inspires to be offensive.",
     "DESCRIPTIONS": [
-      "test"
+      "If you play #y",
+      " attacks in a row this turn, draw #y",
+      " card. If it's an Attack, it costs #y",
+      " less this turn."
     ]
   },
   
