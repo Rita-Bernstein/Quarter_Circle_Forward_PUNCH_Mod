@@ -129,11 +129,11 @@
     ]
   },
   
-  "WWWWWWWWWWWW": {
-    "NAME": "WWWWWWWWWWWWW",
-    "FLAVOR": "WWWWWWWWWWWWWWW",
+  "WW_Relics:Unceasing_Flame": {
+    "NAME": "Unceasing Flame",
+    "FLAVOR": "\"Glorious! This is a divine fire of a daring dragon, if the ancient texts are right.\" - Ranwid.",
     "DESCRIPTIONS": [
-      "WWWWWWWWWWWWWWWWWWW"
+      "Start with 0 charges. Max of 6 charges. For every Attack card you play, add 1 Charge. If full, right click it: your next attack makes the target lose extra X HP spending all charges, where X is the damage of the attack played."
     ]
   }
 }
