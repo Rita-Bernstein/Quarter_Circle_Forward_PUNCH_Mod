@@ -26,7 +26,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	public static final int NUMBER_OF_ATTACKS_TO_TRIGGER_CHARGE_UP = 3;
 	public static final int HOW_MUCH_CHARGE_INCREASES_PER_TRIGGER = 1;
 	public static final int MAX_NUMBER_OF_CHARGES = 6;
-	public static int charges;
+	public static int charges = 0;
 	
 	public static boolean is_player_turn = false;
 	
@@ -35,12 +35,6 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	public UnceasingFlame() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.RARE, LandingSound.MAGICAL);
-		
-		charges = 0;
-	}
-	
-	public static int getCharges() {
-		return charges;
 	}
 	
 	public String getUpdatedDescription() {
