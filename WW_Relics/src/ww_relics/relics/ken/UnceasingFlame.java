@@ -71,11 +71,11 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	private boolean effectCanBeTriggered() {
 		boolean can_be_triggered = false;
 		
-		if ((is_player_turn) 
-				&& (AbstractDungeon.getCurrRoom() instanceof MonsterRoom)
-				&& (!AbstractDungeon.getCurrRoom().isBattleOver)
-				&& (!AbstractDungeon.getCurrRoom().isBattleEnding()
-				&& (AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT))){
+		if (is_player_turn
+				&& AbstractDungeon.getCurrRoom() instanceof MonsterRoom
+				&& !AbstractDungeon.getCurrRoom().isBattleOver
+				&& !AbstractDungeon.getCurrRoom().isBattleEnding()
+				&& AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT){
 			can_be_triggered = true;
 		}
 		
