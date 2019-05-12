@@ -32,6 +32,21 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	}
 	
 	@Override
+	public void atTurnStart() {
+		is_player_turn = true;
+	}
+	
+	@Override
+	public void onPlayerEndTurn() {
+		is_player_turn = false;
+	}
+	
+	@Override
+	public void onVictory() {
+		is_player_turn = false;
+	}
+	
+	@Override
 	public void onRightClick() {
 		
 		if (AbstractDungeon.getCurrRoom() instanceof MonsterRoom) {
@@ -55,7 +70,14 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	
 	private boolean effectCanBeTriggered() {
 		boolean can_be_triggered = false;
-		if (is_player_turn)	can_be_triggered = true;
+		
+		if ((is_player_turn) 
+				&& (AbstractDungeon.getCurrRoom() instanceof MonsterRoom)
+				&& (!AbstractDungeon.getCurrRoom().isBattleOver)
+				&& (!AbstractDungeon.getCurrRoom().isBattleEnding()
+				&& (AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT))){
+			can_be_triggered = true;
+		}
 		
 		return can_be_triggered;
 	}
