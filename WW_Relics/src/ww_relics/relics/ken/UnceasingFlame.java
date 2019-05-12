@@ -18,6 +18,8 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	public static final int HOW_MUCH_CHARGE_INCREASES_PER_TRIGGER = 1;
 	public static final int MAX_NUMBER_OF_CHARGES = 6;
 	
+	public static boolean is_player_turn = false;
+	
 	public UnceasingFlame() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.RARE, LandingSound.MAGICAL);
@@ -33,8 +35,8 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	public void onRightClick() {
 		
 		if (AbstractDungeon.getCurrRoom() instanceof MonsterRoom) {
-			if ((!AbstractDungeon.getCurrRoom().isBattleOver) &&
-					(AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT)) {
+			if (effectCanBeTriggered())
+				{
 				
 				if (counter == 6) {
 					counter -= 6;
@@ -49,6 +51,13 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 			
 			
 		}			
+	}
+	
+	private boolean effectCanBeTriggered() {
+		boolean can_be_triggered = false;
+		if (is_player_turn)	can_be_triggered = true;
+		
+		return can_be_triggered;
 	}
 	
 	public AbstractRelic makeCopy() {
