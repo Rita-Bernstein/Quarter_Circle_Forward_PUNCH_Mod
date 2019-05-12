@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.powers.FlamingPower;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class UnceasingFlame extends CustomRelic implements ClickableRelic {
@@ -58,7 +59,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 					AbstractDungeon.actionManager.addToBottom(
 						new ApplyPowerAction(AbstractDungeon.player,
 								AbstractDungeon.player,
-							new DoubleDamagePower(AbstractDungeon.player, 1, false),
+							new FlamingPower(AbstractDungeon.player, 1),
 							1));
 				}
 				
