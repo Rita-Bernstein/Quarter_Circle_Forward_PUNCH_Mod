@@ -43,7 +43,7 @@ public class FlamingPower extends AbstractPower {
 	
 	public void updateDescription()
 	{
-		this.description = DESCRIPTIONS[0];
+		this.description = DESCRIPTIONS[0] + MINIMUM_DAMAGE + DESCRIPTIONS[1];
 	}
 	
 	@Override
