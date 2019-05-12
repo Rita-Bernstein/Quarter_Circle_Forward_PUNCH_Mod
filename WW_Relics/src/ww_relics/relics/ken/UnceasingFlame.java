@@ -27,6 +27,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	public static final int HOW_MUCH_CHARGE_INCREASES_PER_TRIGGER = 1;
 	public static final int MAX_NUMBER_OF_CHARGES = 6;
 	public static int charges = 0;
+	public static int charges_at_battle_start;
 	
 	public static boolean is_player_turn = false;
 	
@@ -43,6 +44,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	
 	@Override
 	public void atBattleStartPreDraw() {
+		charges = charges_at_battle_start;
 		fixCounter();
 	}
 	
@@ -63,6 +65,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	@Override
 	public void onVictory() {
 		is_player_turn = false;
+		charges_at_battle_start = charges;
 	}
 	 
 	@Override
@@ -119,8 +122,8 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
     		logger.info("Started saving Unceasing Flame information");
 
-            config.setInt("Unceasing_Flame_number_of_charges",
-            		UnceasingFlame.charges);
+            config.setInt("Unceasing_Flame_number_of_charges_at_battle_start",
+            		UnceasingFlame.charges_at_battle_start);
             
             try {
 				config.save();
@@ -138,9 +141,10 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	public static void load(final SpireConfig config) {
 		
 		logger.info("Loading Unceasing Flame info.");
-		if (AbstractDungeon.player.hasRelic(ID) && config.has("Unceasing_Flame_number_of_charges")) {
+		if (AbstractDungeon.player.hasRelic(ID) && 
+				config.has("Unceasing_Flame_number_of_charges_at_battle_start")) {
 
-			charges = config.getInt("Unceasing_Flame_number_of_charges");
+			charges_at_battle_start = config.getInt("Unceasing_Flame_number_of_charges_at_battle_start");
 			
             try {
 				config.load();
