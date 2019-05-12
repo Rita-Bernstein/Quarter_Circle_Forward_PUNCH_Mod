@@ -1,8 +1,5 @@
 package ww_relics.powers;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardTarget;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
@@ -15,6 +12,8 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import ww_relics.actions.FlamingAction;
+
 public class FlamingPower extends AbstractPower {
 
 	public static final String POWER_ID = "WW_Relics:Power_Flaming";
@@ -22,6 +21,8 @@ public class FlamingPower extends AbstractPower {
 			CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+	
+	public static final int MINIMUM_DAMAGE = 2;
 	
 	public boolean fire_burned_enemy = false;
 	public AbstractMonster enemy_targeted;
@@ -66,31 +67,11 @@ public class FlamingPower extends AbstractPower {
 				enemy_targeted = null;
 			} else {
 				
-				int damage_to_apply = hp_before - enemy_targeted.currentHealth;
-				if (damage_to_apply >= 0) {
-					
-					applyFlamesDamage(damage_to_apply);
-					removeThisPower();
-					
-				} else {
-					
-					applyFlamesDamage(2);
-					removeThisPower();
-					
-				}
+				AbstractDungeon.actionManager.addToBottom(
+						new FlamingAction(enemy_targeted, hp_before, MINIMUM_DAMAGE));
+
 			}
 		}
-	}
-	
-	public void applyFlamesDamage(int damage_to_apply) {
-		AbstractDungeon.actionManager.addToBottom(
-				new DamageAction(enemy_targeted,
-								createDamageInfo(damage_to_apply/2),
-								AttackEffect.FIRE));
-		AbstractDungeon.actionManager.addToBottom(
-				new DamageAction(enemy_targeted,
-								createDamageInfo(damage_to_apply/2 + damage_to_apply%2),
-								AttackEffect.FIRE));
 	}
 	
 	public DamageInfo createDamageInfo(int damageAmount) {
@@ -98,10 +79,6 @@ public class FlamingPower extends AbstractPower {
 				DamageType.HP_LOSS);
 	}
 	
-	public void removeThisPower() {
-		AbstractDungeon.actionManager.addToBottom(
-				new RemoveSpecificPowerAction(AbstractDungeon.player,
-						AbstractDungeon.player, this));
-	}
+
 	
 }
