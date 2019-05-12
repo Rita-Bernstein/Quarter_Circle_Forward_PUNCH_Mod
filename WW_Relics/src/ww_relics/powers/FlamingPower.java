@@ -1,7 +1,13 @@
 package ww_relics.powers;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -28,7 +34,26 @@ public class FlamingPower extends AbstractPower {
 	
 	public void updateDescription()
 	{
-		this.description = "test";
+		this.description = DESCRIPTIONS[0];
+	}
+	
+	@Override
+	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+		// TODO Auto-generated method stub
+		super.onAttack(info, damageAmount, target);
+		if (!target.isDead) {
+			AbstractDungeon.actionManager.addToBottom(
+				new DamageAction(target,
+								new DamageInfo(
+									AbstractDungeon.player,
+									damageAmount, DamageType.HP_LOSS),
+								AttackEffect.FIRE));
+			AbstractDungeon.actionManager.addToBottom(
+				new RemoveSpecificPowerAction(AbstractDungeon.player,
+						AbstractDungeon.player, this));
+				
+		}
+		
 	}
 	
 	
