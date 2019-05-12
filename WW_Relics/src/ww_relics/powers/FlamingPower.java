@@ -47,7 +47,11 @@ public class FlamingPower extends AbstractPower {
 			fire_burned_enemy = true;
 			AbstractDungeon.actionManager.addToBottom(
 					new DamageAction(target,
-									createDamageInfo(damageAmount),
+									createDamageInfo(damageAmount/2),
+									AttackEffect.FIRE));
+			AbstractDungeon.actionManager.addToBottom(
+					new DamageAction(target,
+									createDamageInfo(damageAmount/2 + damageAmount%2),
 									AttackEffect.FIRE));
 			AbstractDungeon.actionManager.addToBottom(
 					new RemoveSpecificPowerAction(AbstractDungeon.player,
