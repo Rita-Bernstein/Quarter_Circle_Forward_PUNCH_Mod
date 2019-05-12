@@ -18,7 +18,7 @@ public class FlamingAction extends AbstractGameAction {
 	public FlamingAction(AbstractCreature monster_to_affect, int hp_before, int minimum_damage) {
 
 		this.monster_to_affect = monster_to_affect;
-		monster_hp_before = hp_before;
+		this.monster_hp_before = hp_before;
 		this.minimum_damage = minimum_damage;
 		
 		actionType = ActionType.SPECIAL;
