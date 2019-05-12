@@ -66,35 +66,28 @@ public class FlamingPower extends AbstractPower {
 				int damage_to_apply = hp_before - enemy_targeted.currentHealth;
 				if (damage_to_apply >= 0) {
 					
-					AbstractDungeon.actionManager.addToBottom(
-							new DamageAction(enemy_targeted,
-											createDamageInfo(damage_to_apply/2),
-											AttackEffect.FIRE));
-					AbstractDungeon.actionManager.addToBottom(
-							new DamageAction(enemy_targeted,
-											createDamageInfo(damage_to_apply/2 + damage_to_apply%2),
-											AttackEffect.FIRE));
-					AbstractDungeon.actionManager.addToBottom(
-							new RemoveSpecificPowerAction(AbstractDungeon.player,
-									AbstractDungeon.player, this));
+					applyFlamesDamage(damage_to_apply);
+					removeThisPower();
 					
 				} else {
 					
-					AbstractDungeon.actionManager.addToBottom(
-							new DamageAction(enemy_targeted,
-											createDamageInfo(1),
-											AttackEffect.FIRE));
-					AbstractDungeon.actionManager.addToBottom(
-							new DamageAction(enemy_targeted,
-											createDamageInfo(1),
-											AttackEffect.FIRE));
-					AbstractDungeon.actionManager.addToBottom(
-							new RemoveSpecificPowerAction(AbstractDungeon.player,
-									AbstractDungeon.player, this));
+					applyFlamesDamage(2);
+					removeThisPower();
 					
 				}
 			}
 		}
+	}
+	
+	public void applyFlamesDamage(int damage_to_apply) {
+		AbstractDungeon.actionManager.addToBottom(
+				new DamageAction(enemy_targeted,
+								createDamageInfo(damage_to_apply/2),
+								AttackEffect.FIRE));
+		AbstractDungeon.actionManager.addToBottom(
+				new DamageAction(enemy_targeted,
+								createDamageInfo(damage_to_apply/2 + damage_to_apply%2),
+								AttackEffect.FIRE));
 	}
 	
 	public DamageInfo createDamageInfo(int damageAmount) {
@@ -102,6 +95,10 @@ public class FlamingPower extends AbstractPower {
 				DamageType.HP_LOSS);
 	}
 	
-	
+	public void removeThisPower() {
+		AbstractDungeon.actionManager.addToBottom(
+				new RemoveSpecificPowerAction(AbstractDungeon.player,
+						AbstractDungeon.player, this));
+	}
 	
 }
