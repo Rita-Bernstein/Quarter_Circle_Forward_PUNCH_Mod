@@ -19,6 +19,8 @@ public class FlamingPower extends AbstractPower {
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	
+	public static boolean fire_burned_enemy = false;
+	
 	public FlamingPower(AbstractCreature owner, int amount)
 	{
 		this.name = NAME;
@@ -41,13 +43,16 @@ public class FlamingPower extends AbstractPower {
 	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
 		// TODO Auto-generated method stub
 		super.onAttack(info, damageAmount, target);
-		AbstractDungeon.actionManager.addToBottom(
-			new DamageAction(target,
-							createDamageInfo(damageAmount),
-							AttackEffect.FIRE));
-		AbstractDungeon.actionManager.addToBottom(
-			new RemoveSpecificPowerAction(AbstractDungeon.player,
-					AbstractDungeon.player, this));
+		if (!fire_burned_enemy) {
+			fire_burned_enemy = true;
+			AbstractDungeon.actionManager.addToBottom(
+					new DamageAction(target,
+									createDamageInfo(damageAmount),
+									AttackEffect.FIRE));
+			AbstractDungeon.actionManager.addToBottom(
+					new RemoveSpecificPowerAction(AbstractDungeon.player,
+							AbstractDungeon.player, this));
+		}
 	}
 	
 	public DamageInfo createDamageInfo(int damageAmount) {
