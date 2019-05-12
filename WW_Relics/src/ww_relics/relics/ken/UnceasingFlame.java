@@ -1,6 +1,12 @@
 package ww_relics.relics.ken;
 
+import java.io.IOException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
@@ -11,7 +17,9 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.WW_Relics_Mod;
 import ww_relics.powers.FlamingPower;
+import ww_relics.relics.chun_li.WhiteBoots;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class UnceasingFlame extends CustomRelic implements ClickableRelic {
@@ -20,14 +28,17 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	public static final int NUMBER_OF_ATTACKS_TO_TRIGGER_CHARGE_UP = 3;
 	public static final int HOW_MUCH_CHARGE_INCREASES_PER_TRIGGER = 1;
 	public static final int MAX_NUMBER_OF_CHARGES = 6;
+	public static int charges;
 	
 	public static boolean is_player_turn = false;
+	
+	public static final Logger logger = LogManager.getLogger(UnceasingFlame.class.getName()); // lets us log output
 	
 	public UnceasingFlame() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.RARE, LandingSound.MAGICAL);
 		
-		setCounter(0);
+		charges = 0;
 	}
 	
 	public String getUpdatedDescription() {
@@ -54,6 +65,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 
 		if ((c.type == CardType.ATTACK) && (counter < MAX_NUMBER_OF_CHARGES)) {
 			counter++;
+			charges++;
 		}
 		
 	}
@@ -67,6 +79,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 				
 				if (counter == 6) {
 					counter -= 6;
+					charges -= 6;
 					AbstractDungeon.actionManager.addToBottom(
 						new ApplyPowerAction(AbstractDungeon.player,
 								AbstractDungeon.player,
@@ -92,6 +105,31 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 		}
 		
 		return can_be_triggered;
+	}
+	
+	public static void save(final SpireConfig config) {
+
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
+    		logger.info("Started saving Unceasing Flame information");
+
+            config.setInt("Unceasing_Flame_number_of_charges",
+            		UnceasingFlame.charges);
+            
+            try {
+				config.save();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+            logger.info("Finished saving White Boots info.");
+        }
+        else {
+        	clear(config);
+        }
+
+    }
+	
+	public static int getCharges() {
+		return get
 	}
 	
 	public AbstractRelic makeCopy() {
