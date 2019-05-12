@@ -1,4 +1,11 @@
 {
+  "WW_Relics:Power_Flaming": {
+    "NAME": "Flaming",
+    "DESCRIPTIONS": [
+      "Your next Attack target loses extra HP equals to the attack damage, then lose this buff."
+    ]
+  },
+
   "WW_Relics:Power_Risky_Offensive": {
     "NAME": "Risky Offensive",
     "DESCRIPTIONS": [
