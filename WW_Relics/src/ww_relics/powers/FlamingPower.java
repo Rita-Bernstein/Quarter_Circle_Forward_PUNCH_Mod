@@ -19,7 +19,7 @@ public class FlamingPower extends AbstractPower {
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	
-	public static boolean fire_burned_enemy = false;
+	public boolean fire_burned_enemy = false;
 	
 	public FlamingPower(AbstractCreature owner, int amount)
 	{
