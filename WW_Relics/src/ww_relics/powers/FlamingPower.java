@@ -47,12 +47,15 @@ public class FlamingPower extends AbstractPower {
 	
 	@Override
 	public void onPlayCard(AbstractCard card, AbstractMonster m) {
-		if ((card.type == CardType.ATTACK) && 
-				((card.target == CardTarget.ENEMY) || (card.target == CardTarget.SELF_AND_ENEMY))) {
-			
+		if (cardCanTriggerEffect(card)) {
 			fire_burned_enemy = true;
 			enemy_targeted = m;
 		}
+	}
+	
+	public boolean cardCanTriggerEffect(AbstractCard card) {
+		return (card.type == CardType.ATTACK) &&
+				((card.target == CardTarget.ENEMY) || (card.target == CardTarget.SELF_AND_ENEMY));
 	}
 	
 	@Override
