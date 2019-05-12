@@ -41,19 +41,18 @@ public class FlamingPower extends AbstractPower {
 	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
 		// TODO Auto-generated method stub
 		super.onAttack(info, damageAmount, target);
-		if (!target.isDead) {
-			AbstractDungeon.actionManager.addToBottom(
-				new DamageAction(target,
-								new DamageInfo(
-									AbstractDungeon.player,
-									damageAmount, DamageType.HP_LOSS),
-								AttackEffect.FIRE));
-			AbstractDungeon.actionManager.addToBottom(
-				new RemoveSpecificPowerAction(AbstractDungeon.player,
-						AbstractDungeon.player, this));
-				
-		}
-		
+		AbstractDungeon.actionManager.addToBottom(
+			new DamageAction(target,
+							createDamageInfo(damageAmount),
+							AttackEffect.FIRE));
+		AbstractDungeon.actionManager.addToBottom(
+			new RemoveSpecificPowerAction(AbstractDungeon.player,
+					AbstractDungeon.player, this));
+	}
+	
+	public DamageInfo createDamageInfo(int damageAmount) {
+		return new DamageInfo(AbstractDungeon.player, damageAmount,
+				DamageType.HP_LOSS);
 	}
 	
 	
