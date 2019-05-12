@@ -48,6 +48,15 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	}
 	
 	@Override
+	public void atBattleStartPreDraw() {
+		fixCounter();
+	}
+	
+	public void fixCounter() {
+		counter = charges;
+	}
+	
+	@Override
 	public void atTurnStart() {
 		is_player_turn = true;
 	}
@@ -68,6 +77,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 		if ((c.type == CardType.ATTACK) && (counter < MAX_NUMBER_OF_CHARGES)) {
 			counter++;
 			charges++;
+			fixCounter();
 		}
 		
 	}
@@ -82,6 +92,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 				if (counter == 6) {
 					counter -= 6;
 					charges -= 6;
+					fixCounter();
 					AbstractDungeon.actionManager.addToBottom(
 						new ApplyPowerAction(AbstractDungeon.player,
 								AbstractDungeon.player,
