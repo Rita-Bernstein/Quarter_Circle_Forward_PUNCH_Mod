@@ -133,7 +133,10 @@
     "NAME": "Unceasing Flame",
     "FLAVOR": "\"Glorious! A divine fire of a daring dragon, if the ancient texts are right.\" - Ranwid.",
     "DESCRIPTIONS": [
-      "0 charges, max of 6, add 1 for a played Attack card. At max, right click to spend all charges: your next single target Attack will make the target lose extra HP equal to the damage inflicted (min of 2 HP)."
+      "0 charges, max of #b",
+      ", add #b",
+      " for a played Attack card. At max, right click to spend all charges: your next single target Attack will make the target lose extra HP equal to the damage inflicted (min of #b",
+      " HP)."
     ]
   }
 }
