@@ -2,7 +2,7 @@
   "WW_Relics:Power_Flaming": {
     "NAME": "Flaming",
     "DESCRIPTIONS": [
-      "Your next Attack target loses extra HP equals to the attack damage, then lose this buff."
+      "Your next Attack target this turn loses extra HP equals to the attack damage, then lose this buff."
     ]
   },
 
