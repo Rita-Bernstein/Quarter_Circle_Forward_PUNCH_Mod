@@ -17,9 +17,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
 
 import basemod.abstracts.CustomRelic;
-import ww_relics.WW_Relics_Mod;
 import ww_relics.powers.FlamingPower;
-import ww_relics.relics.chun_li.WhiteBoots;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class UnceasingFlame extends CustomRelic implements ClickableRelic {
@@ -39,6 +37,10 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 				RelicTier.RARE, LandingSound.MAGICAL);
 		
 		charges = 0;
+	}
+	
+	public static int getCharges() {
+		return charges;
 	}
 	
 	public String getUpdatedDescription() {
@@ -128,8 +130,36 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 
     }
 	
-	public static int getCharges() {
-		return get
+	public static void load(final SpireConfig config) {
+		
+		logger.info("Loading Unceasing Flame info.");
+		if (AbstractDungeon.player.hasRelic(ID) && config.has("Unceasing_Flame_number_of_charges")) {
+
+			charges = config.getInt("Unceasing_Flame_number_of_charges");
+			
+            try {
+				config.load();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            logger.info("Finished loading Unceasing Flame info.");
+        }
+		
+		else
+		{
+			logger.info("There's no info, setting variables accordingly.");
+
+			logger.info("Finished setting Unceasing Flame variables.");
+		}
+		
+		
+    }
+	
+	public static void clear(final SpireConfig config) {
+		logger.info("Clearing Unceasing Flame variables.");
+        config.remove("Unceasing_Flame_number_of_charges");
+        logger.info("Finished clearing Unceasing Flame variables.");
 	}
 	
 	public AbstractRelic makeCopy() {
