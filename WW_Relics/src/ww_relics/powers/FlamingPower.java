@@ -3,12 +3,16 @@ package ww_relics.powers;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.AbstractCard.CardTarget;
+import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class FlamingPower extends AbstractPower {
@@ -20,6 +24,8 @@ public class FlamingPower extends AbstractPower {
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	
 	public boolean fire_burned_enemy = false;
+	public AbstractMonster enemy_targeted;
+	public int hp_before = 0;
 	
 	public FlamingPower(AbstractCreature owner, int amount)
 	{
@@ -40,22 +46,54 @@ public class FlamingPower extends AbstractPower {
 	}
 	
 	@Override
-	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-		// TODO Auto-generated method stub
-		super.onAttack(info, damageAmount, target);
-		if (!fire_burned_enemy) {
+	public void onPlayCard(AbstractCard card, AbstractMonster m) {
+		if ((card.type == CardType.ATTACK) && 
+				((card.target == CardTarget.ENEMY) || (card.target == CardTarget.SELF_AND_ENEMY))) {
+			
 			fire_burned_enemy = true;
-			AbstractDungeon.actionManager.addToBottom(
-					new DamageAction(target,
-									createDamageInfo(damageAmount/2),
-									AttackEffect.FIRE));
-			AbstractDungeon.actionManager.addToBottom(
-					new DamageAction(target,
-									createDamageInfo(damageAmount/2 + damageAmount%2),
-									AttackEffect.FIRE));
-			AbstractDungeon.actionManager.addToBottom(
-					new RemoveSpecificPowerAction(AbstractDungeon.player,
-							AbstractDungeon.player, this));
+			enemy_targeted = m;
+		}
+	}
+	
+	@Override
+	public void onAfterCardPlayed(AbstractCard usedCard) {
+		if (fire_burned_enemy) {
+			if (enemy_targeted.isDead) {
+				fire_burned_enemy = false;
+				enemy_targeted = null;
+			} else {
+				
+				int damage_to_apply = hp_before - enemy_targeted.currentHealth;
+				if (damage_to_apply >= 0) {
+					
+					AbstractDungeon.actionManager.addToBottom(
+							new DamageAction(enemy_targeted,
+											createDamageInfo(damage_to_apply/2),
+											AttackEffect.FIRE));
+					AbstractDungeon.actionManager.addToBottom(
+							new DamageAction(enemy_targeted,
+											createDamageInfo(damage_to_apply/2 + damage_to_apply%2),
+											AttackEffect.FIRE));
+					AbstractDungeon.actionManager.addToBottom(
+							new RemoveSpecificPowerAction(AbstractDungeon.player,
+									AbstractDungeon.player, this));
+					
+				} else {
+					
+					AbstractDungeon.actionManager.addToBottom(
+							new DamageAction(enemy_targeted,
+											createDamageInfo(0),
+											AttackEffect.FIRE));
+					AbstractDungeon.actionManager.addToBottom(
+							new DamageAction(enemy_targeted,
+											createDamageInfo(0),
+											AttackEffect.FIRE));
+					AbstractDungeon.actionManager.addToBottom(
+							new RemoveSpecificPowerAction(AbstractDungeon.player,
+									AbstractDungeon.player, this));
+					
+				}
+			}
 		}
 	}
 	
