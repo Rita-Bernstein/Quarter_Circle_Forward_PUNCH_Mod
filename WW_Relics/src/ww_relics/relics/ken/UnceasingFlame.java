@@ -2,7 +2,10 @@ package ww_relics.relics.ken;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
@@ -44,6 +47,15 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	@Override
 	public void onVictory() {
 		is_player_turn = false;
+	}
+	 
+	@Override
+	public void onPlayCard(AbstractCard c, AbstractMonster m) {
+
+		if ((c.type == CardType.ATTACK) && (counter < MAX_NUMBER_OF_CHARGES)) {
+			counter++;
+		}
+		
 	}
 	
 	@Override
