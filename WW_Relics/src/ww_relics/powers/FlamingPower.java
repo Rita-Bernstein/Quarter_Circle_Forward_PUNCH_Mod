@@ -51,6 +51,7 @@ public class FlamingPower extends AbstractPower {
 		if (cardCanTriggerEffect(card)) {
 			fire_burned_enemy = true;
 			enemy_targeted = m;
+			hp_before = enemy_targeted.currentHealth;
 		}
 	}
 	
