@@ -39,10 +39,9 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + MAX_NUMBER_OF_CHARGES + 
-			    DESCRIPTIONS[1] + HOW_MUCH_CHARGE_INCREASES_PER_TRIGGER +
-			    DESCRIPTIONS[2] + 2 +
-			    DESCRIPTIONS[3];
+		return DESCRIPTIONS[0] +  2  + 
+			    DESCRIPTIONS[1] + MAX_NUMBER_OF_CHARGES +
+			    DESCRIPTIONS[2];
 	}
 	
 	@Override
