@@ -80,9 +80,9 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	public String getUpdatedDescription() {
 		String description = "";
 	
-		description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + EVERY_X_ROOMS_VISITED_ADDS_A_CHARGE +
-					DESCRIPTIONS[2] + DESCRIPTIONS[3] + DESCRIPTIONS[4] +
-					INITIAL_CHARGES + DESCRIPTIONS[5] + DESCRIPTIONS[6];
+		description = DESCRIPTIONS[0] + INITIAL_CHARGES + DESCRIPTIONS[1] + DESCRIPTIONS[2] +
+					DESCRIPTIONS[3] + EVERY_X_ROOMS_VISITED_ADDS_A_CHARGE +
+					DESCRIPTIONS[4];
 
 		return description;
 	}
