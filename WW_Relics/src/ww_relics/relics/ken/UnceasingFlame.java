@@ -71,14 +71,18 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	}
 	 
 	@Override
-	public void onPlayCard(AbstractCard c, AbstractMonster m) {
+	public void onPlayCard(AbstractCard card, AbstractMonster m) {
 
-		if ((c.type == CardType.ATTACK) && (counter < MAX_NUMBER_OF_CHARGES)) {
+		if (canAChargeBeAdded(card)) {
 			counter++;
 			charges++;
 			fixCounter();
 		}
 		
+	}
+	
+	public boolean canAChargeBeAdded(AbstractCard card) {
+		return (card.type == CardType.ATTACK) && (counter < MAX_NUMBER_OF_CHARGES);
 	}
 	
 	@Override
@@ -109,7 +113,6 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 		boolean can_be_triggered = false;
 		
 		if (is_player_turn
-				&& AbstractDungeon.getCurrRoom() instanceof MonsterRoom
 				&& !AbstractDungeon.getCurrRoom().isBattleOver
 				&& !AbstractDungeon.getCurrRoom().isBattleEnding()
 				&& AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT){
