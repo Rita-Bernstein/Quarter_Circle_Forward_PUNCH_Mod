@@ -26,6 +26,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	public static final int NUMBER_OF_ATTACKS_TO_TRIGGER_CHARGE_UP = 3;
 	public static final int HOW_MUCH_CHARGE_INCREASES_PER_TRIGGER = 1;
 	public static final int MAX_NUMBER_OF_CHARGES = 6;
+	public static final int MINIMUM_DAMAGE_FROM_FLAMING = 2; 
 	public static int charges = 0;
 	public static int charges_at_battle_start;
 	
@@ -99,7 +100,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 					AbstractDungeon.actionManager.addToBottom(
 						new ApplyPowerAction(AbstractDungeon.player,
 								AbstractDungeon.player,
-							new FlamingPower(AbstractDungeon.player, 1),
+							new FlamingPower(AbstractDungeon.player, 1, MINIMUM_DAMAGE_FROM_FLAMING),
 							1));
 				}
 				
