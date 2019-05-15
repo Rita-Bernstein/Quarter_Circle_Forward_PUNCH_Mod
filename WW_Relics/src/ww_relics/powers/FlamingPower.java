@@ -22,19 +22,20 @@ public class FlamingPower extends AbstractPower {
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	
-	public static final int MINIMUM_DAMAGE = 2;
+	public int MINIMUM_DAMAGE = 2;
 	
 	public boolean fire_burned_enemy = false;
 	public AbstractMonster enemy_targeted;
 	public int hp_before = 0;
 	
-	public FlamingPower(AbstractCreature owner, int amount)
+	public FlamingPower(AbstractCreature owner, int amount, int minimum_damage)
 	{
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
 		this.amount = amount;
 		this.type = AbstractPower.PowerType.BUFF;
+		this.MINIMUM_DAMAGE = minimum_damage;
 		
 		updateDescription();
 		
