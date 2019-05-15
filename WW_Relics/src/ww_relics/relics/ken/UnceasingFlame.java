@@ -169,7 +169,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing Unceasing Flame variables.");
-        config.remove("Unceasing_Flame_number_of_charges");
+        config.remove("Unceasing_Flame_number_of_charges_at_battle_start");
         logger.info("Finished clearing Unceasing Flame variables.");
 	}
 	
