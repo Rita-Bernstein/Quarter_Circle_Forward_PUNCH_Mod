@@ -1,11 +1,11 @@
 package ww_relics.relics.sakura;
 
+import com.megacrit.cardcrawl.characters.AbstractPlayer.PlayerClass;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.cards.dan.WeakestEnergyBlast;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class SchoolBackpack extends CustomRelic {
@@ -25,25 +25,29 @@ public class SchoolBackpack extends CustomRelic {
 		return DESCRIPTIONS[0];
 	}
 	
-	/*private void AddReward() {
+	@Override
+	public void atPreBattle() {
+		AddReward();
+	}
+	
+	private void AddReward() {
 		
-		if (number_of_rewards_left - reward_cards.size() > 0) {
+		if (number_of_cards_left > 0) {
 			
-			int card_position = number_of_rewards_left - reward_cards.size();
+			PlayerClass player_class = AbstractDungeon.player.chosenClass;
+			
+			//int random_class = AbstractDungeon.ran
+			
+			//PlayerClass reward_class = 
 			
 			RewardItem card_reward = new RewardItem();
 			card_reward.cards.clear();
-			card_reward.cards.add(reward_cards.get(card_position - 1));
+			card_reward.cards.add(new WeakestEnergyBlast());
 			AbstractDungeon.getCurrRoom().addCardReward(card_reward);
-			
-		} else if (number_of_rewards_left > 0) {
-			
-			AbstractRelic relic = AbstractDungeon.returnRandomRelic(RelicTier.COMMON);
-			AbstractDungeon.getCurrRoom().addRelicToRewards(relic);
-			
+
 		}
 		
-	}*/
+	}
 	
 	@Override
 	public CustomRelic makeCopy() {
