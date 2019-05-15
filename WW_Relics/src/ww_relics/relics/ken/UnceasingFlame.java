@@ -40,7 +40,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] +  2  + 
+		return DESCRIPTIONS[0] + MINIMUM_DAMAGE_FROM_FLAMING + 
 			    DESCRIPTIONS[1] + MAX_NUMBER_OF_CHARGES +
 			    DESCRIPTIONS[2];
 	}
