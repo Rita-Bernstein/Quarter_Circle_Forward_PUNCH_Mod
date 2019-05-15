@@ -18,7 +18,7 @@ public class SchoolBackpack extends CustomRelic {
 	
 	public SchoolBackpack() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"), 
-				RelicTier.COMMON, LandingSound.FLAT);	
+				RelicTier.COMMON, LandingSound.HEAVY);	
 	}
 	
 	public String getUpdatedDescription() {
