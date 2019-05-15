@@ -12,10 +12,13 @@ public class SchoolBackpack extends CustomRelic {
 				RelicTier.COMMON, LandingSound.FLAT);	
 	}
 	
+	public String getUpdatedDescription() {
+		return DESCRIPTIONS[0];
+	}
+	
 	@Override
 	public CustomRelic makeCopy() {
-		// TODO Auto-generated method stub
-		return null;
+		return new SchoolBackpack();
 	}
 
 }
