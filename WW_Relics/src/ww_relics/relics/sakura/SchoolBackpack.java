@@ -6,6 +6,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.AbstractCard.CardColor;
+import com.megacrit.cardcrawl.cards.AbstractCard.CardRarity;
+import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer.PlayerClass;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ModHelper;
@@ -86,19 +90,7 @@ public class SchoolBackpack extends CustomRelic {
 	    		default: 
 	    			logger.info("Paraphrasing the base game code: WTF?");
 	    	}
-	    	boolean containsDupe = true;
-	    	while (containsDupe)
-	    	{
-	    		containsDupe = false;
-	    		card = AbstractDungeon.getCard(rarity);
-	        }
-	        for (AbstractCard c : retVal) {
-	        	if (c.cardID.equals(card.cardID))
-	        	{
-	        		containsDupe = true;
-	        		break;
-	        	}
-	      	}
+	    	card = getCardAvoidingDuplicates(retVal, rarity, a_class);
 	        if (card != null) {
 	        	retVal.add(card);
 	        }
@@ -136,6 +128,68 @@ public class SchoolBackpack extends CustomRelic {
 		    num_cards--;
 		}
 		return num_cards;
+	}
+
+	private static AbstractCard getCardAvoidingDuplicates(ArrayList<AbstractCard> retVal, 
+			CardRarity rarity, PlayerClass a_class) {
+		
+		AbstractCard card = null;
+		
+		boolean containsDupe = true;
+		while (containsDupe)
+		{
+    		containsDupe = false;
+    		card = getCard(rarity, a_class);
+
+    		for (AbstractCard c : retVal) {
+	        	if (c.cardID.equals(card.cardID))
+	        	{
+	        		containsDupe = true;
+	        		break;
+	        	}
+	      	}
+    	}
+		
+		return card;
+	}	
+	
+	public static AbstractCard getCard(AbstractCard.CardRarity rarity, PlayerClass a_class)
+	{
+		CardGroup rare_class_CardPool = new CardGroup(CardGroupType.UNSPECIFIED);
+		CardGroup uncommon_class_CardPool = new CardGroup(CardGroupType.UNSPECIFIED);
+		CardGroup common_class_CardPool = new CardGroup(CardGroupType.UNSPECIFIED);
+		
+		CardColor class_color = CardColor.COLORLESS;
+		
+		if (a_class == PlayerClass.DEFECT) {
+			class_color = CardColor.BLUE;
+		}
+		else if (a_class == PlayerClass.THE_SILENT) {
+			class_color = CardColor.GREEN;
+		}
+		else if (a_class == PlayerClass.IRONCLAD) {
+			class_color = CardColor.RED;
+		}
+		
+		for (AbstractCard card : AbstractDungeon.uncommonCardPool.group) {
+			if (card.color == class_color) uncommon_class_CardPool.addToBottom(card);
+		}
+		
+		for (AbstractCard card : AbstractDungeon.commonCardPool.group) {
+			if (card.color == class_color) common_class_CardPool.addToBottom(card);
+		}
+		
+		switch (rarity)
+		{
+			case SPECIAL:  return rare_class_CardPool.getRandomCard(true);
+		    case RARE:     return rare_class_CardPool.getRandomCard(true);
+		    case UNCOMMON: return uncommon_class_CardPool.getRandomCard(true);
+		    case COMMON:   return common_class_CardPool.getRandomCard(true);
+		    case CURSE:    return common_class_CardPool.getRandomCard(true);
+		    case BASIC:    return common_class_CardPool.getRandomCard(true);
+	    }
+	    logger.info("Paraphrasing the base code comment: No rarity on getCard in Abstract Dungeon");
+	    return null;
 	}
 	
 	@Override
