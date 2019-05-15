@@ -1,6 +1,7 @@
 package ww_relics.relics.sakura;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,6 +13,7 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer.PlayerClass;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 
@@ -47,24 +49,36 @@ public class SchoolBackpack extends CustomRelic {
 		
 		if (number_of_cards_left > 0) {
 			
-			PlayerClass player_class = AbstractDungeon.player.chosenClass;
-			
-			//int random_class = AbstractDungeon.ran
-			
-			//PlayerClass reward_class = 
+			PlayerClass reward_class = getRandomBaseGameNotYoursPlayerClass();
 			
 			RewardItem card_reward = new RewardItem();
 			card_reward.cards.clear();
-			card_reward.cards = createCardsFromOtherClassForReward(AbstractDungeon.player.chosenClass);
+			card_reward.cards = createCardsFromOtherClassForReward(reward_class);
 			AbstractDungeon.getCurrRoom().addCardReward(card_reward);
 
 		}
 		
 	}
 	
+	private PlayerClass getRandomBaseGameNotYoursPlayerClass() {
+		
+		ArrayList<PlayerClass> basegame_classes = new ArrayList<PlayerClass>();
+		
+		for (PlayerClass base_game_player_class : PlayerClass.values()) {
+			
+			if (base_game_player_class != AbstractDungeon.player.chosenClass) {
+				basegame_classes.add(base_game_player_class);
+			}
+			
+		}
+		
+		return basegame_classes.get(AbstractDungeon.cardRng.random(basegame_classes.size() - 1));
+
+	}
+	
 	private ArrayList<AbstractCard> createCardsFromOtherClassForReward(PlayerClass a_class) {
 		
-		ArrayList<AbstractCard> retVal = new ArrayList();
+		ArrayList<AbstractCard> retVal = new ArrayList<AbstractCard>();
 	    
 	    int num_cards = 3;
 	    num_cards = circunstancesThatChangeCardNumber(num_cards);
@@ -95,7 +109,7 @@ public class SchoolBackpack extends CustomRelic {
 	        	retVal.add(card);
 	        }
 	    }
-	    ArrayList<AbstractCard> retVal2 = new ArrayList();
+	    ArrayList<AbstractCard> retVal2 = new ArrayList<AbstractCard>();
 	    for (AbstractCard c : retVal) {
 	    	retVal2.add(c.makeCopy());
 	    }
@@ -153,6 +167,7 @@ public class SchoolBackpack extends CustomRelic {
 		return card;
 	}	
 	
+	@SuppressWarnings("incomplete-switch")
 	public static AbstractCard getCard(AbstractCard.CardRarity rarity, PlayerClass a_class)
 	{
 		CardGroup rare_class_CardPool = new CardGroup(CardGroupType.UNSPECIFIED);
@@ -171,13 +186,27 @@ public class SchoolBackpack extends CustomRelic {
 			class_color = CardColor.RED;
 		}
 		
-		for (AbstractCard card : AbstractDungeon.uncommonCardPool.group) {
-			if (card.color == class_color) uncommon_class_CardPool.addToBottom(card);
-		}
-		
-		for (AbstractCard card : AbstractDungeon.commonCardPool.group) {
-			if (card.color == class_color) common_class_CardPool.addToBottom(card);
-		}
+		for (Map.Entry<String, AbstractCard> one_more_card : CardLibrary.cards.entrySet()) {
+			if ((((AbstractCard)one_more_card).color == class_color) &&
+				(((AbstractCard)one_more_card).type != AbstractCard.CardType.STATUS) &&
+				(((AbstractCard)one_more_card).type != AbstractCard.CardType.CURSE)) {
+				
+				CardRarity this_card_rarity = ((AbstractCard)one_more_card).rarity;
+			
+				switch (this_card_rarity) {
+					case RARE:
+						rare_class_CardPool.addToBottom((AbstractCard)one_more_card);
+						break;
+				    case UNCOMMON: 
+				    	uncommon_class_CardPool.addToBottom((AbstractCard)one_more_card);
+				    	break;
+				    case COMMON:
+				    	common_class_CardPool.addToBottom((AbstractCard)one_more_card);
+				    	break;
+				}
+					
+			}
+		}		
 		
 		switch (rarity)
 		{
