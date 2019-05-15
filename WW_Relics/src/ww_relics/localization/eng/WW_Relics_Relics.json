@@ -135,5 +135,13 @@
       " HP). Recharges every #b",
       " Attacks."
     ]
+  },
+  
+  "WW_Relics:School_Backpack": {
+    "NAME": "School Backpack",
+    "FLAVOR": "Reinforced seams, patches and foreign trinkets inside all point to a journey way longer than the ones this backpack was originally made for.",
+    "DESCRIPTIONS": [
+      "The next 4 won fights where you would gain a card reward, add to that reward a linked card reward of a not-modded character class that you aren't using."
+    ]
   }
 }
