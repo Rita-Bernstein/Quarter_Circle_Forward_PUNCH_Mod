@@ -186,7 +186,8 @@ public class SchoolBackpack extends CustomRelic {
 			class_color = CardColor.RED;
 		}
 		
-		for (Map.Entry<String, AbstractCard> one_more_card : CardLibrary.cards.entrySet()) {
+		for (Map.Entry<String, AbstractCard> a_card : CardLibrary.cards.entrySet()) {
+			AbstractCard one_more_card = a_card.getValue();
 			if ((((AbstractCard)one_more_card).color == class_color) &&
 				(((AbstractCard)one_more_card).type != AbstractCard.CardType.STATUS) &&
 				(((AbstractCard)one_more_card).type != AbstractCard.CardType.CURSE)) {
