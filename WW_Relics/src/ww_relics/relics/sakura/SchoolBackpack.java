@@ -12,8 +12,6 @@ import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 
 import basemod.abstracts.CustomRelic;
-import ww_relics.WW_Relics_Mod;
-import ww_relics.cards.dan.WeakestEnergyBlast;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class SchoolBackpack extends CustomRelic {
@@ -21,7 +19,7 @@ public class SchoolBackpack extends CustomRelic {
 	public static final String ID = "WW_Relics:School_Backpack";
 	
 	public static final int NUMBER_OF_EXTRA_CARDS = 4;
-	pubic static final float CHANCE_OF_UPGRADED_CARDS = 0.1f;
+	public static final float CHANCE_OF_UPGRADED_CARDS = 0.1f;
 	
 	public static int number_of_cards_left = 4;
 	
@@ -53,7 +51,7 @@ public class SchoolBackpack extends CustomRelic {
 			
 			RewardItem card_reward = new RewardItem();
 			card_reward.cards.clear();
-			card_reward.cards.add(new WeakestEnergyBlast());
+			card_reward.cards = createCardsFromOtherClassForReward(AbstractDungeon.player.chosenClass);
 			AbstractDungeon.getCurrRoom().addCardReward(card_reward);
 
 		}
@@ -64,18 +62,11 @@ public class SchoolBackpack extends CustomRelic {
 		
 		ArrayList<AbstractCard> retVal = new ArrayList();
 	    
-	    int numCards = 3;
-	    if (AbstractDungeon.player.hasRelic("Question Card")) {
-	      numCards++;
-	    }
-	    if (AbstractDungeon.player.hasRelic("Busted Crown")) {
-	      numCards -= 2;
-	    }
-	    if (ModHelper.isModEnabled("Binary")) {
-	      numCards--;
-	    }
+	    int num_cards = 3;
+	    num_cards = circunstancesThatChangeCardNumber(num_cards);
+	    
 	    AbstractCard.CardRarity rarity;
-	    for (int i = 0; i < numCards; i++)
+	    for (int i = 0; i < num_cards; i++)
 	    {
 	    	rarity = AbstractDungeon.rollRarity();
 	    	AbstractCard card = null;
@@ -132,7 +123,20 @@ public class SchoolBackpack extends CustomRelic {
 	    	}
 	    }
 	    return retVal2;
-	  }
+	}
+	
+	private int circunstancesThatChangeCardNumber(int num_cards) {
+		if (AbstractDungeon.player.hasRelic("Question Card")) {
+			num_cards++;
+		}
+		if (AbstractDungeon.player.hasRelic("Busted Crown")) {
+		    num_cards -= 2;
+	    }
+		if (ModHelper.isModEnabled("Binary")) {
+		    num_cards--;
+		}
+		return num_cards;
+	}
 	
 	@Override
 	public CustomRelic makeCopy() {
