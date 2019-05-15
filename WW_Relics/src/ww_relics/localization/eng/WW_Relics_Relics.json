@@ -139,9 +139,9 @@
   
   "WW_Relics:School_Backpack": {
     "NAME": "School Backpack",
-    "FLAVOR": "Reinforced seams, patches and foreign trinkets inside all point to a journey way longer than the ones this backpack was originally made for.",
+    "FLAVOR": "It was once used in a journey way longer than the ones this backpack was originally made for.",
     "DESCRIPTIONS": [
-      "The next 4 won fights where you would gain a card reward, add to that reward a linked card reward of a not-modded character class that you aren't using."
+      "At the next 4 fights won where you gain a card reward, add a linked card reward of a not-modded character class that you aren't using."
     ]
   }
 }
