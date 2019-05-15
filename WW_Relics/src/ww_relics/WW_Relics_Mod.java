@@ -122,7 +122,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		addKenRelics();
 		addChunLiRelics();
 		addGuileRelics();
-		addDanRelics();
+		addCharacterCameoRelics();
 		logger.info("Done adding relics");
 	}
 
@@ -148,6 +148,10 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		BaseMod.addRelic(new ArmyBoots(), RelicType.SHARED);
 		BaseMod.addRelic(new ChainWithNametags(), RelicType.SHARED);
 		BaseMod.addRelic(new CombatFatigues(), RelicType.SHARED);
+	}
+	
+	private void addCharacterCameoRelics() {
+		addDanRelics();
 	}
 	
 	private void addDanRelics() {
