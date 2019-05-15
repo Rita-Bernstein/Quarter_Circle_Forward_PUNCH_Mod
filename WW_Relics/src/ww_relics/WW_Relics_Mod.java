@@ -28,6 +28,7 @@ import ww_relics.relics.ken.BlackTrainingShirt;
 import ww_relics.relics.ken.RedGi;
 import ww_relics.relics.ken.UnceasingFlame;
 import ww_relics.relics.ryu.*;
+import ww_relics.relics.sakura.SchoolBackpack;
 
 @SpireInitializer
 public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
@@ -152,11 +153,15 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	private void addCharacterCameoRelics() {
 		addDanRelics();
+		addSakuraRelics();
 	}
 	
 	private void addDanRelics() {
 		BaseMod.addRelic(new NotStrongestFightingStyleGuidebook(), RelicType.SHARED);
-		
+	}
+	
+	private void addSakuraRelics() {
+		BaseMod.addRelic(new SchoolBackpack(), RelicType.SHARED);
 	}
 	
 	@Override
