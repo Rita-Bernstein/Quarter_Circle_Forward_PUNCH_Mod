@@ -43,12 +43,14 @@ public class SchoolBackpack extends CustomRelic {
 	
 	@Override
 	public void atPreBattle() {
-		AddReward();
+		AddLinkedReward();
 	}
 	
-	private void AddReward() {
+	private void AddLinkedReward() {
 		
-		if ((number_of_cards_left > 0) && (HasCardsAsRewards())) {
+		RewardItem reward_to_link = findCardRewardInRewards();
+		
+		if ((number_of_cards_left > 0) && (reward_to_link.cards.size() != 0)) {
 			
 			PlayerClass reward_class = getRandomBaseGameNotYoursPlayerClass();
 			
@@ -56,20 +58,23 @@ public class SchoolBackpack extends CustomRelic {
 			card_reward.cards.clear();
 			card_reward.cards = createCardsFromOtherClassForReward(reward_class);
 			AbstractDungeon.getCurrRoom().addCardReward(card_reward);
+			
+			card_reward.relicLink = reward_to_link;
+			reward_to_link.relicLink = card_reward;
 
 		}
 		
 	}
 	
-	private boolean HasCardsAsRewards() {
+	private RewardItem findCardRewardInRewards() {
 		
 		for (RewardItem reward_item : AbstractDungeon.getCurrRoom().rewards) {
 			
-			if (reward_item.type == RewardType.CARD) return true;
+			if (reward_item.type == RewardType.CARD) return reward_item;
 			
 		}
 		
-		return false;
+		return new RewardItem();
 	}
 	
 	private PlayerClass getRandomBaseGameNotYoursPlayerClass() {
