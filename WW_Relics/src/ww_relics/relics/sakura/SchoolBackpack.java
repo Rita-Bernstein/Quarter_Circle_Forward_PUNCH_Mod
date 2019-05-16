@@ -42,7 +42,7 @@ public class SchoolBackpack extends CustomRelic {
 	}
 	
 	@Override
-	public void atPreBattle() {
+	public void onVictory() {
 		AddLinkedReward();
 	}
 	
