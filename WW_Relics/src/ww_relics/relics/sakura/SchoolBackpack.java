@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.rewards.RewardItem.RewardType;
 
 import basemod.abstracts.CustomRelic;
 import ww_relics.resources.relic_graphics.GraphicResources;
@@ -47,7 +48,7 @@ public class SchoolBackpack extends CustomRelic {
 	
 	private void AddReward() {
 		
-		if (number_of_cards_left > 0) {
+		if ((number_of_cards_left > 0) && (HasCardsAsRewards())) {
 			
 			PlayerClass reward_class = getRandomBaseGameNotYoursPlayerClass();
 			
@@ -58,6 +59,17 @@ public class SchoolBackpack extends CustomRelic {
 
 		}
 		
+	}
+	
+	private boolean HasCardsAsRewards() {
+		
+		for (RewardItem reward_item : AbstractDungeon.getCurrRoom().rewards) {
+			
+			if (reward_item.type == RewardType.CARD) return true;
+			
+		}
+		
+		return false;
 	}
 	
 	private PlayerClass getRandomBaseGameNotYoursPlayerClass() {
