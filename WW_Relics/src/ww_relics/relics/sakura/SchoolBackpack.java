@@ -49,6 +49,7 @@ public class SchoolBackpack extends CustomRelic {
 	private void AddLinkedReward() {
 		
 		RewardItem reward_to_link = findCardRewardInRewards();
+		logger.info(reward_to_link.cards.size());
 		
 		if ((number_of_cards_left > 0) && (reward_to_link.cards.size() != 0)) {
 			
