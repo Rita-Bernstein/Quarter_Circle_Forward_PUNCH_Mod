@@ -41,9 +41,9 @@ public class SchoolBackpack extends CustomRelic {
 	public String getUpdatedDescription() {
 		return DESCRIPTIONS[0];
 	}
-
+	
 	@Override
-	public void atBattleStart() {
+	public void onTrigger() {
 		
 		if (IsThereACardReward()) AddLinkedReward();
 		else {
@@ -55,7 +55,7 @@ public class SchoolBackpack extends CustomRelic {
 			card_reward.cards = createCardsFromOtherClassForReward(reward_class);
 			AbstractDungeon.getCurrRoom().addCardReward(card_reward);
 		}
-	
+		
 	}
 	
 	private boolean IsThereACardReward() {
