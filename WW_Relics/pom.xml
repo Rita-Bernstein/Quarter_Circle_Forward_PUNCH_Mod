@@ -15,8 +15,8 @@
 		  		 \r\nThe images in this mod are temporary and will be substituted/improved on the version 1.0.</description>
 
     <properties>
-        <maven.compiler.source>3.6</maven.compiler.source>
-        <maven.compiler.target>3.6</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <!-- These are the dependencies that were placed in the libs folder.
