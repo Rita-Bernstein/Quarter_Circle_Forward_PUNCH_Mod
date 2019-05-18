@@ -22,11 +22,11 @@ import java.util.List;
  * Yes, this is copied from the Hubris mod, with some few modifications.
  * 
  */
-public class LinkedRewardItem extends RewardItem
+public class HubrisLinkedRewardItem extends RewardItem
 {
     public List<RewardItem> relicLinks = new ArrayList<>();
 
-    public LinkedRewardItem(RewardItem original)
+    public HubrisLinkedRewardItem(RewardItem original)
     {
         type = original.type;
         outlineImg = original.outlineImg;
@@ -47,14 +47,14 @@ public class LinkedRewardItem extends RewardItem
         redText = original.redText;
     }
 
-    public LinkedRewardItem(LinkedRewardItem setRelicLink, AbstractRelic relic)
+    public HubrisLinkedRewardItem(HubrisLinkedRewardItem setRelicLink, AbstractRelic relic)
     {
         super(relic);
 
         addRelicLink(setRelicLink);
     }
 
-    public void addRelicLink(LinkedRewardItem setRelicLink)
+    public void addRelicLink(HubrisLinkedRewardItem setRelicLink)
     {
         if (!relicLinks.contains(setRelicLink)) {
             relicLinks.add(setRelicLink);
