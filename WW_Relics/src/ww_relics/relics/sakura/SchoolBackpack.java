@@ -43,9 +43,9 @@ public class SchoolBackpack extends CustomRelic {
 	public String getUpdatedDescription() {
 		return DESCRIPTIONS[0];
 	}
-	
+
 	@Override
-	public void onVictory() {
+	public void atPreBattle() {
 		
 		if (number_of_cards_left > 0) {
 			AddReward();
