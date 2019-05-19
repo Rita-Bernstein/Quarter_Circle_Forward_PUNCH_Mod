@@ -33,7 +33,9 @@ public class SchoolBackpack extends CustomRelic {
 	
 	public SchoolBackpack() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"), 
-				RelicTier.UNCOMMON, LandingSound.HEAVY);	
+				RelicTier.UNCOMMON, LandingSound.HEAVY);
+		
+		counter = number_of_cards_left;
 	}
 	
 	public String getUpdatedDescription() {
@@ -43,7 +45,11 @@ public class SchoolBackpack extends CustomRelic {
 	@Override
 	public void onVictory() {
 		
-		AddReward();
+		if (number_of_cards_left > 0) {
+			AddReward();
+			number_of_cards_left--;
+			counter = number_of_cards_left;
+		}
 
 	}
 
