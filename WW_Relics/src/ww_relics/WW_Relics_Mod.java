@@ -220,6 +220,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             WhiteBoots.load(config);
             FightingGloves.load(config);
             UnceasingFlame.load(config);
+            SchoolBackpack.load(config);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -234,6 +235,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             WhiteBoots.save(config);
             FightingGloves.save(config);
             UnceasingFlame.save(config);
+            SchoolBackpack.save(config);
         }
         catch (IOException e) {
         	e.printStackTrace();
@@ -249,6 +251,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             WhiteBoots.clear(config);
             FightingGloves.clear(config);
             UnceasingFlame.clear(config);
+            SchoolBackpack.clear(config);
         	config.save();
 
         }
