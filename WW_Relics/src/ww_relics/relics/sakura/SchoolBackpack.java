@@ -49,8 +49,9 @@ public class SchoolBackpack extends CustomRelic {
 		
 		if (number_of_cards_left > 0) {
 			AddReward();
-			number_of_cards_left--;
-			counter = number_of_cards_left;
+			if (!AbstractDungeon.getCurrRoom().isBattleOver)
+				number_of_cards_left--;
+				counter = number_of_cards_left;
 		}
 
 	}
