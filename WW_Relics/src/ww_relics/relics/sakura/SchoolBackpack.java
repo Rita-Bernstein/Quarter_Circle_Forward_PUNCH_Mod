@@ -37,7 +37,7 @@ public class SchoolBackpack extends CustomRelic {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"), 
 				RelicTier.UNCOMMON, LandingSound.HEAVY);
 		
-		counter = number_of_cards_left;
+		counter = NUMBER_OF_EXTRA_CARDS;
 	}
 	
 	public String getUpdatedDescription() {
@@ -62,7 +62,7 @@ public class SchoolBackpack extends CustomRelic {
 		RewardItem card_reward = new RewardItem();
 		card_reward.cards.clear();
 		card_reward.cards = createCardsFromOtherClassForReward(reward_class);
-		card_reward.text = "From exotic trinkets, inspiration.";
+		//card_reward.text = DESCRIPTIONS[1];
 		AbstractDungeon.getCurrRoom().addCardReward(card_reward);
 		flash();
 		
