@@ -31,7 +31,7 @@ public class SchoolBackpack extends CustomRelic {
 	public static final float CHANCE_OF_UPGRADED_CARDS = 0.1f;
 	
 	public static int number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
-	public static boolean relic_has_been_used_this_combat = false;
+	public static boolean battle_ended_before = false;
 	public static RewardItem card_reward;
 	public static ArrayList<String> card_reward_rarity = new ArrayList<String>();
 	public static ArrayList<String> card_reward_id = new ArrayList<String>();
@@ -54,22 +54,22 @@ public class SchoolBackpack extends CustomRelic {
 	@Override
 	public void atPreBattle() {
 		
-		if (number_of_cards_left > 0) {
-			if (!relic_has_been_used_this_combat) {
+		if ((number_of_cards_left > 0) && (AbstractDungeon.getCurrRoom().rewardAllowed)) {
+			
+			if (!battle_ended_before) {
 				AddReward();
 				number_of_cards_left--;
 				counter = number_of_cards_left;
-				relic_has_been_used_this_combat = true;
 			} else {
 				AddSavedReward();
 			}
 		}
-
 	}
 	
+
 	@Override
 	public void onEnterRoom(AbstractRoom room) {
-		relic_has_been_used_this_combat = false;
+		
 	}
 
 	private void AddReward() {
@@ -252,6 +252,10 @@ public class SchoolBackpack extends CustomRelic {
 		card_reward = new RewardItem();
 		card_reward.cards = new ArrayList<AbstractCard>();
 		
+		CardGroup rare_class_CardPool = new CardGroup(CardGroupType.UNSPECIFIED);
+		CardGroup uncommon_class_CardPool = new CardGroup(CardGroupType.UNSPECIFIED);
+		CardGroup common_class_CardPool = new CardGroup(CardGroupType.UNSPECIFIED);
+		
 		int size = card_reward_id.size();
 		
 		for (int i = 0; i < size; i++) {
@@ -261,20 +265,26 @@ public class SchoolBackpack extends CustomRelic {
 			String card_rarity = card_reward_rarity.get(i);
 			
 			CardGroup card_pool = null;
-			if (card_rarity == CardRarity.COMMON.toString()) {
-				card_pool = AbstractDungeon.commonCardPool;
-			} else if (card_rarity == CardRarity.UNCOMMON.toString()) {
-				card_pool = AbstractDungeon.uncommonCardPool;
-			} else if (card_rarity == CardRarity.RARE.toString()){
-				card_pool = AbstractDungeon.rareCardPool;
+			if (card_rarity.equals(CardRarity.COMMON.toString())) {
+				card_pool = common_class_CardPool;
+			} else if (card_rarity.equals(CardRarity.UNCOMMON.toString())) {
+				card_pool = uncommon_class_CardPool;
+			} else if (card_rarity.equals(CardRarity.RARE.toString())){
+				card_pool = rare_class_CardPool;
 			}
 			
-			reward_card = card_pool.findCardById(card_reward_id.get(i));
+			logger.info("Card pool = " + String.valueOf((card_pool != null)));
+			logger.info(card_reward_id.get(i));
+			
+			reward_card = card_pool.findCardById(card_reward_id.get(i)).makeCopy();
+			
+			logger.info(reward_card.name);
 			
 			if (card_reward_upgrade.get(i)) {
 				reward_card.upgrade();
 			}
 			
+			card_reward.text = DESCRIPTIONS[1];
 			card_reward.cards.add(reward_card);	
 		
 		}
@@ -294,7 +304,13 @@ public class SchoolBackpack extends CustomRelic {
     		}
     		else config.setInt("school_backpack_1", number_of_cards_left);
             
-            config.setBool("school_backpack_2", relic_has_been_used_this_combat);
+            if (AbstractDungeon.getCurrRoom().isBattleOver) {
+            	config.setBool("school_backpack_3", true);
+            } else {
+            	config.setBool("school_backpack_3", false);
+            }
+            
+            
             
             if (card_reward == null) {
             	config.setInt("school_backpack_reward_size", 0);
@@ -331,7 +347,6 @@ public class SchoolBackpack extends CustomRelic {
 		if (AbstractDungeon.player.hasRelic(ID) && config.has("school_backpack_1")) {
 
 			number_of_cards_left = config.getInt("school_backpack_1");
-			relic_has_been_used_this_combat = config.getBool("school_backpack_2");
 			
 			int size = config.getInt("school_backpack_reward_size");
 			
@@ -342,6 +357,8 @@ public class SchoolBackpack extends CustomRelic {
 				card_reward_upgrade.add(config.getBool("school_backpack_reward_upgrade_" + String.valueOf(i)));
 			
 			}
+			
+			battle_ended_before = config.getBool("school_backpack_3");
 			
             try {
 				config.load();
