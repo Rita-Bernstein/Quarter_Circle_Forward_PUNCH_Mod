@@ -16,10 +16,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.rewards.RewardItem;
-import com.megacrit.cardcrawl.rewards.RewardItem.RewardType;
 
 import basemod.abstracts.CustomRelic;
-import main.java.com.evacipated.cardcrawl.mod.hubris.rewards.HubrisLinkedRewardItem;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class SchoolBackpack extends CustomRelic {
@@ -43,65 +41,20 @@ public class SchoolBackpack extends CustomRelic {
 	}
 	
 	@Override
-	public void onTrigger() {
+	public void onVictory() {
 		
-		if (IsThereACardReward()) AddLinkedReward();
-		else {
-			
-			PlayerClass reward_class = getRandomBaseGameNotYoursPlayerClass();
-			
-			RewardItem card_reward = new RewardItem();
-			card_reward.cards.clear();
-			card_reward.cards = createCardsFromOtherClassForReward(reward_class);
-			AbstractDungeon.getCurrRoom().addCardReward(card_reward);
-		}
-		
-	}
-	
-	private boolean IsThereACardReward() {
-		
-		if (findCardRewardInRewards() != null) return true;
-		else return false;
-		
-	}
-	
-	private RewardItem findCardRewardInRewards() {
-		
-		for (RewardItem reward_item : AbstractDungeon.getCurrRoom().rewards) {
-			
-			if (reward_item.type == RewardType.CARD) return reward_item;
-			
-		}
-		
-		return null;
-	}
-	
-	private void AddLinkedReward() {
-		
-		RewardItem reward_to_link = findCardRewardInRewards();
-		
-		if (number_of_cards_left > 0) {
-			
-			PlayerClass reward_class = getRandomBaseGameNotYoursPlayerClass();
-			
-			RewardItem card_reward = new RewardItem();
-			card_reward.cards.clear();
-			card_reward.cards = createCardsFromOtherClassForReward(reward_class);
-			
-			 HubrisLinkedRewardItem replaceReward = new HubrisLinkedRewardItem(reward_to_link);
-			 HubrisLinkedRewardItem linked_card_reward = new HubrisLinkedRewardItem(card_reward);
-			 
-			 replaceReward.addRelicLink(linked_card_reward);
-			 linked_card_reward.addRelicLink(replaceReward);
-             
-             int indexOf = AbstractDungeon.getCurrRoom().rewards.indexOf(reward_to_link);
-             // Insert after existing reward
-             AbstractDungeon.getCurrRoom().rewards.add(indexOf + 1, replaceReward);
-             // Replace original
-             AbstractDungeon.getCurrRoom().rewards.set(indexOf, linked_card_reward);
+		AddReward();
 
-			logger.info(reward_to_link.cards.size());
-		}
+	}
+
+	private void AddReward() {
+		
+		PlayerClass reward_class = getRandomBaseGameNotYoursPlayerClass();
+		
+		RewardItem card_reward = new RewardItem();
+		card_reward.cards.clear();
+		card_reward.cards = createCardsFromOtherClassForReward(reward_class);
+		AbstractDungeon.getCurrRoom().addCardReward(card_reward);
 		
 	}
 	
