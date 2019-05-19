@@ -251,32 +251,14 @@ public class SchoolBackpack extends CustomRelic {
 		
 		card_reward = new RewardItem();
 		card_reward.cards = new ArrayList<AbstractCard>();
-		
-		CardGroup rare_class_CardPool = new CardGroup(CardGroupType.UNSPECIFIED);
-		CardGroup uncommon_class_CardPool = new CardGroup(CardGroupType.UNSPECIFIED);
-		CardGroup common_class_CardPool = new CardGroup(CardGroupType.UNSPECIFIED);
-		
+				
 		int size = card_reward_id.size();
 		
 		for (int i = 0; i < size; i++) {
 			
 			AbstractCard reward_card;
-			
-			String card_rarity = card_reward_rarity.get(i);
-			
-			CardGroup card_pool = null;
-			if (card_rarity.equals(CardRarity.COMMON.toString())) {
-				card_pool = common_class_CardPool;
-			} else if (card_rarity.equals(CardRarity.UNCOMMON.toString())) {
-				card_pool = uncommon_class_CardPool;
-			} else if (card_rarity.equals(CardRarity.RARE.toString())){
-				card_pool = rare_class_CardPool;
-			}
-			
-			logger.info("Card pool = " + String.valueOf((card_pool != null)));
-			logger.info(card_reward_id.get(i));
-			
-			reward_card = card_pool.findCardById(card_reward_id.get(i)).makeCopy();
+						
+			reward_card = CardLibrary.cards.get(card_reward_id.get(i)).makeCopy();
 			
 			logger.info(reward_card.name);
 			
