@@ -32,7 +32,11 @@ public class SchoolBackpack extends CustomRelic {
 	
 	public static int number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
 	public static boolean relic_has_been_used_this_combat = false;
-	public static RewardItem card_reward = new RewardItem();
+	public static RewardItem card_reward;
+	public static ArrayList<String> card_reward_rarity = new ArrayList<String>();
+	public static ArrayList<String> card_reward_id = new ArrayList<String>();
+	public static ArrayList<Boolean> card_reward_upgrade = new ArrayList<Boolean>();
+
 	
 	public static final Logger logger = LogManager.getLogger(SchoolBackpack.class.getName());
 	
@@ -245,6 +249,36 @@ public class SchoolBackpack extends CustomRelic {
 	
 	public void AddSavedReward() {
 		
+		card_reward = new RewardItem();
+		card_reward.cards = new ArrayList<AbstractCard>();
+		
+		int size = card_reward_id.size();
+		
+		for (int i = 0; i < size; i++) {
+			
+			AbstractCard reward_card;
+			
+			String card_rarity = card_reward_rarity.get(i);
+			
+			CardGroup card_pool = null;
+			if (card_rarity == CardRarity.COMMON.toString()) {
+				card_pool = AbstractDungeon.commonCardPool;
+			} else if (card_rarity == CardRarity.UNCOMMON.toString()) {
+				card_pool = AbstractDungeon.uncommonCardPool;
+			} else if (card_rarity == CardRarity.RARE.toString()){
+				card_pool = AbstractDungeon.rareCardPool;
+			}
+			
+			reward_card = card_pool.findCardById(card_reward_id.get(i));
+			
+			if (card_reward_upgrade.get(i)) {
+				reward_card.upgrade();
+			}
+			
+			card_reward.cards.add(reward_card);	
+		
+		}
+			
 		AbstractDungeon.getCurrRoom().addCardReward(card_reward);
 		flash();
 		
@@ -261,16 +295,22 @@ public class SchoolBackpack extends CustomRelic {
     		else config.setInt("school_backpack_1", number_of_cards_left);
             
             config.setBool("school_backpack_2", relic_has_been_used_this_combat);
-                       
-            config.setInt("school_backpack_reward_size", card_reward.cards.size());
-            for (int i = 0; i < card_reward.cards.size(); i++) {
-            	config.setString("school_backpack_reward_" + String.valueOf(i),
-            			card_reward.cards.get(i).cardID);
-            	config.setString("school_backpack_reward_rarity_" + String.valueOf(i),
-            			card_reward.cards.get(i).rarity.toString());
-            	config.setBool("school_backpack_reward_upgrade_" + String.valueOf(i),
-            			card_reward.cards.get(i).upgraded);
+            
+            if (card_reward == null) {
+            	config.setInt("school_backpack_reward_size", 0);
+            } else config.setInt("school_backpack_reward_size", card_reward.cards.size());
+            
+            if (card_reward != null) {
+            	for (int i = 0; i < card_reward.cards.size(); i++) {
+                	config.setString("school_backpack_reward_" + String.valueOf(i),
+                			card_reward.cards.get(i).cardID);
+                	config.setString("school_backpack_reward_rarity_" + String.valueOf(i),
+                			card_reward.cards.get(i).rarity.toString());
+                	config.setBool("school_backpack_reward_upgrade_" + String.valueOf(i),
+                			card_reward.cards.get(i).upgraded);
+                }
             }
+            
     		
             try {
 				config.save();
@@ -293,41 +333,15 @@ public class SchoolBackpack extends CustomRelic {
 			number_of_cards_left = config.getInt("school_backpack_1");
 			relic_has_been_used_this_combat = config.getBool("school_backpack_2");
 			
-			card_reward = new RewardItem();
-			card_reward.cards = new ArrayList<AbstractCard>();
-			
 			int size = config.getInt("school_backpack_reward_size");
-			
-            config.setInt("school_backpack_reward_size", card_reward.cards.size());
 			
 			for (int i = 0; i < size; i++) {
 				
-				AbstractCard reward_card;
-				
-				String card_rarity = config.getString("school_backpack_reward_rarity_" + String.valueOf(i));
-				
-				CardGroup card_pool = null;
-				if (card_rarity == CardRarity.COMMON.toString()) {
-					card_pool = AbstractDungeon.commonCardPool;
-				} else if (card_rarity == CardRarity.UNCOMMON.toString()) {
-					card_pool = AbstractDungeon.uncommonCardPool;
-				} else if (card_rarity == CardRarity.RARE.toString()){
-					card_pool = AbstractDungeon.rareCardPool;
-				}
-				
-				reward_card = card_pool.findCardById(
-						config.getString("school_backpack_reward_" + String.valueOf(i)));
-				
-				if (config.getBool("school_backpack_reward_upgrade_" + String.valueOf(i))) {
-					reward_card.upgrade();
-				}
-				
-				card_reward.cards.add(reward_card);				
-				
+				card_reward_rarity.add(config.getString("school_backpack_reward_rarity_" + String.valueOf(i)));			
+				card_reward_id.add(config.getString("school_backpack_reward_" + String.valueOf(i)));
+				card_reward_upgrade.add(config.getBool("school_backpack_reward_upgrade_" + String.valueOf(i)));
+			
 			}
-			
-			
-			
 			
             try {
 				config.load();
