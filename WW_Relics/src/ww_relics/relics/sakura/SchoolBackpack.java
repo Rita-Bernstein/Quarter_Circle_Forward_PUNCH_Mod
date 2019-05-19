@@ -1,11 +1,13 @@
 package ww_relics.relics.sakura;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardColor;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardRarity;
@@ -226,6 +228,58 @@ public class SchoolBackpack extends CustomRelic {
 	    }
 	    logger.info("Paraphrasing the base code comment: No rarity on getCard in Abstract Dungeon");
 	    return null;
+	}
+	
+	public static void save(final SpireConfig config) {
+
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
+    		logger.info("Started saving School Backpack information");
+
+            config.setInt("school_backpack_1", number_of_cards_left);
+            
+            try {
+				config.save();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+            logger.info("Finished saving School Backpack information");
+        }
+        else {
+        	clear(config);
+        }
+
+    }
+	
+	public static void load(final SpireConfig config) {
+		
+		logger.info("Loading School Backpack info.");
+		if (AbstractDungeon.player.hasRelic(ID) && config.has("school_backpack_1")) {
+
+			number_of_cards_left = config.getInt("school_backpack_1");
+			
+            try {
+				config.load();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            logger.info("Finished loading School Backpack info.");
+        }
+		
+		else
+		{
+			logger.info("There's no info, setting variables accordingly.");
+
+			logger.info("Finished setting School Backpack variables.");
+		}
+		
+		
+    }
+	
+	public static void clear(final SpireConfig config) {
+		logger.info("Clearing School Backpack variables.");
+        config.remove("school_backpack_1");
+        logger.info("Finished clearing School Backpack variables.");
 	}
 	
 	@Override
