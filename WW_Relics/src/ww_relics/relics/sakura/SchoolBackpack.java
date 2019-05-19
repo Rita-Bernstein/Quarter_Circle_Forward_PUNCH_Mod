@@ -62,7 +62,7 @@ public class SchoolBackpack extends CustomRelic {
 		RewardItem card_reward = new RewardItem();
 		card_reward.cards.clear();
 		card_reward.cards = createCardsFromOtherClassForReward(reward_class);
-		//card_reward.text = DESCRIPTIONS[1];
+		card_reward.text = DESCRIPTIONS[1];
 		AbstractDungeon.getCurrRoom().addCardReward(card_reward);
 		flash();
 		
