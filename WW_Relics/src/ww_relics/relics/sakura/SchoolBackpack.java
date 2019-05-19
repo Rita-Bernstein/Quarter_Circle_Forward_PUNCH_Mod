@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import basemod.abstracts.CustomRelic;
 import ww_relics.resources.relic_graphics.GraphicResources;
@@ -30,6 +31,7 @@ public class SchoolBackpack extends CustomRelic {
 	public static final float CHANCE_OF_UPGRADED_CARDS = 0.1f;
 	
 	public static int number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
+	public static boolean reward_has_being_given_this_combat = false;
 	
 	public static final Logger logger = LogManager.getLogger(SchoolBackpack.class.getName());
 	
@@ -43,17 +45,24 @@ public class SchoolBackpack extends CustomRelic {
 	public String getUpdatedDescription() {
 		return DESCRIPTIONS[0];
 	}
-
+	
+	@Override
+	public void justEnteredRoom(AbstractRoom room) {
+		if (reward_has_being_given_this_combat) reward_has_being_given_this_combat = false;
+	}
+	
 	@Override
 	public void atPreBattle() {
 		
 		if (number_of_cards_left > 0 && AbstractDungeon.getCurrRoom().rewardAllowed) {
 			AddReward();
-			if (!AbstractDungeon.getCurrRoom().isBattleOver)
+			if (!reward_has_being_given_this_combat) {
 				number_of_cards_left--;
 				counter = number_of_cards_left;
+				reward_has_being_given_this_combat = true;
+			}
 		}
-
+		
 	}
 
 	private void AddReward() {
@@ -237,6 +246,7 @@ public class SchoolBackpack extends CustomRelic {
     		logger.info("Started saving School Backpack information");
 
             config.setInt("school_backpack_1", number_of_cards_left);
+            config.setBool("school_backpack_2", reward_has_being_given_this_combat);
             
             try {
 				config.save();
@@ -257,6 +267,7 @@ public class SchoolBackpack extends CustomRelic {
 		if (AbstractDungeon.player.hasRelic(ID) && config.has("school_backpack_1")) {
 
 			number_of_cards_left = config.getInt("school_backpack_1");
+			reward_has_being_given_this_combat = config.getBool("school_backpack_2");
 			
             try {
 				config.load();
@@ -280,6 +291,7 @@ public class SchoolBackpack extends CustomRelic {
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing School Backpack variables.");
         config.remove("school_backpack_1");
+        config.remove("school_backpack_2");
         logger.info("Finished clearing School Backpack variables.");
 	}
 	
