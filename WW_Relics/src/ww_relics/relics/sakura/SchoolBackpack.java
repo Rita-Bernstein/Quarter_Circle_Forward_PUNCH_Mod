@@ -65,12 +65,6 @@ public class SchoolBackpack extends CustomRelic {
 			}
 		}
 	}
-	
-
-	@Override
-	public void onEnterRoom(AbstractRoom room) {
-		
-	}
 
 	private void AddReward() {
 		
