@@ -47,7 +47,7 @@ public class SchoolBackpack extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		if (counter > 0) return chargedDescription();
+		if (number_of_cards_left > 0) return chargedDescription();
 		else return unchargedDescription();
 	}
 	
