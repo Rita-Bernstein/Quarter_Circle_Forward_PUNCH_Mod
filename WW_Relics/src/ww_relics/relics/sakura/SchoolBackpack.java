@@ -46,11 +46,11 @@ public class SchoolBackpack extends CustomRelic {
 		
 		counter = NUMBER_OF_EXTRA_CARDS;
 		
-		current_description = DESCRIPTIONS[0];
 	}
 	
 	public String getUpdatedDescription() {
-		return current_description;
+		if (current_description == null) return DESCRIPTIONS[0];
+		else return current_description;
 	}
 	
 	@Override
