@@ -47,16 +47,17 @@ public class SchoolBackpack extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
+		if (counter > 0) return chargedDescription();
+		else return unchargedDescription();
+	}
+	
+	public String chargedDescription() {
 		return DESCRIPTIONS[0];
 	}
 	
-	/*public String changeToFirstDescription() {
-		
+	public String unchargedDescription() {
+		return DESCRIPTIONS[2];
 	}
-	
-	public String changeToSecondDescription() {
-		
-	}*/
 	
 	@Override
 	public void atPreBattle() {
@@ -285,6 +286,7 @@ public class SchoolBackpack extends CustomRelic {
 		flash();
 		
 	}
+
 	
 	public static void save(final SpireConfig config) {
 
