@@ -50,7 +50,7 @@ public class SchoolBackpack extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return current_description
+		return current_description;
 	}
 	
 	@Override
