@@ -35,6 +35,7 @@ public class SchoolBackpack extends CustomRelic {
 	public static ArrayList<String> card_reward_rarity = new ArrayList<String>();
 	public static ArrayList<String> card_reward_id = new ArrayList<String>();
 	public static ArrayList<Boolean> card_reward_upgrade = new ArrayList<Boolean>();
+	public static String current_description;
 
 	
 	public static final Logger logger = LogManager.getLogger(SchoolBackpack.class.getName());
@@ -44,19 +45,17 @@ public class SchoolBackpack extends CustomRelic {
 				RelicTier.UNCOMMON, LandingSound.HEAVY);
 		
 		counter = NUMBER_OF_EXTRA_CARDS;
+		
+		current_description = DESCRIPTIONS[0];
 	}
 	
 	public String getUpdatedDescription() {
-		if (number_of_cards_left > 0) return chargedDescription();
-		else return unchargedDescription();
+		return current_description
 	}
 	
-	public String chargedDescription() {
-		return DESCRIPTIONS[0];
-	}
-	
-	public String unchargedDescription() {
-		return DESCRIPTIONS[2];
+	@Override
+	public void atBattleStart() {
+		if (counter <= 0) current_description = DESCRIPTIONS[2];
 	}
 	
 	@Override
