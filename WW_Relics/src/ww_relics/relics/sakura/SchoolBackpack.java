@@ -18,7 +18,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.rewards.RewardItem;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import basemod.abstracts.CustomRelic;
 import ww_relics.resources.relic_graphics.GraphicResources;
@@ -51,6 +50,14 @@ public class SchoolBackpack extends CustomRelic {
 		return DESCRIPTIONS[0];
 	}
 	
+	/*public String changeToFirstDescription() {
+		
+	}
+	
+	public String changeToSecondDescription() {
+		
+	}*/
+	
 	@Override
 	public void atPreBattle() {
 		
@@ -60,8 +67,17 @@ public class SchoolBackpack extends CustomRelic {
 				AddReward();
 				number_of_cards_left--;
 				counter = number_of_cards_left;
+				if (counter <= 0) {
+					number_of_cards_left = -2;
+					counter = -2;
+				}
 			} else {
 				AddSavedReward();
+			}
+		} else {
+			if (counter <= 0) {
+				number_of_cards_left = -2;
+				counter = -2;
 			}
 		}
 	}
