@@ -40,7 +40,10 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 10. Relics inspired by Cammy, Fei Long and Deejay. (number unknown)
 11. ?????????????????????
 12. New balanced Custom Modifiers revolving around fighter's set relics. (use Blademaster Perk system, perhaps, together with linked relis?)
-13. Update of art and sound assets.
+13. Update of beta art and sound assets.
+
+(and here we reach v1.0)
+
 14. Polishing, refactoring and balancing.
 15. Synergy and adaptation with Infinite Spire. (Black cards? Black cards. o9)
 16. Synergy and adaptation with other mods.
