@@ -39,7 +39,7 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 9. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
 10. Relics inspired by Cammy, Fei Long and Deejay. (number unknown)
 11. ?????????????????????
-12. New balanced Custom Modifiers revolving around fighter's set relics. (use Blademaster Perk system, perhaps, together with linked relis?)
+12. New balanced Custom Modifiers revolving around fighter's set relics. (use Blademaster Perk system, perhaps, together with linked relics?)
 13. Update of beta art and sound assets.
 
 (and here we reach v1.0)
