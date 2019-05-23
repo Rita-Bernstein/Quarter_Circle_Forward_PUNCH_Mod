@@ -50,7 +50,7 @@ public class SchoolBackpack extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		if (current_description == null) return DESCRIPTIONS[0];
+		if (current_description == null) return DESCRIPTIONS[0] + NUMBER_OF_EXTRA_CARDS + DESCRIPTIONS[1];
 		else return current_description;
 	}
 	
@@ -58,7 +58,7 @@ public class SchoolBackpack extends CustomRelic {
 	public void atBattleStart() {
 		
 		if (counter <= 0) {
-			current_description = DESCRIPTIONS[2];
+			current_description = DESCRIPTIONS[3];
 			this.tips.clear();
 			this.tips.add(new PowerTip(this.name, current_description));
 			initializeTips();
