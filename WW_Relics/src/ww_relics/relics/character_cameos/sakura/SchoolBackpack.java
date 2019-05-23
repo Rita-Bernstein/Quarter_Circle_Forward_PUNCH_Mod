@@ -1,4 +1,4 @@
-package ww_relics.relics.sakura;
+package ww_relics.relics.character_cameos.sakura;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -19,8 +19,9 @@ import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import ww_relics.modifiers.*;
+import ww_relics.relics.character_cameos.dan.NotStrongestFightingStyleGuidebook;
+import ww_relics.relics.character_cameos.sakura.SchoolBackpack;
 import ww_relics.relics.chun_li.*;
-import ww_relics.relics.dan.NotStrongestFightingStyleGuidebook;
 import ww_relics.relics.guile.ArmyBoots;
 import ww_relics.relics.guile.ChainWithNametags;
 import ww_relics.relics.guile.CombatFatigues;
@@ -28,7 +29,6 @@ import ww_relics.relics.ken.BlackTrainingShirt;
 import ww_relics.relics.ken.RedGi;
 import ww_relics.relics.ken.UnceasingFlame;
 import ww_relics.relics.ryu.*;
-import ww_relics.relics.sakura.SchoolBackpack;
 
 @SpireInitializer
 public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,

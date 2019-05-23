@@ -1,4 +1,4 @@
-package ww_relics.relics.dan;
+package ww_relics.relics.character_cameos.dan;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
