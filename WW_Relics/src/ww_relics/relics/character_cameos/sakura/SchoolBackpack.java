@@ -80,29 +80,38 @@ public class SchoolBackpack extends CustomRelic {
 	@Override
 	public void atPreBattle() {
 		
-		if ((counter != number_of_cards_left)){
-			number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
-			counter = NUMBER_OF_EXTRA_CARDS;
-		}
+		avoidCounterProblemsBetweenSaves();
 		
 		if ((number_of_cards_left > 0) && (AbstractDungeon.getCurrRoom().rewardAllowed)) {
 			
 			if (!battle_ended_before) {
+				reduceNumberOfUsesByOne();
+				ifEmptyVanishWithCounterNumber();
 				AddReward();
-				number_of_cards_left--;
-				counter = number_of_cards_left;
-				if (counter <= 0) {
-					number_of_cards_left = -2;
-					counter = -2;
-				}
 			} else {
 				AddSavedReward();
 			}
 		} else {
-			if (counter <= 0) {
-				number_of_cards_left = -2;
-				counter = -2;
-			}
+			ifEmptyVanishWithCounterNumber();
+		}
+	}
+	
+	public void avoidCounterProblemsBetweenSaves() {
+		if ((counter != number_of_cards_left)){
+			number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
+			counter = NUMBER_OF_EXTRA_CARDS;
+		}
+	}
+	
+	public void reduceNumberOfUsesByOne() {
+		number_of_cards_left--;
+		counter = number_of_cards_left;
+	}
+	
+	public void ifEmptyVanishWithCounterNumber() {
+		if (counter <= 0) {
+			number_of_cards_left = -2;
+			counter = -2;
 		}
 	}
 
@@ -110,11 +119,9 @@ public class SchoolBackpack extends CustomRelic {
 		
 		PlayerClass reward_class = getRandomBaseGameNotYoursPlayerClass();
 		
-		card_reward = new RewardItem();
-		card_reward.cards.clear();
-		card_reward.cards = createCardsFromOtherClassForReward(reward_class);
-		card_reward.text = DESCRIPTIONS[2];
+		card_reward = createReward(reward_class);
 		AbstractDungeon.getCurrRoom().addCardReward(card_reward);
+		
 		flash();
 		
 	}
@@ -135,9 +142,17 @@ public class SchoolBackpack extends CustomRelic {
 
 	}
 	
+	public RewardItem createReward(PlayerClass reward_class) {
+		RewardItem reward_created = new RewardItem();
+		reward_created.cards.clear();
+		reward_created.cards = createCardsFromOtherClassForReward(reward_class);
+		reward_created.text = DESCRIPTIONS[2];
+		return reward_created;
+	}
+	
 	private ArrayList<AbstractCard> createCardsFromOtherClassForReward(PlayerClass a_class) {
 		
-		ArrayList<AbstractCard> retVal = new ArrayList<AbstractCard>();
+		ArrayList<AbstractCard> basic_array_of_cards = new ArrayList<AbstractCard>();
 	    
 	    int num_cards = 3;
 	    num_cards = circunstancesThatChangeCardNumber(num_cards);
@@ -147,32 +162,20 @@ public class SchoolBackpack extends CustomRelic {
 	    {
 	    	rarity = AbstractDungeon.rollRarity();
 	    	AbstractCard card = null;
-	    	switch (rarity)
-	    	{
-	    		case RARE: 
-	    			AbstractDungeon.cardBlizzRandomizer = AbstractDungeon.cardBlizzStartOffset;
-	    		break;
-	    		case UNCOMMON: 
-	    			break;
-	    		case COMMON: 
-	    			AbstractDungeon.cardBlizzRandomizer -= AbstractDungeon.cardBlizzGrowth;
-			        if (AbstractDungeon.cardBlizzRandomizer <= AbstractDungeon.cardBlizzMaxOffset) {
-			        	AbstractDungeon.cardBlizzRandomizer = AbstractDungeon.cardBlizzMaxOffset;
-			        }
-			        break;
-	    		default: 
-	    			logger.info("Paraphrasing the base game code: WTF?");
-	    	}
-	    	card = getCardAvoidingDuplicates(retVal, rarity, a_class);
+	    	
+	    	applyRandomRarityToCard(rarity);
+	    	
+	    	card = getCardAvoidingDuplicates(basic_array_of_cards, rarity, a_class);
+	    	
 	        if (card != null) {
-	        	retVal.add(card);
+	        	basic_array_of_cards.add(card);
 	        }
 	    }
-	    ArrayList<AbstractCard> retVal2 = new ArrayList<AbstractCard>();
-	    for (AbstractCard c : retVal) {
-	    	retVal2.add(c.makeCopy());
+	    ArrayList<AbstractCard> array_of_cards_with_possible_upgrades = new ArrayList<AbstractCard>();
+	    for (AbstractCard c : basic_array_of_cards) {
+	    	array_of_cards_with_possible_upgrades.add(c.makeCopy());
 	    }
-	    for (AbstractCard c : retVal2) {
+	    for (AbstractCard c : array_of_cards_with_possible_upgrades) {
 	    	if ((c.rarity != AbstractCard.CardRarity.RARE) && 
 	    			(AbstractDungeon.cardRng.randomBoolean(CHANCE_OF_UPGRADED_CARDS)) && (c.canUpgrade())) {
 	    		c.upgrade();
@@ -187,7 +190,26 @@ public class SchoolBackpack extends CustomRelic {
 		        c.upgrade();
 	    	}
 	    }
-	    return retVal2;
+	    return array_of_cards_with_possible_upgrades;
+	}
+	
+	public void applyRandomRarityToCard(CardRarity rarity) {
+		switch (rarity)
+    	{
+    		case RARE: 
+    			AbstractDungeon.cardBlizzRandomizer = AbstractDungeon.cardBlizzStartOffset;
+    		break;
+    		case UNCOMMON: 
+    			break;
+    		case COMMON: 
+    			AbstractDungeon.cardBlizzRandomizer -= AbstractDungeon.cardBlizzGrowth;
+		        if (AbstractDungeon.cardBlizzRandomizer <= AbstractDungeon.cardBlizzMaxOffset) {
+		        	AbstractDungeon.cardBlizzRandomizer = AbstractDungeon.cardBlizzMaxOffset;
+		        }
+		        break;
+    		default: 
+    			logger.info("Paraphrasing the base game code: WTF?");
+    	}
 	}
 	
 	private int circunstancesThatChangeCardNumber(int num_cards) {
