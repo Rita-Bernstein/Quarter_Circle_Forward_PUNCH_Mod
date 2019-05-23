@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer.PlayerClass;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.ModHelper;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 
 import basemod.abstracts.CustomRelic;
@@ -55,7 +56,12 @@ public class SchoolBackpack extends CustomRelic {
 	
 	@Override
 	public void atBattleStart() {
-		if (counter <= 0) current_description = DESCRIPTIONS[2];
+		if (counter <= 0) {
+			current_description = DESCRIPTIONS[2];
+			//this.tips.clear();
+			//this.tips.add(new PowerTip(this.name, current_description));
+			//initializeTips();
+		}
 	}
 	
 	@Override
@@ -292,40 +298,46 @@ public class SchoolBackpack extends CustomRelic {
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
     		logger.info("Started saving School Backpack information");
 
-    		if (AbstractDungeon.getCurrRoom().isBattleOver) {
-    			config.setInt("school_backpack_1", number_of_cards_left + 1);
-    		}
-    		else config.setInt("school_backpack_1", number_of_cards_left);
-            
-            if (AbstractDungeon.getCurrRoom().isBattleOver) {
-            	config.setBool("school_backpack_3", true);
-            } else {
-            	config.setBool("school_backpack_3", false);
-            }
-            
-            
-            
-            if (card_reward == null) {
-            	config.setInt("school_backpack_reward_size", 0);
-            } else config.setInt("school_backpack_reward_size", card_reward.cards.size());
-            
-            if (card_reward != null) {
-            	for (int i = 0; i < card_reward.cards.size(); i++) {
-                	config.setString("school_backpack_reward_" + String.valueOf(i),
-                			card_reward.cards.get(i).cardID);
-                	config.setString("school_backpack_reward_rarity_" + String.valueOf(i),
-                			card_reward.cards.get(i).rarity.toString());
-                	config.setBool("school_backpack_reward_upgrade_" + String.valueOf(i),
-                			card_reward.cards.get(i).upgraded);
+    		if (AbstractDungeon.isDungeonBeaten || AbstractDungeon.player.isDead) {
+    			clear(config);
+    		} 
+    		else {
+    			
+    			if (AbstractDungeon.getCurrRoom().isBattleOver) {
+        			config.setInt("school_backpack_1", number_of_cards_left + 1);
+        		}
+        		else config.setInt("school_backpack_1", number_of_cards_left);
+                
+                if (AbstractDungeon.getCurrRoom().isBattleOver) {
+                	config.setBool("school_backpack_3", true);
+                } else {
+                	config.setBool("school_backpack_3", false);
                 }
-            }
-            
-    		
-            try {
-				config.save();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+                
+                
+                
+                if (card_reward == null) {
+                	config.setInt("school_backpack_reward_size", 0);
+                } else config.setInt("school_backpack_reward_size", card_reward.cards.size());
+                
+                if (card_reward != null) {
+                	for (int i = 0; i < card_reward.cards.size(); i++) {
+                    	config.setString("school_backpack_reward_" + String.valueOf(i),
+                    			card_reward.cards.get(i).cardID);
+                    	config.setString("school_backpack_reward_rarity_" + String.valueOf(i),
+                    			card_reward.cards.get(i).rarity.toString());
+                    	config.setBool("school_backpack_reward_upgrade_" + String.valueOf(i),
+                    			card_reward.cards.get(i).upgraded);
+                    }
+                }
+    			
+                try {
+    				config.save();
+    			} catch (IOException e) {
+    				e.printStackTrace();
+    			}
+    		}
+
             logger.info("Finished saving School Backpack information");
         }
         else {
@@ -376,6 +388,20 @@ public class SchoolBackpack extends CustomRelic {
 		logger.info("Clearing School Backpack variables.");
         config.remove("school_backpack_1");
         config.remove("school_backpack_2");
+        
+        if (config.has("school_backpack_reward_size")) {
+        	int size = config.getInt("school_backpack_reward_size");
+        
+			for (int i = 0; i < size; i++) {
+				
+				config.remove("school_backpack_reward_rarity_" + String.valueOf(i));			
+				config.remove("school_backpack_reward_" + String.valueOf(i));
+				config.remove("school_backpack_reward_upgrade_" + String.valueOf(i));
+			
+			}
+
+        }
+        
         logger.info("Finished clearing School Backpack variables.");
 	}
 	
