@@ -56,6 +56,7 @@ public class SchoolBackpack extends CustomRelic {
 	
 	@Override
 	public void atBattleStart() {
+		
 		if (counter <= 0) {
 			current_description = DESCRIPTIONS[2];
 			this.tips.clear();
@@ -66,6 +67,10 @@ public class SchoolBackpack extends CustomRelic {
 	
 	@Override
 	public void atPreBattle() {
+		
+		if ((counter == NUMBER_OF_EXTRA_CARDS) && (number_of_cards_left <= 0)){
+			number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
+		}
 		
 		if ((number_of_cards_left > 0) && (AbstractDungeon.getCurrRoom().rewardAllowed)) {
 			
