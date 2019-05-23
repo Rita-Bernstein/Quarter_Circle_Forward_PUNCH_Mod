@@ -141,8 +141,8 @@
     "NAME": "School Backpack",
     "FLAVOR": "Full of physical mementos from a world tour.",
     "DESCRIPTIONS": [
-      "At the next ", 
-      " fights won where you gain a card reward, add a card reward of a not-modded character class that you aren't using.",
+      "At the next #b", 
+      " fights won where you gain a card reward, add a card reward of a #rnot-modded #rcharacter #rclass that you aren't using.",
       "Backpack mementos bring inspiration.",
       "You got as much inspirations from the mementos as possible."
       
