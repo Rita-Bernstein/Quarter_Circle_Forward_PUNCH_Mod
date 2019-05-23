@@ -58,9 +58,9 @@ public class SchoolBackpack extends CustomRelic {
 	public void atBattleStart() {
 		if (counter <= 0) {
 			current_description = DESCRIPTIONS[2];
-			//this.tips.clear();
-			//this.tips.add(new PowerTip(this.name, current_description));
-			//initializeTips();
+			this.tips.clear();
+			this.tips.add(new PowerTip(this.name, current_description));
+			initializeTips();
 		}
 	}
 	
