@@ -36,9 +36,9 @@ public class SchoolBackpack extends CustomRelic {
 	public static ArrayList<String> card_reward_rarity = new ArrayList<String>();
 	public static ArrayList<String> card_reward_id = new ArrayList<String>();
 	public static ArrayList<Boolean> card_reward_upgrade = new ArrayList<Boolean>();
+	
 	public static String current_description;
 
-	
 	public static final Logger logger = LogManager.getLogger(SchoolBackpack.class.getName());
 	
 	public SchoolBackpack() {
@@ -50,19 +50,31 @@ public class SchoolBackpack extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		if (current_description == null) return DESCRIPTIONS[0] + NUMBER_OF_EXTRA_CARDS + DESCRIPTIONS[1];
+		if (current_description == null) return getCommonDescription();
 		else return current_description;
+	}
+	
+	public String getCommonDescription() {
+		return DESCRIPTIONS[0] + NUMBER_OF_EXTRA_CARDS + DESCRIPTIONS[1];
 	}
 	
 	@Override
 	public void atBattleStart() {
 		
 		if (counter <= 0) {
-			current_description = DESCRIPTIONS[3];
-			this.tips.clear();
-			this.tips.add(new PowerTip(this.name, current_description));
-			initializeTips();
+			ChangeToEmptyRelicDescriptionAndToolTips();
 		}
+	}
+	
+	public String getEmptyRelicDescription() {
+		return DESCRIPTIONS[3];
+	}
+	
+	public void ChangeToEmptyRelicDescriptionAndToolTips() {
+		current_description = getEmptyRelicDescription();
+		this.tips.clear();
+		this.tips.add(new PowerTip(this.name, current_description));
+		initializeTips();
 	}
 	
 	@Override
