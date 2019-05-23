@@ -213,15 +213,10 @@ public class SchoolBackpack extends CustomRelic {
 	}
 	
 	private int circunstancesThatChangeCardNumber(int num_cards) {
-		if (AbstractDungeon.player.hasRelic("Question Card")) {
-			num_cards++;
-		}
-		if (AbstractDungeon.player.hasRelic("Busted Crown")) {
-		    num_cards -= 2;
-	    }
-		if (ModHelper.isModEnabled("Binary")) {
-		    num_cards--;
-		}
+		if (AbstractDungeon.player.hasRelic("Question Card")) 	num_cards++;
+		if (AbstractDungeon.player.hasRelic("Busted Crown")) 	num_cards -= 2;
+		if (ModHelper.isModEnabled("Binary")) 					num_cards--;
+	
 		return num_cards;
 	}
 
