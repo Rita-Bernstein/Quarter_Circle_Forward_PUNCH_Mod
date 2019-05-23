@@ -220,21 +220,21 @@ public class SchoolBackpack extends CustomRelic {
 		return num_cards;
 	}
 
-	private static AbstractCard getCardAvoidingDuplicates(ArrayList<AbstractCard> retVal, 
+	private static AbstractCard getCardAvoidingDuplicates(ArrayList<AbstractCard> array_of_cards_to_check, 
 			CardRarity rarity, PlayerClass a_class) {
 		
 		AbstractCard card = null;
 		
-		boolean containsDupe = true;
-		while (containsDupe)
+		boolean contains_duplicate = true;
+		while (contains_duplicate)
 		{
-    		containsDupe = false;
+    		contains_duplicate = false;
     		card = getCard(rarity, a_class);
 
-    		for (AbstractCard c : retVal) {
+    		for (AbstractCard c : array_of_cards_to_check) {
 	        	if (c.cardID.equals(card.cardID))
 	        	{
-	        		containsDupe = true;
+	        		contains_duplicate = true;
 	        		break;
 	        	}
 	      	}
@@ -252,15 +252,9 @@ public class SchoolBackpack extends CustomRelic {
 		
 		CardColor class_color = CardColor.COLORLESS;
 		
-		if (a_class == PlayerClass.DEFECT) {
-			class_color = CardColor.BLUE;
-		}
-		else if (a_class == PlayerClass.THE_SILENT) {
-			class_color = CardColor.GREEN;
-		}
-		else if (a_class == PlayerClass.IRONCLAD) {
-			class_color = CardColor.RED;
-		}
+		if (a_class == PlayerClass.DEFECT) 				class_color = CardColor.BLUE;
+		else if (a_class == PlayerClass.THE_SILENT) 	class_color = CardColor.GREEN;
+		else if (a_class == PlayerClass.IRONCLAD) 		class_color = CardColor.RED;
 		
 		for (Map.Entry<String, AbstractCard> a_card : CardLibrary.cards.entrySet()) {
 			AbstractCard one_more_card = a_card.getValue();
