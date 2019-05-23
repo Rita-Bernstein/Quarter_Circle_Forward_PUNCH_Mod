@@ -68,8 +68,9 @@ public class SchoolBackpack extends CustomRelic {
 	@Override
 	public void atPreBattle() {
 		
-		if ((counter == NUMBER_OF_EXTRA_CARDS) && (number_of_cards_left <= 0)){
+		if ((counter < number_of_cards_left)){
 			number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
+			counter = NUMBER_OF_EXTRA_CARDS;
 		}
 		
 		if ((number_of_cards_left > 0) && (AbstractDungeon.getCurrRoom().rewardAllowed)) {
