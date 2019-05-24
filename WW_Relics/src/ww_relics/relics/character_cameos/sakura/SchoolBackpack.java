@@ -250,17 +250,12 @@ public class SchoolBackpack extends CustomRelic {
 		CardGroup uncommon_class_CardPool = new CardGroup(CardGroupType.UNSPECIFIED);
 		CardGroup common_class_CardPool = new CardGroup(CardGroupType.UNSPECIFIED);
 		
-		CardColor class_color = CardColor.COLORLESS;
-		
-		if (a_class == PlayerClass.DEFECT) 				class_color = CardColor.BLUE;
-		else if (a_class == PlayerClass.THE_SILENT) 	class_color = CardColor.GREEN;
-		else if (a_class == PlayerClass.IRONCLAD) 		class_color = CardColor.RED;
-		
+		CardColor class_color = getColorOfBaseGameClass(a_class);
+
 		for (Map.Entry<String, AbstractCard> a_card : CardLibrary.cards.entrySet()) {
 			AbstractCard one_more_card = a_card.getValue();
-			if ((((AbstractCard)one_more_card).color == class_color) &&
-				(((AbstractCard)one_more_card).type != AbstractCard.CardType.STATUS) &&
-				(((AbstractCard)one_more_card).type != AbstractCard.CardType.CURSE)) {
+			
+			if (cardIsOfChosenColor(one_more_card, class_color)) {
 				
 				CardRarity this_card_rarity = ((AbstractCard)one_more_card).rarity;
 			
@@ -290,6 +285,26 @@ public class SchoolBackpack extends CustomRelic {
 	    }
 	    logger.info("Paraphrasing the base code comment: No rarity on getCard in Abstract Dungeon");
 	    return null;
+	}
+	
+	public static CardColor getColorOfBaseGameClass(PlayerClass a_class) {
+		
+		CardColor class_color = CardColor.COLORLESS;
+		
+		if (a_class == PlayerClass.DEFECT) 				class_color = CardColor.BLUE;
+		else if (a_class == PlayerClass.THE_SILENT) 	class_color = CardColor.GREEN;
+		else if (a_class == PlayerClass.IRONCLAD) 		class_color = CardColor.RED;
+		
+		return class_color;
+	}
+	
+	public static boolean cardIsOfChosenColor(AbstractCard one_card, CardColor class_color) {
+		
+		AbstractCard card = (AbstractCard)one_card;
+		
+		return (card.color == class_color) && (card.type != AbstractCard.CardType.STATUS) &&
+				(card.type != AbstractCard.CardType.CURSE);
+		
 	}
 	
 	public void AddSavedReward() {
