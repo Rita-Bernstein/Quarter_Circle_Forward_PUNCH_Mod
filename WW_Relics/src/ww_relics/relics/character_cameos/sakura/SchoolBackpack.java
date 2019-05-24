@@ -347,6 +347,7 @@ public class SchoolBackpack extends CustomRelic {
     		} 
     		else {
     			
+    			//No, I don't understand how these next four lines fixed a bug. Go figure.
     			if (AbstractDungeon.getCurrRoom().isBattleOver) {
         			config.setInt("school_backpack_1", number_of_cards_left + 1);
         		}
@@ -354,26 +355,9 @@ public class SchoolBackpack extends CustomRelic {
                 
                 if (AbstractDungeon.getCurrRoom().isBattleOver) {
                 	config.setBool("school_backpack_3", true);
-                } else {
-                	config.setBool("school_backpack_3", false);
-                }
+                } else config.setBool("school_backpack_3", false);
                 
-                
-                
-                if (card_reward == null) {
-                	config.setInt("school_backpack_reward_size", 0);
-                } else config.setInt("school_backpack_reward_size", card_reward.cards.size());
-                
-                if (card_reward != null) {
-                	for (int i = 0; i < card_reward.cards.size(); i++) {
-                    	config.setString("school_backpack_reward_" + String.valueOf(i),
-                    			card_reward.cards.get(i).cardID);
-                    	config.setString("school_backpack_reward_rarity_" + String.valueOf(i),
-                    			card_reward.cards.get(i).rarity.toString());
-                    	config.setBool("school_backpack_reward_upgrade_" + String.valueOf(i),
-                    			card_reward.cards.get(i).upgraded);
-                    }
-                }
+                storeCardRewardCreated(config, card_reward);
     			
                 try {
     				config.save();
@@ -390,6 +374,25 @@ public class SchoolBackpack extends CustomRelic {
 
     }
 	
+	public static void storeCardRewardCreated(final SpireConfig config, RewardItem card_reward) {
+		
+		if (card_reward == null) {
+        	config.setInt("school_backpack_reward_size", 0);
+        } else config.setInt("school_backpack_reward_size", card_reward.cards.size());
+        
+        if (card_reward != null) {
+        	for (int i = 0; i < card_reward.cards.size(); i++) {
+            	config.setString("school_backpack_reward_" + String.valueOf(i),
+            			card_reward.cards.get(i).cardID);
+            	config.setString("school_backpack_reward_rarity_" + String.valueOf(i),
+            			card_reward.cards.get(i).rarity.toString());
+            	config.setBool("school_backpack_reward_upgrade_" + String.valueOf(i),
+            			card_reward.cards.get(i).upgraded);
+            }
+        }
+		
+	}
+	
 	public static void load(final SpireConfig config) {
 		
 		logger.info("Loading School Backpack info.");
@@ -397,15 +400,7 @@ public class SchoolBackpack extends CustomRelic {
 
 			number_of_cards_left = config.getInt("school_backpack_1");
 			
-			int size = config.getInt("school_backpack_reward_size");
-			
-			for (int i = 0; i < size; i++) {
-				
-				card_reward_rarity.add(config.getString("school_backpack_reward_rarity_" + String.valueOf(i)));			
-				card_reward_id.add(config.getString("school_backpack_reward_" + String.valueOf(i)));
-				card_reward_upgrade.add(config.getBool("school_backpack_reward_upgrade_" + String.valueOf(i)));
-			
-			}
+			loadCardRewardStored(config);
 			
 			battle_ended_before = config.getBool("school_backpack_3");
 			
@@ -424,9 +419,20 @@ public class SchoolBackpack extends CustomRelic {
 
 			logger.info("Finished setting School Backpack variables.");
 		}
-		
-		
     }
+	
+	public static void loadCardRewardStored(final SpireConfig config) {
+		
+		int size = config.getInt("school_backpack_reward_size");
+		
+		for (int i = 0; i < size; i++) {
+			
+			card_reward_rarity.add(config.getString("school_backpack_reward_rarity_" + String.valueOf(i)));			
+			card_reward_id.add(config.getString("school_backpack_reward_" + String.valueOf(i)));
+			card_reward_upgrade.add(config.getBool("school_backpack_reward_upgrade_" + String.valueOf(i)));
+		
+		}
+	}
 	
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing School Backpack variables.");
@@ -434,19 +440,24 @@ public class SchoolBackpack extends CustomRelic {
         config.remove("school_backpack_2");
         
         if (config.has("school_backpack_reward_size")) {
-        	int size = config.getInt("school_backpack_reward_size");
-        
-			for (int i = 0; i < size; i++) {
-				
-				config.remove("school_backpack_reward_rarity_" + String.valueOf(i));			
-				config.remove("school_backpack_reward_" + String.valueOf(i));
-				config.remove("school_backpack_reward_upgrade_" + String.valueOf(i));
-			
-			}
-
+        	clearCardRewardStored(config);
         }
         
         logger.info("Finished clearing School Backpack variables.");
+	}
+	
+	public static void clearCardRewardStored(final SpireConfig config) {
+		
+		int size = config.getInt("school_backpack_reward_size");
+        
+		for (int i = 0; i < size; i++) {
+			
+			config.remove("school_backpack_reward_rarity_" + String.valueOf(i));			
+			config.remove("school_backpack_reward_" + String.valueOf(i));
+			config.remove("school_backpack_reward_upgrade_" + String.valueOf(i));
+		
+		}
+		
 	}
 	
 	@Override
