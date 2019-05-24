@@ -129,11 +129,13 @@ public class DuffelBag extends CustomRelic {
 			card_reward.cards.clear();
 			card_reward.cards.add(reward_cards.get(card_position - 1));
 			AbstractDungeon.getCurrRoom().addCardReward(card_reward);
+			flash();
 			
 		} else if (number_of_rewards_left > 0) {
 			
 			AbstractRelic relic = AbstractDungeon.returnRandomRelic(RelicTier.COMMON);
 			AbstractDungeon.getCurrRoom().addRelicToRewards(relic);
+			flash();
 			
 		}
 		
