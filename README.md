@@ -3,7 +3,7 @@ A Slay The Spire mod, which adds primarily relics directly inspired by fighters 
 
 # Content
 
-* Ten relics done of 16+ planned, with temporary images and placeholder sounds.
+* Fourteen relics done of 16+ planned, with temporary images and placeholder sounds.
 * Seven game modifiers, ranging from adding more relics at start to making the game harder.
 * Six cards, acessible through one specific relic.
 
@@ -39,19 +39,21 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 9. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
 10. Relics inspired by Cammy, Fei Long and Deejay. (number unknown)
 11. ?????????????????????
-12. New balanced Custom Modifiers revolving around fighter's set relics. (use Blademaster Perk system, perhaps, together with linked relics?)
-13. Update of beta art and sound assets.
+12. Reworking of 2 Custom Modifier revolving around fighter's set relics to make the equivalent of mini-characters. (use Blademaster Perk system, perhaps, together with linked relics?) (can this be added to the main character screen?)
+13. Reworking of more 2 Custom Modifiers
+14. Update of beta art and sound assets to release version
 
 (and here we reach v1.0)
 
-14. Polishing, refactoring and balancing.
-15. Synergy and adaptation with Infinite Spire. (Black cards? Black cards. o9)
-16. Synergy and adaptation with other mods.
+15. Polishing, refactoring and balancing.
+16. Synergy and adaptation with Infinite Spire. (Black cards? Black cards. o9)
+17. Boss inspired by Street Fighter 2 stuff.
+18. Synergy and adaptation with other mods.
 
 And MAYBE (not making promises here)
 
-17. Cards inspired by moves of fighting games (and here I include Smash), that can be get through events or other mod's access to a hidden character.
-18. Special shop with stuff from this mod (cards above mentioned included) and removal with a good discount.
+19. Cards inspired by moves of fighting games (and here I include Smash), that can be get through events or other mod's access to a hidden character.
+20. Special shop with stuff from this mod (cards above mentioned included) and removal with a good discount.
 
 # Requirements
 
@@ -86,8 +88,6 @@ Nafen, from the Slay The Spire Discord's modding channel, for helping with the d
 Lots of people from the Slay The Spire Discord's modding channel for pointing stuff from this mod to improve/polish/buff/nerf, check the "suggestion from discord" tag in the Issues to see specifics.
 
 Thiago, for helping with finding some bugs in the v0.6.* versions.
-
-
 
 STREET FIGHTER is a registered trademark of CAPCOM U.S.A., INC.
 
