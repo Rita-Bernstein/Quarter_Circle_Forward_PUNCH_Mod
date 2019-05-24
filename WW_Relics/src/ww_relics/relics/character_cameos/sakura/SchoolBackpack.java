@@ -65,7 +65,7 @@ public class SchoolBackpack extends CustomRelic {
 			ChangeToEmptyRelicDescriptionAndToolTips();
 		}
 	}
-	
+
 	public String getEmptyRelicDescription() {
 		return DESCRIPTIONS[3];
 	}
@@ -76,6 +76,8 @@ public class SchoolBackpack extends CustomRelic {
 		this.tips.add(new PowerTip(this.name, current_description));
 		initializeTips();
 	}
+	
+
 	
 	@Override
 	public void atPreBattle() {
@@ -97,7 +99,9 @@ public class SchoolBackpack extends CustomRelic {
 	}
 	
 	public void avoidCounterProblemsBetweenSaves() {
-		if ((counter != number_of_cards_left)){
+		if (number_of_cards_left <= 0) {
+			counter = number_of_cards_left;
+		} else if ((counter != number_of_cards_left)){
 			number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
 			counter = NUMBER_OF_EXTRA_CARDS;
 		}
