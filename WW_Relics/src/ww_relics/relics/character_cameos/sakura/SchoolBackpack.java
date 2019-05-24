@@ -84,18 +84,18 @@ public class SchoolBackpack extends CustomRelic {
 		
 		avoidCounterProblemsBetweenSaves();
 		
-		if ((number_of_cards_left > 0) && (AbstractDungeon.getCurrRoom().rewardAllowed)) {
-			
+		if (battle_ended_before) {
+			AddSavedReward();
+			ifEmptyVanishWithCounterNumber();
+		}
+		else if ((number_of_cards_left > 0) && (AbstractDungeon.getCurrRoom().rewardAllowed)) {
 			if (!battle_ended_before) {
 				reduceNumberOfUsesByOne();
 				ifEmptyVanishWithCounterNumber();
 				AddReward();
-			} else {
-				AddSavedReward();
 			}
-		} else {
-			ifEmptyVanishWithCounterNumber();
 		}
+		
 	}
 	
 	public void avoidCounterProblemsBetweenSaves() {
@@ -346,7 +346,9 @@ public class SchoolBackpack extends CustomRelic {
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
     		logger.info("Started saving School Backpack information");
 
+    		logger.info("1");
     		if (AbstractDungeon.isDungeonBeaten || AbstractDungeon.player.isDead) {
+    			logger.info("2");
     			clear(config);
     		} 
     		else {
@@ -443,6 +445,7 @@ public class SchoolBackpack extends CustomRelic {
 		logger.info("Clearing School Backpack variables.");
         config.remove("school_backpack_1");
         config.remove("school_backpack_2");
+        config.remove("school_backpack)3");
         
         if (config.has("school_backpack_reward_size")) {
         	clearCardRewardStored(config);
@@ -462,6 +465,8 @@ public class SchoolBackpack extends CustomRelic {
 			config.remove("school_backpack_reward_upgrade_" + String.valueOf(i));
 		
 		}
+		
+		config.remove("school_backpack_reward_size");
 		
 	}
 	
