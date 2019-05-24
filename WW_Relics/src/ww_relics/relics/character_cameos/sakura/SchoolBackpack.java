@@ -352,7 +352,8 @@ public class SchoolBackpack extends CustomRelic {
     		else {
     			
     			//No, I don't understand how these next four lines fixed a bug. Go figure.
-    			if (AbstractDungeon.getCurrRoom().isBattleOver) {
+    			//AND this is the possible culprit, changing it now
+    			if (AbstractDungeon.getCurrRoom().isBattleOver && number_of_cards_left > 0) {
         			config.setInt("school_backpack_1", number_of_cards_left + 1);
         		}
         		else config.setInt("school_backpack_1", number_of_cards_left);
