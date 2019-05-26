@@ -378,17 +378,8 @@ public class SchoolBackpack extends CustomRelic {
     				config.setBool("school_backpack_2", true);
     			} else config.setBool("school_backpack_2", false);
     			
-    			//No, I don't understand how these next four lines fixed a bug. Go figure.
-    			//AND this is the possible culprit, changing it now
-    			if (AbstractDungeon.getCurrRoom().isBattleOver && number_of_cards_left > 0) {
-        			config.setInt("school_backpack_1", number_of_cards_left + 1);
-        		}
-        		else {
-        			config.setInt("school_backpack_1", number_of_cards_left);
-        		}
+        		config.setInt("school_backpack_1", number_of_cards_left);
     			
-
-                
                 config.setInt("school_backpack_3", floor_of_last_stored_reward);
                 
                 config.setBool("school_backpack_4", empty_relic);
