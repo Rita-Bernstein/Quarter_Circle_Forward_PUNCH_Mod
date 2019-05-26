@@ -40,7 +40,7 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 10. Relics inspired by Cammy, Fei Long and Deejay. (number unknown)
 11. ?????????????????????
 12. Reworking of 2 Custom Modifier revolving around fighter's set relics to make the equivalent of mini-characters. (use Blademaster Perk system, perhaps, together with linked relics?) (can this be added to the main character screen?)
-13. Reworking of more 2 Custom Modifiers
+13. Reworking of at least more 2 Custom Modifiers to have more mini-characters.
 14. Update of beta art and sound assets to release version
 
 (and here we reach v1.0)
