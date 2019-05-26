@@ -24,6 +24,11 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import basemod.abstracts.CustomRelic;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
+/* Lose all hope of a clean and easy to do relic, those who enter here
+ * thinking to copy this code and change it for their own creation.
+ * ...seriously, I probably made another relic like this with a better code, search that out
+ * (and no, it's not Duffel Bag).
+ */
 public class SchoolBackpack extends CustomRelic {
 
 	public static final String ID = "WW_Relics:School_Backpack";
