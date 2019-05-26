@@ -20,7 +20,6 @@ import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rewards.RewardItem.RewardType;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import basemod.abstracts.CustomRelic;
 import ww_relics.resources.relic_graphics.GraphicResources;
@@ -59,8 +58,6 @@ public class SchoolBackpack extends CustomRelic {
 		card_reward_id = new ArrayList<String>();
 		card_reward_upgrade = new ArrayList<Boolean>();
 		
-		logger.info("Hey Hey Hey Hey Hey Hey Hey Hey Hey");
-		
 	}
 	
 	public String getUpdatedDescription() {
@@ -94,14 +91,11 @@ public class SchoolBackpack extends CustomRelic {
 		
 		card_reward = new RewardItem();
 		
-		logger.info("pre battle - " + counter);
-		
 		if (counter <= 0) {
 			ChangeToEmptyRelicDescriptionAndToolTips();
 		}
 		
 		if (AbstractDungeon.floorNum == floor_of_last_stored_reward) {
-			logger.info("Hm");
 			AddSavedReward();
 			ifEmptyVanishWithCounterNumber();
 			no_saved_reward = false;
@@ -122,8 +116,6 @@ public class SchoolBackpack extends CustomRelic {
 		}
 			
 		if (!empty_relic && counter <= 0) empty_relic = true;
-		
-		logger.info("Fim de pre battle - " + counter);
 	}
 	
 	public void avoidCounterProblemsBetweenSaves() {
@@ -371,11 +363,6 @@ public class SchoolBackpack extends CustomRelic {
 		flash();
 		
 	}
-
-	@Override
-	public void onEnterRoom(AbstractRoom room) {
-		logger.info("AAAA");
-	}
 	
 	public static void save(final SpireConfig config) {
 
@@ -386,9 +373,7 @@ public class SchoolBackpack extends CustomRelic {
     			clear(config);
     		} 
     		else {
-    			
-    			logger.info("AbstractDungeon.getCurrRoom().isBattleOver" + AbstractDungeon.getCurrRoom().isBattleOver);
-    			   			
+    					
         		config.setInt("school_backpack_1", number_of_cards_left);
     			
                 config.setInt("school_backpack_3", floor_of_last_stored_reward);
