@@ -349,10 +349,11 @@ public class SchoolBackpack extends CustomRelic {
 				reward_card.upgrade();
 			}
 			
-			card_reward.text = DESCRIPTIONS[1];
 			card_reward.cards.add(reward_card);	
 		
 		}
+		
+		card_reward.text = DESCRIPTIONS[2];
 			
 		AbstractDungeon.getCurrRoom().addCardReward(card_reward);
 		flash();
