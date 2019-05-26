@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.rewards.RewardItem.RewardType;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import basemod.abstracts.CustomRelic;
@@ -168,6 +169,7 @@ public class SchoolBackpack extends CustomRelic {
 	public RewardItem createReward(PlayerClass reward_class) {
 		RewardItem reward_created = new RewardItem();
 		reward_created.cards.clear();
+		reward_created.type = RewardType.CARD;
 		reward_created.cards = createCardsFromOtherClassForReward(reward_class);
 		reward_created.text = DESCRIPTIONS[2];
 		return reward_created;
@@ -333,13 +335,15 @@ public class SchoolBackpack extends CustomRelic {
 	public void AddSavedReward() {
 		
 		card_reward = new RewardItem();
+		card_reward.cards.clear();
+		card_reward.type = RewardType.CARD;
 		card_reward.cards = new ArrayList<AbstractCard>();
 				
 		int size = card_reward_id.size();
 		
 		for (int i = 0; i < size; i++) {
 			
-			AbstractCard reward_card;
+			AbstractCard reward_card = null;
 						
 			reward_card = CardLibrary.cards.get(card_reward_id.get(i)).makeCopy();
 			
@@ -354,7 +358,7 @@ public class SchoolBackpack extends CustomRelic {
 		}
 		
 		card_reward.text = DESCRIPTIONS[2];
-			
+		
 		AbstractDungeon.getCurrRoom().addCardReward(card_reward);
 		flash();
 		
@@ -470,6 +474,7 @@ public class SchoolBackpack extends CustomRelic {
 		number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
 		empty_relic = false;
 		floor_of_last_stored_reward = 0;
+		card_reward = new RewardItem();
 		
         config.remove("school_backpack_1");
         config.remove("school_backpack_3");
