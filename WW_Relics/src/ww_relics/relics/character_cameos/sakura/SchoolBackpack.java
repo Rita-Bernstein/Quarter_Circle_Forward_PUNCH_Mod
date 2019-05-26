@@ -32,7 +32,6 @@ public class SchoolBackpack extends CustomRelic {
 	public static final float CHANCE_OF_UPGRADED_CARDS = 0.1f;
 	
 	public static int number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
-	public static boolean battle_ended_before = false;
 	public static boolean empty_relic = false;
 	public static int floor_of_last_stored_reward = 0;
 	public static RewardItem card_reward;
@@ -81,40 +80,36 @@ public class SchoolBackpack extends CustomRelic {
 	public void atPreBattle() {
 		boolean no_saved_reward = true;
 		
-		logger.info("NOW THIS HAS TO GO");
-		logger.info(battle_ended_before);
-		logger.info(AbstractDungeon.floorNum  == floor_of_last_stored_reward);
+		logger.info("pre battle - " + counter);
 		
 		if (counter <= 0) {
 			ChangeToEmptyRelicDescriptionAndToolTips();
 		}
 		
-		if (battle_ended_before && AbstractDungeon.floorNum == floor_of_last_stored_reward) {
+		if (AbstractDungeon.floorNum == floor_of_last_stored_reward) {
 			
 			AddSavedReward();
 			ifEmptyVanishWithCounterNumber();
 			no_saved_reward = false;
-		}
-		
-		if (!empty_relic) {
 			
+		} else if (!empty_relic) {
+
 			avoidCounterProblemsBetweenSaves();
 			
 			if (no_saved_reward && (number_of_cards_left > 0) && (AbstractDungeon.getCurrRoom().rewardAllowed)) {
-				if (!battle_ended_before) {
-					reduceNumberOfUsesByOne();
-					ifEmptyVanishWithCounterNumber();
-					if (counter <= 0) {
-						ChangeToEmptyRelicDescriptionAndToolTips();
-					}
-					AddReward();
-					floor_of_last_stored_reward = AbstractDungeon.floorNum;
+				reduceNumberOfUsesByOne();
+				ifEmptyVanishWithCounterNumber();
+				if (counter <= 0) {
+					ChangeToEmptyRelicDescriptionAndToolTips();
 				}
+				AddReward();
+				floor_of_last_stored_reward = AbstractDungeon.floorNum;
 			}
 		}
 			
 		if (!empty_relic && counter <= 0) empty_relic = true;
 		
+		logger.info("Fim de pre battle - " + counter);
 	}
 	
 	public void avoidCounterProblemsBetweenSaves() {
@@ -374,6 +369,8 @@ public class SchoolBackpack extends CustomRelic {
     		} 
     		else {
     			
+    			logger.info("AbstractDungeon.getCurrRoom().isBattleOver" + AbstractDungeon.getCurrRoom().isBattleOver);
+    			
     			if (AbstractDungeon.getCurrRoom().isBattleOver) {
     				config.setBool("school_backpack_2", true);
     			} else config.setBool("school_backpack_2", false);
@@ -427,8 +424,6 @@ public class SchoolBackpack extends CustomRelic {
 
 			number_of_cards_left = config.getInt("school_backpack_1");
 			
-			battle_ended_before = config.getBool("school_backpack_2");
-			
 			loadCardRewardStored(config);
 			
 			floor_of_last_stored_reward = config.getInt("school_backpack_3");
@@ -468,7 +463,6 @@ public class SchoolBackpack extends CustomRelic {
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing School Backpack variables.");
         config.remove("school_backpack_1");
-        config.remove("school_backpack_2");
         config.remove("school_backpack_3");
         config.remove("school_backpack_4");
         
