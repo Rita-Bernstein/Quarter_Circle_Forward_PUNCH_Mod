@@ -33,7 +33,7 @@ public class SchoolBackpack extends CustomRelic {
 
 	public static final String ID = "WW_Relics:School_Backpack";
 	
-	public static final int NUMBER_OF_EXTRA_CARDS = 2;
+	public static final int NUMBER_OF_EXTRA_CARDS = 5;
 	public static final float CHANCE_OF_UPGRADED_CARDS = 0.1f;
 	
 	public static int number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
