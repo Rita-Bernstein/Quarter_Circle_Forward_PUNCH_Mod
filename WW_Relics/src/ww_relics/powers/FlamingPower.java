@@ -56,9 +56,14 @@ public class FlamingPower extends AbstractPower {
 		}
 	}
 	
+	//This will be more complicated in a possible future
 	public boolean cardCanTriggerEffect(AbstractCard card) {
-		return (card.type == CardType.ATTACK) &&
-				((card.target == CardTarget.ENEMY) || (card.target == CardTarget.SELF_AND_ENEMY));
+		
+		boolean card_is_an_attack = card.type == CardType.ATTACK;
+		boolean card_has_a_single_target = (card.target == CardTarget.ENEMY) || (card.target == CardTarget.SELF_AND_ENEMY);
+
+		
+		return card_is_an_attack && card_has_a_single_target;
 	}
 	
 	@Override
