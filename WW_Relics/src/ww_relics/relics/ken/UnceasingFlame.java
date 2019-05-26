@@ -75,8 +75,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	public void onPlayCard(AbstractCard card, AbstractMonster m) {
 
 		if (canAChargeBeAdded(card)) {
-			counter++;
-			charges++;
+			counter++; charges++;
 			fixCounter();
 		}
 		
@@ -90,23 +89,13 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	public void onRightClick() {
 		
 		if (AbstractDungeon.getCurrRoom() instanceof MonsterRoom) {
-			if (effectCanBeTriggered())
-				{
+			if (effectCanBeTriggered()) {
 				
 				if (counter == 6) {
-					counter -= 6;
-					charges -= 6;
-					fixCounter();
-					AbstractDungeon.actionManager.addToBottom(
-						new ApplyPowerAction(AbstractDungeon.player,
-								AbstractDungeon.player,
-							new FlamingPower(AbstractDungeon.player, 1, MINIMUM_DAMAGE_FROM_FLAMING),
-							1));
+					counter -= 6; charges -= 6; fixCounter();
+					AbstractDungeon.actionManager.addToBottom(applyFlamingPowerAction());
 				}
-				
 			}
-			
-			
 		}			
 	}
 	
@@ -121,6 +110,12 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 		}
 		
 		return can_be_triggered;
+	}
+	
+	private ApplyPowerAction applyFlamingPowerAction() {
+		return new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
+			new FlamingPower(AbstractDungeon.player, 1, MINIMUM_DAMAGE_FROM_FLAMING),
+			1);
 	}
 	
 	public static void save(final SpireConfig config) {
