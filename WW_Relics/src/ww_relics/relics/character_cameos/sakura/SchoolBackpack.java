@@ -68,10 +68,6 @@ public class SchoolBackpack extends CustomRelic {
 	@Override
 	public void atBattleStart() {
 		
-		if (counter <= 0) {
-			ChangeToEmptyRelicDescriptionAndToolTips();
-		}
-		
 	}
 	
 	public void ChangeToEmptyRelicDescriptionAndToolTips() {
@@ -89,7 +85,12 @@ public class SchoolBackpack extends CustomRelic {
 		logger.info(battle_ended_before);
 		logger.info(AbstractDungeon.floorNum  == floor_of_last_stored_reward);
 		
+		if (counter <= 0) {
+			ChangeToEmptyRelicDescriptionAndToolTips();
+		}
+		
 		if (battle_ended_before && AbstractDungeon.floorNum == floor_of_last_stored_reward) {
+			
 			AddSavedReward();
 			ifEmptyVanishWithCounterNumber();
 			no_saved_reward = false;
@@ -103,6 +104,9 @@ public class SchoolBackpack extends CustomRelic {
 				if (!battle_ended_before) {
 					reduceNumberOfUsesByOne();
 					ifEmptyVanishWithCounterNumber();
+					if (counter <= 0) {
+						ChangeToEmptyRelicDescriptionAndToolTips();
+					}
 					AddReward();
 					floor_of_last_stored_reward = AbstractDungeon.floorNum;
 				}
