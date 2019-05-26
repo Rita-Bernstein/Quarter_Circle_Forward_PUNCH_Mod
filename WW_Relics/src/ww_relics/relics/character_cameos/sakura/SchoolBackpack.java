@@ -41,9 +41,9 @@ public class SchoolBackpack extends CustomRelic {
 	public static boolean empty_relic = false;
 	public static int floor_of_last_stored_reward = 0;
 	public static RewardItem card_reward;
-	public static ArrayList<String> card_reward_rarity = new ArrayList<String>();
-	public static ArrayList<String> card_reward_id = new ArrayList<String>();
-	public static ArrayList<Boolean> card_reward_upgrade = new ArrayList<Boolean>();
+	public static ArrayList<String> card_reward_rarity;
+	public static ArrayList<String> card_reward_id;
+	public static ArrayList<Boolean> card_reward_upgrade;
 	
 	public static String current_description;
 
@@ -54,6 +54,12 @@ public class SchoolBackpack extends CustomRelic {
 				RelicTier.UNCOMMON, LandingSound.HEAVY);
 		
 		counter = NUMBER_OF_EXTRA_CARDS;
+		
+		card_reward_rarity = new ArrayList<String>();
+		card_reward_id = new ArrayList<String>();
+		card_reward_upgrade = new ArrayList<Boolean>();
+		
+		logger.info("Hey Hey Hey Hey Hey Hey Hey Hey Hey");
 		
 	}
 	
