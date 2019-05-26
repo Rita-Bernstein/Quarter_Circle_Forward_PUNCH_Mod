@@ -87,7 +87,9 @@ Nafen, from the Slay The Spire Discord's modding channel, for helping with the d
 
 Lots of people from the Slay The Spire Discord's modding channel for pointing stuff from this mod to improve/polish/buff/nerf, check the "suggestion from discord" tag in the Issues to see specifics.
 
-Thiago, for helping with finding some bugs in the v0.6.* versions.
+Thiago, for helping with finding some bugs in the 0.6.* versions.
+
+Discord's bulbamaster#5216 for testing the 0.9 version.
 
 STREET FIGHTER is a registered trademark of CAPCOM U.S.A., INC.
 
