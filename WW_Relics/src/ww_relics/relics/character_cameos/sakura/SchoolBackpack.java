@@ -467,7 +467,7 @@ public class SchoolBackpack extends CustomRelic {
 		number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
 		empty_relic = false;
 		floor_of_last_stored_reward = 0;
-		card_reward = new RewardItem();
+		card_reward = null;
 		
         config.remove("school_backpack_1");
         config.remove("school_backpack_3");
