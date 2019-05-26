@@ -32,6 +32,7 @@ public class SchoolBackpack extends CustomRelic {
 	
 	public static int number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
 	public static boolean battle_ended_before = false;
+	public static boolean empty_relic = false;
 	public static RewardItem card_reward;
 	public static ArrayList<String> card_reward_rarity = new ArrayList<String>();
 	public static ArrayList<String> card_reward_id = new ArrayList<String>();
@@ -82,19 +83,25 @@ public class SchoolBackpack extends CustomRelic {
 	@Override
 	public void atPreBattle() {
 		
-		avoidCounterProblemsBetweenSaves();
-		
-		if (battle_ended_before) {
-			AddSavedReward();
-			ifEmptyVanishWithCounterNumber();
-		}
-		else if ((number_of_cards_left > 0) && (AbstractDungeon.getCurrRoom().rewardAllowed)) {
-			if (!battle_ended_before) {
-				reduceNumberOfUsesByOne();
+		if (!empty_relic) {
+			
+			avoidCounterProblemsBetweenSaves();
+			
+			if (battle_ended_before) {
+				AddSavedReward();
 				ifEmptyVanishWithCounterNumber();
-				AddReward();
 			}
+			else if ((number_of_cards_left > 0) && (AbstractDungeon.getCurrRoom().rewardAllowed)) {
+				if (!battle_ended_before) {
+					reduceNumberOfUsesByOne();
+					ifEmptyVanishWithCounterNumber();
+					AddReward();
+				}
+			}
+			
 		}
+		
+		if (!empty_relic && counter <= 0) empty_relic = true;
 		
 	}
 	
@@ -364,6 +371,8 @@ public class SchoolBackpack extends CustomRelic {
                 	config.setBool("school_backpack_3", true);
                 } else config.setBool("school_backpack_3", false);
                 
+                config.setBool("school_backpack_4", empty_relic);
+                
                 storeCardRewardCreated(config, card_reward);
     			
                 try {
@@ -411,6 +420,8 @@ public class SchoolBackpack extends CustomRelic {
 			
 			battle_ended_before = config.getBool("school_backpack_3");
 			
+			empty_relic = config.getBool("school_backpack_4");
+			
             try {
 				config.load();
 			} catch (IOException e) {
@@ -445,7 +456,8 @@ public class SchoolBackpack extends CustomRelic {
 		logger.info("Clearing School Backpack variables.");
         config.remove("school_backpack_1");
         config.remove("school_backpack_2");
-        config.remove("school_backpack)3");
+        config.remove("school_backpack_3");
+        config.remove("school_backpack_4");
         
         if (config.has("school_backpack_reward_size")) {
         	clearCardRewardStored(config);
