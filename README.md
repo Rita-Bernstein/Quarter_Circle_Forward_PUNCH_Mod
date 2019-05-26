@@ -54,6 +54,8 @@ And MAYBE (not making promises here)
 
 19. Cards inspired by moves of fighting games (and here I include Smash), that can be get through events or other mod's access to a hidden character.
 20. Special shop with stuff from this mod (cards above mentioned included) and removal with a good discount.
+21. Elite monsters.
+22. Extra events.
 
 # Requirements
 
