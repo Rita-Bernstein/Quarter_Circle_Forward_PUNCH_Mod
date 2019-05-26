@@ -190,6 +190,10 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		if (isCustomModActive(RelicSetModifiers.INDESTRUCTIBLE_FORTRESS_ID)) {
 			RelicSetModifiers.addIndestructibleFortressToCustomRun(relics);
 		}
+		
+		if (isCustomModActive(RelicSetModifiers.BLAZING_FIST_ID)) {
+			RelicSetModifiers.addBlazingFistToCustomRun(relics);
+		}
 	}
 	
     @Override
