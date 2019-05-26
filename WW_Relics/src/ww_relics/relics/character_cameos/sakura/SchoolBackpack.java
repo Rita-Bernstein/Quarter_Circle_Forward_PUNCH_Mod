@@ -86,6 +86,8 @@ public class SchoolBackpack extends CustomRelic {
 	public void atPreBattle() {
 		boolean no_saved_reward = true;
 		
+		card_reward = new RewardItem();
+		
 		logger.info("pre battle - " + counter);
 		
 		if (counter <= 0) {
@@ -93,7 +95,7 @@ public class SchoolBackpack extends CustomRelic {
 		}
 		
 		if (AbstractDungeon.floorNum == floor_of_last_stored_reward) {
-			
+			logger.info("Hm");
 			AddSavedReward();
 			ifEmptyVanishWithCounterNumber();
 			no_saved_reward = false;
