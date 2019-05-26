@@ -458,6 +458,13 @@ public class SchoolBackpack extends CustomRelic {
 	
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing School Backpack variables.");
+		
+		//yeah, I know this part could be improved, but I don't have willpower to do it so now.
+		//So...
+		number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
+		empty_relic = false;
+		floor_of_last_stored_reward = 0;
+		
         config.remove("school_backpack_1");
         config.remove("school_backpack_3");
         config.remove("school_backpack_4");
