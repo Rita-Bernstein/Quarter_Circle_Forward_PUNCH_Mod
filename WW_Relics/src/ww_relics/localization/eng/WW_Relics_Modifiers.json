@@ -14,6 +14,11 @@
 		"DESCRIPTION": "Start with Army Boots, Chain With Nametags and Combat Fatigues."
 	},
 	
+	"ww_relics:BlazingFist": {
+		"NAME": "Blazing Fist",
+		"DESCRIPTION": "Start with Black Training Shirt, Red Gi and Unceasing Flame."
+	},
+	
 	"ww_relics:WaitNoRestBetweenRounds": {
 		"NAME": "Wait, No Rest Between Rounds?",
 		"DESCRIPTION": "Start with 65% Max HP."
