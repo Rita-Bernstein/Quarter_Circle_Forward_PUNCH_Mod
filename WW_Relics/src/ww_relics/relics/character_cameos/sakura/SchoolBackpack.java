@@ -370,11 +370,7 @@ public class SchoolBackpack extends CustomRelic {
     		else {
     			
     			logger.info("AbstractDungeon.getCurrRoom().isBattleOver" + AbstractDungeon.getCurrRoom().isBattleOver);
-    			
-    			if (AbstractDungeon.getCurrRoom().isBattleOver) {
-    				config.setBool("school_backpack_2", true);
-    			} else config.setBool("school_backpack_2", false);
-    			
+    			   			
         		config.setInt("school_backpack_1", number_of_cards_left);
     			
                 config.setInt("school_backpack_3", floor_of_last_stored_reward);
