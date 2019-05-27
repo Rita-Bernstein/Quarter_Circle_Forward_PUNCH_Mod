@@ -11,7 +11,7 @@ A Slay The Spire mod, which adds primarily relics directly inspired by fighters 
 
 Walking towards roadmap's milestone 2 (and simultaneously doing stuff from milestone 3).
 
-# Link to Releases
+# Link to Releases and Pre-Releases
 
 Link [here](https://github.com/Clauvin/World_Warriors_Mod/releases).
 
