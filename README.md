@@ -37,29 +37,30 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 
 - (thanks to rl issues, a pause will be made in this mod's development but 16 relics will be done already when finishing the fourth milestone)
 
-6. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
-7. One boss relic for Boxer, Claw and Sagat, respectively. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
-8. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
-9. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
-10. Relics inspired by Cammy, Fei Long and Deejay. (number unknown)
-11. ?????????????????????
-12. Reworking of 2 Custom Modifier revolving around fighter's set relics to make the equivalent of mini-characters. (use Blademaster Perk system, perhaps, together with linked relics?) (can this be added to the main character screen?)
-13. Reworking of at least more 2 Custom Modifiers to have more mini-characters.
-14. Update of beta art and sound assets to release version
+6. Add a Challenge to Challenge The Spire.
+7. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
+8. One boss relic for Boxer, Claw and Sagat, respectively. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
+9. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
+10. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
+11. Relics inspired by Cammy, Fei Long and Deejay. (number unknown)
+12. ?????????????????????
+13. Reworking of 2 Custom Modifier revolving around fighter's set relics to make the equivalent of mini-characters. (use Blademaster Perk system, perhaps, together with linked relics?) (can this be added to the main character screen?)
+14. Reworking of at least more 2 Custom Modifiers to have more mini-characters.
+15. Update of beta art and sound assets to release version
 
 (and here we reach v1.0)
 
-15. Polishing, refactoring and balancing.
-16. Synergy and adaptation with Infinite Spire. (Black cards? Black cards. o9)
-17. Boss inspired by Street Fighter 2 stuff.
-18. Synergy and adaptation with other mods.
+16. Polishing, refactoring and balancing.
+17. Synergy and adaptation with Infinite Spire. (Black cards? Black cards. o9)
+18. Boss inspired by Street Fighter 2 stuff.
+19. Synergy and adaptation with other mods.
 
 And MAYBE (not making promises here)
 
-19. Cards inspired by moves of fighting games (and here I include Smash), that can be get through events or other mod's access to a hidden character.
-20. Special shop with stuff from this mod (cards above mentioned included) and removal with a good discount.
-21. Elite monsters.
-22. Extra events.
+20. Cards inspired by moves of fighting games (and here I include Smash), that can be get through events or other mod's access to a hidden character.
+21. Special shop with stuff from this mod (cards above mentioned included) and removal with a good discount.
+22. Elite monsters.
+23. Extra events.
 
 # Requirements
 
