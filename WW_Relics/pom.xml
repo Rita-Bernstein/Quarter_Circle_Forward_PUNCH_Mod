@@ -6,16 +6,17 @@
     <!-- Change These to match your mod -->
     <groupId>WW_Relics</groupId>
     <artifactId>WorldWarriorsRelics</artifactId>
-    <version>0.1.0</version>
+    <version>0.10</version>
     <packaging>jar</packaging>
     <name>WorldWarriorsRelics</name>
-    <description>Adds a relic based in SF's Ryu to the game.
-		  		 \r\n v1.0 will have 16+ relics, inspired in
-		  		 \r\n fighters from Super Street Fighter 2: The New Challengers.</description>
+    <description>Adds fourteen relics and eight game modifiers, inspired mainly by fighters from
+    			 \r\n Super Street Fighter 2: The New Challengers and also some extra inspiration of other fighting games.
+		  		 \r\n v1.0 will have 32+ relics.
+		  		 \r\nThe images in this mod are temporary and will be substituted/improved on the version 1.0.</description>
 
     <properties>
-        <maven.compiler.source>3.6</maven.compiler.source>
-        <maven.compiler.target>3.6</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <!-- These are the dependencies that were placed in the libs folder.
@@ -33,7 +34,7 @@
             <artifactId>ModTheSpire</artifactId>
             <version>3.8.3</version>
             <scope>system</scope>
-            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/ModTheSpire.jar</systemPath>
+            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/ModTheSpire.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
@@ -41,6 +42,13 @@
             <version>5.8.0</version>
             <scope>system</scope>
             <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/BaseMod.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.evacipated.cardcrawl</groupId>
+            <artifactId>StSLib</artifactId>
+            <version>1.13.2</version>
+            <scope>system</scope>
+            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/StSLib.jar</systemPath>
         </dependency>
 
     </dependencies>
@@ -97,7 +105,7 @@
                             <target>
                                 <!-- Change to match your mods name.
                                      This moves your mod into a common folder where all mods you make can go. -->
-                                <copy file="target/WW_Relics.jar" tofile="../_ModTheSpire/mods/WW_Relics.jar"/>
+                                <copy file="target/WW_Relics.jar" tofile="C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/WW_Relics.jar"/>
                             </target>
                         </configuration>
                         <goals>

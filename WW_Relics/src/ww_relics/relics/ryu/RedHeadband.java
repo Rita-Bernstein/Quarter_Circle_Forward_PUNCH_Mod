@@ -7,9 +7,10 @@ import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class RedHeadband extends CustomRelic {
-	public static final String ID = "WW_Relics_Red_Headband";
+	public static final String ID = "WW_Relics:Red_Headband";
 	private static final int DRAW_PER_STATUS_OR_CURSE = 1;
 	private static final int NUMBER_OF_DRAWS = 1;
 	
@@ -17,9 +18,10 @@ public class RedHeadband extends CustomRelic {
 	
 	private Random random = new Random();
 	
+	//Solution: load Texture instead of String
 	public RedHeadband() {
-		super(ID, "abacus.png", //add method for textures here.
-				RelicTier.COMMON, LandingSound.FLAT);
+		super(ID, GraphicResources.LoadRelicImage("Red_Headband - headband-knot - Delapouite - CC BY 3.0.png"), 
+				RelicTier.COMMON, LandingSound.FLAT);	
 	}
 	
 	public String getUpdatedDescription() {
@@ -31,24 +33,32 @@ public class RedHeadband extends CustomRelic {
 			(drawnCard.type == AbstractCard.CardType.STATUS)) 
 		{
 			if (drawn_status_and_curses_in_the_turn  < NUMBER_OF_DRAWS) {
+				flash();
 		        AbstractDungeon.player.hand.moveToDiscardPile(drawnCard);
 				
 		        AbstractPlayer p = AbstractDungeon.player;
-		        
-		        for (int i = 0; i < DRAW_PER_STATUS_OR_CURSE; i++) {
-			        if (!p.drawPile.group.isEmpty()) {
-			        	int draw_pile_size = p.drawPile.group.size();
-			        	int which_card = random.random(0, draw_pile_size-1);
-			        	AbstractCard the_card = p.drawPile.getNCardFromTop(which_card);
-			        	p.drawPile.moveToHand(the_card, p.drawPile);
-			        } else { break; }
-			        
-					drawn_status_and_curses_in_the_turn++;
-		        }
 
+		        if (abscenceOfNoDraw()) {
+			        for (int i = 0; i < DRAW_PER_STATUS_OR_CURSE; i++) {
+				        if (!p.drawPile.group.isEmpty()) {
+				        	int draw_pile_size = p.drawPile.group.size();
+				        	int which_card = random.random(0, draw_pile_size-1);
+				        	AbstractCard the_card = p.drawPile.getNCardFromTop(which_card);
+				        	p.drawPile.moveToHand(the_card, p.drawPile);
+				        } else { break; }
+				        
+						drawn_status_and_curses_in_the_turn++;
+			        }
+		        } else {
+		        	AbstractDungeon.player.getPower("No Draw").flash();
+		        }
 			}
 		}
 		
+	}
+	
+	public Boolean abscenceOfNoDraw() {
+		return !AbstractDungeon.player.hasPower("No Draw");
 	}
 	
 	public void atTurnStart() {

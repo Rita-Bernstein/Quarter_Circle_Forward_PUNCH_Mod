@@ -4,10 +4,11 @@
   <groupId>WW_Relics</groupId>
   <artifactId>WorldWarriorsRelics</artifactId>
   <name>WorldWarriorsRelics</name>
-  <version>0.1.0</version>
-  <description>Adds a relic based in SF's Ryu to the game.
-		  		 \r\n v1.0 will have 16+ relics, inspired in
-		  		 \r\n fighters from Super Street Fighter 2: The New Challengers.</description>
+  <version>0.10</version>
+  <description>Adds fourteen relics and eight game modifiers, inspired mainly by fighters from
+    			 \r\n Super Street Fighter 2: The New Challengers and also some extra inspiration of other fighting games.
+		  		 \r\n v1.0 will have 32+ relics.
+		  		 \r\nThe images in this mod are temporary and will be substituted/improved on the version 1.0.</description>
   <build>
     <finalName>WorldWarriorsRelics</finalName>
     <plugins>
@@ -72,7 +73,7 @@
       <artifactId>ModTheSpire</artifactId>
       <version>3.8.3</version>
       <scope>system</scope>
-      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/ModTheSpire.jar</systemPath>
+      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/ModTheSpire.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>com.evacipated.cardcrawl</groupId>
@@ -81,10 +82,17 @@
       <scope>system</scope>
       <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/BaseMod.jar</systemPath>
     </dependency>
+    <dependency>
+      <groupId>com.evacipated.cardcrawl</groupId>
+      <artifactId>StSLib</artifactId>
+      <version>1.13.2</version>
+      <scope>system</scope>
+      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/StSLib.jar</systemPath>
+    </dependency>
   </dependencies>
   <properties>
-    <maven.compiler.source>3.6</maven.compiler.source>
-    <maven.compiler.target>3.6</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 </project>
 

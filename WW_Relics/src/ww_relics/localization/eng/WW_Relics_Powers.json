@@ -1,0 +1,42 @@
+{
+  "WW_Relics:Power_Flaming": {
+    "NAME": "Flaming",
+    "DESCRIPTIONS": [
+      "The single target of your Attack loses extra HP equals to the damage dealt (min of #b",
+      ", then lose this buff."
+    ]
+  },
+
+  "WW_Relics:Power_Risky_Offensive": {
+    "NAME": "Risky Offensive",
+    "DESCRIPTIONS": [
+      "This power is spent when you use a Skill card, making you lose #b",
+      " Strength."
+    ]
+  },
+  
+  "WW_Relics:Power_Potential": {
+    "NAME": "Potential",
+    "DESCRIPTIONS": [
+      "You have ",
+      "/",
+      " Potential. Whole parts are spent to give the equivalent in Energy."
+    ]
+  },
+  
+  "WW_Relics:Power_Unsteady": {
+    "NAME": "Unsteady",
+    "DESCRIPTIONS": [
+      "Block is reduced by #b",
+      " each turn."
+    ]
+  },
+  
+  "WW_Relics:Power_Weakest_Fighting_Style": {
+    "NAME": "Weakest Fighting Style",
+    "DESCRIPTIONS": [
+      "At the start of your turn, add a random #yWeakest card to your hand."
+    ]
+  }
+  
+}
