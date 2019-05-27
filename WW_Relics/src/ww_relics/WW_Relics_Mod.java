@@ -7,6 +7,7 @@ import java.util.*;
 import org.apache.logging.log4j.*;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -19,6 +20,7 @@ import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import ww_relics.modifiers.*;
+import ww_relics.potions.ChallengerCoin;
 import ww_relics.relics.character_cameos.dan.NotStrongestFightingStyleGuidebook;
 import ww_relics.relics.character_cameos.sakura.SchoolBackpack;
 import ww_relics.relics.chun_li.*;
@@ -276,9 +278,18 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	@Override
 	public void receivePostInitialize() {
 
+		addPotions();
+		
 		String modBadgeAddress = "ww_relics/assets/img/modbadge/ModBadgePlaceholder.png";
 		Texture badgeTexture = new Texture(Gdx.files.internal(modBadgeAddress));
         ModPanel settingsPanel = new ModPanel();
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
+	}
+	
+	public void addPotions() {
+		
+		BaseMod.addPotion(ChallengerCoin.class, Color.CHARTREUSE, Color.CORAL, Color.BLUE,
+				ChallengerCoin.ID);
+		
 	}
 }
