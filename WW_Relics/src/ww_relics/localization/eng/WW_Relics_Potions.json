@@ -1,0 +1,9 @@
+{
+	"WW_Relics:ChallengerCoin":{
+		"NAME": "Challenger Coin",
+		"DESCRIPTIONS": [
+			"Usable only when at the map screen. Your next entered room will be an Elite room.",
+			"If it was a combat room already, #radd #ran #rElite #rto #rthat #rcombat."
+		]
+	}
+}
