@@ -1,7 +1,4 @@
 package ww_relics.potions;
-
-import java.util.AbstractMap;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,8 +8,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
-
-import ww_relics.relics.ken.UnceasingFlame;
 
 public class ChallengerCoin extends AbstractPotion {
 
