@@ -288,8 +288,9 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	public void addPotions() {
 		
-		BaseMod.addPotion(ChallengerCoin.class, Color.RED, Color.CORAL, Color.BLUE,
+		logger.info("Begin adding potions");
+		BaseMod.addPotion(ChallengerCoin.class, Color.RED.cpy(), Color.CORAL.cpy(), Color.BLUE.cpy(),
 				ChallengerCoin.ID);
-		
+		logger.info("Done adding potions");
 	}
 }
