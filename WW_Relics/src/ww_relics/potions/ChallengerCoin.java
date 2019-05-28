@@ -9,7 +9,9 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 
-public class ChallengerCoin extends AbstractPotion {
+import basemod.abstracts.CustomPotion;
+
+public class ChallengerCoin extends CustomPotion {
 
 	private static final PotionStrings potionStrings = CardCrawlGame.
 			languagePack.getPotionString("WW_Relics:Challenger_Coin");
@@ -25,7 +27,7 @@ public class ChallengerCoin extends AbstractPotion {
 	//Size apparently creates the recipient of the potion.
 	//Since this potion is a coin, I will have to make my own files for that.
 	public static final PotionSize SIZE = PotionSize.SPHERE;
-	public static final PotionColor COLOR = PotionColor.FRUIT;
+	public static final PotionColor COLOR = PotionColor.ATTACK;
 	
 	public static final Logger logger = LogManager.getLogger(ChallengerCoin.class.getName()); // lets us log output
 	
@@ -36,7 +38,6 @@ public class ChallengerCoin extends AbstractPotion {
 		this.tips.add(new PowerTip(this.name, this.description));
 	}
 
-	
 	@Override
 	public int getPotency(int arg0) {
 		// TODO Auto-generated method stub
