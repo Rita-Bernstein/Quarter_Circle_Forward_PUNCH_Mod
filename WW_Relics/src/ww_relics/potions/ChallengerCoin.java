@@ -13,10 +13,11 @@ import basemod.abstracts.CustomPotion;
 
 public class ChallengerCoin extends CustomPotion {
 
-	private static final PotionStrings potionStrings = CardCrawlGame.
-			languagePack.getPotionString("WW_Relics:Challenger_Coin");
-	
 	public static final String ID = "WW_Relics:Challenger_Coin";
+	
+	private static final PotionStrings potionStrings = CardCrawlGame.
+			languagePack.getPotionString(ID);
+	
 	public static final String NAME = potionStrings.NAME;
 	public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
 	
