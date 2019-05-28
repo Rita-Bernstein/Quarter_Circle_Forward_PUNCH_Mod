@@ -86,6 +86,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	    LoadPowersJSON();
 	    LoadModifiersJSON();
 	    LoadCardsJSON();
+	    LoadPotionsJSON();
 	    
 	    logger.info("done editing strings");
 	}
@@ -116,6 +117,13 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	    String cardsStrings = getJsonText(cardsStringsAddress);
 	    
 	    BaseMod.loadCustomStrings(CardStrings.class, cardsStrings);
+	}
+	
+	private void LoadPotionsJSON() {
+		String potionsStringsAddress = "ww_relics/localization/eng/WW_Relics_Potions.json";
+		String potionsStrings = getJsonText(potionsStringsAddress);
+		
+		BaseMod.loadCustomStrings(PotionStrings.class, potionsStrings);
 	}
 	
 	@Override
