@@ -4,8 +4,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/Jogos/Steam/SteamApps/common/SlayTheSpire/desktop-1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Jogos/Steam/SteamApps/common/SlayTheSpire/mods/ModTheSpire.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Jogos/Steam/SteamApps/common/SlayTheSpire/mods/BaseMod.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Jogos/Steam/SteamApps/common/SlayTheSpire/mods/StSLib.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Jogos/Steam/SteamApps/common/SlayTheSpire/mods/ModTheSpire 3.6.3.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Jogos/Steam/SteamApps/common/SlayTheSpire/mods/BaseMod 5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Jogos/Steam/SteamApps/common/SlayTheSpire/mods/StSLib v1.10.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
