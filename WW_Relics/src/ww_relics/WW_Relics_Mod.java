@@ -233,6 +233,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             WhiteBoots.load(config);
             FightingGloves.load(config);
+            DuffelBag.load(config);
             UnceasingFlame.load(config);
             SchoolBackpack.load(config);
         }
@@ -248,6 +249,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             WhiteBoots.save(config);
             FightingGloves.save(config);
+            DuffelBag.save(config);
             UnceasingFlame.save(config);
             SchoolBackpack.save(config);
         }
@@ -264,6 +266,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
         	config.clear();
             WhiteBoots.clear(config);
             FightingGloves.clear(config);
+            DuffelBag.clear(config);
             UnceasingFlame.clear(config);
             SchoolBackpack.clear(config);
         	config.save();
