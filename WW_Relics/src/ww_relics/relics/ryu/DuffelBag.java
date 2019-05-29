@@ -197,19 +197,6 @@ public class DuffelBag extends CustomRelic {
 		}
     }
 	
-	public static void loadCardRewardStored(final SpireConfig config) {
-		
-		int size = config.getInt("school_backpack_reward_size");
-		
-		for (int i = 0; i < size; i++) {
-			
-			card_reward_rarity.add(config.getString("school_backpack_reward_rarity_" + String.valueOf(i)));			
-			card_reward_id.add(config.getString("school_backpack_reward_" + String.valueOf(i)));
-			card_reward_upgrade.add(config.getBool("school_backpack_reward_upgrade_" + String.valueOf(i)));
-		
-		}
-	}
-	
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing Duffel Bag variables.");
         
