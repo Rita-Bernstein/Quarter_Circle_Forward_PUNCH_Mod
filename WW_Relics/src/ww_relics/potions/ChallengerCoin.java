@@ -35,20 +35,21 @@ public class ChallengerCoin extends CustomPotion {
 	
 	public ChallengerCoin() {
 		super(NAME, ID, RARITY, SIZE, COLOR);
+		this.potency = getPotency();
 		description = DESCRIPTIONS[0] + DESCRIPTIONS[1];
 		this.isThrown = false;
 		this.tips.add(new PowerTip(this.name, this.description));
 	}
 
 	@Override
-	public int getPotency(int arg0) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getPotency(int ascensionLevel) {
+		return 1;
 	}
 
 	@Override
 	public boolean canUse() {
-
+		logger.info("1 - " + AbstractDungeon.getCurrRoom().phase);
+		
 		if (AbstractDungeon.getCurrRoom().phase == RoomPhase.COMPLETE) {
 			return true;
 		}
@@ -61,12 +62,11 @@ public class ChallengerCoin extends CustomPotion {
 		logger.info("Right, working.");
 		//Change next room entered to an Elite room, if it was already, 
 		//add elite to a non-problematic space position in the next room
-
 	}
 	
 	@Override
 	public AbstractPotion makeCopy() {
-		// TODO Auto-generated method stub
+
 		return new ChallengerCoin();
 	}
 
