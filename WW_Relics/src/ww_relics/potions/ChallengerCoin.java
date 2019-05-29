@@ -5,9 +5,11 @@ import org.apache.logging.log4j.Logger;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon.CurrentScreen;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
+import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 
 import basemod.abstracts.CustomPotion;
 
@@ -47,8 +49,12 @@ public class ChallengerCoin extends CustomPotion {
 
 	@Override
 	public boolean canUse() {
-		if (AbstractDungeon.isPlayerInDungeon()) return true;
+
+		if (AbstractDungeon.getCurrRoom().phase == RoomPhase.COMPLETE) {
+			return true;
+		}
 		else return false;
+		
 	}
 	
 	@Override
