@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon.CurrentScreen;
+import com.megacrit.cardcrawl.events.shrines.WeMeetAgain;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
@@ -50,11 +51,16 @@ public class ChallengerCoin extends FruitJuice {
 
 	@Override
 	public boolean canUse() {
-		if ((AbstractDungeon.getCurrRoom().phase == RoomPhase.COMPLETE) &&
-			(AbstractDungeon.screen == CurrentScreen.MAP)){
-			return true;
+		if ((AbstractDungeon.actionManager.turnHasEnded) && 
+				(AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT)) {
+				      return false;
 		}
-		else return false;
+		if ((AbstractDungeon.getCurrRoom().event != null) && 
+				((AbstractDungeon.getCurrRoom().event instanceof WeMeetAgain))) {
+				      return false;
+		}
+		
+		return true;
 		
 	}
 	
