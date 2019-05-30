@@ -1,4 +1,6 @@
 package ww_relics.potions;
+import java.util.ArrayList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,9 +11,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon.CurrentScreen;
 import com.megacrit.cardcrawl.events.shrines.WeMeetAgain;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
+import com.megacrit.cardcrawl.map.MapEdge;
+import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.FruitJuice;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
+import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 
 public class ChallengerCoin extends FruitJuice {
 
@@ -66,7 +71,44 @@ public class ChallengerCoin extends FruitJuice {
 	
 	@Override
 	public void use(AbstractCreature arg0) {
-		logger.info("Right, working.");
+		
+		ArrayList<ArrayList<MapRoomNode>> dungeon_map = AbstractDungeon.map;
+		
+		ArrayList<MapRoomNode> rooms_found = new ArrayList<MapRoomNode>();
+		MapRoomNode current_room = AbstractDungeon.currMapNode;
+		
+		String room_symbol = current_room.getRoomSymbol(false);
+		
+		for (int i = 0; i < dungeon_map.size(); i++) {
+			
+			for (int j = 0; j < dungeon_map.get(i).size(); j++) {
+				
+				MapRoomNode check_room = dungeon_map.get(i).get(j);
+				if (check_room.isConnectedTo(current_room)) {
+					ArrayList<MapRoomNode> parents = check_room.getParents();
+					
+					for (int k = 0; k < parents.size(); k++) {
+						if (parents.get(k) == current_room) rooms_found.add(check_room); 
+					}
+				}
+			}
+			
+		}
+		
+		logger.info("Number of rooms found = " + rooms_found.size());
+		
+		for (int i = 0; i < rooms_found.size(); i++) {
+			
+			if ((rooms_found.get(i).getRoom().getMapSymbol() != "M") ||
+				(rooms_found.get(i).getRoom().getMapSymbol() != "B") ||
+				(rooms_found.get(i).getRoom().getMapSymbol() != "E")) {
+				
+				rooms_found.get(i).setRoom(new MonsterRoomElite());
+				logger.info("Did it");
+			}
+			
+		}
+		
 		//Change next room entered to an Elite room, if it was already, 
 		//add elite to a non-problematic space position in the next room
 	}
