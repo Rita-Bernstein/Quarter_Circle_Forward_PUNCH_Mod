@@ -1,10 +1,14 @@
 package ww_relics.patches;
 
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.megacrit.cardcrawl.ui.panels.PotionPopUp;
+
 import javassist.CannotCompileException;
 import javassist.NotFoundException;
 import javassist.expr.ExprEditor;
 import javassist.expr.Instanceof;
 
+@SpirePatch(clz = PotionPopUp.class, method = "updateInput")
 public class AddOutOfCombatPotionInterfacePatch {
 
 	public static ExprEditor Instrument()
