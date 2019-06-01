@@ -1,5 +1,9 @@
 package ww_relics.patches;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.ui.panels.PotionPopUp;
 
@@ -17,9 +21,13 @@ public class AddOutOfCombatPotionInterfacePatch {
 			@Override
 			public void edit(Instanceof i) throws CannotCompileException
 			{
+				final Logger logger = LogManager.getLogger(AddOutOfCombatPotionInterfacePatch.class.getName());
+				
 				try {
+					logger.info(i.getType().getName().toString());
+					logger.info(i.getType().getName().toString().equals("com.megacrit.cardcrawl.potions.FruitJuice"));
 					
-					if (i.getType().equals("FruitJuice"))
+					if (i.getType().getName().toString().equals("com.megacrit.cardcrawl.potions.FruitJuice"))
 						
 						i.replace("{ $1 instanceof $r || $1 instanceof OutOfCombatPotion }");
 					
