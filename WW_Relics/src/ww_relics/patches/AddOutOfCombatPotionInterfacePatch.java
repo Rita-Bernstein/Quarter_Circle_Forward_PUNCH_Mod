@@ -17,7 +17,7 @@ public class AddOutOfCombatPotionInterfacePatch {
 					if (i.getClass().equals("PotionPopUp")
 					        && i.getType().equals("FruitJuice"))
 						
-						i.replace("{ $r = OutOfCombatPotion; $_ = $proceed($$); }");
+						i.replace("{ $1 instanceof $r || $1 instanceof OutOfCombatPotion }");
 					
 				} catch (NotFoundException e) {
 					// TODO Auto-generated catch block
