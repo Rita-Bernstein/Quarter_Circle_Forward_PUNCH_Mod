@@ -8,11 +8,9 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.shrines.WeMeetAgain;
-import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
-import com.megacrit.cardcrawl.potions.FruitJuice;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 
@@ -37,19 +35,15 @@ public class ChallengerCoin extends OutOfCombatPotion {
 	
 	public static final Logger logger = LogManager.getLogger(ChallengerCoin.class.getName()); // lets us log output
 	
-	public ChallengerCoin(String name, String id, PotionRarity rarity, PotionSize size, PotionColor color) {
-		super(name, id, rarity, size, color);
-		this.name = NAME;
-		this.potency = getPotency();
+	public ChallengerCoin() {
+		super(NAME, ID, RARITY, SIZE, COLOR);
 		description = DESCRIPTIONS[0] + DESCRIPTIONS[1];
 		this.isThrown = false;
-		this.tips.clear();
-		this.tips.add(new PowerTip(this.name, this.description));
 	}
 	
 	@Override
 	public int getPotency(int ascensionLevel) {
-		return 1;
+		return 0;
 	}
 
 	@Override
@@ -119,7 +113,7 @@ public class ChallengerCoin extends OutOfCombatPotion {
 	@Override
 	public AbstractPotion makeCopy() {
 
-		return new ChallengerCoin(NAME, ID, RARITY, SIZE, COLOR);
+		return new ChallengerCoin();
 	}
 
 
