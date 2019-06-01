@@ -14,12 +14,12 @@ public class AddOutOfCombatPotionInterfacePatch {
 	public static ExprEditor Instrument()
 	{
 		return new ExprEditor() {
+			@Override
 			public void edit(Instanceof i) throws CannotCompileException
 			{
 				try {
 					
-					if (i.getClass().equals("PotionPopUp")
-					        && i.getType().equals("FruitJuice"))
+					if (i.getType().equals("FruitJuice"))
 						
 						i.replace("{ $1 instanceof $r || $1 instanceof OutOfCombatPotion }");
 					
