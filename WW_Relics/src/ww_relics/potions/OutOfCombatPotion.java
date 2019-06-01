@@ -9,7 +9,6 @@ public class OutOfCombatPotion extends CustomPotion {
 
 	public OutOfCombatPotion(String name, String id, PotionRarity rarity, PotionSize size, PotionColor color) {
 		super(name, id, rarity, size, color);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
