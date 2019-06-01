@@ -7,11 +7,9 @@ import org.apache.logging.log4j.Logger;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon.CurrentScreen;
 import com.megacrit.cardcrawl.events.shrines.WeMeetAgain;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
-import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.FruitJuice;
@@ -77,7 +75,10 @@ public class ChallengerCoin extends FruitJuice {
 		ArrayList<MapRoomNode> rooms_found = new ArrayList<MapRoomNode>();
 		MapRoomNode current_room = AbstractDungeon.currMapNode;
 		
-		String room_symbol = current_room.getRoomSymbol(false);
+		logger.info(current_room.toString());
+		logger.info(current_room.getRoom());
+		
+		//String room_symbol = current_room.getRoomSymbol(false);
 		
 		for (int i = 0; i < dungeon_map.size(); i++) {
 			
@@ -85,6 +86,8 @@ public class ChallengerCoin extends FruitJuice {
 				
 				MapRoomNode check_room = dungeon_map.get(i).get(j);
 				if (check_room.isConnectedTo(current_room)) {
+					logger.info("It connects");
+					logger.info(check_room.getRoom());
 					ArrayList<MapRoomNode> parents = check_room.getParents();
 					
 					for (int k = 0; k < parents.size(); k++) {
