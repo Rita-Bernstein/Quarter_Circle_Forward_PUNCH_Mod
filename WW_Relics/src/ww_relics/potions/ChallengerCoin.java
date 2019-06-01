@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.shrines.WeMeetAgain;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
@@ -39,6 +40,7 @@ public class ChallengerCoin extends OutOfCombatPotion {
 		super(NAME, ID, RARITY, SIZE, COLOR);
 		description = DESCRIPTIONS[0] + DESCRIPTIONS[1];
 		this.isThrown = false;
+		this.tips.add(new PowerTip(this.name, this.description));
 	}
 	
 	@Override
