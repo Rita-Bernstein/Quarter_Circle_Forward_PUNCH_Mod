@@ -4,7 +4,6 @@ import javassist.CannotCompileException;
 import javassist.NotFoundException;
 import javassist.expr.ExprEditor;
 import javassist.expr.Instanceof;
-import javassist.expr.MethodCall;
 
 public class AddOutOfCombatPotionInterfacePatch {
 
