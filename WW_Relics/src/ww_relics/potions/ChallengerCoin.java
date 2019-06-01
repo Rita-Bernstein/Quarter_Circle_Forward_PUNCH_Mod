@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.potions.FruitJuice;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 
-public class ChallengerCoin extends FruitJuice {
+public class ChallengerCoin extends OutOfCombatPotion {
 
 	public static final String ID = "WW_Relics:Challenger_Coin";
 	
@@ -37,8 +37,8 @@ public class ChallengerCoin extends FruitJuice {
 	
 	public static final Logger logger = LogManager.getLogger(ChallengerCoin.class.getName()); // lets us log output
 	
-	public ChallengerCoin() {
-		super();
+	public ChallengerCoin(String name, String id, PotionRarity rarity, PotionSize size, PotionColor color) {
+		super(name, id, rarity, size, color);
 		this.name = NAME;
 		this.potency = getPotency();
 		description = DESCRIPTIONS[0] + DESCRIPTIONS[1];
@@ -119,7 +119,7 @@ public class ChallengerCoin extends FruitJuice {
 	@Override
 	public AbstractPotion makeCopy() {
 
-		return new ChallengerCoin();
+		return new ChallengerCoin(NAME, ID, RARITY, SIZE, COLOR);
 	}
 
 
