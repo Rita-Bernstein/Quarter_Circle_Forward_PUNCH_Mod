@@ -5,8 +5,8 @@ import org.apache.logging.log4j.Logger;
 
 
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.megacrit.cardcrawl.potions.FruitJuice;
 import com.megacrit.cardcrawl.ui.panels.PotionPopUp;
+import ww_relics.potions.OutOfCombatPotion;
 
 import javassist.CannotCompileException;
 import javassist.NotFoundException;
@@ -30,8 +30,7 @@ public class AddOutOfCombatPotionInterfacePatch {
 					
 					if (i.getType().getName().toString().equals("com.megacrit.cardcrawl.potions.FruitJuice"))
 						
-						i.replace("$_ = true;");//($1 instanceof " + FruitJuice.class + 
-						//" || $1 instanceof OutOfCombatPotion);");
+						i.replace("$_ = $proceed($$) || this.potion instanceof OutOfCombatPotion;");
 					
 				} catch (NotFoundException e) {
 					// TODO Auto-generated catch block
