@@ -30,7 +30,7 @@ public class AddOutOfCombatPotionInterfacePatch {
 					
 					if (i.getType().getName().toString().equals("com.megacrit.cardcrawl.potions.FruitJuice"))
 						
-						i.replace("$_ = $proceed($$) || this.potion instanceof OutOfCombatPotion;");
+						i.replace("$_ = $proceed($$) || this.potion instanceof ww_relics.potions.OutOfCombatPotion;");
 					
 				} catch (NotFoundException e) {
 					// TODO Auto-generated catch block
