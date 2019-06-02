@@ -13,6 +13,8 @@ import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
+import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.rewards.RewardItem.RewardType;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
@@ -96,6 +98,20 @@ public class ChallengerCoin extends OutOfCombatPotion {
 					(map_symbol != REPLAY_THE_SPIRE_TELEPORT_ROOM_SYMBOL)) {
 			
 				room = new MonsterRoomElite();
+				
+				
+				ArrayList<RewardItem> rewards = room_to_change.getRoom().rewards;
+				for (int j = 0; i < rewards.size(); j++) {
+					
+					if (rewards.get(j).type == RewardType.SAPPHIRE_KEY) {
+						
+						room.addSapphireKey(
+							(RewardItem)room.rewards.get(AbstractDungeon.getCurrRoom().rewards.size() - 1));
+						break;
+					}
+					
+				}
+				
 				room_to_change.room = room;
 				
 			} else {
