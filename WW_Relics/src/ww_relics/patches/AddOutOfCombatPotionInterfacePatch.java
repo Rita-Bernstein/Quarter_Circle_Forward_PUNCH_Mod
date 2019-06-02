@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.ui.panels.PotionPopUp;
-import ww_relics.potions.OutOfCombatPotion;
+
 
 import javassist.CannotCompileException;
 import javassist.NotFoundException;
