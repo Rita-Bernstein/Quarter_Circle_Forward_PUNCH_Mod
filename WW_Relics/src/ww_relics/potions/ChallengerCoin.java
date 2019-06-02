@@ -10,8 +10,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.shrines.WeMeetAgain;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
+import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 
@@ -33,6 +35,12 @@ public class ChallengerCoin extends OutOfCombatPotion {
 	//Since this potion is a coin, I will have to make my own files for that.
 	public static final PotionSize SIZE = PotionSize.SPHERE;
 	public static final PotionColor COLOR = PotionColor.ATTACK;
+	
+	public static final String MONSTER_ROOM_SYMBOL = "M";
+	public static final String MONSTER_BOSS_ROOM_SYMBOL = "B";
+	public static final String MONSTER_ELITE_ROOM_SYMBOL = "E";
+	public static final String INFINITE_SPIRE_NIGHTMARE_ELITE_ROOM_SYMBOL = "NM";
+	public static final String REPLAY_THE_SPIRE_TELEPORT_ROOM_SYMBOL = "PTL";
 	
 	public static final Logger logger = LogManager.getLogger(ChallengerCoin.class.getName()); // lets us log output
 	
@@ -68,48 +76,37 @@ public class ChallengerCoin extends OutOfCombatPotion {
 		
 		ArrayList<ArrayList<MapRoomNode>> dungeon_map = AbstractDungeon.map;
 		
-		ArrayList<MapRoomNode> rooms_found = new ArrayList<MapRoomNode>();
 		MapRoomNode current_room = AbstractDungeon.currMapNode;
+		ArrayList<MapEdge> edges = current_room.getEdges();
 		
-		logger.info(current_room.toString());
-		logger.info(current_room.getRoom());
+		logger.info("current_room_position = " + current_room.x + " " + current_room.y);
 		
-		//String room_symbol = current_room.getRoomSymbol(false);
-		
-		for (int i = 0; i < dungeon_map.size(); i++) {
+		for (int i = 0; i < edges.size(); i++) {
+			int x = edges.get(i).dstX;
+			int y = edges.get(i).dstY;
+			MapRoomNode room_to_change = dungeon_map.get(y).get(x);
+			AbstractRoom room = room_to_change.getRoom();
+
+			String map_symbol = room.getMapSymbol();
 			
-			for (int j = 0; j < dungeon_map.get(i).size(); j++) {
+			if ((map_symbol != MONSTER_ROOM_SYMBOL) && 
+					(map_symbol != MONSTER_BOSS_ROOM_SYMBOL) &&
+					(map_symbol != MONSTER_ELITE_ROOM_SYMBOL) && 
+					(map_symbol != INFINITE_SPIRE_NIGHTMARE_ELITE_ROOM_SYMBOL) &&
+					(map_symbol != REPLAY_THE_SPIRE_TELEPORT_ROOM_SYMBOL)) {
+			
+				room = new MonsterRoomElite();
+				room_to_change.room = room;
 				
-				MapRoomNode check_room = dungeon_map.get(i).get(j);
-				if (check_room.isConnectedTo(current_room)) {
-					logger.info("It connects");
-					logger.info(check_room.getRoom());
-					ArrayList<MapRoomNode> parents = check_room.getParents();
+			} else {
+				//if it was a combat room, 
+				//add an elite to a non-problematic space position to that room
+			}
 					
-					for (int k = 0; k < parents.size(); k++) {
-						if (parents.get(k) == current_room) rooms_found.add(check_room); 
-					}
-				}
-			}
-			
 		}
 		
-		logger.info("Number of rooms found = " + rooms_found.size());
 		
-		for (int i = 0; i < rooms_found.size(); i++) {
-			
-			if ((rooms_found.get(i).getRoom().getMapSymbol() != "M") ||
-				(rooms_found.get(i).getRoom().getMapSymbol() != "B") ||
-				(rooms_found.get(i).getRoom().getMapSymbol() != "E")) {
-				
-				rooms_found.get(i).setRoom(new MonsterRoomElite());
-				logger.info("Did it");
-			}
-			
-		}
 		
-		//Change next room entered to an Elite room, if it was already, 
-		//add elite to a non-problematic space position in the next room
 	}
 	
 	@Override
