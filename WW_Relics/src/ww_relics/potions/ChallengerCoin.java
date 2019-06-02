@@ -104,9 +104,17 @@ public class ChallengerCoin extends OutOfCombatPotion {
 					
 					if (rewards.get(j).type == RewardType.SAPPHIRE_KEY) {
 						
-						room.addSapphireKey(
-							(RewardItem)room.rewards.get(AbstractDungeon.getCurrRoom().rewards.size() - 1));
-						break;
+						for (int k = 0; k < room.rewards.size(); k++) {
+							
+							if (room.rewards.get(k).relic != null) {
+								
+								room.addSapphireKey((RewardItem)room.rewards.get(k));
+								break;
+								
+							}
+
+						}
+
 					}
 					
 				}
