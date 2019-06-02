@@ -17,6 +17,8 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rewards.RewardItem.RewardType;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
+import com.megacrit.cardcrawl.rooms.MonsterRoom;
+import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 
 public class ChallengerCoin extends OutOfCombatPotion {
@@ -38,9 +40,6 @@ public class ChallengerCoin extends OutOfCombatPotion {
 	public static final PotionSize SIZE = PotionSize.SPHERE;
 	public static final PotionColor COLOR = PotionColor.ATTACK;
 	
-	public static final String MONSTER_ROOM_SYMBOL = "M";
-	public static final String MONSTER_BOSS_ROOM_SYMBOL = "B";
-	public static final String MONSTER_ELITE_ROOM_SYMBOL = "E";
 	public static final String INFINITE_SPIRE_NIGHTMARE_ELITE_ROOM_SYMBOL = "NM";
 	public static final String REPLAY_THE_SPIRE_TELEPORT_ROOM_SYMBOL = "PTL";
 	
@@ -90,10 +89,10 @@ public class ChallengerCoin extends OutOfCombatPotion {
 			AbstractRoom room = room_to_change.getRoom();
 
 			String map_symbol = room.getMapSymbol();
-			
-			if ((map_symbol != MONSTER_ROOM_SYMBOL) && 
-					(map_symbol != MONSTER_BOSS_ROOM_SYMBOL) &&
-					(map_symbol != MONSTER_ELITE_ROOM_SYMBOL) && 
+
+			if (!(room_to_change.getRoom() instanceof MonsterRoom) && 
+					!(room_to_change.getRoom() instanceof MonsterRoomElite) &&
+					!(room_to_change.getRoom() instanceof MonsterRoomBoss) && 
 					(map_symbol != INFINITE_SPIRE_NIGHTMARE_ELITE_ROOM_SYMBOL) &&
 					(map_symbol != REPLAY_THE_SPIRE_TELEPORT_ROOM_SYMBOL)) {
 			
