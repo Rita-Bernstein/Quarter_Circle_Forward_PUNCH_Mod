@@ -14,13 +14,14 @@ import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
-import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 import com.megacrit.cardcrawl.rooms.TreasureRoom;
+
+import ww_relics.rooms.MonsterRoomEmeraldElite;
 
 public class ChallengerCoin extends OutOfCombatPotion {
 
@@ -97,13 +98,15 @@ public class ChallengerCoin extends OutOfCombatPotion {
 					(map_symbol != INFINITE_SPIRE_NIGHTMARE_ELITE_ROOM_SYMBOL) &&
 					(map_symbol != REPLAY_THE_SPIRE_TELEPORT_ROOM_SYMBOL)) {
 			
-				AbstractRoom new_room = new MonsterRoomElite();
+				AbstractRoom new_room;
 				
 				if (room_to_change.getRoom() instanceof TreasureRoom && 
 						(Settings.isFinalActAvailable) && (!Settings.hasSapphireKey)) {
-					new_room.addSapphireKey(
-						(RewardItem)AbstractDungeon.getCurrRoom().rewards.
-							get(AbstractDungeon.getCurrRoom().rewards.size() - 1));
+					
+					new_room = new MonsterRoomEmeraldElite();					
+
+				} else {
+					new_room = new MonsterRoomElite();
 				}
 
 				room_to_change.room = new_room;
