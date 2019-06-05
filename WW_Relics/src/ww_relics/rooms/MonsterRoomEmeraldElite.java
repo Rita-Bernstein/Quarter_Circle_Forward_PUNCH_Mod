@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 
@@ -30,7 +31,7 @@ public class MonsterRoomEmeraldElite extends MonsterRoomElite {
 	    
 	}
 	
-	private AbstractRelic.RelicTier returnRandomRelicTier() {
+	private RelicTier returnRandomRelicTier() {
 		
 		int roll = AbstractDungeon.relicRng.random(0, 99);
 		if (ModHelper.isModEnabled("Elite Swarm")) {
