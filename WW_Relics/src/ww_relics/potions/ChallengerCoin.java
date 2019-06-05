@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
-import com.megacrit.cardcrawl.mod.replay.rooms.TeleportRoom;
+
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
@@ -22,9 +22,11 @@ import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 import com.megacrit.cardcrawl.rooms.TreasureRoom;
 
-import ww_relics.WW_Relics_MiscelaneaCode;
-import infinitespire.rooms.NightmareEliteRoom;
 import ww_relics.rooms.MonsterRoomEmeraldElite;
+import ww_relics.WW_Relics_MiscelaneaCode;
+import com.megacrit.cardcrawl.mod.replay.rooms.TeleportRoom;
+import infinitespire.rooms.NightmareEliteRoom;
+
 
 public class ChallengerCoin extends OutOfCombatPotion {
 
