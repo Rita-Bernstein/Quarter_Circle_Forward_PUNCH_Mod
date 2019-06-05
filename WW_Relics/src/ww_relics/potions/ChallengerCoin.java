@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
+import com.megacrit.cardcrawl.rooms.TreasureRoom;
 
 public class ChallengerCoin extends OutOfCombatPotion {
 
@@ -98,7 +99,8 @@ public class ChallengerCoin extends OutOfCombatPotion {
 			
 				AbstractRoom new_room = new MonsterRoomElite();
 				
-				if ((Settings.isFinalActAvailable) && (!Settings.hasSapphireKey)) {
+				if (room_to_change.getRoom() instanceof TreasureRoom && 
+						(Settings.isFinalActAvailable) && (!Settings.hasSapphireKey)) {
 					new_room.addSapphireKey(
 						(RewardItem)AbstractDungeon.getCurrRoom().rewards.
 							get(AbstractDungeon.getCurrRoom().rewards.size() - 1));
