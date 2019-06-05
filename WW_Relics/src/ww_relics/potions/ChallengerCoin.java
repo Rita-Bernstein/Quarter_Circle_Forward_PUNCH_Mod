@@ -96,19 +96,28 @@ public class ChallengerCoin extends OutOfCombatPotion {
 					(map_symbol != INFINITE_SPIRE_NIGHTMARE_ELITE_ROOM_SYMBOL) &&
 					(map_symbol != REPLAY_THE_SPIRE_TELEPORT_ROOM_SYMBOL)) {
 			
-				room = new MonsterRoomElite();
+				AbstractRoom new_room = new MonsterRoomElite();
 				
 				
 				ArrayList<RewardItem> rewards = room_to_change.getRoom().rewards;
-				for (int j = 0; i < rewards.size(); j++) {
+				logger.info("Bug origin.");
+				logger.info(room_to_change.getRoom().rewards);
+				
+				
+				for (int j = 0; j < rewards.size(); j++) {
+					
+					logger.info("Let's go - " + rewards.get(j).type);
 					
 					if (rewards.get(j).type == RewardType.SAPPHIRE_KEY) {
 						
-						for (int k = 0; k < room.rewards.size(); k++) {
+						for (int k = 0; k < new_room.rewards.size(); k++) {
 							
-							if (room.rewards.get(k).relic != null) {
+							if (new_room.rewards.get(k).relic != null) {
 								
-								room.addSapphireKey((RewardItem)room.rewards.get(k));
+								new_room.addSapphireKey((RewardItem)room.rewards.get(k));
+								logger.info(k);
+								logger.info(room.rewards.get(k).type);
+								logger.info(room.rewards.get(room.rewards.size()-1).type);
 								break;
 								
 							}
@@ -119,7 +128,8 @@ public class ChallengerCoin extends OutOfCombatPotion {
 					
 				}
 				
-				room_to_change.room = room;
+				logger.info("Go");
+				room_to_change.room = new_room;
 				
 			} else {
 				//if it was a combat room, 
