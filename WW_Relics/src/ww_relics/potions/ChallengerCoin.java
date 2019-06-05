@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
+import com.megacrit.cardcrawl.mod.replay.rooms.TeleportRoom;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
@@ -21,6 +22,8 @@ import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 import com.megacrit.cardcrawl.rooms.TreasureRoom;
 
+import ww_relics.WW_Relics_MiscelaneaCode;
+import infinitespire.rooms.NightmareEliteRoom;
 import ww_relics.rooms.MonsterRoomEmeraldElite;
 
 public class ChallengerCoin extends OutOfCombatPotion {
@@ -71,7 +74,6 @@ public class ChallengerCoin extends OutOfCombatPotion {
 		}
 		
 		return true;
-		
 	}
 	
 	@Override
@@ -90,13 +92,7 @@ public class ChallengerCoin extends OutOfCombatPotion {
 			MapRoomNode room_to_change = dungeon_map.get(y).get(x);
 			AbstractRoom room = room_to_change.getRoom();
 
-			String map_symbol = room.getMapSymbol();
-
-			if (!(room_to_change.getRoom() instanceof MonsterRoom) && 
-					!(room_to_change.getRoom() instanceof MonsterRoomElite) &&
-					!(room_to_change.getRoom() instanceof MonsterRoomBoss) && 
-					(map_symbol != INFINITE_SPIRE_NIGHTMARE_ELITE_ROOM_SYMBOL) &&
-					(map_symbol != REPLAY_THE_SPIRE_TELEPORT_ROOM_SYMBOL)) {
+			if (CheckIfPotionCanBeUsed(room)) {
 			
 				AbstractRoom new_room;
 				
@@ -118,6 +114,29 @@ public class ChallengerCoin extends OutOfCombatPotion {
 					
 		}
 		
+	}
+	
+	public boolean CheckIfPotionCanBeUsed(AbstractRoom room) {
+		
+		boolean evaluation = !(room instanceof MonsterRoom) && 
+				!(room instanceof MonsterRoomElite) &&
+				!(room instanceof MonsterRoomBoss);
+		
+		if (WW_Relics_MiscelaneaCode.checkForMod(WW_Relics_MiscelaneaCode.replay_the_spire_class_code)) {
+			
+			evaluation &= !(room instanceof TeleportRoom);
+			
+		}
+		
+		if (WW_Relics_MiscelaneaCode.checkForMod(WW_Relics_MiscelaneaCode.infinite_spire_class_code)) {
+			
+			evaluation &= !(room instanceof NightmareEliteRoom);
+			
+		}
+		
+		return evaluation;
+		
+			
 	}
 	
 	@Override
