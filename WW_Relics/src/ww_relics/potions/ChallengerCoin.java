@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.shrines.WeMeetAgain;
 import com.megacrit.cardcrawl.helpers.PowerTip;
@@ -14,7 +15,6 @@ import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rewards.RewardItem;
-import com.megacrit.cardcrawl.rewards.RewardItem.RewardType;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
@@ -98,37 +98,12 @@ public class ChallengerCoin extends OutOfCombatPotion {
 			
 				AbstractRoom new_room = new MonsterRoomElite();
 				
-				
-				ArrayList<RewardItem> rewards = room_to_change.getRoom().rewards;
-				logger.info("Bug origin.");
-				logger.info(room_to_change.getRoom().rewards);
-				
-				
-				for (int j = 0; j < rewards.size(); j++) {
-					
-					logger.info("Let's go - " + rewards.get(j).type);
-					
-					if (rewards.get(j).type == RewardType.SAPPHIRE_KEY) {
-						
-						for (int k = 0; k < new_room.rewards.size(); k++) {
-							
-							if (new_room.rewards.get(k).relic != null) {
-								
-								new_room.addSapphireKey((RewardItem)room.rewards.get(k));
-								logger.info(k);
-								logger.info(room.rewards.get(k).type);
-								logger.info(room.rewards.get(room.rewards.size()-1).type);
-								break;
-								
-							}
-
-						}
-
-					}
-					
+				if ((Settings.isFinalActAvailable) && (!Settings.hasSapphireKey)) {
+					new_room.addSapphireKey(
+						(RewardItem)AbstractDungeon.getCurrRoom().rewards.
+							get(AbstractDungeon.getCurrRoom().rewards.size() - 1));
 				}
-				
-				logger.info("Go");
+
 				room_to_change.room = new_room;
 				
 			} else {
@@ -137,8 +112,6 @@ public class ChallengerCoin extends OutOfCombatPotion {
 			}
 					
 		}
-		
-		
 		
 	}
 	
