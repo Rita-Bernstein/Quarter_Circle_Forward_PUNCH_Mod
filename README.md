@@ -32,20 +32,20 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 1. Create a relic based in Ryu, for basic testing and getting the hang of modding relics for Slay The Spire. Focus in mechanics and avoiding bugs, not graphics. - Done in v0.1.
 2. Relics inspired by Ryu, Ken, Chun Li and Guile.
 3. Add Custom Modifiers (and other small stuff) related with last milestone's relics and the major theme. (future relic milestones will add Custom Modifiers too)
-4. Translation of the mod's created text so far to PT-BR. (all future milestones will launch with EN localization, PT-BR will come after a round of balancing)
-5. Mod release! Release at Github, Steam and Nexus Mods. (all future milestones, when finished, shall have proper releases)
+4. Mod release! Release at Github, Steam and Nexus Mods. (all future milestones, when finished, shall have proper releases)
 
 - (thanks to rl issues, a pause will be made in this mod's development but 16 relics will be done already when finishing the fourth milestone)
 
-6. Add a Challenge to Challenge The Spire.
+5. Small improvement in FX and relic images.
+6. Translation of the mod's created text so far to PT-BR. (all future milestones will launch with EN localization, PT-BR will come after a round of balancing)
 7. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
 8. One boss relic for Boxer, Claw and Sagat, respectively. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
 9. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
 10. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
 11. Relics inspired by Cammy, Fei Long and Deejay. (number unknown)
 12. ?????????????????????
-13. Reworking of 2 Custom Modifier revolving around fighter's set relics to make the equivalent of mini-characters. (use Blademaster Perk system, perhaps, together with linked relics?) (can this be added to the main character screen?)
-14. Reworking of at least more 2 Custom Modifiers to have more mini-characters.
+13. Reworking of 1 Custom Modifier revolving around fighter's set relics to make the equivalent of mini-characters, as a test. (use Blademaster Perk system together with relic that triggers them)
+14. Reworking of other Custom Modifiers to have more mini-characters.
 15. Update of beta art and sound assets to release version
 
 (and here we reach v1.0)
@@ -53,18 +53,20 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 16. Polishing, refactoring and balancing.
 17. Synergy and adaptation with Infinite Spire. (Black cards? Black cards. o9)
 18. Boss inspired by Street Fighter 2 stuff.
-19. Synergy and adaptation with other mods.
+19. Synergy with Halation. (Simulated Spire? Yep.)
+20. Add a Challenge to Challenge The Spire. (which one? Hm...)
+21. Synergy and adaptation with other mods.
 
 And MAYBE (not making promises here)
 
-20. Cards inspired by moves of fighting games (and here I include Smash), that can be get through events or other mod's access to a hidden character.
-21. Special shop with stuff from this mod (cards above mentioned included) and removal with a good discount.
-22. Elite monsters.
-23. Extra events.
+22. Cards inspired by moves of fighting games (and here I include Smash), that can be get through events or other mod's access to a hidden character.
+23. Special shop with stuff from this mod (cards above mentioned included) and removal with a good discount.
+24. Elite monsters.
+25. Extra events.
 
 # Requirements
 
-Mod The Spire 3.9.2+, BaseMod 5.12.1+ and StSLib 1.15.0+.
+Mod The Spire 3.6.3+, BaseMod 5.5.0+ and StSLib 1.10.0+ (when needed, the requirements will be updated to more recent versions of these libraries)
 
 # Compatibility
 
