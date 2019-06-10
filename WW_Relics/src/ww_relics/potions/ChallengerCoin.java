@@ -1,11 +1,11 @@
 package ww_relics.potions;
+import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.swing.text.ChangedCharSetException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -29,11 +29,13 @@ import com.megacrit.cardcrawl.rooms.TreasureRoom;
 
 import ww_relics.rooms.MonsterRoomEmeraldElite;
 import ww_relics.WW_Relics_MiscelaneaCode;
+import ww_relics.relics.chun_li.WhiteBoots;
+
 import com.megacrit.cardcrawl.mod.replay.rooms.TeleportRoom;
 import infinitespire.rooms.NightmareEliteRoom;
 
 
-public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<String>  {
+public class ChallengerCoin extends OutOfCombatPotion {
 
 	public static final String ID = "WW_Relics:Challenger_Coin";
 	
@@ -57,7 +59,9 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 	
 	public static final Logger logger = LogManager.getLogger(ChallengerCoin.class.getName());
 	
-	public static String saved_map_changes = "";
+	public static int saved_map_x_position;
+	public static int saved_map_y_position;
+	public static String saved_map_room = "";
 	
 	public ChallengerCoin() {
 		super(NAME, ID, RARITY, SIZE, COLOR);
@@ -101,13 +105,13 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 		
 	}
 	
-	public void changeRoom(ArrayList<ArrayList<MapRoomNode>> dungeon_map, int x, int y) {
+	public static void changeRoom(ArrayList<ArrayList<MapRoomNode>> dungeon_map, int x, int y) {
 		
 		changeRoom(dungeon_map, x, y, null);
 		
 	}
 	
-	public void changeRoom(ArrayList<ArrayList<MapRoomNode>> dungeon_map, int x, int y, String which_room) {
+	public static void changeRoom(ArrayList<ArrayList<MapRoomNode>> dungeon_map, int x, int y, String which_room) {
 		
 		MapRoomNode room_to_change = dungeon_map.get(y).get(x);
 		AbstractRoom room = room_to_change.getRoom();
@@ -116,30 +120,29 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 		
 			AbstractRoom new_room;
 			
-			saved_map_changes = x + " " + y + " ";
+			saved_map_x_position = x;
+			saved_map_y_position = y;
 			
 			if (which_room == null) {
 				if (checkIfEmeraldEliteOrEliteRoom(room_to_change)) {
 					new_room = new MonsterRoomEmeraldElite();
-					saved_map_changes += "EmeraldElite";
+					saved_map_room += "EmeraldElite";
 				}
 				else {
 					new_room = new MonsterRoomElite();
-					saved_map_changes += "Elite";
+					saved_map_room += "Elite";
 				}
 			} else {
 				if (which_room == "EmeraldElite") {
 					new_room = new MonsterRoomEmeraldElite();
-					saved_map_changes += "EmeraldElite";
+					saved_map_room += "EmeraldElite";
 				}
 				else {
 					new_room = new MonsterRoomElite();
-					saved_map_changes += "Elite";
+					saved_map_room += "Elite";
 				}
 			}
 			
-
-
 			room_to_change.room = new_room;
 		
 		} else {
@@ -151,7 +154,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 		
 	}
 	
-	public boolean CheckIfPotionCanBeUsed(AbstractRoom room) {
+	public static boolean CheckIfPotionCanBeUsed(AbstractRoom room) {
 		
 		boolean evaluation = !(room instanceof MonsterRoom) && 
 				!(room instanceof MonsterRoomElite) &&
@@ -173,7 +176,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 		
 	}
 	
-	public boolean checkIfEmeraldEliteOrEliteRoom(MapRoomNode room_to_change) {
+	public static boolean checkIfEmeraldEliteOrEliteRoom(MapRoomNode room_to_change) {
 		
 		if (room_to_change.getRoom() instanceof TreasureRoom
 			&& (Settings.isFinalActAvailable)
@@ -186,40 +189,71 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 		
 	}
 	
-	@Override
-	public String onSave() {
-		
-		
-		//currently working to store one room only
-		return saved_map_changes;
+	public static void save(final SpireConfig config) {
 
-	}
+        if (AbstractDungeon.player != null) {
+        	logger.info("Started saving Challenger Coin information");
+        	
+        	config.setInt("Challenger_Coin_X", saved_map_x_position);
+        	config.setInt("Challenger_Coin_Y", saved_map_y_position);
+        	config.setString("Challenger_Coin_Room", saved_map_room);
+        	
+            try {
+				config.save();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+            logger.info("Finished saving Challenger Coin info.");
+        }
+        else {
+        	clear(config);
+        }
+
+    }
 	
-	@Override
-	public void onLoad(String saved_map_changes) {
+	public static void load(final SpireConfig config) {
 		
-		this.saved_map_changes = saved_map_changes;
-		
-		String map_changes = this.saved_map_changes;
-		
-		if (saved_map_changes != null) {
-			
-			String[] split_map_changes = map_changes.split(" ");
-			
-			int x = Integer.parseInt(split_map_changes[0]);
-			int y = Integer.parseInt(split_map_changes[1]);
+		logger.info("Loading Challenger Coin info.");
+		if (config.has("Challenger_Coin_Room")){
+                     
+			ChallengerCoin.saved_map_x_position = config.getInt("Challenger_Coin_X");
+			ChallengerCoin.saved_map_y_position = config.getInt("Challenger_Coin_Y");
+			ChallengerCoin.saved_map_room = config.getString("Challenger_Coin_Room");
+            
 			ArrayList<ArrayList<MapRoomNode>> dungeon_map = AbstractDungeon.map;
-			String which_room = split_map_changes[2];
 			
-			changeRoom(dungeon_map, x, y, which_room);
+			changeRoom(dungeon_map, saved_map_x_position, saved_map_y_position, saved_map_room);
 			
+            try {
+				config.load();
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            logger.info("Finished loading Challenger Coin info.");
+        }
+		
+		else
+		{
+			logger.info("There's no info, setting variables accordingly.");
+
+			logger.info("Finished setting Challenger Coin variables.");
 		}
 		
-
 		
+    }
+		
+	public static void clear(final SpireConfig config) {
+		logger.info("Clearing Challenger Coin variables.");
+    	
+		config.remove("Challenger_Coin_X");
+    	config.remove("Challenger_Coin_Y");
+    	config.remove("Challenger_Coin_Room");
+		
+        logger.info("Finished clearing Challenger Coin variables.");
 	}
-	
-	
+
 	@Override
 	public AbstractPotion makeCopy() {
 
