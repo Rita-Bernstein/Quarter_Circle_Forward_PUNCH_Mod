@@ -236,6 +236,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             DuffelBag.load(config);
             UnceasingFlame.load(config);
             SchoolBackpack.load(config);
+            ChallengerCoin.load(config);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -252,6 +253,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             DuffelBag.save(config);
             UnceasingFlame.save(config);
             SchoolBackpack.save(config);
+            ChallengerCoin.save(config);
         }
         catch (IOException e) {
         	e.printStackTrace();
@@ -269,6 +271,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             DuffelBag.clear(config);
             UnceasingFlame.clear(config);
             SchoolBackpack.clear(config);
+            ChallengerCoin.clear(config);
         	config.save();
 
         }
