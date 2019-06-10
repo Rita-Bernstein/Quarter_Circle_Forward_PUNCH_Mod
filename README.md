@@ -59,10 +59,11 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 
 And MAYBE (not making promises here)
 
-22. Cards inspired by moves of fighting games (and here I include Smash), that can be get through events or other mod's access to a hidden character.
-23. Special shop with stuff from this mod (cards above mentioned included) and removal with a good discount.
-24. Elite monsters.
-25. Extra events.
+22. Synergy with Googly Eyes
+23. Cards inspired by moves of fighting games (and here I include Smash), that can be get through events or other mod's access to a hidden character.
+24. Special shop with stuff from this mod (cards above mentioned included) and removal with a good discount.
+25. Elite monsters.
+26. Extra events.
 
 # Requirements
 
