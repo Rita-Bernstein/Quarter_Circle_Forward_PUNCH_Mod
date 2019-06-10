@@ -148,6 +148,15 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 		
 	}
 	
+	public String onSave() {
+		
+		//What do I need to save? Hm.
+		// The position of the changed rooms.
+		// If the room is an Emerald Elite or an Elite.
+		// That's it basically.
+		
+	}
+	
 	@Override
 	public AbstractPotion makeCopy() {
 
