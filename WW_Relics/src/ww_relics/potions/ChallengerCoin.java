@@ -103,6 +103,12 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 	
 	public void changeRoom(ArrayList<ArrayList<MapRoomNode>> dungeon_map, int x, int y) {
 		
+		changeRoom(dungeon_map, x, y, null);
+		
+	}
+	
+	public void changeRoom(ArrayList<ArrayList<MapRoomNode>> dungeon_map, int x, int y, String which_room) {
+		
 		MapRoomNode room_to_change = dungeon_map.get(y).get(x);
 		AbstractRoom room = room_to_change.getRoom();
 
@@ -112,15 +118,27 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 			
 			saved_map_changes = x + " " + y + " ";
 			
-			if (checkIfEmeraldEliteOrEliteRoom(room_to_change)) {
-				new_room = new MonsterRoomEmeraldElite();
-				saved_map_changes += "EmeraldElite";
+			if (which_room == null) {
+				if (checkIfEmeraldEliteOrEliteRoom(room_to_change)) {
+					new_room = new MonsterRoomEmeraldElite();
+					saved_map_changes += "EmeraldElite";
+				}
+				else {
+					new_room = new MonsterRoomElite();
+					saved_map_changes += "Elite";
+				}
+			} else {
+				if (which_room == "EmeraldElite") {
+					new_room = new MonsterRoomEmeraldElite();
+					saved_map_changes += "EmeraldElite";
+				}
+				else {
+					new_room = new MonsterRoomElite();
+					saved_map_changes += "Elite";
+				}
 			}
-			else {
-				new_room = new MonsterRoomElite();
-				saved_map_changes += "Elite";
-				
-			}
+			
+
 
 			room_to_change.room = new_room;
 		
@@ -130,6 +148,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 			//add an elite to a non-problematic space position to that room
 			
 		}
+		
 	}
 	
 	public boolean CheckIfPotionCanBeUsed(AbstractRoom room) {
@@ -179,6 +198,24 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 		// ...how I'm going to save info of multiple rooms?
 		// Hm. Static String for all Challenger Potions?
 
+	}
+	
+	@Override
+	public void onLoad(String saved_map_changes) {
+		
+		this.saved_map_changes = saved_map_changes;
+		
+		String map_changes = this.saved_map_changes;
+		
+		String[] split_map_changes = map_changes.split(" ");
+		
+		int x = Integer.parseInt(split_map_changes[0]);
+		int y = Integer.parseInt(split_map_changes[1]);
+		ArrayList<ArrayList<MapRoomNode>> dungeon_map = AbstractDungeon.map;
+		String which_room = split_map_changes[2];
+		
+		
+		
 	}
 	
 	
