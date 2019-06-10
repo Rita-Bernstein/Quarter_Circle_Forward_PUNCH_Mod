@@ -189,14 +189,9 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 	@Override
 	public String onSave() {
 		
+		
+		//currently working to store one room only
 		return saved_map_changes;
-		//What do I need to save? Hm.
-		// The position of the changed rooms.
-		// If the room is an Emerald Elite or an Elite.
-		// That's it basically.
-		// Main problem: if I'm going to save information about a room...
-		// ...how I'm going to save info of multiple rooms?
-		// Hm. Static String for all Challenger Potions?
 
 	}
 	
