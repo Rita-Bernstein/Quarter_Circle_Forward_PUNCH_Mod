@@ -202,14 +202,20 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 		
 		String map_changes = this.saved_map_changes;
 		
-		String[] split_map_changes = map_changes.split(" ");
+		if (saved_map_changes != null) {
+			
+			String[] split_map_changes = map_changes.split(" ");
+			
+			int x = Integer.parseInt(split_map_changes[0]);
+			int y = Integer.parseInt(split_map_changes[1]);
+			ArrayList<ArrayList<MapRoomNode>> dungeon_map = AbstractDungeon.map;
+			String which_room = split_map_changes[2];
+			
+			changeRoom(dungeon_map, x, y, which_room);
+			
+		}
 		
-		int x = Integer.parseInt(split_map_changes[0]);
-		int y = Integer.parseInt(split_map_changes[1]);
-		ArrayList<ArrayList<MapRoomNode>> dungeon_map = AbstractDungeon.map;
-		String which_room = split_map_changes[2];
-		
-		changeRoom(dungeon_map, x, y, which_room);
+
 		
 	}
 	
