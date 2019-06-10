@@ -101,14 +101,8 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 			
 				AbstractRoom new_room;
 				
-				if (room_to_change.getRoom() instanceof TreasureRoom && 
-						(Settings.isFinalActAvailable) && (!Settings.hasSapphireKey)) {
-					
-					new_room = new MonsterRoomEmeraldElite();					
-
-				} else {
-					new_room = new MonsterRoomElite();
-				}
+				if (checkIfEmeraldEliteOrEliteRoom(room_to_change)) new_room = new MonsterRoomEmeraldElite();					
+				else new_room = new MonsterRoomElite();
 
 				room_to_change.room = new_room;
 				
@@ -141,7 +135,19 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 		
 		return evaluation;
 		
+	}
+	
+	public boolean checkIfEmeraldEliteOrEliteRoom(MapRoomNode room_to_change) {
+		
+		if (room_to_change.getRoom() instanceof TreasureRoom
+			&& (Settings.isFinalActAvailable)
+			&& (!Settings.hasSapphireKey)) {
 			
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 	
 	@Override
