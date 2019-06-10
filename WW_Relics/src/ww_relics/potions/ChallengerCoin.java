@@ -1,6 +1,8 @@
 package ww_relics.potions;
 import java.util.ArrayList;
 
+import javax.swing.text.ChangedCharSetException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -53,7 +55,9 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 	public static final String INFINITE_SPIRE_NIGHTMARE_ELITE_ROOM_SYMBOL = "NM";
 	public static final String REPLAY_THE_SPIRE_TELEPORT_ROOM_SYMBOL = "PTL";
 	
-	public static final Logger logger = LogManager.getLogger(ChallengerCoin.class.getName()); // lets us log output
+	public static final Logger logger = LogManager.getLogger(ChallengerCoin.class.getName());
+	
+	public static String saved_map_changes = "";
 	
 	public ChallengerCoin() {
 		super(NAME, ID, RARITY, SIZE, COLOR);
@@ -90,27 +94,42 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 		ArrayList<MapEdge> edges = current_room.getEdges();
 		
 		for (int i = 0; i < edges.size(); i++) {
-			int x = edges.get(i).dstX;
-			int y = edges.get(i).dstY;
-			MapRoomNode room_to_change = dungeon_map.get(y).get(x);
-			AbstractRoom room = room_to_change.getRoom();
-
-			if (CheckIfPotionCanBeUsed(room)) {
+			int x = edges.get(i).dstX;	int y = edges.get(i).dstY;
 			
-				AbstractRoom new_room;
-				
-				if (checkIfEmeraldEliteOrEliteRoom(room_to_change)) new_room = new MonsterRoomEmeraldElite();					
-				else new_room = new MonsterRoomElite();
-
-				room_to_change.room = new_room;
-				
-			} else {
-				//if it was a combat room, 
-				//add an elite to a non-problematic space position to that room
-			}
-					
+			changeRoom(dungeon_map, x, y);
 		}
 		
+	}
+	
+	public void changeRoom(ArrayList<ArrayList<MapRoomNode>> dungeon_map, int x, int y) {
+		
+		MapRoomNode room_to_change = dungeon_map.get(y).get(x);
+		AbstractRoom room = room_to_change.getRoom();
+
+		if (CheckIfPotionCanBeUsed(room)) {
+		
+			AbstractRoom new_room;
+			
+			saved_map_changes = x + " " + y + " ";
+			
+			if (checkIfEmeraldEliteOrEliteRoom(room_to_change)) {
+				new_room = new MonsterRoomEmeraldElite();
+				saved_map_changes += "EmeraldElite";
+			}
+			else {
+				new_room = new MonsterRoomElite();
+				saved_map_changes += "Elite";
+				
+			}
+
+			room_to_change.room = new_room;
+		
+		} else {
+			
+			//if it was a combat room, 
+			//add an elite to a non-problematic space position to that room
+			
+		}
 	}
 	
 	public boolean CheckIfPotionCanBeUsed(AbstractRoom room) {
@@ -145,19 +164,6 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 		} else {
 			return false;
 		}
-		
-	}
-	
-	public String onSave() {
-		
-		//What do I need to save? Hm.
-		// The position of the changed rooms.
-		// If the room is an Emerald Elite or an Elite.
-		// That's it basically.
-		// Main problem: if I'm going to save information about a room...
-		// ...how I'm going to save info of multiple rooms?
-		// Hm. Static String for all Challenger Potions?
-		
 		
 	}
 	
