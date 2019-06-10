@@ -89,8 +89,6 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 		MapRoomNode current_room = AbstractDungeon.currMapNode;
 		ArrayList<MapEdge> edges = current_room.getEdges();
 		
-		logger.info("current_room_position = " + current_room.x + " " + current_room.y);
-		
 		for (int i = 0; i < edges.size(); i++) {
 			int x = edges.get(i).dstX;
 			int y = edges.get(i).dstY;
