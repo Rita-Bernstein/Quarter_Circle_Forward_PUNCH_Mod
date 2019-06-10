@@ -214,7 +214,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<S
 		ArrayList<ArrayList<MapRoomNode>> dungeon_map = AbstractDungeon.map;
 		String which_room = split_map_changes[2];
 		
-		
+		changeRoom(dungeon_map, x, y, which_room);
 		
 	}
 	
