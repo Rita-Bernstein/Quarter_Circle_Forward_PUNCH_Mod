@@ -17,6 +17,9 @@ import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
+
+import basemod.abstracts.CustomSavable;
+
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
@@ -28,7 +31,7 @@ import com.megacrit.cardcrawl.mod.replay.rooms.TeleportRoom;
 import infinitespire.rooms.NightmareEliteRoom;
 
 
-public class ChallengerCoin extends OutOfCombatPotion {
+public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable  {
 
 	public static final String ID = "WW_Relics:Challenger_Coin";
 	

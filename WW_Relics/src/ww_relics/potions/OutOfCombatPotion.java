@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 
 import basemod.abstracts.CustomPotion;
 
-public class OutOfCombatPotion extends CustomPotion implements CustomSavable {
+public class OutOfCombatPotion extends CustomPotion{
 
 	public OutOfCombatPotion(String name, String id, PotionRarity rarity, PotionSize size, PotionColor color) {
 		super(name, id, rarity, size, color);
