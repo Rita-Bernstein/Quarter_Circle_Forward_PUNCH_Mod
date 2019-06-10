@@ -31,7 +31,7 @@ import com.megacrit.cardcrawl.mod.replay.rooms.TeleportRoom;
 import infinitespire.rooms.NightmareEliteRoom;
 
 
-public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable  {
+public class ChallengerCoin extends OutOfCombatPotion implements CustomSavable<String>  {
 
 	public static final String ID = "WW_Relics:Challenger_Coin";
 	
