@@ -20,8 +20,6 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 
-import basemod.abstracts.CustomSavable;
-
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
@@ -29,7 +27,6 @@ import com.megacrit.cardcrawl.rooms.TreasureRoom;
 
 import ww_relics.rooms.MonsterRoomEmeraldElite;
 import ww_relics.WW_Relics_MiscelaneaCode;
-import ww_relics.relics.chun_li.WhiteBoots;
 
 import com.megacrit.cardcrawl.mod.replay.rooms.TeleportRoom;
 import infinitespire.rooms.NightmareEliteRoom;
@@ -115,7 +112,7 @@ public class ChallengerCoin extends OutOfCombatPotion {
 		
 		MapRoomNode room_to_change = dungeon_map.get(y).get(x);
 		AbstractRoom room = room_to_change.getRoom();
-
+		
 		if (CheckIfPotionCanBeUsed(room)) {
 		
 			AbstractRoom new_room;
