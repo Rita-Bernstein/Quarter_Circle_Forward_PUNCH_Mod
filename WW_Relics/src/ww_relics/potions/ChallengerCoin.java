@@ -234,18 +234,21 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
         if (AbstractDungeon.player != null) {
         	logger.info("Started saving Challenger Coin information");
         	
-            int quant = saved_map_x_position.size();
-        	config.setInt("Challenger_Coin_Number_Of_Rooms_Made", quant);
-            
-        	for (int i = 0; i < quant; i++) {
+        	if (saved_map_x_position != null) {
         		
-        		config.setInt("Challenger_Coin_X_" + i, saved_map_x_position.get(i));
-            	config.setInt("Challenger_Coin_Y_" + i, saved_map_y_position.get(i));
-            	config.setString("Challenger_Coin_Room_" + i, saved_map_room.get(i));
-            	config.setInt("Challenger_Coin_priority_" + i, saved_post_map_gen_use_priority.get(i));
-        		
+        		int quant = saved_map_x_position.size();
+            	config.setInt("Challenger_Coin_Number_Of_Rooms_Made", quant);
+                
+            	for (int i = 0; i < quant; i++) {
+            		
+            		config.setInt("Challenger_Coin_X_" + i, saved_map_x_position.get(i));
+                	config.setInt("Challenger_Coin_Y_" + i, saved_map_y_position.get(i));
+                	config.setString("Challenger_Coin_Room_" + i, saved_map_room.get(i));
+                	config.setInt("Challenger_Coin_priority_" + i, saved_post_map_gen_use_priority.get(i));
+            	}
+            	
         	}
-
+        	
             try {
 				config.save();
 			} catch (IOException e) {
