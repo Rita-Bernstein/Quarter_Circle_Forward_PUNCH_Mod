@@ -32,7 +32,8 @@ public class PostMapGenerationManager {
 	}
 	
 	public static int getPriorityCounter() {
-		return ++priority_counter;
+		priority_counter += 1;
+		return priority_counter;
 	}
 	
 	public static void addPostMapGenerationChange(PostMapGenerationChange map_changer) {
