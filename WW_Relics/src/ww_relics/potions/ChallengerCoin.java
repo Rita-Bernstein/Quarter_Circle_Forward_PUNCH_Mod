@@ -101,18 +101,21 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		for (int i = 0; i < edges.size(); i++) {
 			int x = edges.get(i).dstX;	int y = edges.get(i).dstY;
 			
-			changeRoom(dungeon_map, x, y);
+			if (changeRoom(dungeon_map, x, y)) {
+				saved_post_map_gen_use_priority = PostMapGenerationManager.getPriorityCounter();
+				logger.info("HERE " + saved_post_map_gen_use_priority);
+			}
 		}
 		
 	}
 	
-	public static void changeRoom(ArrayList<ArrayList<MapRoomNode>> dungeon_map, int x, int y) {
+	public static boolean changeRoom(ArrayList<ArrayList<MapRoomNode>> dungeon_map, int x, int y) {
 		
-		changeRoom(dungeon_map, x, y, null);
+		return changeRoom(dungeon_map, x, y, null);
 		
 	}
 	
-	public static void changeRoom(ArrayList<ArrayList<MapRoomNode>> dungeon_map, int x, int y, String which_room) {
+	public static boolean changeRoom(ArrayList<ArrayList<MapRoomNode>> dungeon_map, int x, int y, String which_room) {
 		
 		MapRoomNode room_to_change = dungeon_map.get(y).get(x);
 		AbstractRoom room = room_to_change.getRoom();
@@ -145,14 +148,14 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			}
 			
 			room_to_change.room = new_room;
-			saved_post_map_gen_use_priority = PostMapGenerationManager.getPriorityCounter();
-			logger.info("HERE " + saved_post_map_gen_use_priority);
+			return true;
+
 		
 		} else {
 			
 			//if it was a combat room, 
 			//add an elite to a non-problematic space position to that room
-			
+			return false;
 		}
 		
 	}
