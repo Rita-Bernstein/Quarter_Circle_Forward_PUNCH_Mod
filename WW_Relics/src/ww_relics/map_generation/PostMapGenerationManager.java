@@ -58,14 +58,25 @@ public class PostMapGenerationManager {
 	static void callAllPostMapGenerationChanges() {
 		logger.info("Calling post map generation changes");
 		logger.info("Number of changes listed = " + post_map_gen_changers.size());
+		
+		int changes_done = 0;
+		int changes_not_done = 0;
+		
 		for (int i = 0; i < post_map_gen_changers.size(); i++) {
 			
 			if (post_map_gen_changers.get(i).post_map_gen_changer_object.canDoAfterMapGeneration()) {
 				post_map_gen_changers.get(i).post_map_gen_changer_object.doAfterMapGeneration();
+				changes_done++;
+			} else {
+				changes_not_done++;
 			}
+		
 			
 		}
-		logger.info("Post mag generation changes called.");
+		logger.info("Post map generation changes made = " + changes_done);
+		logger.info("Post map generation changes not made (because it wasn't the time for them = " +
+				changes_not_done);
+		logger.info("Post map generation changes called.");
 	}
 	
 	static void loadCounter() {
