@@ -20,11 +20,7 @@ public class PostMapGenerationManager {
 		post_map_gen_changers = new ArrayList<PostMapGenerationChange>();
 		
 	}
-	
-	private void setCounter(int new_counter) {
-		counter = new_counter;
-	}
-	
+
 	public int getCounter() {
 		return ++counter;
 	}
