@@ -240,7 +240,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			post_map_gen_changer.post_map_gen_changer_object =
 				(IPostMapGenerationAddStuff) new ChallengerCoin();		
 			
-
+			logger.info("Adding post map generation change");
 			PostMapGenerationManager.addPostMapGenerationChange(post_map_gen_changer);
 			
             try {
