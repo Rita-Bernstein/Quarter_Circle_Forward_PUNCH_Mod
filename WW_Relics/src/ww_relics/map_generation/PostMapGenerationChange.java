@@ -6,7 +6,7 @@ public class PostMapGenerationChange implements Comparable<PostMapGenerationChan
 
 	public int counter;
 	
-	public IPostMapGenerationAddStuff post_map_gen_changer;
+	public IPostMapGenerationAddStuff post_map_gen_changer_object;
 
 	@Override
 	public int compareTo(PostMapGenerationChange compared) {
