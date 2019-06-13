@@ -14,18 +14,27 @@ public class PostMapGenerationManager {
 	static ArrayList<PostMapGenerationChange> post_map_gen_changers; 
 	
 	public PostMapGenerationManager() {
-		
+	
+		if (initialized == false) {
+			preparePostMapGenerationManager();
+		}
+
+	}
+
+	static void preparePostMapGenerationManager() {
 		initialized = true;
 		counter = 0;
 		post_map_gen_changers = new ArrayList<PostMapGenerationChange>();
-		
 	}
-
+	
 	public int getCounter() {
 		return ++counter;
 	}
 	
 	public static void addPostMapGenerationChange(PostMapGenerationChange map_changer) {
+		if (initialized == false) {
+			preparePostMapGenerationManager();
+		}
 		post_map_gen_changers.add(map_changer);
 	}
 	
