@@ -3,6 +3,11 @@ package ww_relics.map_generation;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import ww_relics.relics.chun_li.WhiteBoots;
+
 // I SERIOUSLY DON'T RECOMMEND THE USE OF THIS CODE AS AN EXAMPLE.
 // SERIOUSLY, DON'T GO COPYING THIS POST MAG GEN SYSTEM TO YOUR MOD.
 // IF YOU WILL, TALK WITH ME FIRST.
@@ -12,6 +17,7 @@ public class PostMapGenerationManager {
 	public static boolean initialized = false;
 	static int counter;
 	static ArrayList<PostMapGenerationChange> post_map_gen_changers; 
+	public static final Logger logger = LogManager.getLogger(PostMapGenerationManager.class.getName());
 	
 	public PostMapGenerationManager() {
 	
@@ -46,10 +52,14 @@ public class PostMapGenerationManager {
 	}
 	
 	static void sortPostMapGenerationChangers() {
+		logger.info("Sorting post map generation changes.");
 		Collections.sort(post_map_gen_changers);
+		logger.info("Post map generation changes sorted.");
 	}
 	
 	static void callAllPostMapGenerationChanges() {
+		logger.info("Calling post map generation changes");
+		logger.info("Number of changes listed = " + post_map_gen_changers.size());
 		for (int i = 0; i < post_map_gen_changers.size(); i++) {
 			
 			if (post_map_gen_changers.get(i).post_map_gen_changer_object.canDoAfterMapGeneration()) {
@@ -57,6 +67,7 @@ public class PostMapGenerationManager {
 			}
 			
 		}
+		logger.info("Post mag generation changes called.");
 	}
 	
 	static void loadCounter() {
@@ -67,7 +78,9 @@ public class PostMapGenerationManager {
 	}
 	
 	static void cleanPostMapGenerationChanges() {
+		logger.info("Cleaning list of post map generation changes.");
 		post_map_gen_changers.clear();
+		logger.info("list of post map generation changes cleaned.");
 	}
 	
 		
