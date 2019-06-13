@@ -145,7 +145,8 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			}
 			
 			room_to_change.room = new_room;
-			saved_post_map_gen_use_priority = PostMapGenerationManager.getPriorityCounter();			
+			saved_post_map_gen_use_priority = PostMapGenerationManager.getPriorityCounter();
+			logger.info("HERE " + saved_post_map_gen_use_priority);
 		
 		} else {
 			
@@ -242,7 +243,9 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			PostMapGenerationChange post_map_gen_changer = new PostMapGenerationChange();
 			
 			post_map_gen_changer.post_map_gen_changer_object =
-				(IPostMapGenerationAddStuff) new ChallengerCoin();		
+				(IPostMapGenerationAddStuff) new ChallengerCoin();	
+			
+			post_map_gen_changer.counter = ChallengerCoin.saved_post_map_gen_use_priority;
 			
 			logger.info("Adding post map generation change");
 			PostMapGenerationManager.addPostMapGenerationChange(post_map_gen_changer);
