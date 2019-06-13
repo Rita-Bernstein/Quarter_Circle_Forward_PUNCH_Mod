@@ -306,20 +306,25 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing Challenger Coin variables.");
     	
-		int count = config.getInt("Challenger_Coin_Number_Of_Rooms_Made");
-		config.remove("Challenger_Coin_Number_Of_Rooms_Made");
-		
-		for (int i = 0; i < count; i++) {
-			config.remove("Challenger_Coin_X_" + i);
-	    	config.remove("Challenger_Coin_Y_" + i);
-	    	config.remove("Challenger_Coin_Room_" + i);
-	    	config.remove("Challenger_Coin_priority_" + i);
-		}
-		
-		saved_map_x_position.clear(); saved_map_x_position = new ArrayList<Integer>();
-		saved_map_y_position.clear(); saved_map_y_position = new ArrayList<Integer>();
-		saved_map_room.clear(); saved_map_room = new ArrayList<String>();
-		saved_post_map_gen_use_priority.clear(); saved_post_map_gen_use_priority = new ArrayList<Integer>();
+		if (config.has("Challenger_Coin_Number_Of_Rooms_Made")) {
+			
+			int count = config.getInt("Challenger_Coin_Number_Of_Rooms_Made");
+			
+			config.remove("Challenger_Coin_Number_Of_Rooms_Made");
+			
+			for (int i = 0; i < count; i++) {
+				config.remove("Challenger_Coin_X_" + i);
+		    	config.remove("Challenger_Coin_Y_" + i);
+		    	config.remove("Challenger_Coin_Room_" + i);
+		    	config.remove("Challenger_Coin_priority_" + i);
+			}
+			
+			saved_map_x_position.clear(); saved_map_x_position = new ArrayList<Integer>();
+			saved_map_y_position.clear(); saved_map_y_position = new ArrayList<Integer>();
+			saved_map_room.clear(); saved_map_room = new ArrayList<String>();
+			saved_post_map_gen_use_priority.clear(); saved_post_map_gen_use_priority = new ArrayList<Integer>();
+			
+		}		
 		
         logger.info("Finished clearing Challenger Coin variables.");
 	}
