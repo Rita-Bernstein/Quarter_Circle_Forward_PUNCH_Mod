@@ -240,6 +240,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			post_map_gen_changer.post_map_gen_changer_object =
 				(IPostMapGenerationAddStuff) new ChallengerCoin();		
 			
+
 			PostMapGenerationManager.addPostMapGenerationChange(post_map_gen_changer);
 			
             try {
@@ -266,8 +267,11 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		logger.info("Clearing Challenger Coin variables.");
     	
 		config.remove("Challenger_Coin_X");
+    	saved_map_x_position = 0;
     	config.remove("Challenger_Coin_Y");
+       	saved_map_y_position = 0;
     	config.remove("Challenger_Coin_Room");
+    	saved_map_room = "";
 		
         logger.info("Finished clearing Challenger Coin variables.");
 	}
