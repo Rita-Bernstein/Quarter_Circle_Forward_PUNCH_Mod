@@ -265,7 +265,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	public static void load(final SpireConfig config) {
 		
 		logger.info("Loading Challenger Coin info.");
-		if (config.has("Challenger_Coin_Room")){
+		if (config.has("Challenger_Coin_Number_Of_Rooms_Made")){
                      
 			int quant = config.getInt("Challenger_Coin_Number_Of_Rooms_Made");
 			
