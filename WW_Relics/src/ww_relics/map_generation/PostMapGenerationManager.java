@@ -5,13 +5,19 @@ import java.util.Collections;
 
 import ww_relics.interfaces.IPostMapGenerationAddStuff;
 
+// I SERIOUSLY DON'T RECOMMEND THE USE OF THIS CODE AS AN EXAMPLE.
+// SERIOUSLY, DON'T GO COPYING THIS POST MAG GEN SYSTEM TO YOUR MOD.
+// IF YOU WILL, TALK WITH ME FIRST.
+// Thanks.
 public class PostMapGenerationManager {
 
+	static boolean initialized = false;
 	static int counter;
 	static ArrayList<PostMapGenerationChange> post_map_gen_changers; 
 	
 	public PostMapGenerationManager() {
 		
+		initialized = true;
 		counter = 0;
 		post_map_gen_changers = new ArrayList<PostMapGenerationChange>();
 		
