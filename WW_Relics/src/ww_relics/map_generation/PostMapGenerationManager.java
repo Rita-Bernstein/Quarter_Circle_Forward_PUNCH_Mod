@@ -60,8 +60,10 @@ public class PostMapGenerationManager {
 	}
 	
 	static void loadCounter() {
-		int new_counter = post_map_gen_changers.get(post_map_gen_changers.size()-1).counter;
-		if (counter < new_counter) counter = new_counter;
+		if (post_map_gen_changers.size() > 0) {
+			int new_counter = post_map_gen_changers.get(post_map_gen_changers.size()-1).counter;
+			if (counter < new_counter) counter = new_counter;
+		}
 	}
 	
 	static void cleanPostMapGenerationChanges() {
