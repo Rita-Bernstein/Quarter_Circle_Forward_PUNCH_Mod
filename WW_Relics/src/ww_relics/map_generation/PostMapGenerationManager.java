@@ -6,8 +6,6 @@ import java.util.Collections;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import ww_relics.relics.chun_li.WhiteBoots;
-
 // I SERIOUSLY DON'T RECOMMEND THE USE OF THIS CODE AS AN EXAMPLE.
 // SERIOUSLY, DON'T GO COPYING THIS POST MAG GEN SYSTEM TO YOUR MOD.
 // IF YOU WILL, TALK WITH ME FIRST.
