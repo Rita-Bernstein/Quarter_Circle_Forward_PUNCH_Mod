@@ -36,6 +36,7 @@ public class PostMapGenerationManager {
 	public static void doIfPossiblePostMapGenerationChangers() {
 		sortPostMapGenerationChangers();
 		callAllPostMapGenerationChanges();
+		loadCounter();
 		cleanPostMapGenerationChanges();
 	}
 	
@@ -53,7 +54,10 @@ public class PostMapGenerationManager {
 		}
 	}
 	
-
+	static void loadCounter() {
+		int new_counter = post_map_gen_changers.get(post_map_gen_changers.size()-1).counter;
+		if (counter < new_counter) counter = new_counter;
+	}
 	
 	static void cleanPostMapGenerationChanges() {
 		post_map_gen_changers.clear();
