@@ -62,6 +62,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	public static int saved_map_x_position;
 	public static int saved_map_y_position;
 	public static String saved_map_room = "";
+	public static int saved_post_map_gen_use_priority;
 	
 	public ChallengerCoin() {
 		super(NAME, ID, RARITY, SIZE, COLOR);
@@ -144,6 +145,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			}
 			
 			room_to_change.room = new_room;
+			saved_post_map_gen_use_priority = PostMapGenerationManager.getCounter();			
 		
 		} else {
 			
@@ -212,6 +214,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
         	config.setInt("Challenger_Coin_X", saved_map_x_position);
         	config.setInt("Challenger_Coin_Y", saved_map_y_position);
         	config.setString("Challenger_Coin_Room", saved_map_room);
+        	config.setInt("Challenger_Coin_priority", saved_post_map_gen_use_priority);
         	
             try {
 				config.save();
@@ -234,6 +237,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			ChallengerCoin.saved_map_x_position = config.getInt("Challenger_Coin_X");
 			ChallengerCoin.saved_map_y_position = config.getInt("Challenger_Coin_Y");
 			ChallengerCoin.saved_map_room = config.getString("Challenger_Coin_Room");
+			ChallengerCoin.saved_post_map_gen_use_priority = config.getInt("Challenger_Coin_priority");
             
 			PostMapGenerationChange post_map_gen_changer = new PostMapGenerationChange();
 			
