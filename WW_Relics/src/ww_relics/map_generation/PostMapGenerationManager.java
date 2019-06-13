@@ -80,10 +80,12 @@ public class PostMapGenerationManager {
 	}
 	
 	static void loadCounter() {
+		logger.info("Loading latest post map generation priority counter.");
 		if (post_map_gen_changers.size() > 0) {
 			int new_counter = post_map_gen_changers.get(post_map_gen_changers.size()-1).counter;
 			if (counter < new_counter) counter = new_counter;
 		}
+		logger.info("Current post map generation priority counter = " + counter);
 	}
 	
 	static void cleanPostMapGenerationChanges() {
