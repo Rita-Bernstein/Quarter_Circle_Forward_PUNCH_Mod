@@ -27,12 +27,15 @@ import com.megacrit.cardcrawl.rooms.TreasureRoom;
 
 import ww_relics.rooms.MonsterRoomEmeraldElite;
 import ww_relics.WW_Relics_MiscelaneaCode;
+import ww_relics.interfaces.IPostMapGenerationAddStuff;
+import ww_relics.map_generation.PostMapGenerationChange;
+import ww_relics.map_generation.PostMapGenerationManager;
 
 import com.megacrit.cardcrawl.mod.replay.rooms.TeleportRoom;
 import infinitespire.rooms.NightmareEliteRoom;
 
 
-public class ChallengerCoin extends OutOfCombatPotion {
+public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerationAddStuff {
 
 	public static final String ID = "WW_Relics:Challenger_Coin";
 	
@@ -185,6 +188,21 @@ public class ChallengerCoin extends OutOfCombatPotion {
 		}
 		
 	}
+
+	@Override
+	public boolean canDoAfterMapGeneration() {
+		return true;
+	}
+	
+	@Override
+	public void doAfterMapGeneration() {
+		
+		ArrayList<ArrayList<MapRoomNode>> dungeon_map = AbstractDungeon.map;
+		
+		changeRoom(dungeon_map, saved_map_x_position, saved_map_y_position, saved_map_room);
+	}
+
+
 	
 	public static void save(final SpireConfig config) {
 
@@ -217,9 +235,12 @@ public class ChallengerCoin extends OutOfCombatPotion {
 			ChallengerCoin.saved_map_y_position = config.getInt("Challenger_Coin_Y");
 			ChallengerCoin.saved_map_room = config.getString("Challenger_Coin_Room");
             
-			ArrayList<ArrayList<MapRoomNode>> dungeon_map = AbstractDungeon.map;
+			PostMapGenerationChange post_map_gen_changer = new PostMapGenerationChange();
 			
-			changeRoom(dungeon_map, saved_map_x_position, saved_map_y_position, saved_map_room);
+			post_map_gen_changer.post_map_gen_changer_object =
+				(IPostMapGenerationAddStuff) new ChallengerCoin();		
+			
+			PostMapGenerationManager.addPostMapGenerationChange(post_map_gen_changer);
 			
             try {
 				config.load();
@@ -256,7 +277,5 @@ public class ChallengerCoin extends OutOfCombatPotion {
 
 		return new ChallengerCoin();
 	}
-
-
 
 }
