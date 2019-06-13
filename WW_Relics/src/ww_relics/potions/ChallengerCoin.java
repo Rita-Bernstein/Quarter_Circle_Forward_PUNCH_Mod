@@ -145,7 +145,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			}
 			
 			room_to_change.room = new_room;
-			saved_post_map_gen_use_priority = PostMapGenerationManager.getCounter();			
+			saved_post_map_gen_use_priority = PostMapGenerationManager.getPriorityCounter();			
 		
 		} else {
 			

@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 public class PostMapGenerationManager {
 
 	public static boolean initialized = false;
-	static int counter;
+	static int priority_counter;
 	static ArrayList<PostMapGenerationChange> post_map_gen_changers; 
 	public static final Logger logger = LogManager.getLogger(PostMapGenerationManager.class.getName());
 	
@@ -27,12 +27,12 @@ public class PostMapGenerationManager {
 
 	static void preparePostMapGenerationManager() {
 		initialized = true;
-		counter = 0;
+		priority_counter = 0;
 		post_map_gen_changers = new ArrayList<PostMapGenerationChange>();
 	}
 	
-	public static int getCounter() {
-		return ++counter;
+	public static int getPriorityCounter() {
+		return ++priority_counter;
 	}
 	
 	public static void addPostMapGenerationChange(PostMapGenerationChange map_changer) {
@@ -80,12 +80,12 @@ public class PostMapGenerationManager {
 	}
 	
 	static void loadCounter() {
-		logger.info("Loading latest post map generation priority counter.");
+		logger.info("Loading latest post map generation priority priority_counter.");
 		if (post_map_gen_changers.size() > 0) {
 			int new_counter = post_map_gen_changers.get(post_map_gen_changers.size()-1).counter;
-			if (counter < new_counter) counter = new_counter;
+			if (priority_counter < new_counter) priority_counter = new_counter;
 		}
-		logger.info("Current post map generation priority counter = " + counter);
+		logger.info("Current post map generation priority priority_counter = " + priority_counter);
 	}
 	
 	static void cleanPostMapGenerationChanges() {
