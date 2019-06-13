@@ -7,7 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 // I SERIOUSLY DON'T RECOMMEND THE USE OF THIS CODE AS AN EXAMPLE.
-// SERIOUSLY, DON'T GO COPYING THIS POST MAG GEN SYSTEM TO YOUR MOD.
+// SERIOUSLY, DON'T GO COPYING THIS POST MAP GEN SYSTEM TO YOUR MOD.
 // IF YOU WILL, TALK WITH ME FIRST.
 // Thanks.
 public class PostMapGenerationManager {
