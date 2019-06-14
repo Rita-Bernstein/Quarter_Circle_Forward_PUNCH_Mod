@@ -7,7 +7,7 @@ import java.util.*;
 import org.apache.logging.log4j.*;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
+//import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -20,7 +20,7 @@ import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import ww_relics.modifiers.*;
-import ww_relics.potions.ChallengerCoin;
+//import ww_relics.potions.ChallengerCoin;
 import ww_relics.relics.character_cameos.dan.NotStrongestFightingStyleGuidebook;
 import ww_relics.relics.character_cameos.sakura.SchoolBackpack;
 import ww_relics.relics.chun_li.*;
@@ -43,7 +43,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 
 	public static final String MODNAME = "World Warriors' Relics"; // mod name
 	public static final String AUTHOR = "Clauvin aka Dungeon Explorer Lan"; // your name
-	public static final String DESCRIPTION = "v0.10.6" +
+	public static final String DESCRIPTION = "v0.10.18" +
 			"\r\n Adds fourteen relics based in SF2's main characters, + 8 game modifiers."
 		  + "\r\n v1.0 will have 32+ relics."
 		  + "\r\n The images in the mod are temporary and will be substituted/improved on version 1.0.";
@@ -303,8 +303,8 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	public void addPotions() {
 		
 		logger.info("Begin adding potions");
-		BaseMod.addPotion(ChallengerCoin.class, Color.LIME.cpy(), Color.PINK.cpy(), Color.BLUE.cpy(),
-				ChallengerCoin.ID);
+		/*BaseMod.addPotion(ChallengerCoin.class, Color.LIME.cpy(), Color.PINK.cpy(), Color.BLUE.cpy(),
+				ChallengerCoin.ID);*/
 		logger.info("Done adding potions");
 	}
 }
