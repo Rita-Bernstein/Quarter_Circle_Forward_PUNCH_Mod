@@ -59,6 +59,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	
 	public static final Logger logger = LogManager.getLogger(ChallengerCoin.class.getName());
 	
+	public static ArrayList<Integer> saved_act;
 	public static ArrayList<Integer> saved_map_x_position;
 	public static ArrayList<Integer> saved_map_y_position;
 	public static ArrayList<String> saved_map_room;
@@ -77,6 +78,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		this.isThrown = false;
 		this.tips.add(new PowerTip(this.name, this.description));
 		
+		if (saved_act == null) saved_act = new ArrayList<Integer>();
 		if (saved_map_x_position == null) saved_map_x_position = new ArrayList<Integer>();
 		if (saved_map_y_position == null) saved_map_y_position = new ArrayList<Integer>();
 		if (saved_map_room == null) saved_map_room = new ArrayList<String>();
@@ -136,6 +138,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		
 			AbstractRoom new_room;
 			
+			saved_act.add(AbstractDungeon.actNum);
 			saved_map_x_position.add(x);
 			saved_map_y_position.add(y);
 			
@@ -209,7 +212,16 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 
 	@Override
 	public boolean canDoAfterMapGeneration() {
-		return true;
+		int position = saved_post_map_gen_use_priority.indexOf(post_gen_priority);
+		
+		if (position == -1) return false;
+		else {
+			
+			if (saved_act.get(position) != AbstractDungeon.actNum) return false;
+			else return true;
+
+		}
+			
 	}
 	
 	@Override
@@ -226,7 +238,6 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			
 		}
 		
-		
 	}
 
 	public static void save(final SpireConfig config) {
@@ -241,6 +252,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
                 
             	for (int i = 0; i < quant; i++) {
             		
+            		config.setInt("Challenge_Coin_Saved_Act_" + i, saved_act.get(i));
             		config.setInt("Challenger_Coin_X_" + i, saved_map_x_position.get(i));
                 	config.setInt("Challenger_Coin_Y_" + i, saved_map_y_position.get(i));
                 	config.setString("Challenger_Coin_Room_" + i, saved_map_room.get(i));
@@ -270,6 +282,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			int quant = config.getInt("Challenger_Coin_Number_Of_Rooms_Made");
 			
 			for (int i = 0; i < quant; i++) {
+				ChallengerCoin.saved_act.add(config.getInt("Challenge_Coin_Saved_Act_" + i));
 				ChallengerCoin.saved_map_x_position.add(config.getInt("Challenger_Coin_X_" + i));
 				ChallengerCoin.saved_map_y_position.add(config.getInt("Challenger_Coin_Y_" + i));
 				ChallengerCoin.saved_map_room.add(config.getString("Challenger_Coin_Room_" + i));
@@ -319,12 +332,14 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			config.remove("Challenger_Coin_Number_Of_Rooms_Made");
 			
 			for (int i = 0; i < count; i++) {
+				config.remove("Challenge_Coin_Saved_Act_" + i);
 				config.remove("Challenger_Coin_X_" + i);
 		    	config.remove("Challenger_Coin_Y_" + i);
 		    	config.remove("Challenger_Coin_Room_" + i);
 		    	config.remove("Challenger_Coin_priority_" + i);
 			}
 			
+			saved_act.clear(); saved_act = new ArrayList<Integer>();
 			saved_map_x_position.clear(); saved_map_x_position = new ArrayList<Integer>();
 			saved_map_y_position.clear(); saved_map_y_position = new ArrayList<Integer>();
 			saved_map_room.clear(); saved_map_room = new ArrayList<String>();
