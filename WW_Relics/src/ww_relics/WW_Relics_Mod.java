@@ -7,7 +7,7 @@ import java.util.*;
 import org.apache.logging.log4j.*;
 
 import com.badlogic.gdx.Gdx;
-//import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -20,7 +20,7 @@ import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import ww_relics.modifiers.*;
-//import ww_relics.potions.ChallengerCoin;
+import ww_relics.potions.ChallengerCoin;
 import ww_relics.relics.character_cameos.dan.NotStrongestFightingStyleGuidebook;
 import ww_relics.relics.character_cameos.sakura.SchoolBackpack;
 import ww_relics.relics.chun_li.*;
@@ -86,7 +86,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	    LoadPowersJSON();
 	    LoadModifiersJSON();
 	    LoadCardsJSON();
-	    //LoadPotionsJSON();
+	    LoadPotionsJSON();
 	    
 	    logger.info("done editing strings");
 	}
@@ -236,7 +236,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             DuffelBag.load(config);
             UnceasingFlame.load(config);
             SchoolBackpack.load(config);
-            //ChallengerCoin.load(config);
+            ChallengerCoin.load(config);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -253,7 +253,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             DuffelBag.save(config);
             UnceasingFlame.save(config);
             SchoolBackpack.save(config);
-            //ChallengerCoin.save(config);
+            ChallengerCoin.save(config);
         }
         catch (IOException e) {
         	e.printStackTrace();
@@ -271,7 +271,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             DuffelBag.clear(config);
             UnceasingFlame.clear(config);
             SchoolBackpack.clear(config);
-            //ChallengerCoin.clear(config);
+            ChallengerCoin.clear(config);
         	config.save();
 
         }
@@ -292,7 +292,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	@Override
 	public void receivePostInitialize() {
 
-		//addPotions();
+		addPotions();
 		
 		String modBadgeAddress = "ww_relics/assets/img/modbadge/ModBadgePlaceholder.png";
 		Texture badgeTexture = new Texture(Gdx.files.internal(modBadgeAddress));
@@ -303,8 +303,8 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	public void addPotions() {
 		
 		logger.info("Begin adding potions");
-		/*BaseMod.addPotion(ChallengerCoin.class, Color.LIME.cpy(), Color.PINK.cpy(), Color.BLUE.cpy(),
-				ChallengerCoin.ID);*/
+		BaseMod.addPotion(ChallengerCoin.class, Color.LIME.cpy(), Color.PINK.cpy(), Color.BLUE.cpy(),
+				ChallengerCoin.ID);
 		logger.info("Done adding potions");
 	}
 }
