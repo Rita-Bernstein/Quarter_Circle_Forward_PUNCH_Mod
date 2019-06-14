@@ -86,7 +86,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	    LoadPowersJSON();
 	    LoadModifiersJSON();
 	    LoadCardsJSON();
-	    LoadPotionsJSON();
+	    //LoadPotionsJSON();
 	    
 	    logger.info("done editing strings");
 	}
@@ -236,7 +236,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             DuffelBag.load(config);
             UnceasingFlame.load(config);
             SchoolBackpack.load(config);
-            ChallengerCoin.load(config);
+            //ChallengerCoin.load(config);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -253,7 +253,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             DuffelBag.save(config);
             UnceasingFlame.save(config);
             SchoolBackpack.save(config);
-            ChallengerCoin.save(config);
+            //ChallengerCoin.save(config);
         }
         catch (IOException e) {
         	e.printStackTrace();
@@ -271,7 +271,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             DuffelBag.clear(config);
             UnceasingFlame.clear(config);
             SchoolBackpack.clear(config);
-            ChallengerCoin.clear(config);
+            //ChallengerCoin.clear(config);
         	config.save();
 
         }
@@ -292,7 +292,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	@Override
 	public void receivePostInitialize() {
 
-		addPotions();
+		//addPotions();
 		
 		String modBadgeAddress = "ww_relics/assets/img/modbadge/ModBadgePlaceholder.png";
 		Texture badgeTexture = new Texture(Gdx.files.internal(modBadgeAddress));
