@@ -101,7 +101,49 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 				      return false;
 		}
 		
-		return true;
+		return theresARoomToUseThePotion();
+	}
+	
+	private boolean theresARoomToUseThePotion() {
+		
+		ArrayList<ArrayList<MapRoomNode>> dungeon_map = AbstractDungeon.map;
+		
+		MapRoomNode current_room = AbstractDungeon.currMapNode;
+		ArrayList<MapEdge> edges = current_room.getEdges();
+		
+		for (int i = 0; i < edges.size(); i++) {
+			int x = edges.get(i).dstX;	int y = edges.get(i).dstY;
+
+			MapRoomNode room_to_check = dungeon_map.get(y).get(x);
+			AbstractRoom room = room_to_check.getRoom();
+			
+			if (CheckIfPotionCanBeUsed(room)) return true;
+		}
+		
+		return false;
+		
+	}
+	
+	public static boolean CheckIfPotionCanBeUsed(AbstractRoom room) {
+		
+		boolean evaluation = !(room instanceof MonsterRoom) && 
+				!(room instanceof MonsterRoomElite) &&
+				!(room instanceof MonsterRoomBoss);
+		
+		if (WW_Relics_MiscelaneaCode.checkForMod(WW_Relics_MiscelaneaCode.replay_the_spire_class_code)) {
+			
+			evaluation &= !(room instanceof TeleportRoom);
+			
+		}
+		
+		if (WW_Relics_MiscelaneaCode.checkForMod(WW_Relics_MiscelaneaCode.infinite_spire_class_code)) {
+			
+			evaluation &= !(room instanceof NightmareEliteRoom);
+			
+		}
+		
+		return evaluation;
+		
 	}
 	
 	@Override
@@ -172,28 +214,6 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			//add an elite to a non-problematic space position to that room
 			return false;
 		}
-		
-	}
-	
-	public static boolean CheckIfPotionCanBeUsed(AbstractRoom room) {
-		
-		boolean evaluation = !(room instanceof MonsterRoom) && 
-				!(room instanceof MonsterRoomElite) &&
-				!(room instanceof MonsterRoomBoss);
-		
-		if (WW_Relics_MiscelaneaCode.checkForMod(WW_Relics_MiscelaneaCode.replay_the_spire_class_code)) {
-			
-			evaluation &= !(room instanceof TeleportRoom);
-			
-		}
-		
-		if (WW_Relics_MiscelaneaCode.checkForMod(WW_Relics_MiscelaneaCode.infinite_spire_class_code)) {
-			
-			evaluation &= !(room instanceof NightmareEliteRoom);
-			
-		}
-		
-		return evaluation;
 		
 	}
 	
