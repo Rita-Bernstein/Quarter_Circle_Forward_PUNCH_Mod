@@ -2,9 +2,9 @@
 	"WW_Relics:Challenger_Coin": {
 		"NAME": "Challenger Coin",
 		"DESCRIPTIONS": [
-			"The next #ynon-combat",
-			", #ynon-Portal",
-			" linked room(s) to your current room will be #bElite #brooms instead."
+			"The next floor #bnon-combat",
+			", #bnon-Portal",
+			" room(s) you can normally go will be #yElite #yroom(s) instead."
 		]
 	}
 }
