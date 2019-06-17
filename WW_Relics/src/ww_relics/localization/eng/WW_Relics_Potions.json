@@ -2,8 +2,9 @@
 	"WW_Relics:Challenger_Coin": {
 		"NAME": "Challenger Coin",
 		"DESCRIPTIONS": [
-			"The next linked room(s) to your current room will be Elite room(s).",
-			" Combat rooms affected by this potion have #rElite #rmonsters #rare #radded #rto #rtheir #rfights."
+			"The next non-combat",
+			", non-Portal",
+			" linked room(s) to your current room will be Elite instead."
 		]
 	}
 }
