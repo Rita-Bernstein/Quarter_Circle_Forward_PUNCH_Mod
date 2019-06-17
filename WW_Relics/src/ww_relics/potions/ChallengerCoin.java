@@ -197,8 +197,8 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		
 			AbstractRoom new_room;
 			
-			saved_act.add(AbstractDungeon.actNum);
 			if (map_changes_arent_being_loaded) {
+				saved_act.add(AbstractDungeon.actNum);
 				saved_map_x_position.add(x);
 				saved_map_y_position.add(y);
 			}
