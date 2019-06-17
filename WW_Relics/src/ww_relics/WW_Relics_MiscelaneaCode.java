@@ -17,5 +17,16 @@ public class WW_Relics_MiscelaneaCode {
             return false;
         }
     }
+    
+    //just stole this code from ReplayTheSpire who stole this from blank lol
+    public static boolean silentlyCheckForMod(final String classPath) {
+        try {
+            Class.forName(classPath);
+            return true;
+        }
+        catch (ClassNotFoundException | NoClassDefFoundError ex) {
+            return false;
+        }
+    }
 	
 }
