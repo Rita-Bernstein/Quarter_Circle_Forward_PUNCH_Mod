@@ -147,5 +147,22 @@
       "You got as much inspirations from the mementos as possible."
       
     ]
+  },
+  
+  "WW_Relics:Neverending_Blood": {
+    "NAME": "Neverending Blood",
+    "FLAVOR": [
+    		   "Blood drops are falling from my wounds. :(",
+    		   "...that doesn't mean my body will soon be food for the Maws! `-´",
+    		   "Dy-ing's not for meeeeeeeeee! :D",
+    		   "'Cause I'm never goooonna slay the Spire by falliiiing... v-v",
+    		   "- From The Dancing Tales of The Spireclimbers"
+    		  ],
+ 	"DESCRIPTIONS": [
+ 	  "When you take attack damage, gain 1 Regen.",
+ 	  "If you die, spend all charges to heal % Max HP, where the percentage is equal ",
+ 	  " to the amount of charges in this relic. Each time you enter a Rest Room, gain 5 charges."
+    ]
   }
+  
 }
