@@ -157,7 +157,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		for (int i = 0; i < edges.size(); i++) {
 			int x = edges.get(i).dstX;	int y = edges.get(i).dstY;
 			
-			if (changeRoom(dungeon_map, x, y)) {
+			if (changeRoom(dungeon_map, x, y, null, true)) {
 				saved_post_map_gen_use_priority.add(PostMapGenerationManager.getPriorityCounter());
 				logger.info("Made new room at " + x + " " + y);
 				logger.info("HERE " + saved_post_map_gen_use_priority);
@@ -168,11 +168,12 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	
 	public static boolean changeRoom(ArrayList<ArrayList<MapRoomNode>> dungeon_map, int x, int y) {
 		
-		return changeRoom(dungeon_map, x, y, null);
+		return changeRoom(dungeon_map, x, y, null, true);
 		
 	}
 	
-	public static boolean changeRoom(ArrayList<ArrayList<MapRoomNode>> dungeon_map, int x, int y, String which_room) {
+	public static boolean changeRoom(ArrayList<ArrayList<MapRoomNode>> dungeon_map, int x, int y, String which_room,
+										boolean map_changes_arent_being_loaded) {
 		
 		MapRoomNode room_to_change = dungeon_map.get(y).get(x);
 		AbstractRoom room = room_to_change.getRoom();
@@ -182,26 +183,29 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			AbstractRoom new_room;
 			
 			saved_act.add(AbstractDungeon.actNum);
-			saved_map_x_position.add(x);
-			saved_map_y_position.add(y);
+			if (map_changes_arent_being_loaded) {
+				saved_map_x_position.add(x);
+				saved_map_y_position.add(y);
+			}
+			
 			
 			if (which_room == null) {
 				if (checkIfEmeraldEliteOrEliteRoom(room_to_change)) {
 					new_room = new MonsterRoomEmeraldElite();
-					saved_map_room.add("EmeraldElite");
+					if (map_changes_arent_being_loaded) saved_map_room.add("EmeraldElite");
 				}
 				else {
 					new_room = new MonsterRoomElite();
-					saved_map_room.add("Elite");
+					if (map_changes_arent_being_loaded) saved_map_room.add("Elite");
 				}
 			} else {
 				if (which_room == "EmeraldElite") {
 					new_room = new MonsterRoomEmeraldElite();
-					saved_map_room.add("EmeraldElite");
+					if (map_changes_arent_being_loaded) saved_map_room.add("EmeraldElite");
 				}
 				else {
 					new_room = new MonsterRoomElite();
-					saved_map_room.add("Elite");
+					if (map_changes_arent_being_loaded) saved_map_room.add("Elite");
 				}
 			}
 			
@@ -255,7 +259,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		if (position != -1) {
 			
 			changeRoom(dungeon_map, saved_map_x_position.get(position),
-						saved_map_y_position.get(position), saved_map_room.get(position));
+						saved_map_y_position.get(position), saved_map_room.get(position), false);
 			
 		}
 		
