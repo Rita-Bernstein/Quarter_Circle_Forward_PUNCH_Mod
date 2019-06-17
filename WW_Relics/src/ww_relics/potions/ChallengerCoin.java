@@ -204,24 +204,15 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			}
 			
 			
-			if (which_room == null) {
-				if (checkIfEmeraldEliteOrEliteRoom(room_to_change)) {
-					new_room = new MonsterRoomEmeraldElite();
-					if (map_changes_arent_being_loaded) saved_map_room.add("EmeraldElite");
-				}
-				else {
-					new_room = new MonsterRoomElite();
-					if (map_changes_arent_being_loaded) saved_map_room.add("Elite");
-				}
-			} else {
-				if (which_room == "EmeraldElite") {
-					new_room = new MonsterRoomEmeraldElite();
-					if (map_changes_arent_being_loaded) saved_map_room.add("EmeraldElite");
-				}
-				else {
-					new_room = new MonsterRoomElite();
-					if (map_changes_arent_being_loaded) saved_map_room.add("Elite");
-				}
+			if (((which_room == null) && (checkIfEmeraldEliteOrEliteRoom(room_to_change))) ||
+					(which_room == "EmeraldElite")) 
+			{	
+				new_room = new MonsterRoomEmeraldElite();
+				if (map_changes_arent_being_loaded) saved_map_room.add("EmeraldElite");
+			}
+			else {
+				new_room = new MonsterRoomElite();
+				if (map_changes_arent_being_loaded) saved_map_room.add("Elite");
 			}
 			
 			room_to_change.room = new_room;
