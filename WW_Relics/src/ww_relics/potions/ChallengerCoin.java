@@ -304,6 +304,8 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
                      
 			int quant = config.getInt("Challenger_Coin_Number_Of_Rooms_Made");
 			
+			cleanArrayLists();
+			
 			for (int i = 0; i < quant; i++) {
 				ChallengerCoin.saved_act.add(config.getInt("Challenge_Coin_Saved_Act_" + i));
 				ChallengerCoin.saved_map_x_position.add(config.getInt("Challenger_Coin_X_" + i));
@@ -352,6 +354,14 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		
 		
     }
+	
+	private static void cleanArrayLists() {
+		if (ChallengerCoin.saved_act != null) saved_act.clear();
+		if (ChallengerCoin.saved_map_x_position != null) saved_map_x_position.clear();
+		if (ChallengerCoin.saved_map_y_position != null) saved_map_y_position.clear();
+		if (ChallengerCoin.saved_map_room != null) saved_map_room.clear();
+		if (ChallengerCoin.saved_post_map_gen_use_priority != null) saved_post_map_gen_use_priority.clear();
+	}
 		
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing Challenger Coin variables.");
