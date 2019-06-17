@@ -159,6 +159,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			
 			if (changeRoom(dungeon_map, x, y)) {
 				saved_post_map_gen_use_priority.add(PostMapGenerationManager.getPriorityCounter());
+				logger.info("Made new room at " + x + " " + y);
 				logger.info("HERE " + saved_post_map_gen_use_priority);
 			}
 		}
@@ -270,6 +271,8 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
         		int quant = saved_map_x_position.size();
             	config.setInt("Challenger_Coin_Number_Of_Rooms_Made", quant);
                 
+            	
+            	
             	for (int i = 0; i < quant; i++) {
             		
             		config.setInt("Challenge_Coin_Saved_Act_" + i, saved_act.get(i));
@@ -329,6 +332,14 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+            
+            logger.info("ChallengerCoin.saved_act " + ChallengerCoin.saved_act.size());
+            logger.info("ChallengerCoin.saved_map_x_position " + ChallengerCoin.saved_map_x_position.size());
+            logger.info("ChallengerCoin.saved_map_y_position " + ChallengerCoin.saved_map_y_position.size());
+            logger.info("ChallengerCoin.saved_map_room " + ChallengerCoin.saved_map_room.size());
+            logger.info("ChallengerCoin.saved_post_map_gen_use_priority " + 
+            				ChallengerCoin.saved_post_map_gen_use_priority.size());
+            
             logger.info("Finished loading Challenger Coin info.");
         }
 		
