@@ -2,8 +2,8 @@ package ww_relics.interfaces;
 
 public interface IPostMapGenerationAddStuff {
 
-	public boolean canDoAfterMapGeneration();
+	public boolean canDoEffectAfterMapGeneration();
 	
-	public void doAfterMapGeneration();
+	public void doEffectAfterMapGeneration();
 	
 }

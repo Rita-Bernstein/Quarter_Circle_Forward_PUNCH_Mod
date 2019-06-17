@@ -242,7 +242,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	}
 
 	@Override
-	public boolean canDoAfterMapGeneration() {
+	public boolean canDoEffectAfterMapGeneration() {
 		int position = saved_post_map_gen_use_priority.indexOf(post_gen_priority);
 		
 		if (position == -1) return false;
@@ -256,7 +256,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	}
 	
 	@Override
-	public void doAfterMapGeneration() {
+	public void doEffectAfterMapGeneration() {
 		
 		ArrayList<ArrayList<MapRoomNode>> dungeon_map = AbstractDungeon.map;
 		

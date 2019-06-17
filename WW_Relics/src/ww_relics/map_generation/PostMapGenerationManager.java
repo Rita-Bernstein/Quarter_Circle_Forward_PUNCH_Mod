@@ -65,8 +65,8 @@ public class PostMapGenerationManager {
 		
 		for (int i = 0; i < post_map_gen_changers.size(); i++) {
 			
-			if (post_map_gen_changers.get(i).post_map_gen_changer_object.canDoAfterMapGeneration()) {
-				post_map_gen_changers.get(i).post_map_gen_changer_object.doAfterMapGeneration();
+			if (post_map_gen_changers.get(i).post_map_gen_changer_object.canDoEffectAfterMapGeneration()) {
+				post_map_gen_changers.get(i).post_map_gen_changer_object.doEffectAfterMapGeneration();
 				changes_done++;
 			} else {
 				changes_not_done++;
