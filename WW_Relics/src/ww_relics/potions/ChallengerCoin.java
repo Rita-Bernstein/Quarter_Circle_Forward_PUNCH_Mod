@@ -273,19 +273,24 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
         	if (saved_map_x_position != null) {
         		
         		int quant = saved_map_x_position.size();
+        		
+        		String class_name = AbstractDungeon.player.getClass().getName();
+        		
         		logger.info("saved_map_x_position.size = " + saved_map_x_position.size());
         		logger.info("saved_post_map_gen_use_priority.size = " + saved_post_map_gen_use_priority.size());
-            	config.setInt("Challenger_Coin_Number_Of_Rooms_Made", quant);
-                
-            	
+        		
+            	config.setInt("Challenger_Coin_Number_Of_Rooms_Made_" + class_name, quant);
+              
+            	logger.info("Class name = " + class_name); 
             	
             	for (int i = 0; i < quant; i++) {
             		
-            		config.setInt("Challenge_Coin_Saved_Act_" + i, saved_act.get(i));
-            		config.setInt("Challenger_Coin_X_" + i, saved_map_x_position.get(i));
-                	config.setInt("Challenger_Coin_Y_" + i, saved_map_y_position.get(i));
-                	config.setString("Challenger_Coin_Room_" + i, saved_map_room.get(i));
-                	config.setInt("Challenger_Coin_priority_" + i, saved_post_map_gen_use_priority.get(i));
+            		config.setInt("Challenge_Coin_Saved_Act_" + class_name + "_" + i, saved_act.get(i));
+            		config.setInt("Challenger_Coin_X_" + class_name + "_" + i, saved_map_x_position.get(i));
+                	config.setInt("Challenger_Coin_Y_" + class_name + "_" + i, saved_map_y_position.get(i));
+                	config.setString("Challenger_Coin_Room_" + class_name + "_" + i, saved_map_room.get(i));
+                	config.setInt("Challenger_Coin_priority_" + class_name + "_" + i,
+                			saved_post_map_gen_use_priority.get(i));
             	}
             	
         	}
@@ -306,23 +311,31 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	public static void load(final SpireConfig config) {
 		
 		logger.info("Loading Challenger Coin info.");
-		if (config.has("Challenger_Coin_Number_Of_Rooms_Made")){
+		
+		String class_name = AbstractDungeon.player.getClass().getName();
+		
+		if (config.has("Challenger_Coin_Number_Of_Rooms_Made_" + class_name)){
                      
-			int quant = config.getInt("Challenger_Coin_Number_Of_Rooms_Made");
+			int quant = config.getInt("Challenger_Coin_Number_Of_Rooms_Made_" + class_name);
 			
 			cleanArrayLists();
 			
 			for (int i = 0; i < quant; i++) {
-				ChallengerCoin.saved_act.add(config.getInt("Challenge_Coin_Saved_Act_" + i));
-				ChallengerCoin.saved_map_x_position.add(config.getInt("Challenger_Coin_X_" + i));
-				ChallengerCoin.saved_map_y_position.add(config.getInt("Challenger_Coin_Y_" + i));
-				ChallengerCoin.saved_map_room.add(config.getString("Challenger_Coin_Room_" + i));
-				ChallengerCoin.saved_post_map_gen_use_priority.add(config.getInt("Challenger_Coin_priority_" + i));
+				ChallengerCoin.saved_act.add(
+						config.getInt("Challenge_Coin_Saved_Act_" + class_name + "_" + i));
+				ChallengerCoin.saved_map_x_position.add(
+						config.getInt("Challenger_Coin_X_" + class_name + "_" + i));
+				ChallengerCoin.saved_map_y_position.add(
+						config.getInt("Challenger_Coin_Y_" + class_name + "_" + i));
+				ChallengerCoin.saved_map_room.add(
+						config.getString("Challenger_Coin_Room_" + class_name + "_" + i));
+				ChallengerCoin.saved_post_map_gen_use_priority.add(
+						config.getInt("Challenger_Coin_priority_" + class_name + "_" + i));
 				
 				PostMapGenerationChange post_map_gen_changer = new PostMapGenerationChange();
 				
 				ChallengerCoin object = new ChallengerCoin();
-				object.post_gen_priority = config.getInt("Challenger_Coin_priority_" + i);
+				object.post_gen_priority = config.getInt("Challenger_Coin_priority_" + class_name + "_" + i);
 				
 				post_map_gen_changer.post_map_gen_changer_object =
 						(IPostMapGenerationAddStuff) object;	
@@ -372,18 +385,20 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing Challenger Coin variables.");
     	
-		if (config.has("Challenger_Coin_Number_Of_Rooms_Made")) {
+		String class_name = AbstractDungeon.player.getClass().getName();
+		
+		if (config.has("Challenger_Coin_Number_Of_Rooms_Made_" + class_name)) {
 			
-			int count = config.getInt("Challenger_Coin_Number_Of_Rooms_Made");
+			int count = config.getInt("Challenger_Coin_Number_Of_Rooms_Made_" + class_name);
 			
-			config.remove("Challenger_Coin_Number_Of_Rooms_Made");
+			config.remove("Challenger_Coin_Number_Of_Rooms_Made_" + class_name);
 			
 			for (int i = 0; i < count; i++) {
-				config.remove("Challenge_Coin_Saved_Act_" + i);
-				config.remove("Challenger_Coin_X_" + i);
-		    	config.remove("Challenger_Coin_Y_" + i);
-		    	config.remove("Challenger_Coin_Room_" + i);
-		    	config.remove("Challenger_Coin_priority_" + i);
+				config.remove("Challenge_Coin_Saved_Act_" + class_name + "_" + i);
+				config.remove("Challenger_Coin_X_" + class_name + "_" + i);
+		    	config.remove("Challenger_Coin_Y_" + class_name + "_" + i);
+		    	config.remove("Challenger_Coin_Room_" + class_name + "_" + i);
+		    	config.remove("Challenger_Coin_priority_" + class_name + "_" + i);
 			}
 			
 			saved_act.clear(); saved_act = new ArrayList<Integer>();
