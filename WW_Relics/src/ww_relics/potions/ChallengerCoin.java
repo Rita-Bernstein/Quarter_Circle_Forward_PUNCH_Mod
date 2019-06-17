@@ -130,13 +130,13 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 				!(room instanceof MonsterRoomElite) &&
 				!(room instanceof MonsterRoomBoss);
 		
-		if (WW_Relics_MiscelaneaCode.checkForMod(WW_Relics_MiscelaneaCode.replay_the_spire_class_code)) {
+		if (WW_Relics_MiscelaneaCode.silentlyCheckForMod(WW_Relics_MiscelaneaCode.replay_the_spire_class_code)) {
 			
 			evaluation &= !(room instanceof TeleportRoom);
 			
 		}
 		
-		if (WW_Relics_MiscelaneaCode.checkForMod(WW_Relics_MiscelaneaCode.infinite_spire_class_code)) {
+		if (WW_Relics_MiscelaneaCode.silentlyCheckForMod(WW_Relics_MiscelaneaCode.infinite_spire_class_code)) {
 			
 			evaluation &= !(room instanceof NightmareEliteRoom);
 			
