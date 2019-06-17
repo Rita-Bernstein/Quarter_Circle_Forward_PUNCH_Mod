@@ -60,15 +60,14 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	public static final Logger logger = LogManager.getLogger(ChallengerCoin.class.getName());
 	
 	public static ArrayList<Integer> saved_act;
-	public static ArrayList<Integer> saved_map_x_position;
-	public static ArrayList<Integer> saved_map_y_position;
+	public static ArrayList<Integer> saved_map_x_position, saved_map_y_position;
 	public static ArrayList<String> saved_map_room;
 	public static ArrayList<Integer> saved_post_map_gen_use_priority;
 	
-	//YES. I know this is a Mcguyverism and this part of the code seriously needs
+	//YES. I know this is a Mcguyverism and this part of the code (and stuff related) seriously needs
 	// improvement. I will do that, one day.
 	//Also, if you are looking to this code thinking to use it as a base for your own changes in map,
-	// this is NOT A GOOD CODE TO USE AS AN EXAMPLE.
+	// this is NOT A GOOD CODE TO USE AS AN EXAMPLE. It works, but it could be better.
 	// Thanks for your understanding.
 	private int post_gen_priority;
 	
@@ -127,8 +126,8 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		ArrayList<MapEdge> edges = current_room.getEdges();
 		
 		for (int i = 0; i < edges.size(); i++) {
-			int x = edges.get(i).dstX;
-			int y = edges.get(i).dstY;
+			int x, y;
+			x = edges.get(i).dstX; y = edges.get(i).dstY;
 
 			MapRoomNode room_to_check = dungeon_map.get(y).get(x);
 			AbstractRoom room = room_to_check.getRoom();
@@ -286,12 +285,8 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
             	
             	for (int i = 0; i < quant; i++) {
             		
-            		config.setInt("Challenge_Coin_Saved_Act_" + class_name + "_" + i, saved_act.get(i));
-            		config.setInt("Challenger_Coin_X_" + class_name + "_" + i, saved_map_x_position.get(i));
-                	config.setInt("Challenger_Coin_Y_" + class_name + "_" + i, saved_map_y_position.get(i));
-                	config.setString("Challenger_Coin_Room_" + class_name + "_" + i, saved_map_room.get(i));
-                	config.setInt("Challenger_Coin_priority_" + class_name + "_" + i,
-                			saved_post_map_gen_use_priority.get(i));
+            		saveChallengeCoinRoomMadeVariables(config, class_name, i);
+            		
             	}
             	
         	}
@@ -309,6 +304,16 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 
     }
 	
+	private static void saveChallengeCoinRoomMadeVariables(
+			final SpireConfig config, String class_name, int position) {
+		config.setInt("Challenge_Coin_Saved_Act_" + class_name + "_" + position, saved_act.get(position));
+		config.setInt("Challenger_Coin_X_" + class_name + "_" + position, saved_map_x_position.get(position));
+    	config.setInt("Challenger_Coin_Y_" + class_name + "_" + position, saved_map_y_position.get(position));
+    	config.setString("Challenger_Coin_Room_" + class_name + "_" + position, saved_map_room.get(position));
+    	config.setInt("Challenger_Coin_priority_" + class_name + "_" + position,
+    			saved_post_map_gen_use_priority.get(position));
+	}
+	
 	public static void load(final SpireConfig config) {
 		
 		logger.info("Loading Challenger Coin info.");
@@ -325,26 +330,10 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			
 			for (int i = 0; i < quant; i++) {
 				
-				ChallengerCoin.saved_act.add(
-					config.getInt("Challenge_Coin_Saved_Act_" + class_name + "_" + i));
-				ChallengerCoin.saved_map_x_position.add(
-					config.getInt("Challenger_Coin_X_" + class_name + "_" + i));
-				ChallengerCoin.saved_map_y_position.add(
-					config.getInt("Challenger_Coin_Y_" + class_name + "_" + i));
-				ChallengerCoin.saved_map_room.add(
-					config.getString("Challenger_Coin_Room_" + class_name + "_" + i));
-				ChallengerCoin.saved_post_map_gen_use_priority.add(
-					config.getInt("Challenger_Coin_priority_" + class_name + "_" + i));
+				loadChallengeCoinRoomMadeVariables(config, class_name, i);
 				
-				PostMapGenerationChange post_map_gen_changer = new PostMapGenerationChange();
-				
-				ChallengerCoin object = new ChallengerCoin();
-				object.post_gen_priority = config.getInt("Challenger_Coin_priority_" + class_name + "_" + i);
-				
-				post_map_gen_changer.post_map_gen_changer_object =
-						(IPostMapGenerationAddStuff) object;	
-				
-				post_map_gen_changer.counter = ChallengerCoin.saved_post_map_gen_use_priority.get(i);
+				PostMapGenerationChange post_map_gen_changer = 
+						createPostMapGenerationChangeForRoomChange(config, class_name, i);
 				
 				logger.info("Adding post map generation change");
 				PostMapGenerationManager.addPostMapGenerationChange(post_map_gen_changer);
@@ -389,6 +378,39 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 				new ArrayList<String>();
 		if (ChallengerCoin.saved_post_map_gen_use_priority == null) 
 			ChallengerCoin.saved_post_map_gen_use_priority = new ArrayList<Integer>();
+	}
+	
+	private static void loadChallengeCoinRoomMadeVariables(
+			final SpireConfig config, String class_name, int position) {
+		
+		ChallengerCoin.saved_act.add(
+				config.getInt("Challenge_Coin_Saved_Act_" + class_name + "_" + position));
+		ChallengerCoin.saved_map_x_position.add(
+			config.getInt("Challenger_Coin_X_" + class_name + "_" + position));
+		ChallengerCoin.saved_map_y_position.add(
+			config.getInt("Challenger_Coin_Y_" + class_name + "_" + position));
+		ChallengerCoin.saved_map_room.add(
+			config.getString("Challenger_Coin_Room_" + class_name + "_" + position));
+		ChallengerCoin.saved_post_map_gen_use_priority.add(
+			config.getInt("Challenger_Coin_priority_" + class_name + "_" + position));
+		
+	}
+	
+	private static PostMapGenerationChange createPostMapGenerationChangeForRoomChange(
+			final SpireConfig config, String class_name, int position) {
+		
+		PostMapGenerationChange post_map_gen_changer = new PostMapGenerationChange();
+		
+		ChallengerCoin object = new ChallengerCoin();
+		object.post_gen_priority = config.getInt("Challenger_Coin_priority_" + class_name + "_" + position);
+		
+		post_map_gen_changer.post_map_gen_changer_object =
+				(IPostMapGenerationAddStuff) object;	
+		
+		post_map_gen_changer.counter = ChallengerCoin.saved_post_map_gen_use_priority.get(position);
+		
+		return post_map_gen_changer;
+		
 	}
 		
 	public static void clear(final SpireConfig config) {
