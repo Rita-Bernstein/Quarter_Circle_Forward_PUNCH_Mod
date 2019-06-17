@@ -73,8 +73,9 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	private int post_gen_priority;
 	
 	public ChallengerCoin() {
-		super(NAME, ID, RARITY, SIZE, COLOR);
-		description = DESCRIPTIONS[0] + DESCRIPTIONS[1];
+		super(NAME, ID, RARITY, SIZE, COLOR);		
+		
+		description = makeDescription();
 		this.isThrown = false;
 		this.tips.add(new PowerTip(this.name, this.description));
 		
@@ -83,6 +84,20 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		if (saved_map_y_position == null) saved_map_y_position = new ArrayList<Integer>();
 		if (saved_map_room == null) saved_map_room = new ArrayList<String>();
 		if (saved_post_map_gen_use_priority == null) saved_post_map_gen_use_priority = new ArrayList<Integer>();
+	}
+	
+	private String makeDescription() {
+		
+		String description = DESCRIPTIONS[0];
+		
+		if (WW_Relics_MiscelaneaCode.silentlyCheckForMod(WW_Relics_MiscelaneaCode.replay_the_spire_class_code)) {
+			description += DESCRIPTIONS[1];
+		}
+		
+		description += DESCRIPTIONS[2];
+		
+		return description;
+		
 	}
 	
 	@Override
