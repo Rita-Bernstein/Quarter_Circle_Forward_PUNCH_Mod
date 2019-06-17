@@ -127,7 +127,8 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		ArrayList<MapEdge> edges = current_room.getEdges();
 		
 		for (int i = 0; i < edges.size(); i++) {
-			int x = edges.get(i).dstX;	int y = edges.get(i).dstY;
+			int x = edges.get(i).dstX;
+			int y = edges.get(i).dstY;
 
 			MapRoomNode room_to_check = dungeon_map.get(y).get(x);
 			AbstractRoom room = room_to_check.getRoom();
@@ -175,7 +176,6 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			if (changeRoom(dungeon_map, x, y, null, true)) {
 				saved_post_map_gen_use_priority.add(PostMapGenerationManager.getPriorityCounter());
 				logger.info("Made new room at " + x + " " + y);
-				logger.info("HERE " + saved_post_map_gen_use_priority);
 			}
 		}
 		
