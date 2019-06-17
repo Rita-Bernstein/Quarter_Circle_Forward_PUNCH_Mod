@@ -269,6 +269,8 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
         	if (saved_map_x_position != null) {
         		
         		int quant = saved_map_x_position.size();
+        		logger.info("saved_map_x_position.size = " + saved_map_x_position.size());
+        		logger.info("saved_post_map_gen_use_priority.size = " + saved_post_map_gen_use_priority.size());
             	config.setInt("Challenger_Coin_Number_Of_Rooms_Made", quant);
                 
             	
