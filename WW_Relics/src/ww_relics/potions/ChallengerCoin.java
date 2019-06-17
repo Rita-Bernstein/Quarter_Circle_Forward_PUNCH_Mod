@@ -204,7 +204,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			}
 			
 			
-			if (((which_room == null) && (checkIfEmeraldEliteOrEliteRoom(room_to_change))) ||
+			if (((which_room == null) && (checkIfNewRoomNeedsToBeEmeraldElite(room_to_change))) ||
 					(which_room == "EmeraldElite")) 
 			{	
 				new_room = new MonsterRoomEmeraldElite();
@@ -228,7 +228,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		
 	}
 	
-	public static boolean checkIfEmeraldEliteOrEliteRoom(MapRoomNode room_to_change) {
+	public static boolean checkIfNewRoomNeedsToBeEmeraldElite(MapRoomNode room_to_change) {
 		
 		if (room_to_change.getRoom() instanceof TreasureRoom
 			&& (Settings.isFinalActAvailable)
