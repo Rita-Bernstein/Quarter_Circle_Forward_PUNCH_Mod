@@ -320,9 +320,22 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			
 			cleanArrayLists();
 			
+			if (ChallengerCoin.saved_act == null) ChallengerCoin.saved_act = new ArrayList<Integer>();
+			if (ChallengerCoin.saved_map_x_position == null) ChallengerCoin.saved_map_x_position = 
+					new ArrayList<Integer>();
+			if (ChallengerCoin.saved_map_y_position == null) ChallengerCoin.saved_map_y_position = 
+					new ArrayList<Integer>();
+			if (ChallengerCoin.saved_map_room == null) ChallengerCoin.saved_map_room =
+					new ArrayList<String>();
+			if (ChallengerCoin.saved_post_map_gen_use_priority == null) 
+				ChallengerCoin.saved_post_map_gen_use_priority = new ArrayList<Integer>();
+			
+			
 			for (int i = 0; i < quant; i++) {
+				
 				ChallengerCoin.saved_act.add(
 						config.getInt("Challenge_Coin_Saved_Act_" + class_name + "_" + i));
+				
 				ChallengerCoin.saved_map_x_position.add(
 						config.getInt("Challenger_Coin_X_" + class_name + "_" + i));
 				ChallengerCoin.saved_map_y_position.add(
