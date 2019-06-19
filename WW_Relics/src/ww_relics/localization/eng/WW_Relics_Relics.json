@@ -158,9 +158,10 @@
     		   - From The Dancing Tales of The Spireclimbers"
     		  ,
  	"DESCRIPTIONS": [
- 	  "When you take attack damage, gain 1 Regen.",
- 	  "If you die, spend all charges to heal % Max HP, where the percentage is equal ",
- 	  " to the amount of charges in this relic. Each time you enter a Rest Room, gain 5 charges."
+ 	  "When you take attack damage, gain",
+ 	  " Regen.",
+ 	  " If you die, spend all charges to heal charges% Max HP.",
+ 	  " Each time you enter a Rest Room, gain 5 charges."
     ]
   }
   
