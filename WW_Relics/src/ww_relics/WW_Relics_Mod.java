@@ -30,6 +30,7 @@ import ww_relics.relics.guile.CombatFatigues;
 import ww_relics.relics.ken.BlackTrainingShirt;
 import ww_relics.relics.ken.RedGi;
 import ww_relics.relics.ken.UnceasingFlame;
+import ww_relics.relics.mortal_kombat.NeverendingBlood;
 import ww_relics.relics.ryu.*;
 
 @SpireInitializer
@@ -134,6 +135,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		addChunLiRelics();
 		addGuileRelics();
 		addCharacterCameoRelics();
+		addGameCameoRelics();
 		logger.info("Done adding relics");
 	}
 
@@ -172,6 +174,14 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	private void addSakuraRelics() {
 		BaseMod.addRelic(new SchoolBackpack(), RelicType.SHARED);
+	}
+	
+	private void addGameCameoRelics() {
+		addMortalKombatRelics();
+	}
+	
+	private void addMortalKombatRelics() {
+		BaseMod.addRelic(new NeverendingBlood(), RelicType.SHARED);
 	}
 	
 	@Override
