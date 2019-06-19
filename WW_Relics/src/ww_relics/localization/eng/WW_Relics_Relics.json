@@ -151,12 +151,7 @@
   
   "WW_Relics:Neverending_Blood": {
     "NAME": "Neverending Blood",
-    "FLAVOR": "\"Blood drops are falling from my wounds. :(NL
-    		   ...that doesn't mean my body will soon be food for the Maws! `-´NL
-    		   Dy-ing's not for meeeeeeeeee! :DNL
-    		   'Cause I'm never goooonna slay the Spire by falliiiing... v-v\"NL
-    		   - From The Dancing Tales of The Spireclimbers"
-    		  ,
+    "FLAVOR": "There's so much blood inside now, that it almost feels like it can easily leak out.",
  	"DESCRIPTIONS": [
  	  "When you take attack damage, gain ",
  	  " Regen.",
