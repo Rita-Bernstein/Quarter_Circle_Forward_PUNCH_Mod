@@ -14,7 +14,6 @@ public class NeverendingBlood extends CustomRelic {
 
 	public static final String ID = "WW_Relics:Neverending_Blood";
 	
-	
 	public static final int REGEN_AMOUNT = 1;
 	public static final int COUNTER_MAX_VALUE = 100;
 	
@@ -22,6 +21,7 @@ public class NeverendingBlood extends CustomRelic {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.SPECIAL, LandingSound.MAGICAL);
 	}
+
 	
 	@Override
 	public int onAttacked(DamageInfo info, int damageAmount) {
@@ -31,13 +31,13 @@ public class NeverendingBlood extends CustomRelic {
 			flash();
 			AbstractDungeon.actionManager.addToBottom(
 					new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
-							new RegenPower(AbstractDungeon.player, REGEN_AMOUNT))
-					);
+							new RegenPower(AbstractDungeon.player, REGEN_AMOUNT), REGEN_AMOUNT)
+			);
 		}
 		
 		return damageAmount;
 	}
-	
+		
 	public AbstractRelic makeCopy() {
 		return new NeverendingBlood();
 	}
