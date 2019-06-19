@@ -21,7 +21,11 @@ public class NeverendingBlood extends CustomRelic {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.SPECIAL, LandingSound.MAGICAL);
 	}
-
+	
+	public String getUpdatedDescription() {
+		return DESCRIPTIONS[0] + REGEN_AMOUNT +
+				DESCRIPTIONS[1] + DESCRIPTIONS[2] + DESCRIPTIONS[3];
+	}
 	
 	@Override
 	public int onAttacked(DamageInfo info, int damageAmount) {
