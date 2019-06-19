@@ -153,7 +153,7 @@
     "NAME": "Neverending Blood",
     "FLAVOR": "There's so much blood inside now, that it almost feels like it can easily leak out.",
  	"DESCRIPTIONS": [
- 	  "When you take attack damage, gain ",
+ 	  "When you lose HP in combat, gain ",
  	  " Regen.",
  	  " If you die, spend all charges to heal charges% Max HP.",
  	  " Each time you enter a Rest Room, gain 5 charges."
