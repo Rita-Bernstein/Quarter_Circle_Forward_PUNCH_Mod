@@ -16,7 +16,9 @@ public class NeverendingBlood extends CustomRelic {
 
 	public static final String ID = "WW_Relics:Neverending_Blood";
 	
-	public static final int REGEN_AMOUNT = 1;
+	//public static final float REGEN_PERCENTAGE_OF_DAMAGE_RECEIVED = 0.25f;
+	
+	public static final int COUNTER_INITIAL_VALUE = 10;
 	public static final int COUNTER_MAX_VALUE = 100;
 	
 	public static final Logger logger = LogManager.getLogger(NeverendingBlood.class.getName());
@@ -24,6 +26,8 @@ public class NeverendingBlood extends CustomRelic {
 	public NeverendingBlood() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.SPECIAL, LandingSound.MAGICAL);
+		
+		this.counter = COUNTER_INITIAL_VALUE;
 	}
 	
 	public String getUpdatedDescription() {
