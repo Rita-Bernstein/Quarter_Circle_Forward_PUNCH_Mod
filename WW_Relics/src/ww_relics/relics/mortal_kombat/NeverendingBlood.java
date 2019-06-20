@@ -37,17 +37,31 @@ public class NeverendingBlood extends CustomRelic {
 	}
 	
 	@Override
-	public void onLoseHp(int damageAmount) {
+	public void onLoseHp(int damage_amount) {
 
 		if ((AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT) && 
-			      (damageAmount > 0)) {
-			flash();
+			      (damage_amount > 0) && (this.counter > 0) &&
+			      AbstractDungeon.player.hasPower(RegenPower.POWER_ID)) {
 			
+			int regen_amount = AbstractDungeon.player.getPower(RegenPower.POWER_ID).amount;
 			
+			int total_regen_to_have_at_the_end =
+					(int)Math.floor(damage_amount * REGEN_PERCENTAGE_OF_DAMAGE_RECEIVED);
 			
-			AbstractDungeon.actionManager.addToBottom(
-					new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
-							new RegenPower(AbstractDungeon.player, REGEN_AMOUNT), REGEN_AMOUNT));
+			if (total_regen_to_have_at_the_end > regen_amount) {
+				
+				int regen_to_receive = total_regen_to_have_at_the_end - regen_amount;
+				
+				flash();
+				AbstractDungeon.actionManager.addToBottom(
+						new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
+								new RegenPower(AbstractDungeon.player, regen_to_receive), regen_to_receive));
+				
+				this.counter -= 1;
+				if (counter < 0) counter = 0;
+				
+			}
+
 		}
 		
 	}
