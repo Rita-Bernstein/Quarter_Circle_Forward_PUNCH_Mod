@@ -17,7 +17,7 @@ public class NeverendingBlood extends CustomRelic {
 	public static final String ID = "WW_Relics:Neverending_Blood";
 	
 	public static final float REGEN_PERCENTAGE_OF_DAMAGE_RECEIVED = 0.25f;
-
+	public static final int MINIMUM_AMOUNT_OF_REGEN_ADDED = 1; 
 	
 	public static final int COUNTER_INITIAL_VALUE = 10;
 	public static final int COUNTER_MAX_VALUE = 100;
