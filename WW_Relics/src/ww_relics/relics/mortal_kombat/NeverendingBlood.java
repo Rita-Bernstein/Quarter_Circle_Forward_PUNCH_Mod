@@ -16,7 +16,8 @@ public class NeverendingBlood extends CustomRelic {
 
 	public static final String ID = "WW_Relics:Neverending_Blood";
 	
-	//public static final float REGEN_PERCENTAGE_OF_DAMAGE_RECEIVED = 0.25f;
+	public static final float REGEN_PERCENTAGE_OF_DAMAGE_RECEIVED = 0.25f;
+
 	
 	public static final int COUNTER_INITIAL_VALUE = 10;
 	public static final int COUNTER_MAX_VALUE = 100;
@@ -31,19 +32,19 @@ public class NeverendingBlood extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + REGEN_AMOUNT +
-				DESCRIPTIONS[1] + DESCRIPTIONS[2] + DESCRIPTIONS[3];
+		return "fix this later";
+		//DESCRIPTIONS[0] + REGEN_AMOUNT + DESCRIPTIONS[1] + DESCRIPTIONS[2] + DESCRIPTIONS[3];
 	}
 	
 	@Override
 	public void onLoseHp(int damageAmount) {
-		
-		logger.info("111");
-		
+
 		if ((AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT) && 
 			      (damageAmount > 0)) {
-			logger.info("222");
 			flash();
+			
+			
+			
 			AbstractDungeon.actionManager.addToBottom(
 					new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
 							new RegenPower(AbstractDungeon.player, REGEN_AMOUNT), REGEN_AMOUNT));
