@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.RegenPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -46,20 +45,6 @@ public class NeverendingBlood extends CustomRelic {
 							new RegenPower(AbstractDungeon.player, REGEN_AMOUNT), REGEN_AMOUNT));
 		}
 		
-	}
-	
-	@Override
-	public void onTrigger()
-	{
-		flash();
-		AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-		float heal_amount = ((float)AbstractDungeon.player.maxHealth) / 100.0f * this.counter;
-		if (heal_amount < 1) {
-			heal_amount = 1;
-		}
-		int final_heal_amount = (int)(heal_amount);
-		AbstractDungeon.player.heal(final_heal_amount, true);
-		setCounter(0);
 	}
 	
 	public AbstractRelic makeCopy() {
