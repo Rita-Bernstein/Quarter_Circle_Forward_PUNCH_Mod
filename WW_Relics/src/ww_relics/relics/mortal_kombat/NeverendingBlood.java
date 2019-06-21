@@ -74,6 +74,17 @@ public class NeverendingBlood extends CustomRelic {
 		
 	}
 	
+	@Override
+	public int onPlayerHeal(int healAmount) {
+		
+		if (AbstractDungeon.getCurrRoom().phase != RoomPhase.COMBAT) {
+			flash();
+			this.counter += 2;
+		}
+		
+		return super.onPlayerHeal(healAmount);
+	}
+	
 	public AbstractRelic makeCopy() {
 		return new NeverendingBlood();
 	}
