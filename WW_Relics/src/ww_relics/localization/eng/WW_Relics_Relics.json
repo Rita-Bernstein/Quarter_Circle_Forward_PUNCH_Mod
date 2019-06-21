@@ -153,12 +153,13 @@
     "NAME": "Neverending Blood",
     "FLAVOR": "There's so much blood inside now, that it almost feels like it can leak out.",
  	"DESCRIPTIONS": [
- 	  "Starts with ",
+ 	  "Initial #b",
  	  " charges.",
- 	  " If you lose HP in combat, spend ",
- 	  " charge to gain 1/4 (minimum of ",
- 	  ") of the HP lost as Regen.",
- 	  " Each time you gain HP out of combat, gain ",
+ 	  " Losing at least #b",
+ 	  " #yHP in combat spends #b",
+ 	  " charge to raise your #yRegen to #b1/3 (minimum of #b",
+ 	  ", rounded down) of the #yHP lost, if appliable.",
+ 	  " If you gain #yHP out of combat, gain #b",
  	  " charges."
     ]
   }
