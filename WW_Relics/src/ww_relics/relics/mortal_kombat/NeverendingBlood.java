@@ -16,13 +16,14 @@ public class NeverendingBlood extends CustomRelic {
 
 	public static final String ID = "WW_Relics:Neverending_Blood";
 	
-	public static final float REGEN_PERCENTAGE_OF_DAMAGE_RECEIVED = 0.25f;
+	public static final float REGEN_PERCENTAGE_OF_DAMAGE_RECEIVED = 0.34f;
 	public static final int MINIMUM_AMOUNT_OF_REGEN_ADDED = 1; 
+	public static final int MINIMUM_AMOUNT_OF_HP_LOST = 3;
 	
-	public static final int COUNTER_INITIAL_VALUE = 10;
+	public static final int COUNTER_INITIAL_VALUE = 7;
 	public static final int COUNTER_MAX_VALUE = 100;
 	public static final int COUNTER_USED_FOR_EFFECT = 1;
-	public static final int COUNTER_RECOVERED_IF_HEALED_OUTSIDE_OF_BATTLE = 3;
+	public static final int COUNTER_RECOVERED_IF_HEALED_OUTSIDE_OF_BATTLE = 2;
 	
 	public static final Logger logger = LogManager.getLogger(NeverendingBlood.class.getName());
 		
@@ -35,18 +36,19 @@ public class NeverendingBlood extends CustomRelic {
 	
 	public String getUpdatedDescription() {
 		return DESCRIPTIONS[0] + COUNTER_INITIAL_VALUE + DESCRIPTIONS[1] +
-				DESCRIPTIONS[2] + COUNTER_USED_FOR_EFFECT +
-				DESCRIPTIONS[3] + MINIMUM_AMOUNT_OF_REGEN_ADDED +
-				DESCRIPTIONS[4] +
-				DESCRIPTIONS[5] + COUNTER_RECOVERED_IF_HEALED_OUTSIDE_OF_BATTLE +
-				DESCRIPTIONS[6];
+				DESCRIPTIONS[2] + MINIMUM_AMOUNT_OF_HP_LOST + 
+				DESCRIPTIONS[3] + COUNTER_USED_FOR_EFFECT +
+				DESCRIPTIONS[4] + MINIMUM_AMOUNT_OF_REGEN_ADDED +
+				DESCRIPTIONS[5] +
+				DESCRIPTIONS[6] + COUNTER_RECOVERED_IF_HEALED_OUTSIDE_OF_BATTLE +
+				DESCRIPTIONS[7];
 	}
 	
 	@Override
 	public void onLoseHp(int damage_amount) {
 
 		if ((AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT) && 
-			      (damage_amount > 0) && (this.counter > 0)) {
+			      (damage_amount >= MINIMUM_AMOUNT_OF_HP_LOST) && (this.counter > 0)) {
 			
 			int regen_to_receive;
 			
