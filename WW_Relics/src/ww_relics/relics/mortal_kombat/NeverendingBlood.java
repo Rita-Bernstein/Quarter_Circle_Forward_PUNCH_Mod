@@ -21,6 +21,8 @@ public class NeverendingBlood extends CustomRelic {
 	
 	public static final int COUNTER_INITIAL_VALUE = 10;
 	public static final int COUNTER_MAX_VALUE = 100;
+	public static final int COUNTER_USED_FOR_EFFECT = 1;
+	public static final int COUNTER_RECOVERED_IF_HEALED_OUTSIDE_OF_BATTLE = 3;
 	
 	public static final Logger logger = LogManager.getLogger(NeverendingBlood.class.getName());
 		
@@ -32,8 +34,12 @@ public class NeverendingBlood extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return "fix this later";
-		//DESCRIPTIONS[0] + REGEN_AMOUNT + DESCRIPTIONS[1] + DESCRIPTIONS[2] + DESCRIPTIONS[3];
+		return DESCRIPTIONS[0] + COUNTER_INITIAL_VALUE + DESCRIPTIONS[1] +
+				DESCRIPTIONS[2] + COUNTER_USED_FOR_EFFECT +
+				DESCRIPTIONS[3] + MINIMUM_AMOUNT_OF_REGEN_ADDED +
+				DESCRIPTIONS[4] +
+				DESCRIPTIONS[5] + COUNTER_RECOVERED_IF_HEALED_OUTSIDE_OF_BATTLE +
+				DESCRIPTIONS[6];
 	}
 	
 	@Override
@@ -67,7 +73,7 @@ public class NeverendingBlood extends CustomRelic {
 							new RegenPower(AbstractDungeon.player, regen_to_receive),
 								regen_to_receive));
 			
-			this.counter -= 1;
+			this.counter -= COUNTER_USED_FOR_EFFECT;
 			if (counter < 0) counter = 0;
 			
 		}
@@ -79,11 +85,13 @@ public class NeverendingBlood extends CustomRelic {
 		
 		if (AbstractDungeon.getCurrRoom().phase != RoomPhase.COMBAT) {
 			flash();
-			this.counter += 2;
+			this.counter += COUNTER_RECOVERED_IF_HEALED_OUTSIDE_OF_BATTLE;
 		}
 		
 		return super.onPlayerHeal(healAmount);
 	}
+	
+	@Override
 	
 	public AbstractRelic makeCopy() {
 		return new NeverendingBlood();
