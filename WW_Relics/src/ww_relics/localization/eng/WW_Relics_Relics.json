@@ -151,12 +151,15 @@
   
   "WW_Relics:Neverending_Blood": {
     "NAME": "Neverending Blood",
-    "FLAVOR": "There's so much blood inside now, that it almost feels like it can easily leak out.",
+    "FLAVOR": "There's so much blood inside now, that it almost feels like it can leak out.",
  	"DESCRIPTIONS": [
- 	  "When you lose HP in combat, gain ",
- 	  " Regen.",
- 	  " If you die, spend all charges to heal charges% Max HP.",
- 	  " Each time you enter a Rest Room, gain 5 charges."
+ 	  "Starts with ",
+ 	  " charges.",
+ 	  " If you lose HP in combat, spend ",
+ 	  " charge to gain 1/4 (minimum of ",
+ 	  ") of the HP lost as Regen.",
+ 	  " Each time you gain HP out of combat, gain ",
+ 	  " charges."
     ]
   }
   
