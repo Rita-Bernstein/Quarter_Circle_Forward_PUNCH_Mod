@@ -40,28 +40,36 @@ public class NeverendingBlood extends CustomRelic {
 	public void onLoseHp(int damage_amount) {
 
 		if ((AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT) && 
-			      (damage_amount > 0) && (this.counter > 0) &&
-			      AbstractDungeon.player.hasPower(RegenPower.POWER_ID)) {
+			      (damage_amount > 0) && (this.counter > 0)) {
 			
-			int regen_amount = AbstractDungeon.player.getPower(RegenPower.POWER_ID).amount;
+			int regen_to_receive;
 			
 			int total_regen_to_have_at_the_end =
 					(int)Math.floor(damage_amount * REGEN_PERCENTAGE_OF_DAMAGE_RECEIVED);
 			
-			if (total_regen_to_have_at_the_end > regen_amount) {
+			if (AbstractDungeon.player.hasPower(RegenPower.POWER_ID)) {
 				
-				int regen_to_receive = total_regen_to_have_at_the_end - regen_amount;
-				
-				flash();
-				AbstractDungeon.actionManager.addToBottom(
-						new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
-								new RegenPower(AbstractDungeon.player, regen_to_receive), regen_to_receive));
-				
-				this.counter -= 1;
-				if (counter < 0) counter = 0;
-				
-			}
+				int regen_amount_already_there = AbstractDungeon.player.getPower(RegenPower.POWER_ID).amount;
 
+				if (total_regen_to_have_at_the_end > regen_amount_already_there) {
+					regen_to_receive = total_regen_to_have_at_the_end - regen_amount_already_there;
+				} else return;
+				
+			} else regen_to_receive = total_regen_to_have_at_the_end;
+			
+			if (regen_to_receive < MINIMUM_AMOUNT_OF_REGEN_ADDED) {
+				regen_to_receive = MINIMUM_AMOUNT_OF_REGEN_ADDED; 
+			}
+			
+			flash();
+			AbstractDungeon.actionManager.addToBottom(
+					new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
+							new RegenPower(AbstractDungeon.player, regen_to_receive),
+								regen_to_receive));
+			
+			this.counter -= 1;
+			if (counter < 0) counter = 0;
+			
 		}
 		
 	}
