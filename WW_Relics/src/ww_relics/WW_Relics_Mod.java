@@ -30,6 +30,7 @@ import ww_relics.relics.guile.CombatFatigues;
 import ww_relics.relics.ken.BlackTrainingShirt;
 import ww_relics.relics.ken.RedGi;
 import ww_relics.relics.ken.UnceasingFlame;
+import ww_relics.relics.mortal_kombat.ExtraSkeleton;
 import ww_relics.relics.mortal_kombat.NeverendingBlood;
 import ww_relics.relics.ryu.*;
 
@@ -182,6 +183,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	private void addMortalKombatRelics() {
 		BaseMod.addRelic(new NeverendingBlood(), RelicType.SHARED);
+		BaseMod.addRelic(new ExtraSkeleton(), RelicType.SHARED);
 	}
 	
 	@Override
