@@ -24,6 +24,12 @@ public class ExtraSkeleton extends CustomRelic {
 		
 		this.counter = COUNTER_INITIAL_VALUE;
 	}
+
+	public String getUpdatedDescription() {
+		return DESCRIPTIONS[0] + BUFFER_POWER_AMOUNT_ADDED +
+				DESCRIPTIONS[1] + COUNTER_MAX_VALUE +
+				DESCRIPTIONS[2];
+	}
 	
 	@Override
 	public void atTurnStart() {
