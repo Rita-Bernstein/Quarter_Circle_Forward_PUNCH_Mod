@@ -44,8 +44,7 @@ public class NeverendingBlood extends CustomRelic {
 	@Override
 	public void onLoseHp(int damage_amount) {
 
-		if ((AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT) && 
-			      (damage_amount >= MINIMUM_AMOUNT_OF_HP_LOST) && (this.counter > 0)) {
+		if (canTryToApplyRegen(damage_amount)) {
 			
 			int regen_to_receive;
 			
@@ -57,7 +56,9 @@ public class NeverendingBlood extends CustomRelic {
 				int regen_amount_already_there = AbstractDungeon.player.getPower(RegenPower.POWER_ID).amount;
 
 				if (total_regen_to_have_at_the_end > regen_amount_already_there) {
+					
 					regen_to_receive = total_regen_to_have_at_the_end - regen_amount_already_there;
+					
 				} else return;
 				
 			} else regen_to_receive = total_regen_to_have_at_the_end;
@@ -66,16 +67,27 @@ public class NeverendingBlood extends CustomRelic {
 				regen_to_receive = MINIMUM_AMOUNT_OF_REGEN_ADDED; 
 			}
 			
-			flash();
-			AbstractDungeon.actionManager.addToBottom(
-					new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
-							new RegenPower(AbstractDungeon.player, regen_to_receive),
-								regen_to_receive));
-			
-			this.counter -= COUNTER_USED_FOR_EFFECT;
-			if (counter < 0) counter = 0;
+			settingRegen(regen_to_receive);
 			
 		}
+		
+	}
+	
+	private boolean canTryToApplyRegen(int damage_amount) {
+		return (AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT) && 
+			      (damage_amount >= MINIMUM_AMOUNT_OF_HP_LOST) && (this.counter > 0);
+	}
+	
+	private void settingRegen(int regen_to_receive) {
+		
+		flash();
+		AbstractDungeon.actionManager.addToBottom(
+				new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
+						new RegenPower(AbstractDungeon.player, regen_to_receive),
+							regen_to_receive));
+		
+		this.counter -= COUNTER_USED_FOR_EFFECT;
+		if (counter < 0) counter = 0;
 		
 	}
 	
@@ -92,7 +104,6 @@ public class NeverendingBlood extends CustomRelic {
 	}
 	
 	@Override
-	
 	public AbstractRelic makeCopy() {
 		return new NeverendingBlood();
 	}
