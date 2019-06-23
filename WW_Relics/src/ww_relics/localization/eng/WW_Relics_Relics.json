@@ -163,7 +163,7 @@
   
   "WW_Relics:Extra_Skeleton": {
     "NAME": "Extra Skeleton",
-    "FLAVOR": "Is not the REAL skeleton breaking, so it's fine. Really!",
+    "FLAVOR": "It's not the REAL skeleton breaking, so it's fine. Really!",
     "DESCRIPTIONS": [
     	"Gain #b",
     	" #yBuffer every #b",
