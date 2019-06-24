@@ -46,6 +46,7 @@ public class DuffelBag extends CustomRelic {
 
 	private void SetNumberofRewards(int new_value) {
 		this.counter = new_value;
+		if (this.counter == 0) this.counter = -2; 
 	}
 
 	public String getUpdatedDescription() {
@@ -77,6 +78,7 @@ public class DuffelBag extends CustomRelic {
 	
 	private void AddNumberOfRewards(int added) {
 		this.counter += added;
+		if (this.counter == 0) this.counter = -2; 
 	}
 	
 	@Override
