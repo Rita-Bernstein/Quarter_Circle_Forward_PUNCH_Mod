@@ -1,12 +1,10 @@
 package ww_relics.relics.ryu;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.*;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -31,8 +29,6 @@ public class DuffelBag extends CustomRelic {
 	
 	private ArrayList<AbstractCard> reward_cards;
 	
-	private int number_of_rewards_left;
-	
 	private boolean has_relic_been_used_this_battle = false;
 	
 	public static final Logger logger = LogManager.getLogger(SchoolBackpack.class.getName());
@@ -49,15 +45,9 @@ public class DuffelBag extends CustomRelic {
 	}
 
 	private void SetNumberofRewards(int new_value) {
-		number_of_rewards_left = new_value;
-		SetCounter(number_of_rewards_left);
+		this.counter = new_value;
 	}
-	
-	private void SetCounter(int number_of_rewards_left) {
-		if (number_of_rewards_left > 0) this.counter = number_of_rewards_left;
-		else this.counter = -2;
-	}
-    
+
 	public String getUpdatedDescription() {
 		return DESCRIPTIONS[0] + NUMBER_OF_RANDOM_COMMON_RELICS +
 				DESCRIPTIONS[1];
@@ -71,7 +61,7 @@ public class DuffelBag extends CustomRelic {
 		}
 		
 		if ((currentRoomIsAMonsterOrMonsterEliteRoom()) &&
-				number_of_rewards_left > 0 && 
+				this.counter > 0 && 
 				AbstractDungeon.getCurrRoom().rewardAllowed){
 			
 			AddReward();
@@ -86,8 +76,7 @@ public class DuffelBag extends CustomRelic {
 	}
 	
 	private void AddNumberOfRewards(int added) {
-		number_of_rewards_left += added;
-		SetCounter(number_of_rewards_left);
+		this.counter += added;
 	}
 	
 	@Override
@@ -129,9 +118,9 @@ public class DuffelBag extends CustomRelic {
 	
 	private void AddReward() {
 		
-		if (number_of_rewards_left - reward_cards.size() > 0) {
+		if (this.counter - reward_cards.size() > 0) {
 			
-			int card_position = number_of_rewards_left - reward_cards.size();
+			int card_position = this.counter - reward_cards.size();
 			
 			RewardItem card_reward = new RewardItem();
 			card_reward.cards.clear();
@@ -139,7 +128,7 @@ public class DuffelBag extends CustomRelic {
 			AbstractDungeon.getCurrRoom().addCardReward(card_reward);
 			flash();
 			
-		} else if (number_of_rewards_left > 0) {
+		} else if (this.counter > 0) {
 			
 			AbstractRelic relic = AbstractDungeon.returnRandomRelic(RelicTier.COMMON);
 			AbstractDungeon.getCurrRoom().addRelicToRewards(relic);
@@ -147,60 +136,6 @@ public class DuffelBag extends CustomRelic {
 			
 		}
 		
-	}
-	
-	public static void save(final SpireConfig config) {
-
-        if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
-    		logger.info("Started saving Duffel Bag information");
-
-    		if (AbstractDungeon.isDungeonBeaten || AbstractDungeon.player.isDead) {
-    			clear(config);
-    		} 
-    		else {
-    					
-                try {
-    				config.save();
-    			} catch (IOException e) {
-    				e.printStackTrace();
-    			}
-                
-    		}
-
-            logger.info("Finished saving Duffel Bag information");
-        }
-        else {
-        	clear(config);
-        }
-
-    }
-	
-		public static void load(final SpireConfig config) {
-		
-		logger.info("Loading Duffel Bag info.");
-		if (AbstractDungeon.player.hasRelic(ID) && config.has("duffel_bag_1")) {
-			
-            try {
-				config.load();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            logger.info("Finished loading Duffel Bag info.");
-        }
-		
-		else
-		{
-			logger.info("There's no info, setting variables accordingly.");
-
-			logger.info("Finished setting Duffel Bag variables.");
-		}
-    }
-	
-	public static void clear(final SpireConfig config) {
-		logger.info("Clearing Duffel Bag variables.");
-        
-        logger.info("Finished clearing Duffel Bag variables.");
 	}
 	
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
