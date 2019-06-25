@@ -53,21 +53,33 @@ public class DuffelBag extends CustomRelic {
 		return DESCRIPTIONS[0] + NUMBER_OF_RANDOM_COMMON_RELICS +
 				DESCRIPTIONS[1];
 	}
-	
+		
 	@Override
-	public void atPreBattle() {
+	public void onVictory() {
 		
 		if (has_relic_been_used_this_battle) {
 			has_relic_been_used_this_battle = false;
 		}
 		
+		
+		logger.info("Duff " + this.counter);
 		if ((currentRoomIsAMonsterOrMonsterEliteRoom()) &&
 				this.counter > 0 && 
-				AbstractDungeon.getCurrRoom().rewardAllowed){
+				AbstractDungeon.getCurrRoom().rewardAllowed
+				){
 			
+			logger.info("Duff 2" + this.counter);
 			AddReward();
-			AddNumberOfRewards(-1);
 			has_relic_been_used_this_battle = true;
+			logger.info("Duff 3" + this.counter);
+			
+			if (!AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead() &&
+					 !AbstractDungeon.getCurrRoom().monsters.areMonstersDead()) {
+				
+				logger.info("Duff 4" + this.counter);
+				AddNumberOfRewards(-1);
+				logger.info("Duff 5" + this.counter);
+			}
 		}
 	}
 	
