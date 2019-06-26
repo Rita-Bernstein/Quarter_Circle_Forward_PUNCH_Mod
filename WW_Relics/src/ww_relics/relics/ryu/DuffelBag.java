@@ -1,10 +1,12 @@
 package ww_relics.relics.ryu;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.*;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,7 +16,6 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.*;
 
 import basemod.abstracts.CustomRelic;
-import ww_relics.relics.character_cameos.sakura.SchoolBackpack;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class DuffelBag extends CustomRelic {
@@ -29,9 +30,9 @@ public class DuffelBag extends CustomRelic {
 	
 	private ArrayList<AbstractCard> reward_cards;
 	
-	private boolean has_relic_been_used_this_battle = false;
+	private static int last_floor_where_relic_was_used = 0;
 	
-	public static final Logger logger = LogManager.getLogger(SchoolBackpack.class.getName());
+	public static final Logger logger = LogManager.getLogger(DuffelBag.class.getName());
 	
 	public DuffelBag() {
 		super(ID, GraphicResources.LoadRelicImage("Duffel_Bag - swap-bag - Lorc - CC BY 3.0.png"),
@@ -42,6 +43,8 @@ public class DuffelBag extends CustomRelic {
 		reward_cards.add(new BandageUp());
 		
 		SetNumberofRewards(PRETENDED_NUMBER_OF_EXTRA_REWARDS);
+		
+		last_floor_where_relic_was_used = 0;
 	}
 
 	private void SetNumberofRewards(int new_value) {
@@ -55,32 +58,29 @@ public class DuffelBag extends CustomRelic {
 	}
 		
 	@Override
-	public void onVictory() {
+	public void atPreBattle() {
 		
-		if (has_relic_been_used_this_battle) {
-			has_relic_been_used_this_battle = false;
-		}
-		
-		
-		logger.info("Duff " + this.counter);
 		if ((currentRoomIsAMonsterOrMonsterEliteRoom()) &&
 				this.counter > 0 && 
-				AbstractDungeon.getCurrRoom().rewardAllowed
-				){
+				AbstractDungeon.getCurrRoom().rewardAllowed){
 			
-			logger.info("Duff 2" + this.counter);
-			AddReward();
-			has_relic_been_used_this_battle = true;
-			logger.info("Duff 3" + this.counter);
-			
-			if (!AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead() &&
-					 !AbstractDungeon.getCurrRoom().monsters.areMonstersDead()) {
+			if (last_floor_where_relic_was_used == AbstractDungeon.floorNum){
 				
-				logger.info("Duff 4" + this.counter);
+				//line below necessary to avoid wrong reward being added when game is loaded at reward screen
+				AddNumberOfRewards(1);
+				AddReward();
 				AddNumberOfRewards(-1);
-				logger.info("Duff 5" + this.counter);
+				
+			} else if (last_floor_where_relic_was_used < AbstractDungeon.floorNum){
+				
+				last_floor_where_relic_was_used = AbstractDungeon.floorNum;
+				AddReward();
+				AddNumberOfRewards(-1);
+				
 			}
+			
 		}
+		
 	}
 	
 	public boolean currentRoomIsAMonsterOrMonsterEliteRoom() {
@@ -111,7 +111,8 @@ public class DuffelBag extends CustomRelic {
 	
 	public void onUsePotion() {
 		
-		if ((AbstractDungeon.player.isEscaping) && (has_relic_been_used_this_battle)) {
+		if ((AbstractDungeon.player.isEscaping) &&
+				(last_floor_where_relic_was_used == AbstractDungeon.floorNum)) {
 			AddNumberOfRewards(1);
 		}
 		
@@ -150,6 +151,73 @@ public class DuffelBag extends CustomRelic {
 			
 		}
 		
+	}
+	
+	public static void save(final SpireConfig config) {
+
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
+    		logger.info("Started saving Duffel Bag information");
+
+            config.setInt("duffel_bag_" +
+            		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used",
+            			last_floor_where_relic_was_used);
+            
+            try {
+				config.save();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+            logger.info("Finished saving Duffel Bag info.");
+        }
+        else {
+        	clear(config);
+        }
+
+    }
+	
+	public static void load(final SpireConfig config) {
+		
+		logger.info("Loading Duffel Bag info.");
+		if (AbstractDungeon.player.hasRelic(ID) &&
+				config.has("duffel_bag_" +
+	            		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used")) {
+
+			last_floor_where_relic_was_used = config.getInt("duffel_bag_" +
+            		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used");
+			
+            try {
+				config.load();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            logger.info("Finished loading Duffel Bag info.");
+        }
+		
+		else
+		{
+			logger.info("There's no info, setting variables accordingly.");
+
+			logger.info("Finished setting Duffel Bag variables.");
+		}
+		
+    }
+	
+	public static void clear(final SpireConfig config) {
+		
+		logger.info("duffel_bag_" +
+        		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used");
+		if (config.has("duffel_bag_" +
+        		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used")) {
+			logger.info("Clearing Duffel Bag variables.");
+			config.remove("duffel_bag_" +
+            		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used");
+			logger.info("Finished clearing Duffel Bag variables.");
+		} else {
+			logger.info("No Duffel Bag variables to clean in this case.");
+		}
+	
+        
 	}
 	
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
