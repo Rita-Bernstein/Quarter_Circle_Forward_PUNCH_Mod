@@ -298,7 +298,6 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 			logger.info("Finished setting Fighting Gloves variables.");
 		}
 		
-		
     }
 	
 	public boolean canSpawn() {
