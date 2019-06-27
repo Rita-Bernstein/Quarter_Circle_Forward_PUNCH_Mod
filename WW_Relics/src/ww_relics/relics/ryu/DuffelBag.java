@@ -81,6 +81,10 @@ public class DuffelBag extends CustomRelic {
 			
 		}
 		
+		if (counter <= 0) {
+			ChangeToSecondDescription();
+		}
+		
 	}
 	
 	public boolean currentRoomIsAMonsterOrMonsterEliteRoom() {
