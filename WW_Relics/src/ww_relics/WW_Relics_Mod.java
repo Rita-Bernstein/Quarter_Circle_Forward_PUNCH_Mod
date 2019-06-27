@@ -19,6 +19,7 @@ import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
+import ww_relics.events.act2.CrunchingNoisesEvent;
 import ww_relics.modifiers.*;
 import ww_relics.potions.ChallengerCoin;
 import ww_relics.relics.character_cameos.dan.NotStrongestFightingStyleGuidebook;
@@ -305,6 +306,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	public void receivePostInitialize() {
 
 		addPotions();
+		addEvents();
 		
 		String modBadgeAddress = "ww_relics/assets/img/modbadge/ModBadgePlaceholder.png";
 		Texture badgeTexture = new Texture(Gdx.files.internal(modBadgeAddress));
@@ -318,5 +320,12 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		BaseMod.addPotion(ChallengerCoin.class, Color.LIME.cpy(), Color.PINK.cpy(), Color.BLUE.cpy(),
 				ChallengerCoin.ID);
 		logger.info("Done adding potions");
+	}
+	
+	public void addEvents() {
+		
+		BaseMod.addEvent(CrunchingNoisesEvent.ID, CrunchingNoisesEvent.class,
+				CrunchingNoisesEvent.TO_WHICH_ACT_ADD);
+		
 	}
 }
