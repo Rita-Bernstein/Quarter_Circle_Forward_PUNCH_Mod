@@ -1,11 +1,14 @@
 package ww_relics.events.act2;
 
+import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 
 public class CrunchingNoisesEvent extends AbstractImageEvent {
 
     //This isn't technically needed but it becomes useful later
     public static final String ID = "WW_Relics:Crunching_Noises";
+    
+    public static final String TO_WHICH_ACT_ADD = TheCity.ID;
 
     public CrunchingNoisesEvent(){
         super(ID, "Crunching Noises", "images/events/cleric.jpg");
