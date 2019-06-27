@@ -1,0 +1,12 @@
+{
+	"WW_Relics:Crunching_Noises": {
+		"NAME": "Crunching Noises",
+		"DESCRIPTIONS": [
+		"Test 1",
+		"Test 2"
+    ],
+    "OPTIONS": [
+		"Blah test"
+    ]
+  }
+}
