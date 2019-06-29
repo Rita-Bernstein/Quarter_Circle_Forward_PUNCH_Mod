@@ -29,7 +29,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     public static final int GAINED_SKELETON_RELIC = 5;
     public static final int GAINED_CHALLENGER_COINS = 6;
     public static final int GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS = 7;
-    public static final int THE_SAFER_PATH_GAINED_GOOD_INSTINCTS = 8;
+    public static final int THE_SAFER_PATH_GAINED_GOOD_INSTINCTS = 8; 
 
     public CrunchingNoisesEvent(){
         super(ID, "Crunching Noises", "images/events/cleric.jpg");
@@ -39,34 +39,37 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     }
 
     @Override
-    protected void buttonEffect(int buttonPressed) {
+    protected void buttonEffect(int button_pressed) {
     
-        switch (buttonPressed) {
+    	int option_chosen = -1;
+    	
+    	if (last_event_page_visited == EVENT_STARTING_POINT) {
+    		
+    		if (button_pressed == 0) option_chosen = ElITE_ENCOUNTER_PART_1;
+    		else if (button_pressed == 1) option_chosen = THE_SAFER_PATH_GAINED_GOOD_INSTINCTS;
+    		
+    	}
+    	
+        switch (option_chosen) {
         
-        	case 0:
-
+        	case ElITE_ENCOUNTER_PART_1:
         		break;
-        		
-        	case 1:
-
-                
+        	case ElITE_ENCOUNTER_PART_2_FIGHT:
         		break;
-        	case 2:
-        		openMap();
+        	case ELITE_VICTORIOUS_AFTERMATH:
         		break;
-        	case 3:
+        	case GAINED_BLOOD_RELIC:
         		break;
-        	case 4:
+        	case GAINED_SKELETON_RELIC :
         		break;
-        	case 5:
+        	case GAINED_CHALLENGER_COINS:
         		break;
-        	case 6:
+        	case GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS:
         		break;
-        	case 7:
-        		break;
-        	case 8:
+        	case THE_SAFER_PATH_GAINED_GOOD_INSTINCTS:
         		break;
         	default:
+        		//Add bug message
         		break;
         
         }
