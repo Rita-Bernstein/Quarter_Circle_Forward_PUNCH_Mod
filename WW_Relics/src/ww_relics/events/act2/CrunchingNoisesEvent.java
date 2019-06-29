@@ -1,5 +1,8 @@
 package ww_relics.events.act2;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
@@ -40,6 +43,8 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     public static final int GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS_OPTION = 6;
     public static final int THE_SAFER_PATH_GAINED_GOOD_INSTINCTS_OPTION = 7; 
 
+	public static final Logger logger = LogManager.getLogger(CrunchingNoisesEvent.class.getName());
+    
     public CrunchingNoisesEvent(){
         super(ID, "Crunching Noises", "images/events/cleric.jpg");
         
@@ -65,6 +70,9 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     
     	int option_chosen = -1;
     	
+    	logger.info("A " + button_pressed);
+    	logger.info("B " + last_event_page_visited);
+    	
     	switch(last_event_page_visited) {
     	
     		case EVENT_STARTING_POINT:
@@ -72,10 +80,14 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         		else if (button_pressed == 1) option_chosen = THE_SAFER_PATH_GAINED_GOOD_INSTINCTS;
     			break;
     		case ElITE_ENCOUNTER_PART_1:
+    			
     			if (button_pressed == 0) option_chosen = ElITE_ENCOUNTER_PART_2_FIGHT;
     			break;
-    	
+    		default:
+    			break;
     	}
+    	
+    	logger.info("C " + option_chosen);
     	
         switch (option_chosen) {
         
@@ -102,7 +114,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         
         }
     }
-    
+
     private void SetEventEliteEncounterPart1() {
     	
     	last_event_page_visited = 1;
