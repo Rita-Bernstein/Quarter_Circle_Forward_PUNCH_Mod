@@ -19,6 +19,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     public static final String TO_WHICH_ACT_ADD = TheCity.ID;
     public static final int WHERE_EVENT_TITLE_STARTS = 0;
     public static final int WHERE_EVENT_TEXT_STARTS = 9;
+    public static final int WHERE_OPTION_TEXT_STARTS = 0;
     
     public static final int EVENT_STARTING_POINT = 0;
     public static final int ElITE_ENCOUNTER_PART_1 = 1;
@@ -33,9 +34,8 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     public CrunchingNoisesEvent(){
         super(ID, "Crunching Noises", "images/events/cleric.jpg");
         
-        this.title = DESCRIPTIONS[0];
-        this.imageEventText.setDialogOption(OPTIONS[0]);
-        this.imageEventText.setDialogOption(OPTIONS[1]);
+        SetEventStartingPoint();
+
     }
 
     @Override
@@ -44,15 +44,11 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         switch (buttonPressed) {
         
         	case 0:
-        		this.imageEventText.updateBodyText(DESCRIPTIONS[2]);
-                this.imageEventText.removeDialogOption(0);
-                this.imageEventText.setDialogOption(OPTIONS[2]);
+
         		break;
         		
         	case 1:
-        		this.imageEventText.updateBodyText(DESCRIPTIONS[2]);
-                this.imageEventText.removeDialogOption(0);
-                this.imageEventText.setDialogOption(OPTIONS[2]);
+
                 
         		break;
         	case 2:
@@ -71,10 +67,19 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         	case 8:
         		break;
         	default:
-        		
         		break;
         
         }
+    }
+    
+    private void SetEventStartingPoint() {
+        
+    	last_event_page_visited = 0;
+        this.title = DESCRIPTIONS[WHERE_EVENT_TITLE_STARTS];
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS]);
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS + THE_SAFER_PATH_GAINED_GOOD_INSTINCTS]);
+		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS]);
+		
     }
     
 }
