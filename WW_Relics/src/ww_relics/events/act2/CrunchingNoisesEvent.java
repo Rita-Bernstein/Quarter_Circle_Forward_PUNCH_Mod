@@ -4,8 +4,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
+import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 
 public class CrunchingNoisesEvent extends AbstractImageEvent {
@@ -95,8 +97,9 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         		SetEventEliteEncounterPart1();
         		break;
         	case ElITE_ENCOUNTER_PART_2_FIGHT:
-        		break;
+        		SetEventEliteEncounterPart2();
         	case ELITE_VICTORIOUS_AFTERMATH:
+        		SetEventVictoriousAftermath();
         		break;
         	case GAINED_BLOOD_RELIC:
         		break;
@@ -121,14 +124,36 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     	
     }
     private void SetEventEliteEncounterPart1() {
-    	
-    	last_event_page_visited = 1;
+    	last_event_page_visited = ElITE_ENCOUNTER_PART_1;
         this.title = DESCRIPTIONS[WHERE_EVENT_TITLE_STARTS + ElITE_ENCOUNTER_PART_1];
         this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
                                                     ElITE_ENCOUNTER_PART_2_FIGHT_OPTION]);
 		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
 		                                                ElITE_ENCOUNTER_PART_1]);
-    	
+    }
+    
+    private void SetEventEliteEncounterPart2() {
+        last_event_page_visited = ElITE_ENCOUNTER_PART_2_FIGHT;
+
+        AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter("Colosseum Slavers");
+        AbstractDungeon.getCurrRoom().rewards.clear();
+        AbstractDungeon.getCurrRoom().rewardAllowed = false;
+        enterCombatFromImage();
+    }
+    
+    private void SetEventVictoriousAftermath() {
+    	last_event_page_visited = ELITE_VICTORIOUS_AFTERMATH;
+        this.title = DESCRIPTIONS[WHERE_EVENT_TITLE_STARTS + ELITE_VICTORIOUS_AFTERMATH];
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
+                                                    GAINED_BLOOD_RELIC_OPTION]);
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
+                                                    GAINED_SKELETON_RELIC_OPTION]);
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
+                                                    GAINED_CHALLENGER_COINS_OPTION]);
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
+                                                    GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS_OPTION]);
+		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
+		                                                ELITE_VICTORIOUS_AFTERMATH]);
     }
     
 
