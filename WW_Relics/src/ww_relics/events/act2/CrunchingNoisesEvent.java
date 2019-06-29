@@ -21,7 +21,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     public CrunchingNoisesEvent(){
         super(ID, "Crunching Noises", "images/events/cleric.jpg");
         
-
+        this.title = DESCRIPTIONS[0];
         this.imageEventText.setDialogOption(OPTIONS[0]);
         this.imageEventText.setDialogOption(OPTIONS[1]);
     }
