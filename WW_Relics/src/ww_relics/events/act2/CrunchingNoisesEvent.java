@@ -80,7 +80,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         		else if (button_pressed == 1) option_chosen = THE_SAFER_PATH_GAINED_GOOD_INSTINCTS;
     			break;
     		case ElITE_ENCOUNTER_PART_1:
-    			
+    			CleanEventPage();
     			if (button_pressed == 0) option_chosen = ElITE_ENCOUNTER_PART_2_FIGHT;
     			break;
     		default:
@@ -114,7 +114,12 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         
         }
     }
-
+    
+    private void CleanEventPage() {
+    	
+    	this.imageEventText.clearRemainingOptions();
+    	
+    }
     private void SetEventEliteEncounterPart1() {
     	
     	last_event_page_visited = 1;
