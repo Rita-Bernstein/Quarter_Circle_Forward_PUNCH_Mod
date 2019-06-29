@@ -29,7 +29,16 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     public static final int GAINED_SKELETON_RELIC = 5;
     public static final int GAINED_CHALLENGER_COINS = 6;
     public static final int GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS = 7;
-    public static final int THE_SAFER_PATH_GAINED_GOOD_INSTINCTS = 8; 
+    public static final int THE_SAFER_PATH_GAINED_GOOD_INSTINCTS = 8;
+    
+    public static final int ElITE_ENCOUNTER_PART_1_OPTION = 0;
+    public static final int ElITE_ENCOUNTER_PART_2_FIGHT_OPTION = 1;
+    public static final int ELITE_VICTORIOUS_AFTERMATH_OPTION = 2;
+    public static final int GAINED_BLOOD_RELIC_OPTION = 3;
+    public static final int GAINED_SKELETON_RELIC_OPTION = 4;
+    public static final int GAINED_CHALLENGER_COINS_OPTION = 5;
+    public static final int GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS_OPTION = 6;
+    public static final int THE_SAFER_PATH_GAINED_GOOD_INSTINCTS_OPTION = 7; 
 
     public CrunchingNoisesEvent(){
         super(ID, "Crunching Noises", "images/events/cleric.jpg");
@@ -42,9 +51,12 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         
     	last_event_page_visited = 0;
         this.title = DESCRIPTIONS[WHERE_EVENT_TITLE_STARTS];
-        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS]);
-        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS + THE_SAFER_PATH_GAINED_GOOD_INSTINCTS]);
-		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS]);
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
+                                                    ElITE_ENCOUNTER_PART_1_OPTION]);
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
+                                                    THE_SAFER_PATH_GAINED_GOOD_INSTINCTS_OPTION]);
+		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
+		                                                EVENT_STARTING_POINT]);
 		
     }
     
@@ -53,16 +65,22 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     
     	int option_chosen = -1;
     	
-    	if (last_event_page_visited == EVENT_STARTING_POINT) {
-    		
-    		if (button_pressed == 0) option_chosen = ElITE_ENCOUNTER_PART_1;
-    		else if (button_pressed == 1) option_chosen = THE_SAFER_PATH_GAINED_GOOD_INSTINCTS;
-    		
+    	switch(last_event_page_visited) {
+    	
+    		case EVENT_STARTING_POINT:
+        		if (button_pressed == 0) option_chosen = ElITE_ENCOUNTER_PART_1;
+        		else if (button_pressed == 1) option_chosen = THE_SAFER_PATH_GAINED_GOOD_INSTINCTS;
+    			break;
+    		case ElITE_ENCOUNTER_PART_1:
+    			if (button_pressed == 0) option_chosen = ElITE_ENCOUNTER_PART_2_FIGHT;
+    			break;
+    	
     	}
     	
         switch (option_chosen) {
         
         	case ElITE_ENCOUNTER_PART_1:
+        		SetEventEliteEncounterPart1();
         		break;
         	case ElITE_ENCOUNTER_PART_2_FIGHT:
         		break;
@@ -83,6 +101,17 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         		break;
         
         }
+    }
+    
+    private void SetEventEliteEncounterPart1() {
+    	
+    	last_event_page_visited = 1;
+        this.title = DESCRIPTIONS[WHERE_EVENT_TITLE_STARTS + ElITE_ENCOUNTER_PART_1];
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
+                                                    ElITE_ENCOUNTER_PART_2_FIGHT_OPTION]);
+		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
+		                                                ElITE_ENCOUNTER_PART_1]);
+    	
     }
     
 
