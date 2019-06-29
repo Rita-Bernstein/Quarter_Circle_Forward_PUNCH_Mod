@@ -2,10 +2,24 @@
 	"WW_Relics:Crunching_Noises": {
 		"NAME": "Crunching Noises",
 		"DESCRIPTIONS": [
+		"Crunching Noises?",
+		"Scene of Brutality",
+		"Face Your Destiny",
+		"Flawed Victory",
+		"Blood Magic",
+		"Just Don't Do An X-Ray, Okay?",
+		"Here Comes Some New Challengers",
+		"Have Some Mercy",
+		"Blocking Possible Fatalities",
 		"As you climb through the City less walked paths (maybe that's why you find so many Slavers?), you instinctively stop, feeling a murderous aura ahead. NL As the air gets colder, crunching noises increasing in speed and volume can be heard until NL CRUNCH NL and deafness is you best friend for a while. Your curiosity try to push you ahead, while your self-preservation does the same, but in all the other directions. Where to go?",
 		"Ignoring sagely inner advices about how keeping yourself safe is better than sate your curiosity with a early grave, the path forward is taken. NL You find the source of the crunching, and the scene is of complete devastation. NL NL Blood. NL NL It covers it all, even the air itself seems to be a bit red. NL Bones. NL NL Some still with meat of their old owners - lie haphazardly in the ground. How many dead? You can't guess. NL NL And in the center of this gruesome scene, a Gremlin Nob.",
 		"His injuries are many: cuts, bruises, some burns... and his curved body and motions all indicate tiredness. Having seen enough, you start to silently turn around... NL ...but unfornately silent to you means noisy to the Nob - remember your deafness? - and he turns around. NL NL OH BOY HOW MUCH ANGRY CAN HE BE?",
-		"After the fight, bad news for you: other City denizens were also curious and are approaching now, and you clearly don't have strength to face any crowd. NL Four escape paths are available: NL Through where some bones are neatly organized, looking like a textbook example of a skeleton. NL Sliding in an inclination where the blood seems to be flowing. NL The berserker road: get that bag in front of you, scream running to the crowd and turn left at the last second. NL Just go back through where you came."
+		"After the fight, bad news for you: other City denizens were also curious and are approaching now, and you clearly don't have strength to face any crowd. NL Four escape paths are available: NL Through where some bones are neatly organized, looking like a textbook example of a skeleton. NL Sliding in an inclination where the blood seems to be flowing. NL The berserker road: get that bag in front of you, scream running to the crowd and turn left at the last second. NL Just go back through where you came.",
+		"Here Blood",
+		"Here Skeleton",
+		"Here Challenger Coins",
+		"Here 2 Good Instincts+",
+		"Here Good Instincts"
     ],
     "OPTIONS": [
 		"[Curiosity] #rFace #ran #rElite #rencounter.",
