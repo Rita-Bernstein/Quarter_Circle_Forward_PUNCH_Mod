@@ -38,6 +38,16 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
 
     }
 
+    private void SetEventStartingPoint() {
+        
+    	last_event_page_visited = 0;
+        this.title = DESCRIPTIONS[WHERE_EVENT_TITLE_STARTS];
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS]);
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS + THE_SAFER_PATH_GAINED_GOOD_INSTINCTS]);
+		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS]);
+		
+    }
+    
     @Override
     protected void buttonEffect(int button_pressed) {
     
@@ -75,14 +85,6 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         }
     }
     
-    private void SetEventStartingPoint() {
-        
-    	last_event_page_visited = 0;
-        this.title = DESCRIPTIONS[WHERE_EVENT_TITLE_STARTS];
-        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS]);
-        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS + THE_SAFER_PATH_GAINED_GOOD_INSTINCTS]);
-		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS]);
-		
-    }
+
     
 }
