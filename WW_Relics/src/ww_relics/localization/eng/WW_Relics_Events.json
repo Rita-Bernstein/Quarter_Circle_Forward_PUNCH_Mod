@@ -6,7 +6,9 @@
 		"Test 2"
     ],
     "OPTIONS": [
-		"Blah test"
+		"Blah test 1",
+		"Blah test 2",
+		"Blah test 3"
     ]
   }
 }
