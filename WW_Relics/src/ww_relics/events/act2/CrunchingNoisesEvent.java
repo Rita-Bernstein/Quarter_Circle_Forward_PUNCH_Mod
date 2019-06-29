@@ -15,10 +15,13 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     private static final String[] OPTIONS = eventStrings.OPTIONS;
     
     public static final String TO_WHICH_ACT_ADD = TheCity.ID;
+    public static final int WHERE_EVENT_TITLE_STARTS = 0;
+    public static final int WHERE_EVENT_TEXT_STARTS = 9;
 
     public CrunchingNoisesEvent(){
         super(ID, "Crunching Noises", "images/events/cleric.jpg");
         
+
         this.imageEventText.setDialogOption(OPTIONS[0]);
         this.imageEventText.setDialogOption(OPTIONS[1]);
     }
