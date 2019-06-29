@@ -14,6 +14,8 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
     
+    public static int last_event_page_visited;
+    
     public static final String TO_WHICH_ACT_ADD = TheCity.ID;
     public static final int WHERE_EVENT_TITLE_STARTS = 0;
     public static final int WHERE_EVENT_TEXT_STARTS = 9;
@@ -38,10 +40,13 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
 
     @Override
     protected void buttonEffect(int buttonPressed) {
+    
         switch (buttonPressed) {
         
         	case 0:
-        		openMap();
+        		this.imageEventText.updateBodyText(DESCRIPTIONS[2]);
+                this.imageEventText.removeDialogOption(0);
+                this.imageEventText.setDialogOption(OPTIONS[2]);
         		break;
         		
         	case 1:
@@ -53,14 +58,23 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         	case 2:
         		openMap();
         		break;
+        	case 3:
+        		break;
+        	case 4:
+        		break;
+        	case 5:
+        		break;
+        	case 6:
+        		break;
+        	case 7:
+        		break;
+        	case 8:
+        		break;
         	default:
         		
         		break;
         
         }
-    	
-    	
-    	
     }
     
 }
