@@ -45,6 +45,8 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     public static final int GAINED_CHALLENGER_COINS_OPTION = 5;
     public static final int GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS_OPTION = 6;
     public static final int THE_SAFER_PATH_GAINED_GOOD_INSTINCTS_OPTION = 7; 
+    public static final int FINAL_VICTORIOUS_OPTION = 8;
+    public static final int FINAL_SAFER_OPTION = 9;
 
 	public static final Logger logger = LogManager.getLogger(CrunchingNoisesEvent.class.getName());
     
@@ -118,12 +120,16 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         		SetEventEliteFight();
         		break;
         	case GAINED_BLOOD_RELIC:
+        		SetEventGainedBloodRelic();
         		break;
         	case GAINED_SKELETON_RELIC :
+        		SetEventGainedSkeletonRelic();
         		break;
         	case GAINED_CHALLENGER_COINS:
+        		SetEventGainedChallengeCoinPotions();
         		break;
         	case GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS:
+        		SetNopeNopeCantalopeGoodInstincts();
         		break;
         	case THE_SAFER_PATH_GAINED_GOOD_INSTINCTS:
         		break;
@@ -185,7 +191,11 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     }
     
     private void SetEventGainedBloodRelic() {
-    	
+    	/*last_event_page_visited = GAINED_BLOOD_RELIC;
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
+                                                    GAINED_BLOOD_RELIC_OPTION]);
+		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
+		                                                GAINED_BLOOD_RELIC]);*/
     }
     
     private void SetEventGainedSkeletonRelic() {
