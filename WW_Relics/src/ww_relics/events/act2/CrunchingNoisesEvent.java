@@ -102,6 +102,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         		break;
         	case ElITE_ENCOUNTER_PART_2_FIGHT:
         		SetEventEliteEncounterPart2();
+        		break;
         	case ELITE_VICTORIOUS_AFTERMATH:
         		SetEventEliteFight();
         		SetEventVictoriousAftermath();
