@@ -96,6 +96,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     		case ElITE_ENCOUNTER_PART_2_FIGHT:
     			CleanEventPage();
     			if (button_pressed == 0) option_chosen = ELITE_VICTORIOUS_AFTERMATH;
+    			break;
     		case ELITE_VICTORIOUS_AFTERMATH:
     			CleanEventPage();
     			if (button_pressed == 0) option_chosen = GAINED_BLOOD_RELIC;
@@ -219,13 +220,11 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     
     @Override
     public void reopen() {
-    	if (!this.combatTime) {
-    		SetEventVictoriousAftermath();
-            AbstractDungeon.resetPlayer();
-            AbstractDungeon.player.drawX = Settings.WIDTH * 0.25F;
-            AbstractDungeon.player.preBattlePrep();
-            enterImageFromCombat();
-    	}
+		SetEventVictoriousAftermath();
+        AbstractDungeon.resetPlayer();
+        AbstractDungeon.player.drawX = Settings.WIDTH * 0.25F;
+        AbstractDungeon.player.preBattlePrep();
+        enterImageFromCombat();
     }
 
     
