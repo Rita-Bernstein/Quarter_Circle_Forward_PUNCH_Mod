@@ -102,9 +102,11 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         		SetEventEliteEncounterPart1();
         		break;
         	case ElITE_ENCOUNTER_PART_2_FIGHT:
+        		logger.info("AAAFAD");
         		SetEventEliteEncounterPart2();
         		break;
         	case ELITE_VICTORIOUS_AFTERMATH:
+        		logger.info("AAAFADDDDDDDDDDDDDDDDD");
         		SetEventEliteFight();
         		SetEventVictoriousAftermath();
         		break;
@@ -145,7 +147,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     	last_event_page_visited = ElITE_ENCOUNTER_PART_2_FIGHT;
         this.title = DESCRIPTIONS[WHERE_EVENT_TITLE_STARTS + ElITE_ENCOUNTER_PART_2_FIGHT];
         this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
-                                                    ElITE_ENCOUNTER_PART_2_FIGHT_OPTION]);
+                                                    ELITE_VICTORIOUS_AFTERMATH_OPTION]);
 		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
 		                                                ElITE_ENCOUNTER_PART_2_FIGHT]);
     	
