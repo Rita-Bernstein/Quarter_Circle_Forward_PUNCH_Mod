@@ -184,6 +184,23 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
 		                                                ELITE_VICTORIOUS_AFTERMATH]);
     }
     
+    private void SetEventGainedBloodRelic() {
+    	
+    }
+    
+    private void SetEventGainedSkeletonRelic() {
+    	
+    }
+    
+    private void SetEventGainedChallengeCoinPotions() {
+    	
+    }
+    
+    private void SetNopeNopeCantalopeGoodInstincts() {
+    	
+    }
+    
+    
     
     @Override
     public void reopen() {
