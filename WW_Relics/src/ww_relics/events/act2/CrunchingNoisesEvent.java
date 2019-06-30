@@ -58,12 +58,13 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         
     	last_event_page_visited = 0;
         this.title = DESCRIPTIONS[WHERE_EVENT_TITLE_STARTS];
+		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
+		                                                EVENT_STARTING_POINT]);
         this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
                                                     ElITE_ENCOUNTER_PART_1_OPTION]);
         this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
                                                     THE_SAFER_PATH_GAINED_GOOD_INSTINCTS_OPTION]);
-		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
-		                                                EVENT_STARTING_POINT]);
+
 		
     }
     
