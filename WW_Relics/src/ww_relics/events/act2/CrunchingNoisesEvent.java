@@ -78,6 +78,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     	switch(last_event_page_visited) {
     	
     		case EVENT_STARTING_POINT:
+    			CleanEventPage();
         		if (button_pressed == 0) option_chosen = ElITE_ENCOUNTER_PART_1;
         		else if (button_pressed == 1) option_chosen = THE_SAFER_PATH_GAINED_GOOD_INSTINCTS;
     			break;
@@ -85,6 +86,9 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     			CleanEventPage();
     			if (button_pressed == 0) option_chosen = ElITE_ENCOUNTER_PART_2_FIGHT;
     			break;
+    		case ElITE_ENCOUNTER_PART_2_FIGHT:
+    			CleanEventPage();
+    			if (button_pressed == 0) option_chosen = ELITE_VICTORIOUS_AFTERMATH;
     		default:
     			break;
     	}
@@ -99,6 +103,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         	case ElITE_ENCOUNTER_PART_2_FIGHT:
         		SetEventEliteEncounterPart2();
         	case ELITE_VICTORIOUS_AFTERMATH:
+        		SetEventEliteFight();
         		SetEventVictoriousAftermath();
         		break;
         	case GAINED_BLOOD_RELIC:
@@ -123,6 +128,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     	this.imageEventText.clearRemainingOptions();
     	
     }
+    
     private void SetEventEliteEncounterPart1() {
     	last_event_page_visited = ElITE_ENCOUNTER_PART_1;
         this.title = DESCRIPTIONS[WHERE_EVENT_TITLE_STARTS + ElITE_ENCOUNTER_PART_1];
@@ -133,6 +139,18 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     }
     
     private void SetEventEliteEncounterPart2() {
+    	last_event_page_visited = ElITE_ENCOUNTER_PART_2_FIGHT;
+        this.title = DESCRIPTIONS[WHERE_EVENT_TITLE_STARTS + ElITE_ENCOUNTER_PART_2_FIGHT];
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
+                                                    ElITE_ENCOUNTER_PART_2_FIGHT_OPTION]);
+		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
+		                                                ElITE_ENCOUNTER_PART_2_FIGHT]);
+    	
+    	
+    	
+    }
+    
+    private void SetEventEliteFight() {
         last_event_page_visited = ElITE_ENCOUNTER_PART_2_FIGHT;
 
         AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter("Colosseum Slavers");
