@@ -125,6 +125,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     
     private void CleanEventPage() {
     	
+    	this.imageEventText.clearAllDialogs();
     	this.imageEventText.clearRemainingOptions();
     	
     }
