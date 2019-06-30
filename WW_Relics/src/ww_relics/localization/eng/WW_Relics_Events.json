@@ -21,7 +21,8 @@
 		"[Through The Bones] #gGain #gExtra #gSkeleton.",
 		"#[Get The Bag] #gGain #g3 #gChallenger #gCoin potions.",
 		"#[Nope!] #gGain #g2 #gGood #gInstincts+.",
-		"[Safety] #gGain #g1 #gGood #gInstincts."
+		"[Safety] #gGain #g1 #gGood #gInstincts.",
+		"[Forward]"
     ]
   }
 }
