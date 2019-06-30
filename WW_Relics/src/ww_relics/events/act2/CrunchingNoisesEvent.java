@@ -10,6 +10,9 @@ import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+
+import ww_relics.relics.mortal_kombat.NeverendingBlood;
 
 public class CrunchingNoisesEvent extends AbstractImageEvent {
 
@@ -191,11 +194,13 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     }
     
     private void SetEventGainedBloodRelic() {
-    	/*last_event_page_visited = GAINED_BLOOD_RELIC;
+    	last_event_page_visited = GAINED_BLOOD_RELIC;
         this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
-                                                    GAINED_BLOOD_RELIC_OPTION]);
+                                                    FINAL_VICTORIOUS_OPTION]);
 		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
-		                                                GAINED_BLOOD_RELIC]);*/
+		                                                GAINED_BLOOD_RELIC]);
+		AbstractRelic relic = new NeverendingBlood();
+        AbstractDungeon.getCurrRoom().spawnRelicAndObtain(this.drawX, this.drawY, relic);
     }
     
     private void SetEventGainedSkeletonRelic() {
@@ -214,11 +219,13 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     
     @Override
     public void reopen() {
-		SetEventVictoriousAftermath();
-        AbstractDungeon.resetPlayer();
-        AbstractDungeon.player.drawX = Settings.WIDTH * 0.25F;
-        AbstractDungeon.player.preBattlePrep();
-        enterImageFromCombat();
+    	if (!this.combatTime) {
+    		SetEventVictoriousAftermath();
+            AbstractDungeon.resetPlayer();
+            AbstractDungeon.player.drawX = Settings.WIDTH * 0.25F;
+            AbstractDungeon.player.preBattlePrep();
+            enterImageFromCombat();
+    	}
     }
 
     
