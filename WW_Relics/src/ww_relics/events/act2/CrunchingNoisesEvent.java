@@ -92,6 +92,11 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     			CleanEventPage();
     			if (button_pressed == 0) option_chosen = ELITE_VICTORIOUS_AFTERMATH;
     		case ELITE_VICTORIOUS_AFTERMATH:
+    			CleanEventPage();
+    			if (button_pressed == 0) option_chosen = GAINED_BLOOD_RELIC;
+    			else if (button_pressed == 1) option_chosen = GAINED_SKELETON_RELIC;
+    			else if (button_pressed == 2) option_chosen = GAINED_CHALLENGER_COINS;
+    			else if (button_pressed == 3) option_chosen = GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS;
     			break;
     		default:
     			break;
