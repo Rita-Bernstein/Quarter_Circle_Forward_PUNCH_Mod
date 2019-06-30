@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
@@ -23,7 +24,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     
     public static final String TO_WHICH_ACT_ADD = TheCity.ID;
     public static final int WHERE_EVENT_TITLE_STARTS = 0;
-    public static final int WHERE_EVENT_TEXT_STARTS = 9;
+    public static final int WHERE_EVENT_TEXT_STARTS = 1;
     public static final int WHERE_OPTION_TEXT_STARTS = 0;
     
     public static final int EVENT_STARTING_POINT = 0;
@@ -90,6 +91,8 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     		case ElITE_ENCOUNTER_PART_2_FIGHT:
     			CleanEventPage();
     			if (button_pressed == 0) option_chosen = ELITE_VICTORIOUS_AFTERMATH;
+    		case ELITE_VICTORIOUS_AFTERMATH:
+    			break;
     		default:
     			break;
     	}
@@ -108,7 +111,6 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         	case ELITE_VICTORIOUS_AFTERMATH:
         		logger.info("AAAFADDDDDDDDDDDDDDDDD");
         		SetEventEliteFight();
-        		SetEventVictoriousAftermath();
         		break;
         	case GAINED_BLOOD_RELIC:
         		break;
@@ -136,7 +138,6 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     
     private void SetEventEliteEncounterPart1() {
     	last_event_page_visited = ElITE_ENCOUNTER_PART_1;
-        this.title = DESCRIPTIONS[WHERE_EVENT_TITLE_STARTS + ElITE_ENCOUNTER_PART_1];
         this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
                                                     ElITE_ENCOUNTER_PART_2_FIGHT_OPTION]);
 		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
@@ -145,7 +146,6 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     
     private void SetEventEliteEncounterPart2() {
     	last_event_page_visited = ElITE_ENCOUNTER_PART_2_FIGHT;
-        this.title = DESCRIPTIONS[WHERE_EVENT_TITLE_STARTS + ElITE_ENCOUNTER_PART_2_FIGHT];
         this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
                                                     ELITE_VICTORIOUS_AFTERMATH_OPTION]);
 		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
@@ -161,12 +161,12 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter("Colosseum Slavers");
         AbstractDungeon.getCurrRoom().rewards.clear();
         AbstractDungeon.getCurrRoom().rewardAllowed = false;
+        AbstractDungeon.getCurrRoom().combatEvent = true;
         enterCombatFromImage();
     }
     
     private void SetEventVictoriousAftermath() {
     	last_event_page_visited = ELITE_VICTORIOUS_AFTERMATH;
-        this.title = DESCRIPTIONS[WHERE_EVENT_TITLE_STARTS + ELITE_VICTORIOUS_AFTERMATH];
         this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
                                                     GAINED_BLOOD_RELIC_OPTION]);
         this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
@@ -179,6 +179,15 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
 		                                                ELITE_VICTORIOUS_AFTERMATH]);
     }
     
+    
+    @Override
+    public void reopen() {
+		SetEventVictoriousAftermath();
+        AbstractDungeon.resetPlayer();
+        AbstractDungeon.player.drawX = Settings.WIDTH * 0.25F;
+        AbstractDungeon.player.preBattlePrep();
+        enterImageFromCombat();
+    }
 
     
 }
