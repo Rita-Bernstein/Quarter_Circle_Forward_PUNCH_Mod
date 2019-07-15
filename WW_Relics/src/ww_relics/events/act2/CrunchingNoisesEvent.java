@@ -1,5 +1,6 @@
 package ww_relics.events.act2;
 
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -59,7 +60,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
 	public static final Logger logger = LogManager.getLogger(CrunchingNoisesEvent.class.getName());
     
     public CrunchingNoisesEvent(){
-        super(ID, "Crunching Noises", "images/events/cleric.jpg");
+        super(ID, NAME, "images/events/cleric.jpg");
         
         SetEventStartingPoint();
 
