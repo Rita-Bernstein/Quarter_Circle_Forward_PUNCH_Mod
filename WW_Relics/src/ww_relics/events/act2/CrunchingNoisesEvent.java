@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
+import ww_relics.relics.mortal_kombat.ExtraSkeleton;
 import ww_relics.relics.mortal_kombat.NeverendingBlood;
 
 public class CrunchingNoisesEvent extends AbstractImageEvent {
@@ -213,7 +214,13 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     }
     
     private void SetEventGainedSkeletonRelic() {
-    	
+    	last_event_page_visited = GAINED_SKELETON_RELIC;
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
+                                                    FINAL_VICTORIOUS_OPTION]);
+		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
+		                                                GAINED_SKELETON_RELIC]);
+		AbstractRelic relic = new ExtraSkeleton();
+        AbstractDungeon.getCurrRoom().spawnRelicAndObtain(this.drawX, this.drawY, relic);
     }
     
     private void SetEventGainedChallengeCoinPotions() {
