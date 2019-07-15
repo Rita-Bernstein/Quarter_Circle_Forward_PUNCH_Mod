@@ -27,7 +27,7 @@ Link in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/
 
 Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/Game-Modifiers).
 
-# Current Roadmap (this can change depending of circunstances)
+# Ever Changing Current Roadmap (yes, this can change depending of circunstances)
 
 1. Create a relic based in Ryu, for basic testing and getting the hang of modding relics for Slay The Spire. Focus in mechanics and avoiding bugs, not graphics. - Done in v0.1.
 2. Relics inspired by Ryu, Ken, Chun Li and Guile.
@@ -71,7 +71,9 @@ Mod The Spire 3.6.3+, BaseMod 5.5.0+ and StSLib 1.10.0+ (when needed, the requir
 
 # Compatibility
 
-So far, it shouldn't cause problems to other mods. That said, there are more than one hundred mods at Steam Workshop and who knows how many more outside of it, so I can't say that it won't crash your game in any possible mod combination. In case of it happening, open one issue, I will check it out.
+Regarding Slay The Spire, it works with v1.0. Haven't tested it with v1.1 yet.
+
+About mods, it shouldn't have/cause problems with/to them. That said, there are more than one hundred mods at Steam Workshop and who knows how many more outside of it, so I can't say that it won't crash your game in any possible mod combination. In case of it happening, open one issue, I will check it out.
 
 ## List of Incompatible Mods:
 
