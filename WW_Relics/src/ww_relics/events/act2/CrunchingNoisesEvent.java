@@ -1,7 +1,5 @@
 package ww_relics.events.act2;
 
-import java.util.ArrayList;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
