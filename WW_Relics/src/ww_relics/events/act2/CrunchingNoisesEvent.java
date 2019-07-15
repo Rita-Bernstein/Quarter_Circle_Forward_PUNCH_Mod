@@ -55,6 +55,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     public static final int FINAL_VICTORIOUS_OPTION = 8;
     public static final int FINAL_SAFER_OPTION = 9;
     
+    public static final int NUMBER_OF_GOOD_INSTINCTS_GAINED_BEFORE_BATTLE_CHOICE = 1;
     public static final int NUMBER_OF_GOOD_INSTINCTS_GAINED_AFTER_BATTLE_CHOICE = 2;
 
 	public static final Logger logger = LogManager.getLogger(CrunchingNoisesEvent.class.getName());
@@ -142,7 +143,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         		SetNopeNopeCantalopeGoodInstincts();
         		break;
         	case THE_SAFER_PATH_GAINED_GOOD_INSTINCTS:
-        		
+        		SetEventGainedGoodInstincts();
         		break;
         	default:
         		//Add bug message
@@ -227,7 +228,12 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     	}
     }
     
-    
+    private void SetEventGainedGoodInstincts() {
+    	for (int i = 0; i < NUMBER_OF_GOOD_INSTINCTS_GAINED_BEFORE_BATTLE_CHOICE; i++) {   		
+    		AbstractCard c = new GoodInstincts();
+            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(c, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));	
+    	}
+    }
     
     @Override
     public void reopen() {
