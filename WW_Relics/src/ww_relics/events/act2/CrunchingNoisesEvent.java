@@ -1,8 +1,12 @@
 package ww_relics.events.act2;
 
+import java.util.ArrayList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.colorless.GoodInstincts;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -11,6 +15,7 @@ import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
 import ww_relics.relics.mortal_kombat.NeverendingBlood;
 
@@ -50,6 +55,8 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     public static final int THE_SAFER_PATH_GAINED_GOOD_INSTINCTS_OPTION = 7; 
     public static final int FINAL_VICTORIOUS_OPTION = 8;
     public static final int FINAL_SAFER_OPTION = 9;
+    
+    public static final int NUMBER_OF_GOOD_INSTINCTS_GAINED_AFTER_BATTLE_CHOICE = 2;
 
 	public static final Logger logger = LogManager.getLogger(CrunchingNoisesEvent.class.getName());
     
@@ -136,6 +143,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         		SetNopeNopeCantalopeGoodInstincts();
         		break;
         	case THE_SAFER_PATH_GAINED_GOOD_INSTINCTS:
+        		
         		break;
         	default:
         		//Add bug message
@@ -213,7 +221,11 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     }
     
     private void SetNopeNopeCantalopeGoodInstincts() {
-    	
+    	for (int i = 0; i < NUMBER_OF_GOOD_INSTINCTS_GAINED_AFTER_BATTLE_CHOICE; i++) {   		
+    		AbstractCard c = new GoodInstincts();
+    		c.upgrade();
+            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(c, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));	
+    	}
     }
     
     
