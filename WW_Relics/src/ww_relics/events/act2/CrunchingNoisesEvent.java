@@ -11,11 +11,14 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
+import com.megacrit.cardcrawl.events.GenericEventDialog;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
+import ww_relics.potions.ChallengerCoin;
 import ww_relics.relics.mortal_kombat.ExtraSkeleton;
 import ww_relics.relics.mortal_kombat.NeverendingBlood;
 
@@ -58,6 +61,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     
     public static final int NUMBER_OF_GOOD_INSTINCTS_GAINED_BEFORE_BATTLE_CHOICE = 1;
     public static final int NUMBER_OF_GOOD_INSTINCTS_GAINED_AFTER_BATTLE_CHOICE = 2;
+    public static final int NUMBER_OF_CHALLENGER_COINS_GAINED_AFTER_BATTLE_CHOICE = 3;
 
 	public static final Logger logger = LogManager.getLogger(CrunchingNoisesEvent.class.getName());
     
@@ -224,7 +228,12 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     }
     
     private void SetEventGainedChallengeCoinPotions() {
-    	
+        GenericEventDialog.hide();
+        AbstractDungeon.getCurrRoom().rewards.clear();
+        for (int i = 0; i < NUMBER_OF_CHALLENGER_COINS_GAINED_AFTER_BATTLE_CHOICE; i++) {
+        	AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(new ChallengerCoin()));
+        }
+        AbstractDungeon.combatRewardScreen.open();
     }
     
     private void SetNopeNopeCantalopeGoodInstincts() {
