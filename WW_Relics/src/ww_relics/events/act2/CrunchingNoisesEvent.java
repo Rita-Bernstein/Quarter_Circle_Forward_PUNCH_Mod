@@ -58,6 +58,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     public static final int THE_SAFER_PATH_GAINED_GOOD_INSTINCTS_OPTION = 7; 
     public static final int FINAL_VICTORIOUS_OPTION = 8;
     public static final int FINAL_SAFER_OPTION = 9;
+    public static final int LEAVE_EVENT = 10;
     
     public static final int NUMBER_OF_GOOD_INSTINCTS_GAINED_BEFORE_BATTLE_CHOICE = 1;
     public static final int NUMBER_OF_GOOD_INSTINCTS_GAINED_AFTER_BATTLE_CHOICE = 2;
@@ -116,6 +117,12 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     			else if (button_pressed == 2) option_chosen = GAINED_CHALLENGER_COINS;
     			else if (button_pressed == 3) option_chosen = GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS;
     			break;
+    		case GAINED_BLOOD_RELIC:
+    		case GAINED_SKELETON_RELIC:
+    		case GAINED_CHALLENGER_COINS:
+    		case GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS:
+    			option_chosen = LEAVE_EVENT;
+    		
     		default:
     			break;
     	}
@@ -128,11 +135,9 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         		SetEventEliteEncounterPart1();
         		break;
         	case ElITE_ENCOUNTER_PART_2_FIGHT:
-        		logger.info("AAAFAD");
         		SetEventEliteEncounterPart2();
         		break;
         	case ELITE_VICTORIOUS_AFTERMATH:
-        		logger.info("AAAFADDDDDDDDDDDDDDDDD");
         		SetEventEliteFight();
         		break;
         	case GAINED_BLOOD_RELIC:
@@ -150,6 +155,8 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         	case THE_SAFER_PATH_GAINED_GOOD_INSTINCTS:
         		SetEventGainedGoodInstincts();
         		break;
+        	case LEAVE_EVENT:
+        		openMap();
         	default:
         		//Add bug message
         		break;
@@ -233,10 +240,16 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         for (int i = 0; i < NUMBER_OF_CHALLENGER_COINS_GAINED_AFTER_BATTLE_CHOICE; i++) {
         	AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(new ChallengerCoin()));
         }
+        openMap();
         AbstractDungeon.combatRewardScreen.open();
     }
     
     private void SetNopeNopeCantalopeGoodInstincts() {
+    	last_event_page_visited = GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS;
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
+                                                    FINAL_VICTORIOUS_OPTION]);
+		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
+		                                                GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS]);
     	for (int i = 0; i < NUMBER_OF_GOOD_INSTINCTS_GAINED_AFTER_BATTLE_CHOICE; i++) {   		
     		AbstractCard c = new GoodInstincts();
     		c.upgrade();
@@ -245,6 +258,11 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     }
     
     private void SetEventGainedGoodInstincts() {
+    	last_event_page_visited = THE_SAFER_PATH_GAINED_GOOD_INSTINCTS;
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
+                                                    FINAL_VICTORIOUS_OPTION]);
+		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
+		                                                THE_SAFER_PATH_GAINED_GOOD_INSTINCTS]);
     	for (int i = 0; i < NUMBER_OF_GOOD_INSTINCTS_GAINED_BEFORE_BATTLE_CHOICE; i++) {   		
     		AbstractCard c = new GoodInstincts();
             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(c, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));	
