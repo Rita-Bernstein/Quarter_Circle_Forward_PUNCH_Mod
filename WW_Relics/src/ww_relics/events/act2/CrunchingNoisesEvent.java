@@ -237,6 +237,10 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     
     private void SetEventGainedChallengeCoinPotions() {
     	last_event_page_visited = GAINED_CHALLENGER_COINS;
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
+                                                    FINAL_VICTORIOUS_OPTION]);
+		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
+		                                                GAINED_CHALLENGER_COINS]);
     	//why clear does not work?
     	//why one card appears? Is it a debug command bug only?
         (AbstractDungeon.getCurrRoom()).rewards.clear();
@@ -245,10 +249,6 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         }
         (AbstractDungeon.getCurrRoom()).phase = RoomPhase.COMPLETE;
         AbstractDungeon.combatRewardScreen.open();
-        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
-                                                    GAINED_CHALLENGER_COINS_OPTION]);
-		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
-		                                                GAINED_CHALLENGER_COINS]);
     }
     
     private void SetNopeNopeCantalopeGoodInstincts() {
