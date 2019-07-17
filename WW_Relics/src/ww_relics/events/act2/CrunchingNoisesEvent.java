@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
-import com.megacrit.cardcrawl.events.GenericEventDialog;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -238,12 +237,18 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     
     private void SetEventGainedChallengeCoinPotions() {
     	last_event_page_visited = GAINED_CHALLENGER_COINS;
+    	//why clear does not work?
+    	//why one card appears? Is it a debug command bug only?
         (AbstractDungeon.getCurrRoom()).rewards.clear();
         for (int i = 0; i < NUMBER_OF_CHALLENGER_COINS_GAINED_AFTER_BATTLE_CHOICE; i++) {
         	AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(new ChallengerCoin()));
         }
         (AbstractDungeon.getCurrRoom()).phase = RoomPhase.COMPLETE;
         AbstractDungeon.combatRewardScreen.open();
+        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
+                                                    GAINED_CHALLENGER_COINS_OPTION]);
+		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
+		                                                GAINED_CHALLENGER_COINS]);
     }
     
     private void SetNopeNopeCantalopeGoodInstincts() {
