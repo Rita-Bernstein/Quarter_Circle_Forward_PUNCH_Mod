@@ -245,20 +245,6 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         }
         (AbstractDungeon.getCurrRoom()).phase = RoomPhase.COMPLETE;
         AbstractDungeon.combatRewardScreen.open();
-        Mcguyverism();
-    }
-    
-    private void Mcguyverism() {
-    	int where = -1;
-    	for (int i = 0; i < AbstractDungeon.getCurrRoom().rewards.size(); i++) {
-            if (AbstractDungeon.getCurrRoom().rewards.get(i).type == RewardItem.RewardType.CARD) {
-            	where = i;
-            	break;
-            }
-    	}
-    	if (where != -1) {
-    		AbstractDungeon.getCurrRoom().rewards.remove(where);
-    	}
     }
     
     private void SetNopeNopeCantalopeGoodInstincts() {
