@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
 import ww_relics.potions.ChallengerCoin;
@@ -117,6 +118,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     			else if (button_pressed == 2) option_chosen = GAINED_CHALLENGER_COINS;
     			else if (button_pressed == 3) option_chosen = GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS;
     			break;
+    		case THE_SAFER_PATH_GAINED_GOOD_INSTINCTS:
     		case GAINED_BLOOD_RELIC:
     		case GAINED_SKELETON_RELIC:
     		case GAINED_CHALLENGER_COINS:
@@ -235,13 +237,28 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     }
     
     private void SetEventGainedChallengeCoinPotions() {
+    	last_event_page_visited = GAINED_CHALLENGER_COINS;
         GenericEventDialog.hide();
-        AbstractDungeon.getCurrRoom().rewards.clear();
+        (AbstractDungeon.getCurrRoom()).rewards.clear();
         for (int i = 0; i < NUMBER_OF_CHALLENGER_COINS_GAINED_AFTER_BATTLE_CHOICE; i++) {
         	AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(new ChallengerCoin()));
         }
-        openMap();
+        (AbstractDungeon.getCurrRoom()).phase = RoomPhase.COMPLETE;
         AbstractDungeon.combatRewardScreen.open();
+        Mcguyverism();
+    }
+    
+    private void Mcguyverism() {
+    	int where = -1;
+    	for (int i = 0; i < AbstractDungeon.getCurrRoom().rewards.size(); i++) {
+            if (AbstractDungeon.getCurrRoom().rewards.get(i).type == RewardItem.RewardType.CARD) {
+            	where = i;
+            	break;
+            }
+    	}
+    	if (where != -1) {
+    		AbstractDungeon.getCurrRoom().rewards.remove(where);
+    	}
     }
     
     private void SetNopeNopeCantalopeGoodInstincts() {
