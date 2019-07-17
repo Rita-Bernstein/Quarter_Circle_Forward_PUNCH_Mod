@@ -238,7 +238,6 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     
     private void SetEventGainedChallengeCoinPotions() {
     	last_event_page_visited = GAINED_CHALLENGER_COINS;
-        GenericEventDialog.hide();
         (AbstractDungeon.getCurrRoom()).rewards.clear();
         for (int i = 0; i < NUMBER_OF_CHALLENGER_COINS_GAINED_AFTER_BATTLE_CHOICE; i++) {
         	AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(new ChallengerCoin()));
