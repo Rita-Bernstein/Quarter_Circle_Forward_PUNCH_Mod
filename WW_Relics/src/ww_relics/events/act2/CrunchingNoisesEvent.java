@@ -68,7 +68,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     
     public CrunchingNoisesEvent(){
         super(ID, DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
-                               EVENT_STARTING_POINT], "images/events/cleric.jpg");
+                               EVENT_STARTING_POINT], "images/events/crunching_noises.jpg");
         
         SetEventStartingPoint();
 
