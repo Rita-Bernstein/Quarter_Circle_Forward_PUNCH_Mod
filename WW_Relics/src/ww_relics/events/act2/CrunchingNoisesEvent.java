@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
+import ww_relics.monsters.elites.TiredGremlinNob;
 import ww_relics.potions.ChallengerCoin;
 import ww_relics.relics.mortal_kombat.ExtraSkeleton;
 import ww_relics.relics.mortal_kombat.NeverendingBlood;
@@ -195,7 +196,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     private void SetEventEliteFight() {
         last_event_page_visited = ElITE_ENCOUNTER_PART_2_FIGHT;
 
-        AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter("Colosseum Slavers");
+        AbstractDungeon.getCurrRoom().monsters = new MonsterGroup(new TiredGremlinNob(0.0f, 0.0f));
         AbstractDungeon.getCurrRoom().rewards.clear();
         AbstractDungeon.getCurrRoom().rewardAllowed = false;
         AbstractDungeon.getCurrRoom().combatEvent = true;
