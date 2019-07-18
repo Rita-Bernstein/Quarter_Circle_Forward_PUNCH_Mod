@@ -27,7 +27,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     //This isn't technically needed but it becomes useful later
     public static final String ID = "WW_Relics:Crunching_Noises";
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
-    private static final String NAME = eventStrings.NAME;
+    //private static final String NAME = eventStrings.NAME;
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
     
