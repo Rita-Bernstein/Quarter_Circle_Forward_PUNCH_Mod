@@ -67,7 +67,8 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
 	public static final Logger logger = LogManager.getLogger(CrunchingNoisesEvent.class.getName());
     
     public CrunchingNoisesEvent(){
-        super(ID, NAME, "images/events/cleric.jpg");
+        super(ID, DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
+                               EVENT_STARTING_POINT], "images/events/cleric.jpg");
         
         SetEventStartingPoint();
 
