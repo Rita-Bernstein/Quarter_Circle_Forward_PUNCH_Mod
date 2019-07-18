@@ -75,5 +75,37 @@ public class TiredGremlinNob extends CustomMonster {
 	    	AbstractDungeon.actionManager.addToBottom(new SFXAction("VO_GREMLINNOB_1C"));
 	    } 
 	}
+	
+	public void AngryScreamingMove() {
+		
+	}
+	
+	public void AngryScreamingIntent() {
+		
+	}
+	
+	public void ArmSmashMove() {
+		
+	}
+	
+	public void ArmSmashIntent() {
+		
+	}
+	
+	public void BodyBlowMove() {
+		
+	}
+	
+	public void BodyBlowIntent() {
+		
+	}
+	
+	public void HeavyBreeathingMove() {
+		
+	}
+	
+	public void HeavyBreathingIntent() {
+		
+	}
 
 }
