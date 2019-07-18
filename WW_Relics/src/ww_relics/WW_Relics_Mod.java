@@ -21,6 +21,7 @@ import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import ww_relics.events.act2.CrunchingNoisesEvent;
 import ww_relics.modifiers.*;
+import ww_relics.monsters.elites.TiredGremlinNob;
 import ww_relics.potions.ChallengerCoin;
 import ww_relics.relics.character_cameos.dan.NotStrongestFightingStyleGuidebook;
 import ww_relics.relics.character_cameos.sakura.SchoolBackpack;
@@ -37,7 +38,7 @@ import ww_relics.relics.ryu.*;
 
 @SpireInitializer
 public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
-			EditCardsSubscriber,
+			EditCardsSubscriber, 
 			EditKeywordsSubscriber, PostInitializeSubscriber, PostDungeonInitializeSubscriber, 
 			PostCreateStartingRelicsSubscriber, StartGameSubscriber
 	{
@@ -91,6 +92,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	    LoadCardsJSON();
 	    LoadPotionsJSON();
 	    LoadEventsJSON();
+	    LoadMonstersJSON();
 	    
 	    logger.info("done editing strings");
 	}
@@ -135,6 +137,13 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		String eventsStrings = getJsonText(eventsStringsAddress);
 		
 		BaseMod.loadCustomStrings(EventStrings.class, eventsStrings);
+	}
+	
+	private void LoadMonstersJSON() {
+		String monstersStringsAddress = "ww_relics/localization/eng/WW_Relics_Monsters.json";
+		String monstersStrings = getJsonText(monstersStringsAddress);
+		
+		BaseMod.loadCustomStrings(MonsterStrings.class, monstersStrings);
 	}
 	
 	@Override
@@ -200,6 +209,10 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		logger.info("Begin adding cards");
 		
 		logger.info("Done adding cards");
+	}
+	
+	public void addMonsters() {
+		BaseMod.addMonster(TiredGremlinNob.ID, () -> new TiredGremlinNob(0.0f, 0.0f));
 	}
 	
 	@Override
@@ -314,6 +327,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	public void receivePostInitialize() {
 
 		addPotions();
+		addMonsters();
 		addEvents();
 		
 		String modBadgeAddress = "ww_relics/assets/img/modbadge/ModBadgePlaceholder.png";
