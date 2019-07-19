@@ -47,7 +47,8 @@ public class TiredGremlinNob extends CustomMonster {
 	    this.dialogX = -60.0F * Settings.scale;
 	    this.dialogY = 50.0F * Settings.scale;
 	    
-	    loadAnimation("images/monsters/theBottom/nobGremlin/skeleton.atlas", "images/monsters/theBottom/nobGremlin/skeleton.json", 1.0F);
+	    loadAnimation("images/monsters/theBottom/nobGremlin/skeleton.atlas",
+	    		"images/monsters/theBottom/nobGremlin/skeleton.json", 1.0F);
 		
 	    AnimationState.TrackEntry e = this.state.setAnimation(0, "animation", true);
 	    e.setTime(e.getEndTime() * MathUtils.random());
@@ -114,7 +115,7 @@ public class TiredGremlinNob extends CustomMonster {
 	public void AngryScreamMove() {
 		playSfx();
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
-        		new StrengthPower(this, ANGRY_SCREAM_STR_BUFF)));		
+        		new StrengthPower(this, ANGRY_SCREAM_STR_BUFF), ANGRY_SCREAM_STR_BUFF));		
 	}
 	
 	public void AngryScreamIntent() {
