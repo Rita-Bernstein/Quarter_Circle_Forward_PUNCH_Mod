@@ -112,6 +112,7 @@ public class TiredGremlinNob extends CustomMonster {
 	}
 	
 	public void AngryScreamMove() {
+		playSfx();
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
         		new StrengthPower(this, ANGRY_SCREAM_STR_BUFF)));		
 	}
