@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
@@ -49,6 +50,7 @@ public class TiredGremlinNob extends CustomMonster {
 	private static final int BASE_ARM_SMASH_DAMAGE = 15;
 	private static final int BODY_BLOW_NUMBER_OF_HITS = 2;
 	private static final int BASE_BODY_BLOW_DAMAGE = 0;
+	private static final int HEAVY_BREATHING_HEAL = 3;
 	
 	static Logger logger = LogManager.getLogger(TiredGremlinNob.class.getName());
 	
@@ -200,11 +202,11 @@ public class TiredGremlinNob extends CustomMonster {
 	}
 	
 	public void HeavyBreathingMove() {
-		
+		AbstractDungeon.actionManager.addToBottom(new HealAction(this, this, HEAVY_BREATHING_HEAL));
 	}
 	
 	public void HeavyBreathingIntent() {
-		
+		setMove(HEAVY_BREATHING, Intent.BUFF);
 	}
 
 }
