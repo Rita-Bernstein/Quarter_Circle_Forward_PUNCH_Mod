@@ -99,18 +99,11 @@ public class TiredGremlinNob extends CustomMonster {
         CardCrawlGame.music.unsilenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
         AbstractDungeon.getCurrRoom().playBgmInstantly("ELITE");
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
-        		new StrengthPower(this, INITIAL_STR_BUFF)));
-        if (!Settings.FAST_MODE) {
-        	AbstractDungeon.actionManager.addToBottom(new WaitAction(0.5F));
-        }
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
-        		new AngerPower(this, INITIAL_ANGRY_BUFF), INITIAL_ANGRY_BUFF));
-        //addInitialEnemyBuffs();
+        addInitialEnemyBuffs();
         //addInitialEnemyDebuffs();
     }
 	
-	/*public void addInitialEnemyBuffs() {
+	public void addInitialEnemyBuffs() {
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
         		new StrengthPower(this, INITIAL_STR_BUFF)));
         if (!Settings.FAST_MODE) {
@@ -118,7 +111,7 @@ public class TiredGremlinNob extends CustomMonster {
         }
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
         		new AngerPower(this, INITIAL_ANGRY_BUFF), INITIAL_ANGRY_BUFF));
-	}*/
+	}
 	
 	/*public void addInitialEnemyDebuffs() {
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
