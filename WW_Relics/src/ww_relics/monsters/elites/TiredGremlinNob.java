@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -95,27 +96,35 @@ public class TiredGremlinNob extends CustomMonster {
 	
 	@Override
 	protected void getMove(int arg0) {
+		logger.info("HERE IT IS - " + this.nextMove);
 		switch(this.nextMove) {
 			case ANGRY_SCREAM:
+				logger.info("case angry");
 				ArmSmashIntent();
 				break;
 			case ARM_SMASH:
+				logger.info("case arm");
 				BodyBlowIntent();	
 				break;
 			case BODY_BLOW:
+				logger.info("case body");
 				HeavyBreathingIntent();
 				break;
 			case HEAVY_BREATHING:
+				logger.info("case heavy");
 				AngryScreamIntent();
 				break;
 			default:
+				logger.info("case breath");
 				HeavyBreathingIntent();
+				break;
 		}
 		
 	}
 
 	@Override
 	public void takeTurn() {
+		logger.info("takeTurn Part 1 - " + this.nextMove);
 		switch(this.nextMove) {
 			case ANGRY_SCREAM:
 				AngryScreamMove();
@@ -130,16 +139,21 @@ public class TiredGremlinNob extends CustomMonster {
 				HeavyBreathingMove();
 				break;
 			default:
+				break;
 		}
 		setNextMove();
+		logger.info("So...");
+		AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
+		logger.info("SHOULD work.");
 
 	}
 	
 	public void setNextMove() {
 		this.nextMove += (byte)1;
-		this.nextMove %= (byte)3;
+		this.nextMove %= (byte)2;
+		logger.info("Before " + this.nextMove);
 		if (this.nextMove == (byte)0) this.nextMove = ANGRY_SCREAM;
-		logger.info(this.nextMove);
+		logger.info("After " + this.nextMove);
 	}
 	
 	private void playSfx() {
