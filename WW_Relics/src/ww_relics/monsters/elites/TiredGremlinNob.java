@@ -118,12 +118,6 @@ public class TiredGremlinNob extends CustomMonster {
 				new WeakPower(this,  INITIAL_WEAK_DEBUFF, false), INITIAL_WEAK_DEBUFF));
 	}
 	
-	/*public void addNonFastModeDelay() {
-		if (!Settings.FAST_MODE) {
-        	AbstractDungeon.actionManager.addToBottom(new WaitAction(0.5F));
-        }
-	}*/
-	
 	@Override
 	protected void getMove(int arg0) {
 		logger.info("HERE IT IS - " + this.nextMove);

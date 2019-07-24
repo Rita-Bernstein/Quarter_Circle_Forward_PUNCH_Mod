@@ -1,6 +1,9 @@
 package ww_relics;
 
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer.PlayerClass;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class WW_Relics_MiscelaneaCode {
 
@@ -32,6 +35,12 @@ public class WW_Relics_MiscelaneaCode {
         }
         catch (ClassNotFoundException | NoClassDefFoundError ex) {
             return false;
+        }
+    }
+    
+    public void addNonFastModeWaitAction(float amount) {
+		if (!Settings.FAST_MODE) {
+        	AbstractDungeon.actionManager.addToBottom(new WaitAction(amount));
         }
     }
 	
