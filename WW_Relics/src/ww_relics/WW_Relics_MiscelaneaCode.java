@@ -38,7 +38,7 @@ public class WW_Relics_MiscelaneaCode {
         }
     }
     
-    public void addNonFastModeWaitAction(float amount) {
+    public static void addNonFastModeWaitAction(float amount) {
 		if (!Settings.FAST_MODE) {
         	AbstractDungeon.actionManager.addToBottom(new WaitAction(amount));
         }
