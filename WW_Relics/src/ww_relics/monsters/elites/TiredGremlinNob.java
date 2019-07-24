@@ -30,8 +30,8 @@ public class TiredGremlinNob extends CustomMonster {
 	private static final MonsterStrings monsterstrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
 	public static final String NAME = monsterstrings.NAME;
 	public static final String[] DIALOG = monsterstrings.DIALOG;
-	private static final int HP_MIN = 98;
-	private static final int HP_MAX = 106;
+	private static final int HP_MIN = 180;
+	private static final int HP_MAX = 301;
 	private static final float INITIAL_HEALTH_PERCENTAGE = 0.5f;
 	
 	private static final int INITIAL_STR_BUFF = 5;
