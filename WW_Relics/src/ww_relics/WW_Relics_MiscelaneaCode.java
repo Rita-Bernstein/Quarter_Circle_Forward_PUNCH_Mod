@@ -8,6 +8,8 @@ public class WW_Relics_MiscelaneaCode {
 	public final static String replay_the_spire_class_code = "replayTheSpire.ReplayTheSpireMod";
 	public final static PlayerClass[] base_game_player_classes =
 			{PlayerClass.IRONCLAD, PlayerClass.THE_SILENT, PlayerClass.DEFECT};
+	
+	public final static byte THIS_BYTE_DOES_NOT_MATTER = -1;
 
 	//just stole this code from ReplayTheSpire who stole this from blank lol
     public static boolean checkForMod(final String classPath) {
