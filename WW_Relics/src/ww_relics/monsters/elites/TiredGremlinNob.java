@@ -34,7 +34,7 @@ public class TiredGremlinNob extends CustomMonster {
 	private static final int HP_MAX = 106;
 	private static final float INITIAL_HEALTH_PERCENTAGE = 0.5f;
 	
-	private static final int INITIAL_STR_BUFF = 9;
+	private static final int INITIAL_STR_BUFF = 5;
 	private static final int INITIAL_ANGRY_BUFF = 2;
 	
 	private static final byte STARTING_POINT = 4;
