@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -42,9 +43,12 @@ public class TiredGremlinNob extends CustomMonster {
 	private static final byte HEAVY_BREATHING = 4;
 	
 	private static final int ARM_SMASH_DAMAGE_INFO_POSITION = 0;
+	private static final int BODY_BLOW_DAMAGE_INFO_POSITION = 1;
 	
 	private static final int ANGRY_SCREAM_STR_BUFF = 2;
 	private static final int BASE_ARM_SMASH_DAMAGE = 15;
+	private static final int BODY_BLOW_NUMBER_OF_HITS = 2;
+	private static final int BASE_BODY_BLOW_DAMAGE = 0;
 	
 	static Logger logger = LogManager.getLogger(TiredGremlinNob.class.getName());
 	
@@ -76,9 +80,10 @@ public class TiredGremlinNob extends CustomMonster {
 	
 	public void setDamageInfos() {
 		DamageInfo arm_smash_damage_info = new DamageInfo(this, BASE_ARM_SMASH_DAMAGE);
+		DamageInfo body_blow_damage_info = new DamageInfo(this, BASE_BODY_BLOW_DAMAGE);
 		
-		this.damage.add(new DamageInfo(this, 0));
 		this.damage.add(arm_smash_damage_info);
+		this.damage.add(body_blow_damage_info);
 	}
 
 	public void usePreBattleAction() {
@@ -119,7 +124,7 @@ public class TiredGremlinNob extends CustomMonster {
 				HeavyBreathingIntent();
 				break;
 		}
-		
+		setNextMove();
 	}
 
 	@Override
@@ -141,19 +146,12 @@ public class TiredGremlinNob extends CustomMonster {
 			default:
 				break;
 		}
-		setNextMove();
-		logger.info("So...");
 		AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
-		logger.info("SHOULD work.");
-
 	}
 	
 	public void setNextMove() {
-		this.nextMove += (byte)1;
-		this.nextMove %= (byte)2;
-		logger.info("Before " + this.nextMove);
-		if (this.nextMove == (byte)0) this.nextMove = ANGRY_SCREAM;
-		logger.info("After " + this.nextMove);
+		this.nextMove++;
+		if (this.nextMove > HEAVY_BREATHING) this.nextMove = ANGRY_SCREAM;
 	}
 	
 	private void playSfx() {
@@ -178,7 +176,6 @@ public class TiredGremlinNob extends CustomMonster {
 	}
 	
 	public void ArmSmashMove() {
-		playSfx();
         AbstractDungeon.actionManager.addToBottom(new AnimateSlowAttackAction(this));
         AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, (DamageInfo)this.damage
               .get(ARM_SMASH_DAMAGE_INFO_POSITION), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
@@ -189,11 +186,17 @@ public class TiredGremlinNob extends CustomMonster {
 	}
 	
 	public void BodyBlowMove() {
-		
+		for (int i = 0; i < BODY_BLOW_NUMBER_OF_HITS; ++i) {
+			AbstractDungeon.actionManager.addToBottom(new AnimateFastAttackAction(this));
+			AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player,
+				(DamageInfo)this.damage.get(BODY_BLOW_DAMAGE_INFO_POSITION),
+				AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+		}
 	}
 	
 	public void BodyBlowIntent() {
-		
+		setMove(BODY_BLOW, Intent.ATTACK, ((DamageInfo)this.damage.get(BODY_BLOW_DAMAGE_INFO_POSITION)).base,
+				2, true);
 	}
 	
 	public void HeavyBreathingMove() {
