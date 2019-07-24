@@ -24,6 +24,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import basemod.abstracts.CustomMonster;
+import ww_relics.WW_Relics_MiscelaneaCode;
 
 public class TiredGremlinNob extends CustomMonster {
 
@@ -106,9 +107,7 @@ public class TiredGremlinNob extends CustomMonster {
 	public void addInitialEnemyBuffs() {
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
         		new StrengthPower(this, INITIAL_STR_BUFF)));
-        if (!Settings.FAST_MODE) {
-        	AbstractDungeon.actionManager.addToBottom(new WaitAction(0.5F));
-        }
+        WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
         		new AngerPower(this, INITIAL_ANGRY_BUFF), INITIAL_ANGRY_BUFF));
 	}
