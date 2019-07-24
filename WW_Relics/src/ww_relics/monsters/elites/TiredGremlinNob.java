@@ -21,6 +21,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.AngerPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 
 import basemod.abstracts.CustomMonster;
 
@@ -36,6 +37,12 @@ public class TiredGremlinNob extends CustomMonster {
 	
 	private static final int INITIAL_STR_BUFF = 5;
 	private static final int INITIAL_ANGRY_BUFF = 2;
+	
+	private static final int INITIAL_WEAK_DEBUFF = 6;
+	private static final int INITIAL_VULNERABLE_DEBUFF = 4;
+	private static final int INITIAL_POISON_DEBUFF = 10;
+	private static final boolean WILL_HAVE_INITIAL_STUN = true;
+	private static final int INITIAL_CONSTRICTED_DEBUFF = 3;
 	
 	private static final byte STARTING_POINT = 4;
 	private static final byte ANGRY_SCREAM = 1;
@@ -99,7 +106,30 @@ public class TiredGremlinNob extends CustomMonster {
         }
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
         		new AngerPower(this, INITIAL_ANGRY_BUFF), INITIAL_ANGRY_BUFF));
+        //addInitialEnemyBuffs();
+        //addInitialEnemyDebuffs();
     }
+	
+	/*public void addInitialEnemyBuffs() {
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
+        		new StrengthPower(this, INITIAL_STR_BUFF)));
+        if (!Settings.FAST_MODE) {
+        	AbstractDungeon.actionManager.addToBottom(new WaitAction(0.5F));
+        }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
+        		new AngerPower(this, INITIAL_ANGRY_BUFF), INITIAL_ANGRY_BUFF));
+	}*/
+	
+	/*public void addInitialEnemyDebuffs() {
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
+				new WeakPower(this,  INITIAL_WEAK_DEBUFF, false), INITIAL_WEAK_DEBUFF));
+	}*/
+	
+	/*public void addNonFastModeDelay() {
+		if (!Settings.FAST_MODE) {
+        	AbstractDungeon.actionManager.addToBottom(new WaitAction(0.5F));
+        }
+	}*/
 	
 	@Override
 	protected void getMove(int arg0) {
