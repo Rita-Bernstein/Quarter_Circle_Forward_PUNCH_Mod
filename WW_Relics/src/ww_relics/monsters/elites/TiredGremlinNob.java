@@ -62,8 +62,7 @@ public class TiredGremlinNob extends CustomMonster {
 	private static final int BODY_BLOW_NUMBER_OF_HITS = 2;
 	private static final int BASE_BODY_BLOW_DAMAGE = 0;
 	private static final int HEAVY_BREATHING_HEAL = 3;
-	private int number_of_turns = 0;
-	private int stored_move = 0;
+	private int number_of_turns = 1;
 	
 	static Logger logger = LogManager.getLogger(TiredGremlinNob.class.getName());
 	
@@ -139,6 +138,14 @@ public class TiredGremlinNob extends CustomMonster {
 	@Override
 	protected void getMove(int arg0) {
 		logger.info("HERE IT IS - " + this.nextMove);
+		number_of_turns++;
+		
+		if (number_of_turns % 7 == 0) {
+			logger.info("Tired, did Heavy Breathing.");
+			HeavyBreathingIntent();
+			return;
+		} 
+		
 		switch(this.nextMove) {
 			case ANGRY_SCREAM:
 				logger.info("case angry");
@@ -167,6 +174,13 @@ public class TiredGremlinNob extends CustomMonster {
 	@Override
 	public void takeTurn() {
 		logger.info("takeTurn Part 1 - " + this.nextMove);
+		
+		if (number_of_turns % 7 == 0) {
+			logger.info("Tired, did Heavy Breathing.");
+			HeavyBreathingMove();
+			return;
+		} 
+		
 		switch(this.nextMove) {
 			case ANGRY_SCREAM:
 				AngryScreamMove();
@@ -187,16 +201,7 @@ public class TiredGremlinNob extends CustomMonster {
 	}
 	
 	public void setNextMove() {
-		this.number_of_turns++;
-		if (number_of_turns % 7 == 0) {
-			stored_move = this.nextMove;
-			this.nextMove = HEAVY_BREATHING;
-		} else if ((number_of_turns % 7 == 1) && (stored_move != 0)) {
-			this.nextMove = (byte)stored_move;
-			stored_move = 0;
-		}
 		this.nextMove++;
-
 		if (this.nextMove > HEAVY_BREATHING) this.nextMove = ANGRY_SCREAM;
 	}
 	
