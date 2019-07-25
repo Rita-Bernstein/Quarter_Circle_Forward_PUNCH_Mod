@@ -139,6 +139,7 @@ public class TiredGremlinNob extends CustomMonster {
 	protected void getMove(int arg0) {
 		logger.info("HERE IT IS - " + this.nextMove);
 		number_of_turns++;
+		logger.info("Number of turns = " + number_of_turns);
 		
 		if (number_of_turns % 7 == 0) {
 			logger.info("Tired, did Heavy Breathing.");
@@ -178,6 +179,7 @@ public class TiredGremlinNob extends CustomMonster {
 		if (number_of_turns % 7 == 0) {
 			logger.info("Tired, did Heavy Breathing.");
 			HeavyBreathingMove();
+			AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
 			return;
 		} 
 		
