@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
@@ -20,7 +21,10 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.AngerPower;
+import com.megacrit.cardcrawl.powers.ConstrictedPower;
+import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import basemod.abstracts.CustomMonster;
@@ -115,6 +119,20 @@ public class TiredGremlinNob extends CustomMonster {
 	public void addInitialEnemyDebuffs() {
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
 				new WeakPower(this,  INITIAL_WEAK_DEBUFF, false), INITIAL_WEAK_DEBUFF));
+        WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
+				new VulnerablePower(this,  INITIAL_VULNERABLE_DEBUFF, false), INITIAL_VULNERABLE_DEBUFF));
+        WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
+				new PoisonPower(this, this, INITIAL_POISON_DEBUFF), INITIAL_POISON_DEBUFF));
+        WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
+        if (WILL_HAVE_INITIAL_STUN) {
+        	AbstractDungeon.actionManager.addToBottom(new StunMonsterAction(this, this));
+        	WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
+        }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
+				new ConstrictedPower(this, this, INITIAL_CONSTRICTED_DEBUFF), INITIAL_CONSTRICTED_DEBUFF));
+        WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
 	}
 	
 	@Override
