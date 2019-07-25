@@ -62,7 +62,7 @@ public class TiredGremlinNob extends CustomMonster {
 	private static final int BODY_BLOW_NUMBER_OF_HITS = 2;
 	private static final int BASE_BODY_BLOW_DAMAGE = 0;
 	private static final int HEAVY_BREATHING_HEAL = 3;
-	private static int number_of_turns = 0;
+	private int number_of_turns = 0;
 	private static int stored_move = 0;
 	
 	static Logger logger = LogManager.getLogger(TiredGremlinNob.class.getName());
