@@ -255,13 +255,14 @@ public class TiredGremlinNob extends CustomMonster {
 	
 	public void HeavyBreathingMove() {
 		AbstractDungeon.actionManager.addToBottom(new HealAction(this, this, HEAVY_BREATHING_HEAL));
-		AbstractPower vulnerable_power = this.getPower("Vulnerable");
-		if (vulnerable_power != null) {
-			int amount_of_str_buff = vulnerable_power.amount;
+		AbstractPower strength_power = this.getPower("Strength");
+		logger.info("THERE IS A STRENGTH_POWER " + strength_power);
+		if (strength_power != null) {
+			int amount_of_str_buff = strength_power.amount;
 			amount_of_str_buff /= 2;
 			WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
-					new VulnerablePower(this, -amount_of_str_buff, false), -amount_of_str_buff));
+					new StrengthPower(this, -amount_of_str_buff), -amount_of_str_buff));
 		}
 	}
 	
