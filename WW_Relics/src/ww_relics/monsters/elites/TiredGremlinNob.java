@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.AngerPower;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
 import com.megacrit.cardcrawl.powers.PoisonPower;
@@ -254,6 +255,14 @@ public class TiredGremlinNob extends CustomMonster {
 	
 	public void HeavyBreathingMove() {
 		AbstractDungeon.actionManager.addToBottom(new HealAction(this, this, HEAVY_BREATHING_HEAL));
+		AbstractPower vulnerable_power = this.getPower("Vulnerable");
+		if (vulnerable_power != null) {
+			int amount_of_str_buff = vulnerable_power.amount;
+			amount_of_str_buff /= 2;
+			WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
+					new VulnerablePower(this, -amount_of_str_buff, false), -amount_of_str_buff));
+		}
 	}
 	
 	public void HeavyBreathingIntent() {
