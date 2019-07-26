@@ -19,7 +19,7 @@ import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
-import ww_relics.events.act2.CrunchingNoisesEvent;
+import ww_relics.events.act2.FightingNoisesEvent;
 import ww_relics.modifiers.*;
 import ww_relics.monsters.elites.TiredGremlinNob;
 import ww_relics.potions.ChallengerCoin;
@@ -346,8 +346,8 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	public void addEvents() {
 		
-		BaseMod.addEvent(CrunchingNoisesEvent.ID, CrunchingNoisesEvent.class,
-				CrunchingNoisesEvent.TO_WHICH_ACT_ADD);
+		BaseMod.addEvent(FightingNoisesEvent.ID, FightingNoisesEvent.class,
+				FightingNoisesEvent.TO_WHICH_ACT_ADD);
 		
 	}
 }

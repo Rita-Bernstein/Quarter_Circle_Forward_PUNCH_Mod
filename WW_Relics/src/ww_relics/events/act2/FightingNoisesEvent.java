@@ -23,10 +23,10 @@ import ww_relics.potions.ChallengerCoin;
 import ww_relics.relics.mortal_kombat.ExtraSkeleton;
 import ww_relics.relics.mortal_kombat.NeverendingBlood;
 
-public class CrunchingNoisesEvent extends AbstractImageEvent {
+public class FightingNoisesEvent extends AbstractImageEvent {
 
     //This isn't technically needed but it becomes useful later
-    public static final String ID = "WW_Relics:Crunching_Noises";
+    public static final String ID = "WW_Relics:Fighting_Noises";
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
     //private static final String NAME = eventStrings.NAME;
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
@@ -65,9 +65,9 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
     public static final int NUMBER_OF_GOOD_INSTINCTS_GAINED_AFTER_BATTLE_CHOICE = 2;
     public static final int NUMBER_OF_CHALLENGER_COINS_GAINED_AFTER_BATTLE_CHOICE = 3;
 
-	public static final Logger logger = LogManager.getLogger(CrunchingNoisesEvent.class.getName());
+	public static final Logger logger = LogManager.getLogger(FightingNoisesEvent.class.getName());
     
-    public CrunchingNoisesEvent(){
+    public FightingNoisesEvent(){
         super(ID, DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
                                EVENT_STARTING_POINT], "images/events/crunching_noises.jpg");
         
