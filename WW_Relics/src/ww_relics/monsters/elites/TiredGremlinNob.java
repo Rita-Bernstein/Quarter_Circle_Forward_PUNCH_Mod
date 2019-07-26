@@ -46,7 +46,7 @@ public class TiredGremlinNob extends CustomMonster {
 	private static final int INITIAL_WEAK_DEBUFF = 6;
 	private static final int INITIAL_VULNERABLE_DEBUFF = 4;
 	private static final int INITIAL_POISON_DEBUFF = 10;
-	private static final boolean WILL_HAVE_INITIAL_STUN = true;
+	private static final boolean WILL_HAVE_INITIAL_STUN = false;
 	private static final int INITIAL_CONSTRICTED_DEBUFF = 3;
 	
 	private static final byte STARTING_POINT = 4;
