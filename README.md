@@ -3,13 +3,14 @@ A Slay The Spire mod, which adds primarily relics directly inspired by fighters 
 
 # Content
 
-* Fourteen relics done of 16+ planned, with temporary images and placeholder sounds.
+* Sixteen relics done of 16+ planned, with temporary images and placeholder sounds.
 * Seven game modifiers, ranging from adding more relics at start to making the game harder.
 * Six cards, acessible through one specific relic.
+* One event, which is the gateway for two relics and one potion.
 
 # Current State
 
-Walking towards roadmap's milestone 2 (and simultaneously doing stuff from milestone 3).
+Last polishing to v0.11, milestone 2 done, part of milestone 3 probably will be removed for rework in the future and part of milestone 5 will be done at v0.12.
 
 # Link to Releases and Pre-Releases
 
@@ -30,15 +31,15 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 # Ever Changing Current Roadmap (yes, this can change depending of circunstances)
 
 1. Create a relic based in Ryu, for basic testing and getting the hang of modding relics for Slay The Spire. Focus in mechanics and avoiding bugs, not graphics. - Done in v0.1.
-2. Relics inspired by Ryu, Ken, Chun Li and Guile.
-3. Add Custom Modifiers (and other small stuff) related with lthe major theme. (character based modifiers will have a reworkin the future, post-first release)
+2. Relics inspired by Ryu, Ken, Chun Li and Guile. - Done in v0.11.
+3. Add Custom Modifiers (and other small stuff) related with the major theme. (character based modifiers will have a reworkin the future, post-first release) 
 4. Mod release! Release at Github, Steam and Nexus Mods. (all future milestones, when finished, shall have proper releases)
 
 - (thanks to rl issues, a pause will be made in this mod's development but 16 relics will be done already when finishing the fourth milestone)
 
 5. Small improvement in FX and relic images.
-6. Translation of the mod's created text so far to PT-BR. (all future milestones will launch with EN localization, PT-BR will come after a round of balancing)
-7. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
+6. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
+7. Translation of the mod's created text so far to PT-BR. (all future milestones will launch with EN localization, PT-BR will come after a round of balancing)
 8. One boss relic for Boxer, Claw and Sagat, respectively. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
 9. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
 10. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
