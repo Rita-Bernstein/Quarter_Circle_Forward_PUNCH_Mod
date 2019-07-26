@@ -96,11 +96,12 @@ public class NeverendingBlood extends CustomRelic {
 	public int onPlayerHeal(int healAmount) {
 		
 		if (AbstractDungeon.getCurrRoom().phase != RoomPhase.COMBAT) {
-			flash();
 			
 			int temp_counter_value = this.counter;
 			temp_counter_value += COUNTER_RECOVERED_IF_HEALED_OUTSIDE_OF_BATTLE;
 			if (temp_counter_value > COUNTER_HARD_LIMIT) temp_counter_value = COUNTER_HARD_LIMIT;
+			
+			if (temp_counter_value > this.counter) flash();
 			
 			this.counter = temp_counter_value;
 			
