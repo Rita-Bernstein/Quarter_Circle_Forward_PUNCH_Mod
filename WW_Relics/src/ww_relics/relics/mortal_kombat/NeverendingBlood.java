@@ -21,6 +21,7 @@ public class NeverendingBlood extends CustomRelic {
 	public static final int MINIMUM_AMOUNT_OF_HP_LOST = 3;
 	
 	public static final int COUNTER_INITIAL_VALUE = 7;
+	public static final int COUNTER_HARD_LIMIT = 7;
 	public static final int COUNTER_USED_FOR_EFFECT = 1;
 	public static final int COUNTER_RECOVERED_IF_HEALED_OUTSIDE_OF_BATTLE = 2;
 	
@@ -96,7 +97,12 @@ public class NeverendingBlood extends CustomRelic {
 		
 		if (AbstractDungeon.getCurrRoom().phase != RoomPhase.COMBAT) {
 			flash();
-			this.counter += COUNTER_RECOVERED_IF_HEALED_OUTSIDE_OF_BATTLE;
+			
+			int temp_counter_value = this.counter;
+			temp_counter_value += COUNTER_RECOVERED_IF_HEALED_OUTSIDE_OF_BATTLE;
+			if (temp_counter_value > COUNTER_HARD_LIMIT) temp_counter_value = COUNTER_HARD_LIMIT;
+			
+			this.counter = temp_counter_value;
 			
 		}
 		
