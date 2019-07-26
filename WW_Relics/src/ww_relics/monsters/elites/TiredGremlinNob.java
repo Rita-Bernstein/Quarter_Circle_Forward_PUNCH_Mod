@@ -102,9 +102,6 @@ public class TiredGremlinNob extends CustomMonster {
 	}
 
 	public void usePreBattleAction() {
-        CardCrawlGame.music.unsilenceBGM();
-        AbstractDungeon.scene.fadeOutAmbiance();
-        AbstractDungeon.getCurrRoom().playBgmInstantly("ELITE");
         addInitialEnemyBuffs();
         addInitialEnemyDebuffs();
     }

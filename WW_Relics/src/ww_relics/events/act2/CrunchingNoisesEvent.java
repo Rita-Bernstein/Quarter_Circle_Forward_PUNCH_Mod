@@ -200,6 +200,7 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
         AbstractDungeon.getCurrRoom().rewards.clear();
         AbstractDungeon.getCurrRoom().rewardAllowed = false;
         AbstractDungeon.getCurrRoom().combatEvent = true;
+        CardCrawlGame.music.playTempBgmInstantly("ELITE", true);
         enterCombatFromImage();
     }
     
@@ -215,6 +216,8 @@ public class CrunchingNoisesEvent extends AbstractImageEvent {
                                                     GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS_OPTION]);
 		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
 		                                                ELITE_VICTORIOUS_AFTERMATH]);
+		CardCrawlGame.music.fadeAll();
+		CardCrawlGame.music.changeBGM("TheCity");
     }
     
     private void SetEventGainedBloodRelic() {
