@@ -35,6 +35,16 @@ public class ExtraSkeleton extends CustomRelic {
 	public void atTurnStart() {
 		
 		this.counter++;
+		
+		if (counter == COUNTER_MAX_VALUE - 1) {
+			this.pulse = true;
+			beginPulse();
+		}
+		else {
+			this.pulse = false;
+			stopPulse();
+		}
+		
 		if (counter >= COUNTER_MAX_VALUE) {
 			
 			flash();
