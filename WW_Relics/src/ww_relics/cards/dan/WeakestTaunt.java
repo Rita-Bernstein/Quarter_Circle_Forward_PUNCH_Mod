@@ -40,7 +40,7 @@ public class WeakestTaunt extends CustomCard {
 	public void use(AbstractPlayer player, AbstractMonster monster) {
         AbstractDungeon.actionManager.addToBottom(
         		new ApplyPowerAction(monster, player,
-        				new WeakPower(monster, WEAK_AMOUNT, false)));
+        				new WeakPower(monster, WEAK_AMOUNT, false), WEAK_AMOUNT));
         
         AbstractDungeon.actionManager.addToBottom(
         		new ApplyPowerAction(player, player, 
