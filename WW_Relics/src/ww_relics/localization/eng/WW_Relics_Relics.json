@@ -76,7 +76,7 @@
     "NAME": "Army Boots",
     "FLAVOR": "Excellent grip. Sadly, not your size.",
     "DESCRIPTIONS": [
-      "Once each battle, if your #bBlock is broken by an attack, lose ",
+      "Once each battle, if your #bBlock is broken by an attack, lose #b",
       " #yFrail, #yVulnerable and #yWeak you may have."
     ]
   },
