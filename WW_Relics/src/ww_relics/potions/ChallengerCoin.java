@@ -45,12 +45,12 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	public static final String NAME = potionStrings.NAME;
 	public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
 	
-	//Here it says Rare, but it's event or relic only.
+	//Here it says Rare, but it will be event or relic only.
 	//It won't be sold at shops, at least not the base game shop.
 	public static final PotionRarity RARITY = PotionRarity.RARE;
 	
 	//Size apparently creates the recipient of the potion.
-	//Since this potion is a coin, I will have to make my own files for that.
+	//Since this potion is a coin, I will have to make my own files for that in the future.
 	public static final PotionSize SIZE = PotionSize.SPHERE;
 	public static final PotionColor COLOR = PotionColor.ATTACK;
 	
@@ -146,15 +146,11 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 				!(room instanceof MonsterRoomBoss);
 		
 		if (WW_Relics_MiscelaneaCode.silentlyCheckForMod(WW_Relics_MiscelaneaCode.replay_the_spire_class_code)) {
-			
 			evaluation &= !(room instanceof TeleportRoom);
-			
 		}
 		
 		if (WW_Relics_MiscelaneaCode.silentlyCheckForMod(WW_Relics_MiscelaneaCode.infinite_spire_class_code)) {
-			
 			evaluation &= !(room instanceof NightmareEliteRoom);
-			
 		}
 		
 		return evaluation;
