@@ -1,8 +1,5 @@
 package ww_relics.monsters.elites;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
