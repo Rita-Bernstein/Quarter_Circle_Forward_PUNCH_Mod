@@ -37,7 +37,7 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0];
+		return DESCRIPTIONS[0] + AMOUNT_REMOVED_OF_EACH_DEBUFF + DESCRIPTIONS[1];
 	}
 	
 	@Override
