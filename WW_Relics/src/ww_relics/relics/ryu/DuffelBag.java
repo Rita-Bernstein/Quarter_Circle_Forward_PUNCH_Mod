@@ -139,21 +139,33 @@ public class DuffelBag extends CustomRelic {
 		
 		if (this.counter - reward_cards.size() > 0) {
 			
-			int card_position = this.counter - reward_cards.size();
-			
-			RewardItem card_reward = new RewardItem();
-			card_reward.cards.clear();
-			card_reward.cards.add(reward_cards.get(card_position - 1));
-			AbstractDungeon.getCurrRoom().addCardReward(card_reward);
-			flash();
+			AddCard();
 			
 		} else if (this.counter > 0) {
 			
-			AbstractRelic relic = AbstractDungeon.returnRandomRelic(RelicTier.COMMON);
-			AbstractDungeon.getCurrRoom().addRelicToRewards(relic);
-			flash();
+			AddRelic();
 			
 		}
+		
+	}
+	
+	private void AddCard() {
+		
+		int card_position = this.counter - reward_cards.size();
+		
+		RewardItem card_reward = new RewardItem();
+		card_reward.cards.clear();
+		card_reward.cards.add(reward_cards.get(card_position - 1));
+		AbstractDungeon.getCurrRoom().addCardReward(card_reward);
+		flash();
+		
+	}
+	
+	private void AddRelic() {
+		
+		AbstractRelic relic = AbstractDungeon.returnRandomRelic(RelicTier.COMMON);
+		AbstractDungeon.getCurrRoom().addRelicToRewards(relic);
+		flash();
 		
 	}
 	
