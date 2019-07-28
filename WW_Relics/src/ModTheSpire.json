@@ -1,8 +1,8 @@
 {
 	"modid": "WW_Relics",
 	"name": "World Warriors Mod",
-	"description": "A Slay The Spire mod, inspired by Super Street Fighter 2: The New Challengers. \r\nCurrently it adds 14 relics and 8 custom game modifiers. \r\nThe images in this mod are temporary and will be substituted/improved on the version 1.0.",
-	"version": "0.10.18",
+	"description": "A Slay The Spire mod, inspired by Super Street Fighter 2: The New Challengers. \r\nCurrently it adds 16 relics, 7 custom game modifiers and 1 event. \r\nv1.0 will have 32+ relics. \r\nThe images in this mod are temporary and will be substituted/improved on the version 1.0.",
+	"version": "0.11",
 	"sts_version": "2019-01-23",
 	"mts_version": "3.6.3",
 	"author_list": ["Levender"],
