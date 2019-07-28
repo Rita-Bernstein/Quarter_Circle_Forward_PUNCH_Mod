@@ -188,9 +188,6 @@ public class FightingNoisesEvent extends AbstractImageEvent {
                                                     ELITE_VICTORIOUS_AFTERMATH_OPTION]);
 		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
 		                                                ElITE_ENCOUNTER_PART_2_FIGHT]);
-    	
-    	
-    	
     }
     
     private void SetEventEliteFight() {
@@ -289,6 +286,4 @@ public class FightingNoisesEvent extends AbstractImageEvent {
         AbstractDungeon.player.preBattlePrep();
         enterImageFromCombat();
     }
-
-    
 }
