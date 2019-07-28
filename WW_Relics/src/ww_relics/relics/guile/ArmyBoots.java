@@ -33,7 +33,7 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 		powers_affected_by_relic = new ArrayList<String>();
 		powers_affected_by_relic.add("Frail");
 		powers_affected_by_relic.add("Vulnerable");
-		powers_affected_by_relic.add("Weak");
+		powers_affected_by_relic.add("Weakened");
 	}
 	
 	public String getUpdatedDescription() {
