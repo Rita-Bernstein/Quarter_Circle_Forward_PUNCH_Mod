@@ -45,17 +45,19 @@ public class ExtraSkeleton extends CustomRelic {
 			stopPulse();
 		}
 		
-		if (counter >= COUNTER_MAX_VALUE) {
-			
-			flash();
-			AbstractDungeon.actionManager.addToBottom(
-					new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
-							new BufferPower(AbstractDungeon.player, BUFFER_POWER_AMOUNT_ADDED)));
-			this.counter = 0;
-			
-		}
+		if (counter >= COUNTER_MAX_VALUE) applyEffect();
 		
 		super.atTurnStart();
+	}
+	
+	private void applyEffect() {
+		
+		flash();
+		AbstractDungeon.actionManager.addToBottom(
+				new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
+						new BufferPower(AbstractDungeon.player, BUFFER_POWER_AMOUNT_ADDED)));
+		this.counter = 0;
+		
 	}
 	
 	@Override
