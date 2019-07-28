@@ -117,19 +117,27 @@ public class TiredGremlinNob extends CustomMonster {
 	public void addInitialEnemyDebuffs() {
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
 				new WeakPower(this,  INITIAL_WEAK_DEBUFF, false), INITIAL_WEAK_DEBUFF));
+		
         WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
+        
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
 				new VulnerablePower(this,  INITIAL_VULNERABLE_DEBUFF, false), INITIAL_VULNERABLE_DEBUFF));
+		
         WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
+        
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
 				new PoisonPower(this, this, INITIAL_POISON_DEBUFF), INITIAL_POISON_DEBUFF));
+        
         WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
+        
         if (WILL_HAVE_INITIAL_STUN) {
         	AbstractDungeon.actionManager.addToBottom(new StunMonsterAction(this, this));
         	WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
         }
+        
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
 				new ConstrictedPower(this, this, INITIAL_CONSTRICTED_DEBUFF), INITIAL_CONSTRICTED_DEBUFF));
+        
         WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
 	}
 	
