@@ -65,9 +65,6 @@ public class TiredGremlinNob extends CustomMonster {
 	private static final int HEAVY_BREATHING_HEAL = 3;
 	private int number_of_turns = 1;
 	
-	static Logger logger = LogManager.getLogger(TiredGremlinNob.class.getName());
-	
-	
 	public TiredGremlinNob(float x, float y) {
 		
 		super(NAME, "Tired Gremlin Nob",  86, -70.0F, -10.0F, 270.0F, 380.0F, null, x, y);
@@ -143,35 +140,27 @@ public class TiredGremlinNob extends CustomMonster {
 	
 	@Override
 	protected void getMove(int arg0) {
-		logger.info("HERE IT IS - " + this.nextMove);
 		number_of_turns++;
-		logger.info("Number of turns = " + number_of_turns);
 		
 		if (number_of_turns % 7 == 0) {
-			logger.info("Tired, did Heavy Breathing.");
 			HeavyBreathingIntent();
 			return;
 		} 
 		
 		switch(this.nextMove) {
 			case ANGRY_SCREAM:
-				logger.info("case angry");
 				ArmSmashIntent();
 				break;
 			case ARM_SMASH:
-				logger.info("case arm");
 				BodyBlowIntent();	
 				break;
 			case BODY_BLOW:
-				logger.info("case body");
 				HeavyBreathingIntent();
 				break;
 			case HEAVY_BREATHING:
-				logger.info("case heavy");
 				AngryScreamIntent();
 				break;
 			default:
-				logger.info("case breath");
 				HeavyBreathingIntent();
 				break;
 		}
@@ -180,10 +169,8 @@ public class TiredGremlinNob extends CustomMonster {
 
 	@Override
 	public void takeTurn() {
-		logger.info("takeTurn Part 1 - " + this.nextMove);
 		
 		if (number_of_turns % 7 == 0) {
-			logger.info("Tired, did Heavy Breathing.");
 			HeavyBreathingMove();
 			AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
 			return;
@@ -261,7 +248,7 @@ public class TiredGremlinNob extends CustomMonster {
 	public void HeavyBreathingMove() {
 		AbstractDungeon.actionManager.addToBottom(new HealAction(this, this, HEAVY_BREATHING_HEAL));
 		AbstractPower strength_power = this.getPower("Strength");
-		logger.info("THERE IS A STRENGTH_POWER " + strength_power);
+
 		if (strength_power != null) {
 			int amount_of_str_buff = strength_power.amount;
 			amount_of_str_buff /= 2;
