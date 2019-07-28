@@ -216,8 +216,6 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		
 		} else {
 			
-			//if it was a combat room, 
-			//add an elite to a non-problematic space position to that room
 			return false;
 		}
 		
