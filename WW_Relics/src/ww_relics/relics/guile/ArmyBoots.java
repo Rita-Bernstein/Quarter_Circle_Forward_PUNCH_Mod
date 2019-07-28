@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.evacipated.cardcrawl.mod.stslib.relics.OnLoseBlockRelic;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -19,8 +18,9 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	public static final String ID = "WW_Relics:Army_Boots";
 	
 	private static ArrayList<String> powers_affected_by_relic;
-	private static int amount_removed_of_each_debuff = 1;
 	private static boolean relic_effect_activated_this_combat = false;
+	
+	private final static int AMOUNT_REMOVED_OF_EACH_DEBUFF = 1;
 
 	public ArmyBoots() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
@@ -84,7 +84,7 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 				}
 
 				AbstractDungeon.actionManager.addToBottom(
-						new ReducePowerAction(player, player, power_to_remove, amount_removed_of_each_debuff));
+						new ReducePowerAction(player, player, power_to_remove, AMOUNT_REMOVED_OF_EACH_DEBUFF));
 				
 			}
 			
