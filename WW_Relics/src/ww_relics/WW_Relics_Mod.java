@@ -218,6 +218,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	@Override
 	public void receiveCustomModeMods(List<CustomMod> list) {
 		RelicSetModifiers.addRelicSetModifiers(list);
+		EasierRunModifiers.AddEasierSetModifiers(list);
 		HarderRunModifiers.AddHarderSetModifiers(list);
 	 }
 	 
@@ -244,6 +245,10 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
     public void receivePostDungeonInitialize() {
         if (isCustomModActive(HarderRunModifiers.WAIT_NO_REST_BETWEEN_ROUNDS_ID)) {
         	HarderRunModifiers.AddNoRestBetweenRoundsEffectsToRun();
+        }
+        
+        if (isCustomModActive(EasierRunModifiers.LOWERING_THE_HANDICAP_ID)) {
+        	EasierRunModifiers.AddLoweringTheHandicaptHealthBarEffectsToRun();
         }
 
 		if (isCustomModActive(HarderRunModifiers.FRESH_START_ID)) {
