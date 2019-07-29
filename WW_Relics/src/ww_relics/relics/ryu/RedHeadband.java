@@ -1,13 +1,14 @@
 package ww_relics.relics.ryu;
 
+import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.actions.DrawRandomCardToHandAction;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class RedHeadband extends CustomRelic {
@@ -16,9 +17,7 @@ public class RedHeadband extends CustomRelic {
 	private static final int NUMBER_OF_DRAWS = 1;
 	
 	private static int drawn_status_and_curses_in_the_turn = 0;
-	
-	private Random random = new Random();
-	
+		
 	//Solution: load Texture instead of String
 	public RedHeadband() {
 		super(ID, GraphicResources.LoadRelicImage("Red_Headband - headband-knot - Delapouite - CC BY 3.0.png"), 
@@ -36,17 +35,14 @@ public class RedHeadband extends CustomRelic {
 			if (drawn_status_and_curses_in_the_turn  < NUMBER_OF_DRAWS) {
 				AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
 				
-		        AbstractDungeon.player.hand.moveToDiscardPile(drawnCard);
+		        AbstractDungeon.actionManager.addToBottom(new DiscardSpecificCardAction(drawnCard));
 				
 		        AbstractPlayer p = AbstractDungeon.player;
 
 		        if (abscenceOfNoDraw()) {
 			        for (int i = 0; i < DRAW_PER_STATUS_OR_CURSE; i++) {
 				        if (!p.drawPile.group.isEmpty()) {
-				        	int draw_pile_size = p.drawPile.group.size();
-				        	int which_card = random.random(0, draw_pile_size-1);
-				        	AbstractCard the_card = p.drawPile.getNCardFromTop(which_card);
-				        	p.drawPile.moveToHand(the_card, p.drawPile);
+				        	AbstractDungeon.actionManager.addToBottom(new DrawRandomCardToHandAction());
 				        } else { break; }
 				        
 						drawn_status_and_curses_in_the_turn++;
