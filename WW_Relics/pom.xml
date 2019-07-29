@@ -41,7 +41,7 @@
             <artifactId>BaseMod</artifactId>
             <version>5.5.0</version>
             <scope>system</scope>
-            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/BaseMod 5.5.0.jar</systemPath>
+            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/BaseMod 5.15.1.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
