@@ -64,30 +64,30 @@
     <dependency>
       <groupId>com.megacrit.cardcrawl</groupId>
       <artifactId>slaythespire</artifactId>
-      <version>1.0</version>
+      <version>1.1</version>
       <scope>system</scope>
       <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/desktop-1.0.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>com.evacipated.cardcrawl</groupId>
       <artifactId>ModTheSpire</artifactId>
-      <version>3.6.3</version>
+      <version>3.11.0</version>
       <scope>system</scope>
-      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/ModTheSpire 3.6.3.jar</systemPath>
+      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/ModTheSpire 3.11.0.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>com.evacipated.cardcrawl</groupId>
       <artifactId>BaseMod</artifactId>
-      <version>5.5.0</version>
+      <version>5.15.1</version>
       <scope>system</scope>
-      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/BaseMod 5.5.0.jar</systemPath>
+      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/BaseMod 5.15.1.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>com.evacipated.cardcrawl</groupId>
       <artifactId>StSLib</artifactId>
-      <version>1.10.0</version>
+      <version>1.17.1</version>
       <scope>system</scope>
-      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/StSLib v1.10.jar</systemPath>
+      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/StSLib 1.17.1.jar</systemPath>
     </dependency>
   </dependencies>
   <properties>
