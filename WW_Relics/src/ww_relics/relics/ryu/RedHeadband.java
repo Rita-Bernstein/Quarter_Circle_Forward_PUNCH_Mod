@@ -1,5 +1,6 @@
 package ww_relics.relics.ryu;
 
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -33,7 +34,8 @@ public class RedHeadband extends CustomRelic {
 			(drawnCard.type == AbstractCard.CardType.STATUS)) 
 		{
 			if (drawn_status_and_curses_in_the_turn  < NUMBER_OF_DRAWS) {
-				flash();
+				AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+				
 		        AbstractDungeon.player.hand.moveToDiscardPile(drawnCard);
 				
 		        AbstractPlayer p = AbstractDungeon.player;
