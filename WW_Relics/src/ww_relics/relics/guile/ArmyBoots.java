@@ -3,8 +3,8 @@ package ww_relics.relics.guile;
 import java.util.ArrayList;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.OnLoseBlockRelic;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -19,7 +19,9 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	
 	private static ArrayList<String> powers_affected_by_relic;
 	private static boolean relic_effect_activated_this_combat = false;
-
+	
+	private final static int AMOUNT_REMOVED_OF_EACH_DEBUFF = 1;
+	
 	public ArmyBoots() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.COMMON, LandingSound.SOLID);
@@ -31,10 +33,11 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 		powers_affected_by_relic = new ArrayList<String>();
 		powers_affected_by_relic.add("Frail");
 		powers_affected_by_relic.add("Vulnerable");
+		powers_affected_by_relic.add("Weakened");
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0];
+		return DESCRIPTIONS[0] + AMOUNT_REMOVED_OF_EACH_DEBUFF + DESCRIPTIONS[1];
 	}
 	
 	@Override
@@ -81,7 +84,7 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 				}
 
 				AbstractDungeon.actionManager.addToBottom(
-						new RemoveSpecificPowerAction(player, player, player.getPower(power_to_remove)));
+						new ReducePowerAction(player, player, power_to_remove, AMOUNT_REMOVED_OF_EACH_DEBUFF));
 				
 			}
 			

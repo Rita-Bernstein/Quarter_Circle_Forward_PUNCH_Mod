@@ -22,6 +22,7 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rewards.RewardItem.RewardType;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.WW_Relics_MiscelaneaCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 /* Lose all hope of a clean and easy to do relic, those who enter here
@@ -152,17 +153,17 @@ public class SchoolBackpack extends CustomRelic {
 	
 	private PlayerClass getRandomBaseGameNotYoursPlayerClass() {
 		
-		ArrayList<PlayerClass> basegame_classes = new ArrayList<PlayerClass>();
+		ArrayList<PlayerClass> base_game_classes = new ArrayList<PlayerClass>();
 		
-		for (PlayerClass base_game_player_class : PlayerClass.values()) {
+		for (PlayerClass base_game_player_class : WW_Relics_MiscelaneaCode.base_game_player_classes) {
 			
 			if (base_game_player_class != AbstractDungeon.player.chosenClass) {
-				basegame_classes.add(base_game_player_class);
+				base_game_classes.add(base_game_player_class);
 			}
 			
 		}
 		
-		return basegame_classes.get(AbstractDungeon.cardRng.random(basegame_classes.size() - 1));
+		return base_game_classes.get(AbstractDungeon.cardRng.random(base_game_classes.size() - 1));
 
 	}
 	
@@ -276,14 +277,14 @@ public class SchoolBackpack extends CustomRelic {
 		CardGroup common_class_CardPool = new CardGroup(CardGroupType.UNSPECIFIED);
 		
 		CardColor class_color = getColorOfBaseGameClass(a_class);
-
+		
 		for (Map.Entry<String, AbstractCard> a_card : CardLibrary.cards.entrySet()) {
 			AbstractCard one_more_card = a_card.getValue();
 			
 			if (cardIsOfChosenColor(one_more_card, class_color)) {
 				
-				CardRarity this_card_rarity = ((AbstractCard)one_more_card).rarity;
-			
+				CardRarity this_card_rarity = ((AbstractCard)one_more_card).rarity;			
+				
 				switch (this_card_rarity) {
 					case RARE:
 						rare_class_CardPool.addToBottom((AbstractCard)one_more_card);
@@ -298,7 +299,7 @@ public class SchoolBackpack extends CustomRelic {
 					
 			}
 		}		
-		
+
 		switch (rarity)
 		{
 			case SPECIAL:  return rare_class_CardPool.getRandomCard(true);

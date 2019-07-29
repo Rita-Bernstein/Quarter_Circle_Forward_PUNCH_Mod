@@ -4,8 +4,8 @@
   <groupId>WW_Relics</groupId>
   <artifactId>WorldWarriorsRelics</artifactId>
   <name>WorldWarriorsRelics</name>
-  <version>0.10</version>
-  <description>Adds fourteen relics and eight game modifiers, inspired mainly by fighters from
+  <version>0.11</version>
+  <description>Adds sixteen relics, seven game modifiers, one event and one potion, inspired mainly by fighters from
     			 \r\n Super Street Fighter 2: The New Challengers and also some extra inspiration of other fighting games.
 		  		 \r\n v1.0 will have 32+ relics.
 		  		 \r\nThe images in this mod are temporary and will be substituted/improved on the version 1.0.</description>
@@ -71,23 +71,23 @@
     <dependency>
       <groupId>com.evacipated.cardcrawl</groupId>
       <artifactId>ModTheSpire</artifactId>
-      <version>3.8.3</version>
+      <version>3.6.3</version>
       <scope>system</scope>
-      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/ModTheSpire.jar</systemPath>
+      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/ModTheSpire 3.6.3.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>com.evacipated.cardcrawl</groupId>
       <artifactId>BaseMod</artifactId>
-      <version>5.8.0</version>
+      <version>5.5.0</version>
       <scope>system</scope>
-      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/BaseMod.jar</systemPath>
+      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/BaseMod 5.5.0.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>com.evacipated.cardcrawl</groupId>
       <artifactId>StSLib</artifactId>
-      <version>1.13.2</version>
+      <version>1.10.0</version>
       <scope>system</scope>
-      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/StSLib.jar</systemPath>
+      <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/StSLib v1.10.jar</systemPath>
     </dependency>
   </dependencies>
   <properties>

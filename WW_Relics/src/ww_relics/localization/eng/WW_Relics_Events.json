@@ -1,0 +1,29 @@
+{
+	"WW_Relics:Fighting_Noises": {
+		"NAME": "Fighting Noises",
+		"DESCRIPTIONS": [
+		"Fighting Noises?",
+		"You instinctively stop, feeling a murderous aura ahead. NL NL Fighting noises increasing in speed and volume can be heard until NL NL SMAAAAAAAAAAAASH NL NL Curiosity and self-preservation play a tug-of-war in your head. Where to go?",
+		"The place where the fight happened is ahead. NL NL Blood and bones are scattered all around in the ground, you can't guess of how many. NL NL In the center of the mess, a Gremlin Nob.",
+		"His injuries are many: cuts, bruises, some burns... and his curved body and motions all indicate tiredness. Having seen enough, you start to turn around... NL NL ...and a wrong step on a bone calls his attention. NL NL OH BOY HOW MUCH ANGRY CAN HE BE?",
+		"Other City denizens are curious and approaching now, and facing them all is just stupid. NL NL How to escape... wait, the bones are neatly organized in a pile now? What?",
+		"Deciding to be very, very stupid, you defiantly do one step forward to face the whole crowd... NL NL ...and manage to slip and fall backwards, some blood entering your head. NL NL Yes, entering your head. All the blood in the ground stars entering through your veins, the crowd scattering in fear of the red aberration that's going on. NL NL When it ends, you feel... fine?",
+		"If you throw enough bones at the crowd, maybe you will gain time to find an escape route? NL NL The first throw is an epic fail as the bone is stuck to your hand, then to the insides of your hand, and then your arm. NL NL Then-all-the-other-bones-jump-straight-at-you NL NL and the crowd goes AAAAAAAAAAAAAAAAAAA and runs away to safety as you gain a second skeleton. Phew?",
+		"Trying to go away from the unexplainable pile of bones, your foot hits something leathery. A bag? NL NL Inside, four weird potions and a 'drink if you dare' note. NL NL You dare, and as the crowd starts getting closer another Gremlin Nob starts to attack everyone around him, trying to reach you! NL NL In the ensuing chaos an escape route shows up, and you carry away the bag with similar potions as a reward.", 
+		"That the path behind you, the one that you came from... is completely open? NL NL Backwards and then a detour and you are safe! NL NL ...well, as much as someone can be safe at the Spire. Good call!",
+		"Your instincts say NOPE, and you promptly follow them to a less death-noises-making route."
+    ],
+    "OPTIONS": [
+		"[Curiosity] #rFace #ran #rElite #rencounter.",
+		"...",
+		"[Time To Find Out] #rFight!",
+		"[Bloody Opening] #gGain #gNeverending #gBlood.",
+		"[Throw Bones To Escape] #gGain #gExtra #gSkeleton.",
+		"[Hey, A Bag] #gGain #g3 #gChallenger #gCoin potions.",
+		"[Back Back Back] #gGain #g2 #gGood #gInstincts+.",
+		"[Safety] #gGain #g1 #gGood #gInstincts.",
+		"[Forward!]",
+		"[Leave]"
+    ]
+  }
+}

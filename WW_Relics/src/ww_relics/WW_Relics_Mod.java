@@ -7,6 +7,7 @@ import java.util.*;
 import org.apache.logging.log4j.*;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -18,7 +19,10 @@ import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
+import ww_relics.events.act2.FightingNoisesEvent;
 import ww_relics.modifiers.*;
+import ww_relics.monsters.elites.TiredGremlinNob;
+import ww_relics.potions.ChallengerCoin;
 import ww_relics.relics.character_cameos.dan.NotStrongestFightingStyleGuidebook;
 import ww_relics.relics.character_cameos.sakura.SchoolBackpack;
 import ww_relics.relics.chun_li.*;
@@ -28,11 +32,13 @@ import ww_relics.relics.guile.CombatFatigues;
 import ww_relics.relics.ken.BlackTrainingShirt;
 import ww_relics.relics.ken.RedGi;
 import ww_relics.relics.ken.UnceasingFlame;
+import ww_relics.relics.mortal_kombat.ExtraSkeleton;
+import ww_relics.relics.mortal_kombat.NeverendingBlood;
 import ww_relics.relics.ryu.*;
 
 @SpireInitializer
 public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
-			EditCardsSubscriber,
+			EditCardsSubscriber, 
 			EditKeywordsSubscriber, PostInitializeSubscriber, PostDungeonInitializeSubscriber, 
 			PostCreateStartingRelicsSubscriber, StartGameSubscriber
 	{
@@ -41,8 +47,8 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 
 	public static final String MODNAME = "World Warriors' Relics"; // mod name
 	public static final String AUTHOR = "Clauvin aka Dungeon Explorer Lan"; // your name
-	public static final String DESCRIPTION = "v0.10.0" +
-			"\r\n Adds fourteen relics based in SF2's main characters, + 8 game modifiers."
+	public static final String DESCRIPTION = "v0.11" +
+			"\r\n Adds sixteen relics based in SF2's main characters, seven game modifiers, one event and one potion."
 		  + "\r\n v1.0 will have 32+ relics."
 		  + "\r\n The images in the mod are temporary and will be substituted/improved on version 1.0.";
 	
@@ -84,6 +90,9 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	    LoadPowersJSON();
 	    LoadModifiersJSON();
 	    LoadCardsJSON();
+	    LoadPotionsJSON();
+	    LoadEventsJSON();
+	    LoadMonstersJSON();
 	    
 	    logger.info("done editing strings");
 	}
@@ -116,6 +125,27 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	    BaseMod.loadCustomStrings(CardStrings.class, cardsStrings);
 	}
 	
+	private void LoadPotionsJSON() {
+		String potionsStringsAddress = "ww_relics/localization/eng/WW_Relics_Potions.json";
+		String potionsStrings = getJsonText(potionsStringsAddress);
+		
+		BaseMod.loadCustomStrings(PotionStrings.class, potionsStrings);
+	}
+	
+	private void LoadEventsJSON() {
+		String eventsStringsAddress = "ww_relics/localization/eng/WW_Relics_Events.json";
+		String eventsStrings = getJsonText(eventsStringsAddress);
+		
+		BaseMod.loadCustomStrings(EventStrings.class, eventsStrings);
+	}
+	
+	private void LoadMonstersJSON() {
+		String monstersStringsAddress = "ww_relics/localization/eng/WW_Relics_Monsters.json";
+		String monstersStrings = getJsonText(monstersStringsAddress);
+		
+		BaseMod.loadCustomStrings(MonsterStrings.class, monstersStrings);
+	}
+	
 	@Override
 	public void receiveEditRelics() {
 		logger.info("Begin adding relics");
@@ -124,6 +154,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		addChunLiRelics();
 		addGuileRelics();
 		addCharacterCameoRelics();
+		addGameCameoRelics();
 		logger.info("Done adding relics");
 	}
 
@@ -164,11 +195,24 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		BaseMod.addRelic(new SchoolBackpack(), RelicType.SHARED);
 	}
 	
+	private void addGameCameoRelics() {
+		addMortalKombatRelics();
+	}
+	
+	private void addMortalKombatRelics() {
+		BaseMod.addRelic(new NeverendingBlood(), RelicType.SHARED);
+		BaseMod.addRelic(new ExtraSkeleton(), RelicType.SHARED);
+	}
+	
 	@Override
 	public void receiveEditCards() {
 		logger.info("Begin adding cards");
 		
 		logger.info("Done adding cards");
+	}
+	
+	public void addMonsters() {
+		BaseMod.addMonster(TiredGremlinNob.ID, () -> new TiredGremlinNob(0.0f, 0.0f));
 	}
 	
 	@Override
@@ -222,9 +266,11 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
         try {
             final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             WhiteBoots.load(config);
+            DuffelBag.load(config);
             FightingGloves.load(config);
             UnceasingFlame.load(config);
             SchoolBackpack.load(config);
+            ChallengerCoin.load(config);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -237,9 +283,11 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
         try {
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             WhiteBoots.save(config);
+            DuffelBag.save(config);
             FightingGloves.save(config);
             UnceasingFlame.save(config);
             SchoolBackpack.save(config);
+            ChallengerCoin.save(config);
         }
         catch (IOException e) {
         	e.printStackTrace();
@@ -253,9 +301,11 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
         	config.clear();
             WhiteBoots.clear(config);
+            DuffelBag.clear(config);
             FightingGloves.clear(config);
             UnceasingFlame.clear(config);
             SchoolBackpack.clear(config);
+            ChallengerCoin.clear(config);
         	config.save();
 
         }
@@ -276,9 +326,28 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	@Override
 	public void receivePostInitialize() {
 
+		addPotions();
+		addMonsters();
+		addEvents();
+		
 		String modBadgeAddress = "ww_relics/assets/img/modbadge/ModBadgePlaceholder.png";
 		Texture badgeTexture = new Texture(Gdx.files.internal(modBadgeAddress));
         ModPanel settingsPanel = new ModPanel();
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
+	}
+	
+	public void addPotions() {
+		
+		logger.info("Begin adding potions");
+		BaseMod.addPotion(ChallengerCoin.class, Color.LIME.cpy(), Color.PINK.cpy(), Color.BLUE.cpy(),
+				ChallengerCoin.ID);
+		logger.info("Done adding potions");
+	}
+	
+	public void addEvents() {
+		
+		BaseMod.addEvent(FightingNoisesEvent.ID, FightingNoisesEvent.class,
+				FightingNoisesEvent.TO_WHICH_ACT_ADD);
+		
 	}
 }

@@ -3,13 +3,18 @@ A Slay The Spire mod, which adds primarily relics directly inspired by fighters 
 
 # Content
 
-* Fourteen relics done of 16+ planned, with temporary images and placeholder sounds.
+* Sixteen relics done of 16+ planned, with temporary images and placeholder sounds.
 * Seven game modifiers, ranging from adding more relics at start to making the game harder.
 * Six cards, acessible through one specific relic.
+* One event, which is the gateway for two relics and one potion.
 
 # Current State
 
-Walking towards roadmap's milestone 2 (and simultaneously doing stuff from milestone 3).
+Last polishing to v0.11, milestone 2 done, part of milestone 3 probably will be removed for rework in the future and part of milestone 5 will be done at v0.12.
+
+# Link to Releases and Pre-Releases
+
+Link [here](https://github.com/Clauvin/World_Warriors_Mod/releases).
 
 # FAQ
 
@@ -23,47 +28,53 @@ Link in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/
 
 Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/wiki/Game-Modifiers).
 
-# Roadmap
+# Ever Changing Current Roadmap (yes, this can change depending of circunstances)
 
 1. Create a relic based in Ryu, for basic testing and getting the hang of modding relics for Slay The Spire. Focus in mechanics and avoiding bugs, not graphics. - Done in v0.1.
-2. Relics inspired by Ryu, Ken, Chun Li and Guile.
-3. Add Custom Modifiers (and other small stuff) related with last milestone's relics and the major theme. (future relic milestones will add Custom Modifiers too)
-4. Translation of the mod's created text so far to PT-BR. (all future milestones will launch with EN localization, PT-BR will come after a round of balancing)
-5. Mod release! Release at Github, Steam and Nexus Mods. (all future milestones, when finished, shall have proper releases)
+2. Relics inspired by Ryu, Ken, Chun Li and Guile. - Done in v0.11.
+3. Add Custom Modifiers (and other small stuff) related with the major theme. (character based modifiers will have a reworkin the future, post-first release) 
+4. Mod release! Release at Github, Steam and Nexus Mods. (all future milestones, when finished, shall have proper releases)
 
 - (thanks to rl issues, a pause will be made in this mod's development but 16 relics will be done already when finishing the fourth milestone)
 
+5. Small improvement in FX and relic images.
 6. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
-7. One boss relic for Boxer, Claw and Sagat, respectively. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
-8. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
-9. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
-10. Relics inspired by Cammy, Fei Long and Deejay. (number unknown)
-11. ?????????????????????
-12. Reworking of 2 Custom Modifier revolving around fighter's set relics to make the equivalent of mini-characters. (use Blademaster Perk system, perhaps, together with linked relics?) (can this be added to the main character screen?)
-13. Reworking of at least more 2 Custom Modifiers to have more mini-characters.
-14. Update of beta art and sound assets to release version
+7. Translation of the mod's created text so far to PT-BR. (all future milestones will launch with EN localization, PT-BR will come after a round of balancing)
+8. One boss relic for Boxer, Claw and Sagat, respectively. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
+9. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
+10. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
+11. Relics inspired by Cammy, Fei Long and Deejay. (number unknown)
+12. ?????????????????????
+13. Reworking of 1 Custom Modifier revolving around fighter's set relics to make the equivalent of mini-characters, as a test. (use Blademaster Perk system together with relic that triggers them)
+14. Reworking of other Custom Modifiers to have more mini-characters.
+15. Update of beta art and sound assets to release version
 
 (and here we reach v1.0)
 
-15. Polishing, refactoring and balancing.
-16. Synergy and adaptation with Infinite Spire. (Black cards? Black cards. o9)
-17. Boss inspired by Street Fighter 2 stuff.
-18. Synergy and adaptation with other mods.
+16. Polishing, refactoring and balancing.
+17. Synergy and adaptation with Infinite Spire. (Black cards? Black cards. o9)
+18. Boss inspired by Street Fighter 2 stuff.
+19. Synergy with Halation. (Simulated Spire? Yep.)
+20. Add a Challenge to Challenge The Spire. (which one? Hm...)
+21. Synergy and adaptation with other mods.
 
 And MAYBE (not making promises here)
 
-19. Cards inspired by moves of fighting games (and here I include Smash), that can be get through events or other mod's access to a hidden character.
-20. Special shop with stuff from this mod (cards above mentioned included) and removal with a good discount.
-21. Elite monsters.
-22. Extra events.
+22. Synergy with Googly Eyes
+23. Cards inspired by moves of fighting games (and here I include Smash), that can be get through events or other mod's access to a hidden character.
+24. Special shop with stuff from this mod (cards above mentioned included) and removal with a good discount.
+25. Elite monsters.
+26. Extra events.
 
 # Requirements
 
-Mod The Spire 3.9.2+, BaseMod 5.12.1+ and StSLib 1.15.0+.
+Mod The Spire 3.6.3+, BaseMod 5.5.0+ and StSLib 1.10.0+ (when needed, the requirements will be updated to more recent versions of these libraries)
 
 # Compatibility
 
-So far, it shouldn't cause problems to other mods. That said, there are more than one hundred mods at Steam Workshop and who knows how many more outside of it, so I can't say that it won't crash your game in any possible mod combination. In case of it happening, open one issue, I will check it out.
+Regarding Slay The Spire, it works with v1.0. Haven't tested it with v1.1 yet.
+
+About mods, it shouldn't have/cause problems with/to them. That said, there are more than one hundred mods at Steam Workshop and who knows how many more outside of it, so I can't say that it won't crash your game in any possible mod combination. In case of it happening, open one issue, I will check it out.
 
 ## List of Incompatible Mods:
 

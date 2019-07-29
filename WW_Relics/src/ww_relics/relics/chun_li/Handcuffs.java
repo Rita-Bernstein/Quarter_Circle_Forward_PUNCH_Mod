@@ -18,8 +18,8 @@ public class Handcuffs extends CustomRelic {
 	public static final String ID = "WW_Relics:Handcuffs";
 	
 	private static final int NUMBER_OF_USES_PER_FIGHT = 1;
-	private static final int NUMBER_OF_STR_DOWN_DEBUFFS = 2;
-	private static final int NUMBER_OF_UNSTEADY_DEBUFFS = 3;
+	private static final int NUMBER_OF_STR_DOWN_DEBUFFS = 0;
+	private static final int NUMBER_OF_UNSTEADY_DEBUFFS = 2;
 	private static final int NUMBER_OF_STUN_DEBUFFS = 1;
 	
 	public int number_of_uses_left_in_this_fight;
@@ -34,7 +34,11 @@ public class Handcuffs extends CustomRelic {
 		String description;
 		
 		description = DESCRIPTIONS[0] + NUMBER_OF_UNSTEADY_DEBUFFS + DESCRIPTIONS[1];
-		description += DESCRIPTIONS[2] + NUMBER_OF_STR_DOWN_DEBUFFS + DESCRIPTIONS[3];
+		
+		//Commented since there's no STR debuff and if I use a conditional here, a warning will stay
+		//description += DESCRIPTIONS[2] + NUMBER_OF_STR_DOWN_DEBUFFS + DESCRIPTIONS[3];
+		description += DESCRIPTIONS[6];
+			
 		description += DESCRIPTIONS[4] + NUMBER_OF_STUN_DEBUFFS + DESCRIPTIONS[5];
 		
 		return description;

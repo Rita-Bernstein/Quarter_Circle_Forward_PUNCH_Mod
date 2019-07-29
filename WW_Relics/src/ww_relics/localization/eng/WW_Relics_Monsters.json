@@ -1,0 +1,14 @@
+{
+  "WWRelics:TiredGremlinNob": {
+    "MOVES": [
+      "Angry Screaming",
+      "Arm Smash",
+      "Body Blow",
+      "Heavy Breathing"
+    ],
+    "NAME": "Tired Gremlin Nob",
+    "DIALOG": [
+      ""
+    ]
+  }
+}

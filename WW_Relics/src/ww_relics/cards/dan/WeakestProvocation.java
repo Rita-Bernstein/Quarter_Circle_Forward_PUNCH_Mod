@@ -40,7 +40,7 @@ public class WeakestProvocation extends CustomCard {
 	public void use(AbstractPlayer player, AbstractMonster monster) {
         AbstractDungeon.actionManager.addToBottom(
         		new ApplyPowerAction(monster, player,
-        				new VulnerablePower(monster, VULNERABLE_AMOUNT, false)));
+        				new VulnerablePower(monster, VULNERABLE_AMOUNT, false), VULNERABLE_AMOUNT));
         
         AbstractDungeon.actionManager.addToBottom(
         		new ApplyPowerAction(player, player, 

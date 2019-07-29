@@ -90,12 +90,12 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	public String getCardGridDescription() {
 		String description = "";
 		
-		description = DESCRIPTIONS[7] + number_of_cards_that_can_be_upgraded;
+		description = DESCRIPTIONS[5] + number_of_cards_that_can_be_upgraded;
 		
-		if (number_of_cards_that_can_be_upgraded > 1) description += DESCRIPTIONS[9];
-		else description += DESCRIPTIONS[8];
+		if (number_of_cards_that_can_be_upgraded > 1) description += DESCRIPTIONS[7];
+		else description += DESCRIPTIONS[6];
 			
-		description += DESCRIPTIONS[10];
+		description += DESCRIPTIONS[8];
 		
 		return description;
 
@@ -297,7 +297,6 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 
 			logger.info("Finished setting Fighting Gloves variables.");
 		}
-		
 		
     }
 	
