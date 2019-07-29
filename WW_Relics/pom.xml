@@ -39,16 +39,16 @@
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
             <artifactId>BaseMod</artifactId>
-            <version>5.5.0</version>
+            <version>5.15.1</version>
             <scope>system</scope>
             <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/BaseMod 5.15.1.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
             <artifactId>StSLib</artifactId>
-            <version>1.10.0</version>
+            <version>1.17.1</version>
             <scope>system</scope>
-            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/StSLib v1.10.jar</systemPath>
+            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/StSLib 1.17.1.jar</systemPath>
         </dependency>
 
     </dependencies>
