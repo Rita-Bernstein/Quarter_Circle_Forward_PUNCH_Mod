@@ -2,6 +2,7 @@ package ww_relics.relics.ryu;
 
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -42,6 +43,7 @@ public class RedHeadband extends CustomRelic {
 		        if (abscenceOfNoDraw()) {
 			        for (int i = 0; i < DRAW_PER_STATUS_OR_CURSE; i++) {
 				        if (!p.drawPile.group.isEmpty()) {
+				        	AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4f));
 				        	AbstractDungeon.actionManager.addToBottom(new DrawRandomCardToHandAction());
 				        } else { break; }
 				        
