@@ -20,10 +20,16 @@ public class DrawRandomCardToHandAction extends AbstractGameAction {
 
 	@Override
 	public void update() {
-    	int draw_pile_size = player.drawPile.group.size();
-    	int which_card = random.random(0, draw_pile_size-1);
-    	AbstractCard the_card = player.drawPile.getNCardFromTop(which_card);
-    	player.drawPile.moveToHand(the_card, player.drawPile);
+		
+		if (!this.isDone) {
+	    	int draw_pile_size = player.drawPile.group.size();
+	    	int which_card = random.random(0, draw_pile_size-1);
+	    	AbstractCard the_card = player.drawPile.getNCardFromTop(which_card);
+	    	player.drawPile.moveToHand(the_card, player.drawPile);
+	    	
+	    	this.isDone = true;
+		}
+		
 	}
 	
 }
