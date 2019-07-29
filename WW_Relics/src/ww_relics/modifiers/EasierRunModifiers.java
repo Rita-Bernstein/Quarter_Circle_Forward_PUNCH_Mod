@@ -13,7 +13,7 @@ public class EasierRunModifiers {
 	public static final void AddEasierSetModifiers(List<CustomMod> list) {
 		
 		CustomMod lowering_the_handicap = 
-				new CustomMod(HarderRunModifiers.WAIT_NO_REST_BETWEEN_ROUNDS_ID, "y", true);
+				new CustomMod(EasierRunModifiers.LOWERING_THE_HANDICAP_ID, "y", true);
 		
 		list.add(lowering_the_handicap);
 	}
