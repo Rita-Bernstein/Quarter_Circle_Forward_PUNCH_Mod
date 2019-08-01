@@ -331,7 +331,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		addMonsters();
 		addEvents();
 		
-		String modBadgeAddress = "ww_relics/assets/img/modbadge/ModBadgePlaceholder.png";
+		String modBadgeAddress = "ww_relics/resources/ModBadge.png";
 		Texture badgeTexture = new Texture(Gdx.files.internal(modBadgeAddress));
         ModPanel settingsPanel = new ModPanel();
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
