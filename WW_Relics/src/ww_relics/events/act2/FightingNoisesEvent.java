@@ -176,18 +176,14 @@ public class FightingNoisesEvent extends AbstractImageEvent {
     
     private void SetEventEliteEncounterPart1() {
     	last_event_page_visited = ElITE_ENCOUNTER_PART_1;
-        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
-                                                    ElITE_ENCOUNTER_PART_2_FIGHT_OPTION]);
-		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
-		                                                ElITE_ENCOUNTER_PART_1]);
+    	setDialogAndBodyText(WHERE_OPTION_TEXT_STARTS + ElITE_ENCOUNTER_PART_2_FIGHT_OPTION,
+    			WHERE_EVENT_TEXT_STARTS + ElITE_ENCOUNTER_PART_1);
     }
     
     private void SetEventEliteEncounterPart2() {
     	last_event_page_visited = ElITE_ENCOUNTER_PART_2_FIGHT;
-        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
-                                                    ELITE_VICTORIOUS_AFTERMATH_OPTION]);
-		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
-		                                                ElITE_ENCOUNTER_PART_2_FIGHT]);
+    	setDialogAndBodyText(WHERE_OPTION_TEXT_STARTS + ELITE_VICTORIOUS_AFTERMATH_OPTION,
+    			WHERE_EVENT_TEXT_STARTS + ElITE_ENCOUNTER_PART_2_FIGHT);
     }
     
     private void SetEventEliteFight() {
@@ -219,32 +215,27 @@ public class FightingNoisesEvent extends AbstractImageEvent {
     
     private void SetEventGainedBloodRelic() {
     	last_event_page_visited = GAINED_BLOOD_RELIC;
-        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
-                                                    FINAL_VICTORIOUS_OPTION]);
-		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
-		                                                GAINED_BLOOD_RELIC]);
+    	setDialogAndBodyText(WHERE_OPTION_TEXT_STARTS + FINAL_VICTORIOUS_OPTION,
+    			WHERE_EVENT_TEXT_STARTS + GAINED_BLOOD_RELIC);
 		AbstractRelic relic = new NeverendingBlood();
         AbstractDungeon.getCurrRoom().spawnRelicAndObtain(this.drawX, this.drawY, relic);
     }
     
     private void SetEventGainedSkeletonRelic() {
     	last_event_page_visited = GAINED_SKELETON_RELIC;
-        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
-                                                    FINAL_VICTORIOUS_OPTION]);
-		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
-		                                                GAINED_SKELETON_RELIC]);
+    	setDialogAndBodyText(WHERE_OPTION_TEXT_STARTS + FINAL_VICTORIOUS_OPTION,
+    			WHERE_EVENT_TEXT_STARTS + GAINED_SKELETON_RELIC);
 		AbstractRelic relic = new ExtraSkeleton();
         AbstractDungeon.getCurrRoom().spawnRelicAndObtain(this.drawX, this.drawY, relic);
     }
     
     private void SetEventGainedChallengeCoinPotions() {
     	last_event_page_visited = GAINED_CHALLENGER_COINS;
-        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
-                                                    FINAL_VICTORIOUS_OPTION]);
-		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
-		                                                GAINED_CHALLENGER_COINS]);
+    	setDialogAndBodyText(WHERE_OPTION_TEXT_STARTS + FINAL_VICTORIOUS_OPTION,
+    			WHERE_EVENT_TEXT_STARTS + GAINED_CHALLENGER_COINS);
+
     	//why clear does not work?
-    	//why one card appears? Is it a debug command bug only?
+    	//why one card always appears?
         (AbstractDungeon.getCurrRoom()).rewards.clear();
         for (int i = 0; i < NUMBER_OF_CHALLENGER_COINS_GAINED_AFTER_BATTLE_CHOICE; i++) {
         	AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(new ChallengerCoin()));
@@ -256,10 +247,8 @@ public class FightingNoisesEvent extends AbstractImageEvent {
     
     private void SetNopeNopeCantalopeGoodInstincts() {
     	last_event_page_visited = GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS;
-        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
-                                                    FINAL_VICTORIOUS_OPTION]);
-		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
-		                                                GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS]);
+    	setDialogAndBodyText(WHERE_OPTION_TEXT_STARTS + FINAL_VICTORIOUS_OPTION,
+    			WHERE_EVENT_TEXT_STARTS + GAINED_NOPE_NOPE_CANTALOPE_2_GOOD_INSTINCTS_PLUS);
     	for (int i = 0; i < NUMBER_OF_GOOD_INSTINCTS_GAINED_AFTER_BATTLE_CHOICE; i++) {   		
     		AbstractCard c = new GoodInstincts();
     		c.upgrade();
@@ -269,14 +258,18 @@ public class FightingNoisesEvent extends AbstractImageEvent {
     
     private void SetEventGainedGoodInstincts() {
     	last_event_page_visited = THE_SAFER_PATH_GAINED_GOOD_INSTINCTS;
-        this.imageEventText.setDialogOption(OPTIONS[WHERE_OPTION_TEXT_STARTS +
-                                                    FINAL_VICTORIOUS_OPTION]);
-		this.imageEventText.updateBodyText(DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
-		                                                THE_SAFER_PATH_GAINED_GOOD_INSTINCTS]);
+    	setDialogAndBodyText(WHERE_OPTION_TEXT_STARTS + FINAL_VICTORIOUS_OPTION,
+    						 WHERE_EVENT_TEXT_STARTS + THE_SAFER_PATH_GAINED_GOOD_INSTINCTS);
+
     	for (int i = 0; i < NUMBER_OF_GOOD_INSTINCTS_GAINED_BEFORE_BATTLE_CHOICE; i++) {   		
     		AbstractCard c = new GoodInstincts();
             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(c, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));	
     	}
+    }
+    
+    private void setDialogAndBodyText(int dialog_position, int body_text_position) {
+    	this.imageEventText.setDialogOption(OPTIONS[dialog_position]);
+		this.imageEventText.updateBodyText(DESCRIPTIONS[body_text_position]);
     }
     
     @Override
