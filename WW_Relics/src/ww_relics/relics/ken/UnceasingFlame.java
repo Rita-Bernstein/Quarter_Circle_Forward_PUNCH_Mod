@@ -74,9 +74,16 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	@Override
 	public void onPlayCard(AbstractCard card, AbstractMonster m) {
 
+		boolean went_from_five_to_six = false;
+		
 		if (canAChargeBeAdded(card)) {
 			counter++; charges++;
+			if (counter == 6) went_from_five_to_six = true;
 			fixCounter();
+		}
+		
+		if (went_from_five_to_six) {
+			flash();
 		}
 		
 	}
@@ -117,7 +124,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 			new FlamingPower(AbstractDungeon.player, 1, MINIMUM_DAMAGE_FROM_FLAMING),
 			1);
 	}
-	
+
 	public static void save(final SpireConfig config) {
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
