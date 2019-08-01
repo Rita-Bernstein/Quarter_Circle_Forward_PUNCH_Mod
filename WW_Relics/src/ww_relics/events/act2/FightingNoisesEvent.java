@@ -1,9 +1,5 @@
 package ww_relics.events.act2;
 
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.GoodInstincts;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -64,8 +60,6 @@ public class FightingNoisesEvent extends AbstractImageEvent {
     public static final int NUMBER_OF_GOOD_INSTINCTS_GAINED_BEFORE_BATTLE_CHOICE = 1;
     public static final int NUMBER_OF_GOOD_INSTINCTS_GAINED_AFTER_BATTLE_CHOICE = 2;
     public static final int NUMBER_OF_CHALLENGER_COINS_GAINED_AFTER_BATTLE_CHOICE = 3;
-
-	public static final Logger logger = LogManager.getLogger(FightingNoisesEvent.class.getName());
     
     public FightingNoisesEvent(){
         super(ID, DESCRIPTIONS[WHERE_EVENT_TEXT_STARTS +
@@ -93,9 +87,6 @@ public class FightingNoisesEvent extends AbstractImageEvent {
     protected void buttonEffect(int button_pressed) {
     
     	int option_chosen = -1;
-    	
-    	logger.info("A " + button_pressed);
-    	logger.info("B " + last_event_page_visited);
     	
     	switch(last_event_page_visited) {
     	
@@ -129,9 +120,7 @@ public class FightingNoisesEvent extends AbstractImageEvent {
     		default:
     			break;
     	}
-    	
-    	logger.info("C " + option_chosen);
-    	
+
         switch (option_chosen) {
         
         	case ElITE_ENCOUNTER_PART_1:
