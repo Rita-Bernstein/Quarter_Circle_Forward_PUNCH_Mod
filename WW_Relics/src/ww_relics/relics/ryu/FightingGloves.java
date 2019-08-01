@@ -302,7 +302,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	public boolean canSpawn() {
 		
-		return (AbstractDungeon.floorNum < 35);
+		return (AbstractDungeon.floorNum < 35) || (AbstractDungeon.floorNum > 54);
 		
 	}
 	
