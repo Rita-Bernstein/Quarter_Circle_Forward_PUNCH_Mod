@@ -77,15 +77,15 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	@Override
 	public void onPlayCard(AbstractCard card, AbstractMonster m) {
 
-		boolean went_from_five_to_six = false;
+		boolean went_to_max_amount_of_charges = false;
 		
 		if (canAChargeBeAdded(card)) {
 			counter++; charges++;
-			if (counter == 6) went_from_five_to_six = true;
+			if (counter == MAX_NUMBER_OF_CHARGES) went_to_max_amount_of_charges = true;
 			fixCounter();
 		}
 		
-		if (went_from_five_to_six) {
+		if (went_to_max_amount_of_charges) {
 			flash();
 		}
 		
