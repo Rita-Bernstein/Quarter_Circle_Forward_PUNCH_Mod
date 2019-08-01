@@ -249,6 +249,7 @@ public class FightingNoisesEvent extends AbstractImageEvent {
         for (int i = 0; i < NUMBER_OF_CHALLENGER_COINS_GAINED_AFTER_BATTLE_CHOICE; i++) {
         	AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(new ChallengerCoin()));
         }
+        AbstractDungeon.getCurrRoom().addCardToRewards();
         (AbstractDungeon.getCurrRoom()).phase = RoomPhase.COMPLETE;
         AbstractDungeon.combatRewardScreen.open();
     }
