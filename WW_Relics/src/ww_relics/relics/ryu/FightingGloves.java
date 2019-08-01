@@ -227,9 +227,8 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 		
 		float x = Settings.WIDTH;
         float y = Settings.HEIGHT;
-        Random random = new Random();
-        float random_x;
-        float random_y;
+        float defined_x = 0.10f;
+        float defined_y = 0.25f;
 		
         logger.info("c " + chosen_cards.size());
         
@@ -237,11 +236,14 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
     		c.upgrade();
 			logger.info("Upgraded " + c.name);
     		
-    		random_x = random.nextFloat() / 2 + 0.25f;
-    		random_y = random.nextFloat() / 4 + 0.25f;
-    		
             AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(
-    				c.makeStatEquivalentCopy(), random_x * x, random_y * y));
+    				c.makeStatEquivalentCopy(), defined_x * x, defined_y * y));
+            
+            defined_x += 0.15f;
+            if (defined_x >= 0.9f) {
+            	defined_x = 0.10f;
+            	defined_y += 0.3f;
+            }
             
             number_of_cards_upgraded_in_this_room++;
     	}
