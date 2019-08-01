@@ -49,6 +49,9 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	public void atBattleStartPreDraw() {
 		charges = charges_at_battle_start;
 		fixCounter();
+		if (charges == MAX_NUMBER_OF_CHARGES) {
+			flash();
+		}
 	}
 	
 	public void fixCounter() {
