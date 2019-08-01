@@ -242,11 +242,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	}
 	
     @Override
-    public void receivePostDungeonInitialize() {
-        if (isCustomModActive(HarderRunModifiers.WAIT_NO_REST_BETWEEN_ROUNDS_ID)) {
-        	HarderRunModifiers.AddNoRestBetweenRoundsEffectsToRun();
-        }
-        
+    public void receivePostDungeonInitialize() {     
         if (isCustomModActive(EasierRunModifiers.LOWERING_THE_HANDICAP_ID)) {
         	EasierRunModifiers.AddLoweringTheHandicaptHealthBarEffectsToRun();
         }

@@ -24,11 +24,6 @@
 		"DESCRIPTION": "Start with 125% Max HP."
 	},
 	
-	"ww_relics:WaitNoRestBetweenRounds": {
-		"NAME": "Wait, No Rest Between Rounds?",
-		"DESCRIPTION": "Start with 65% Max HP."
-	},
-	
 	"ww_relics:FreshStart": {
 		"NAME": "Fresh Start",
 		"DESCRIPTION": "Start without any Starter relics."
