@@ -10,6 +10,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -36,13 +37,19 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	
 	public UnceasingFlame() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
-				RelicTier.RARE, null);
+				RelicTier.RARE, LandingSound.FLAT);
 	}
 	
 	public String getUpdatedDescription() {
 		return DESCRIPTIONS[0] + MINIMUM_DAMAGE_FROM_FLAMING + 
 			    DESCRIPTIONS[1] + MAX_NUMBER_OF_CHARGES +
 			    DESCRIPTIONS[2];
+	}
+	
+	@Override
+	public void onEquip() {
+		CardCrawlGame.sound.play("ATTACK_FIRE");
+		super.onEquip();
 	}
 	
 	@Override
