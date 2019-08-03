@@ -36,7 +36,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	
 	public UnceasingFlame() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
-				RelicTier.RARE, LandingSound.MAGICAL);
+				RelicTier.RARE, null);
 	}
 	
 	public String getUpdatedDescription() {
