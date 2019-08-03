@@ -106,7 +106,8 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	@Override
 	public void onRightClick() {
 		
-		if (AbstractDungeon.getCurrRoom() instanceof MonsterRoom) {
+		if ((AbstractDungeon.getCurrRoom() instanceof MonsterRoom) ||
+			(AbstractDungeon.getCurrRoom().isBattleOver == false)){
 			if (effectCanBeTriggered()) {
 				
 				if (counter == 6) {
