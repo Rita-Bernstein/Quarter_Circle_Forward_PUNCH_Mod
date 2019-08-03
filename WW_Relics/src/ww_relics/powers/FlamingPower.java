@@ -1,5 +1,7 @@
 package ww_relics.powers;
 
+import java.util.ArrayList;
+
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardTarget;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
@@ -52,18 +54,60 @@ public class FlamingPower extends AbstractPower {
 		if (cardCanTriggerEffect(card)) {
 			fire_burned_enemy = true;
 			enemy_targeted = m;
-			hp_before = enemy_targeted.currentHealth;
+			if (enemy_targeted == null) {
+				enemy_targeted = getTheOneEnemyOutThere();
+			}
+			if (enemy_targeted != null) {
+				hp_before = enemy_targeted.currentHealth;
+			}
+			
 		}
+	}
+	
+	public AbstractMonster getTheOneEnemyOutThere() {
+		ArrayList<AbstractMonster> monsters_in_the_fight = AbstractDungeon.getCurrRoom().monsters.monsters;
+		
+		for (int i = 0; i < monsters_in_the_fight.size(); i++) {
+			
+			if (!monsters_in_the_fight.get(i).isDead && !monsters_in_the_fight.get(i).isDying) {
+				return monsters_in_the_fight.get(i);
+			}
+		}
+		return null;
 	}
 	
 	//This will be more complicated in a possible future
 	public boolean cardCanTriggerEffect(AbstractCard card) {
 		
 		boolean card_is_an_attack = card.type == CardType.ATTACK;
-		boolean card_has_a_single_target = (card.target == CardTarget.ENEMY) || (card.target == CardTarget.SELF_AND_ENEMY);
+		boolean card_has_a_single_target = (card.target == CardTarget.ENEMY)
+				|| (card.target == CardTarget.SELF_AND_ENEMY);
 
 		
-		return card_is_an_attack && card_has_a_single_target;
+		if (card_is_an_attack && card_has_a_single_target) return true;
+		else if (card_is_an_attack){
+			boolean card_hits_multiple_targets = (card.target == CardTarget.ALL_ENEMY)
+					|| (card.target == CardTarget.ALL);
+			boolean theres_only_one_enemy_alive = IsThereOnlyOneMonsterAlive();
+			
+			return card_hits_multiple_targets && theres_only_one_enemy_alive;
+		}
+		return false;
+		
+	}
+	
+	public boolean IsThereOnlyOneMonsterAlive() {
+		
+		int number_of_alive_monsters = 0;
+		ArrayList<AbstractMonster> monsters_in_the_fight = AbstractDungeon.getCurrRoom().monsters.monsters;
+		for (int i = 0; i < monsters_in_the_fight.size(); i++) {
+			if (!monsters_in_the_fight.get(i).isDead && !monsters_in_the_fight.get(i).isDying) {
+				number_of_alive_monsters++;
+				if (number_of_alive_monsters > 1) return false;
+			}
+		}
+		return true;
+		
 	}
 	
 	@Override
