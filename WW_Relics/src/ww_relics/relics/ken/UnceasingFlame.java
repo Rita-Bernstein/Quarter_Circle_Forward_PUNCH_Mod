@@ -37,7 +37,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	
 	public UnceasingFlame() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
-				RelicTier.RARE, LandingSound.FLAT);
+				RelicTier.RARE, LandingSound.MAGICAL);
 	}
 	
 	public String getUpdatedDescription() {
@@ -80,6 +80,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 		is_player_turn = false;
 		charges_at_battle_start = charges;
 	}
+	
 	 
 	@Override
 	public void onPlayCard(AbstractCard card, AbstractMonster m) {
