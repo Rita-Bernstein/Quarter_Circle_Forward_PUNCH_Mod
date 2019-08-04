@@ -13,6 +13,17 @@ public class WW_Relics_MiscelaneaCode {
 			{PlayerClass.IRONCLAD, PlayerClass.THE_SILENT, PlayerClass.DEFECT};
 	
 	public final static byte THIS_BYTE_DOES_NOT_MATTER = -1;
+	
+	public static int number_of_challenger_coin_potions_at_shop = 0;
+	
+	//Yes, this is me not wanting to go raw to the ShopScreen.initPotions class.
+	public static void resetNumberOfChallengerCoinPotionsVariable() {
+		number_of_challenger_coin_potions_at_shop = 0;
+	}
+	
+	public static void incrementNumberOfChallengerCoinPotionsAtShop() {
+		number_of_challenger_coin_potions_at_shop++;
+	}
 
 	//just stole this code from ReplayTheSpire who stole this from blank lol
     public static boolean checkForMod(final String classPath) {
