@@ -4,23 +4,21 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 
+@SpirePatch(
+		clz = AbstractDungeon.class, method = "returnRandomPotion",
+		paramtypez = {AbstractPotion.PotionRarity.class,
+					  boolean.class}
+		)
 public class MakeChallengerCoinALimitedPotionPatch {
-
-	@SpirePatch(
-			clz = AbstractDungeon.class,
-			method = "returnRandomPotion",
-			paramtypez = {AbstractPotion.PotionRarity.class,
-						  boolean.class}
-			)
-	public static class ReturnRandomPotion {
+	
+	public static AbstractPotion Postfix(AbstractPotion __result, AbstractPotion.PotionRarity rarity,
+												 boolean limited){
 		
-		public static AbstractPotion Postfix(AbstractPotion __result, AbstractPotion.PotionRarity rarity,
-												 boolean limited){	
-			if (!limited) return __result;
-			else if (__result.ID != "WW_Relics:Challenger_Coin") return __result;
-			else return AbstractDungeon.returnRandomPotion(rarity, limited);
-
-		}
+		if (!limited) return __result;
+		else if (!__result.ID.equals(ww_relics.potions.ChallengerCoin.ID)) return __result;
+		else return AbstractDungeon.returnRandomPotion(rarity, limited);
+		
 	}
+
 	
 }
