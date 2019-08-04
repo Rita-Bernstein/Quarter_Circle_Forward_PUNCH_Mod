@@ -1,12 +1,11 @@
 package ww_relics.patches;
 
+import java.lang.reflect.Field;
+
+import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
-
-import javassist.CannotCompileException;
-import javassist.expr.ExprEditor;
-import javassist.expr.FieldAccess;
 
 public class MakeChallengerCoinALimitedPotionPatch {
 
@@ -18,18 +17,21 @@ public class MakeChallengerCoinALimitedPotionPatch {
 			)
 	public static class ReturnRandomPotionButNotChallengerCoin {
 		
-		public static ExprEditor Instrument()
-		{
-			return new ExprEditor() {
-				@Override
-				public void edit(FieldAccess fi) throws CannotCompileException
-				{				
-					if ((fi.getClassName().equals("com.megacrit.cardcrawl.potions.AbstractPotion")) &&
-							(fi.getFieldName().equals("ID"))) 
-												
-						fi.replace("$_ = $proceed($$) != ww_relics.potions.ChallengerCoin.ID || ");
-				}
-			};
+		@SpireInsertPatch(
+				rloc=8,
+				localvars={"temp", "spamCheck"}
+			)
+		public static void Insert(AbstractDungeon __instance, AbstractPotion param1, boolean param2){	
+			try {
+				Field ori_temp = __instance.getClass().getDeclaredField("temp");
+				AbstractPotion temp = (AbstractPotion) ori_temp.get(__instance);
+				if (temp.ID != "WW_Relics:Challenger_Coin") {
+					Field spamCheck = __instance.getClass().getDeclaredField("spamCheck");
+					spamCheck.set(__instance, false);
+			    }
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}
