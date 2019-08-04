@@ -1,8 +1,5 @@
 package ww_relics.patches;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.shop.ShopScreen;
@@ -14,9 +11,6 @@ import javassist.expr.NewExpr;
 import ww_relics.WW_Relics_MiscelaneaCode;
 
 public class ChallengerCoinOnlySpawnsOncePerMerchantShopPatches {
-
-	public static final Logger logger = LogManager.getLogger(
-			ChallengerCoinOnlySpawnsOncePerMerchantShopPatches.class.getName());
 	
 	@SpirePatch(
 	        clz=ShopScreen.class,
@@ -45,7 +39,6 @@ public class ChallengerCoinOnlySpawnsOncePerMerchantShopPatches {
 				{				
 					if (n.getClassName().toString().equals(StorePotion.class.getName().toString())) {
 						try {
-							logger.info("HERE IT IS");
 							n.replace("$_ = $proceed($$);"
 									+ "if ((ww_relics.WW_Relics_MiscelaneaCode.number_of_challenger_coin_potions_at_shop == 0) && "
 									+ "($_.potion.ID.equals(ww_relics.potions.ChallengerCoin.ID))){"
