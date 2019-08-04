@@ -1,16 +1,23 @@
 package ww_relics.patches;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.shop.ShopScreen;
+import com.megacrit.cardcrawl.shop.StorePotion;
 
 import javassist.CannotCompileException;
-import javassist.expr.ConstructorCall;
 import javassist.expr.ExprEditor;
+import javassist.expr.NewExpr;
 import ww_relics.WW_Relics_MiscelaneaCode;
 
 public class ChallengerCoinOnlySpawnsOncePerMerchantShopPatches {
 
+	public static final Logger logger = LogManager.getLogger(
+			ChallengerCoinOnlySpawnsOncePerMerchantShopPatches.class.getName());
+	
 	@SpirePatch(
 	        clz=ShopScreen.class,
 	        method="initPotions")
@@ -34,17 +41,19 @@ public class ChallengerCoinOnlySpawnsOncePerMerchantShopPatches {
 		{
 			return new ExprEditor() {
 				@Override
-				public void edit(ConstructorCall c)
+				public void edit(NewExpr n) throws CannotCompileException
 				{				
-					if (c.getClassName().toString().equals("com.megacrit.cardcrawl.shop.StorePotion")) {
+					if (n.getClassName().toString().equals(StorePotion.class.getName().toString())) {
 						try {
-							c.replace("$_ = $proceed($$);"
-									+ "if ((ww_relics.WW_Relics.MiscelaneaCode.number_of_challenger_coin_potions_at_shop == 0) && "
-									+ "($0.potion.ID.equals(ww_relics.potions.OutOfCombatPotion.ID)){"
-									+ "ww_relics.WW_Relics.MiscelaneaCode.incrementNumberOfChallengerCoinPotionsAtShop();"
-									+ "} else if ($0.potion.ID.equals(ww_relics.potions.OutOfCombatPotion.ID)){"
-										+ "while ($0.potion.ID.equals(ww_relics.potions.OutOfCombatPotion.ID)){"
-											+ "$0 = = new StorePotion(AbstractDungeon.returnRandomPotion(), i, this);"
+							logger.info("HERE IT IS");
+							n.replace("$_ = $proceed($$);"
+									+ "if ((ww_relics.WW_Relics_MiscelaneaCode.number_of_challenger_coin_potions_at_shop == 0) && "
+									+ "($_.potion.ID.equals(ww_relics.potions.ChallengerCoin.ID))){"
+									+ "ww_relics.WW_Relics_MiscelaneaCode.incrementNumberOfChallengerCoinPotionsAtShop();"
+									+ "} else if ($_.potion.ID.equals(ww_relics.potions.ChallengerCoin.ID)){"
+										+ "while ($_.potion.ID.equals(ww_relics.potions.ChallengerCoin.ID)){"
+											+ "$_ == new com.megacrit.cardcrawl.shop.StorePotion("
+												+ "com.megacrit.cardcrawl.dungeons.AbstractDungeon.returnRandomPotion(), i, this);"
 										+ "}"
 									+ "}");
 						} catch (CannotCompileException e) {
