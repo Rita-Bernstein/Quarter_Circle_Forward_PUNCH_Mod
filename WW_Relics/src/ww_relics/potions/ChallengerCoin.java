@@ -47,6 +47,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	
 	//Also, won't spawn in situations where FruitJuice wouldn't,
 	//and only shows up once per shop at most
+	//More details in code at ww_relics.patches.
 	public static final PotionRarity RARITY = PotionRarity.RARE;
 	
 	//Size apparently creates the recipient of the potion.
