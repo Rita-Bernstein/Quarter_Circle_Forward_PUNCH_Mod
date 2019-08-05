@@ -340,11 +340,16 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			
 			for (int i = 0; i < quant; i++) {
 				
-				loadChallengeCoinRoomMadeVariables(config, class_name, i);
+				if (sanitizationOfPossibleSaveFileAbandonedChallengeCoinRoomMadeVariables(config, class_name, i)) {
+					logger.info("Found act " + AbstractDungeon.actNum++ + " abandoned");
+					logger.info("Challenger Coin data. Sanitized it.");
+				}
 				
+				loadChallengeCoinRoomMadeVariables(config, class_name, i);
+					
 				PostMapGenerationChange post_map_gen_changer = 
 						createPostMapGenerationChangeForRoomChange(config, class_name, i);
-				
+					
 				logger.info("Adding post map generation change");
 				PostMapGenerationManager.addPostMapGenerationChange(post_map_gen_changer);
 			}
@@ -377,6 +382,20 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		if (ChallengerCoin.saved_map_y_position != null) saved_map_y_position.clear();
 		if (ChallengerCoin.saved_map_room != null) saved_map_room.clear();
 		if (ChallengerCoin.saved_post_map_gen_use_priority != null) saved_post_map_gen_use_priority.clear();
+	}
+	
+	private static boolean sanitizationOfPossibleSaveFileAbandonedChallengeCoinRoomMadeVariables(
+			final SpireConfig config, String class_name, int position) {
+		
+		int current_act = AbstractDungeon.actNum;
+		int next_act = current_act++;
+		
+		if (config.getInt("Challenge_Coin_Saved_Act_" + class_name + "_" + position) == next_act) {
+			config.setInt("Challenge_Coin_Saved_Act_" + class_name + "_" + position, Integer.MAX_VALUE);
+	    	return true;
+		}
+		return false;
+		
 	}
 	
 	private static void loadChallengeCoinRoomMadeVariables(
