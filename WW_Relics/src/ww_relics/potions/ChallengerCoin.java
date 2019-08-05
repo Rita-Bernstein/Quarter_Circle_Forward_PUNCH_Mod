@@ -80,12 +80,20 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		this.isThrown = false;
 		this.tips.add(new PowerTip(this.name, this.description));
 		
-		if (saved_save_slot == null) saved_save_slot = new ArrayList<Integer>();
-		if (saved_act == null) saved_act = new ArrayList<Integer>();
-		if (saved_map_x_position == null) saved_map_x_position = new ArrayList<Integer>();
-		if (saved_map_y_position == null) saved_map_y_position = new ArrayList<Integer>();
-		if (saved_map_room == null) saved_map_room = new ArrayList<String>();
-		if (saved_post_map_gen_use_priority == null) saved_post_map_gen_use_priority = new ArrayList<Integer>();
+		avoidNullBugsCreatingArrayLists();
+	}
+	
+	private static void avoidNullBugsCreatingArrayLists() {
+		if (ChallengerCoin.saved_save_slot == null) ChallengerCoin.saved_save_slot = new ArrayList<Integer>();
+		if (ChallengerCoin.saved_act == null) ChallengerCoin.saved_act = new ArrayList<Integer>();
+		if (ChallengerCoin.saved_map_x_position == null) ChallengerCoin.saved_map_x_position = 
+				new ArrayList<Integer>();
+		if (ChallengerCoin.saved_map_y_position == null) ChallengerCoin.saved_map_y_position = 
+				new ArrayList<Integer>();
+		if (ChallengerCoin.saved_map_room == null) ChallengerCoin.saved_map_room =
+				new ArrayList<String>();
+		if (ChallengerCoin.saved_post_map_gen_use_priority == null) 
+			ChallengerCoin.saved_post_map_gen_use_priority = new ArrayList<Integer>();
 	}
 	
 	private String makeDescription() {
@@ -363,23 +371,12 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
     }
 	
 	private static void cleanArrayLists() {
+		if (ChallengerCoin.saved_save_slot != null) saved_save_slot.clear();
 		if (ChallengerCoin.saved_act != null) saved_act.clear();
 		if (ChallengerCoin.saved_map_x_position != null) saved_map_x_position.clear();
 		if (ChallengerCoin.saved_map_y_position != null) saved_map_y_position.clear();
 		if (ChallengerCoin.saved_map_room != null) saved_map_room.clear();
 		if (ChallengerCoin.saved_post_map_gen_use_priority != null) saved_post_map_gen_use_priority.clear();
-	}
-	
-	private static void avoidNullBugsCreatingArrayLists() {
-		if (ChallengerCoin.saved_act == null) ChallengerCoin.saved_act = new ArrayList<Integer>();
-		if (ChallengerCoin.saved_map_x_position == null) ChallengerCoin.saved_map_x_position = 
-				new ArrayList<Integer>();
-		if (ChallengerCoin.saved_map_y_position == null) ChallengerCoin.saved_map_y_position = 
-				new ArrayList<Integer>();
-		if (ChallengerCoin.saved_map_room == null) ChallengerCoin.saved_map_room =
-				new ArrayList<String>();
-		if (ChallengerCoin.saved_post_map_gen_use_priority == null) 
-			ChallengerCoin.saved_post_map_gen_use_priority = new ArrayList<Integer>();
 	}
 	
 	private static void loadChallengeCoinRoomMadeVariables(
