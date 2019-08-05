@@ -45,8 +45,8 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	public static final String NAME = potionStrings.NAME;
 	public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
 	
-	//Here it says Rare, but it will be event or relic only.
-	//It won't be sold at shops, at least not the base game shop.
+	//Also, won't spawn in situations where FruitJuice wouldn't,
+	//and only shows up once per shop at most
 	public static final PotionRarity RARITY = PotionRarity.RARE;
 	
 	//Size apparently creates the recipient of the potion.
@@ -59,6 +59,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	
 	public static final Logger logger = LogManager.getLogger(ChallengerCoin.class.getName());
 	
+	public static ArrayList<Integer> saved_save_slot;
 	public static ArrayList<Integer> saved_act;
 	public static ArrayList<Integer> saved_map_x_position, saved_map_y_position;
 	public static ArrayList<String> saved_map_room;
@@ -78,6 +79,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		this.isThrown = false;
 		this.tips.add(new PowerTip(this.name, this.description));
 		
+		if (saved_save_slot == null) saved_save_slot = new ArrayList<Integer>();
 		if (saved_act == null) saved_act = new ArrayList<Integer>();
 		if (saved_map_x_position == null) saved_map_x_position = new ArrayList<Integer>();
 		if (saved_map_y_position == null) saved_map_y_position = new ArrayList<Integer>();
@@ -193,6 +195,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			AbstractRoom new_room;
 			
 			if (map_changes_arent_being_loaded) {
+				saved_save_slot.add(CardCrawlGame.saveSlot);
 				saved_act.add(AbstractDungeon.actNum);
 				saved_map_x_position.add(x);
 				saved_map_y_position.add(y);
@@ -241,7 +244,8 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		if (position == -1) return false;
 		else {
 			
-			if (saved_act.get(position) != AbstractDungeon.actNum) return false;
+			if ((saved_save_slot.get(position) != CardCrawlGame.saveSlot) || 
+					(saved_act.get(position) != AbstractDungeon.actNum)) return false;
 			else return true;
 
 		}
@@ -300,12 +304,15 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	
 	private static void saveChallengeCoinRoomMadeVariables(
 			final SpireConfig config, String class_name, int position) {
+		
+		config.setInt("Challenge_Coin_Save_Slot_" + class_name + "_" + position, saved_save_slot.get(position));
 		config.setInt("Challenge_Coin_Saved_Act_" + class_name + "_" + position, saved_act.get(position));
 		config.setInt("Challenger_Coin_X_" + class_name + "_" + position, saved_map_x_position.get(position));
     	config.setInt("Challenger_Coin_Y_" + class_name + "_" + position, saved_map_y_position.get(position));
     	config.setString("Challenger_Coin_Room_" + class_name + "_" + position, saved_map_room.get(position));
     	config.setInt("Challenger_Coin_priority_" + class_name + "_" + position,
     			saved_post_map_gen_use_priority.get(position));
+    	
 	}
 	
 	public static void load(final SpireConfig config) {
@@ -377,6 +384,8 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 	private static void loadChallengeCoinRoomMadeVariables(
 			final SpireConfig config, String class_name, int position) {
 		
+		ChallengerCoin.saved_save_slot.add(
+				config.getInt("Challenge_Coin_Save_Slot_" + class_name + "_" + position));
 		ChallengerCoin.saved_act.add(
 				config.getInt("Challenge_Coin_Saved_Act_" + class_name + "_" + position));
 		ChallengerCoin.saved_map_x_position.add(
@@ -419,6 +428,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			config.remove("Challenger_Coin_Number_Of_Rooms_Made_" + class_name);
 			
 			for (int i = 0; i < count; i++) {
+				config.remove("Challenge_Coin_Save_Slot_" + class_name + "_" + i);
 				config.remove("Challenge_Coin_Saved_Act_" + class_name + "_" + i);
 				config.remove("Challenger_Coin_X_" + class_name + "_" + i);
 		    	config.remove("Challenger_Coin_Y_" + class_name + "_" + i);
@@ -426,6 +436,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		    	config.remove("Challenger_Coin_priority_" + class_name + "_" + i);
 			}
 			
+			saved_save_slot.clear(); saved_save_slot = new ArrayList<Integer>();
 			saved_act.clear(); saved_act = new ArrayList<Integer>();
 			saved_map_x_position.clear(); saved_map_x_position = new ArrayList<Integer>();
 			saved_map_y_position.clear(); saved_map_y_position = new ArrayList<Integer>();
