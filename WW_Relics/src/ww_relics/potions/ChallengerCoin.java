@@ -318,17 +318,17 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			final SpireConfig config, String class_name, int position) {
 		
 		config.setInt("Challenge_Coin_Save_Slot_" + class_name + "_"
-				+ "Save_Slot_" + CardCrawlGame.saveSlot + position, saved_save_slot.get(position));
+				+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position, saved_save_slot.get(position));
 		config.setInt("Challenge_Coin_Saved_Act_" + class_name + "_"
-				+ "Save_Slot_" + CardCrawlGame.saveSlot + position, saved_act.get(position));
+				+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position, saved_act.get(position));
 		config.setInt("Challenger_Coin_X_" + class_name + "_"
-				+ "Save_Slot_" + CardCrawlGame.saveSlot + position, saved_map_x_position.get(position));
+				+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position, saved_map_x_position.get(position));
     	config.setInt("Challenger_Coin_Y_" + class_name + "_"
-    			+ "Save_Slot_" + CardCrawlGame.saveSlot + position, saved_map_y_position.get(position));
+    			+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position, saved_map_y_position.get(position));
     	config.setString("Challenger_Coin_Room_" + class_name + "_"
-    			+ "Save_Slot_" + CardCrawlGame.saveSlot + position, saved_map_room.get(position));
+    			+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position, saved_map_room.get(position));
     	config.setInt("Challenger_Coin_priority_" + class_name + "_"
-    			+ "Save_Slot_" + CardCrawlGame.saveSlot + position,
+    			+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position,
     			saved_post_map_gen_use_priority.get(position));
     	
 	}
@@ -404,9 +404,9 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		int next_act = current_act++;
 		
 		if (config.getInt("Challenge_Coin_Saved_Act_" + class_name + "_"
-				+ "Save_Slot_" + CardCrawlGame.saveSlot + position) == next_act) {
+				+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position) == next_act) {
 			config.setInt("Challenge_Coin_Saved_Act_" + class_name + "_"
-				+ "Save_Slot_" + CardCrawlGame.saveSlot + position, Integer.MAX_VALUE);
+				+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position, Integer.MAX_VALUE);
 	    	return true;
 		}
 		return false;
@@ -418,22 +418,22 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		
 		ChallengerCoin.saved_save_slot.add(
 				config.getInt("Challenge_Coin_Save_Slot_" + class_name + "_"
-					+ "Save_Slot_" + CardCrawlGame.saveSlot + position));
+					+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position));
 		ChallengerCoin.saved_act.add(
 				config.getInt("Challenge_Coin_Saved_Act_" + class_name + "_"
-					+ "Save_Slot_" + CardCrawlGame.saveSlot + position));
+					+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position));
 		ChallengerCoin.saved_map_x_position.add(
 			config.getInt("Challenger_Coin_X_" + class_name + "_"
-					+ "Save_Slot_" + CardCrawlGame.saveSlot + position));
+					+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position));
 		ChallengerCoin.saved_map_y_position.add(
 			config.getInt("Challenger_Coin_Y_" + class_name + "_"
-					+ "Save_Slot_" + CardCrawlGame.saveSlot + position));
+					+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position));
 		ChallengerCoin.saved_map_room.add(
 			config.getString("Challenger_Coin_Room_" + class_name + "_"
-					+ "Save_Slot_" + CardCrawlGame.saveSlot + position));
+					+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position));
 		ChallengerCoin.saved_post_map_gen_use_priority.add(
 			config.getInt("Challenger_Coin_priority_" + class_name + "_"
-					+ "Save_Slot_" + CardCrawlGame.saveSlot + position));
+					+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position));
 		
 	}
 	
@@ -444,7 +444,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		
 		ChallengerCoin object = new ChallengerCoin();
 		object.post_gen_priority = config.getInt("Challenger_Coin_priority_" + class_name + "_"
-				+ "Save_Slot_" + CardCrawlGame.saveSlot + position);
+				+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position);
 		
 		post_map_gen_changer.post_map_gen_changer_object =
 				(IPostMapGenerationAddStuff) object;	
@@ -475,17 +475,17 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			
 			for (int i = 0; i < count; i++) {
 				config.remove("Challenge_Coin_Save_Slot_" + class_name + "_"
-						+ "Save_Slot_" + CardCrawlGame.saveSlot + i);
+						+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + i);
 				config.remove("Challenge_Coin_Saved_Act_" + class_name + "_"
-						+ "Save_Slot_" + CardCrawlGame.saveSlot + i);
+						+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + i);
 				config.remove("Challenger_Coin_X_" + class_name + "_"
-						+ "Save_Slot_" + CardCrawlGame.saveSlot + i);
+						+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + i);
 		    	config.remove("Challenger_Coin_Y_" + class_name + "_"
-		    			+ "Save_Slot_" + CardCrawlGame.saveSlot + i);
+		    			+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + i);
 		    	config.remove("Challenger_Coin_Room_" + class_name + "_"
-		    			+ "Save_Slot_" + CardCrawlGame.saveSlot + i);
+		    			+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + i);
 		    	config.remove("Challenger_Coin_priority_" + class_name + "_"
-		    			+ "Save_Slot_" + CardCrawlGame.saveSlot + i);
+		    			+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + i);
 			}
 			
 			saved_save_slot.clear(); saved_save_slot = new ArrayList<Integer>();
