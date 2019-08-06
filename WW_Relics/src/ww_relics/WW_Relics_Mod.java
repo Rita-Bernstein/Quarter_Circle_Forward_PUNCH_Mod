@@ -307,7 +307,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             UnceasingFlame.clear(config);
             SchoolBackpack.clear(config);
             ChallengerCoin.clear(config);
-        	config.save();
+        	//config.save();
 
         }
         catch (IOException e) {
