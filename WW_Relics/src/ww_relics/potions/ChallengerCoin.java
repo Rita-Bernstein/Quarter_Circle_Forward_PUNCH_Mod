@@ -488,12 +488,9 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		    			+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + i);
 			}
 			
-			saved_save_slot.clear(); saved_save_slot = new ArrayList<Integer>();
-			saved_act.clear(); saved_act = new ArrayList<Integer>();
-			saved_map_x_position.clear(); saved_map_x_position = new ArrayList<Integer>();
-			saved_map_y_position.clear(); saved_map_y_position = new ArrayList<Integer>();
-			saved_map_room.clear(); saved_map_room = new ArrayList<String>();
-			saved_post_map_gen_use_priority.clear(); saved_post_map_gen_use_priority = new ArrayList<Integer>();
+			cleanArrayLists();
+			
+			avoidNullBugsCreatingArrayLists();
 			
 		}		
 		
