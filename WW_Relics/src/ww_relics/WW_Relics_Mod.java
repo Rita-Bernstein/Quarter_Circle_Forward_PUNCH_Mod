@@ -300,7 +300,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
     	logger.info("Clearing Saved Data");
         try {
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
-        	config.clear();
+        	//config.clear();
             WhiteBoots.clear(config);
             DuffelBag.clear(config);
             FightingGloves.clear(config);
