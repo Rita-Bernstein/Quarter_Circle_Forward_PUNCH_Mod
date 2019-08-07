@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom.*;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.WW_Relics_MiscelaneaCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 import java.util.*;
@@ -259,6 +260,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
     		logger.info("Started saving Fighting Gloves information");
+    		logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
 
             config.setInt("fighting_gloves_1", rooms_visited);
             config.setInt("fighting_gloves_2", positive_charges);
@@ -268,7 +270,8 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-            logger.info("Finished saving Fighting Gloves info.");
+            logger.info("Finished saving Fighting Gloves info from");
+            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());	
         }
         else {
         	clear(config);
