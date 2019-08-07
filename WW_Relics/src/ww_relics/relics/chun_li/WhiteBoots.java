@@ -128,7 +128,7 @@ public class WhiteBoots extends CustomRelic {
     		logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
     		
             config.setInt("White_Boots_number_of_draws_class_" + class_name +
-            				"save_slot_" + CardCrawlGame.saveSlot, 
+            				"_save_slot_" + CardCrawlGame.saveSlot, 
             				WhiteBoots.number_of_attacks_drew);
             
             try {
@@ -151,14 +151,14 @@ public class WhiteBoots extends CustomRelic {
 		
 		if (AbstractDungeon.player.hasRelic(ID) &&
 				config.has("White_Boots_number_of_draws_class_" + class_name +
-        				"save_slot_" + CardCrawlGame.saveSlot)){
+        				"_save_slot_" + CardCrawlGame.saveSlot)){
 			
 			logger.info("Loading White Boots info from");
 			logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
 			
             WhiteBoots.number_of_attacks_drew = 
             		config.getInt("White_Boots_number_of_draws_class_" + class_name +
-            				"save_slot_" + CardCrawlGame.saveSlot);
+            				"_save_slot_" + CardCrawlGame.saveSlot);
             
             try {
 				config.load();
@@ -188,7 +188,7 @@ public class WhiteBoots extends CustomRelic {
 		logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText()); 
 		
 		config.remove("White_Boots_number_of_draws_class_" + class_name +
-				"save_slot_" + CardCrawlGame.saveSlot);
+				"_save_slot_" + CardCrawlGame.saveSlot);
 		
 		
         logger.info("Finished clearing White Boots variables from");
