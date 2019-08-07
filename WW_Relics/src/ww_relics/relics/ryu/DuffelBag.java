@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.*;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -173,10 +174,13 @@ public class DuffelBag extends CustomRelic {
 	public static void save(final SpireConfig config) {
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
-    		logger.info("Started saving Duffel Bag information");
+        	String class_name = AbstractDungeon.player.getClass().getName();
+        	
+    		logger.info("Started saving Duffel Bag information from");
     		logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
 
-            config.setInt("duffel_bag_" +
+            config.setInt("duffel_bag_class_" + class_name +
+            		"_save_slot_" + CardCrawlGame.saveSlot +
             		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used",
             			last_floor_where_relic_was_used);
             
@@ -185,11 +189,8 @@ public class DuffelBag extends CustomRelic {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-            logger.info("Finished saving Duffel Bag info");
+            logger.info("Finished saving Duffel Bag info from");
             logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
-        }
-        else {
-
         }
 
     }
