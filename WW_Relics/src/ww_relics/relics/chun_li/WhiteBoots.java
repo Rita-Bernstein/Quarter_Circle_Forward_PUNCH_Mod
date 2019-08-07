@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
@@ -119,17 +120,23 @@ public class WhiteBoots extends CustomRelic {
 	public static void save(final SpireConfig config) {
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
-    		logger.info("Started saving White Boots information");
-
-            config.setInt("White_Boots_number_of_draws",
-            		WhiteBoots.number_of_attacks_drew);
+        	String class_name = AbstractDungeon.player.getClass().getName();
+        	
+        	
+    		logger.info("Started saving White Boots information from");
+    		logger.info("class " + class_name + ", save slot " + CardCrawlGame.saveSlot + ".");
+    		
+            config.setInt("White_Boots_number_of_draws_class_" + class_name +
+            				"save_slot_" + CardCrawlGame.saveSlot, 
+            				WhiteBoots.number_of_attacks_drew);
             
             try {
 				config.save();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-            logger.info("Finished saving White Boots info.");
+            logger.info("Finished saving White Boots info from");
+    		logger.info("class " + class_name + ", save slot " + CardCrawlGame.saveSlot + ".");
         }
         else {
         	clear(config);
@@ -139,10 +146,18 @@ public class WhiteBoots extends CustomRelic {
 	
 	public static void load(final SpireConfig config) {
 		
-		logger.info("Loading White Boots info.");
-		if (AbstractDungeon.player.hasRelic(ID) && config.has("White_Boots_number_of_draws")){
-                     
-            WhiteBoots.number_of_attacks_drew = config.getInt("White_Boots_number_of_draws");
+		String class_name = AbstractDungeon.player.getClass().getName();
+		
+		if (AbstractDungeon.player.hasRelic(ID) &&
+				config.has("White_Boots_number_of_draws_class_" + class_name +
+        				"save_slot_" + CardCrawlGame.saveSlot)){
+			
+			logger.info("Loading White Boots info from");
+			logger.info("class " + class_name + ", save slot " + CardCrawlGame.saveSlot + ".");
+			
+            WhiteBoots.number_of_attacks_drew = 
+            		config.getInt("White_Boots_number_of_draws_class_" + class_name +
+            				"save_slot_" + CardCrawlGame.saveSlot);
             
             try {
 				config.load();
@@ -151,7 +166,8 @@ public class WhiteBoots extends CustomRelic {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-            logger.info("Finished loading White Boots info.");
+            logger.info("Finished loading White Boots from");
+			logger.info("class " + class_name + ", save slot " + CardCrawlGame.saveSlot + ".");
         }
 		
 		else
@@ -165,9 +181,17 @@ public class WhiteBoots extends CustomRelic {
     }
 		
 	public static void clear(final SpireConfig config) {
-		logger.info("Clearing White Boots variables.");      
-		config.remove("White_Boots_number_of_draws");
-        logger.info("Finished clearing White Boots variables.");
+		String class_name = AbstractDungeon.player.getClass().getName();
+		
+		logger.info("Clearing White Boots variables from");
+		logger.info("class " + class_name + ", save slot " + CardCrawlGame.saveSlot + ".");   
+		
+		config.remove("White_Boots_number_of_draws_class_" + class_name +
+				"save_slot_" + CardCrawlGame.saveSlot);
+		
+		
+        logger.info("Finished clearing White Boots variables from");
+		logger.info("class " + class_name + ", save slot " + CardCrawlGame.saveSlot + ".");   
 	}
 
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
