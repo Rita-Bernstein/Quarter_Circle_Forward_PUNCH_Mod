@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.WW_Relics_MiscelaneaCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class WhiteBoots extends CustomRelic {
@@ -124,7 +125,7 @@ public class WhiteBoots extends CustomRelic {
         	
         	
     		logger.info("Started saving White Boots information from");
-    		logger.info("class " + class_name + ", save slot " + CardCrawlGame.saveSlot + ".");
+    		logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
     		
             config.setInt("White_Boots_number_of_draws_class_" + class_name +
             				"save_slot_" + CardCrawlGame.saveSlot, 
@@ -136,7 +137,7 @@ public class WhiteBoots extends CustomRelic {
 				e.printStackTrace();
 			}
             logger.info("Finished saving White Boots info from");
-    		logger.info("class " + class_name + ", save slot " + CardCrawlGame.saveSlot + ".");
+            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
         }
         else {
         	clear(config);
@@ -153,7 +154,7 @@ public class WhiteBoots extends CustomRelic {
         				"save_slot_" + CardCrawlGame.saveSlot)){
 			
 			logger.info("Loading White Boots info from");
-			logger.info("class " + class_name + ", save slot " + CardCrawlGame.saveSlot + ".");
+			logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
 			
             WhiteBoots.number_of_attacks_drew = 
             		config.getInt("White_Boots_number_of_draws_class_" + class_name +
@@ -167,7 +168,7 @@ public class WhiteBoots extends CustomRelic {
 				e.printStackTrace();
 			}
             logger.info("Finished loading White Boots from");
-			logger.info("class " + class_name + ", save slot " + CardCrawlGame.saveSlot + ".");
+            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
         }
 		
 		else
@@ -184,14 +185,14 @@ public class WhiteBoots extends CustomRelic {
 		String class_name = AbstractDungeon.player.getClass().getName();
 		
 		logger.info("Clearing White Boots variables from");
-		logger.info("class " + class_name + ", save slot " + CardCrawlGame.saveSlot + ".");   
+		logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText()); 
 		
 		config.remove("White_Boots_number_of_draws_class_" + class_name +
 				"save_slot_" + CardCrawlGame.saveSlot);
 		
 		
         logger.info("Finished clearing White Boots variables from");
-		logger.info("class " + class_name + ", save slot " + CardCrawlGame.saveSlot + ".");   
+        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());  
 	}
 
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
