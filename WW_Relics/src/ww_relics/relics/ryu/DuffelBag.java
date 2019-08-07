@@ -181,7 +181,7 @@ public class DuffelBag extends CustomRelic {
 
             config.setInt("duffel_bag_class_" + class_name +
             		"_save_slot_" + CardCrawlGame.saveSlot +
-            		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used",
+            		"_class_name_" + AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used",
             			last_floor_where_relic_was_used);
             
             try {
@@ -205,12 +205,14 @@ public class DuffelBag extends CustomRelic {
 		if (AbstractDungeon.player.hasRelic(ID) &&
 				config.has("duffel_bag_class_" + class_name +
 	            		"_save_slot_" + CardCrawlGame.saveSlot +
-	            		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used")) {
+	            		"_class_name_" + AbstractDungeon.player.chosenClass.toString() +
+	            		"_last_floor_where_relic_was_used")) {
 
 			last_floor_where_relic_was_used = config.getInt(
 					"duffel_bag_class_" + class_name +
             		"_save_slot_" + CardCrawlGame.saveSlot +
-            		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used");
+            		"_class_name_" + AbstractDungeon.player.chosenClass.toString() +
+            		"_last_floor_where_relic_was_used");
 			
             try {
 				config.load();
@@ -237,14 +239,16 @@ public class DuffelBag extends CustomRelic {
 		
 		if (config.has("duffel_bag_class_" + class_name +
         		"_save_slot_" + CardCrawlGame.saveSlot +
-        		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used")) {
+        		"_class_name_" + AbstractDungeon.player.chosenClass.toString() +
+        		"_last_floor_where_relic_was_used")) {
 			
 			logger.info("Clearing Duffel Bag variables from");
 	        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());			
 			
 			config.remove("duffel_bag_class_" + class_name +
 	        		"_save_slot_" + CardCrawlGame.saveSlot +
-	        		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used");
+	        		"_class_name_" + AbstractDungeon.player.chosenClass.toString() +
+	        		"_last_floor_where_relic_was_used");
 			
 			logger.info("Finished clearing Duffel Bag variables from");
 	        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());	
