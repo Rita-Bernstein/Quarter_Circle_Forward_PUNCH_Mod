@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.*;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.WW_Relics_MiscelaneaCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class DuffelBag extends CustomRelic {
@@ -173,6 +174,7 @@ public class DuffelBag extends CustomRelic {
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
     		logger.info("Started saving Duffel Bag information");
+    		logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
 
             config.setInt("duffel_bag_" +
             		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used",
@@ -183,7 +185,8 @@ public class DuffelBag extends CustomRelic {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-            logger.info("Finished saving Duffel Bag info.");
+            logger.info("Finished saving Duffel Bag info");
+            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
         }
         else {
 
