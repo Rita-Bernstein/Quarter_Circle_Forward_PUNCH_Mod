@@ -9,6 +9,7 @@ import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.cards.*;
 import com.megacrit.cardcrawl.cards.CardGroup.*;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -262,8 +263,17 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
     		logger.info("Started saving Fighting Gloves information");
     		logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
 
-            config.setInt("fighting_gloves_1", rooms_visited);
-            config.setInt("fighting_gloves_2", positive_charges);
+        	String class_name = AbstractDungeon.player.getClass().getName();
+    		
+            config.setInt("fighting_gloves_class_" + class_name +
+            		"_save_slot_" + CardCrawlGame.saveSlot +
+            		"_rooms_visited", rooms_visited);
+            config.setInt("fighting_gloves_class_" + class_name +
+            		"_save_slot_" + CardCrawlGame.saveSlot +
+            		"_positive_charges", positive_charges);
+            
+            
+    		 +
             
             try {
 				config.save();
