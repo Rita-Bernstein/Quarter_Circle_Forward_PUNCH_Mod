@@ -401,7 +401,9 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 			final SpireConfig config, String class_name, int position) {
 		
 		int current_act = AbstractDungeon.actNum;
-		int next_act = current_act++;
+		//current_act++ increments current_act AFTER the value is passed to next_act.
+		//++current_act does the job here.
+		int next_act = ++current_act;
 		
 		if (config.getInt("Challenge_Coin_Saved_Act_" + class_name + "_"
 				+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position) == next_act) {
@@ -460,9 +462,6 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		
 		logger.info("Clearing Challenger Coin variables from ");
 		logger.info("character " + class_name + ", save slot " + CardCrawlGame.saveSlot);
-		
-    	
-		
 		
 		if (config.has("Challenger_Coin_Number_Of_Rooms_Made_" + class_name
 				+ "Save_Slot_" + CardCrawlGame.saveSlot)) {
