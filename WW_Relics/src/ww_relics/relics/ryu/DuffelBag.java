@@ -197,12 +197,19 @@ public class DuffelBag extends CustomRelic {
 	
 	public static void load(final SpireConfig config) {
 		
-		logger.info("Loading Duffel Bag info.");
+		logger.info("Loading Duffel Bag info");
+        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+        
+    	String class_name = AbstractDungeon.player.getClass().getName();
+		
 		if (AbstractDungeon.player.hasRelic(ID) &&
-				config.has("duffel_bag_" +
+				config.has("duffel_bag_class_" + class_name +
+	            		"_save_slot_" + CardCrawlGame.saveSlot +
 	            		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used")) {
 
-			last_floor_where_relic_was_used = config.getInt("duffel_bag_" +
+			last_floor_where_relic_was_used = config.getInt(
+					"duffel_bag_class_" + class_name +
+            		"_save_slot_" + CardCrawlGame.saveSlot +
             		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used");
 			
             try {
@@ -211,7 +218,8 @@ public class DuffelBag extends CustomRelic {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-            logger.info("Finished loading Duffel Bag info.");
+            logger.info("Finished loading Duffel Bag info");
+            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
         }
 		
 		else
@@ -224,17 +232,25 @@ public class DuffelBag extends CustomRelic {
     }
 	
 	public static void clear(final SpireConfig config) {
+
+    	String class_name = AbstractDungeon.player.getClass().getName();
 		
-		logger.info("duffel_bag_" +
-        		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used");
-		if (config.has("duffel_bag_" +
+		if (config.has("duffel_bag_class_" + class_name +
+        		"_save_slot_" + CardCrawlGame.saveSlot +
         		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used")) {
-			logger.info("Clearing Duffel Bag variables.");
-			config.remove("duffel_bag_" +
-            		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used");
-			logger.info("Finished clearing Duffel Bag variables.");
+			
+			logger.info("Clearing Duffel Bag variables from");
+	        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());			
+			
+			config.remove("duffel_bag_class_" + class_name +
+	        		"_save_slot_" + CardCrawlGame.saveSlot +
+	        		AbstractDungeon.player.chosenClass.toString() + "_last_floor_where_relic_was_used");
+			
+			logger.info("Finished clearing Duffel Bag variables from");
+	        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());	
+			
 		} else {
-			logger.info("No Duffel Bag variables to clean in this case.");
+			logger.info("No Duffel Bag variables to clean from this case.");
 		}
 	
         
