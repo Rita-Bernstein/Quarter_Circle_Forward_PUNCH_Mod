@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.WW_Relics_MiscelaneaCode;
 import ww_relics.powers.FlamingPower;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
@@ -140,7 +141,8 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	public static void save(final SpireConfig config) {
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
-    		logger.info("Started saving Unceasing Flame information");
+    		logger.info("Started saving Unceasing Flame information from");
+            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
 
             config.setInt("Unceasing_Flame_number_of_charges_at_battle_start",
             		UnceasingFlame.charges_at_battle_start);
@@ -150,7 +152,9 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-            logger.info("Finished saving White Boots info.");
+            
+            logger.info("Finished saving White Boots info from");
+            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
         }
         else {
         	clear(config);
