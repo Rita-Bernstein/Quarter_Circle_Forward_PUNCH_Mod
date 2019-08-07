@@ -271,10 +271,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
             config.setInt("fighting_gloves_class_" + class_name +
             		"_save_slot_" + CardCrawlGame.saveSlot +
             		"_positive_charges", positive_charges);
-            
-            
-    		 +
-            
+
             try {
 				config.save();
 			} catch (IOException e) {
