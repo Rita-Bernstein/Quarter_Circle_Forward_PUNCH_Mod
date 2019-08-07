@@ -274,7 +274,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
             logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());	
         }
         else {
-        	clear(config);
+
         }
 
     }
