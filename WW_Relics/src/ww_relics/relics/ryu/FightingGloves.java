@@ -260,7 +260,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	public static void save(final SpireConfig config) {
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
-    		logger.info("Started saving Fighting Gloves information");
+    		logger.info("Started saving Fighting Gloves information from");
     		logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
 
         	String class_name = AbstractDungeon.player.getClass().getName();
@@ -288,11 +288,22 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	public static void load(final SpireConfig config) {
 		
-		logger.info("Loading Fighting Gloves info.");
-		if (AbstractDungeon.player.hasRelic(ID) && config.has("fighting_gloves_1")) {
+		logger.info("Loading Fighting Gloves info from");
+        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+		
+    	String class_name = AbstractDungeon.player.getClass().getName();
+		
+		if (AbstractDungeon.player.hasRelic(ID) &&
+				config.has("fighting_gloves_class_" + class_name +
+	            		"_save_slot_" + CardCrawlGame.saveSlot +
+	            		"_rooms_visited")) {
 
-			rooms_visited = config.getInt("fighting_gloves_1");
-			setCharges(config.getInt("fighting_gloves_2"));
+			rooms_visited = config.getInt("fighting_gloves_class_" + class_name +
+            								"_save_slot_" + CardCrawlGame.saveSlot +
+            								"_rooms_visited");
+			setCharges(config.getInt("fighting_gloves_class_" + class_name +
+            							"_save_slot_" + CardCrawlGame.saveSlot +
+            							"_positive_charges"));
 			
             try {
 				config.load();
@@ -300,7 +311,8 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-            logger.info("Finished loading Fighting Gloves info.");
+            logger.info("Finished loading Fighting Gloves info from");
+            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
         }
 		
 		else
@@ -319,10 +331,20 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	}
 	
 	public static void clear(final SpireConfig config) {
-		logger.info("Clearing Fighting Gloves variables.");
-        config.remove("fighting_gloves_1");
-        config.remove("fighting_gloves_2");
-        logger.info("Finished clearing Fighting Gloves variables.");
+		logger.info("Clearing Fighting Gloves variables from");
+        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+		
+    	String class_name = AbstractDungeon.player.getClass().getName();
+		
+        config.remove("fighting_gloves_class_" + class_name +
+        		"_save_slot_" + CardCrawlGame.saveSlot +
+        		"_rooms_visited");
+        config.remove("fighting_gloves_class_" + class_name +
+        		"_save_slot_" + CardCrawlGame.saveSlot +
+        		"_positive_charges");
+        
+        logger.info("Finished clearing Fighting Gloves variables from");
+        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
 	}
 
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
