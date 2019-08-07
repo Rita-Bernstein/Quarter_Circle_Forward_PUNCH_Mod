@@ -174,7 +174,7 @@ public class WhiteBoots extends CustomRelic {
 		else
 		{
 			logger.info("There's no info, setting variables accordingly.");
-			//number_of_attacks_drew = 0;
+			number_of_attacks_drew = 0;
 			logger.info("Finished setting White Boots variables.");
 		}
 		
