@@ -2,6 +2,7 @@ package ww_relics;
 
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer.PlayerClass;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
@@ -53,6 +54,11 @@ public class WW_Relics_MiscelaneaCode {
 		if (!Settings.FAST_MODE) {
         	AbstractDungeon.actionManager.addToBottom(new WaitAction(amount));
         }
+    }
+    
+    public static String classAndSaveSlotText() {
+    	return "character " + AbstractDungeon.player.getClass().getName() +
+    			", save slot " + CardCrawlGame.saveSlot + ".";
     }
 	
 }
