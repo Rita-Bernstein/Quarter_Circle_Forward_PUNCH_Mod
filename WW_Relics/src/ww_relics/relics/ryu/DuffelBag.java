@@ -186,7 +186,7 @@ public class DuffelBag extends CustomRelic {
             logger.info("Finished saving Duffel Bag info.");
         }
         else {
-        	clear(config);
+
         }
 
     }
