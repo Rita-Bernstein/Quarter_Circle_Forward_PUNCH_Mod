@@ -202,7 +202,14 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing Unceasing Flame variables.");
-        config.remove("Unceasing_Flame_number_of_charges_at_battle_start");
+		
+    	String class_name = AbstractDungeon.player.getClass().getName();
+		
+        config.remove("Unceasing_Flame_class_" + class_name +
+        		"_save_slot_" + CardCrawlGame.saveSlot +
+        		"_number_of_charges_at_battle_start");
+        
+        
         logger.info("Finished clearing Unceasing Flame variables.");
 	}
 	
