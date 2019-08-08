@@ -203,7 +203,8 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
     }
 	
 	public static void clear(final SpireConfig config) {
-		logger.info("Clearing Unceasing Flame variables.");
+		logger.info("Clearing Unceasing Flame variables from");
+        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
 		
     	String class_name = AbstractDungeon.player.getClass().getName();
 		
@@ -212,7 +213,8 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
         		"_number_of_charges_at_battle_start");
         
         
-        logger.info("Finished clearing Unceasing Flame variables.");
+        logger.info("Finished clearing Unceasing Flame variables from");
+        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
 	}
 	
 	public AbstractRelic makeCopy() {
