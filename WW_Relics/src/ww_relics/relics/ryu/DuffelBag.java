@@ -20,6 +20,7 @@ import basemod.abstracts.CustomRelic;
 import ww_relics.WW_Relics_MiscelaneaCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
+//also known as: The champion relic when they are measured regarding bug fixing. -_- 
 public class DuffelBag extends CustomRelic {
 	
 	public static final String ID = "WW_Relics:Duffel_Bag";
