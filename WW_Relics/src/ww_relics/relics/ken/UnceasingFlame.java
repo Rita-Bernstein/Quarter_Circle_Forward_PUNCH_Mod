@@ -170,12 +170,14 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 		
 		logger.info("Loading Unceasing Flame info from");
         logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
-		
-		if (AbstractDungeon.player.hasRelic(ID) && 
-				config.has("Unceasing_Flame_number_of_charges_at_battle_start")) {
 
-        	String class_name = AbstractDungeon.player.getClass().getName();
-			
+    	String class_name = AbstractDungeon.player.getClass().getName();       
+        
+		if (AbstractDungeon.player.hasRelic(ID) && 
+				config.has("Unceasing_Flame_class_" + class_name +
+	            		"_save_slot_" + CardCrawlGame.saveSlot +
+	            		"_number_of_charges_at_battle_start")) {
+
 			charges_at_battle_start = config.getInt("Unceasing_Flame_class_" + class_name +
             		"_save_slot_" + CardCrawlGame.saveSlot +
             		"_number_of_charges_at_battle_start");
