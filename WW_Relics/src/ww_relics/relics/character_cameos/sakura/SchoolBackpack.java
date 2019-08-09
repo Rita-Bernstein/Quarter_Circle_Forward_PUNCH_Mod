@@ -419,7 +419,9 @@ public class SchoolBackpack extends CustomRelic {
 	
 	public static void load(final SpireConfig config) {
 		
-		logger.info("Loading School Backpack info.");
+		logger.info("Loading School Backpack info from");
+        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+		
 		if (AbstractDungeon.player.hasRelic(ID) && config.has("school_backpack_1")) {
 
 			number_of_cards_left = config.getInt("school_backpack_1");
@@ -436,7 +438,8 @@ public class SchoolBackpack extends CustomRelic {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-            logger.info("Finished loading School Backpack info.");
+            logger.info("Finished loading School Backpack info from");
+            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
         }
 		
 		else
