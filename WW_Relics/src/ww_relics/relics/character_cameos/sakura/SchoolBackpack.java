@@ -491,6 +491,8 @@ public class SchoolBackpack extends CustomRelic {
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing School Backpack variables.");
 		
+        String class_name = AbstractDungeon.player.getClass().getName();
+		
 		//yeah, I know this part could be improved, but I don't have willpower to do it so now.
 		//So...
 		number_of_cards_left = NUMBER_OF_EXTRA_CARDS;
@@ -498,9 +500,17 @@ public class SchoolBackpack extends CustomRelic {
 		floor_of_last_stored_reward = 0;
 		card_reward = null;
 		
-        config.remove("school_backpack_1");
-        config.remove("school_backpack_3");
-        config.remove("school_backpack_4");
+        config.remove("school_backpack_class_" + class_name +
+						"_save_slot_" + CardCrawlGame.saveSlot +
+						"_number_of_cards_left");
+        config.remove("school_backpack_class_" + class_name +
+						"_save_slot_" + CardCrawlGame.saveSlot +
+						"_floor_of_last_stored_reward");
+        config.remove("school_backpack_class_" + class_name +
+							"_save_slot_" + CardCrawlGame.saveSlot +
+							"_empty_relic");
+		
+		empty_relic = config.getBool();
         
         if (config.has("school_backpack_reward_size")) {
         	clearCardRewardStored(config);
