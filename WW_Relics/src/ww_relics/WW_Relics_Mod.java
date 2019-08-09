@@ -260,10 +260,9 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		}
     }
     
-    
-	
 	public static void loadRunData() {
-        logger.info("Loading Save Data");
+        logger.info("Loading World Warriors Relics data from");
+    	logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
         try {
             final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             WhiteBoots.load(config);
@@ -276,11 +275,12 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
         catch (IOException e) {
             e.printStackTrace();
         }
-        logger.info("Done Loading Save Data");
+        logger.info("Done loading World Warriors Relics data");
 	}
 	
     public static void saveRunData() {
-        logger.info("Saving Data");
+        logger.info("Saving World Warriors Relics data from");
+    	logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
         try {
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             WhiteBoots.save(config);
@@ -293,11 +293,12 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
         catch (IOException e) {
         	e.printStackTrace();
         }
-        logger.info("Done Saving Data");
+        logger.info("Done saving World Warriors Relics data");
     }
     
     public static void clearRunData() {
-    	logger.info("Clearing Saved Data");
+    	logger.info("Clearing Saved World Warriors Relics data from");
+    	logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
         try {
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             WhiteBoots.clear(config);
@@ -312,7 +313,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
         catch (IOException e) {
         	e.printStackTrace();
         }
-        logger.info("Done Clearing Saved Data");
+        logger.info("Done clearing saved World Warriors Relics data");
     }
     
     public void receiveStartGame() {
