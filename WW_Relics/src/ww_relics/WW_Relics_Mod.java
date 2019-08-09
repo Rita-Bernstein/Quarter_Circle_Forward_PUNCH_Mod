@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
 
@@ -39,8 +40,7 @@ import ww_relics.relics.ryu.*;
 @SpireInitializer
 public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
 			EditCardsSubscriber, 
-			EditKeywordsSubscriber, PostInitializeSubscriber, PreStartGameSubscriber,
-			PostDungeonInitializeSubscriber, 
+			EditKeywordsSubscriber, PostInitializeSubscriber, PostDungeonInitializeSubscriber, 
 			PostCreateStartingRelicsSubscriber, StartGameSubscriber
 	{
 
@@ -63,21 +63,6 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	public String getJsonText(String filepath) {
 		return Gdx.files.internal(filepath).readString(String.valueOf(StandardCharsets.UTF_8));
-	}
-	
-
-	@Override
-	public void receivePreStartGame() {
-		SpireConfig config;
-		try {
-			config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
-			ChallengerCoin.sanitizingAct1(config);
-		} catch (IOException e) {
-			logger.info("Sanitization of World Warriors Relics failed");
-			logger.info("Stack trace below.");
-			e.printStackTrace();
-		}
-
 	}
 	
 	//Yes, I know. I will refactor this hard coded part later.
@@ -287,6 +272,9 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             UnceasingFlame.load(config);
             SchoolBackpack.load(config);
             ChallengerCoin.load(config);
+            if ((AbstractDungeon.actNum == 1) && (AbstractDungeon.floorNum < 2)) {
+            	ChallengerCoin.sanitizingAct1(config);
+            }
         }
         catch (IOException e) {
             e.printStackTrace();
