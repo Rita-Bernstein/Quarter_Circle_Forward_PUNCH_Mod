@@ -39,7 +39,8 @@ import ww_relics.relics.ryu.*;
 @SpireInitializer
 public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
 			EditCardsSubscriber, 
-			EditKeywordsSubscriber, PostInitializeSubscriber, PostDungeonInitializeSubscriber, 
+			EditKeywordsSubscriber, PostInitializeSubscriber, PreStartGameSubscriber,
+			PostDungeonInitializeSubscriber, 
 			PostCreateStartingRelicsSubscriber, StartGameSubscriber
 	{
 
@@ -62,6 +63,21 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	public String getJsonText(String filepath) {
 		return Gdx.files.internal(filepath).readString(String.valueOf(StandardCharsets.UTF_8));
+	}
+	
+
+	@Override
+	public void receivePreStartGame() {
+		SpireConfig config;
+		try {
+			config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
+			ChallengerCoin.sanitizingAct1(config);
+		} catch (IOException e) {
+			logger.info("Sanitization of World Warriors Relics failed");
+			logger.info("Stack trace below.");
+			e.printStackTrace();
+		}
+
 	}
 	
 	//Yes, I know. I will refactor this hard coded part later.
