@@ -492,14 +492,26 @@ public class SchoolBackpack extends CustomRelic {
 	
 	public static void loadCardRewardStored(final SpireConfig config) {
 		
-		int size = config.getInt("school_backpack_reward_size");
+        String class_name = AbstractDungeon.player.getClass().getName();
+		
+		int size = config.getInt("school_backpack_" + class_name +
+									"_save_slot_" + CardCrawlGame.saveSlot +
+									"_reward_size");
 		
 		for (int i = 0; i < size; i++) {
 			
-			card_reward_rarity.add(config.getString("school_backpack_reward_rarity_" + String.valueOf(i)));			
-			card_reward_id.add(config.getString("school_backpack_reward_" + String.valueOf(i)));
-			card_reward_upgrade.add(config.getBool("school_backpack_reward_upgrade_" + String.valueOf(i)));
-		
+			card_reward_rarity.add(config.getString("school_backpack_" + class_name + 
+								                	"_save_slot_" + CardCrawlGame.saveSlot + 
+								                	"_reward_rarity_" + String.valueOf(i)));		
+			
+			card_reward_id.add(config.getString("school_backpack_" + class_name +
+								    				"_save_slot_" + CardCrawlGame.saveSlot +
+								    				"_reward_" + String.valueOf(i)));
+			
+			card_reward_upgrade.add(config.getBool("school_backpack" + class_name + 
+								                	"_save_slot_" + CardCrawlGame.saveSlot + 
+								                	"_reward_upgrade_" + String.valueOf(i)));
+			
 		}
 	}
 	
