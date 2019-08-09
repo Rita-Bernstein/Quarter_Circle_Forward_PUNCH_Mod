@@ -435,17 +435,28 @@ public class SchoolBackpack extends CustomRelic {
 		
 		logger.info("Loading School Backpack info from");
         logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+        
+        String class_name = AbstractDungeon.player.getClass().getName();
 		
-		if (AbstractDungeon.player.hasRelic(ID) && config.has("school_backpack_1")) {
+		if (AbstractDungeon.player.hasRelic(ID) && 
+				config.has("school_backpack_class_" + class_name +
+							"_save_slot_" + CardCrawlGame.saveSlot +
+							"_number_of_cards_left")) {
 
-			number_of_cards_left = config.getInt("school_backpack_1");
+			number_of_cards_left = config.getInt("school_backpack_class_" + class_name +
+													"_save_slot_" + CardCrawlGame.saveSlot +
+													"_number_of_cards_left");
 			
 			loadCardRewardStored(config);
 			
-			floor_of_last_stored_reward = config.getInt("school_backpack_3");
+			floor_of_last_stored_reward = config.getInt("school_backpack_class_" + class_name +
+									    				"_save_slot_" + CardCrawlGame.saveSlot +
+									    				"_floor_of_last_stored_reward");
 			
-			empty_relic = config.getBool("school_backpack_4");
-			
+			empty_relic = config.getBool("school_backpack_class_" + class_name +
+						    				"_save_slot_" + CardCrawlGame.saveSlot +
+						    				"_empty_relic");
+				
             try {
 				config.load();
 			} catch (IOException e) {
