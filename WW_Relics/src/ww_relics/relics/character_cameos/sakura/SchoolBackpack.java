@@ -489,7 +489,8 @@ public class SchoolBackpack extends CustomRelic {
 	}
 	
 	public static void clear(final SpireConfig config) {
-		logger.info("Clearing School Backpack variables.");
+		logger.info("Clearing School Backpack variables from");
+        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
 		
         String class_name = AbstractDungeon.player.getClass().getName();
 		
@@ -507,16 +508,15 @@ public class SchoolBackpack extends CustomRelic {
 						"_save_slot_" + CardCrawlGame.saveSlot +
 						"_floor_of_last_stored_reward");
         config.remove("school_backpack_class_" + class_name +
-							"_save_slot_" + CardCrawlGame.saveSlot +
-							"_empty_relic");
-		
-		empty_relic = config.getBool();
+						"_save_slot_" + CardCrawlGame.saveSlot +
+						"_empty_relic");
         
         if (config.has("school_backpack_reward_size")) {
         	clearCardRewardStored(config);
         }
         
-        logger.info("Finished clearing School Backpack variables.");
+        logger.info("Finished clearing School Backpack variables from");
+        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
 	}
 	
 	public static void clearCardRewardStored(final SpireConfig config) {
