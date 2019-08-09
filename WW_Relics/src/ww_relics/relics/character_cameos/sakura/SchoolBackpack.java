@@ -413,18 +413,33 @@ public class SchoolBackpack extends CustomRelic {
     }
 	
 	public static void storeCardRewardCreated(final SpireConfig config, RewardItem card_reward) {
+
+    	String class_name = AbstractDungeon.player.getClass().getName();
 		
 		if (card_reward == null) {
-        	config.setInt("school_backpack_reward_size", 0);
+			
+        	config.setInt("school_backpack_" + class_name +
+    						"_save_slot_" + CardCrawlGame.saveSlot +
+    						"_reward_size", 0);
+        	
         } else config.setInt("school_backpack_reward_size", card_reward.cards.size());
         
         if (card_reward != null) {
         	for (int i = 0; i < card_reward.cards.size(); i++) {
-            	config.setString("school_backpack_reward_" + String.valueOf(i),
+        		
+            	config.setString("school_backpack_" + class_name +
+			        				"_save_slot_" + CardCrawlGame.saveSlot +
+			        				"_reward_" + String.valueOf(i),
             			card_reward.cards.get(i).cardID);
-            	config.setString("school_backpack_reward_rarity_" + String.valueOf(i),
+            	
+            	config.setString("school_backpack_" + class_name + 
+			                    	"_save_slot_" + CardCrawlGame.saveSlot + 
+			                    	"_reward_rarity_" + String.valueOf(i),
             			card_reward.cards.get(i).rarity.toString());
-            	config.setBool("school_backpack_reward_upgrade_" + String.valueOf(i),
+            	
+            	config.setBool("school_backpack" + class_name + 
+			                    	"_save_slot_" + CardCrawlGame.saveSlot + 
+			                    	"_reward_upgrade_" + String.valueOf(i),
             			card_reward.cards.get(i).upgraded);
             }
         }
