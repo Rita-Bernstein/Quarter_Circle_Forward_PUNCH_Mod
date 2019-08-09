@@ -388,6 +388,40 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		
     }
 	
+	public static void sanitizingAct1(final SpireConfig config) {
+		String class_name = AbstractDungeon.player.getClass().getName();
+		
+		logger.info("Sanitizing Challenger Coin act 1 info from");
+		logger.info("character " + class_name + ", save slot " + CardCrawlGame.saveSlot);
+		
+		if (config.has("Challenger_Coin_Number_Of_Rooms_Made_" + class_name
+				+ "Save_Slot_" + CardCrawlGame.saveSlot)){
+                     
+			int quant = config.getInt("Challenger_Coin_Number_Of_Rooms_Made_" + class_name
+					+ "Save_Slot_" + CardCrawlGame.saveSlot);
+						
+			for (int i = 0; i < quant; i++) {
+				
+				if (sanitizationOfPossibleSaveFileAbandonedChallengeCoinRoomMadeVariableActOne
+						(config, class_name, i)) {
+					logger.info("Found act " + AbstractDungeon.actNum + " abandoned");
+					logger.info("Challenger Coin data. Sanitized it.");
+				}
+			}
+			
+            try {
+				config.load();
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            
+            logger.info("Finished sanitizing Challenger Coin info from");
+    		logger.info("character " + class_name + ", save slot " + CardCrawlGame.saveSlot);
+        }
+	}
+	
 	private static void cleanArrayLists() {
 		if (ChallengerCoin.saved_save_slot != null) saved_save_slot.clear();
 		if (ChallengerCoin.saved_act != null) saved_act.clear();
@@ -414,6 +448,22 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		return false;
 		
 	}
+	
+	private static boolean sanitizationOfPossibleSaveFileAbandonedChallengeCoinRoomMadeVariableActOne(
+			final SpireConfig config, String class_name, int position) {
+		
+		int current_act = AbstractDungeon.actNum;
+		
+		if (config.getInt("Challenge_Coin_Saved_Act_" + class_name + "_"
+				+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position) == current_act) {
+			config.setInt("Challenge_Coin_Saved_Act_" + class_name + "_"
+				+ "Save_Slot_" + CardCrawlGame.saveSlot + "_" + position, Integer.MAX_VALUE);
+	    	return true;
+		}
+		return false;
+		
+	}
+	
 	
 	private static void loadChallengeCoinRoomMadeVariables(
 			final SpireConfig config, String class_name, int position) {
@@ -456,6 +506,8 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		return post_map_gen_changer;
 		
 	}
+	
+	public 
 		
 	public static void clear(final SpireConfig config) {
 		String class_name = AbstractDungeon.player.getClass().getName();
