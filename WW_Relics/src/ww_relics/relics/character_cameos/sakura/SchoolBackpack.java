@@ -552,13 +552,21 @@ public class SchoolBackpack extends CustomRelic {
 
         String class_name = AbstractDungeon.player.getClass().getName();
 		
-		int size = config.getInt("school_backpack_reward_size");
+		int size = config.getInt("school_backpack_" + class_name + 
+									"_save_slot_" + CardCrawlGame.saveSlot + 
+									"_reward_size");
         
 		for (int i = 0; i < size; i++) {
 			
-			config.remove("school_backpack_reward_rarity_" + String.valueOf(i));			
-			config.remove("school_backpack_reward_" + String.valueOf(i));
-			config.remove("school_backpack_reward_upgrade_" + String.valueOf(i));
+			config.remove("school_backpack_" + class_name + 
+		                	"_save_slot_" + CardCrawlGame.saveSlot + 
+		                	"_reward_rarity_" + String.valueOf(i));			
+			config.remove("school_backpack_" + class_name +
+		    				"_save_slot_" + CardCrawlGame.saveSlot +
+		    				"_reward_" + String.valueOf(i));
+			config.remove("school_backpack" + class_name + 
+		                	"_save_slot_" + CardCrawlGame.saveSlot + 
+		                	"_reward_upgrade_" + String.valueOf(i));
 		
 		}
 		
