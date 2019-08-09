@@ -342,7 +342,7 @@ public class SchoolBackpack extends CustomRelic {
 		card_reward.cards = new ArrayList<AbstractCard>();
 				
 		int size = card_reward_id.size();
-		
+
 		for (int i = 0; i < size; i++) {
 			
 			AbstractCard reward_card = null;
@@ -422,7 +422,9 @@ public class SchoolBackpack extends CustomRelic {
     						"_save_slot_" + CardCrawlGame.saveSlot +
     						"_reward_size", 0);
         	
-        } else config.setInt("school_backpack_reward_size", card_reward.cards.size());
+        } else config.setInt("school_backpack_" + class_name +
+								"_save_slot_" + CardCrawlGame.saveSlot +
+								"_reward_size", card_reward.cards.size());
         
         if (card_reward != null) {
         	for (int i = 0; i < card_reward.cards.size(); i++) {
