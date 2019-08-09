@@ -394,32 +394,34 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		logger.info("Sanitizing Challenger Coin act 1 info from");
 		logger.info("character " + class_name + ", save slot " + CardCrawlGame.saveSlot);
 		
-		if (config.has("Challenger_Coin_Number_Of_Rooms_Made_" + class_name
-				+ "Save_Slot_" + CardCrawlGame.saveSlot)){
-                     
-			int quant = config.getInt("Challenger_Coin_Number_Of_Rooms_Made_" + class_name
-					+ "Save_Slot_" + CardCrawlGame.saveSlot);
-						
-			for (int i = 0; i < quant; i++) {
-				
-				if (sanitizationOfPossibleSaveFileAbandonedChallengeCoinRoomMadeVariableActOne
-						(config, class_name, i)) {
-					logger.info("Found act " + AbstractDungeon.actNum + " abandoned");
-					logger.info("Challenger Coin data. Sanitized it.");
+		if (config != null) {
+			if (config.has("Challenger_Coin_Number_Of_Rooms_Made_" + class_name
+					+ "Save_Slot_" + CardCrawlGame.saveSlot)){
+	                     
+				int quant = config.getInt("Challenger_Coin_Number_Of_Rooms_Made_" + class_name
+						+ "Save_Slot_" + CardCrawlGame.saveSlot);
+							
+				for (int i = 0; i < quant; i++) {
+					
+					if (sanitizationOfPossibleSaveFileAbandonedChallengeCoinRoomMadeVariableActOne
+							(config, class_name, i)) {
+						logger.info("Found act " + AbstractDungeon.actNum + " abandoned");
+						logger.info("Challenger Coin data. Sanitized it.");
+					}
 				}
-			}
-			
-            try {
-				config.load();
 				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            
-            logger.info("Finished sanitizing Challenger Coin info from");
-    		logger.info("character " + class_name + ", save slot " + CardCrawlGame.saveSlot);
-        }
+	            try {
+					config.load();
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	            
+	            logger.info("Finished sanitizing Challenger Coin info from");
+	    		logger.info("character " + class_name + ", save slot " + CardCrawlGame.saveSlot);
+	        }
+		}
 	}
 	
 	private static void cleanArrayLists() {
