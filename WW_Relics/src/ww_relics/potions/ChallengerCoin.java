@@ -506,8 +506,6 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		return post_map_gen_changer;
 		
 	}
-	
-	public 
 		
 	public static void clear(final SpireConfig config) {
 		String class_name = AbstractDungeon.player.getClass().getName();
