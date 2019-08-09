@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard.CardRarity;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer.PlayerClass;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.ModHelper;
@@ -368,18 +369,30 @@ public class SchoolBackpack extends CustomRelic {
 	public static void save(final SpireConfig config) {
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
-    		logger.info("Started saving School Backpack information");
+    		logger.info("Started saving School Backpack information from");
+            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
 
     		if (AbstractDungeon.isDungeonBeaten || AbstractDungeon.player.isDead) {
-    			clear(config);
+    			
     		} 
     		else {
-    					
-        		config.setInt("school_backpack_1", number_of_cards_left);
     			
-                config.setInt("school_backpack_3", floor_of_last_stored_reward);
+    	    	String class_name = AbstractDungeon.player.getClass().getName();
+
+    	    	//1
+        		config.setInt("school_backpack_class_" + class_name +
+        				"_save_slot_" + CardCrawlGame.saveSlot +
+        				"_number_of_cards_left", number_of_cards_left);
+
+        		//3
+                config.setInt("school_backpack_class_" + class_name +
+        				"_save_slot_" + CardCrawlGame.saveSlot +
+        				"_floor_of_last_stored_reward", floor_of_last_stored_reward);
                 
-                config.setBool("school_backpack_4", empty_relic);
+                //4
+                config.setBool("school_backpack_class_" + class_name +
+        				"_save_slot_" + CardCrawlGame.saveSlot +
+        				"_empty_relic", empty_relic);
                 
                 storeCardRewardCreated(config, card_reward);
     			
@@ -390,7 +403,8 @@ public class SchoolBackpack extends CustomRelic {
     			}
     		}
 
-            logger.info("Finished saving School Backpack information");
+            logger.info("Finished saving School Backpack information from");
+            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
         }
         else {
         	clear(config);
