@@ -388,7 +388,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		
     }
 	
-	public static void sanitizingAct1(final SpireConfig config) {
+	public static void sanitizingActOne(final SpireConfig config) {
 		String class_name = AbstractDungeon.player.getClass().getName();
 		
 		logger.info("Sanitizing Challenger Coin act 1 info from");
@@ -411,7 +411,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 				}
 				
 	            try {
-					config.load();
+					config.save();
 					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
