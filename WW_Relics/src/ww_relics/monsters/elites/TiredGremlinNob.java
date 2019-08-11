@@ -36,13 +36,18 @@ public class TiredGremlinNob extends CustomMonster {
 	private static final int HP_MIN = 300;
 	private static final int HP_MAX = 305;
 	private static final int INITIAL_HP = 200;
+	private static final int A8_HP_MIN = 301;
+	private static final int A8_HP_MAX = 306;
+	private static final int A8_INITIAL_HP = 210;
 	
 	private static final int INITIAL_STR_BUFF = 5;
 	private static final int INITIAL_ANGRY_BUFF = 2;
 	
 	private static final int INITIAL_WEAK_DEBUFF = 6;
 	private static final int INITIAL_VULNERABLE_DEBUFF = 4;
+	private static final int A8_INITIAL_VULNERABLE_DEBUFF = 3;
 	private static final int INITIAL_POISON_DEBUFF = 10;
+	private static final int A8_INITIAL_POISON_DEBUFF = 8;
 	private static final boolean WILL_HAVE_INITIAL_STUN = false;
 	private static final int INITIAL_CONSTRICTED_DEBUFF = 3;
 	
@@ -57,8 +62,10 @@ public class TiredGremlinNob extends CustomMonster {
 	
 	private static final int ANGRY_SCREAM_STR_BUFF = 2;
 	private static final int BASE_ARM_SMASH_DAMAGE = 15;
+	private static final int A3_BASE_ARM_SMASH_DAMAGE = 17;
 	private static final int BODY_BLOW_NUMBER_OF_HITS = 2;
 	private static final int BASE_BODY_BLOW_DAMAGE = 0;
+	private static final int A3_BASE_BODY_BLOW_DAMAGE = 3;
 	private static final int HEAVY_BREATHING_HEAL = 3;
 	private int number_of_turns = 1;
 	
