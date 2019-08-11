@@ -159,6 +159,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		logger.info("Done adding relics");
 	}
 
+	
 	private void addRyuRelics() {
 		BaseMod.addRelic(new DuffelBag(), RelicType.SHARED);
 		BaseMod.addRelic(new FightingGloves(), RelicType.SHARED);
@@ -271,10 +272,11 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
             FightingGloves.load(config);
             UnceasingFlame.load(config);
             SchoolBackpack.load(config);
-            ChallengerCoin.load(config);
             if ((AbstractDungeon.actNum == 1) && (AbstractDungeon.floorNum < 2)) {
-            	ChallengerCoin.sanitizingAct1(config);
+            	ChallengerCoin.sanitizingActOne(config);
             }
+            ChallengerCoin.load(config);
+
         }
         catch (IOException e) {
             e.printStackTrace();
