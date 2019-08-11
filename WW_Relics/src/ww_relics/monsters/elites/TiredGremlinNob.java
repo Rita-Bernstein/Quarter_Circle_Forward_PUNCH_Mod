@@ -85,13 +85,22 @@ public class TiredGremlinNob extends CustomMonster {
 	    
 	    this.type = EnemyType.ELITE;
 	    
-	    setHp(HP_MIN, HP_MAX);
+	    if (AbstractDungeon.ascensionLevel >= 8) {
+	    	setHp(A8_HP_MIN, A8_HP_MAX);
+	    	this.currentHealth = A8_INITIAL_HP;
+	    	
+	    }
+	    else {
+	    	setHp(HP_MIN, HP_MAX);
+	    	this.currentHealth = INITIAL_HP;
+	    }
 	    
-	    this.currentHealth = INITIAL_HP;
 	    
 	    this.nextMove = (int)STARTING_POINT;
 	    
-	    setDamageInfos();
+	    if (AbstractDungeon.ascensionLevel >= 3) {
+	    	setAscension3DamageInfos();
+	    } else setDamageInfos();
 	}
 	
 	public void setDamageInfos() {
@@ -101,10 +110,18 @@ public class TiredGremlinNob extends CustomMonster {
 		this.damage.add(arm_smash_damage_info);
 		this.damage.add(body_blow_damage_info);
 	}
+	
+	public void setAscension3DamageInfos(){
+		DamageInfo a3_arm_smash_damage_info = new DamageInfo(this, A3_BASE_ARM_SMASH_DAMAGE);
+		DamageInfo a3_body_blow_damage_info = new DamageInfo(this, A3_BASE_BODY_BLOW_DAMAGE);
+		
+		this.damage.add(a3_arm_smash_damage_info);
+		this.damage.add(a3_body_blow_damage_info);
+	}
 
 	public void usePreBattleAction() {
         addInitialEnemyBuffs();
-        addInitialEnemyDebuffs();
+        addInitialEnemyDebuffs(AbstractDungeon.ascensionLevel);
     }
 	
 	public void addInitialEnemyBuffs() {
@@ -115,20 +132,34 @@ public class TiredGremlinNob extends CustomMonster {
         		new AngerPower(this, INITIAL_ANGRY_BUFF), INITIAL_ANGRY_BUFF));
 	}
 	
-	public void addInitialEnemyDebuffs() {
+	public void addInitialEnemyDebuffs(int ascensionLevel) {
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
 				new WeakPower(this,  INITIAL_WEAK_DEBUFF, false), INITIAL_WEAK_DEBUFF));
 		
         WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
         
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
-				new VulnerablePower(this,  INITIAL_VULNERABLE_DEBUFF, false), INITIAL_VULNERABLE_DEBUFF));
-		
-        WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
-        
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
-				new PoisonPower(this, this, INITIAL_POISON_DEBUFF), INITIAL_POISON_DEBUFF));
-        
+        if (ascensionLevel >= 8) {
+        	
+    		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
+    				new VulnerablePower(this,  A8_INITIAL_VULNERABLE_DEBUFF, false), A8_INITIAL_VULNERABLE_DEBUFF));
+    		
+            WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
+            
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
+    				new PoisonPower(this, this, A8_INITIAL_POISON_DEBUFF), A8_INITIAL_POISON_DEBUFF));       
+            
+        } else {
+        	
+    		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
+    				new VulnerablePower(this,  INITIAL_VULNERABLE_DEBUFF, false), INITIAL_VULNERABLE_DEBUFF));
+    		
+            WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
+            
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this,
+    				new PoisonPower(this, this, INITIAL_POISON_DEBUFF), INITIAL_POISON_DEBUFF));
+            
+        }
+
         WW_Relics_MiscelaneaCode.addNonFastModeWaitAction(0.5f);
         
         if (WILL_HAVE_INITIAL_STUN) {
