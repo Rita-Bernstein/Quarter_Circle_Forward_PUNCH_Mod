@@ -8,7 +8,6 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractEvent;
 
-import ww_relics.WW_Relics_Mod;
 import ww_relics.events.act2.FightingNoisesEvent;
 
 public class FightingNoisesSpawnInAct2SecondHalfPatch {
@@ -23,15 +22,18 @@ public class FightingNoisesSpawnInAct2SecondHalfPatch {
 	    public static AbstractEvent FightingNoisesSpawnInAct2SecondHalf(
 	        AbstractEvent _retVal,
 	        com.megacrit.cardcrawl.random.Random rng) {
-
-	    if ((_retVal instanceof FightingNoisesEvent) &&
-	    	( AbstractDungeon.currMapNode.y > AbstractDungeon.map.size() / 2)) {
-	    	logger.info("ASASDASFAF Here");
-	    	return AbstractDungeon.getEvent(AbstractDungeon.eventRng);
-	    }
-	    		
-	    else return _retVal;
+			    if ((_retVal instanceof FightingNoisesEvent) &&
+			    	(AbstractDungeon.currMapNode.y > AbstractDungeon.map.size() / 2)) {
+			    	logger.info("ASASDASFAF Here");
+			    	return _retVal;
+			    	
+			    }
+			    		
+			    else {
+			    	return AbstractDungeon.getEvent(AbstractDungeon.eventRng);
+			    }
 	    
-	}
+	    	}
 
+	}
 }

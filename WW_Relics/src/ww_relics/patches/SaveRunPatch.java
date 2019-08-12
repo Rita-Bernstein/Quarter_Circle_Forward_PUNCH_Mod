@@ -1,4 +1,4 @@
-package ww_relics.patches;
+ package ww_relics.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
