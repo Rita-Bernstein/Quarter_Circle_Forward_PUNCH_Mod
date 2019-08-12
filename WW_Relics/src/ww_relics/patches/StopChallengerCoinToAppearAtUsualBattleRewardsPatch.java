@@ -8,7 +8,8 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import ww_relics.potions.ChallengerCoin;
 
-@SpirePatch(clz= AbstractRoom.class, method = "addPotionToRewards")
+@SpirePatch(clz= AbstractRoom.class, method = "addPotionToRewards",
+			paramtypez = {})
 public class StopChallengerCoinToAppearAtUsualBattleRewardsPatch {
 
 	@SpireInsertPatch(rloc=25)
