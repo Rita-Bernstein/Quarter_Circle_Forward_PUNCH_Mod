@@ -1,5 +1,8 @@
 package ww_relics.patches;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -12,7 +15,10 @@ import ww_relics.potions.ChallengerCoin;
 			paramtypez = {})
 public class StopChallengerCoinToAppearAtUsualBattleRewardsPatch {
 
-	@SpireInsertPatch(rloc=25)
+	/*public static final Logger logger =
+			LogManager.getLogger(StopChallengerCoinToAppearAtUsualBattleRewardsPatch.class.getName());*/
+	
+	@SpireInsertPatch(rloc=30)
 	public static void Insert(AbstractRoom __instance) {
 		while(__instance.rewards.get(__instance.rewards.size() - 1).potion.ID ==
 				ChallengerCoin.ID) {
