@@ -58,8 +58,13 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 		charges = charges_at_battle_start;
 		fixCounter();
 		if (charges == MAX_NUMBER_OF_CHARGES) {
-			flash();
+			playFireSoundThenFlash();
 		}
+	}
+	
+	public void playFireSoundThenFlash() {
+		CardCrawlGame.sound.play("ATTACK_FIRE");
+		flash();
 	}
 	
 	public void fixCounter() {
@@ -95,7 +100,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 		}
 		
 		if (went_to_max_amount_of_charges) {
-			flash();
+			playFireSoundThenFlash();
 		}
 		
 	}
