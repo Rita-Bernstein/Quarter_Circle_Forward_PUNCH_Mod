@@ -342,8 +342,10 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		
 		String modBadgeAddress = "ww_relics/resources/ModBadge.png";
 		Texture badgeTexture = new Texture(Gdx.files.internal(modBadgeAddress));
-        ModPanel settingsPanel = new ModPanel();
-        BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
+		//uncomment line below and replaces settingsPanel to the null when
+		//the mod panel has something to show
+        //ModPanel settingsPanel = new ModPanel();
+        BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, null);
 	}
 	
 	public void addPotions() {
