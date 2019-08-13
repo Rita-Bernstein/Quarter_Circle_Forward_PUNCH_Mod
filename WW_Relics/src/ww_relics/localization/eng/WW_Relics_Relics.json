@@ -94,9 +94,9 @@
     "NAME": "Combat Fatigues",
     "FLAVOR": "\"War clothes. Pumps you to defend and then attack, but not for peace. Remember to take them off eventually, will ya?\" - Ranwid",
     "DESCRIPTIONS": [
-      "If you #rgain ",
-      "#yBlock and #rdo #rnot #yplay any Attacks during your turn, at the next turn gain both #ydouble #ydamage for the next attack and #b",
-      " #yTemporary #yStrength."
+      "At the start of your turn, if you #rgained ",
+      "#yBlock and #rdidn't #yplay any Attacks during last turn, gain #b",
+      " #yTemporary #yStrength and your next Attack deals #ydouble #ydamage."
     ]
   },
   
