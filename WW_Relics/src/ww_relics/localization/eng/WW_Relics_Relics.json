@@ -95,8 +95,8 @@
     "FLAVOR": "\"War clothes. Pumps you to defend and then attack, but not for peace. Remember to take them off eventually, will ya?\" - Ranwid",
     "DESCRIPTIONS": [
       "If you #rgain ",
-      "#yBlock and #rdo #rnot #yplay any Attacks during your turn, at the next turn gain both #b",
-      " #yTemporary #yStrength and #ydouble #ydamage for the next attack."
+      "#yBlock and #rdo #rnot #yplay any Attacks during your turn, at the next turn gain both #ydouble #ydamage for the next attack and #b",
+      " #yTemporary #yStrength."
     ]
   },
   
