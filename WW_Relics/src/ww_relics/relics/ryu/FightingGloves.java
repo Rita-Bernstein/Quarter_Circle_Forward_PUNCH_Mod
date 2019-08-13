@@ -114,6 +114,10 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 			flash();
 		}
 		counter = positive_charges;
+		
+		if ((room instanceof RestRoom) && (counter > 0)){
+			flash();
+		}
 	}
 	
 	@Override
