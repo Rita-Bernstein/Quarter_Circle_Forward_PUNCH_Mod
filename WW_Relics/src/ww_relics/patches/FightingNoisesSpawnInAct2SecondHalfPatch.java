@@ -16,16 +16,12 @@ public class FightingNoisesSpawnInAct2SecondHalfPatch {
 	    public static AbstractEvent FightingNoisesSpawnInAct2SecondHalf(
 	        AbstractEvent _retVal,
 	        com.megacrit.cardcrawl.random.Random rng) {
-			    if ((_retVal instanceof FightingNoisesEvent) &&
-			    	(AbstractDungeon.currMapNode.y > AbstractDungeon.map.size() / 2)) {
-			    	return _retVal;
-			    	
-			    }
-			    		
-			    else {
-			    	return AbstractDungeon.getEvent(AbstractDungeon.eventRng);
-			    }
-	    
+	    		if ((_retVal instanceof FightingNoisesEvent) &&
+	    				(AbstractDungeon.currMapNode.y > AbstractDungeon.map.size() / 2)) {
+	    			return _retVal;
+	    		} else if (_retVal instanceof FightingNoisesEvent) {
+	    				return AbstractDungeon.getEvent(AbstractDungeon.eventRng);
+	    		} else return _retVal;
 	    	}
 
 	}
