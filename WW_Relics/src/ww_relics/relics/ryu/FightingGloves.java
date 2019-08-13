@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.cards.CardGroup.*;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.dungeons.TheEnding;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.*;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.*;
@@ -330,7 +331,11 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	public boolean canSpawn() {
 		
-		return (AbstractDungeon.floorNum < 35) || (AbstractDungeon.floorNum > 54);
+		if (AbstractDungeon.id == TheEnding.ID) return false;
+		else if ((AbstractDungeon.actNum % 3 == 0) &&
+					(AbstractDungeon.currMapNode.y > 3 * AbstractDungeon.map.size() / 4))
+			return false;
+		else return true;
 		
 	}
 	
