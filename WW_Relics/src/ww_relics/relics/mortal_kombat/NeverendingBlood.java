@@ -35,11 +35,10 @@ public class NeverendingBlood extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] +
-				DESCRIPTIONS[1] + COUNTER_INITIAL_VALUE +
-				DESCRIPTIONS[2] +
-				DESCRIPTIONS[3] + COUNTER_RECOVERED_IF_HEALED_OUTSIDE_OF_BATTLE +
-				DESCRIPTIONS[4];
+		return DESCRIPTIONS[0] + COUNTER_INITIAL_VALUE +
+				DESCRIPTIONS[1] + 
+				DESCRIPTIONS[2] + COUNTER_RECOVERED_IF_HEALED_OUTSIDE_OF_BATTLE +
+				DESCRIPTIONS[3];
 	}
 	
 	@Override
