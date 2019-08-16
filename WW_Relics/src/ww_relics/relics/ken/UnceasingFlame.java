@@ -37,7 +37,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	public static final Logger logger = LogManager.getLogger(UnceasingFlame.class.getName()); // lets us log output
 	
 	public UnceasingFlame() {
-		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
+		super(ID, GraphicResources.LoadRelicImage("Temp Unceasing Flame - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.RARE, LandingSound.MAGICAL);
 	}
 	
