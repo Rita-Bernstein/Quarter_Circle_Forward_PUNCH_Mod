@@ -86,7 +86,7 @@
     "FLAVOR": "A surprisingly resilient chain with two faded nametags.",
     "DESCRIPTIONS": [
       "Whenever you gain #yBlock, gain #b",
-      " #yTemporary #yHP."
+      " #yTemporary_HP."
     ]
   },
   
