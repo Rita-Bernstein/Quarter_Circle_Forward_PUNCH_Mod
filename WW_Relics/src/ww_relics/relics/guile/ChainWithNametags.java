@@ -14,7 +14,7 @@ public class ChainWithNametags extends CustomRelic {
 	public static final int AMOUNT_OF_TEMP_HP_GAINED = 1;
 	
 	public ChainWithNametags() {
-		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
+		super(ID, GraphicResources.LoadRelicImage("Temp Chain With Nametags - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.UNCOMMON, LandingSound.CLINK);
 	}
 	
