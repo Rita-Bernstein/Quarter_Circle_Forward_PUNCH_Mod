@@ -28,7 +28,7 @@ public class NeverendingBlood extends CustomRelic {
 	public static final Logger logger = LogManager.getLogger(NeverendingBlood.class.getName());
 		
 	public NeverendingBlood() {
-		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
+		super(ID, GraphicResources.LoadRelicImage("Temp Neverending Blood - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.SPECIAL, LandingSound.MAGICAL);
 		
 		this.counter = COUNTER_INITIAL_VALUE;
