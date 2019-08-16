@@ -32,7 +32,7 @@ public class CombatFatigues extends CustomRelic {
 	public static final Logger logger = LogManager.getLogger(CombatFatigues.class.getName()); 
 	
 	public CombatFatigues() {
-		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
+		super(ID, GraphicResources.LoadRelicImage("Temp Combat Fatigues - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.RARE, LandingSound.FLAT);
 	}
 	

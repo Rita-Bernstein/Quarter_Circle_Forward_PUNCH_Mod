@@ -23,7 +23,7 @@ public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
 	private final static int AMOUNT_REMOVED_OF_EACH_DEBUFF = 1;
 	
 	public ArmyBoots() {
-		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
+		super(ID, GraphicResources.LoadRelicImage("Temp Army Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.COMMON, LandingSound.SOLID);
 		
 		InitializeListOfRemovableDebuffs();
