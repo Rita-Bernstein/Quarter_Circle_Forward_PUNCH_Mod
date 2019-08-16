@@ -155,11 +155,10 @@
     "NAME": "Neverending Blood",
     "FLAVOR": "There's so much blood inside now, that it almost feels like it can leak out.",
  	"DESCRIPTIONS": [
- 	  "Upon losing HP in combat, increase your Regen at most to #b1/3 of the lost HP,",
- 	  " up to #b",
- 	  " times.",
+ 	  "The first #b",
+ 	  " times you lose HP, increase your #yRegen at most to #b1/3 of the lost HP.",
  	  " Regains #b",
- 	  " uses when healing out of combat."
+ 	  " uses when healing outside of combat."
     ]
   },
   
