@@ -85,8 +85,8 @@
     "NAME": "Chain With Nametags",
     "FLAVOR": "A surprisingly resilient chain with two faded nametags.",
     "DESCRIPTIONS": [
-      "When you gain #yBlock, gain #b",
-      " Temporary HP."
+      "Whenever you gain #yBlock, gain #b",
+      " #yTemporary #yHP."
     ]
   },
   
