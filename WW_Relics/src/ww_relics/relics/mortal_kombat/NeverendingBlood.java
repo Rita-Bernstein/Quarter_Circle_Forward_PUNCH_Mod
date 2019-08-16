@@ -35,7 +35,7 @@ public class NeverendingBlood extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + MINIMUM_AMOUNT_OF_HP_LOST +
+		return DESCRIPTIONS[0] +
 				DESCRIPTIONS[1] + COUNTER_INITIAL_VALUE +
 				DESCRIPTIONS[2] +
 				DESCRIPTIONS[3] + COUNTER_RECOVERED_IF_HEALED_OUTSIDE_OF_BATTLE +
