@@ -21,7 +21,7 @@ public class RedGi extends CustomRelic {
 	public static boolean draw_effect = false;
 	
 	public RedGi() {
-		super(ID, GraphicResources.LoadRelicImage("Temp Red Gi - steeltoe-boots - Lorc - CC BY 3.0"),
+		super(ID, GraphicResources.LoadRelicImage("Temp Red Gi - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.UNCOMMON, LandingSound.FLAT);
 		
 		setCounter(0);
