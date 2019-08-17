@@ -6,7 +6,7 @@
     <!-- Change These to match your mod -->
     <groupId>WW_Relics</groupId>
     <artifactId>WorldWarriorsRelics</artifactId>
-    <version>0.11</version>
+    <version>0.11.43</version>
     <packaging>jar</packaging>
     <name>WorldWarriorsRelics</name>
     <description>Adds sixteen relics, seven game modifiers, one event and one potion, inspired mainly by fighters from
@@ -14,7 +14,7 @@
 		  		 \r\n 
 		  		 \r\n v1.0 will have 32+ relics.
 		  		 \r\n
-		  		 \r\n The images in this mod are temporary and will be substituted/improved on the version 1.0.</description>
+		  		 \r\n Most of the images in this mod are temporary and will be substituted/improved on v1.0.</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

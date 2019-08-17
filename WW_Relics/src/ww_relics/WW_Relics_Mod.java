@@ -17,7 +17,7 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
 
 import basemod.BaseMod;
-import basemod.ModPanel;
+//import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import ww_relics.events.act2.FightingNoisesEvent;
@@ -48,13 +48,13 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 
 	public static final String MODNAME = "World Warriors' Relics"; // mod name
 	public static final String AUTHOR = "Clauvin aka Dungeon Explorer Lan"; // your name
-	public static final String DESCRIPTION = "v0.11" +
+	public static final String DESCRIPTION = "v0.11.43" +
 			"\r\n"
 		  + "\r\n Adds sixteen relics based in SF2's main characters, seven game modifiers, one event and one potion."
 		  + "\r\n"
 		  + "\r\n v1.0 will have 32+ relics."
 		  + "\r\n"
-		  + "\r\n The images in the mod are temporary and will be substituted/improved on version 1.0.";
+		  + "\r\n Most of the images in the mod are temporary and will be substituted/improved on v1.0.";
 	
 	public WW_Relics_Mod() {
 		BaseMod.subscribe(this);
