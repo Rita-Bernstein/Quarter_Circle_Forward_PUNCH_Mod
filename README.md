@@ -10,7 +10,7 @@ A Slay The Spire mod, which adds primarily relics directly inspired by fighters 
 
 # Current State
 
-Last polishing to v0.11, milestone 2 done, part of milestone 3 probably will be removed for rework in the future and part of milestone 5 will be done at v0.12.
+Last polishing to v0.12, milestone 2 done, part of milestone 3 probably will be removed for rework in the future and part of milestone 5 will be done at v0.12.
 
 # Link to Releases and Pre-Releases
 
