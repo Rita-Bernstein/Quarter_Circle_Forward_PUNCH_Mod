@@ -8,12 +8,12 @@ import com.megacrit.cardcrawl.screens.custom.CustomMod;
 
 public class HarderRunModifiers {
 
-	public static final String FRESH_START_ID = "ww_relics:FreshStart";
+	public static final String FRESH_START_ID = "WW_Relics:FreshStart";
 	
-	public static final String HALF_HEALTH_BAR_ID = "ww_relics:HalfHealthBar";
+	public static final String HALF_HEALTH_BAR_ID = "WW_Relics:HalfHealthBar";
 	public static final int HALF_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE = 50;
 	
-	public static final String QUARTER_HEALTH_BAR_ID = "ww_relics:QuarterHealthBar";
+	public static final String QUARTER_HEALTH_BAR_ID = "WW_Relics:QuarterHealthBar";
 	public static final int QUARTER_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE = 25;
 	
 	public static final void AddHarderSetModifiers(List<CustomMod> list) {

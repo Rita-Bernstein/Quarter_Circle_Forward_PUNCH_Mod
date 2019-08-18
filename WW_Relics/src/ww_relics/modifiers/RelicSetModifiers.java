@@ -16,10 +16,10 @@ public class RelicSetModifiers {
 
 	//Yes, I know this can be refactored to be a better class, I will do it, bear with me a while.
 	
-	public static final String WANDERING_WARRIOR_ID = "ww_relics:WanderingWarrior";
-	public static final String BLUE_JADE_ID = "ww_relics:BlueJade";
-	public static final String INDESTRUCTIBLE_FORTRESS_ID = "ww_relics:IndestructibleFortress";
-	public static final String BLAZING_FIST_ID = "ww_relics:BlazingFist";
+	public static final String WANDERING_WARRIOR_ID = "WW_Relics:WanderingWarrior";
+	public static final String BLUE_JADE_ID = "WW_Relics:BlueJade";
+	public static final String INDESTRUCTIBLE_FORTRESS_ID = "WW_Relics:IndestructibleFortress";
+	public static final String BLAZING_FIST_ID = "WW_Relics:BlazingFist";
 	
 	public static void addRelicSetModifiers(List<CustomMod> list) {
 		CustomMod wandering_warrior = new CustomMod(RelicSetModifiers.WANDERING_WARRIOR_ID, "y", true);

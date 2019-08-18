@@ -29,7 +29,7 @@ import ww_relics.WW_Relics_MiscelaneaCode;
 
 public class TiredGremlinNob extends CustomMonster {
 
-	public static final String ID = "WWRelics:TiredGremlinNob";
+	public static final String ID = "WW_Relics:TiredGremlinNob";
 	private static final MonsterStrings monsterstrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
 	public static final String NAME = monsterstrings.NAME;
 	public static final String[] DIALOG = monsterstrings.DIALOG;

@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.screens.custom.CustomMod;
 
 public class EasierRunModifiers {
 
-	public static final String LOWERING_THE_HANDICAP_ID = "ww_relics:LoweringTheHandicap";
+	public static final String LOWERING_THE_HANDICAP_ID = "WW_Relics:LoweringTheHandicap";
 	public static final int LOWERING_THE_HANDICAP_STARTING_HEALTH_PERCENTAGE = 125;
 	
 	public static final void AddEasierSetModifiers(List<CustomMod> list) {
