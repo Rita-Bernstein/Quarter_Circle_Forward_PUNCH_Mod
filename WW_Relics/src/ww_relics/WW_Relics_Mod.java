@@ -83,7 +83,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	    
 		if (keywords != null) {
             for (KeywordWithProper keyword : keywords) {
-                BaseMod.addKeyword(MODID, keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
+                BaseMod.addKeyword(keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
             }
         }
 		
