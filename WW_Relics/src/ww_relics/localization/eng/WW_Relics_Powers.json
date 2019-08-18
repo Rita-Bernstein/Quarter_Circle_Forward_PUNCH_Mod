@@ -7,20 +7,20 @@
     ]
   },
 
-  "WW_Relics:Power_Risky_Offensive": {
-    "NAME": "Risky Offensive",
-    "DESCRIPTIONS": [
-      "This power is spent when you use a Skill card, making you lose #b",
-      " Strength."
-    ]
-  },
-  
   "WW_Relics:Power_Potential": {
     "NAME": "Potential",
     "DESCRIPTIONS": [
       "You have ",
       "/",
       " Potential. Whole parts are spent to give the equivalent in Energy."
+    ]
+  },
+
+  "WW_Relics:Power_Risky_Offensive": {
+    "NAME": "Risky Offensive",
+    "DESCRIPTIONS": [
+      "This power is spent when you use a Skill card, making you lose #b",
+      " Strength."
     ]
   },
   
