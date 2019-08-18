@@ -48,7 +48,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	public static final Logger logger = LogManager.getLogger(WW_Relics_Mod.class.getName()); // lets us log output
 
 	public static final String MODNAME = "World Warriors' Relics"; // mod name
-	public static final String MODID = "WW_Relics";
+	public static final String MODID = "ww_relics";
 	public static final String AUTHOR = "Clauvin aka Dungeon Explorer Lan"; // your name
 	public static final String DESCRIPTION = "v0.11.43" +
 			"\r\n"
