@@ -211,9 +211,9 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
 	@Override
 	public void receiveEditCards() {
-		logger.info("Begin adding cards");
+		//logger.info("Begin adding cards");
 		
-		logger.info("Done adding cards");
+		//logger.info("Done adding cards");
 	}
 	
 	public void addMonsters() {
