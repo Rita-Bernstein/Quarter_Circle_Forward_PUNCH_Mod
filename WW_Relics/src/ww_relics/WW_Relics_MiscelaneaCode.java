@@ -1,5 +1,8 @@
 package ww_relics;
 
+import org.apache.logging.log4j.Logger;
+
+import com.evacipated.cardcrawl.modthespire.Loader;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer.PlayerClass;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -59,6 +62,12 @@ public class WW_Relics_MiscelaneaCode {
     public static String classAndSaveSlotText() {
     	return "character " + AbstractDungeon.player.getClass().getName() +
     			", save slot " + CardCrawlGame.saveSlot + ".";
+    }
+    
+    public static void debugOnlyLoggerLine(Logger logger, String message) {
+    	if (Loader.DEBUG) {
+            logger.info(message);
+        }
     }
 	
 }
