@@ -24,9 +24,9 @@
 	},
 	
 	{
-	    "PROPER_NAME": "weakest",
+	    "PROPER_NAME": "Weakest",
 	    "NAMES": [
-	      "unsteady"
+	      "weakest"
 	    ],
 	    "DESCRIPTION": "Colorless cards that are weak, and have Exhaust and Ethereal."
 	}
