@@ -1,13 +1,15 @@
 {
+  	"WW_Relics:Defend_Weakest": {
+    	"NAME": "Weakest Block",
+    	"DESCRIPTION": "Exhaust. NL Gain !B! Block. NL Ethereal."
+  	},
+
 	"WW_Relics:Strike_Weakest": {
     	"NAME": "Weakest Strike",
     	"DESCRIPTION": "Exhaust. NL Deal !D! damage. NL Ethereal."
   	},
   	
-  	"WW_Relics:Defend_Weakest": {
-    	"NAME": "Weakest Block",
-    	"DESCRIPTION": "Exhaust. NL Gain !B! Block. NL Ethereal."
-  	},
+
 	
 	"WW_Relics:WeakestEnergyBlast": {
     	"NAME": "Weakest Energy Blast",
@@ -18,17 +20,17 @@
     	"NAME": "Weakest Flying Kick",
     	"DESCRIPTION": "Exhaust. NL Deal !D! damage. NL Ethereal."
 	},
-	
-	"WW_Relics:WeakestTaunt": {
-    	"NAME": "Weakest Taunt",
-    	"DESCRIPTION": "Exhaust. NL Apply 1 Weak. NL Gain 1/3 Potential. NL Ethereal."
-	},
-	
+
 	"WW_Relics:WeakestProvocation": {
     	"NAME": "Weakest Provocation",
     	"DESCRIPTION": "Exhaust. NL Apply 1 Vulnerable. NL Gain 1/3 Potential. NL Ethereal."
 	},
 	
+	"WW_Relics:WeakestTaunt": {
+    	"NAME": "Weakest Taunt",
+    	"DESCRIPTION": "Exhaust. NL Apply 1 Weak. NL Gain 1/3 Potential. NL Ethereal."
+	},
+
 	"WWWWWWWWWWWW": {
     	"NAME": "WWWWWWWWWWWWWW",
     	"DESCRIPTION": "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
