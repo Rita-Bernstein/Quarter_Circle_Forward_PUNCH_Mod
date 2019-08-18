@@ -10,6 +10,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.google.gson.Gson;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -75,12 +76,16 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		
 		logger.info("begin editing keywords");
 		
-		BaseMod.addKeyword(new String[] {"unsteady"}, "Block is reduced each turn.");
-		BaseMod.addKeyword(new String[] {"stunned"}, "Affected does nothing.");
-		BaseMod.addKeyword(new String[] {"Potential", "potential"},
-				"Whole parts are spent to give the equivalent in Energy.");
-		BaseMod.addKeyword(new String[] {"Weakest", "weakest"},
-				"Colorless cards that are weak, and have Exhaust and Ethereal.");
+		Gson gson = new Gson();
+		String json = Gdx.files.internal("ww_relics/localization/eng/WW_Relics_Keywords.json").
+						readString(String.valueOf(StandardCharsets.UTF_8)); 
+		KeywordWithProper[] keywords = gson.fromJson(json, KeywordWithProper[].class);
+	    
+		if (keywords != null) {
+            for (KeywordWithProper keyword : keywords) {
+                BaseMod.addKeyword(MODID, keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
+            }
+        }
 		
 		logger.info("done editing keywords");
 		
