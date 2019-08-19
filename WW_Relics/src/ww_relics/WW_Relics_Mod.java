@@ -76,8 +76,8 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		logger.info("begin editing keywords");
 		
 		Gson gson = new Gson();
-		String json = Gdx.files.internal("ww_relics/localization/eng/WW_Relics_Keywords.json").
-						readString(String.valueOf(StandardCharsets.UTF_8)); 
+		String keywordStringsAddress = "ww_relics/localization/eng/WW_Relics_Keywords.json";
+		String json = getJsonText(keywordStringsAddress); 
 		KeywordWithProper[] keywords = gson.fromJson(json, KeywordWithProper[].class);
 	    
 		if (keywords != null) {
