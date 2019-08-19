@@ -70,7 +70,6 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		return Gdx.files.internal(filepath).readString(String.valueOf(StandardCharsets.UTF_8));
 	}
 	
-	//Yes, I know. I will refactor this hard coded part later.
 	@Override
 	public void receiveEditKeywords() {
 		
