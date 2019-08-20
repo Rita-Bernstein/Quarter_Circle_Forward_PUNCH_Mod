@@ -28,14 +28,9 @@ import ww_relics.potions.ChallengerCoin;
 import ww_relics.relics.character_cameos.dan.NotStrongestFightingStyleGuidebook;
 import ww_relics.relics.character_cameos.sakura.SchoolBackpack;
 import ww_relics.relics.chun_li.*;
-import ww_relics.relics.guile.ArmyBoots;
-import ww_relics.relics.guile.ChainWithNametags;
-import ww_relics.relics.guile.CombatFatigues;
-import ww_relics.relics.ken.BlackTrainingShirt;
-import ww_relics.relics.ken.RedGi;
-import ww_relics.relics.ken.UnceasingFlame;
-import ww_relics.relics.mortal_kombat.ExtraSkeleton;
-import ww_relics.relics.mortal_kombat.NeverendingBlood;
+import ww_relics.relics.guile.*;
+import ww_relics.relics.ken.*;
+import ww_relics.relics.mortal_kombat.*;
 import ww_relics.relics.ryu.*;
 
 @SpireInitializer
