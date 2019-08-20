@@ -78,10 +78,10 @@
     "FLAVOR": "An old tool used for those who once fought for law and order.",
     "DESCRIPTIONS": [
       "Each combat, the first enemy that receives #runblocked #rdamage gains [#2aecd7]",
-      " Unsteady",
+      " #yww_relics:Unsteady",
       ", loses #b",
       " Strength ",
-      "and is Stunned for #b",
+      "and is #yww_relics:Stunned for #b",
       " turn.",
       " "
     ]
