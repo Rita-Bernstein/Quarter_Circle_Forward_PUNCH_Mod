@@ -127,12 +127,12 @@ public class SpikyBracers extends CustomRelic {
 	}
 	
 	public boolean cardCanReceiveEffect(AbstractCard card) {
-		boolean power_or_skill = (card.type == CardType.POWER) || (card.type == CardType.SKILL);
-		boolean cost_X_or_equal_or_higher_than_2 = cardHasValidCostForRelic(card);
+		boolean is_skill = card.type == CardType.SKILL;
+		boolean cost_equal_or_higher_than_2 = cardHasValidCostForRelic(card);
 		
 		boolean has_been_chosen_already = cardHasBeenChosenAlready(card);
 		
-		return power_or_skill && cost_X_or_equal_or_higher_than_2 && !has_been_chosen_already;
+		return is_skill && cost_equal_or_higher_than_2 && !has_been_chosen_already;
 	}
 	
 	public void AddCardToEffectedList(AbstractCard card) {
@@ -144,7 +144,7 @@ public class SpikyBracers extends CustomRelic {
 	
 	public boolean cardHasValidCostForRelic(AbstractCard card) {
 		
-		if ((card.cost >= MINIMUM_WORKING_COST) || (card.cost == X_COST_CARD)) return true;
+		if (card.cost >= MINIMUM_WORKING_COST) return true;
 		else return false;
 		
 	}
@@ -170,33 +170,33 @@ public class SpikyBracers extends CustomRelic {
 	public boolean canSpawn()
 	{
 		CardGroup powers;
-		int number_of_powers_costing_2_or_more_or_X = 0;
+		int number_of_powers_costing_2_or_more = 0;
 
 		CardGroup skills;
-		int number_of_skills_costing_2_or_more_or_X = 0;
+		int number_of_skills_costing_2_or_more = 0;
 		
 		powers = AbstractDungeon.player.masterDeck.getPowers();
-		number_of_powers_costing_2_or_more_or_X = countNumberOfValidCards(powers);
+		number_of_powers_costing_2_or_more = countNumberOfValidCards(powers);
 		
 		skills = AbstractDungeon.player.masterDeck.getSkills();
-		number_of_skills_costing_2_or_more_or_X = countNumberOfValidCards(skills);
+		number_of_skills_costing_2_or_more = countNumberOfValidCards(skills);
 		
-		return (number_of_powers_costing_2_or_more_or_X + number_of_skills_costing_2_or_more_or_X)
+		return (number_of_powers_costing_2_or_more + number_of_skills_costing_2_or_more)
 					>= NUMBER_OF_CARDS_TO_APPLY_EFFECT; 
 	}
 	
 	public int countNumberOfValidCards(CardGroup card_group) {
-		int number_of_cards_costing_2_or_more_or_X = 0;
+		int number_of_cards_costing_2_or_more = 0;
 		
 		card_group.sortByCost(false);
 		
 		for (int i = 0; i < card_group.size(); i++) {
-			if ((card_group.getNCardFromTop(i).cost >= MINIMUM_WORKING_COST) ||
-					(card_group.getNCardFromTop(i).cost == X_COST_CARD)) number_of_cards_costing_2_or_more_or_X += 1;
+			if (card_group.getNCardFromTop(i).cost >= MINIMUM_WORKING_COST)
+				number_of_cards_costing_2_or_more += 1;
 			 
 		}
 		
-		return number_of_cards_costing_2_or_more_or_X;
+		return number_of_cards_costing_2_or_more;
 	}
 	
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
