@@ -236,15 +236,23 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
         float y = Settings.HEIGHT;
         float defined_x = 0.10f;
         float defined_y = 0.25f;
-		
+		float initial_time = 2.5f;
+		float extra_time_per_card = 0.2f;
+        
         logger.info("c " + chosen_cards.size());
         
 		for (AbstractCard c: chosen_cards) {
     		c.upgrade();
 			logger.info("Upgraded " + c.name);
     		
-            AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(
-    				c.makeStatEquivalentCopy(), defined_x * x, defined_y * y));
+			ShowCardBrieflyEffect card_brief_effect = new ShowCardBrieflyEffect(
+    				c.makeStatEquivalentCopy(), defined_x * x, defined_y * y);
+			card_brief_effect.duration = initial_time;
+			card_brief_effect.startingDuration = initial_time;
+						
+            AbstractDungeon.effectList.add(card_brief_effect);
+            
+    		initial_time += extra_time_per_card;
             
             defined_x += 0.15f;
             if (defined_x >= 0.9f) {
