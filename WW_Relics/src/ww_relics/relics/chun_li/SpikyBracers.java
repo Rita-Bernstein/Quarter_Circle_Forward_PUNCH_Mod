@@ -22,7 +22,6 @@ public class SpikyBracers extends CustomRelic {
 	public static final String ID = "WW_Relics:Spiky_Bracers";
 	
 	private static final int MINIMUM_WORKING_COST = 2;
-	private static final int X_COST_CARD = -1;
 	private static final int UPDATE_COST_BY = -1;
 	private static final int UPDATE_COST_TEXT = -UPDATE_COST_BY;
 	private static final int NUMBER_OF_CARDS_TO_APPLY_EFFECT = 2;
@@ -108,15 +107,9 @@ public class SpikyBracers extends CustomRelic {
 					
 					card.modifyCostForCombat(UPDATE_COST_BY);
 				}
-				else if ((card.cost == X_COST_CARD) && (card.energyOnUse >= MINIMUM_WORKING_COST)) {
+				else if (card.energyOnUse >= MINIMUM_WORKING_COST) {
 					AddCardToEffectedList(card);
 				}
-			}
-		}
-		
-		if (cardHasBeenChosenAlready(card) && card.cost == X_COST_CARD) {
-			if (card.energyOnUse >= MINIMUM_WORKING_COST) {
-				AbstractDungeon.actionManager.addToBottom(new RefundAction(card, 1));
 			}
 		}
 	}
