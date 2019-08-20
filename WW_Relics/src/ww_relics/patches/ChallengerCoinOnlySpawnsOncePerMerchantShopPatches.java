@@ -40,13 +40,21 @@ public class ChallengerCoinOnlySpawnsOncePerMerchantShopPatches {
 					if (n.getClassName().toString().equals(StorePotion.class.getName().toString())) {
 						try {
 							n.replace("$_ = $proceed($$);"
+									+ "if (!$_.potion.ID.equals(ww_relics.potions.ChallengerCoin.ID)){"
+										+ "while (!$_.potion.ID.equals(ww_relics.potions.ChallengerCoin.ID)){"
+											+ "$_ == new com.megacrit.cardcrawl.shop.StorePotion("
+												+ "com.megacrit.cardcrawl.dungeons.AbstractDungeon.returnRandomPotion(), i, this);"
+							
+							
+							
+							/*n.replace("$_ = $proceed($$);"
 									+ "if ((ww_relics.WW_Relics_MiscelaneaCode.number_of_challenger_coin_potions_at_shop == 0) && "
 									+ "($_.potion.ID.equals(ww_relics.potions.ChallengerCoin.ID))){"
 									+ "ww_relics.WW_Relics_MiscelaneaCode.incrementNumberOfChallengerCoinPotionsAtShop();"
 									+ "} else if ($_.potion.ID.equals(ww_relics.potions.ChallengerCoin.ID)){"
 										+ "while ($_.potion.ID.equals(ww_relics.potions.ChallengerCoin.ID)){"
 											+ "$_ == new com.megacrit.cardcrawl.shop.StorePotion("
-												+ "com.megacrit.cardcrawl.dungeons.AbstractDungeon.returnRandomPotion(), i, this);"
+												+ "com.megacrit.cardcrawl.dungeons.AbstractDungeon.returnRandomPotion(), i, this);"*/
 										+ "}"
 									+ "}");
 						} catch (CannotCompileException e) {
