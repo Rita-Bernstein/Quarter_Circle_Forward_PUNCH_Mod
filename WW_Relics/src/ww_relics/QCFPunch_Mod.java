@@ -67,7 +67,8 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 		logger.info("begin editing keywords");
 		
 		Gson gson = new Gson();
-		String keywordStringsAddress = "ww_relics/localization/eng/WW_Relics_Keywords.json";
+		String keywordStringsAddress = 
+				QCFPunch_MiscCode.returnSpecificLocalizationFile("eng/WW_Relics_Keywords.json");
 		String json = getJsonText(keywordStringsAddress); 
 		KeywordWithProper[] keywords = gson.fromJson(json, KeywordWithProper[].class);
 	    
@@ -100,49 +101,56 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 	}
 	
 	private void LoadRelicsJSON() {
-		String relicStringsAddress = "ww_relics/localization/eng/WW_Relics_Relics.json";
+		String relicStringsAddress =
+				QCFPunch_MiscCode.returnSpecificLocalizationFile("eng/WW_Relics_Relics.json");
 	    String relicStrings = getJsonText(relicStringsAddress);
 	    
 	    BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
 	}
 	
 	private void LoadPowersJSON() {
-		String powerStringsAddress = "ww_relics/localization/eng/WW_Relics_Powers.json";
+		String powerStringsAddress =
+				QCFPunch_MiscCode.returnSpecificLocalizationFile("eng/WW_Relics_Powers.json");
 	    String powerStrings = getJsonText(powerStringsAddress);
 	    
 	    BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
 	}
 	
 	private void LoadModifiersJSON() {
-		String modifiersStringsAddress = "ww_relics/localization/eng/WW_Relics_Modifiers.json";
+		String modifiersStringsAddress =
+				QCFPunch_MiscCode.returnSpecificLocalizationFile("eng/WW_Relics_Modifiers.json");
 	    String modifiersStrings = getJsonText(modifiersStringsAddress);
 	    
 	    BaseMod.loadCustomStrings(RunModStrings.class, modifiersStrings);
 	}
 	
 	private void LoadCardsJSON() {
-		String cardsStringsAddress = "ww_relics/localization/eng/WW_Relics_Cards.json";
+		String cardsStringsAddress =
+				QCFPunch_MiscCode.returnSpecificLocalizationFile("eng/WW_Relics_Cards.json");
 	    String cardsStrings = getJsonText(cardsStringsAddress);
 	    
 	    BaseMod.loadCustomStrings(CardStrings.class, cardsStrings);
 	}
 	
 	private void LoadPotionsJSON() {
-		String potionsStringsAddress = "ww_relics/localization/eng/WW_Relics_Potions.json";
+		String potionsStringsAddress =
+				QCFPunch_MiscCode.returnSpecificLocalizationFile("eng/WW_Relics_Potions.json");
 		String potionsStrings = getJsonText(potionsStringsAddress);
 		
 		BaseMod.loadCustomStrings(PotionStrings.class, potionsStrings);
 	}
 	
 	private void LoadEventsJSON() {
-		String eventsStringsAddress = "ww_relics/localization/eng/WW_Relics_Events.json";
+		String eventsStringsAddress =
+				QCFPunch_MiscCode.returnSpecificLocalizationFile("eng/WW_Relics_Events.json");
 		String eventsStrings = getJsonText(eventsStringsAddress);
 		
 		BaseMod.loadCustomStrings(EventStrings.class, eventsStrings);
 	}
 	
 	private void LoadMonstersJSON() {
-		String monstersStringsAddress = "ww_relics/localization/eng/WW_Relics_Monsters.json";
+		String monstersStringsAddress =
+				QCFPunch_MiscCode.returnSpecificLocalizationFile("eng/WW_Relics_Monsters.json");
 		String monstersStrings = getJsonText(monstersStringsAddress);
 		
 		BaseMod.loadCustomStrings(MonsterStrings.class, monstersStrings);
