@@ -26,7 +26,7 @@ public class SpikyBracers extends CustomRelic {
 	private static final int NUMBER_OF_CARDS_TO_APPLY_EFFECT = 2;
 	
 	public static AbstractCard[] cards_chosen;
-	public static int NUMBER_OF_CARDS_CHOSEN = 0;
+	public static int number_of_cards_chosen = 0;
 	
 	public static boolean cards_are_selected = false;
 	public boolean power_tip_updated = false;
@@ -36,7 +36,7 @@ public class SpikyBracers extends CustomRelic {
 	public SpikyBracers() {
 		super(ID, GraphicResources.LoadRelicImage("spiky-bracers - CC BY 3.0.png"),
 				RelicTier.UNCOMMON, LandingSound.HEAVY);
-		NUMBER_OF_CARDS_CHOSEN = 0;
+		number_of_cards_chosen = 0;
 		cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
 	}
 	
@@ -46,7 +46,7 @@ public class SpikyBracers extends CustomRelic {
 				DESCRIPTIONS[1] + UPDATE_COST_TEXT +
 				DESCRIPTIONS[2];
 
-		if (NUMBER_OF_CARDS_CHOSEN > 0 && cards_chosen != null) {
+		if (number_of_cards_chosen > 0 && cards_chosen != null) {
 			base_description += DESCRIPTIONS[3];
 			
 			for (int i = 0; i < cards_chosen.length; i++) {
@@ -92,12 +92,14 @@ public class SpikyBracers extends CustomRelic {
 			cards_chosen = new AbstractCard[NUMBER_OF_CARDS_TO_APPLY_EFFECT];
 			cards_are_selected = false;
 			power_tip_updated = false;
-			NUMBER_OF_CARDS_CHOSEN = 0;
+			number_of_cards_chosen = 0;
 			updateTipPostCardsChosen();
 		}
 	}
 	
 	public void atTurnStartPostDraw() {
+
+
 		//If there's still cards to be affected
 			// For each card on hand
 				// If the card can be affected AND haven't been affected
@@ -130,8 +132,8 @@ public class SpikyBracers extends CustomRelic {
 	}
 	
 	public boolean weStillNeedToMakeCardsCheaper() {
-		return NUMBER_OF_CARDS_CHOSEN < cards_chosen.length &&
-				NUMBER_OF_CARDS_CHOSEN < NUMBER_OF_CARDS_TO_APPLY_EFFECT;
+		return number_of_cards_chosen < cards_chosen.length &&
+				number_of_cards_chosen < NUMBER_OF_CARDS_TO_APPLY_EFFECT;
 	}
 	
 	public boolean cardCanReceiveEffect(AbstractCard card) {
@@ -144,8 +146,8 @@ public class SpikyBracers extends CustomRelic {
 	}
 	
 	public void AddCardToEffectedList(AbstractCard card) {
-		cards_chosen[NUMBER_OF_CARDS_CHOSEN] = card.makeSameInstanceOf();
-		NUMBER_OF_CARDS_CHOSEN++;
+		cards_chosen[number_of_cards_chosen] = card.makeSameInstanceOf();
+		number_of_cards_chosen++;
 		cards_are_selected = true;
 		updateTipPostCardsChosen();		
 	}
