@@ -11,7 +11,7 @@ import ww_relics.resources.relic_graphics.GraphicResources;
 public class ChainWithNametags extends CustomRelic {
 	public static final String ID = "WW_Relics:Chain_With_Nametags";
 	
-	public static final int AMOUNT_OF_TEMP_HP_GAINED = 1;
+	public static final int PERCENTAGE_OF_TEMP_HP_GAINED = 20;
 	
 	public ChainWithNametags() {
 		super(ID, GraphicResources.LoadRelicImage("Temp Chain With Nametags - steeltoe-boots - Lorc - CC BY 3.0.png"),
@@ -19,15 +19,27 @@ public class ChainWithNametags extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + AMOUNT_OF_TEMP_HP_GAINED + DESCRIPTIONS[1];
+		return DESCRIPTIONS[0] + PERCENTAGE_OF_TEMP_HP_GAINED + DESCRIPTIONS[1];
 	}
 	
 	public int onPlayerGainedBlock(float blockAmount) {
 		
-		AbstractDungeon.actionManager.addToBottom(
-				new AddTemporaryHPAction(AbstractDungeon.player,
-						AbstractDungeon.player, AMOUNT_OF_TEMP_HP_GAINED));
+		float amount_of_temp_hp = blockAmount * PERCENTAGE_OF_TEMP_HP_GAINED / 100;
 		
+		if (amount_of_temp_hp >= 1) {
+			
+			int converted_temp_hp = (int)Math.floor(amount_of_temp_hp);
+			
+			AbstractDungeon.actionManager.addToBottom(
+					new AddTemporaryHPAction(AbstractDungeon.player,
+							AbstractDungeon.player, converted_temp_hp));
+			
+			flash();
+			
+			blockAmount -= converted_temp_hp;
+			
+		}
+
 		return MathUtils.floor(blockAmount);
 	}
 	
