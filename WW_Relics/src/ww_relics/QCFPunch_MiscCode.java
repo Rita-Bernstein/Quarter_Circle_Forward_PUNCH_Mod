@@ -28,6 +28,16 @@ public class QCFPunch_MiscCode {
 		return "qcfpunch:";
 	}
 	
+	public static String returnDescription() {
+		return "v0.11.43" +
+				"\r\n"
+				  + "\r\n Adds sixteen relics based mostly in SF2's main characters, seven game modifiers, one event and one potion."
+				  + "\r\n"
+				  + "\r\n v1.0 will have 32+ relics."
+				  + "\r\n"
+				  + "\r\n Most of the images in the mod are temporary and will be substituted/improved on v1.0.";
+	}
+	
 	//Yes, this is me not wanting to go raw to the ShopScreen.initPotions class.
 	public static void resetNumberOfChallengerCoinPotionsVariable() {
 		number_of_challenger_coin_potions_at_shop = 0;
