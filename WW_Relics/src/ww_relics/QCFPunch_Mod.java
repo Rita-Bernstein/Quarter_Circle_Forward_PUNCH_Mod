@@ -33,7 +33,7 @@ import ww_relics.relics.ken.*;
 import ww_relics.relics.mortal_kombat.*;
 import ww_relics.relics.ryu.*;
 
-import ww_relics.QCFPunch_MiscelaneaCode;
+import ww_relics.QCFPunch_MiscCode;
 
 @SpireInitializer
 public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
@@ -44,8 +44,8 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 
 	public static final Logger logger = LogManager.getLogger(QCFPunch_Mod.class.getName()); // lets us log output
 
-	public static final String MODNAME = QCFPunch_MiscelaneaCode.returnModName(); // mod name
-	public static final String MODID = QCFPunch_MiscelaneaCode.returnPrefix();
+	public static final String MODNAME = QCFPunch_MiscCode.returnModName(); // mod name
+	public static final String MODID = QCFPunch_MiscCode.returnPrefix();
 	public static final String AUTHOR = "Clauvin aka Dungeon Explorer Lan"; // your name
 	public static final String DESCRIPTION = "v0.11.43" +
 			"\r\n"
@@ -271,7 +271,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
     
 	public static void loadRunData() {
         logger.info("Loading World Warriors Relics data from");
-    	logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
+    	logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
         try {
             final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             WhiteBoots.load(config);
@@ -293,7 +293,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 	
     public static void saveRunData() {
         logger.info("Saving World Warriors Relics data from");
-    	logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
+    	logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
         try {
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             WhiteBoots.save(config);
@@ -311,7 +311,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
     
     public static void clearRunData() {
     	logger.info("Clearing Saved World Warriors Relics data from");
-    	logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
+    	logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
         try {
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             WhiteBoots.clear(config);

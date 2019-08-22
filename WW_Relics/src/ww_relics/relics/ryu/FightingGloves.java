@@ -19,7 +19,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom.*;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 
 import basemod.abstracts.CustomRelic;
-import ww_relics.QCFPunch_MiscelaneaCode;
+import ww_relics.QCFPunch_MiscCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 import java.util.*;
@@ -274,7 +274,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
     		logger.info("Started saving Fighting Gloves information from");
-    		logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
+    		logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
 
         	String class_name = AbstractDungeon.player.getClass().getName();
     		
@@ -291,7 +291,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 				e.printStackTrace();
 			}
             logger.info("Finished saving Fighting Gloves info from");
-            logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());	
+            logger.info(QCFPunch_MiscCode.classAndSaveSlotText());	
         }
         else {
 
@@ -302,7 +302,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	public static void load(final SpireConfig config) {
 		
 		logger.info("Loading Fighting Gloves info from");
-        logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
+        logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
 		
     	String class_name = AbstractDungeon.player.getClass().getName();
 		
@@ -325,7 +325,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 				e.printStackTrace();
 			}
             logger.info("Finished loading Fighting Gloves info from");
-            logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
+            logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
         }
 		
 		else
@@ -349,7 +349,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing Fighting Gloves variables from");
-        logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
+        logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
 		
     	String class_name = AbstractDungeon.player.getClass().getName();
 		
@@ -361,7 +361,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
         		"_positive_charges");
         
         logger.info("Finished clearing Fighting Gloves variables from");
-        logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
+        logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
 	}
 
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic

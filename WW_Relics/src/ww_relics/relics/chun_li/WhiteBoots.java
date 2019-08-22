@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
-import ww_relics.QCFPunch_MiscelaneaCode;
+import ww_relics.QCFPunch_MiscCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class WhiteBoots extends CustomRelic {
@@ -125,7 +125,7 @@ public class WhiteBoots extends CustomRelic {
         	
         	
     		logger.info("Started saving White Boots information from");
-    		logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
+    		logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
     		
             config.setInt("White_Boots_number_of_draws_class_" + class_name +
             				"_save_slot_" + CardCrawlGame.saveSlot, 
@@ -137,7 +137,7 @@ public class WhiteBoots extends CustomRelic {
 				e.printStackTrace();
 			}
             logger.info("Finished saving White Boots info from");
-            logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
+            logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
         }
         else {
 
@@ -154,7 +154,7 @@ public class WhiteBoots extends CustomRelic {
         				"_save_slot_" + CardCrawlGame.saveSlot)){
 			
 			logger.info("Loading White Boots info from");
-			logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
+			logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
 			
             WhiteBoots.number_of_attacks_drew = 
             		config.getInt("White_Boots_number_of_draws_class_" + class_name +
@@ -168,7 +168,7 @@ public class WhiteBoots extends CustomRelic {
 				e.printStackTrace();
 			}
             logger.info("Finished loading White Boots from");
-            logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
+            logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
         }
 		
 		else
@@ -185,14 +185,14 @@ public class WhiteBoots extends CustomRelic {
 		String class_name = AbstractDungeon.player.getClass().getName();
 		
 		logger.info("Clearing White Boots variables from");
-		logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText()); 
+		logger.info(QCFPunch_MiscCode.classAndSaveSlotText()); 
 		
 		config.remove("White_Boots_number_of_draws_class_" + class_name +
 				"_save_slot_" + CardCrawlGame.saveSlot);
 		
 		
         logger.info("Finished clearing White Boots variables from");
-        logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());  
+        logger.info(QCFPunch_MiscCode.classAndSaveSlotText());  
 	}
 
 	public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
