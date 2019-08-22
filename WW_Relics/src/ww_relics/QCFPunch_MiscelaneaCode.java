@@ -25,7 +25,7 @@ public class QCFPunch_MiscelaneaCode {
 	}
 	
 	public static String returnPrefix() {
-		return "qcfp:";
+		return "qcfpunch:";
 	}
 	
 	//Yes, this is me not wanting to go raw to the ShopScreen.initPotions class.
