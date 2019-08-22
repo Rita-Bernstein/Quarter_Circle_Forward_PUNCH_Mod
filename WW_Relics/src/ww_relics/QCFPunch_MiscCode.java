@@ -42,6 +42,10 @@ public class QCFPunch_MiscCode {
 		return "ww_relics/localization/";
 	}
 	
+	public static String returnSpecificLocalizationFolder(String specific_folder_path) {
+		return returnLocalizationMainFolder() + specific_folder_path;
+	}
+	
 	//Yes, this is me not wanting to go raw to the ShopScreen.initPotions class.
 	public static void resetNumberOfChallengerCoinPotionsVariable() {
 		number_of_challenger_coin_potions_at_shop = 0;
