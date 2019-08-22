@@ -33,6 +33,8 @@ import ww_relics.relics.ken.*;
 import ww_relics.relics.mortal_kombat.*;
 import ww_relics.relics.ryu.*;
 
+import ww_relics.QCFPunch_MiscelaneaCode;
+
 @SpireInitializer
 public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
 			EditCardsSubscriber, 
@@ -42,8 +44,8 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 
 	public static final Logger logger = LogManager.getLogger(QCFPunch_Mod.class.getName()); // lets us log output
 
-	public static final String MODNAME = "World Warriors' Relics"; // mod name
-	public static final String MODID = "ww_relics";
+	public static final String MODNAME = QCFPunch_MiscelaneaCode.returnModName(); // mod name
+	public static final String MODID = QCFPunch_MiscelaneaCode.returnPrefix();
 	public static final String AUTHOR = "Clauvin aka Dungeon Explorer Lan"; // your name
 	public static final String DESCRIPTION = "v0.11.43" +
 			"\r\n"
