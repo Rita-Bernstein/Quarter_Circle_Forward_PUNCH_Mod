@@ -34,13 +34,13 @@ import ww_relics.relics.mortal_kombat.*;
 import ww_relics.relics.ryu.*;
 
 @SpireInitializer
-public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
+public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
 			EditCardsSubscriber, 
 			EditKeywordsSubscriber, PostInitializeSubscriber, PostDungeonInitializeSubscriber, 
 			PostCreateStartingRelicsSubscriber, StartGameSubscriber
 	{
 
-	public static final Logger logger = LogManager.getLogger(WW_Relics_Mod.class.getName()); // lets us log output
+	public static final Logger logger = LogManager.getLogger(QCFPunch_Mod.class.getName()); // lets us log output
 
 	public static final String MODNAME = "World Warriors' Relics"; // mod name
 	public static final String MODID = "ww_relics";
@@ -53,12 +53,12 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 		  + "\r\n"
 		  + "\r\n Most of the images in the mod are temporary and will be substituted/improved on v1.0.";
 	
-	public WW_Relics_Mod() {
+	public QCFPunch_Mod() {
 		BaseMod.subscribe(this);
 	}
 
 	public static void initialize()	{
-	    new WW_Relics_Mod();
+	    new QCFPunch_Mod();
 	}
 	
 	public String getJsonText(String filepath) {

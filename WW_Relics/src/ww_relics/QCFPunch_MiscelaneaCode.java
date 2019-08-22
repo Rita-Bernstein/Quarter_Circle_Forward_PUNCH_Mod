@@ -41,11 +41,11 @@ public class QCFPunch_MiscelaneaCode {
     public static boolean checkForMod(final String classPath) {
         try {
             Class.forName(classPath);
-            WW_Relics_Mod.logger.info("Found mod: " + classPath);
+            QCFPunch_Mod.logger.info("Found mod: " + classPath);
             return true;
         }
         catch (ClassNotFoundException | NoClassDefFoundError ex) {
-        	WW_Relics_Mod.logger.info("Could not find mod: " + classPath);
+        	QCFPunch_Mod.logger.info("Could not find mod: " + classPath);
             return false;
         }
     }
