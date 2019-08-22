@@ -101,22 +101,19 @@ public class SpikyBracers extends CustomRelic {
 		if (number_of_cards_chosen < NUMBER_OF_CARDS_TO_APPLY_EFFECT) {
 			int amount_of_cards_in_hand = AbstractDungeon.player.hand.size();
 			for (int i = 0; i < amount_of_cards_in_hand; i++) {
+				if (cardCanReceiveEffect(AbstractDungeon.player.hand.getNCardFromTop(i))) {
+					AbstractDungeon.player.hand.getNCardFromTop(i).beginGlowing();
+					flash();
+				}
 			}
 		}
-
-		//If there's still cards to be affected
-			// For each card on hand
-				// If the card can be affected AND haven't been affected
-					// Make it glow
-					// Flash the relic
 	}
 	
 	public void onCardDraw(AbstractCard drawnCard) {
-		//If there's still cards to be affected
-			// For the card drawn
-				// If the card can be affected AND haven't been affected
-					// Make it glow
-					// Flash the relic
+		if (cardCanReceiveEffect(drawnCard)) {
+			drawnCard.beginGlowing();
+			flash();
+		}
 	}
 	
 	public void onUseCard(AbstractCard card, UseCardAction action) {
