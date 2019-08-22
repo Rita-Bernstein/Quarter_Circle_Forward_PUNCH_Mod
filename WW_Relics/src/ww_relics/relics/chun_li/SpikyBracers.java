@@ -97,6 +97,22 @@ public class SpikyBracers extends CustomRelic {
 		}
 	}
 	
+	public void atTurnStartPostDraw() {
+		//If there's still cards to be affected
+			// For each card on hand
+				// If the card can be affected AND haven't been affected
+					// Make it glow
+					// Flash the relic
+	}
+	
+	public void onCardDraw(AbstractCard drawnCard) {
+		//If there's still cards to be affected
+			// For the card drawn
+				// If the card can be affected AND haven't been affected
+					// Make it glow
+					// Flash the relic
+	}
+	
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (weStillNeedToMakeCardsCheaper()) {
 			
