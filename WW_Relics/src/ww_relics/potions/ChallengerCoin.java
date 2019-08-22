@@ -26,7 +26,7 @@ import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 import com.megacrit.cardcrawl.rooms.TreasureRoom;
 
 import ww_relics.rooms.MonsterRoomEmeraldElite;
-import ww_relics.WW_Relics_MiscelaneaCode;
+import ww_relics.QCFPunch_MiscelaneaCode;
 import ww_relics.interfaces.IPostMapGenerationAddStuff;
 import ww_relics.map_generation.PostMapGenerationChange;
 import ww_relics.map_generation.PostMapGenerationManager;
@@ -100,7 +100,7 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 		
 		String description = DESCRIPTIONS[0];
 		
-		if (WW_Relics_MiscelaneaCode.silentlyCheckForMod(WW_Relics_MiscelaneaCode.replay_the_spire_class_code)) {
+		if (QCFPunch_MiscelaneaCode.silentlyCheckForMod(QCFPunch_MiscelaneaCode.replay_the_spire_class_code)) {
 			description += DESCRIPTIONS[1];
 		}
 		
@@ -156,11 +156,11 @@ public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerat
 				!(room instanceof MonsterRoomElite) &&
 				!(room instanceof MonsterRoomBoss);
 		
-		if (WW_Relics_MiscelaneaCode.silentlyCheckForMod(WW_Relics_MiscelaneaCode.replay_the_spire_class_code)) {
+		if (QCFPunch_MiscelaneaCode.silentlyCheckForMod(QCFPunch_MiscelaneaCode.replay_the_spire_class_code)) {
 			evaluation &= !(room instanceof TeleportRoom);
 		}
 		
-		if (WW_Relics_MiscelaneaCode.silentlyCheckForMod(WW_Relics_MiscelaneaCode.infinite_spire_class_code)) {
+		if (QCFPunch_MiscelaneaCode.silentlyCheckForMod(QCFPunch_MiscelaneaCode.infinite_spire_class_code)) {
 			evaluation &= !(room instanceof NightmareEliteRoom);
 		}
 		

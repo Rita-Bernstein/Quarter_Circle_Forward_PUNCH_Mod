@@ -17,7 +17,7 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.*;
 
 import basemod.abstracts.CustomRelic;
-import ww_relics.WW_Relics_MiscelaneaCode;
+import ww_relics.QCFPunch_MiscelaneaCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 //also known as: The champion relic when they are measured regarding bug fixing. -_- 
@@ -178,7 +178,7 @@ public class DuffelBag extends CustomRelic {
         	String class_name = AbstractDungeon.player.getClass().getName();
         	
     		logger.info("Started saving Duffel Bag information from");
-    		logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+    		logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
 
             config.setInt("duffel_bag_class_" + class_name +
             		"_save_slot_" + CardCrawlGame.saveSlot +
@@ -191,7 +191,7 @@ public class DuffelBag extends CustomRelic {
 				e.printStackTrace();
 			}
             logger.info("Finished saving Duffel Bag info from");
-            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+            logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
         }
 
     }
@@ -199,7 +199,7 @@ public class DuffelBag extends CustomRelic {
 	public static void load(final SpireConfig config) {
 		
 		logger.info("Loading Duffel Bag info");
-        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+        logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
         
     	String class_name = AbstractDungeon.player.getClass().getName();
 		
@@ -220,7 +220,7 @@ public class DuffelBag extends CustomRelic {
 				e.printStackTrace();
 			}
             logger.info("Finished loading Duffel Bag info");
-            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+            logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
         }
 		
 		else
@@ -241,14 +241,14 @@ public class DuffelBag extends CustomRelic {
         		"_last_floor_where_relic_was_used")) {
 			
 			logger.info("Clearing Duffel Bag variables from");
-	        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());			
+	        logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());			
 			
 			config.remove("duffel_bag_class_" + class_name +
 	        		"_save_slot_" + CardCrawlGame.saveSlot +
 	        		"_last_floor_where_relic_was_used");
 			
 			logger.info("Finished clearing Duffel Bag variables from");
-	        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());	
+	        logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());	
 			
 		} else {
 			logger.info("No Duffel Bag variables to clean from this case.");

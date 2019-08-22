@@ -18,7 +18,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
 
 import basemod.abstracts.CustomRelic;
-import ww_relics.WW_Relics_MiscelaneaCode;
+import ww_relics.QCFPunch_MiscelaneaCode;
 import ww_relics.powers.FlamingPower;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
@@ -147,7 +147,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(ID)) {
     		logger.info("Started saving Unceasing Flame information from");
-            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+            logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
             
         	String class_name = AbstractDungeon.player.getClass().getName();
 
@@ -163,7 +163,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 			}
             
             logger.info("Finished saving White Boots info from");
-            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+            logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
         }
         else {
 
@@ -174,7 +174,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	public static void load(final SpireConfig config) {
 		
 		logger.info("Loading Unceasing Flame info from");
-        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+        logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
 
     	String class_name = AbstractDungeon.player.getClass().getName();       
         
@@ -194,7 +194,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 				e.printStackTrace();
 			}
             logger.info("Finished loading Unceasing Flame info from");
-            logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+            logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
         }
 		
 		else
@@ -209,7 +209,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
 	
 	public static void clear(final SpireConfig config) {
 		logger.info("Clearing Unceasing Flame variables from");
-        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+        logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
 		
     	String class_name = AbstractDungeon.player.getClass().getName();
 		
@@ -219,7 +219,7 @@ public class UnceasingFlame extends CustomRelic implements ClickableRelic {
         
         
         logger.info("Finished clearing Unceasing Flame variables from");
-        logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+        logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
 	}
 	
 	public AbstractRelic makeCopy() {

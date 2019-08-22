@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.shop.StorePotion;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
 import javassist.expr.NewExpr;
-import ww_relics.WW_Relics_MiscelaneaCode;
+import ww_relics.QCFPunch_MiscelaneaCode;
 
 public class ChallengerCoinOnlySpawnsOncePerMerchantShopPatches {
 	
@@ -20,7 +20,7 @@ public class ChallengerCoinOnlySpawnsOncePerMerchantShopPatches {
 		
 		@SpireInsertPatch(rloc=2)
 		public static void Insert(ShopScreen __instance) {
-			WW_Relics_MiscelaneaCode.resetNumberOfChallengerCoinPotionsVariable();
+			QCFPunch_MiscelaneaCode.resetNumberOfChallengerCoinPotionsVariable();
 		}
 		
 	}
@@ -40,9 +40,9 @@ public class ChallengerCoinOnlySpawnsOncePerMerchantShopPatches {
 					if (n.getClassName().toString().equals(StorePotion.class.getName().toString())) {
 						try {
 							n.replace("$_ = $proceed($$);"
-									+ "if ((ww_relics.WW_Relics_MiscelaneaCode.number_of_challenger_coin_potions_at_shop == 0) && "
+									+ "if ((ww_relics.QCFPunch_MiscelaneaCode.number_of_challenger_coin_potions_at_shop == 0) && "
 									+ "($_.potion.ID.equals(ww_relics.potions.ChallengerCoin.ID))){"
-									+ "ww_relics.WW_Relics_MiscelaneaCode.incrementNumberOfChallengerCoinPotionsAtShop();"
+									+ "ww_relics.QCFPunch_MiscelaneaCode.incrementNumberOfChallengerCoinPotionsAtShop();"
 									+ "} else if ($_.potion.ID.equals(ww_relics.potions.ChallengerCoin.ID)){"
 										+ "while ($_.potion.ID.equals(ww_relics.potions.ChallengerCoin.ID)){"
 											+ "$_ == new com.megacrit.cardcrawl.shop.StorePotion("

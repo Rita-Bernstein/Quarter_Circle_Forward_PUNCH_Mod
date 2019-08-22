@@ -269,7 +269,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
     
 	public static void loadRunData() {
         logger.info("Loading World Warriors Relics data from");
-    	logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+    	logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
         try {
             final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             WhiteBoots.load(config);
@@ -291,7 +291,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
 	
     public static void saveRunData() {
         logger.info("Saving World Warriors Relics data from");
-    	logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+    	logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
         try {
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             WhiteBoots.save(config);
@@ -309,7 +309,7 @@ public class WW_Relics_Mod implements AddCustomModeModsSubscriber, EditStringsSu
     
     public static void clearRunData() {
     	logger.info("Clearing Saved World Warriors Relics data from");
-    	logger.info(WW_Relics_MiscelaneaCode.classAndSaveSlotText());
+    	logger.info(QCFPunch_MiscelaneaCode.classAndSaveSlotText());
         try {
         	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
             WhiteBoots.clear(config);

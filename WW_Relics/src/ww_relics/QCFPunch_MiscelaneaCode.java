@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-public class WW_Relics_MiscelaneaCode {
+public class QCFPunch_MiscelaneaCode {
 
 	public final static String infinite_spire_class_code = "infinitespire.InfiniteSpire";
 	public final static String replay_the_spire_class_code = "replayTheSpire.ReplayTheSpireMod";
