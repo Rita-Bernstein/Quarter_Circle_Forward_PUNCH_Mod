@@ -38,6 +38,10 @@ public class QCFPunch_MiscCode {
 				  + "\r\n Most of the images in the mod are temporary and will be substituted/improved on v1.0.";
 	}
 	
+	public static String returnLocalizationMainFolder() {
+		return "ww_relics/localization/";
+	}
+	
 	//Yes, this is me not wanting to go raw to the ShopScreen.initPotions class.
 	public static void resetNumberOfChallengerCoinPotionsVariable() {
 		number_of_challenger_coin_potions_at_shop = 0;
