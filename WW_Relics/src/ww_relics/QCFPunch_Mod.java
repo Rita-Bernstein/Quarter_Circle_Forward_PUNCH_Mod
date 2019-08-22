@@ -47,13 +47,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 	public static final String MODNAME = QCFPunch_MiscCode.returnModName(); // mod name
 	public static final String MODID = QCFPunch_MiscCode.returnPrefix();
 	public static final String AUTHOR = "Clauvin aka Dungeon Explorer Lan"; // your name
-	public static final String DESCRIPTION = "v0.11.43" +
-			"\r\n"
-		  + "\r\n Adds sixteen relics based in SF2's main characters, seven game modifiers, one event and one potion."
-		  + "\r\n"
-		  + "\r\n v1.0 will have 32+ relics."
-		  + "\r\n"
-		  + "\r\n Most of the images in the mod are temporary and will be substituted/improved on v1.0.";
+	public static final String DESCRIPTION = QCFPunch_MiscCode.returnDescription();
 	
 	public QCFPunch_Mod() {
 		BaseMod.subscribe(this);
