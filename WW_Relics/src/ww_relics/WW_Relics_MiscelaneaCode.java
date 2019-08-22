@@ -20,6 +20,14 @@ public class WW_Relics_MiscelaneaCode {
 	
 	public static int number_of_challenger_coin_potions_at_shop = 0;
 	
+	public static String returnModName() {
+		return "Quarter Circle Forward PUNCH!";
+	}
+	
+	public static String returnPrefix() {
+		return "qcfp:";
+	}
+	
 	//Yes, this is me not wanting to go raw to the ShopScreen.initPotions class.
 	public static void resetNumberOfChallengerCoinPotionsVariable() {
 		number_of_challenger_coin_potions_at_shop = 0;
