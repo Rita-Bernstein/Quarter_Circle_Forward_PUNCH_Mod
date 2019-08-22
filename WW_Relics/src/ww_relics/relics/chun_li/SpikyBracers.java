@@ -102,7 +102,6 @@ public class SpikyBracers extends CustomRelic {
 			int amount_of_cards_in_hand = AbstractDungeon.player.hand.size();
 			for (int i = 0; i < amount_of_cards_in_hand; i++) {
 				if (cardCanReceiveEffect(AbstractDungeon.player.hand.getNCardFromTop(i))) {
-					AbstractDungeon.player.hand.getNCardFromTop(i).beginGlowing();
 					flash();
 				}
 			}
@@ -111,7 +110,6 @@ public class SpikyBracers extends CustomRelic {
 	
 	public void onCardDraw(AbstractCard drawnCard) {
 		if (cardCanReceiveEffect(drawnCard)) {
-			drawnCard.beginGlowing();
 			flash();
 		}
 	}
