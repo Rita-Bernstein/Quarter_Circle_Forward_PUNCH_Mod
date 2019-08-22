@@ -98,7 +98,11 @@ public class SpikyBracers extends CustomRelic {
 	}
 	
 	public void atTurnStartPostDraw() {
-
+		if (number_of_cards_chosen < NUMBER_OF_CARDS_TO_APPLY_EFFECT) {
+			int amount_of_cards_in_hand = AbstractDungeon.player.hand.size();
+			for (int i = 0; i < amount_of_cards_in_hand; i++) {
+			}
+		}
 
 		//If there's still cards to be affected
 			// For each card on hand
@@ -166,7 +170,6 @@ public class SpikyBracers extends CustomRelic {
 			if (card_chosen != null) {
 				logger.info(card_chosen.name);
 				if (card_chosen.uuid == card.uuid) {
-					logger.info("2");
 					has_been_chosen_already = true;
 					break;
 				}
