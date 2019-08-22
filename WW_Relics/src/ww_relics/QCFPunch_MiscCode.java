@@ -42,8 +42,8 @@ public class QCFPunch_MiscCode {
 		return "ww_relics/localization/";
 	}
 	
-	public static String returnSpecificLocalizationFolder(String specific_folder_path) {
-		return returnLocalizationMainFolder() + specific_folder_path;
+	public static String returnSpecificLocalizationFile(String specific_file_path) {
+		return returnLocalizationMainFolder() + specific_file_path;
 	}
 	
 	//Yes, this is me not wanting to go raw to the ShopScreen.initPotions class.
