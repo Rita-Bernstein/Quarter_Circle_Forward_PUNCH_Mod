@@ -9,10 +9,11 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.abstracts.CustomCard;
+import ww_relics.QCFPunch_MiscCode;
 
 public class DefendWeakest extends CustomCard {
 
-	public static final String ID = "WW_Relics:Defend_Weakest";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Defend_Weakest";
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
@@ -21,7 +22,7 @@ public class DefendWeakest extends CustomCard {
 	
     public DefendWeakest() {
         super(ID, DefendWeakest.NAME,
-        		"ww_relics/images/cards/temp_skill.png", COST, DefendWeakest.DESCRIPTION,
+        		QCFPunch_MiscCode.returnCardsImageMainFolder() + "temp_skill.png", COST, DefendWeakest.DESCRIPTION,
         		CardType.SKILL, CardColor.COLORLESS, CardRarity.BASIC, CardTarget.SELF);
         
         this.baseBlock = BLOCK_INIT_GAINED;
