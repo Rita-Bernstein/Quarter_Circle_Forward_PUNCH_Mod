@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import ww_relics.QCFPunch_MiscCode;
 import ww_relics.cards.dan.DefendWeakest;
 import ww_relics.cards.dan.StrikeWeakest;
 import ww_relics.cards.dan.WeakestEnergyBlast;
@@ -22,7 +23,7 @@ import ww_relics.cards.dan.WeakestTaunt;
 
 public class WeakestFightingStylePower extends AbstractPower {
 
-	public static final String POWER_ID = "WW_Relics:Power_Weakest_Fighting_Style";
+	public static final String POWER_ID = QCFPunch_MiscCode.returnPrefix() + "Power_Weakest_Fighting_Style";
 	private static final PowerStrings powerStrings = 
 			CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = powerStrings.NAME;

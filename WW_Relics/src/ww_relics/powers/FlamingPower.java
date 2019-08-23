@@ -14,11 +14,12 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import ww_relics.QCFPunch_MiscCode;
 import ww_relics.actions.FlamingAction;
 
 public class FlamingPower extends AbstractPower {
 
-	public static final String POWER_ID = "WW_Relics:Power_Flaming";
+	public static final String POWER_ID = QCFPunch_MiscCode.returnPrefix() + "Power_Flaming";
 	private static final PowerStrings powerStrings = 
 			CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = powerStrings.NAME;
