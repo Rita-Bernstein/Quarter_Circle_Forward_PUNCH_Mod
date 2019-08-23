@@ -37,7 +37,7 @@ import infinitespire.rooms.NightmareEliteRoom;
 
 public class ChallengerCoin extends OutOfCombatPotion implements IPostMapGenerationAddStuff {
 
-	public static final String ID = "WW_Relics:Challenger_Coin";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Challenger_Coin";
 	
 	private static final PotionStrings potionStrings = CardCrawlGame.
 			languagePack.getPotionString(ID);
