@@ -14,7 +14,7 @@ import ww_relics.QCFPunch_MiscCode;
 
 public class WeakestFlyingKick extends CustomCard {
 
-	public static final String ID = "WW_Relics:WeakestFlyingKick";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "WeakestFlyingKick";
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;

@@ -16,7 +16,7 @@ import ww_relics.powers.PotentialPower;
 
 public class WeakestEnergyBlast extends CustomCard {
 
-	public static final String ID = "WW_Relics:WeakestEnergyBlast";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "WeakestEnergyBlast";
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;

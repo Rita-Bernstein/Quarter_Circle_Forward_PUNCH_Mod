@@ -15,7 +15,7 @@ import ww_relics.QCFPunch_MiscCode;
 
 public class StrikeWeakest extends CustomCard {
 
-	public static final String ID = "WW_Relics:Strike_Weakest";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Strike_Weakest";
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
