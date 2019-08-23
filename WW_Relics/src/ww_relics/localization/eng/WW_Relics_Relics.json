@@ -1,5 +1,5 @@
 {
-  "WW_Relics:Army_Boots": {
+  "qcfpunch:Army_Boots": {
     "NAME": "Army Boots",
     "FLAVOR": "Excellent grip. Sadly, not your size.",
     "DESCRIPTIONS": [
@@ -8,7 +8,7 @@
     ]
   },
   
-  "WW_Relics:Black_Training_Shirt": {
+  "qcfpunch:Black_Training_Shirt": {
     "NAME": "Black Training Shirt",
     "FLAVOR": "Training is important, even in the Spire.",
     "DESCRIPTIONS": [
@@ -18,7 +18,7 @@
     ]
   },
   
-  "WW_Relics:Chain_With_Nametags": {
+  "qcfpunch:Chain_With_Nametags": {
     "NAME": "Chain With Nametags",
     "FLAVOR": "A surprisingly resilient chain with two faded nametags.",
     "DESCRIPTIONS": [
@@ -27,7 +27,7 @@
     ]
   },
   
-  "WW_Relics:Combat_Fatigues": {
+  "qcfpunch:Combat_Fatigues": {
     "NAME": "Combat Fatigues",
     "FLAVOR": "\"War clothes. Pumps you to defend and then attack, but not for peace. Remember to take them off eventually, will ya?\" - Ranwid",
     "DESCRIPTIONS": [
@@ -37,7 +37,7 @@
     ]
   },
 
-  "WW_Relics:Duffel_Bag": {
+  "qcfpunch:Duffel_Bag": {
     "NAME": "Duffel Bag",
     "FLAVOR": "Very practical when wandering.",
     "DESCRIPTIONS": [
@@ -47,7 +47,7 @@
     ]
   },
   
-  "WW_Relics:Extra_Skeleton": {
+  "qcfpunch:Extra_Skeleton": {
     "NAME": "Extra Skeleton",
     "FLAVOR": "It's not the REAL skeleton breaking, so it's fine. Really!",
     "DESCRIPTIONS": [
@@ -57,7 +57,7 @@
     ]
   },
     
-  "WW_Relics:Fighting_Gloves": {
+  "qcfpunch:Fighting_Gloves": {
     "NAME": "Fighting Gloves",
     "FLAVOR": "\"Inspiring! Who wants to train with me?\" - Ranwid.",
     "DESCRIPTIONS": [
@@ -73,22 +73,22 @@
     ]
   },
   
-  "WW_Relics:Handcuffs": {
+  "qcfpunch:Handcuffs": {
     "NAME": "Handcuffs",
     "FLAVOR": "An old tool used for those who once fought for law and order.",
     "DESCRIPTIONS": [
       "Each combat, the first enemy that receives #runblocked #rdamage gains [#2aecd7]",
-      " #yww_relics:Unsteady",
+      " #yqcfpunch:Unsteady",
       ", loses #b",
       " Strength ",
-      "and is #yww_relics:Stunned for #b",
+      "and is #yqcfpunch:Stunned for #b",
       " turn.",
       " "
     ]
   },
   
     
-  "WW_Relics:Neverending_Blood": {
+  "qcfpunch:Neverending_Blood": {
     "NAME": "Neverending Blood",
     "FLAVOR": "There's so much blood inside now, that it almost feels like it can leak out.",
  	"DESCRIPTIONS": [
@@ -99,15 +99,15 @@
     ]
   },
   
-  "WW_Relics:Not_Strongest_Fighting_Style_Guidebook": {
+  "qcfpunch:Not_Strongest_Fighting_Style_Guidebook": {
     "NAME": "\"Strongest\" Style Manual",
     "FLAVOR": "\"My god, I must unlearn what I've read. WHY ANYONE WOULD FIGHT LIKE THIS?!\"",
     "DESCRIPTIONS": [
-      "At the start of your turn, add a random #yww_relics:Weakest card to your hand.  NL Your max hand size is increased by #b1."
+      "At the start of your turn, add a random #yqcfpunch:Weakest card to your hand.  NL Your max hand size is increased by #b1."
     ]
   },
   
-  "WW_Relics:Red_Headband": {
+  "qcfpunch:Red_Headband": {
     "NAME": "Red Headband",
     "FLAVOR": "Placing it in your head gives some focus against distractions.",
     "DESCRIPTIONS": [
@@ -116,7 +116,7 @@
   },
   
     
-  "WW_Relics:Red_Gi": {
+  "qcfpunch:Red_Gi": {
     "NAME": "Red Gi",
     "FLAVOR": "Made of good fabric that doesn't hinder movements and inspires to be offensive.",
     "DESCRIPTIONS": [
@@ -127,7 +127,7 @@
     ]
   },
   
-  "WW_Relics:School_Backpack": {
+  "qcfpunch:School_Backpack": {
     "NAME": "School Backpack",
     "FLAVOR": "Full of physical mementos from a world tour.",
     "DESCRIPTIONS": [
@@ -139,7 +139,7 @@
     ]
   },  
   
-  "WW_Relics:Spiky_Bracers": {
+  "qcfpunch:Spiky_Bracers": {
     "NAME": "Spiky Bracers",
     "FLAVOR": "Good for balancing your body weight, but the pointy spikes make you use them sparingly.",
     "DESCRIPTIONS": [
@@ -153,7 +153,7 @@
     ]
   },
 
-  "WW_Relics:Unceasing_Flame": {
+  "qcfpunch:Unceasing_Flame": {
     "NAME": "Unceasing Flame",
     "FLAVOR": "\"Glorious! A divine fire of a daring dragon, if the ancient texts are right.\" - Ranwid.",
     "DESCRIPTIONS": [
@@ -163,7 +163,7 @@
     ]
   },
 
-  "WW_Relics:White_Boots": {
+  "qcfpunch:White_Boots": {
     "NAME": "White Boots",
     "FLAVOR": "Very, very worn shoes... as much from hitting as from walking.",
     "DESCRIPTIONS": [
