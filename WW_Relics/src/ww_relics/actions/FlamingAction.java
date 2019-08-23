@@ -8,6 +8,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
+import ww_relics.QCFPunch_MiscCode;
+
 public class FlamingAction extends AbstractGameAction {
 
 	public AbstractCreature monster_to_affect;
@@ -71,7 +73,7 @@ public class FlamingAction extends AbstractGameAction {
 		AbstractDungeon.actionManager.addToBottom(
 				new RemoveSpecificPowerAction(AbstractDungeon.player,
 						AbstractDungeon.player,
-						AbstractDungeon.player.getPower("WW_Relics:Power_Flaming")));
+						AbstractDungeon.player.getPower(QCFPunch_MiscCode.returnPrefix() + "Power_Flaming")));
 	}
 
 }
