@@ -281,7 +281,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
             FightingGloves.load(config);
             UnceasingFlame.load(config);
             SchoolBackpack.load(config);
-            if ((AbstractDungeon.actNum == 1) && (AbstractDungeon.floorNum < 2)) {
+            if (shouldSanitizeActOne()) {
             	ChallengerCoin.sanitizingActOne(config);
             }
             ChallengerCoin.load(config);
@@ -291,6 +291,10 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
             e.printStackTrace();
         }
         logger.info("Done loading World Warriors Relics data");
+	}
+	
+	public static boolean shouldSanitizeActOne() {
+		return ((AbstractDungeon.actNum == 1) && (AbstractDungeon.floorNum < 2));
 	}
 	
     public static void saveRunData() {
