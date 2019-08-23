@@ -1,40 +1,40 @@
 {
-	"WW_Relics:BlazingFist": {
+	"qcfpunch:BlazingFist": {
 		"NAME": "Blazing Fist",
 		"DESCRIPTION": "Start with Black Training Shirt, Red Gi and Unceasing Flame."
 	},
 	
-	"WW_Relics:BlueJade": {
+	"qcfpunch:BlueJade": {
 		"NAME": "Blue Jade",
 		"DESCRIPTION": "Start with Spiky Bracers, White Boots and Handcuffs."
 	},
 	
-	"WW_Relics:FreshStart": {
+	"qcfpunch:FreshStart": {
 		"NAME": "Fresh Start",
 		"DESCRIPTION": "Start without any Starter relics."
 	},
 	
-	"WW_Relics:HalfHealthBar": {
+	"qcfpunch:HalfHealthBar": {
 		"NAME": "Half Health Bar",
 		"DESCRIPTION": "Start with 50% Max HP."
 	},
 
-	"WW_Relics:IndestructibleFortress": {
+	"qcfpunch:IndestructibleFortress": {
 		"NAME": "Indestructible Fortress",
 		"DESCRIPTION": "Start with Army Boots, Chain With Nametags and Combat Fatigues."
 	},
 
-	"WW_Relics:LoweringTheHandicap": {
+	"qcfpunch:LoweringTheHandicap": {
 		"NAME": "Lowering The Handicap",
 		"DESCRIPTION": "Start with 125% Max HP."
 	},
 	
-	"WW_Relics:QuarterHealthBar": {
+	"qcfpunch:QuarterHealthBar": {
 		"NAME": "Quarter Health Bar",
 		"DESCRIPTION": "Start with 25% Max HP."
 	},
 
-	"WW_Relics:WanderingWarrior": {
+	"qcfpunch:WanderingWarrior": {
 		"NAME": "Wandering Warrior",
 		"DESCRIPTION": "Start with Duffel Bag, Fighting Gloves and Red Headband."
 	},
