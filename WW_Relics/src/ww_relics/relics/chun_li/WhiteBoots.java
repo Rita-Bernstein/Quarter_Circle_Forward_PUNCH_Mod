@@ -20,7 +20,7 @@ import ww_relics.QCFPunch_MiscCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class WhiteBoots extends CustomRelic {
-	public static final String ID = "WW_Relics:White_Boots";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "White_Boots";
 	private static final int CONSTANT_DAMAGE = 1;
 	private static final int DAMAGE_FOR_EACH_UPGRADE = 1;
 	private static final int CARDS_DREW_FOR_MULTIPLIER = 3;

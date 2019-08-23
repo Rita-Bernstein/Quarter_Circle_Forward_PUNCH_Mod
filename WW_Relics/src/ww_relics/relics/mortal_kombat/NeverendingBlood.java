@@ -10,11 +10,12 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.QCFPunch_MiscCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class NeverendingBlood extends CustomRelic {
 
-	public static final String ID = "WW_Relics:Neverending_Blood";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Neverending_Blood";
 	
 	public static final float REGEN_PERCENTAGE_OF_DAMAGE_RECEIVED = 0.34f;
 	public static final int MINIMUM_AMOUNT_OF_REGEN_ADDED = 1; 

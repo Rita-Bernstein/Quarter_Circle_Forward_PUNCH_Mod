@@ -23,7 +23,7 @@ import ww_relics.resources.relic_graphics.GraphicResources;
 //also known as: The champion relic when they are measured regarding bug fixing. -_- 
 public class DuffelBag extends CustomRelic {
 	
-	public static final String ID = "WW_Relics:Duffel_Bag";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Duffel_Bag";
 	private static final int NUMBER_OF_STATIC_CARDS = 2;
 
 	private static final int NUMBER_OF_RANDOM_COMMON_RELICS = 2;

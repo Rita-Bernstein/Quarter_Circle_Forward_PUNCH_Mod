@@ -9,11 +9,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.QCFPunch_MiscCode;
 import ww_relics.actions.DrawRandomCardToHandAction;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class RedHeadband extends CustomRelic {
-	public static final String ID = "WW_Relics:Red_Headband";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Red_Headband";
 	private static final int DRAW_PER_STATUS_OR_CURSE = 1;
 	private static final int NUMBER_OF_DRAWS = 1;
 	
