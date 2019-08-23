@@ -272,10 +272,10 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
     }
     
 	public static void loadRunData() {
-        logger.info("Loading World Warriors Relics data from");
+        logger.info("Loading " + QCFPunch_MiscCode.returnModName()+ " data from");
     	logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
         try {
-            final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
+            final SpireConfig config = new SpireConfig(QCFPunch_MiscCode.returnModName(), "SaveData");
             WhiteBoots.load(config);
             DuffelBag.load(config);
             FightingGloves.load(config);
@@ -290,7 +290,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
         catch (IOException e) {
             e.printStackTrace();
         }
-        logger.info("Done loading World Warriors Relics data");
+        logger.info("Done loading " + QCFPunch_MiscCode.returnModName() + " data");
 	}
 	
 	public static boolean shouldSanitizeActOne() {
@@ -298,10 +298,10 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 	}
 	
     public static void saveRunData() {
-        logger.info("Saving World Warriors Relics data from");
+        logger.info("Saving " + QCFPunch_MiscCode.returnModName() + " data from");
     	logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
         try {
-        	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
+        	final SpireConfig config = new SpireConfig(QCFPunch_MiscCode.returnModName(), "SaveData");
             WhiteBoots.save(config);
             DuffelBag.save(config);
             FightingGloves.save(config);
@@ -312,14 +312,14 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
         catch (IOException e) {
         	e.printStackTrace();
         }
-        logger.info("Done saving World Warriors Relics data");
+        logger.info("Done saving " + QCFPunch_MiscCode.returnModName() + " data");
     }
     
     public static void clearRunData() {
-    	logger.info("Clearing Saved World Warriors Relics data from");
+    	logger.info("Clearing Saved " + QCFPunch_MiscCode.returnModName() + " data from");
     	logger.info(QCFPunch_MiscCode.classAndSaveSlotText());
         try {
-        	final SpireConfig config = new SpireConfig("WorldWarriorsRelicsMod", "SaveData");
+        	final SpireConfig config = new SpireConfig(QCFPunch_MiscCode.returnModName(), "SaveData");
             WhiteBoots.clear(config);
             DuffelBag.clear(config);
             FightingGloves.clear(config);
@@ -332,7 +332,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
         catch (IOException e) {
         	e.printStackTrace();
         }
-        logger.info("Done clearing saved World Warriors Relics data");
+        logger.info("Done clearing saved " + QCFPunch_MiscCode.returnModName() + " data");
     }
     
     public void receiveStartGame() {
