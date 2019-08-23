@@ -6,14 +6,16 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
 
+import ww_relics.QCFPunch_MiscCode;
+
 public class HarderRunModifiers {
 
-	public static final String FRESH_START_ID = "WW_Relics:FreshStart";
+	public static final String FRESH_START_ID = QCFPunch_MiscCode.returnPrefix() + "FreshStart";
 	
-	public static final String HALF_HEALTH_BAR_ID = "WW_Relics:HalfHealthBar";
+	public static final String HALF_HEALTH_BAR_ID = QCFPunch_MiscCode.returnPrefix() + "HalfHealthBar";
 	public static final int HALF_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE = 50;
 	
-	public static final String QUARTER_HEALTH_BAR_ID = "WW_Relics:QuarterHealthBar";
+	public static final String QUARTER_HEALTH_BAR_ID = QCFPunch_MiscCode.returnPrefix() + "QuarterHealthBar";
 	public static final int QUARTER_HEALTH_BAR_STARTING_MAX_HP_PERCENTAGE = 25;
 	
 	public static final void AddHarderSetModifiers(List<CustomMod> list) {
