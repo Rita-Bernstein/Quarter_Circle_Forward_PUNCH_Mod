@@ -29,7 +29,7 @@ import ww_relics.QCFPunch_MiscCode;
 
 public class TiredGremlinNob extends CustomMonster {
 
-	public static final String ID = "WW_Relics:TiredGremlinNob";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "TiredGremlinNob";
 	private static final MonsterStrings monsterstrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
 	public static final String NAME = monsterstrings.NAME;
 	public static final String[] DIALOG = monsterstrings.DIALOG;
