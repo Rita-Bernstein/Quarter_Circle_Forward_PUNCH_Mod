@@ -7,11 +7,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import basemod.abstracts.CustomRelic;
+import ww_relics.QCFPunch_MiscCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class RedGi extends CustomRelic {
 	
-	public static final String ID = "WW_Relics:Red_Gi";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Red_Gi";
 	public static final int SEQUENTIAL_ATTACKS_TO_DO = 3;
 	public static final int CARDS_TO_DRAW = 1;
 	public static final int INCREASE_ATTACK_COST_BY = -1;

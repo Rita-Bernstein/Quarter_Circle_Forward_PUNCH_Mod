@@ -16,11 +16,12 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.QCFPunch_MiscCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class CombatFatigues extends CustomRelic {
 
-	public static final String ID = "WW_Relics:Combat_Fatigues";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Combat_Fatigues";
 	
 	public static boolean gained_block_last_turn = false;
 	public static boolean havent_attacked_last_turn = true; 

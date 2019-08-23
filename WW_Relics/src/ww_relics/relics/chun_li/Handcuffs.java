@@ -11,11 +11,12 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.QCFPunch_MiscCode;
 import ww_relics.powers.UnsteadyPower;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class Handcuffs extends CustomRelic {
-	public static final String ID = "WW_Relics:Handcuffs";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Handcuffs";
 	
 	private static final int NUMBER_OF_USES_PER_FIGHT = 1;
 	private static final int NUMBER_OF_STR_DOWN_DEBUFFS = 0;

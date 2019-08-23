@@ -28,7 +28,7 @@ public class FightingGloves extends CustomRelic implements ClickableRelic {
 	
 	public static final Logger logger = LogManager.getLogger(FightingGloves.class.getName());
 	
-	public static final String ID = "WW_Relics:Fighting_Gloves";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Fighting_Gloves";
 	private static final int INITIAL_CHARGES = 1;
 	private static int positive_charges;
 	private static final int EVERY_X_ROOMS_VISITED_ADDS_A_CHARGE = 4;

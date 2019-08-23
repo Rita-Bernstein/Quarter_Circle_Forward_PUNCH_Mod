@@ -6,10 +6,11 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.QCFPunch_MiscCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class ChainWithNametags extends CustomRelic {
-	public static final String ID = "WW_Relics:Chain_With_Nametags";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Chain_With_Nametags";
 	
 	public static final int PERCENTAGE_OF_TEMP_HP_GAINED = 20;
 	

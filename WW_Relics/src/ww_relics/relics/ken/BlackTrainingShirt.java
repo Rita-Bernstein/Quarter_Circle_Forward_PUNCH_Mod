@@ -7,11 +7,12 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.QCFPunch_MiscCode;
 import ww_relics.powers.RiskyOffensivePower;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class BlackTrainingShirt extends CustomRelic {
-	public static final String ID = "WW_Relics:Black_Training_Shirt";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Black_Training_Shirt";
 	public static final int EXTRA_STRENGTH = 2;
 	
 	public BlackTrainingShirt() {

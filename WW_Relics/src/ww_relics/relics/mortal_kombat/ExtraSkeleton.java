@@ -6,11 +6,12 @@ import com.megacrit.cardcrawl.powers.BufferPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.QCFPunch_MiscCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class ExtraSkeleton extends CustomRelic {
 
-	public static final String ID = "WW_Relics:Extra_Skeleton";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Extra_Skeleton";
 	
 	public static final int COUNTER_INITIAL_VALUE = 0;
 	public static final int COUNTER_INCREASE_VALUE = 1;

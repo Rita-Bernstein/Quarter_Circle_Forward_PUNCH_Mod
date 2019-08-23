@@ -12,10 +12,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import ww_relics.QCFPunch_MiscCode;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class ArmyBoots extends CustomRelic implements OnLoseBlockRelic  {
-	public static final String ID = "WW_Relics:Army_Boots";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Army_Boots";
 	
 	private static ArrayList<String> powers_affected_by_relic;
 	private static boolean relic_effect_activated_this_combat = false;
