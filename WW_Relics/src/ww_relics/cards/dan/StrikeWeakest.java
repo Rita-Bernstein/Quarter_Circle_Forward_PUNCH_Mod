@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.abstracts.CustomCard;
+import ww_relics.QCFPunch_MiscCode;
 
 public class StrikeWeakest extends CustomCard {
 
@@ -22,7 +23,7 @@ public class StrikeWeakest extends CustomCard {
     private static final int ATTACK_DMG = 1;
 	
     public StrikeWeakest() {
-        super(ID, StrikeWeakest.NAME, "ww_relics/images/cards/strike_weakest.png",
+        super(ID, StrikeWeakest.NAME, QCFPunch_MiscCode.returnCardsImageMainFolder() + "strike_weakest.png",
         		StrikeWeakest.COST, StrikeWeakest.DESCRIPTION,
         		CardType.ATTACK, CardColor.COLORLESS, CardRarity.BASIC, CardTarget.ENEMY);
         

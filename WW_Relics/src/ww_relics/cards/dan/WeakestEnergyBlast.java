@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.abstracts.CustomCard;
+import ww_relics.QCFPunch_MiscCode;
 import ww_relics.powers.PotentialPower;
 
 public class WeakestEnergyBlast extends CustomCard {
@@ -25,7 +26,7 @@ public class WeakestEnergyBlast extends CustomCard {
     private static final int POTENTIAL_DENOMINATOR = 3;
 	
 	public WeakestEnergyBlast() {
-		super(ID, WeakestEnergyBlast.NAME, "ww_relics/images/cards/temp_attack.png",
+		super(ID, WeakestEnergyBlast.NAME, QCFPunch_MiscCode.returnCardsImageMainFolder() + "temp_attack.png",
 				WeakestEnergyBlast.COST, WeakestEnergyBlast.DESCRIPTION, CardType.ATTACK,
 				CardColor.COLORLESS, CardRarity.COMMON, CardTarget.ENEMY);
 
