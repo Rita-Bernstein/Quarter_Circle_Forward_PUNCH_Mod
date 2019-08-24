@@ -20,7 +20,7 @@ public class DrawRandomCardToHandAction extends AbstractGameAction {
 		
 		if (!this.isDone) {
 	    	int draw_pile_size = player.drawPile.group.size();
-	    	int which_card = AbstractDungeon.cardRandomRng.random(0, draw_pile_size-1);
+	    	int which_card = AbstractDungeon.cardRandomRng.random(1, draw_pile_size) - 1;
 	    	AbstractCard the_card = player.drawPile.getNCardFromTop(which_card);
 	    	player.drawPile.moveToHand(the_card, player.drawPile);
 	    	
