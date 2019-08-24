@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>WW_Relics</groupId>
-  <artifactId>WorldWarriorsRelics</artifactId>
-  <name>WorldWarriorsRelics</name>
+  <groupId>qcfpunch</groupId>
+  <artifactId>QuarterCircleForwardPUNCH</artifactId>
+  <name>QuarterCircleForwardPUNCH!</name>
   <version>0.11.43</version>
   <description>Adds sixteen relics, seven game modifiers, one event and one potion, inspired mainly by fighters from
     			 \r\n Super Street Fighter 2: The New Challengers and also some extra inspiration of other fighting games.
@@ -12,7 +12,7 @@
 		  		 \r\n
 		  		 \r\n Most of the images in this mod are temporary and will be substituted/improved on v1.0.</description>
   <build>
-    <finalName>WorldWarriorsRelics</finalName>
+    <finalName>QuarterCircleForwardPunch</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
@@ -28,7 +28,7 @@
         <version>2.4.2</version>
         <executions>
           <execution>
-            <id>WW_Relics</id>
+            <id>QuarterCircleForwardPUNCH!</id>
             <phase>package</phase>
             <goals>
               <goal>shade</goal>
@@ -36,7 +36,7 @@
             <configuration>
               <filters>
                 <filter>
-                  <artifact>WW_Relics:WorldWarriorsRelics</artifact>
+                  <artifact>qfcpunch:QuarterCircleForwardPUNCH</artifact>
                 </filter>
               </filters>
             </configuration>
