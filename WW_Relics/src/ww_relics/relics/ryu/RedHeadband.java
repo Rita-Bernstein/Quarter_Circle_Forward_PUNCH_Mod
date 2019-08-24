@@ -1,6 +1,7 @@
 package ww_relics.relics.ryu;
 
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
-import ww_relics.actions.DrawRandomCardToHandAction;
+//import ww_relics.actions.DrawRandomCardToHandAction;
 import ww_relics.resources.relic_graphics.GraphicResources;
 
 public class RedHeadband extends CustomRelic {
@@ -44,7 +45,8 @@ public class RedHeadband extends CustomRelic {
 			        for (int i = 0; i < DRAW_PER_STATUS_OR_CURSE; i++) {
 				        if (!p.drawPile.group.isEmpty()) {
 				        	AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4f));
-				        	AbstractDungeon.actionManager.addToBottom(new DrawRandomCardToHandAction());
+				        	AbstractDungeon.actionManager.addToBottom(new DrawCardAction(
+				        			AbstractDungeon.player, 1));
 				        } else { break; }
 				        
 						drawn_status_and_curses_in_the_turn++;
