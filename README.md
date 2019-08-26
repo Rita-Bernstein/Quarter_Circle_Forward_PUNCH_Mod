@@ -74,13 +74,15 @@ And MAYBE (not making promises here)
 
 # Requirements
 
-Mod The Spire 3.6.3+, BaseMod 5.5.0+ and StSLib 1.10.0+ (when needed, the requirements will be updated to more recent versions of these libraries)
+Slay The Spire 1.1, Mod The Spire 3.11.0+, BaseMod 5.15.1+ and StSLib 1.17.1+ (when needed, the requirements will be updated to more recent versions of the game and libraries)
 
 # Compatibility
 
-Regarding Slay The Spire, it works with v1.0. Haven't tested it with v1.1 yet.
+There are more than one hundred mods at Steam Workshop and who knows how many more outside of it, so I can't say that it won't crash your game in any possible mod combination. In case of it happening, open one issue, I will check it out.
 
-About mods, it shouldn't have/cause problems with/to them. That said, there are more than one hundred mods at Steam Workshop and who knows how many more outside of it, so I can't say that it won't crash your game in any possible mod combination. In case of it happening, open one issue, I will check it out.
+THAT said...
+
+* Vex's [The Artificer](https://steamcommunity.com/sharedfiles/filedetails/?id=1842757025) character mod does NOT use cards, and break cards that somehow reach your hand. This should mess with the "Strongest" Style Guidebook relic.
 
 ## List of Incompatible Mods:
 
