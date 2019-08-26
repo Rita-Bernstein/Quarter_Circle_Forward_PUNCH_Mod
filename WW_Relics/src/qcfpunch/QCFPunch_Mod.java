@@ -45,7 +45,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 
 	public static final String MODNAME = QCFPunch_MiscCode.returnModName(); // mod name
 	public static final String MODID = QCFPunch_MiscCode.returnPrefix();
-	public static final String AUTHOR = "Clauvin aka Dungeon Explorer Lan"; // your name
+	public static final String AUTHOR = "Levender"; // your name
 	public static final String DESCRIPTION = QCFPunch_MiscCode.returnDescription();
 	
 	public QCFPunch_Mod() {
