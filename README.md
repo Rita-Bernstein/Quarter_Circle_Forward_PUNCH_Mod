@@ -102,13 +102,17 @@ Kiooeht (https://github.com/kiooeht) for ModTheSpire (https://github.com/kiooeht
 
 AGAIN Kiooeht for StSLib (https://github.com/kiooeht/StSLib), because it helps a lot for modding :)
 
-Nafen, from the Slay The Spire Discord's modding channel, for helping with the description of the Handcuffs' effect.
-
-Lots of people from the Slay The Spire Discord's modding channel for pointing stuff from this mod to improve/polish/buff/nerf, check the "suggestion from discord" tag in the Issues to see specifics.
+The-Evil-Pickle, for the [Replay The Spire](https://github.com/The-Evil-Pickle/Replay-the-Spire) save/load code, it was the basis of the one used at this mod.
 
 Thiago, for helping with finding some bugs in the 0.6.* versions.
 
+Charles, for moral support and some criticism.
+
 Discord's bulbamaster#5216 for testing the 0.9 version.
+
+Discord's AvangionQ#9279 for testing older versions.
+
+Lots of people from the Slay The Spire Discord's modding channel for pointing stuff from this mod to improve/polish/buff/nerf, check the "suggestion from discord" tag in the Issues to see specifics.
 
 STREET FIGHTER is a registered trademark of CAPCOM U.S.A., INC.
 
@@ -116,9 +120,11 @@ STREET FIGHTER is a registered trademark of CAPCOM U.S.A., INC.
 
 To MegaCrit, the makes from SlayTheSpire, because the game is awesome and they are cool with mods of their game :D
 
-The whole modding channel from the Discord's Slay The Spire server and all people who goes there to support and banter and laughs about modding the game and other things. You rock, fellows.
+The whole modding channel from the Discord's Slay The Spire server and all people who goes there to support and banter and laugh about modding the game and other things. You rock, fellows.
 
 To game-icons.net, because without it the mod probably would not have proper temporary icons for its relics.
+
+To Robert C. Martin because of his book [Clean Code](https://www.oreilly.com/library/view/clean-code/9780136083238/), since without it, oh boy this mod's code would be way harder to read...
 
 # Art Assets
 
@@ -140,4 +146,4 @@ Handcuffs - Found original at https://game-icons.net/1x1/lorc/handcuffs.html - M
 
 # See Also
 
-(...ok, I really have to add something here later.)
+(...and here, too...)
