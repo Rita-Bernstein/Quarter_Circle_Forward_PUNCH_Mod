@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
+import qcfpunch.QCFPunch_MiscCode;
 import qcfpunch.monsters.elites.TiredGremlinNob;
 import qcfpunch.potions.ChallengerCoin;
 import qcfpunch.relics.mortal_kombat.ExtraSkeleton;
@@ -22,7 +23,8 @@ import qcfpunch.relics.mortal_kombat.NeverendingBlood;
 public class FightingNoisesEvent extends AbstractImageEvent {
 
     //This isn't technically needed but it becomes useful later
-    public static final String ID = "WW_Relics:Fighting_Noises";
+    public static final String ID = QCFPunch_MiscCode.returnPrefix()
+    		+ "Fighting_Noises";
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
     //private static final String NAME = eventStrings.NAME;
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
