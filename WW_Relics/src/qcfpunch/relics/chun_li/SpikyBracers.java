@@ -110,8 +110,10 @@ public class SpikyBracers extends CustomRelic {
 	}
 	
 	public void onCardDraw(AbstractCard drawnCard) {
-		if (cardCanReceiveEffect(drawnCard)) {
-			flash();
+		if (number_of_cards_chosen < NUMBER_OF_CARDS_TO_APPLY_EFFECT) {
+			if (cardCanReceiveEffect(drawnCard)) {
+				flash();
+			}
 		}
 	}
 	
