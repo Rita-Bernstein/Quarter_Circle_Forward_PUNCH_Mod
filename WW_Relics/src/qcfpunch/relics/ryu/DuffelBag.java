@@ -155,6 +155,7 @@ public class DuffelBag extends CustomRelic {
 	private void AddCard() {
 		
 		int card_position = this.counter - reward_cards.size();
+		logger.info(card_position);
 		
 		RewardItem card_reward = new RewardItem();
 		card_reward.cards.clear();
