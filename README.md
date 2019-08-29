@@ -16,7 +16,7 @@ This mod follows the [Creative Commons Attribution 3.0 Unported](https://creativ
 
 # Current State
 
-Working on milestone 5, for Nexus Mods.
+Milestone 6 will be started after a break. (Nexus Mods' support after that)
 
 # Link to Releases and Pre-Releases
 
@@ -40,37 +40,38 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 2. Relics inspired by Ryu, Ken, Chun Li and Guile. - Done in v0.11.
 3. Add Custom Modifiers (and other small stuff) related with the major theme. - Done in v0.11.
 4. Small improvement in FX and relic images, polishing of content in general. - Done.
-5. Mod release! Release at Github, Steam and Nexus Mods. (all future milestones, when finished, shall have proper releases) - Only missing Nexus Mods.
+5. Mod release! Release at Github and Steam. (all future milestones, when finished, shall have proper releases) - Done.
 
 - (thanks to rl issues, a pause will be made in this mod's development but 16 relics will be done already when finishing the fourth milestone)
 
 6. Relics inspired by Cammy, Dhalsim, Blanka, Zangief and a secret guest.
-7. Translation of the mod's created text so far to PT-BR. (all future milestones will launch with EN localization, PT-BR will come after a round of balancing)
-8. One boss relic for Boxer, Claw and Sagat, respectively. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
-9. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
-10. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
-11. Relics inspired by Fei Long and Deejay. (number unknown)
-12. ?????????????????????
-13. Reworking of 1 Custom Modifier revolving around fighter's set relics to make the equivalent of mini-characters, as a test. (use Blademaster Perk system together with relic that triggers them)
-14. Reworking of other Custom Modifiers to have more mini-characters.
-15. Update of beta art and sound assets to release version
+7. Starting support to Nexus Mods.
+8. Translation of the mod's created text so far to PT-BR. (all future milestones will launch with EN localization, PT-BR will come after a round of balancing)
+9. One boss relic for Boxer, Claw and Sagat, respectively. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
+10. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
+11. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
+12. Relics inspired by Fei Long and Deejay. (number unknown)
+13. ?????????????????????
+14. Reworking of 1 Custom Modifier revolving around fighter's set relics to make the equivalent of mini-characters, as a test. (use Blademaster Perk system together with relic that triggers them)
+15. Reworking of other Custom Modifiers to have more mini-characters.
+16. Update of beta art and sound assets to release version
+17. Polishing, refactoring and balancing.
 
 (and here we reach v1.0)
 
-16. Polishing, refactoring and balancing.
-17. Synergy and adaptation with Infinite Spire. (Black cards? Black cards. o9)
-18. Boss inspired by Street Fighter 2 stuff.
-19. Synergy with Halation. (Simulated Spire? Yep.)
-20. Add a Challenge to Challenge The Spire. (which one? Hm...)
-21. Synergy and adaptation with other mods.
+18. Synergy and adaptation with Infinite Spire. (Black cards? Black cards. o9)
+19. Boss inspired by Street Fighter 2 stuff.
+20. Synergy with Halation. (Simulated Spire? Yep.)
+21. Add a Challenge to Challenge The Spire. (which one? Hm...)
+22. Synergy and adaptation with other mods.
 
 And MAYBE (not making promises here)
 
-22. Synergy with Googly Eyes
-23. Cards inspired by moves of fighting games (and here I include Smash), that can be get through events or other mod's access to a hidden character.
-24. Special shop with stuff from this mod (cards above mentioned included) and removal with a good discount.
-25. Elite monsters.
-26. Extra events.
+23. Synergy with Googly Eyes
+24. Cards inspired by moves of fighting games (and here I include Smash), that can be get through events or other mod's access to a hidden character.
+25. Special shop with stuff from this mod (cards above mentioned included) and removal with a good discount.
+26. Elite monsters.
+27. Extra events.
 
 # Requirements
 
