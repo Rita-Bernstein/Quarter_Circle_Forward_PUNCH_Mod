@@ -16,7 +16,7 @@ This mod follows the [Creative Commons Attribution 3.0 Unported](https://creativ
 
 # Current State
 
-Working on milestone 5, for v0.12 and proper first release.
+Working on milestone 5, for Nexus Mods.
 
 # Link to Releases and Pre-Releases
 
@@ -39,8 +39,8 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 1. Create a relic based in Ryu, for basic testing and getting the hang of modding relics for Slay The Spire. Focus in mechanics and avoiding bugs, not graphics. - Done in v0.1.
 2. Relics inspired by Ryu, Ken, Chun Li and Guile. - Done in v0.11.
 3. Add Custom Modifiers (and other small stuff) related with the major theme. - Done in v0.11.
-4. Small improvement in FX and relic images, polishing of content in general. - Doing for v0.12.
-5. Mod release! Release at Github, Steam and Nexus Mods. (all future milestones, when finished, shall have proper releases)
+4. Small improvement in FX and relic images, polishing of content in general. - Done.
+5. Mod release! Release at Github, Steam and Nexus Mods. (all future milestones, when finished, shall have proper releases) - Only missing Nexus Mods.
 
 - (thanks to rl issues, a pause will be made in this mod's development but 16 relics will be done already when finishing the fourth milestone)
 
