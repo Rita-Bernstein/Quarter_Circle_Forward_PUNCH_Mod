@@ -4,15 +4,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Change These to match your mod -->
-    <groupId>WW_Relics</groupId>
-    <artifactId>WorldWarriorsRelics</artifactId>
-    <version>0.11</version>
+    <groupId>qcfpunch</groupId>
+    <artifactId>QuarterCircleForwardPUNCH</artifactId>
+    <version>0.12.0</version>
     <packaging>jar</packaging>
-    <name>WorldWarriorsRelics</name>
-    <description>Adds sixteen relics, seven game modifiers, one event and one potion, inspired mainly by fighters from
-    			 \r\n Super Street Fighter 2: The New Challengers and also some extra inspiration of other fighting games.
+    <name>QuarterCircleForwardPUNCH!</name>
+    <description>Adds sixteen relics based mostly in SF2's main characters (also other fighting games),
+    			 \r\n eight game modifiers, one event and one potion.
+		  		 \r\n 
 		  		 \r\n v1.0 will have 32+ relics.
-		  		 \r\nThe images in this mod are temporary and will be substituted/improved on the version 1.0.</description>
+		  		 \r\n
+		  		 \r\n Most of the images in this mod are temporary and will be substituted/improved on v1.0.</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -25,30 +27,30 @@
         <dependency>
             <groupId>com.megacrit.cardcrawl</groupId>
             <artifactId>slaythespire</artifactId>
-            <version>1.0</version>
+            <version>1.1</version>
             <scope>system</scope>
             <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/desktop-1.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
             <artifactId>ModTheSpire</artifactId>
-            <version>3.6.3</version>
+            <version>3.11.0</version>
             <scope>system</scope>
-            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/ModTheSpire 3.6.3.jar</systemPath>
+            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/ModTheSpire 3.11.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
             <artifactId>BaseMod</artifactId>
-            <version>5.5.0</version>
+            <version>5.15.1</version>
             <scope>system</scope>
-            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/BaseMod 5.5.0.jar</systemPath>
+            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/BaseMod 5.15.1.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
             <artifactId>StSLib</artifactId>
-            <version>1.10.0</version>
+            <version>1.17.1</version>
             <scope>system</scope>
-            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/StSLib v1.10.jar</systemPath>
+            <systemPath>C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/StSLib 1.17.1.jar</systemPath>
         </dependency>
 
     </dependencies>
@@ -56,7 +58,7 @@
     <!-- This is how your code is packaged into the jar file-->
     <build>
         <!-- Change this to match your mods name -->
-        <finalName>WorldWarriorsRelics</finalName>
+        <finalName>QuarterCircleForwardPunch</finalName>
         <plugins>
         
             <plugin>
@@ -77,7 +79,7 @@
                 <executions>
                     <execution>
                         <!-- Change this to match your mods artifactId -->
-                        <id>WW_Relics</id>
+                        <id>QuarterCircleForwardPUNCH!</id>
                         <phase>package</phase>
                         <goals>
                             <goal>shade</goal>
@@ -86,7 +88,7 @@
                             <filters>
                                 <filter>
                                     <!-- Change this to match your mods groupId:artifactId -->
-                                    <artifact>WW_Relics:WorldWarriorsRelics</artifact>
+                                    <artifact>qfcpunch:QuarterCircleForwardPUNCH</artifact>
                                 </filter>
                             </filters>
                         </configuration>
@@ -105,7 +107,7 @@
                             <target>
                                 <!-- Change to match your mods name.
                                      This moves your mod into a common folder where all mods you make can go. -->
-                                <copy file="target/WW_Relics.jar" tofile="C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/WW_Relics.jar"/>
+                                <copy file="target/Quarter Circle Forward PUNCH!.jar" tofile="C:/Program Files (x86)/Jogos/Steam/steamapps/common/SlayTheSpire/mods/Quarter Circle Forward PUNCH!.jar"/>
                             </target>
                         </configuration>
                         <goals>

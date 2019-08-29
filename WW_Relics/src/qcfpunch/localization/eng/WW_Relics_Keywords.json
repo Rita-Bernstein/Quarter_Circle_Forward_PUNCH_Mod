@@ -1,0 +1,33 @@
+[
+	{
+	    "PROPER_NAME": "Potential",
+	    "NAMES": [
+	      "potential"
+	    ],
+	    "DESCRIPTION": "Whole parts are spent to give the equivalent in Energy."
+	},
+
+	{
+	    "PROPER_NAME": "Stunned",
+	    "NAMES": [
+	      "stunned"
+	    ],
+	    "DESCRIPTION": "Target affected does nothing."
+	},
+	
+	{
+	    "PROPER_NAME": "Unsteady",
+	    "NAMES": [
+	      "unsteady"
+	    ],
+	    "DESCRIPTION": "Block is reduced each turn."
+	},
+	
+	{
+	    "PROPER_NAME": "Weakest",
+	    "NAMES": [
+	      "weakest"
+	    ],
+	    "DESCRIPTION": "Colorless cards that are weak, and have Exhaust and Ethereal."
+	}
+]

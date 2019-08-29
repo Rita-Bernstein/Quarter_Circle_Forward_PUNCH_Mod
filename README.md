@@ -1,16 +1,22 @@
-# World Warriors' Relics
-A Slay The Spire mod, which adds primarily relics directly inspired by fighters from Super Street Fighter 2: The New Challengers and gets some inspiration from the rest of the Street Fighter franchise.
+# Quarter Circle Forward PUNCH!
+A Slay The Spire mod, which adds primarily relics directly inspired by fighters from Super Street Fighter 2: The New Challengers...
+
+and gets some inspiration from the rest of the Street Fighter franchise and fighting games related stuff in general.
+
+# License
+
+This mod follows the [Creative Commons Attribution 3.0 Unported](https://creativecommons.org/licenses/by/3.0/) license.
 
 # Content
 
 * Sixteen relics done of 16+ planned, with temporary images and placeholder sounds.
-* Seven game modifiers, ranging from adding more relics at start to making the game harder.
+* Eight game modifiers, ranging from adding more relics at start to making the game harder.
 * Six cards, acessible through one specific relic.
 * One event, which is the gateway for two relics and one potion.
 
 # Current State
 
-Last polishing to v0.12, milestone 2 done, part of milestone 3 probably will be removed for rework in the future and part of milestone 5 will be done at v0.12.
+Working on milestone 5, for Nexus Mods.
 
 # Link to Releases and Pre-Releases
 
@@ -32,18 +38,18 @@ Link too in the [wiki's page](https://github.com/Clauvin/World_Warriors_Relics/w
 
 1. Create a relic based in Ryu, for basic testing and getting the hang of modding relics for Slay The Spire. Focus in mechanics and avoiding bugs, not graphics. - Done in v0.1.
 2. Relics inspired by Ryu, Ken, Chun Li and Guile. - Done in v0.11.
-3. Add Custom Modifiers (and other small stuff) related with the major theme. (character based modifiers will have a reworkin the future, post-first release) 
-4. Mod release! Release at Github, Steam and Nexus Mods. (all future milestones, when finished, shall have proper releases)
+3. Add Custom Modifiers (and other small stuff) related with the major theme. - Done in v0.11.
+4. Small improvement in FX and relic images, polishing of content in general. - Done.
+5. Mod release! Release at Github, Steam and Nexus Mods. (all future milestones, when finished, shall have proper releases) - Only missing Nexus Mods.
 
 - (thanks to rl issues, a pause will be made in this mod's development but 16 relics will be done already when finishing the fourth milestone)
 
-5. Small improvement in FX and relic images.
-6. Relics inspired by Honda, Dhalsim, Blanka and Zangief.
+6. Relics inspired by Cammy, Dhalsim, Blanka, Zangief and a secret guest.
 7. Translation of the mod's created text so far to PT-BR. (all future milestones will launch with EN localization, PT-BR will come after a round of balancing)
 8. One boss relic for Boxer, Claw and Sagat, respectively. (about the names chosen here, check https://en.wikipedia.org/wiki/Street_Fighter_II:_The_World_Warrior#Regional_differences)
 9. Focus in Dictator's inspired relic. (only in his relic because it will use the Friendly Minions mod)
 10. Focus in T. Hawk relic (only in his relic because it will trigger events, and that's different from all the other relics so far)
-11. Relics inspired by Cammy, Fei Long and Deejay. (number unknown)
+11. Relics inspired by Fei Long and Deejay. (number unknown)
 12. ?????????????????????
 13. Reworking of 1 Custom Modifier revolving around fighter's set relics to make the equivalent of mini-characters, as a test. (use Blademaster Perk system together with relic that triggers them)
 14. Reworking of other Custom Modifiers to have more mini-characters.
@@ -68,17 +74,17 @@ And MAYBE (not making promises here)
 
 # Requirements
 
-Mod The Spire 3.6.3+, BaseMod 5.5.0+ and StSLib 1.10.0+ (when needed, the requirements will be updated to more recent versions of these libraries)
+Slay The Spire 1.1, Mod The Spire 3.11.0+, BaseMod 5.15.1+ and StSLib 1.17.1+ (when needed, the requirements will be updated to more recent versions of the game and libraries)
 
 # Compatibility
 
-Regarding Slay The Spire, it works with v1.0. Haven't tested it with v1.1 yet.
-
-About mods, it shouldn't have/cause problems with/to them. That said, there are more than one hundred mods at Steam Workshop and who knows how many more outside of it, so I can't say that it won't crash your game in any possible mod combination. In case of it happening, open one issue, I will check it out.
+* Vex's [The Artificer](https://steamcommunity.com/sharedfiles/filedetails/?id=1842757025) character mod does NOT use cards, and break cards that somehow reach your hand. This should mess with the "Strongest" Style Guidebook relic.
 
 ## List of Incompatible Mods:
 
-None that I know so far.
+There are more than one hundred mods at Steam Workshop and who knows how many more outside of it, so I can't say that it won't crash your game in any possible mod combination. In case of it happening, open one issue, I will check it out.
+
+THAT said... none that I know so far.
 
 # Installation
 
@@ -96,13 +102,17 @@ Kiooeht (https://github.com/kiooeht) for ModTheSpire (https://github.com/kiooeht
 
 AGAIN Kiooeht for StSLib (https://github.com/kiooeht/StSLib), because it helps a lot for modding :)
 
-Nafen, from the Slay The Spire Discord's modding channel, for helping with the description of the Handcuffs' effect.
-
-Lots of people from the Slay The Spire Discord's modding channel for pointing stuff from this mod to improve/polish/buff/nerf, check the "suggestion from discord" tag in the Issues to see specifics.
+The-Evil-Pickle, for the [Replay The Spire](https://github.com/The-Evil-Pickle/Replay-the-Spire) save/load code, it was the basis of the one used at this mod.
 
 Thiago, for helping with finding some bugs in the 0.6.* versions.
 
+Charles, for moral support and some criticism.
+
 Discord's bulbamaster#5216 for testing the 0.9 version.
+
+Discord's AvangionQ#9279 for testing older versions.
+
+Lots of people from the Slay The Spire Discord's modding channel for pointing stuff from this mod to improve/polish/buff/nerf, check the "suggestion from discord" tag in the Issues to see specifics.
 
 STREET FIGHTER is a registered trademark of CAPCOM U.S.A., INC.
 
@@ -110,9 +120,11 @@ STREET FIGHTER is a registered trademark of CAPCOM U.S.A., INC.
 
 To MegaCrit, the makes from SlayTheSpire, because the game is awesome and they are cool with mods of their game :D
 
-The whole modding channel from the Discord's Slay The Spire server and all people who goes there to support and banter and laughs about modding the game and other things. You rock, fellows.
+The whole modding channel from the Discord's Slay The Spire server and all people who goes there to support and banter and laugh about modding the game and other things. You rock, fellows.
 
 To game-icons.net, because without it the mod probably would not have proper temporary icons for its relics.
+
+To Robert C. Martin because of his book [Clean Code](https://www.oreilly.com/library/view/clean-code/9780136083238/), since without it, oh boy this mod's code would be way harder to read...
 
 # Art Assets
 
@@ -134,4 +146,4 @@ Handcuffs - Found original at https://game-icons.net/1x1/lorc/handcuffs.html - M
 
 # See Also
 
-(...ok, I really have to add something here later.)
+(...and here, too...)
