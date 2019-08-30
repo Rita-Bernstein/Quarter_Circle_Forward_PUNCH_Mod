@@ -33,9 +33,7 @@ public class RedBeret extends CustomRelic {
 		super.atBattleStart();
 	}
 	
-	@Override
-	public void onCardDraw(AbstractCard drawnCard) {
-		super.onCardDraw(drawnCard);
+	public int onPlayerGainedBlock(float blockAmount) {
 		
 		if (effectCanBeApplied()) {
 			effect_happened = true;
@@ -46,8 +44,10 @@ public class RedBeret extends CustomRelic {
 		} else if (QCFPunch_MiscCode.abscenceOfNoDraw()) {
 			AbstractDungeon.player.getPower("No Draw").flash();
 		}
+		
+		return super.onPlayerGainedBlock(blockAmount);
 	}
-	
+
 	public boolean effectCanBeApplied() {
 		return 	QCFPunch_MiscCode.abscenceOfNoDraw() && !effect_happened;
 	}
