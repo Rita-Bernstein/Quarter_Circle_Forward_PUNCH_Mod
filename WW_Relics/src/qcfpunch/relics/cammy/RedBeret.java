@@ -1,13 +1,11 @@
 package qcfpunch.relics.cammy;
 
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
 import qcfpunch.QCFPunch_MiscCode;
-import qcfpunch.actions.DrawRandomCardToHandAction;
 import qcfpunch.resources.relic_graphics.GraphicResources;
 
 public class RedBeret extends CustomRelic {
