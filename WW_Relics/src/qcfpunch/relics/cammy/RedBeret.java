@@ -28,6 +28,12 @@ public class RedBeret extends CustomRelic {
 	}
 	
 	@Override
+	public void atBattleStart() {
+		effect_happened = false;
+		super.atBattleStart();
+	}
+	
+	@Override
 	public void onCardDraw(AbstractCard drawnCard) {
 		super.onCardDraw(drawnCard);
 		
