@@ -26,13 +26,15 @@ import qcfpunch.events.act2.FightingNoisesEvent;
 import qcfpunch.modifiers.*;
 import qcfpunch.monsters.elites.TiredGremlinNob;
 import qcfpunch.potions.ChallengerCoin;
-import qcfpunch.relics.character_cameos.dan.NotStrongestFightingStyleGuidebook;
-import qcfpunch.relics.character_cameos.sakura.SchoolBackpack;
+
 import qcfpunch.relics.chun_li.*;
 import qcfpunch.relics.guile.*;
 import qcfpunch.relics.ken.*;
-import qcfpunch.relics.mortal_kombat.*;
 import qcfpunch.relics.ryu.*;
+import qcfpunch.relics.cammy.*;
+import qcfpunch.relics.character_cameos.dan.NotStrongestFightingStyleGuidebook;
+import qcfpunch.relics.character_cameos.sakura.SchoolBackpack;
+import qcfpunch.relics.mortal_kombat.*;
 
 @SpireInitializer
 public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSubscriber, EditRelicsSubscriber,
@@ -162,6 +164,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 		addKenRelics();
 		addChunLiRelics();
 		addGuileRelics();
+		addCammyRelics();
 		addCharacterCameoRelics();
 		addGameCameoRelics();
 		logger.info("Done adding relics");
@@ -190,6 +193,10 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 		BaseMod.addRelic(new ArmyBoots(), RelicType.SHARED);
 		BaseMod.addRelic(new ChainWithNametags(), RelicType.SHARED);
 		BaseMod.addRelic(new CombatFatigues(), RelicType.SHARED);
+	}
+	
+	private void addCammyRelics() {
+		BaseMod.addRelic(new RedBeret(), RelicType.SHARED);
 	}
 	
 	private void addCharacterCameoRelics() {
