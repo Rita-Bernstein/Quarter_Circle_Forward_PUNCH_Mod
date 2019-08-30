@@ -111,7 +111,7 @@
     "NAME": "Red Beret",
     "FLAVOR": "Used for guiding the enemy attention, then repositioning yourself.",
     "DESCRIPTIONS": [
-      "Each combat, the first time you gain #bBlock, draw #b",
+      "Each combat, the first time you gain #yBlock, draw #b",
       " cards."
     ]
   },
