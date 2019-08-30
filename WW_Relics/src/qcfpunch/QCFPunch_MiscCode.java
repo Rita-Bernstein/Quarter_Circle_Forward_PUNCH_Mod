@@ -89,6 +89,10 @@ public class QCFPunch_MiscCode {
         }
     }
     
+	public static Boolean abscenceOfNoDraw() {
+		return !AbstractDungeon.player.hasPower("No Draw");
+	}
+    
     public static String classAndSaveSlotText() {
     	return "character " + AbstractDungeon.player.getClass().getName() +
     			", save slot " + CardCrawlGame.saveSlot + ".";
