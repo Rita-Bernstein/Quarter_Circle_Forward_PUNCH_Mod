@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 import basemod.abstracts.CustomRelic;
 import qcfpunch.QCFPunch_MiscCode;
@@ -34,7 +35,10 @@ public class GreenLeotard extends CustomRelic {
 	
 	@Override
 	public void atBattleStartPreDraw() {
-		number_of_usual_card_draw_per_turn = AbstractDungeon.player.gameHandSize;
+		
+		CharSelectInfo char_info = AbstractDungeon.player.getLoadout();
+		
+		number_of_usual_card_draw_per_turn = char_info.cardDraw;
 	}
 	
 	@Override
