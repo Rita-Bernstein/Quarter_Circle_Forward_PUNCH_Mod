@@ -86,9 +86,9 @@ public class SpecialOpsInsignia extends CustomRelic  {
 			
 			flash();
 			AbstractDungeon.actionManager.addToBottom(
-					new MakeTempCardInHandAction(new_setup));
+					new MakeTempCardInHandAction(new_setup, false, true));
 			AbstractDungeon.actionManager.addToBottom(
-					new MakeTempCardInHandAction(new_breakthrough));
+					new MakeTempCardInHandAction(new_breakthrough, false, true));
 			extra_cards_drawn_this_turn = 0;
 			counter = extra_cards_drawn_this_turn;
 		}
