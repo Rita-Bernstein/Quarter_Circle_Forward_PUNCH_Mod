@@ -12,10 +12,10 @@ import basemod.abstracts.CustomRelic;
 import qcfpunch.QCFPunch_MiscCode;
 import qcfpunch.resources.relic_graphics.GraphicResources;
 
-public class SpecialOpsBrooch extends CustomRelic  {
+public class SpecialOpsInsignia extends CustomRelic  {
 
 	public static final String ID = QCFPunch_MiscCode.returnPrefix() +
-			"Special_Ops_Brooch";
+			"Special_Ops_Insignia";
 	
 	public static final int AMOUNT_OF_CARDS_TO_DRAW = 4;
 	
@@ -25,7 +25,7 @@ public class SpecialOpsBrooch extends CustomRelic  {
 	
 	public boolean effect_happened = false;
 	
-	public SpecialOpsBrooch() {
+	public SpecialOpsInsignia() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.RARE, LandingSound.FLAT);
 	}
@@ -88,7 +88,7 @@ public class SpecialOpsBrooch extends CustomRelic  {
 	
 	@Override
 	public AbstractRelic makeCopy() {
-		return new SpecialOpsBrooch();
+		return new SpecialOpsInsignia();
 	}
 	
 }

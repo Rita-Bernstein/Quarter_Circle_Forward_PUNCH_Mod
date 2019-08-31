@@ -198,7 +198,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 	private void addCammyRelics() {
 		BaseMod.addRelic(new RedBeret(), RelicType.SHARED);
 		BaseMod.addRelic(new GreenLeotard(), RelicType.SHARED);
-		BaseMod.addRelic(new SpecialOpsBrooch(), RelicType.SHARED);
+		BaseMod.addRelic(new SpecialOpsInsignia(), RelicType.SHARED);
 	}
 	
 	private void addCharacterCameoRelics() {
