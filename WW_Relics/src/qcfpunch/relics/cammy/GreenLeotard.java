@@ -17,7 +17,7 @@ public class GreenLeotard extends CustomRelic {
 	
 	public GreenLeotard() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
-				RelicTier.COMMON, LandingSound.FLAT);
+				RelicTier.UNCOMMON, LandingSound.FLAT);
 	}
 	
 	public String getUpdatedDescription() {
