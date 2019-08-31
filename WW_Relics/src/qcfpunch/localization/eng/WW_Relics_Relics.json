@@ -155,7 +155,16 @@
       "You got as much inspirations from the mementos as possible."
       
     ]
-  },  
+  },
+  
+  "qcfpunch:Special_Ops_Brooch": {
+    "NAME": "Special Ops Brooch",
+    "FLAVOR": "A solid set-up, a knack for improvisation and a decisive resolution are all part of the job.",
+    "DESCRIPTIONS": [
+      "If you draw #b",
+      " cards through effects in a turn, add one #ySetup and one #yForethought to your hand. They have Ethereal and Exhaust."
+    ]
+  },
   
   "qcfpunch:Spiky_Bracers": {
     "NAME": "Spiky Bracers",
