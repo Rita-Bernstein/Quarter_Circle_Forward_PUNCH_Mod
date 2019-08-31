@@ -75,7 +75,9 @@ public class SpecialOpsInsignia extends CustomRelic  {
 		} else if (extra_cards_drawn_this_turn < AMOUNT_OF_CARDS_TO_DRAW){
 			extra_cards_drawn_this_turn++;
 			counter = extra_cards_drawn_this_turn;
-		} else {
+		}
+		
+		if (extra_cards_drawn_this_turn >= AMOUNT_OF_CARDS_TO_DRAW) {
 			AbstractCard new_setup = new Setup();
 			AbstractCard new_breakthrough = new Forethought();
 			
