@@ -33,6 +33,11 @@ public class SpecialOpsInsignia extends CustomRelic  {
 	public String getUpdatedDescription() {
 		return DESCRIPTIONS[0] + AMOUNT_OF_CARDS_TO_DRAW + DESCRIPTIONS[1];
 	}
+
+	@Override
+	public void onEquip() {
+		counter = 0;
+	}
 	
 	@Override
 	public void atBattleStartPreDraw() {
@@ -40,6 +45,8 @@ public class SpecialOpsInsignia extends CustomRelic  {
 		CharSelectInfo char_info = AbstractDungeon.player.getLoadout();
 		
 		number_of_usual_card_draw_per_turn = char_info.cardDraw;
+		
+		counter = 0;
 	}
 	
 	@Override
@@ -67,6 +74,7 @@ public class SpecialOpsInsignia extends CustomRelic  {
 			number_of_actual_normal_card_draw_per_turn--;
 		} else if (extra_cards_drawn_this_turn < AMOUNT_OF_CARDS_TO_DRAW){
 			extra_cards_drawn_this_turn++;
+			counter = extra_cards_drawn_this_turn;
 		} else {
 			AbstractCard new_setup = new Setup();
 			AbstractCard new_breakthrough = new Forethought();
@@ -80,12 +88,17 @@ public class SpecialOpsInsignia extends CustomRelic  {
 			AbstractDungeon.actionManager.addToBottom(
 					new MakeTempCardInHandAction(new_breakthrough));
 			extra_cards_drawn_this_turn = 0;
+			counter = extra_cards_drawn_this_turn;
 		}
 		
 	}
 	
-	
-	
+	@Override
+	public void onPlayerEndTurn() {
+		extra_cards_drawn_this_turn = 0;
+		counter = extra_cards_drawn_this_turn;
+	}
+
 	@Override
 	public AbstractRelic makeCopy() {
 		return new SpecialOpsInsignia();
