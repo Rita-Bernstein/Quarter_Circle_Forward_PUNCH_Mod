@@ -157,7 +157,7 @@
     "NAME": "Unceasing Flame",
     "FLAVOR": "\"Glorious! A divine fire of a daring dragon, if the ancient texts are right.\" - Ranwid.",
     "DESCRIPTIONS": [
-      "#rRight #rclick: the single target of your next Attack lose HP equal to the damage caused (min of #b",
+      "#rRight #rclick: your next Attack's single target loses HP as the damage caused (min of #b",
       " HP). Recharges every #b",
       " Attacks."
     ]
