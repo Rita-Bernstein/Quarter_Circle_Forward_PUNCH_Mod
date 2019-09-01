@@ -77,7 +77,7 @@
     "NAME": "Green Leotard",
     "FLAVOR": "Very unusual, but excellent to move around unhindered, since nothing can get on the way.",
     "DESCRIPTIONS": [
-      "For each card drawn from effects, gain #b",
+      "For each #ycard drawn from effects, gain #b",
       " #yBlock."
     ]
   },
@@ -121,7 +121,7 @@
     "FLAVOR": "Used for guiding the enemy attention, then repositioning yourself.",
     "DESCRIPTIONS": [
       "Each combat, the first time you gain #yBlock, draw #b",
-      " cards."
+      " #ycards."
     ]
   },
   
@@ -161,8 +161,8 @@
     "NAME": "Special Ops Insignia",
     "FLAVOR": "A solid set-up, a knack for improvisation and a decisive resolution are all part of the job.",
     "DESCRIPTIONS": [
-      "If you draw #b",
-      " cards by effects in a turn, add both #ySetup and #yForethought to your hand, with Ethereal and Exhaust."
+      "Once each turn, if you draw #b",
+      " #ycards by effects in a turn, add both #bSetup and #bForethought to your hand, with #yEthereal and #yExhaust."
     ]
   },
   
