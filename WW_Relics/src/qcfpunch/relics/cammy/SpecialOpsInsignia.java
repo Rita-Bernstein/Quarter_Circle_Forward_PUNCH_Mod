@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 import basemod.abstracts.CustomRelic;
 import qcfpunch.QCFPunch_MiscCode;
+import qcfpunch.actions.SetExhaustOfCardAtHand;
 import qcfpunch.resources.relic_graphics.GraphicResources;
 
 public class SpecialOpsInsignia extends CustomRelic  {
@@ -81,14 +82,15 @@ public class SpecialOpsInsignia extends CustomRelic  {
 			AbstractCard new_setup = new Setup();
 			AbstractCard new_breakthrough = new Forethought();
 			
-			new_setup.isEthereal = true; new_setup.exhaust = true;
-			new_breakthrough.isEthereal = true; new_breakthrough.exhaust = true;
-			
 			flash();
 			AbstractDungeon.actionManager.addToBottom(
 					new MakeTempCardInHandAction(new_setup, false, true));
 			AbstractDungeon.actionManager.addToBottom(
 					new MakeTempCardInHandAction(new_breakthrough, false, true));
+			AbstractDungeon.actionManager.addToBottom(
+					new SetExhaustOfCardAtHand(new_setup.uuid, true));
+			AbstractDungeon.actionManager.addToBottom(
+					new SetExhaustOfCardAtHand(new_breakthrough.uuid, true));
 			extra_cards_drawn_this_turn = 0;
 			counter = extra_cards_drawn_this_turn;
 		}
