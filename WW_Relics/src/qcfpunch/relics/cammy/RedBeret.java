@@ -12,9 +12,9 @@ public class RedBeret extends CustomRelic {
 
 	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Red_Beret";
 	
-	public static final int AMOUNT_OF_CARDS_DRAWN = 2; 
+	public static final int EXTRA_CARD_DRAW_TO_GIVE = 2; 
 	
-	public boolean effect_happened = false;
+	public boolean gave_extra_draw = false;
 	
 	public RedBeret() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
@@ -22,23 +22,22 @@ public class RedBeret extends CustomRelic {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + AMOUNT_OF_CARDS_DRAWN + DESCRIPTIONS[1];
+		return DESCRIPTIONS[0] + EXTRA_CARD_DRAW_TO_GIVE + DESCRIPTIONS[1];
 	}
 	
 	@Override
 	public void atBattleStart() {
-		effect_happened = false;
+		gave_extra_draw = false;
 		super.atBattleStart();
 	}
 	
 	public int onPlayerGainedBlock(float blockAmount) {
 		
-		if (effectCanBeApplied()) {
-			effect_happened = true;
+		if (canGiveExtraDraw()) {
 			flash();
 			AbstractDungeon.actionManager.addToBottom(
-					new DrawCardAction(AbstractDungeon.player, AMOUNT_OF_CARDS_DRAWN));
-			
+					new DrawCardAction(AbstractDungeon.player, EXTRA_CARD_DRAW_TO_GIVE));
+			gave_extra_draw = true;
 		} else if (QCFPunch_MiscCode.abscenceOfNoDraw()) {
 			AbstractDungeon.player.getPower("No Draw").flash();
 		}
@@ -46,8 +45,8 @@ public class RedBeret extends CustomRelic {
 		return super.onPlayerGainedBlock(blockAmount);
 	}
 
-	public boolean effectCanBeApplied() {
-		return 	QCFPunch_MiscCode.abscenceOfNoDraw() && !effect_happened;
+	public boolean canGiveExtraDraw() {
+		return 	QCFPunch_MiscCode.abscenceOfNoDraw() && !gave_extra_draw;
 	}
 	
 	@Override
