@@ -1,5 +1,6 @@
 package qcfpunch;
 
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.evacipated.cardcrawl.modthespire.Loader;
@@ -19,6 +20,8 @@ public class QCFPunch_MiscCode {
 	public final static byte THIS_BYTE_DOES_NOT_MATTER = -1;
 	
 	public static int number_of_challenger_coin_potions_at_shop = 0;
+	
+	public static final Logger logger = LogManager.getLogger(QCFPunch_MiscCode.class.getName()); // lets us log output
 	
 	public static String returnModName() {
 		return "Quarter Circle Forward PUNCH!";
