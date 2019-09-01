@@ -16,8 +16,8 @@ public class GreenLeotard extends CustomRelic {
 	
 	public static final int AMOUNT_OF_BLOCK_GAINED_PER_DRAW = 2;
 	
-	public int number_of_usual_card_draw_per_turn;
-	public int number_of_actual_card_draw_per_turn;
+	public int usual_hand_per_turn_start;
+	public int actual_hand_per_turn_start;
 	
 	public GreenLeotard() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
@@ -33,28 +33,22 @@ public class GreenLeotard extends CustomRelic {
 		
 		CharSelectInfo char_info = AbstractDungeon.player.getLoadout();
 		
-		number_of_usual_card_draw_per_turn = char_info.cardDraw;
+		usual_hand_per_turn_start = char_info.cardDraw;
 	}
 	
 	@Override
 	public void atTurnStart() {
-		if (AbstractDungeon.player.gameHandSize <= 
-				number_of_usual_card_draw_per_turn) {
-			
-			number_of_actual_card_draw_per_turn = AbstractDungeon.player.gameHandSize;
-			
-		} else {
-			
-			number_of_actual_card_draw_per_turn = number_of_usual_card_draw_per_turn;
-			
-		}
+		if (AbstractDungeon.player.gameHandSize <= usual_hand_per_turn_start) 
+				
+			actual_hand_per_turn_start = AbstractDungeon.player.gameHandSize;
+		else actual_hand_per_turn_start = usual_hand_per_turn_start;
 	}
 	
 	@Override
 	public void onCardDraw(AbstractCard drawnCard) {
 		
-		if (number_of_actual_card_draw_per_turn > 0) {
-			number_of_actual_card_draw_per_turn--;
+		if (actual_hand_per_turn_start > 0) {
+			actual_hand_per_turn_start--;
 		} else {
 			AbstractDungeon.actionManager.addToTop(
 					new GainBlockAction(AbstractDungeon.player,
