@@ -167,9 +167,9 @@
     "NAME": "White Boots",
     "FLAVOR": "Very, very worn shoes... as much from hitting as from walking.",
     "DESCRIPTIONS": [
-	  "When you draw an #rattack, do #yX+",
-	  " damage to the last enemy attacked, where X is how many upgrades the attack has.",
-	  " Every #bthird #rattack draw does #y2X+",
+	  "#rAttack draws do #yX+",
+	  " damage to the last enemy attacked, X is how many upgrades the attack has.",
+	  " #bThird #rattack draws do #y2X+",
 	  " damage instead."
     ]
   }
