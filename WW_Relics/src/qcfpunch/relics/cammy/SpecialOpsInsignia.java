@@ -25,6 +25,8 @@ public class SpecialOpsInsignia extends CustomRelic  {
 	public int actual_hand_per_turn_start;
 	public int extra_cards_drawn_this_turn;
 	
+	public boolean effect_triggered_this_turn;
+	
 	public SpecialOpsInsignia() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.RARE, LandingSound.FLAT);
@@ -47,6 +49,8 @@ public class SpecialOpsInsignia extends CustomRelic  {
 		usual_hand_per_turn_start = char_info.cardDraw;
 		
 		counter = 0;
+		
+		effect_triggered_this_turn = false;
 	}
 	
 	@Override
@@ -57,36 +61,42 @@ public class SpecialOpsInsignia extends CustomRelic  {
 		else actual_hand_per_turn_start = usual_hand_per_turn_start;
 			
 		setCardAndVariableCounters(0);
+
 	}
 	
 	@Override
 	public void onCardDraw(AbstractCard drawnCard) {
 		
-		if (actual_hand_per_turn_start > 0) actual_hand_per_turn_start--;
-		else if (extra_cards_drawn_this_turn < CARDS_TO_DRAW_TO_APPLY_EFFECT){
-			setCardAndVariableCounters(++extra_cards_drawn_this_turn);
-		}
-		
-		if (extra_cards_drawn_this_turn >= CARDS_TO_DRAW_TO_APPLY_EFFECT) {
-			AbstractCard new_setup = new Setup();
-			AbstractCard new_breakthrough = new Forethought();
+		if (!effect_triggered_this_turn) {
 			
-			flash();
-			AbstractDungeon.actionManager.addToBottom(
-				new MakeTempCardInHandAction(new_setup, false, true));
-			AbstractDungeon.actionManager.addToBottom(
-				new MakeTempCardInHandAction(new_breakthrough, false, true));
+			if (actual_hand_per_turn_start > 0) actual_hand_per_turn_start--;
+			else if (extra_cards_drawn_this_turn < CARDS_TO_DRAW_TO_APPLY_EFFECT){
+				setCardAndVariableCounters(++extra_cards_drawn_this_turn);
+			}
 			
-			AbstractDungeon.actionManager.addToBottom(
-				new SetExhaustOfCardAtCombat(new_setup.uuid, true));
-			AbstractDungeon.actionManager.addToBottom(
-				new SetEtherealOfCardAtCombat(new_setup.uuid, true));
-			AbstractDungeon.actionManager.addToBottom(
-				new SetExhaustOfCardAtCombat(new_breakthrough.uuid, true));
-			AbstractDungeon.actionManager.addToBottom(
-				new SetEtherealOfCardAtCombat(new_breakthrough.uuid, true));
-			
-			setCardAndVariableCounters(0);
+			if (extra_cards_drawn_this_turn >= CARDS_TO_DRAW_TO_APPLY_EFFECT) {
+				AbstractCard new_setup = new Setup();
+				AbstractCard new_breakthrough = new Forethought();
+				
+				flash();
+				AbstractDungeon.actionManager.addToBottom(
+					new MakeTempCardInHandAction(new_setup, false, true));
+				AbstractDungeon.actionManager.addToBottom(
+					new MakeTempCardInHandAction(new_breakthrough, false, true));
+				
+				AbstractDungeon.actionManager.addToBottom(
+					new SetExhaustOfCardAtCombat(new_setup.uuid, true));
+				AbstractDungeon.actionManager.addToBottom(
+					new SetEtherealOfCardAtCombat(new_setup.uuid, true));
+				AbstractDungeon.actionManager.addToBottom(
+					new SetExhaustOfCardAtCombat(new_breakthrough.uuid, true));
+				AbstractDungeon.actionManager.addToBottom(
+					new SetEtherealOfCardAtCombat(new_breakthrough.uuid, true));
+				
+				setCardAndVariableCounters(-1);
+				
+				effect_triggered_this_turn = true;
+			}
 		}
 		
 	}
@@ -94,6 +104,7 @@ public class SpecialOpsInsignia extends CustomRelic  {
 	@Override
 	public void onPlayerEndTurn() {
 		setCardAndVariableCounters(0);
+		effect_triggered_this_turn = false;
 	}
 
 	@Override
