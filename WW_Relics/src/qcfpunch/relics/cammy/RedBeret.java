@@ -38,15 +38,14 @@ public class RedBeret extends CustomRelic {
 			AbstractDungeon.actionManager.addToBottom(
 					new DrawCardAction(AbstractDungeon.player, EXTRA_CARD_DRAW_TO_GIVE));
 			gave_extra_draw = true;
-		} else if (QCFPunch_MiscCode.abscenceOfNoDraw()) {
+		} else if (QCFPunch_MiscCode.hasNoDrawPower())
 			AbstractDungeon.player.getPower("No Draw").flash();
-		}
 		
 		return super.onPlayerGainedBlock(blockAmount);
 	}
 
 	public boolean canGiveExtraDraw() {
-		return 	QCFPunch_MiscCode.abscenceOfNoDraw() && !gave_extra_draw;
+		return 	QCFPunch_MiscCode.abscenceOfNoDrawPower() && !gave_extra_draw;
 	}
 	
 	@Override
