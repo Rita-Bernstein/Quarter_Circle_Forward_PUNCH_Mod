@@ -22,56 +22,33 @@ public class SetEtherealOfCardAtCombat extends AbstractGameAction {
 		if (!this.isDone) {
 			
 			CardGroup hand = AbstractDungeon.player.hand;
-			
-			for (int i = 0; i < hand.size(); i++) {
-				if (hand.getNCardFromTop(i).uuid == this.uuid) {
-					hand.getNCardFromTop(i).isEthereal = this.ethereal;
-					this.isDone = true;
-					break;
-				}
-			}
-			
-			if (this.isDone) {
-				return;
-			}
+			CheckGroupForCardToSet(hand);
+			if (this.isDone) return;
 			
 			CardGroup discard = AbstractDungeon.player.discardPile;
-			
-			for (int i = 0; i < discard.size(); i++) {
-				if (discard.getNCardFromTop(i).uuid == this.uuid) {
-					discard.getNCardFromTop(i).isEthereal = this.ethereal;
-					this.isDone = true;
-					break;
-				}
-			}
-			
-			if (this.isDone) {
-				return;
-			}
+			CheckGroupForCardToSet(discard);
+			if (this.isDone) return;
 			
 			CardGroup deck = AbstractDungeon.player.drawPile;
-			
-			for (int i = 0; i < deck.size(); i++) {
-				if (deck.getNCardFromTop(i).uuid == this.uuid) {
-					deck.getNCardFromTop(i).isEthereal = this.ethereal;
-					this.isDone = true;
-					break;
-				}
-			}
+			CheckGroupForCardToSet(deck);
+			if (this.isDone) return;
 			
 			CardGroup exhausted = AbstractDungeon.player.exhaustPile;
-			
-			for (int i = 0; i < exhausted.size(); i++) {
-				if (exhausted.getNCardFromTop(i).uuid == this.uuid) {
-					exhausted.getNCardFromTop(i).isEthereal = this.ethereal;
-					this.isDone = true;
-					break;
-				}
-			}
-			
+			CheckGroupForCardToSet(exhausted);
 			this.isDone = true;
+			
 		}
 
+	}
+	
+	private void CheckGroupForCardToSet(CardGroup card_group) {
+		for (int i = 0; i < card_group.size(); i++) {
+			if (card_group.getNCardFromTop(i).uuid == this.uuid) {
+				card_group.getNCardFromTop(i).isEthereal = this.ethereal;
+				this.isDone = true;
+				break;
+			}
+		}
 	}
 	
 }
