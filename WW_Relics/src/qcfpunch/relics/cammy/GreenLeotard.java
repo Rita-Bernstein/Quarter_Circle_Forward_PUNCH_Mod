@@ -1,8 +1,5 @@
 package qcfpunch.relics.cammy;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -21,8 +18,6 @@ public class GreenLeotard extends CustomRelic {
 	
 	public int number_of_usual_card_draw_per_turn;
 	public int number_of_actual_card_draw_per_turn;
-	
-	public static final Logger logger = LogManager.getLogger(GreenLeotard.class.getName());
 	
 	public GreenLeotard() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
