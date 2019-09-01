@@ -6,14 +6,14 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-public class SetExhaustOfCardAtHand extends AbstractGameAction  {
+public class SetEtherealOfCardAtHand extends AbstractGameAction {
 
 	UUID uuid;
-	boolean exhausts;
+	boolean ethereal;
 	
-	public SetExhaustOfCardAtHand(UUID uuid, boolean it_exhausts) {
+	public SetEtherealOfCardAtHand(UUID uuid, boolean will_be_ethereal) {
 		this.uuid = uuid;
-		this.exhausts = it_exhausts;
+		this.ethereal = will_be_ethereal;
 	}
 	
 	@Override
@@ -25,7 +25,7 @@ public class SetExhaustOfCardAtHand extends AbstractGameAction  {
 			
 			for (int i = 0; i < hand.size(); i++) {
 				if (hand.getNCardFromTop(i).uuid == this.uuid) {
-					hand.getNCardFromTop(i).exhaust = this.exhausts;
+					hand.getNCardFromTop(i).isEthereal = this.ethereal;
 					break;
 				}
 			}
@@ -34,5 +34,5 @@ public class SetExhaustOfCardAtHand extends AbstractGameAction  {
 		}
 
 	}
-
+	
 }
