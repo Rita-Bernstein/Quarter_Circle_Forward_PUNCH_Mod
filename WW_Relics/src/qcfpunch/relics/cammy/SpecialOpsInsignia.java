@@ -19,13 +19,11 @@ public class SpecialOpsInsignia extends CustomRelic  {
 	public static final String ID = QCFPunch_MiscCode.returnPrefix() +
 			"Special_Ops_Insignia";
 	
-	public static final int AMOUNT_OF_CARDS_TO_DRAW = 4;
+	public static final int CARDS_TO_DRAW_TO_APPLY_EFFECT = 4;
 	
-	public int number_of_usual_card_draw_per_turn;
-	public int number_of_actual_normal_card_draw_per_turn;
+	public int usual_hand_per_turn_start;
+	public int actual_hand_per_turn_start;
 	public int extra_cards_drawn_this_turn;
-	
-	public boolean effect_happened = false;
 	
 	public SpecialOpsInsignia() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
@@ -33,7 +31,7 @@ public class SpecialOpsInsignia extends CustomRelic  {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + AMOUNT_OF_CARDS_TO_DRAW + DESCRIPTIONS[1];
+		return DESCRIPTIONS[0] + CARDS_TO_DRAW_TO_APPLY_EFFECT + DESCRIPTIONS[1];
 	}
 
 	@Override
@@ -46,7 +44,7 @@ public class SpecialOpsInsignia extends CustomRelic  {
 		
 		CharSelectInfo char_info = AbstractDungeon.player.getLoadout();
 		
-		number_of_usual_card_draw_per_turn = char_info.cardDraw;
+		usual_hand_per_turn_start = char_info.cardDraw;
 		
 		counter = 0;
 	}
@@ -54,49 +52,41 @@ public class SpecialOpsInsignia extends CustomRelic  {
 	@Override
 	public void atTurnStart() {
 		
-		if (AbstractDungeon.player.gameHandSize <= 
-				number_of_usual_card_draw_per_turn) {
+		if (AbstractDungeon.player.gameHandSize <= usual_hand_per_turn_start)
+			actual_hand_per_turn_start = AbstractDungeon.player.gameHandSize;
+		else actual_hand_per_turn_start = usual_hand_per_turn_start;
 			
-			number_of_actual_normal_card_draw_per_turn = 
-					AbstractDungeon.player.gameHandSize;
-			
-		} else {
-			
-			number_of_actual_normal_card_draw_per_turn =
-					number_of_usual_card_draw_per_turn;
-			
-		}
 		extra_cards_drawn_this_turn = 0;
+		counter = 0;
 	}
 	
 	@Override
 	public void onCardDraw(AbstractCard drawnCard) {
 		
-		if (number_of_actual_normal_card_draw_per_turn > 0) {
-			number_of_actual_normal_card_draw_per_turn--;
-		} else if (extra_cards_drawn_this_turn < AMOUNT_OF_CARDS_TO_DRAW){
+		if (actual_hand_per_turn_start > 0) actual_hand_per_turn_start--;
+		else if (extra_cards_drawn_this_turn < CARDS_TO_DRAW_TO_APPLY_EFFECT){
 			extra_cards_drawn_this_turn++;
 			counter = extra_cards_drawn_this_turn;
 		}
 		
-		if (extra_cards_drawn_this_turn >= AMOUNT_OF_CARDS_TO_DRAW) {
+		if (extra_cards_drawn_this_turn >= CARDS_TO_DRAW_TO_APPLY_EFFECT) {
 			AbstractCard new_setup = new Setup();
 			AbstractCard new_breakthrough = new Forethought();
 			
 			flash();
 			AbstractDungeon.actionManager.addToBottom(
-					new MakeTempCardInHandAction(new_setup, false, true));
+				new MakeTempCardInHandAction(new_setup, false, true));
 			AbstractDungeon.actionManager.addToBottom(
-					new MakeTempCardInHandAction(new_breakthrough, false, true));
+				new MakeTempCardInHandAction(new_breakthrough, false, true));
 			
 			AbstractDungeon.actionManager.addToBottom(
-					new SetExhaustOfCardAtCombat(new_setup.uuid, true));
+				new SetExhaustOfCardAtCombat(new_setup.uuid, true));
 			AbstractDungeon.actionManager.addToBottom(
-					new SetEtherealOfCardAtCombat(new_setup.uuid, true));
+				new SetEtherealOfCardAtCombat(new_setup.uuid, true));
 			AbstractDungeon.actionManager.addToBottom(
-					new SetExhaustOfCardAtCombat(new_breakthrough.uuid, true));
+				new SetExhaustOfCardAtCombat(new_breakthrough.uuid, true));
 			AbstractDungeon.actionManager.addToBottom(
-					new SetEtherealOfCardAtCombat(new_breakthrough.uuid, true));
+				new SetEtherealOfCardAtCombat(new_breakthrough.uuid, true));
 			
 			extra_cards_drawn_this_turn = 0;
 			counter = extra_cards_drawn_this_turn;
