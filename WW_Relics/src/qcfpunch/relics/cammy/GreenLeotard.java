@@ -39,7 +39,6 @@ public class GreenLeotard extends CustomRelic {
 	@Override
 	public void atTurnStart() {
 		if (AbstractDungeon.player.gameHandSize <= usual_hand_per_turn_start) 
-				
 			actual_hand_per_turn_start = AbstractDungeon.player.gameHandSize;
 		else actual_hand_per_turn_start = usual_hand_per_turn_start;
 	}

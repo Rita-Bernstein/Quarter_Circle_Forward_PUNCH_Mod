@@ -89,7 +89,7 @@ public class QCFPunch_MiscCode {
         }
     }
     
-	public static Boolean abscenceOfNoDraw() {
+	public static Boolean abscenceOfNoDrawPower() {
 		return !AbstractDungeon.player.hasPower("No Draw");
 	}
     

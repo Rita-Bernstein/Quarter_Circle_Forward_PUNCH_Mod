@@ -36,6 +36,7 @@ public class SetExhaustOfCardAtCombat extends AbstractGameAction  {
 			CardGroup exhausted = AbstractDungeon.player.exhaustPile;
 			CheckGroupForCardToSet(exhausted);
 			this.isDone = true;
+			
 		}
 
 	}
