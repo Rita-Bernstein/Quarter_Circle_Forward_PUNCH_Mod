@@ -41,8 +41,8 @@
     "NAME": "Duffel Bag",
     "FLAVOR": "Very practical when wandering.",
     "DESCRIPTIONS": [
-	  "For the next [#2aecd7]4 non-event, non-boss fights you win, gain in the first [#2aecd7]1 Bandage Up, the second [#2aecd7]1 Panacea and in each one of the last [#00ff00]",
-      " fights [#ffff00]1 random common relic.",
+	  "At the next [#2aecd7]4 non event non boss fights won, gain respectively [#2aecd7]1 Bandage Up, [#2aecd7]1 Panacea and at the last [#00ff00]",
+      ", [#ffff00]1 random common relic.",
       "Empty. Nothing else in the bag."
     ]
   },
