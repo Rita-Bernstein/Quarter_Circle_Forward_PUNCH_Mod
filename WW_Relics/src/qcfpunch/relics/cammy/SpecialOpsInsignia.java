@@ -56,8 +56,7 @@ public class SpecialOpsInsignia extends CustomRelic  {
 			actual_hand_per_turn_start = AbstractDungeon.player.gameHandSize;
 		else actual_hand_per_turn_start = usual_hand_per_turn_start;
 			
-		extra_cards_drawn_this_turn = 0;
-		counter = 0;
+		setCardAndVariableCounters(0);
 	}
 	
 	@Override
@@ -65,8 +64,7 @@ public class SpecialOpsInsignia extends CustomRelic  {
 		
 		if (actual_hand_per_turn_start > 0) actual_hand_per_turn_start--;
 		else if (extra_cards_drawn_this_turn < CARDS_TO_DRAW_TO_APPLY_EFFECT){
-			extra_cards_drawn_this_turn++;
-			counter = extra_cards_drawn_this_turn;
+			setCardAndVariableCounters(++extra_cards_drawn_this_turn);
 		}
 		
 		if (extra_cards_drawn_this_turn >= CARDS_TO_DRAW_TO_APPLY_EFFECT) {
@@ -88,21 +86,24 @@ public class SpecialOpsInsignia extends CustomRelic  {
 			AbstractDungeon.actionManager.addToBottom(
 				new SetEtherealOfCardAtCombat(new_breakthrough.uuid, true));
 			
-			extra_cards_drawn_this_turn = 0;
-			counter = extra_cards_drawn_this_turn;
+			setCardAndVariableCounters(0);
 		}
 		
 	}
 	
 	@Override
 	public void onPlayerEndTurn() {
-		extra_cards_drawn_this_turn = 0;
-		counter = extra_cards_drawn_this_turn;
+		setCardAndVariableCounters(0);
 	}
 
 	@Override
 	public AbstractRelic makeCopy() {
 		return new SpecialOpsInsignia();
+	}
+	
+	public void setCardAndVariableCounters(int new_value) {
+		extra_cards_drawn_this_turn = new_value;
+		counter = new_value;
 	}
 	
 }
