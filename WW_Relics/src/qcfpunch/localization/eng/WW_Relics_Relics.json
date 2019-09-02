@@ -144,8 +144,8 @@
     "FLAVOR": "Good for balancing your body weight, but the pointy spikes make you use them sparingly.",
     "DESCRIPTIONS": [
 	  "Each combat, the first #b",
-      " #ySkills you play that cost #b2 or more cost #b",
-      " less until the end of the combat.",
+      " #ySkills played that cost #b2 or more cost #b",
+      " less at that combat.",
       " Cards chosen in this battle are: ",
       "no card yet",	
       " and ",	
