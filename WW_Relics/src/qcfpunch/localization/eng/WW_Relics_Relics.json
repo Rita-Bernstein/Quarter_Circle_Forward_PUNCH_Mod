@@ -206,7 +206,7 @@
     "FLAVOR": "Never underestimate the power of a good presentation to a fight.",
     "DESCRIPTIONS": [
 	  "When at an Elite/Boss room, gain #y",
-	  " #yTemporary_HP. #rRight #rclick at your turn: gain #y",
+	  " #yTemporary_HP. #rRight #rclick at your turn to gain #y",
 	  " #yTemporary_HP and lose this relic."
     ]
   }
