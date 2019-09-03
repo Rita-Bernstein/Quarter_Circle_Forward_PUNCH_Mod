@@ -165,6 +165,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 		addChunLiRelics();
 		addGuileRelics();
 		addCammyRelics();
+		addZangiefRelics();
 		addCharacterCameoRelics();
 		addGameCameoRelics();
 		logger.info("Done adding relics");
@@ -199,6 +200,10 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 		BaseMod.addRelic(new RedBeret(), RelicType.SHARED);
 		BaseMod.addRelic(new GreenLeotard(), RelicType.SHARED);
 		BaseMod.addRelic(new SpecialOpsInsignia(), RelicType.GREEN);
+	}
+	
+	private void addZangiefRelics() {
+		BaseMod.addRelic(new WrestlersCloak(), RelicType.SHARED);
 	}
 	
 	private void addCharacterCameoRelics() {
