@@ -35,12 +35,12 @@ public class WrestlersCloak extends CustomRelic implements ClickableRelic {
 	@Override
 	public void atTurnStart() {
 		is_player_turn = true;
-		if (shouldRememberThePlayerThatHeyThisRelicEXISTSTOSAVEYOU()) {
+		if (shouldRemindThePlayerThatHeyThisRelicEXISTSTOSAVEYOU()) {
 			flash();
 		}
 	}
 	
-	public boolean shouldRememberThePlayerThatHeyThisRelicEXISTSTOSAVEYOU() {
+	public boolean shouldRemindThePlayerThatHeyThisRelicEXISTSTOSAVEYOU() {
 		
 		float current_hp = (float)AbstractDungeon.player.currentHealth;
 		float max_hp = (float)AbstractDungeon.player.maxHealth;
