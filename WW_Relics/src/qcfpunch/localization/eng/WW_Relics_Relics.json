@@ -199,5 +199,15 @@
 	  " Every #bthird #rattack draw does #y2X+",
 	  " damage instead."
     ]
+  },
+  
+   "qcfpunch:Wrestler's_Cloak": {
+    "NAME": "Wrestler's Cloak",
+    "FLAVOR": "Never underestimate the power of a good presentation to a fight.",
+    "DESCRIPTIONS": [
+	  "When entering an Elite or Boss room, gain #y",
+	  " #yTemporary_HP. #rRight #rclick at your turn: gain #y",
+	  " #yTemporary_HP and throw away this relic."
+    ]
   }
 }
