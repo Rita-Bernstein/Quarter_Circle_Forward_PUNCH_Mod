@@ -69,8 +69,8 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 		
 		logger.info("begin editing keywords");
 		
-        String language = Settings.language.name();
-        if (!language.equals(INITIAL_LANGUAGE))
+        String language = Settings.language.name().toLowerCase();
+        if (!language.equals(INITIAL_LANGUAGE)) {
             try {
                 logger.info("inserting " + language + " keywords.");
                 insertKeywords(language);
@@ -79,18 +79,22 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
                 logger.info(language + " keywords not found.");
                 
                 logger.info("inserting eng keywords.");
-                insertKeywords(language);
-        		logger.info("finished inserting eng keywords.");
+                insertKeywords(INITIAL_LANGUAGE);
+        		logger.info("finished inserting " + language + " keywords.");
             }
+        }
+        else {
+        	logger.info("inserting eng keywords.");
+            insertKeywords(INITIAL_LANGUAGE);
+    		logger.info("finished inserting " + language + " keywords.");
+        }
 		
 		logger.info("done editing keywords");
 		
 	}
 	
 	private void insertKeywords(String language) {
-		
-		language = language.toLowerCase(); 
-				
+						
 		Gson gson = new Gson();
 		String keywordStringsAddress = 
 				QCFPunch_MiscCode.returnSpecificLocalizationFile(
@@ -115,20 +119,21 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 	    
 	    String language = Settings.language.name().toLowerCase();
 	    
-	    
-	    if (!language.equals(INITIAL_LANGUAGE))
+	    if (!language.equals(INITIAL_LANGUAGE)) {
             try {
-            	
             	LoadMostJSONs(language);
             	
             } catch (GdxRuntimeException e) {
                 logger.info(language + " strings not found.");
-                
                 language = INITIAL_LANGUAGE;
                 
                 LoadMostJSONs(language);
-                
             }
+	    } else {
+	    	language = INITIAL_LANGUAGE;
+            
+            LoadMostJSONs(language);
+	    }
 	    
 	    logger.info("done editing strings");
 	}
