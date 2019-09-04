@@ -50,7 +50,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 	public static final String AUTHOR = "Levender"; // your name
 	public static final String DESCRIPTION = QCFPunch_MiscCode.returnDescription();
 	
-	public static final String INITIAL_LANGUAGE = "ENG";
+	public static final String INITIAL_LANGUAGE = "eng";
 	
 	public QCFPunch_Mod() {
 		BaseMod.subscribe(this);
