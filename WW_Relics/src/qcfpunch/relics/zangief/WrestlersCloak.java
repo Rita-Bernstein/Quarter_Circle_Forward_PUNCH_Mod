@@ -3,6 +3,7 @@ package qcfpunch.relics.zangief;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
@@ -94,5 +95,9 @@ public class WrestlersCloak extends CustomRelic implements ClickableRelic {
 		}
 		
 		return can_throw_cloak;
+	}
+	
+	public AbstractRelic makeCopy() {
+		return new WrestlersCloak();
 	}
 }
