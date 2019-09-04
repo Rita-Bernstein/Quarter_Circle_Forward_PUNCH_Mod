@@ -203,7 +203,7 @@
   
    "qcfpunch:Wrestler's_Cloak": {
     "NAME": "Wrestler's Cloak",
-    "FLAVOR": "Never underestimate the power of a good presentation to a fight.",
+    "FLAVOR": "Never underestimate the power of a good presentation before a fight.",
     "DESCRIPTIONS": [
 	  "At Elite/Boss rooms, gain #y",
 	  " #yTemporary_HP. [#2aecd7]Right [#2aecd7]click [#2aecd7]during [#2aecd7]combat [#2aecd7]to gain #y",
