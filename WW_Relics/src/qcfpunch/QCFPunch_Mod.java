@@ -151,7 +151,8 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 	
 	private void LoadRelicsJSON(String language) {
 		String relicStringsAddress =
-				QCFPunch_MiscCode.returnSpecificLocalizationFile("eng/WW_Relics_Relics.json");
+				QCFPunch_MiscCode.returnSpecificLocalizationFile(
+						language + "/WW_Relics_Relics.json");
 	    String relicStrings = getJsonText(relicStringsAddress);
 	    
 	    BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
@@ -178,7 +179,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 	private void LoadCardsJSON(String language) {
 		String cardsStringsAddress =
 				QCFPunch_MiscCode.returnSpecificLocalizationFile(
-						language + "WW_Relics_Cards.json");
+						language + "/WW_Relics_Cards.json");
 	    String cardsStrings = getJsonText(cardsStringsAddress);
 	    
 	    BaseMod.loadCustomStrings(CardStrings.class, cardsStrings);
@@ -187,7 +188,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 	private void LoadPotionsJSON(String language) {
 		String potionsStringsAddress =
 				QCFPunch_MiscCode.returnSpecificLocalizationFile(
-						language + "WW_Relics_Potions.json");
+						language + "/WW_Relics_Potions.json");
 		String potionsStrings = getJsonText(potionsStringsAddress);
 		
 		BaseMod.loadCustomStrings(PotionStrings.class, potionsStrings);
@@ -196,7 +197,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 	private void LoadEventsJSON(String language) {
 		String eventsStringsAddress =
 				QCFPunch_MiscCode.returnSpecificLocalizationFile(
-						language + "WW_Relics_Events.json");
+						language + "/WW_Relics_Events.json");
 		String eventsStrings = getJsonText(eventsStringsAddress);
 		
 		BaseMod.loadCustomStrings(EventStrings.class, eventsStrings);
@@ -205,7 +206,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 	private void LoadMonstersJSON(String language) {
 		String monstersStringsAddress =
 				QCFPunch_MiscCode.returnSpecificLocalizationFile(
-						language + "WW_Relics_Monsters.json");
+						language + "/WW_Relics_Monsters.json");
 		String monstersStrings = getJsonText(monstersStringsAddress);
 		
 		BaseMod.loadCustomStrings(MonsterStrings.class, monstersStrings);
