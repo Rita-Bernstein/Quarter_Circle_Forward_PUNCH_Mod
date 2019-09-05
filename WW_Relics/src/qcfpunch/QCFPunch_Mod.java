@@ -205,6 +205,7 @@ public class QCFPunch_Mod implements AddCustomModeModsSubscriber, EditStringsSub
 	
 	private void addZangiefRelics() {
 		BaseMod.addRelic(new WrestlersCloak(), RelicType.SHARED);
+		BaseMod.addRelic(new WildHerbsOintment(), RelicType.SHARED);
 	}
 	
 	private void addCharacterCameoRelics() {
