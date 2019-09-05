@@ -1,10 +1,13 @@
 package qcfpunch.relics.zangief;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
 import qcfpunch.QCFPunch_MiscCode;
+import qcfpunch.powers.WildHerbsOintmentPower;
 import qcfpunch.resources.relic_graphics.GraphicResources;
 
 public class WildHerbsOintment extends CustomRelic  {
@@ -33,10 +36,22 @@ public class WildHerbsOintment extends CustomRelic  {
 	public void atBattleStartPreDraw() {
 		
 		if (hasEnoughHP()) {
-			//have to check if powers are saved at the end of a combat
-			//to avoid making this a relic that needs a save/load
+			
+			AbstractPlayer player = AbstractDungeon.player;
+			int HP_to_have_at_most_in_victory =
+					player.currentHealth - 
+						(int)(player.maxHealth * (PERCENTAGE_OF_MAX_HP_TO_LOSE));
+					
+			
+			WildHerbsOintmentPower wild_herbs_power =
+					new WildHerbsOintmentPower(player,
+							AMOUNT_OF_MAX_HP_GAINED,
+							HP_to_have_at_most_in_victory);
+			
+			AbstractDungeon.actionManager.addToBottom(
+					new ApplyPowerAction(player, player, wild_herbs_power));
+			
 		}
-		
 		
 	}
 	
@@ -46,7 +61,12 @@ public class WildHerbsOintment extends CustomRelic  {
 		float current_max_hp = (float)AbstractDungeon.player.maxHealth;
 		
 		if (current_hp / current_max_hp * 100 > PERCENTAGE_OF_MAX_HP_TO_LOSE) {
-			return true;
+			
+			int value_to_lose = (int)(current_max_hp * (PERCENTAGE_OF_MAX_HP_TO_LOSE));
+			if (current_hp - value_to_lose > 0)
+				return true;
+			else return false;
+			
 		} else return false;
 		
 	}
