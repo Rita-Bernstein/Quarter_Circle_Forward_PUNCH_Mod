@@ -45,6 +45,8 @@ public class WildHerbsOintmentPower extends AbstractPower {
 	
 	@Override
 	public void onVictory() {
-		this.owner.increaseMaxHp(amount_of_Max_HP_to_add, true);
+		if (owner.currentHealth <= maximum_HP_left_for_effect_to_trigger) {
+			this.owner.increaseMaxHp(amount_of_Max_HP_to_add, true);
+		}
 	}
 }
