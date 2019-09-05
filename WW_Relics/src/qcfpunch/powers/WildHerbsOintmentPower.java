@@ -39,8 +39,9 @@ public class WildHerbsOintmentPower extends AbstractPower {
 	
 	public void updateDescription()
 	{
-		this.description = DESCRIPTIONS[0] + amount_of_Max_HP_to_add +
-				DESCRIPTIONS[1];
+		this.description = DESCRIPTIONS[0] + maximum_HP_left_for_effect_to_trigger +
+				DESCRIPTIONS[1] + amount_of_Max_HP_to_add +
+				DESCRIPTIONS[2];
 	}
 	
 	@Override
