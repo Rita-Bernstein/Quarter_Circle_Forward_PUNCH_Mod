@@ -30,8 +30,8 @@ public class WildHerbsOintment extends CustomRelic  {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + PERCENTAGE_OF_MAX_HP_TO_LOSE * 100 + 
-			    DESCRIPTIONS[1] + PERCENTAGE_OF_MAX_HP_TO_LOSE * 100 +
+		return DESCRIPTIONS[0] + (int)(PERCENTAGE_OF_MAX_HP_TO_LOSE * 100) + 
+			    DESCRIPTIONS[1] + (int)(PERCENTAGE_OF_MAX_HP_TO_LOSE * 100) +
 			    DESCRIPTIONS[2] + AMOUNT_OF_MAX_HP_GAINED +
 			    DESCRIPTIONS[3];
 	}
