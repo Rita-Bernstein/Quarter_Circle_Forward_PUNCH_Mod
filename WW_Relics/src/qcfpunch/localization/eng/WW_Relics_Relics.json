@@ -201,6 +201,18 @@
     ]
   },
   
+  "qcfpunch:WildHerbsOintment": {
+    "NAME": "Wild Herbs Ointment",
+    "FLAVOR": "Made from herbs commonly found in the coldest climates. Good for deep cuts and lacerations, strengthening the skin.",
+    "DESCRIPTIONS": [
+    	"If you start a combat with more than #b",
+    	"% #yMax #yHP and end it with less #b",
+    	"% #yMax #yHP, gain #b",
+    	" #yMax #yHP."
+    
+    ]
+  },
+  
    "qcfpunch:Wrestler's_Cloak": {
     "NAME": "Wrestler's Cloak",
     "FLAVOR": "Never underestimate the power of a good presentation before a fight.",
