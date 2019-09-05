@@ -12,7 +12,7 @@ import qcfpunch.resources.relic_graphics.GraphicResources;
 
 public class WildHerbsOintment extends CustomRelic  {
 
-	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "WildHerbsOintment";
+	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Wild_Herbs_Ointment";
 	
 	public final int AMOUNT_OF_MAX_HP_GAINED = 2;
 	public final int PERCENTAGE_OF_MAX_HP_TO_LOSE = 40;
