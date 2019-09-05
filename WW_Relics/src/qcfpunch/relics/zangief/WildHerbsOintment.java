@@ -1,5 +1,8 @@
 package qcfpunch.relics.zangief;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -15,9 +18,11 @@ public class WildHerbsOintment extends CustomRelic  {
 	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Wild_Herbs_Ointment";
 	
 	public final int AMOUNT_OF_MAX_HP_GAINED = 2;
-	public final int PERCENTAGE_OF_MAX_HP_TO_LOSE = 40;
+	public final float PERCENTAGE_OF_MAX_HP_TO_LOSE = 0.4f;
 	
 	public static boolean had_enough_hp_at_combat_start;
+	
+	public static final Logger logger = LogManager.getLogger(WildHerbsOintment.class.getName());
 	
 	public WildHerbsOintment() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
@@ -25,8 +30,8 @@ public class WildHerbsOintment extends CustomRelic  {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + PERCENTAGE_OF_MAX_HP_TO_LOSE + 
-			    DESCRIPTIONS[1] + PERCENTAGE_OF_MAX_HP_TO_LOSE +
+		return DESCRIPTIONS[0] + PERCENTAGE_OF_MAX_HP_TO_LOSE * 100 + 
+			    DESCRIPTIONS[1] + PERCENTAGE_OF_MAX_HP_TO_LOSE * 100 +
 			    DESCRIPTIONS[2] + AMOUNT_OF_MAX_HP_GAINED +
 			    DESCRIPTIONS[3];
 	}
@@ -41,7 +46,6 @@ public class WildHerbsOintment extends CustomRelic  {
 			int HP_to_have_at_most_in_victory =
 					player.currentHealth - 
 						(int)(player.maxHealth * (PERCENTAGE_OF_MAX_HP_TO_LOSE));
-					
 			
 			WildHerbsOintmentPower wild_herbs_power =
 					new WildHerbsOintmentPower(player,
@@ -60,9 +64,8 @@ public class WildHerbsOintment extends CustomRelic  {
 		float current_hp = (float)AbstractDungeon.player.currentHealth;
 		float current_max_hp = (float)AbstractDungeon.player.maxHealth;
 		
-		if (current_hp / current_max_hp * 100 > PERCENTAGE_OF_MAX_HP_TO_LOSE) {
-			
-			int value_to_lose = (int)(current_max_hp * (PERCENTAGE_OF_MAX_HP_TO_LOSE));
+		if (current_hp / current_max_hp > PERCENTAGE_OF_MAX_HP_TO_LOSE) {
+			int value_to_lose = (int)(current_max_hp * PERCENTAGE_OF_MAX_HP_TO_LOSE);
 			if (current_hp - value_to_lose > 0)
 				return true;
 			else return false;
