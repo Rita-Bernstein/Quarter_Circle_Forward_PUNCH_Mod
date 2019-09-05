@@ -17,7 +17,6 @@ public class WildHerbsOintmentPower extends AbstractPower {
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
 	public int amount_of_Max_HP_to_add;
-	public int initial_owner_HP;
 	public int maximum_HP_left_for_effect_to_trigger;
 	
 	public WildHerbsOintmentPower(AbstractCreature owner,
@@ -28,6 +27,10 @@ public class WildHerbsOintmentPower extends AbstractPower {
 		this.owner = owner;
 		this.amount = 0;
 		this.type = AbstractPower.PowerType.BUFF;
+		
+		this.amount_of_Max_HP_to_add = amount_of_Max_HP_to_add;
+		this.maximum_HP_left_for_effect_to_trigger =
+				maximum_HP_left_for_effect_to_trigger;
 		
 		updateDescription();
 		
