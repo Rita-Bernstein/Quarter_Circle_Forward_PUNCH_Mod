@@ -3,6 +3,7 @@ package qcfpunch.relics.zangief;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -36,6 +37,24 @@ public class RedCycloneTeachings extends CustomRelic  {
 			AbstractDungeon.actionManager.addToTop(
 					new StunMonsterAction(m, AbstractDungeon.player, 1));
 		}
+		
+	}
+	
+	public boolean canSpawn() {
+		
+		CardGroup attacks_deck = AbstractDungeon.player.masterDeck.getAttacks();
+		
+		int amount_of_3_or_more_cost_cards = 0;
+		
+		for (int i = 0; i < attacks_deck.size(); i++) {
+			if (attacks_deck.getNCardFromTop(i).cost >=
+					MINIMUM_COST_TO_STUN) {
+				amount_of_3_or_more_cost_cards++;
+			}
+		}
+		
+		if (amount_of_3_or_more_cost_cards > 0) return true;
+		else return false;
 		
 	}
 	
