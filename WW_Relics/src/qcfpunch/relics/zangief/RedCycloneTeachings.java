@@ -1,11 +1,13 @@
 package qcfpunch.relics.zangief;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
+import com.megacrit.cardcrawl.actions.common.EndTurnAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
@@ -16,7 +18,7 @@ public class RedCycloneTeachings extends CustomRelic  {
 	
 	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Red_Cyclone_Teachings";
 	
-	public static final int MINIMUM_COST_TO_STUN = 3;
+	public static final int MINIMUM_COST_TO_STUN = 1;
 	
 	public RedCycloneTeachings() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
@@ -30,14 +32,77 @@ public class RedCycloneTeachings extends CustomRelic  {
 	
 	@Override
 	public void onPlayCard(AbstractCard c, AbstractMonster m) {
-		if ((c.type == CardType.ATTACK) &&
-			(c.costForTurn >= MINIMUM_COST_TO_STUN)) {
+		if ((c.type == CardType.ATTACK) && (c.costForTurn >= MINIMUM_COST_TO_STUN)) {
 			
 			c.exhaust = true;
-			AbstractDungeon.actionManager.addToTop(
-					new StunMonsterAction(m, AbstractDungeon.player, 1));
-		}
+
+			switch (c.target) {
+				case ENEMY:
+					
+					/*stunSingleTarget(m);*/
+					stunSingleTarget(m);
+					AbstractDungeon.actionManager.addToBottom(
+							new EndTurnAction());
+					
+					break;
+				
+				case ALL_ENEMY:
+					
+					stunAllMonsters();
+					
+					AbstractDungeon.actionManager.addToBottom(
+							new EndTurnAction());
+					
+					break;
+					
+				case SELF:
+					
+					stunSelfSoEndTurn();
+					break;
+					
+				case SELF_AND_ENEMY:
+					
+					stunSingleTarget(m);
+					stunSelfSoEndTurn();
+					
+					break;
+					
+				case ALL:
+					
+					stunAllMonsters();
+					
+					stunSelfSoEndTurn();
+
+				default:
+					break;
+				
+			}
+
+		}	
 		
+	}
+	
+	private void stunSingleTarget(AbstractMonster m) {
+		AbstractDungeon.actionManager.addToTop(
+				new StunMonsterAction(m, AbstractDungeon.player, 1));
+	}
+	
+	private void stunAllMonsters() {
+		MonsterGroup monster_group = AbstractDungeon.getCurrRoom().monsters;
+		
+		for (int i = 0; i < monster_group.monsters.size(); i++) {
+			
+			AbstractMonster monster = monster_group.monsters.get(i);
+			if (!monster.isDeadOrEscaped()) {
+				stunSingleTarget(monster);
+			}					
+			
+		}
+	}
+	
+	private void stunSelfSoEndTurn() {
+		AbstractDungeon.actionManager.addToBottom(
+				new EndTurnAction());
 	}
 	
 	public boolean canSpawn() {
