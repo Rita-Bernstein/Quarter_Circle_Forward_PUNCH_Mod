@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 
 import basemod.abstracts.CustomRelic;
 import qcfpunch.QCFPunch_MiscCode;
@@ -41,8 +42,7 @@ public class RedCycloneTeachings extends CustomRelic  {
 					
 					/*stunSingleTarget(m);*/
 					stunSingleTarget(m);
-					AbstractDungeon.actionManager.addToBottom(
-							new EndTurnAction());
+					stunSelfSoEndTurn();
 					
 					break;
 				
@@ -101,8 +101,18 @@ public class RedCycloneTeachings extends CustomRelic  {
 	}
 	
 	private void stunSelfSoEndTurn() {
-		AbstractDungeon.actionManager.addToBottom(
-				new EndTurnAction());
+		
+		AbstractDungeon.actionManager.cardQueue.clear();
+		
+	    for (AbstractCard c : AbstractDungeon.player.limbo.group) {
+	        AbstractDungeon.effectList.add(new ExhaustCardEffect(c));
+	    }
+	    
+	    AbstractDungeon.player.limbo.group.clear();
+	    AbstractDungeon.player.releaseCard();
+	    AbstractDungeon.overlayMenu.endTurnButton.disable(true);
+	    AbstractDungeon.player.endTurnQueued = true;
+	    
 	}
 	
 	public boolean canSpawn() {
