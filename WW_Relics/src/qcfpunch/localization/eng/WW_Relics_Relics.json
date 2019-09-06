@@ -116,6 +116,15 @@
     ]
   },
   
+  "qcfpunch:Red_Cyclone_Teachings": {
+    "NAME": "Red Cyclone Teachings",
+    "FLAVOR": "\"'Because in Mother Russia, YOU nail the bears down!' ...what's Russia, what are bears and what's a mother?\" - Ranwid.",
+    "DESCRIPTIONS": [
+      "Cost #b",
+      "-or-more Attacks #yStuns the target, then #yExhausts."
+    ]
+  },
+  
   "qcfpunch:Red_Beret": {
     "NAME": "Red Beret",
     "FLAVOR": "Used for guiding the enemy attention, then repositioning yourself.",
@@ -124,7 +133,7 @@
       " #ycards."
     ]
   },
-  
+    
   "qcfpunch:Red_Headband": {
     "NAME": "Red Headband",
     "FLAVOR": "Placing it in your head gives some focus against distractions.",
