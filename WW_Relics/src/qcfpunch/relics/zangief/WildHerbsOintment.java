@@ -43,13 +43,11 @@ public class WildHerbsOintment extends CustomRelic  {
 		if (hasEnoughHP()) {
 			
 			AbstractPlayer player = AbstractDungeon.player;
-			int HP_to_have_at_most_in_victory =
-					player.currentHealth - 
+			int HP_to_have_at_most_in_victory =	player.currentHealth - 
 						(int)(player.maxHealth * (PERCENTAGE_OF_MAX_HP_TO_LOSE));
 			
 			WildHerbsOintmentPower wild_herbs_power =
-					new WildHerbsOintmentPower(player,
-							AMOUNT_OF_MAX_HP_GAINED,
+					new WildHerbsOintmentPower(player, AMOUNT_OF_MAX_HP_GAINED,
 							HP_to_have_at_most_in_victory);
 			
 			AbstractDungeon.actionManager.addToBottom(
