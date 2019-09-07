@@ -227,7 +227,7 @@
     "FLAVOR": "Never underestimate the power of a good presentation before a fight.",
     "DESCRIPTIONS": [
 	  "At Elite/Boss rooms, gain #y",
-	  " #yTemporary_HP. [#2aecd7]Right [#2aecd7]click [#2aecd7]during [#2aecd7]combat [#2aecd7]to gain #y",
+	  " #yTemporary_HP. [#2aecd7]Right [#2aecd7]click [#2aecd7]during [#2aecd7]your [#2aecd7]turn [#2aecd7]to gain #y",
 	  " #yTemporary_HP and lose this relic."
     ]
   }
