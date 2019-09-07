@@ -1,7 +1,6 @@
 package qcfpunch.relics.zangief;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
-import com.megacrit.cardcrawl.actions.common.EndTurnAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -9,10 +8,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 
 import basemod.abstracts.CustomRelic;
 import qcfpunch.QCFPunch_MiscCode;
+import qcfpunch.actions.EndTurnNowAction;
 import qcfpunch.resources.relic_graphics.GraphicResources;
 
 public class RedCycloneTeachings extends CustomRelic  {
@@ -37,21 +36,17 @@ public class RedCycloneTeachings extends CustomRelic  {
 			
 			c.exhaust = true;
 
+			flash();
+			
 			switch (c.target) {
 				case ENEMY:
 					
-					/*stunSingleTarget(m);*/
 					stunSingleTarget(m);
-					stunSelfSoEndTurn();
-					
 					break;
 				
 				case ALL_ENEMY:
 					
 					stunAllMonsters();
-					
-					AbstractDungeon.actionManager.addToBottom(
-							new EndTurnAction());
 					
 					break;
 					
@@ -102,16 +97,7 @@ public class RedCycloneTeachings extends CustomRelic  {
 	
 	private void stunSelfSoEndTurn() {
 		
-		AbstractDungeon.actionManager.cardQueue.clear();
-		
-	    for (AbstractCard c : AbstractDungeon.player.limbo.group) {
-	        AbstractDungeon.effectList.add(new ExhaustCardEffect(c));
-	    }
-	    
-	    AbstractDungeon.player.limbo.group.clear();
-	    AbstractDungeon.player.releaseCard();
-	    AbstractDungeon.overlayMenu.endTurnButton.disable(true);
-	    AbstractDungeon.player.endTurnQueued = true;
+		AbstractDungeon.actionManager.addToBottom(new EndTurnNowAction());
 	    
 	}
 	
