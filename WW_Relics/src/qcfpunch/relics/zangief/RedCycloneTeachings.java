@@ -18,7 +18,7 @@ public class RedCycloneTeachings extends CustomRelic  {
 	
 	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Red_Cyclone_Teachings";
 	
-	public static final int MINIMUM_COST_TO_STUN = 1;
+	public static final int MINIMUM_COST_TO_STUN = 3;
 	
 	public RedCycloneTeachings() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
