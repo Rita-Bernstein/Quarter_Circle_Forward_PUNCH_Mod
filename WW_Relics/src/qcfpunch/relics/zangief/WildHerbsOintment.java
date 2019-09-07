@@ -17,8 +17,8 @@ public class WildHerbsOintment extends CustomRelic  {
 
 	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Wild_Herbs_Ointment";
 	
-	public final int AMOUNT_OF_MAX_HP_GAINED = 2;
-	public final float PERCENTAGE_OF_MAX_HP_TO_LOSE = 0.4f;
+	public final int AMOUNT_OF_MAX_HP_GAINED = 3;
+	public final float PERCENTAGE_OF_MAX_HP_TO_LOSE = 0.3f;
 	
 	public static boolean had_enough_hp_at_combat_start;
 	
