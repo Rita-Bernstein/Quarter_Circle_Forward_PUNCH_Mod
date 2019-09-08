@@ -29,8 +29,9 @@ public class RedCycloneTeachings extends CustomRelic  {
 	}
 	
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + MINIMUM_COST_TO_STUN + 
-			    DESCRIPTIONS[1];
+		return DESCRIPTIONS[0] + MAXIMUM_AMOUNT_OF_USES_PER_COMBAT +
+				DESCRIPTIONS[1] + MINIMUM_COST_TO_STUN + 
+			    DESCRIPTIONS[2];
 	}
 	
 	@Override
