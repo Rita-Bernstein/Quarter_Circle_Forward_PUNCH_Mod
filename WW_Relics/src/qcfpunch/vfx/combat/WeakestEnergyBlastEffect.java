@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
-//Base code copied from HemokinesisEffect
+//Base code copied from SlayTheSpire's HemokinesisEffect
 public class WeakestEnergyBlastEffect extends AbstractGameEffect {
 	private float x;
 	private float y;
@@ -22,7 +22,9 @@ public class WeakestEnergyBlastEffect extends AbstractGameEffect {
 	    this.duration = 0.5F;
 	}
 	
-	private float tX; private float tY;
+	private float tX;
+	private float tY;
+	
 	public void update() {
 		
     this.scale -= Gdx.graphics.getDeltaTime();
