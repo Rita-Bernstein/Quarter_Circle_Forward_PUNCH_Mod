@@ -168,8 +168,8 @@
     "FLAVOR": "Very, very worn shoes... as much from hitting as from walking.",
     "DESCRIPTIONS": [
 	  "#rAttack draws do #yX+",
-	  " damage to the last enemy attacked, X is how many upgrades the attack has.",
-	  " #bThird #rattack draws do #y2X+",
+	  " damage to the last enemy attacked, X is how many upgrades the Attack has.",
+	  " #bThird #rAttack draws do #y2X+",
 	  " damage instead."
     ]
   }
