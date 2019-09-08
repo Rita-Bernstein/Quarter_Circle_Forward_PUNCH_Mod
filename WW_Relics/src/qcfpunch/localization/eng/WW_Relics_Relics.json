@@ -23,7 +23,7 @@
     "FLAVOR": "A surprisingly resilient chain with two faded nametags.",
     "DESCRIPTIONS": [
       "Whenever you gain #yBlock, gain #b",
-      "% as #yTemporary_HP instead."
+      "% of it as #yTemporary_HP instead."
     ]
   },
   
