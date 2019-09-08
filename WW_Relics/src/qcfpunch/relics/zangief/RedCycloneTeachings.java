@@ -19,10 +19,13 @@ public class RedCycloneTeachings extends CustomRelic  {
 	public static final String ID = QCFPunch_MiscCode.returnPrefix() + "Red_Cyclone_Teachings";
 	
 	public static final int MINIMUM_COST_TO_STUN = 3;
+	public static final int MAXIMUM_AMOUNT_OF_USES_PER_COMBAT = 2;
 	
 	public RedCycloneTeachings() {
 		super(ID, GraphicResources.LoadRelicImage("White_Boots - steeltoe-boots - Lorc - CC BY 3.0.png"),
 				RelicTier.RARE, LandingSound.HEAVY);
+		
+		this.counter = MAXIMUM_AMOUNT_OF_USES_PER_COMBAT;
 	}
 	
 	public String getUpdatedDescription() {
@@ -31,8 +34,21 @@ public class RedCycloneTeachings extends CustomRelic  {
 	}
 	
 	@Override
+	public void atPreBattle() {
+		this.counter = MAXIMUM_AMOUNT_OF_USES_PER_COMBAT;
+	}
+	
+	@Override
+	public void onVictory() {
+		this.counter = MAXIMUM_AMOUNT_OF_USES_PER_COMBAT;
+	}
+	
+	@Override
 	public void onPlayCard(AbstractCard c, AbstractMonster m) {
-		if ((c.type == CardType.ATTACK) && (c.costForTurn >= MINIMUM_COST_TO_STUN)) {
+		if ((c.type == CardType.ATTACK) && (c.costForTurn >= MINIMUM_COST_TO_STUN)
+				&& (this.counter > 0)) {
+			
+			this.counter--;
 			
 			c.exhaust = true;
 
