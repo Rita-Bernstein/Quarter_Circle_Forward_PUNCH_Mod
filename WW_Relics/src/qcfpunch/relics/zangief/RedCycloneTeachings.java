@@ -103,6 +103,8 @@ public class RedCycloneTeachings extends CustomRelic  {
 	
 	public boolean canSpawn() {
 		
+		if (AbstractDungeon.player.hasRelic("Snecko Eye")) return true;
+		
 		CardGroup attacks_deck = AbstractDungeon.player.masterDeck.getAttacks();
 		
 		int amount_of_3_or_more_cost_cards = 0;
