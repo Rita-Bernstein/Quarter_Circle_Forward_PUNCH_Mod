@@ -1,7 +1,6 @@
 package qcfpunch.cards.dan;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -14,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import basemod.abstracts.CustomCard;
 import qcfpunch.QCFPunch_MiscCode;
 import qcfpunch.powers.PotentialPower;
-import qcfpunch.vfx.combat.WeakestEnergyBlastEffect;
 
 public class WeakestEnergyBlast extends CustomCard {
 
@@ -45,13 +43,7 @@ public class WeakestEnergyBlast extends CustomCard {
 	@Override
 	public void use(AbstractPlayer player, AbstractMonster monster) {
 		
-	    if (monster != null) {
-	        AbstractDungeon.actionManager.addToBottom(
-	        		new VFXAction(new WeakestEnergyBlastEffect(
-	        				player.hb.cX, player.hb.cY,
-	        				monster.hb.cX, monster.hb.cY),
-	        				0.5F));
-	        
+	    if (monster != null) {       
 	        AbstractDungeon.actionManager.addToBottom(
 	        		new DamageAction(monster, new DamageInfo(player,
 	        				this.damage, this.damageTypeForTurn),
