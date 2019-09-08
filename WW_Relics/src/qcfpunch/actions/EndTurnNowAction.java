@@ -10,6 +10,12 @@ import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 
 public class EndTurnNowAction extends AbstractGameAction {
 
+	public EndTurnNowAction(){
+		
+		actionType = ActionType.SPECIAL;
+		
+	}
+	
 	@Override
     public void update() {
 		
