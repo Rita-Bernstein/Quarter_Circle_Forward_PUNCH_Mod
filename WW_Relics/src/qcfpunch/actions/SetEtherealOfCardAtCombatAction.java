@@ -6,14 +6,16 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-public class SetEtherealOfCardAtCombat extends AbstractGameAction {
+public class SetEtherealOfCardAtCombatAction extends AbstractGameAction {
 
 	UUID uuid;
 	boolean ethereal;
 	
-	public SetEtherealOfCardAtCombat(UUID uuid, boolean will_be_ethereal) {
+	public SetEtherealOfCardAtCombatAction(UUID uuid, boolean will_be_ethereal) {
 		this.uuid = uuid;
 		this.ethereal = will_be_ethereal;
+		
+		actionType = ActionType.SPECIAL;
 	}
 	
 	@Override
