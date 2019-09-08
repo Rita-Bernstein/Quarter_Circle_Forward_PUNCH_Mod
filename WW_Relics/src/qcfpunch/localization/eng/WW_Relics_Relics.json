@@ -120,7 +120,8 @@
     "NAME": "Red Cyclone Teachings",
     "FLAVOR": "\"'Because in Mother Russia, YOU nail the bears down!' ...what's Russia, what are bears and what's a mother?\" - Ranwid.",
     "DESCRIPTIONS": [
-      "All Attacks that cost #b",
+      "Each combat, the first #b",
+      " Attacks used that cost #b",
       "-or-more #yStun their target(s), then #yExhaust."
     ]
   },
