@@ -61,10 +61,10 @@
     "NAME": "Fighting Gloves",
     "FLAVOR": "\"Inspiring! Who wants to train with me?\" - Ranwid.",
     "DESCRIPTIONS": [
-    "[#2aecd7]Starts [#2aecd7]with [#2aecd7]",
-    " [#2aecd7]charge",
+    "#rStarts #rwith #r",
+    " #rcharge",
     ".",
-    " At Rest Sites, #rright #rclick before picking an option: uses all charges to #yUpgrade #b1 chosen card per charge. Each #b",
+    " At Rest Sites, [#2aecd7]right [#2aecd7]click before picking an option: uses all charges to #yUpgrade #b1 chosen card per charge. Each #b",
     " rooms, gain #b1 charge.",
     "Choose ", 
     " card",
