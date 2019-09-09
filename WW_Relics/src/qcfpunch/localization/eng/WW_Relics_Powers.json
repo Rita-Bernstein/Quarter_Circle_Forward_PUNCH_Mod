@@ -37,6 +37,14 @@
     "DESCRIPTIONS": [
       "At the start of your turn, add a random #yWeakest card to your hand."
     ]
-  }
+  },
   
+  "qcfpunch:Power_Wild_Herbs_Ointment": {
+    "NAME": "Wild Herbs Ointment",
+    "DESCRIPTIONS": [
+      "If you finish the combat with at most #b",
+      " #yHP, gain #b",
+      " #yMax #yHP."
+  	]
+  }
 }

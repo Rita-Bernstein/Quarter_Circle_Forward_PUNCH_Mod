@@ -9,14 +9,14 @@ This mod follows the [Creative Commons Attribution 3.0 Unported](https://creativ
 
 # Content
 
-* Sixteen relics done of 16+ planned, with temporary images and placeholder sounds.
+* Twenty-two relics done of 34+ planned, with temporary images and placeholder sounds.
 * Eight game modifiers, ranging from adding more relics at start to making the game harder.
 * Six cards, acessible through one specific relic.
 * One event, which is the gateway for two relics and one potion.
 
 # Current State
 
-Milestone 6 will be started after a break. (Nexus Mods' support after that)
+Milestone 6 being done. (Nexus Mods' support after that)
 
 # Link to Releases and Pre-Releases
 
